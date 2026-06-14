@@ -5,7 +5,13 @@
     "settings": "الإعدادات",
     "login": "تسجيل الدخول",
     "logout": "تسجيل الخروج",
-    "register": "إنشاء حساب"
+    "register": "إنشاء حساب",
+    "notifications": "الإشعارات",
+    "favorites": "المفضلة",
+    "orders": "الطلبات",
+    "profile": "الملف الشخصي",
+    "cart": "السلة",
+    "search": "بحث"
   },
   "buttons": {
     "submit": "إرسال",

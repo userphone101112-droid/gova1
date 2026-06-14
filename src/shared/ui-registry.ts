@@ -39,8 +39,8 @@ export const AUTH = {
 // ============================================================================
 export const HOME = {
   LANGUAGE_SWITCHER: {
-    ENGLISH_BUTTON: 'home.language-switcher.english-button' as const,
-    ARABIC_BUTTON: 'home.language-switcher.arabic-button' as const,
+    ENGLISH_BUTTON: 'home.language-switcher.buttons.english-button' as const,
+    ARABIC_BUTTON: 'home.language-switcher.buttons.arabic-button' as const,
   },
   HERO: {
     CTA: {
@@ -62,8 +62,8 @@ export const DASHBOARD = {
     },
   },
   HEADER: {
-    LOGOUT_BUTTON: 'dashboard.header.logout-button' as const,
-    PROFILE_BUTTON: 'dashboard.header.profile-button' as const,
+    LOGOUT_BUTTON: 'dashboard.header.actions.logout-button' as const,
+    PROFILE_BUTTON: 'dashboard.header.actions.profile-button' as const,
   },
 } as const;
 
@@ -89,10 +89,10 @@ export const SETTINGS = {
 // ============================================================================
 export const CONTACT = {
   FORM: {
-    SUBMIT_BUTTON: 'contact.form.submit-button' as const,
-    EMAIL_INPUT: 'contact.form.email-input' as const,
-    SUBJECT_INPUT: 'contact.form.subject-input' as const,
-    MESSAGE_TEXTAREA: 'contact.form.message-textarea' as const,
+    SUBMIT_BUTTON: 'contact.form.buttons.submit-button' as const,
+    EMAIL_INPUT: 'contact.form.inputs.email-input' as const,
+    SUBJECT_INPUT: 'contact.form.inputs.subject-input' as const,
+    MESSAGE_TEXTAREA: 'contact.form.inputs.message-textarea' as const,
   },
 } as const;
 
@@ -100,7 +100,7 @@ export const CONTACT = {
 // ERROR BOUNDARY IDENTIFIERS
 // ============================================================================
 export const ERROR_BOUNDARY = {
-  RELOAD_BUTTON: 'error-boundary.reload-button' as const,
+  RELOAD_BUTTON: 'error-boundary.main.actions.reload-button' as const,
 } as const;
 
 // ============================================================================
@@ -108,10 +108,10 @@ export const ERROR_BOUNDARY = {
 // ============================================================================
 export const SIGNUP = {
   FORM: {
-    SUBMIT_BUTTON: 'signup.form.submit-button' as const,
-    EMAIL_INPUT: 'signup.form.email-input' as const,
-    PASSWORD_INPUT: 'signup.form.password-input' as const,
-    TERMS_CHECKBOX: 'signup.form.terms-checkbox' as const,
+    SUBMIT_BUTTON: 'signup.form.buttons.submit-button' as const,
+    EMAIL_INPUT: 'signup.form.inputs.email-input' as const,
+    PASSWORD_INPUT: 'signup.form.inputs.password-input' as const,
+    TERMS_CHECKBOX: 'signup.form.inputs.terms-checkbox' as const,
   },
 } as const;
 
@@ -123,6 +123,30 @@ export const SPLASH = {
     FORM: {
       PIN_INPUT: 'splash.maintenance.form.pin-input' as const,
       SUBMIT_BUTTON: 'splash.maintenance.form.submit-button' as const,
+    },
+  },
+} as const;
+
+// ============================================================================
+// SHARED LAYOUT IDENTIFIERS (Header + Bottom Nav — all pages except splash)
+// ============================================================================
+export const SHARED_LAYOUT = {
+  HEADER: {
+    MENU: {
+      MENU_BUTTON: 'shared-layout.header.menu.menu-button' as const,
+    },
+    ACTIONS: {
+      SEARCH_BUTTON: 'shared-layout.header.actions.search-button' as const,
+      CART_BUTTON: 'shared-layout.header.actions.cart-button' as const,
+    },
+  },
+  BOTTOM_NAV: {
+    ITEMS: {
+      HOME_LINK: 'shared-layout.bottom-nav.items.home-link' as const,
+      NOTIFICATIONS_LINK: 'shared-layout.bottom-nav.items.notifications-link' as const,
+      FAVORITES_LINK: 'shared-layout.bottom-nav.items.favorites-link' as const,
+      ORDERS_LINK: 'shared-layout.bottom-nav.items.orders-link' as const,
+      PROFILE_LINK: 'shared-layout.bottom-nav.items.profile-link' as const,
     },
   },
 } as const;
@@ -144,6 +168,7 @@ export const UI_REGISTRY = {
   ...ERROR_BOUNDARY,
   ...SIGNUP,
   ...SPLASH,
+  ...SHARED_LAYOUT,
 } as const;
 
 /**

@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
 
 :root {
   /* Base Colors */
@@ -65,7 +67,7 @@
   --radius-full: 9999px;
   
   /* Typography */
-  --font-sans: var(--font-geist-sans, system-ui, -apple-system, sans-serif);
+  --font-sans: var(--font-geist-sans, 'Inter', system-ui, -apple-system, sans-serif);
   --font-mono: var(--font-geist-mono, ui-monospace, monospace);
   
   /* Shadows */
@@ -78,6 +80,43 @@
   --transition-fast: 150ms ease-in-out;
   --transition-normal: 300ms ease-in-out;
   --transition-slow: 500ms ease-in-out;
+
+  /* ── GoVa Design System Tokens (from DESIGN.md) ── */
+  --gova-surface:                  #faf8ff;
+  --gova-surface-dim:              #d9d9e2;
+  --gova-surface-bright:           #faf8ff;
+  --gova-surface-container-lowest: #ffffff;
+  --gova-surface-container-low:    #f3f3fc;
+  --gova-surface-container:        #ededf6;
+  --gova-surface-container-high:   #e7e7f0;
+  --gova-surface-container-highest:#e2e2eb;
+  --gova-on-surface:               #191b22;
+  --gova-on-surface-variant:       #434653;
+  --gova-inverse-surface:          #2e3037;
+  --gova-inverse-on-surface:       #f0f0f9;
+  --gova-outline:                  #737784;
+  --gova-outline-variant:          #c3c6d5;
+  --gova-surface-tint:             #2559bd;
+  --gova-primary:                  #00327d;
+  --gova-on-primary:               #ffffff;
+  --gova-primary-container:        #0047ab;
+  --gova-on-primary-container:     #a5bdff;
+  --gova-inverse-primary:          #b1c5ff;
+  --gova-secondary:                #a04100;
+  --gova-on-secondary:             #ffffff;
+  --gova-secondary-container:      #fe6b00;
+  --gova-on-secondary-container:   #572000;
+  --gova-tertiary:                 #651f00;
+  --gova-on-tertiary:              #ffffff;
+  --gova-tertiary-container:       #8b2e01;
+  --gova-on-tertiary-container:    #ffaa8a;
+  --gova-google-blue:              #4285F4;
+  --gova-google-red:               #EA4335;
+  --gova-google-yellow:            #FBBC05;
+  --gova-google-green:             #34A853;
+  --gova-background:               #faf8ff;
+  --gova-on-background:            #191b22;
+  --gova-surface-variant:          #e2e2eb;
 }
 
 @theme inline {
@@ -185,17 +224,92 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
+  -webkit-tap-highlight-color: transparent;
+  min-height: 100dvh;
   transition: background var(--transition-normal), color var(--transition-normal);
 }
 
 * {
   border-color: var(--gray-200);
+  box-sizing: border-box;
 }
 
 @media (prefers-color-scheme: dark) {
   * {
     border-color: var(--gray-700);
   }
+}
+
+/* ── Material Symbols ── */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  user-select: none;
+}
+
+/* ── Scrollbar hide ── */
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ── Snap scroll ── */
+.snap-x-mandatory { scroll-snap-type: x mandatory; }
+.snap-start { scroll-snap-align: start; }
+
+/* ── Glassmorphism ── */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* ── Reveal on scroll ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Skeleton shimmer ── */
+@keyframes shimmer {
+  0%   { background-position: -1000px 0; }
+  100% { background-position:  1000px 0; }
+}
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite linear;
+}
+
+/* ── Pulse for badges ── */
+@keyframes pulse-gova {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.7; transform: scale(1.2); }
+}
+.animate-pulse-gova { animation: pulse-gova 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+
+/* ── Marquee cards (home featured) ── */
+@keyframes marquee-cards {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(calc(-50% - 8px)); }
+}
+.animate-marquee-cards {
+  display: flex;
+  animation: marquee-cards 30s linear infinite;
+}
+
+/* ── Trending ribbon marquee ── */
+@keyframes trending-ribbon {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-trending { animation: trending-ribbon 20s linear infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee-cards,
+  .animate-trending { animation: none; }
 }
 
 /* Marquee Animations */

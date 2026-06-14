@@ -1,22 +1,68 @@
 {
   "home": {
-    "title": "سوق غوفا",
-    "subtitle": "سوقك السويسري",
-    "welcome": "مرحباً بك في غوفا",
-    "description": "اكتشف أفضل المنتجات والخدمات في سويسرا",
-    "cta": {
-      "getStarted": "ابدأ الآن",
-      "learnMore": "اعرف المزيد"
+    "header": {
+      "brandTitle": "سوق جوفا",
+      "searchLabel": "بحث",
+      "cartLabel": "سلة التسوق"
     },
-    "hero": {
-      "primaryButton": "ابدأ الآن",
-      "secondaryButton": "اعرف المزيد"
+    "categories": {
+      "title": "أسواق السويس",
+      "viewAll": "عرض الكل",
+      "fashion": "أزياء",
+      "cars": "سيارات",
+      "realEstate": "عقارات",
+      "medical": "خدمات طبية",
+      "pharmacy": "صيدلية",
+      "education": "تعليم",
+      "electronics": "إلكترونيات",
+      "industrial": "صناعي"
     },
-    "features": {
-      "title": "لماذا تختارنا؟",
-      "quality": "جودة عالية",
-      "fastDelivery": "توصيل سريع",
-      "support": "دعم على مدار الساعة"
+    "heroSlider": {
+      "slide1Badge": "موسم جديد",
+      "slide1Title": "مجموعة الأزياء الراقية",
+      "slide2Badge": "سيارات فاخرة",
+      "slide2Title": "سيارات مميزة"
+    },
+    "featured": {
+      "title": "المنتجات المتميزة"
+    },
+    "trending": {
+      "label": "الأكثر رواجاً:",
+      "item1": "هاتف نوفا S24 برو",
+      "item2": "ساعة تايم بيس",
+      "item3": "حذاء برو رانر",
+      "item4": "جهاز الفحص v4"
+    },
+    "curated": {
+      "title": "عروض مختارة",
+      "limitedTime": "لفترة محدودة",
+      "product1Category": "أزياء",
+      "product1Title": "برو رانر إيليت",
+      "product1Price": "$129.00",
+      "product2Category": "طبي",
+      "product2Title": "جهاز الفحص v4",
+      "product2Price": "$2,450",
+      "product3Category": "إلكترونيات",
+      "product3Title": "نوفا S24 برو",
+      "product3Price": "$999.00",
+      "product4Category": "إكسسوارات",
+      "product4Title": "تايم بيس برايم",
+      "product4Price": "$450.00",
+      "addToCart": "إضافة للسلة",
+      "addToFavorites": "إضافة للمفضلة"
+    },
+    "promoBanner": {
+      "title": "عقارات النخبة",
+      "text": "اعثر على مساحتك الصناعية القادمة مع شركاء السويس المعتمدين.",
+      "cta": "استكشف القوائم"
+    },
+    "marquee": {
+      "card1Title": "بدلة فاخرة",
+      "card1Price": "$599",
+      "card2Title": "فيلا فاخرة",
+      "card2Price": "$1.2M",
+      "card3Title": "فستان مصمم",
+      "card3Price": "$850"
     }
   }
 }

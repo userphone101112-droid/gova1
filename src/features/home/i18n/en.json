@@ -1,22 +1,68 @@
 {
   "home": {
-    "title": "GoVa Marketplace",
-    "subtitle": "Your Swiss Marketplace",
-    "welcome": "Welcome to GoVa",
-    "description": "Discover the best products and services in Switzerland",
-    "cta": {
-      "getStarted": "Get Started",
-      "learnMore": "Learn More"
+    "header": {
+      "brandTitle": "GoVa Market",
+      "searchLabel": "Search",
+      "cartLabel": "Shopping Cart"
     },
-    "hero": {
-      "primaryButton": "Get Started",
-      "secondaryButton": "Learn More"
+    "categories": {
+      "title": "Suez Markets",
+      "viewAll": "View All",
+      "fashion": "Fashion",
+      "cars": "Cars",
+      "realEstate": "Real Estate",
+      "medical": "Medical",
+      "pharmacy": "Pharmacy",
+      "education": "Education",
+      "electronics": "Electronics",
+      "industrial": "Industrial"
     },
-    "features": {
-      "title": "Why Choose Us?",
-      "quality": "Premium Quality",
-      "fastDelivery": "Fast Delivery",
-      "support": "24/7 Support"
+    "heroSlider": {
+      "slide1Badge": "New Season",
+      "slide1Title": "Premium Fashion Collection",
+      "slide2Badge": "Luxury Cars",
+      "slide2Title": "Premium Vehicles"
+    },
+    "featured": {
+      "title": "Featured Products"
+    },
+    "trending": {
+      "label": "Trending:",
+      "item1": "Nova S24 Pro Phone",
+      "item2": "TimePiece Watch",
+      "item3": "Pro Runner Shoes",
+      "item4": "CheckUp v4 Device"
+    },
+    "curated": {
+      "title": "Curated Offers",
+      "limitedTime": "Limited Time",
+      "product1Category": "Fashion",
+      "product1Title": "Pro Runner Elite",
+      "product1Price": "$129.00",
+      "product2Category": "Medical",
+      "product2Title": "CheckUp v4",
+      "product2Price": "$2,450",
+      "product3Category": "Electronics",
+      "product3Title": "Nova S24 Pro",
+      "product3Price": "$999.00",
+      "product4Category": "Accessories",
+      "product4Title": "TimePiece Prime",
+      "product4Price": "$450.00",
+      "addToCart": "Add to Cart",
+      "addToFavorites": "Add to Favorites"
+    },
+    "promoBanner": {
+      "title": "Elite Real Estate",
+      "text": "Find your next industrial space with Suez certified partners.",
+      "cta": "Explore Listings"
+    },
+    "marquee": {
+      "card1Title": "Premium Suit",
+      "card1Price": "$599",
+      "card2Title": "Luxury Villa",
+      "card2Price": "$1.2M",
+      "card3Title": "Designer Dress",
+      "card3Price": "$850"
     }
   }
 }

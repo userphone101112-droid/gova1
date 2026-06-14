@@ -5,7 +5,13 @@
     "settings": "Settings",
     "login": "Login",
     "logout": "Logout",
-    "register": "Register"
+    "register": "Register",
+    "notifications": "Notifications",
+    "favorites": "Favorites",
+    "orders": "Orders",
+    "profile": "Profile",
+    "cart": "Cart",
+    "search": "Search"
   },
   "buttons": {
     "submit": "Submit",
