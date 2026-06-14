@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --port 3001",
-    "build": "next build",
+    "build": "npm run ci:i18n && next build",
     "start": "next start --port 3001",
     "server": "tsx scripts/dev-server.ts",
     "server:start": "tsx scripts/dev-server.ts start",
@@ -22,7 +22,23 @@
     "db:export": "tsx scripts/export-to-json.ts",
     "db:check": "tsx scripts/check-db.ts",
     "db:validate-images": "tsx scripts/validate-images.ts",
-    "db:analyze": "tsx scripts/analyze-db.ts"
+    "db:analyze": "tsx scripts/analyze-db.ts",
+    "i18n:validate": "tsx scripts/validate-translations.ts",
+    "i18n:generate-keys": "tsx scripts/generate-translation-keys.ts",
+    "generate:feature": "tsx scripts/generate-feature.ts",
+    "audit:unified-ui-i18n": "tsx scripts/audit-unified-ui-i18n.ts",
+    "audit:orphans": "tsx scripts/find-orphans.ts",
+    "migration:scan": "tsx scripts/scan-legacy-violations.ts",
+    "migration:init": "tsx scripts/init-migration-queue.ts",
+    "migration:skip-false-positives": "tsx scripts/skip-false-positives.ts",
+    "migration:fix": "tsx scripts/fix-legacy-violations.ts",
+    "migration:migrate-feature": "tsx scripts/migrate-feature.ts",
+    "migration:validate": "tsx scripts/validate-clean-state.ts",
+    "ci:i18n": "npm run i18n:validate && npm run i18n:generate-keys",
+    "ci:check": "npm run typecheck && npm run lint && npm run ci:i18n",
+    "ci:enforcement": "npm run typecheck && npm run lint && npm run ci:i18n && npm run audit:unified-ui-i18n && npm run audit:orphans && npm run migration:validate",
+    "ci:pre-commit": "npm run ci:i18n",
+    "prebuild": "npm run ci:i18n && npm run audit:unified-ui-i18n"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.4.0",

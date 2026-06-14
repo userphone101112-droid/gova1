@@ -4,6 +4,8 @@ import React, { Component, ReactNode } from 'react';
 
 import { errorHandler } from '@/lib/error-handler';
 import { AppError } from '@/types/errors';
+import { UiButton } from '@/components/ui-identified';
+import { ERROR_BOUNDARY } from '@/shared/ui-registry';
 
 interface Props {
   children: ReactNode;
@@ -55,12 +57,12 @@ export class ErrorBoundary extends Component<Props, State> {
             <p className="mb-6 text-gray-600 dark:text-gray-400">
               {this.state.error?.message || 'An unexpected error occurred'}
             </p>
-            <button
+            <UiButton
+              ui={ERROR_BOUNDARY.RELOAD_BUTTON}
               onClick={() => window.location.reload()}
-              className="rounded-lg bg-primary-600 px-4 py-2 text-white transition-colors hover:bg-primary-700"
             >
               Reload Page
-            </button>
+            </UiButton>
           </div>
         </div>
       );

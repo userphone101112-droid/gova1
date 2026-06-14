@@ -1,0 +1,18 @@
+{
+  "home": {
+    "title": "GoVa Marketplace",
+    "subtitle": "Your Swiss Marketplace",
+    "welcome": "Welcome to GoVa",
+    "description": "Discover the best products and services in Switzerland",
+    "cta": {
+      "getStarted": "Get Started",
+      "learnMore": "Learn More"
+    },
+    "features": {
+      "title": "Why Choose Us?",
+      "quality": "Premium Quality",
+      "fastDelivery": "Fast Delivery",
+      "support": "24/7 Support"
+    }
+  }
+}

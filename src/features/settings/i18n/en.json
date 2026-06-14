@@ -1,0 +1,15 @@
+{
+  "settings": {
+    "title": "Settings",
+    "profile": "Profile",
+    "account": "Account",
+    "preferences": "Preferences",
+    "security": "Security",
+    "notifications": "Notifications",
+    "language": "Language",
+    "theme": "Theme",
+    "privacy": "Privacy",
+    "deleteAccount": "Delete Account",
+    "saveChanges": "Save Changes"
+  }
+}

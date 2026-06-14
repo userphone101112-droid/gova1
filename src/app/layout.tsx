@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { I18nProvider } from "@/shared/i18n/core/provider";
+import { getDictionaryCached } from "@/shared/i18n/core/getDictionary";
+import { getLocale, getDirection } from "@/shared/i18n/utils/getLocale";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,17 +36,33 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Get locale from cookie or default
+  const locale = await getLocale();
+  const direction = getDirection(locale);
+  
+  // Load common dictionary for root layout
+  const dictionary = await getDictionaryCached(locale, 'common');
+
   return (
     <html
-      lang="en"
+      lang={locale}
+      dir={direction}
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <I18nProvider
+          initialLocale={locale}
+          initialDictionary={dictionary}
+          feature="common"
+        >
+          {children}
+        </I18nProvider>
+      </body>
     </html>
   );
 }

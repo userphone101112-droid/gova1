@@ -1,15 +1,19 @@
-import SplashScreen from '@/components/splash/SplashScreen';
+import { ReactNode } from 'react';
 import { I18nProvider } from '@/shared/i18n/core/provider';
 import { getDictionaryCached } from '@/shared/i18n/core/getDictionary';
 import { getLocale, getDirection } from '@/shared/i18n/utils/getLocale';
 
-export default async function Home() {
+interface HomeLayoutProps {
+  children: ReactNode;
+}
+
+export default async function HomeLayout({ children }: HomeLayoutProps) {
   // Get locale from cookie or default
   const locale = await getLocale();
   const direction = getDirection(locale);
   
-  // Load splash dictionary for this route
-  const dictionary = await getDictionaryCached(locale, 'splash');
+  // Load home dictionary for this route
+  const dictionary = await getDictionaryCached(locale, 'home');
 
   return (
     <html lang={locale} dir={direction}>
@@ -17,9 +21,9 @@ export default async function Home() {
         <I18nProvider
           initialLocale={locale}
           initialDictionary={dictionary}
-          feature="splash"
+          feature="home"
         >
-          <SplashScreen />
+          {children}
         </I18nProvider>
       </body>
     </html>

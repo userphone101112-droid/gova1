@@ -1,0 +1,15 @@
+{
+  "dashboard": {
+    "title": "لوحة التحكم",
+    "overview": "نظرة عامة",
+    "stats": {
+      "totalOrders": "إجمالي الطلبات",
+      "totalRevenue": "إجمالي الإيرادات",
+      "activeUsers": "المستخدمون النشطون",
+      "pendingOrders": "الطلبات المعلقة"
+    },
+    "recentActivity": "النشاط الأخير",
+    "quickActions": "إجراءات سريعة",
+    "viewAll": "عرض الكل"
+  }
+}

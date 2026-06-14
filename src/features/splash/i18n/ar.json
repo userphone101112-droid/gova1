@@ -1,0 +1,8 @@
+{
+  "splash": {
+    "loading": "جاري التحميل...",
+    "initializing": "جاري التهيئة...",
+    "complete": "مكتمل",
+    "progress": "التقدم"
+  }
+}

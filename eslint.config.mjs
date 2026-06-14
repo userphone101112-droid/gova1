@@ -1,10 +1,46 @@
 import { defineConfig, globalIgnores } from "eslint/config";
 import nextVitals from "eslint-config-next/core-web-vitals";
 import nextTs from "eslint-config-next/typescript";
+import uiIdentificationRules from "./.eslint-rules/ui-identification.js";
+import i18nEnforcementRules from "./.eslint-rules/i18n-enforcement.js";
+
+const uiIdentificationPlugin = {
+  meta: {
+    name: 'ui-identification',
+  },
+  rules: uiIdentificationRules.rules,
+};
+
+const i18nEnforcementPlugin = {
+  meta: {
+    name: 'i18n-enforcement',
+  },
+  rules: i18nEnforcementRules.rules,
+};
 
 const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
+  {
+    plugins: {
+      'ui-identification': uiIdentificationPlugin,
+      'i18n-enforcement': i18nEnforcementPlugin,
+    },
+    rules: {
+      // UI Identification System rules
+      'ui-identification/no-direct-native-interactive-elements': 'error',
+      'ui-identification/no-base-ui-components': 'error',
+      'ui-identification/require-ui-prop': 'error',
+      'ui-identification/validate-registry-uniqueness': 'error',
+      // i18n Enforcement rules
+      'i18n-enforcement/validate-translation-keys': 'error',
+      'i18n-enforcement/no-hardcoded-text': 'error',
+      'i18n-enforcement/validate-ui-i18n-alignment': 'error',
+      'i18n-enforcement/require-ui-i18n-binding': 'error',
+      'i18n-enforcement/no-orphan-translations': 'warn',
+      'i18n-enforcement/enforce-ui-translation-coupling': 'warn',
+    },
+  },
   // Override default ignores of eslint-config-next.
   globalIgnores([
     // Default ignores of eslint-config-next:

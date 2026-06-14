@@ -1,9 +1,15 @@
+'use client';
+
+import { useTranslation } from '@/shared/i18n/core/useTranslation';
+
 interface ProgressIndicatorProps {
   progress: number;
   status: string;
 }
 
 export default function ProgressIndicator({ progress, status }: ProgressIndicatorProps) {
+  const { t } = useTranslation();
+
   return (
     <div className="flex flex-col items-center gap-4 z-10">
       <div className="w-64 h-2 bg-white/20 rounded-full overflow-hidden">
@@ -16,7 +22,7 @@ export default function ProgressIndicator({ progress, status }: ProgressIndicato
         {progress}%
       </div>
       <div className="text-white/80 text-sm">
-        {status}
+        {status || t('splash.loading')}
       </div>
     </div>
   );

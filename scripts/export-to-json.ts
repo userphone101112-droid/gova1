@@ -10,28 +10,20 @@ if (!fs.existsSync(dataDir)) {
   fs.mkdirSync(dataDir, { recursive: true });
 }
 
-const tables = [
-  'categories',
-  'subcategories',
-  'pharmacy_categories',
-  'pharmacy_subcategories',
-  'forms',
-  'strengths',
-  'active_ingredients',
-  'active_ingredient_forms',
-  'active_ingredient_strengths',
-  'product_brands'
-];
+// Get all tables from database
+const tables = db.prepare("SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%'").all() as { name: string }[];
 
 try {
   console.log('Starting export from SQLite to JSON...');
+  console.log(`Found ${tables.length} tables in database\n`);
 
   for (const table of tables) {
-    const rows = db.prepare(`SELECT * FROM ${table}`).all();
-    const filePath = path.join(dataDir, `${table}.json`);
+    const tableName = table.name;
+    const rows = db.prepare(`SELECT * FROM ${tableName}`).all();
+    const filePath = path.join(dataDir, `${tableName}.json`);
     
     fs.writeFileSync(filePath, JSON.stringify(rows, null, 2), 'utf-8');
-    console.log(`✓ Exported ${table}: ${rows.length} rows`);
+    console.log(`✓ Exported ${tableName}: ${rows.length} rows`);
   }
 
   console.log('\n✓ Export completed successfully!');
