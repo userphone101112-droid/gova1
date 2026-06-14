@@ -7,7 +7,10 @@
       "rememberMe": "Remember me",
       "forgotPassword": "Forgot password?",
       "noAccount": "Don't have an account?",
-      "signUp": "Sign up"
+      "signUp": "Sign up",
+      "emailInput": "Enter email address",
+      "passwordInput": "Enter password",
+      "submitButton": "Login"
     },
     "register": {
       "title": "Create Account",
@@ -17,7 +20,10 @@
       "confirmPassword": "Confirm Password",
       "agreeTerms": "I agree to the terms and conditions",
       "hasAccount": "Already have an account?",
-      "signIn": "Sign in"
+      "signIn": "Sign in",
+      "emailInput": "Enter email address",
+      "passwordInput": "Enter password",
+      "submitButton": "Register"
     },
     "forgotPassword": {
       "title": "Reset Password",

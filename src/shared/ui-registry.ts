@@ -116,6 +116,18 @@ export const SIGNUP = {
 } as const;
 
 // ============================================================================
+// SPLASH PAGE IDENTIFIERS
+// ============================================================================
+export const SPLASH = {
+  MAINTENANCE: {
+    FORM: {
+      PIN_INPUT: 'splash.maintenance.form.pin-input' as const,
+      SUBMIT_BUTTON: 'splash.maintenance.form.submit-button' as const,
+    },
+  },
+} as const;
+
+// ============================================================================
 // REGISTRY VALIDATION
 // ============================================================================
 
@@ -131,6 +143,7 @@ export const UI_REGISTRY = {
   ...CONTACT,
   ...ERROR_BOUNDARY,
   ...SIGNUP,
+  ...SPLASH,
 } as const;
 
 /**

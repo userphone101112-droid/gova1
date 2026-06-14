@@ -10,6 +10,11 @@
     },
     "recentActivity": "Recent Activity",
     "quickActions": "Quick Actions",
-    "viewAll": "View All"
+    "viewAll": "View All",
+    "sidebar": {
+      "usersLink": "Users",
+      "settingsLink": "Settings",
+      "analyticsLink": "Analytics"
+    }
   }
 }

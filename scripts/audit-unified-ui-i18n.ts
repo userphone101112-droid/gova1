@@ -149,7 +149,7 @@ function scanTranslations(): TranslationScanResult {
       try {
         const content = readFileSync(enPath, 'utf-8');
         const translations = JSON.parse(content);
-        const keys = extractTranslationKeys(translations, feature);
+        const keys = extractTranslationKeys(translations, '');
         
         byFeature[feature] = keys;
         keys.forEach(key => translationKeys.add(key));
@@ -165,7 +165,7 @@ function scanTranslations(): TranslationScanResult {
     try {
       const content = readFileSync(commonEnPath, 'utf-8');
       const translations = JSON.parse(content);
-      const keys = extractTranslationKeys(translations, 'common');
+      const keys = extractTranslationKeys(translations, '');
       
       byFeature['common'] = keys;
       keys.forEach(key => translationKeys.add(key));

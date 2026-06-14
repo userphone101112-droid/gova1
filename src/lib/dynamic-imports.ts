@@ -1,7 +1,8 @@
 import dynamic from 'next/dynamic';
 
 export const dynamicImport = (
-  importFn: () => Promise<{ default: React.ComponentType<unknown> }>,
+  importFn: () =>
+    Promise<{ default: React.ComponentType<unknown> }>,
   options?: {
     ssr?: boolean;
     loading?: any;

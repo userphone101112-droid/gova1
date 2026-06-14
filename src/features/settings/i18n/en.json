@@ -5,8 +5,15 @@
     "account": "Account",
     "preferences": "Preferences",
     "security": "Security",
-    "notifications": "Notifications",
-    "language": "Language",
+    "notifications": {
+      "title": "Notifications",
+      "emailNotifications": "Email Notifications",
+      "pushNotifications": "Push Notifications"
+    },
+    "language": {
+      "title": "Language",
+      "currentLanguage": "Current Language"
+    },
     "theme": "Theme",
     "privacy": "Privacy",
     "deleteAccount": "Delete Account",

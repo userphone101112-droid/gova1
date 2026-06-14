@@ -5,8 +5,15 @@
     "account": "الحساب",
     "preferences": "التفضيلات",
     "security": "الأمان",
-    "notifications": "الإشعارات",
-    "language": "اللغة",
+    "notifications": {
+      "title": "الإشعارات",
+      "emailNotifications": "إشعارات البريد الإلكتروني",
+      "pushNotifications": "إشعارات الهاتف"
+    },
+    "language": {
+      "title": "اللغة",
+      "currentLanguage": "اللغة الحالية"
+    },
     "theme": "المظهر",
     "privacy": "الخصوصية",
     "deleteAccount": "حذف الحساب",

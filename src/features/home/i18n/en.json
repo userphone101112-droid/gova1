@@ -8,6 +8,10 @@
       "getStarted": "Get Started",
       "learnMore": "Learn More"
     },
+    "hero": {
+      "primaryButton": "Get Started",
+      "secondaryButton": "Learn More"
+    },
     "features": {
       "title": "Why Choose Us?",
       "quality": "Premium Quality",

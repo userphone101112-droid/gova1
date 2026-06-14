@@ -3,6 +3,10 @@
     "loading": "Loading...",
     "initializing": "Initializing...",
     "complete": "Complete",
-    "progress": "Progress"
+    "progress": "Progress",
+    "maintenance": {
+      "pinInput": "Enter access code",
+      "submitButton": "Verify"
+    }
   }
 }

@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --port 3001",
-    "build": "npm run ci:i18n && next build",
+    "build": "npm run ci:i18n && next build --webpack",
     "start": "next start --port 3001",
     "server": "tsx scripts/dev-server.ts",
     "server:start": "tsx scripts/dev-server.ts start",

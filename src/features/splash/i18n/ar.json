@@ -3,6 +3,10 @@
     "loading": "جاري التحميل...",
     "initializing": "جاري التهيئة...",
     "complete": "مكتمل",
-    "progress": "التقدم"
+    "progress": "التقدم",
+    "maintenance": {
+      "pinInput": "أدخل رمز الدخول",
+      "submitButton": "تحقق"
+    }
   }
 }

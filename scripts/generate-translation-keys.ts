@@ -23,7 +23,7 @@ function generateTypeFromStructure(
       typeDefinition += generateTypeFromStructure(value, fullKey);
     } else {
       // Leaf node - add as literal type
-      typeDefinition += `    '${fullKey}';\n`;
+      typeDefinition += `  | '${fullKey}'\n`;
     }
   }
   
@@ -36,11 +36,9 @@ function generateTypeFromStructure(
 function generateFeatureType(feature: string, enTranslations: TranslationStructure): string {
   const keys = generateTypeFromStructure(enTranslations);
   
-  return `
-  // ${feature} feature translations
-  ${feature}: {
-${keys}
-  };
+  return `// ${feature} feature translations
+export type ${feature}TranslationKey =
+${keys};
 `;
 }
 
@@ -84,7 +82,7 @@ function generateTranslationKeysType() {
   let typeDefinition = `// Auto-generated translation keys
 // DO NOT EDIT MANUALLY - Run: npm run i18n:generate-keys
 
-export type TranslationKey =\n`;
+`;
   
   const featureTypes: string[] = [];
   
@@ -102,6 +100,8 @@ export type AllTranslationKeys =\n`;
   for (const feature of Object.keys(translations)) {
     typeDefinition += `  | ${feature}TranslationKey\n`;
   }
+  
+  typeDefinition += `\nexport type TranslationKey = AllTranslationKeys;\n`;
   
   // Write the generated file
   const outputPath = join(process.cwd(), 'src', 'shared', 'i18n', 'translation-keys.d.ts');

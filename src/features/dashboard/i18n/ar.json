@@ -10,6 +10,11 @@
     },
     "recentActivity": "النشاط الأخير",
     "quickActions": "إجراءات سريعة",
-    "viewAll": "عرض الكل"
+    "viewAll": "عرض الكل",
+    "sidebar": {
+      "usersLink": "المستخدمون",
+      "settingsLink": "الإعدادات",
+      "analyticsLink": "التحليلات"
+    }
   }
 }

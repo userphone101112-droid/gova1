@@ -8,12 +8,24 @@ export type ThemeMode = 'light' | 'dark' | 'system';
 
 // Language types
 export type LanguageCode = 'en' | 'ar' | 'fr' | 'es' | 'de';
+export type LanguageMode = 'system' | 'ar' | 'en';
+
+export interface MaintenanceSettings {
+  enabled: boolean;
+  accessCode: string;
+  message?: string;
+}
 
 // Application Settings Interface
 export interface AppSettings {
   // UI Settings
   theme: ThemeMode;
   language: LanguageCode;
+  languageMode: LanguageMode;
+  
+  // Maintenance
+  maintenance: MaintenanceSettings;
+  maintenanceBypassed: boolean;
   
   // Display Settings
   fontSize: number;

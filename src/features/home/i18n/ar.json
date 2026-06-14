@@ -8,6 +8,10 @@
       "getStarted": "ابدأ الآن",
       "learnMore": "اعرف المزيد"
     },
+    "hero": {
+      "primaryButton": "ابدأ الآن",
+      "secondaryButton": "اعرف المزيد"
+    },
     "features": {
       "title": "لماذا تختارنا؟",
       "quality": "جودة عالية",

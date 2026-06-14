@@ -7,7 +7,10 @@
       "rememberMe": "تذكرني",
       "forgotPassword": "نسيت كلمة المرور؟",
       "noAccount": "ليس لديك حساب؟",
-      "signUp": "إنشاء حساب"
+      "signUp": "إنشاء حساب",
+      "emailInput": "أدخل البريد الإلكتروني",
+      "passwordInput": "أدخل كلمة المرور",
+      "submitButton": "تسجيل الدخول"
     },
     "register": {
       "title": "إنشاء حساب",
@@ -17,7 +20,10 @@
       "confirmPassword": "تأكيد كلمة المرور",
       "agreeTerms": "أوافق على الشروط والأحكام",
       "hasAccount": "لديك حساب بالفعل؟",
-      "signIn": "تسجيل الدخول"
+      "signIn": "تسجيل الدخول",
+      "emailInput": "أدخل البريد الإلكتروني",
+      "passwordInput": "أدخل كلمة المرور",
+      "submitButton": "تسجيل"
     },
     "forgotPassword": {
       "title": "إعادة تعيين كلمة المرور",
