@@ -1,5 +1,15 @@
 {
   "home": {
+    "nav": {
+      "home": "Home",
+      "notifications": "Notifications",
+      "favorites": "Favorites",
+      "orders": "Orders",
+      "profile": "Profile",
+      "cart": "Cart",
+      "search": "Search",
+      "menu": "Menu"
+    },
     "header": {
       "brandTitle": "GoVa Market",
       "searchLabel": "Search",

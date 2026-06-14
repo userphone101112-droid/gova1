@@ -1,25 +1,25 @@
 'use client';
 
-import { useTranslation } from '@/shared/i18n/core/useTranslation';
-import { LanguageSwitcher } from '@/components/shared/LanguageSwitcher';
+import { HeroSlider }      from '@/components/home/HeroSlider';
+import { CategoriesGrid }  from '@/components/home/CategoriesGrid';
+import { FeaturedMarquee } from '@/components/home/FeaturedMarquee';
+import { TrendingRibbon }  from '@/components/home/TrendingRibbon';
+import { CuratedOffers }   from '@/components/home/CuratedOffers';
+import { PromoBanner }     from '@/components/home/PromoBanner';
 
 export default function HomePage() {
-  const { t } = useTranslation();
-
   return (
-    <div className="min-h-screen bg-white flex flex-col items-center justify-center gap-8">
-      <div className="absolute top-4 right-4">
-        <LanguageSwitcher />
-      </div>
-      <h1 className="text-4xl font-bold text-gray-900">
-        {t('home.title')}
-      </h1>
-      <p className="text-xl text-gray-600">
-        {t('home.subtitle')}
-      </p>
-      <p className="text-gray-500">
-        {t('home.description')}
-      </p>
+    <div
+      id="main-content-container"
+      className="px-4 space-y-6"
+      style={{ background: 'var(--gova-background)' }}
+    >
+      <HeroSlider />
+      <CategoriesGrid />
+      <FeaturedMarquee />
+      <TrendingRibbon />
+      <CuratedOffers />
+      <PromoBanner />
     </div>
   );
 }

@@ -1,5 +1,15 @@
 {
   "home": {
+    "nav": {
+      "home": "الرئيسية",
+      "notifications": "الإشعارات",
+      "favorites": "المفضلة",
+      "orders": "الطلبات",
+      "profile": "الملف الشخصي",
+      "cart": "السلة",
+      "search": "بحث",
+      "menu": "القائمة"
+    },
     "header": {
       "brandTitle": "سوق جوفا",
       "searchLabel": "بحث",

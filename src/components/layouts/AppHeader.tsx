@@ -25,7 +25,7 @@ export function AppHeader() {
             variant="ghost"
             size="icon"
             className="w-10 h-10 rounded-full transition-transform active:scale-90"
-            aria-label={t('navigation.home')}
+            aria-label={t('home.nav.menu')}
             style={{ color: 'var(--gova-google-blue)' }}
           >
             <span className="material-symbols-outlined">{"menu"}</span>
@@ -47,7 +47,7 @@ export function AppHeader() {
             variant="ghost"
             size="icon"
             className="w-10 h-10 rounded-full transition-transform active:scale-90"
-            aria-label={t('navigation.search')}
+            aria-label={t('home.nav.search')}
             style={{ color: 'var(--gova-on-surface-variant)' }}
           >
             <span className="material-symbols-outlined">{"search"}</span>
@@ -59,7 +59,7 @@ export function AppHeader() {
             variant="ghost"
             size="icon"
             className="w-10 h-10 rounded-full relative transition-transform active:scale-90"
-            aria-label={t('navigation.cart')}
+            aria-label={t('home.nav.cart')}
             style={{ color: 'var(--gova-on-surface-variant)' }}
           >
             <span className="material-symbols-outlined">{"shopping_cart"}</span>

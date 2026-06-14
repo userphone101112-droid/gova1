@@ -8,11 +8,11 @@ import { SHARED_LAYOUT } from '@/shared/ui-registry';
 type NavItem = 'home' | 'notifications' | 'favorites' | 'orders' | 'profile';
 
 const NAV_ITEMS: { key: NavItem; icon: string; tKey: string; id: string; registryKey: keyof typeof SHARED_LAYOUT.BOTTOM_NAV.ITEMS }[] = [
-  { key: 'home',          icon: 'home',          tKey: 'navigation.home',          id: 'nav-item-home',          registryKey: 'HOME_LINK' },
-  { key: 'notifications', icon: 'notifications', tKey: 'navigation.notifications', id: 'nav-item-notifications', registryKey: 'NOTIFICATIONS_LINK' },
-  { key: 'favorites',     icon: 'favorite',      tKey: 'navigation.favorites',     id: 'nav-item-favorites',     registryKey: 'FAVORITES_LINK' },
-  { key: 'orders',        icon: 'receipt_long',  tKey: 'navigation.orders',        id: 'nav-item-orders',        registryKey: 'ORDERS_LINK' },
-  { key: 'profile',       icon: 'person',        tKey: 'navigation.profile',       id: 'nav-item-profile',       registryKey: 'PROFILE_LINK' },
+  { key: 'home',          icon: 'home',          tKey: 'home.nav.home',          id: 'nav-item-home',          registryKey: 'HOME_LINK' },
+  { key: 'notifications', icon: 'notifications', tKey: 'home.nav.notifications', id: 'nav-item-notifications', registryKey: 'NOTIFICATIONS_LINK' },
+  { key: 'favorites',     icon: 'favorite',      tKey: 'home.nav.favorites',     id: 'nav-item-favorites',     registryKey: 'FAVORITES_LINK' },
+  { key: 'orders',        icon: 'receipt_long',  tKey: 'home.nav.orders',        id: 'nav-item-orders',        registryKey: 'ORDERS_LINK' },
+  { key: 'profile',       icon: 'person',        tKey: 'home.nav.profile',       id: 'nav-item-profile',       registryKey: 'PROFILE_LINK' },
 ];
 
 export function BottomNavBar() {
