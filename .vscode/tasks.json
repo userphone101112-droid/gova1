@@ -1,12 +1,84 @@
 {
   "version": "2.0.0",
   "tasks": [
+
+    // ── Port Management ───────────────────────────────────────────────────────
     {
-      "label": "Export Data to JSON",
+      "label": "Kill Port 3001",
+      "type": "shell",
+      "command": "try { $r = netstat -aon | Select-String ':3001\\s+.*LISTENING'; if ($r) { $pids = ($r | ForEach-Object { ($_ -split '\\s+')[-1] } | Sort-Object -Unique); foreach ($p in $pids) { if ($p -match '^\\d+$' -and $p -ne '0') { taskkill /PID $p /T /F 2>$null; Write-Host \"Killed PID: $p\" } } } else { Write-Host 'Port 3001 is free' } } catch { Write-Host 'Port 3001 was already free' }",
+      "windows": {
+        "command": "try { $r = netstat -aon | Select-String ':3001\\s+.*LISTENING'; if ($r) { $pids = ($r | ForEach-Object { ($_ -split '\\s+')[-1] } | Sort-Object -Unique); foreach ($p in $pids) { if ($p -match '^\\d+$' -and $p -ne '0') { taskkill /PID $p /T /F 2>$null; Write-Host \"Killed PID: $p\" } } } else { Write-Host 'Port 3001 is free' } } catch { Write-Host 'Port 3001 was already free' }"
+      },
+      "presentation": {
+        "reveal": "silent",
+        "panel": "shared",
+        "showReuseMessage": false
+      },
+      "problemMatcher": []
+    },
+
+    // ── Server Lifecycle ──────────────────────────────────────────────────────
+    {
+      "label": "Server: Stop (managed)",
       "type": "npm",
-      "script": "export-data",
+      "script": "server:stop",
+      "presentation": {
+        "reveal": "silent",
+        "panel": "shared",
+        "showReuseMessage": false
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Server: Stop + Kill Port 3001",
+      "dependsOrder": "sequence",
+      "dependsOn": ["Server: Stop (managed)", "Kill Port 3001"],
+      "presentation": {
+        "reveal": "silent",
+        "panel": "shared",
+        "showReuseMessage": false
+      },
+      "problemMatcher": []
+    },
+
+    // ── Database ──────────────────────────────────────────────────────────────
+    {
+      "label": "DB: Export SQLite → JSON",
+      "type": "npm",
+      "script": "db:export",
       "problemMatcher": [],
-      "detail": "Export SQLite database to JSON files"
+      "detail": "Export settings.db tables to src/data/*.json"
+    },
+    {
+      "label": "DB: Check Database",
+      "type": "npm",
+      "script": "db:check",
+      "problemMatcher": [],
+      "detail": "Inspect tables in settings.db"
+    },
+    {
+      "label": "DB: Analyze Database",
+      "type": "npm",
+      "script": "db:analyze",
+      "problemMatcher": [],
+      "detail": "Full schema + row count analysis of settings.db"
+    },
+
+    // ── Code Quality ──────────────────────────────────────────────────────────
+    {
+      "label": "TypeScript: Type Check",
+      "type": "npm",
+      "script": "typecheck",
+      "problemMatcher": ["$tsc"],
+      "detail": "Run tsc --noEmit across the full project"
+    },
+    {
+      "label": "Tests: Run All",
+      "type": "npm",
+      "script": "test",
+      "problemMatcher": [],
+      "detail": "Run jest test suite"
     }
   ]
 }

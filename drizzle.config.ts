@@ -5,6 +5,6 @@ export default {
   out: './database/migrations',
   dialect: 'sqlite',
   dbCredentials: {
-    url: './database/gova.db',
+    url: './database/settings.db',
   },
 } satisfies Config;
