@@ -1,0 +1,12 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Export Data to JSON",
+      "type": "npm",
+      "script": "export-data",
+      "problemMatcher": [],
+      "detail": "Export SQLite database to JSON files"
+    }
+  ]
+}
