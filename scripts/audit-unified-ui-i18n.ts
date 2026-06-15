@@ -4,6 +4,78 @@ import {
   generateTranslationKeyFromUi,
   extractFeatureFromUiIdentifier
 } from '../src/shared/unified-ui-i18n/registry-binding';
+import {
+  AUTH,
+  HOME,
+  DASHBOARD,
+  SETTINGS,
+  CONTACT,
+  ERROR_BOUNDARY,
+  SIGNUP,
+  SPLASH,
+  SHARED_LAYOUT,
+  ALL_UI_IDENTIFIERS,
+  NO_TRANSLATION_REQUIRED
+} from '../src/shared/ui-registry';
+
+const REGISTRY_SOURCES = {
+  AUTH,
+  HOME,
+  DASHBOARD,
+  SETTINGS,
+  CONTACT,
+  ERROR_BOUNDARY,
+  SIGNUP,
+  SPLASH,
+  SHARED_LAYOUT,
+};
+
+function getReferenceVariants(sources: Record<string, any>): Record<string, string[]> {
+  const map: Record<string, string[]> = {};
+  const leafCounts: Record<string, number> = {};
+
+  function countLeaves(current: any, leaf: string) {
+    if (typeof current === 'string') {
+      leafCounts[leaf] = (leafCounts[leaf] || 0) + 1;
+    } else if (typeof current === 'object' && current !== null) {
+      for (const [key, value] of Object.entries(current)) {
+        countLeaves(value, key);
+      }
+    }
+  }
+  for (const [key, val] of Object.entries(sources)) {
+    countLeaves(val, key);
+  }
+
+  function traverse(current: any, path: string[]) {
+    if (typeof current === 'string') {
+      const leaf = path[path.length - 1];
+      const fullPath = path.join('.');
+      const variants = [
+        current,
+        fullPath,
+      ];
+      if (leafCounts[leaf] === 1) {
+        variants.push(leaf);
+        variants.push(`'${leaf}'`);
+        variants.push(`"${leaf}"`);
+        variants.push(`\`${leaf}\``);
+      }
+      map[current] = [...new Set(variants)];
+    } else if (typeof current === 'object' && current !== null) {
+      for (const [key, value] of Object.entries(current)) {
+        traverse(value, [...path, key]);
+      }
+    }
+  }
+
+  for (const [key, val] of Object.entries(sources)) {
+    traverse(val, [key]);
+  }
+  return map;
+}
+
+const UI_REFERENCE_VARIANTS = getReferenceVariants(REGISTRY_SOURCES);
 
 interface AuditResult {
   phase1: RegistryScanResult;
@@ -74,24 +146,7 @@ interface OverallAuditResult {
 function scanUiRegistry(): RegistryScanResult {
   console.log('\n🔍 PHASE 1: Scanning UI Registry\n');
   
-  const registryPath = join(process.cwd(), 'src', 'shared', 'ui-registry.ts');
-  
-  if (!existsSync(registryPath)) {
-    throw new Error(`UI registry not found at ${registryPath}`);
-  }
-  
-  const content = readFileSync(registryPath, 'utf-8');
-  
-  // Extract all UI identifiers using regex
-  const identifierRegex = /'([a-z0-9-]+\.[a-z0-9-]+\.[a-z0-9-]+\.[a-z0-9-]+)'/g;
-  const identifiers: string[] = [];
-  let match;
-  
-  while ((match = identifierRegex.exec(content)) !== null) {
-    identifiers.push(match[1]);
-  }
-  
-  const uniqueIdentifiers = [...new Set(identifiers)];
+  const uniqueIdentifiers = [...ALL_UI_IDENTIFIERS];
   const byFeature: Record<string, string[]> = {};
   
   for (const identifier of uniqueIdentifiers) {
@@ -207,6 +262,18 @@ function extractTranslationKeys(obj: any, prefix: string): Set<string> {
   return keys;
 }
 
+function findFeatureOfTranslationKey(
+  key: string,
+  byFeature: Record<string, Set<string>>
+): string | null {
+  for (const [feature, keys] of Object.entries(byFeature)) {
+    if (keys.has(key)) {
+      return feature;
+    }
+  }
+  return null;
+}
+
 // ============================================================================
 // PHASE 3: SCAN COMPONENT USAGE
 // ============================================================================
@@ -258,11 +325,18 @@ function scanDirectory(
     
     if (item.isDirectory()) {
       // Skip node_modules and other common exclusions
-      if (item.name === 'node_modules' || item.name === '.next' || item.name === 'build') {
+      if (item.name === 'node_modules' || item.name === '.next' || item.name === 'build' || item.name === 'tests' || item.name === 'mocks') {
         continue;
       }
       scanDirectory(fullPath, state);
     } else if (item.name.endsWith('.tsx') || item.name.endsWith('.ts')) {
+      // Skip declarations, test files, and the registry itself
+      if (item.name.endsWith('.d.ts') || item.name.endsWith('.test.ts') || item.name.endsWith('.spec.ts') || item.name.endsWith('.test.tsx') || item.name.endsWith('.spec.tsx')) {
+        continue;
+      }
+      if (item.name === 'ui.ts' || item.name === 'ui-registry.ts' || item.name === 'registry-binding.ts') {
+        continue;
+      }
       scanFile(fullPath, state);
     }
   }
@@ -273,29 +347,23 @@ function scanFile(filePath: string, state: ComponentUsageResult): void {
     const content = readFileSync(filePath, 'utf-8');
     const lines = content.split('\n');
     
-    // Extract UI identifier usage
-    const uiRegex = /ui=\{([^}]+)\}/g;
-    let match;
-    while ((match = uiRegex.exec(content)) !== null) {
-      const uiValue = match[1].trim();
-      // Extract string literals from the expression
-      const stringMatches = uiValue.match(/'([^']+)'/g);
-      if (stringMatches) {
-        stringMatches.forEach(str => {
-          const identifier = str.replace(/'/g, '');
-          if (identifier.includes('.')) {
-            state.usedUiIdentifiers.add(identifier);
-            if (!state.uiUsageByFile[filePath]) {
-              state.uiUsageByFile[filePath] = [];
-            }
-            state.uiUsageByFile[filePath].push(identifier);
-          }
-        });
+    // Extract UI identifier usage using reference variants
+    ALL_UI_IDENTIFIERS.forEach(identifier => {
+      const variants = UI_REFERENCE_VARIANTS[identifier] || [identifier];
+      const isUsed = variants.some(variant => content.includes(variant));
+      
+      if (isUsed) {
+        state.usedUiIdentifiers.add(identifier);
+        if (!state.uiUsageByFile[filePath]) {
+          state.uiUsageByFile[filePath] = [];
+        }
+        state.uiUsageByFile[filePath].push(identifier);
       }
-    }
+    });
     
     // Extract translation key usage
     const translationRegex = /t\(['"]([^'"]+)['"]\)/g;
+    let match;
     while ((match = translationRegex.exec(content)) !== null) {
       const key = match[1];
       state.usedTranslationKeys.add(key);
@@ -356,6 +424,10 @@ function buildBindingMatrix(
     let mismatches = 0;
     
     for (const ui of uiIdentifiers) {
+      if (NO_TRANSLATION_REQUIRED.includes(ui as any)) {
+        bindings++;
+        continue;
+      }
       const expectedKey = generateTranslationKeyFromUi(ui);
       if (translationKeys.has(expectedKey)) {
         bindings++;
@@ -366,6 +438,9 @@ function buildBindingMatrix(
     
     for (const key of translationKeys) {
       const hasMatchingUi = uiIdentifiers.some(ui => {
+        if (NO_TRANSLATION_REQUIRED.includes(ui as any)) {
+          return false;
+        }
         const expectedKey = generateTranslationKeyFromUi(ui);
         return key === expectedKey || key.startsWith(expectedKey.split('.')[0]);
       });
@@ -419,7 +494,7 @@ function detectOrphans(
   // Find orphan translations (exist but not used)
   for (const key of translationResult.translationKeys) {
     if (!usageResult.usedTranslationKeys.has(key)) {
-      const feature = key.split('.')[0];
+      const feature = findFeatureOfTranslationKey(key, translationResult.byFeature);
       if (feature !== 'common') {
         orphanTranslations.push(key);
       }
@@ -428,6 +503,9 @@ function detectOrphans(
   
   // Find missing bindings (UI without corresponding translation)
   for (const ui of registryResult.uiIdentifiers) {
+    if (NO_TRANSLATION_REQUIRED.includes(ui as any)) {
+      continue;
+    }
     const expectedKey = generateTranslationKeyFromUi(ui);
     if (!translationResult.translationKeys.has(expectedKey)) {
       missingBindings.push(ui);
@@ -443,14 +521,14 @@ function detectOrphans(
       const uiFeature = extractFeatureFromUiIdentifier(ui);
       
       for (const translation of translationKeys) {
-        const translationFeature = translation.split('.')[0];
+        const translationFeature = findFeatureOfTranslationKey(translation, translationResult.byFeature);
         
         if (uiFeature !== translationFeature && translationFeature !== 'common') {
           crossFeatureViolations.push({
             ui,
             translation,
             uiFeature,
-            translationFeature,
+            translationFeature: translationFeature || 'unknown',
           });
         }
       }
@@ -461,6 +539,9 @@ function detectOrphans(
   console.log(`Orphan translations: ${orphanTranslations.length}`);
   console.log(`Missing bindings: ${missingBindings.length}`);
   console.log(`Cross-feature violations: ${crossFeatureViolations.length}`);
+  if (crossFeatureViolations.length > 0) {
+    console.log('Cross-feature violations list:', JSON.stringify(crossFeatureViolations, null, 2));
+  }
   
   return {
     orphanUiIdentifiers,

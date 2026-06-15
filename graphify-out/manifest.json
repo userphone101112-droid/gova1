@@ -1,0 +1,1692 @@
+{
+  ".eslint-rules/i18n-enforcement.js": {
+    "mtime": 1781437145.6190176,
+    "ast_hash": "212032b52fa30418444af5ad0a2e56b9",
+    "semantic_hash": ""
+  },
+  ".eslint-rules/ui-identification.js": {
+    "mtime": 1781430824.1866548,
+    "ast_hash": "30e567d57d93369166509ca753a1b290",
+    "semantic_hash": ""
+  },
+  ".vscode/launch.json": {
+    "mtime": 1781425280.6407707,
+    "ast_hash": "66101feeb130d16e50133b169b28394a",
+    "semantic_hash": ""
+  },
+  ".vscode/tasks.json": {
+    "mtime": 1781425265.066149,
+    "ast_hash": "4bbcc65a294b93115f7c61146bd3123f",
+    "semantic_hash": ""
+  },
+  "config/default-settings.ts": {
+    "mtime": 1781441178.781026,
+    "ast_hash": "448e42cd170d0e1aee8d12d16b2d8299",
+    "semantic_hash": ""
+  },
+  "config/feature-flags.ts": {
+    "mtime": 1781435446.8164885,
+    "ast_hash": "a896e658ee94ea391b0943f29384fb48",
+    "semantic_hash": ""
+  },
+  "config/settings.schema.ts": {
+    "mtime": 1781441164.4237678,
+    "ast_hash": "e80b669fc1cb827d53d26e17c23f94d1",
+    "semantic_hash": ""
+  },
+  "docs/migration/legacy-violations-report.json": {
+    "mtime": 1781438506.3846397,
+    "ast_hash": "349538d49d549a5173ee0cbd518f448d",
+    "semantic_hash": ""
+  },
+  "docs/migration/migration-queue.json": {
+    "mtime": 1781439425.7299187,
+    "ast_hash": "84f52fe1e60ce18ea8135e34d6101e97",
+    "semantic_hash": ""
+  },
+  "drizzle.config.ts": {
+    "mtime": 1781424030.846652,
+    "ast_hash": "38b86823226073a55fa1f42a84cac4b2",
+    "semantic_hash": ""
+  },
+  "eslint-rules/no-hardcoded-text.ts": {
+    "mtime": 1781429303.9139216,
+    "ast_hash": "f4837793e4044e9120b7fa3780684107",
+    "semantic_hash": ""
+  },
+  "eslint.config.mjs": {
+    "mtime": 1781434985.537878,
+    "ast_hash": "023fc43e3f85b24c016b3fccf3602c18",
+    "semantic_hash": ""
+  },
+  "jest.config.js": {
+    "mtime": 1781413452.207561,
+    "ast_hash": "e6f3e6f722891c953d2dc94b34f107fa",
+    "semantic_hash": ""
+  },
+  "jest.setup.js": {
+    "mtime": 1781413452.210071,
+    "ast_hash": "55a54106ed8080efe3cd53ac6416570a",
+    "semantic_hash": ""
+  },
+  "next.config.ts": {
+    "mtime": 1781424265.5251722,
+    "ast_hash": "d509e1e6714c5fb7d662fe307e91a082",
+    "semantic_hash": ""
+  },
+  "package.json": {
+    "mtime": 1781442101.4648545,
+    "ast_hash": "a2f9d3f4d03cafcdad7b91795f475cf4",
+    "semantic_hash": ""
+  },
+  "postcss.config.mjs": {
+    "mtime": 1781274737.1801293,
+    "ast_hash": "239f3ebf717465dc636818a1a619398d",
+    "semantic_hash": ""
+  },
+  "reports/logo_optimization_report.json": {
+    "mtime": 1781414267.791227,
+    "ast_hash": "ea93c9e6833fd95366efc960708ee06d",
+    "semantic_hash": ""
+  },
+  "scripts/analyze-db.ts": {
+    "mtime": 1781419329.6394644,
+    "ast_hash": "c93fd2b56fc1e5d34bfb7e0b56f7f9d9",
+    "semantic_hash": ""
+  },
+  "scripts/audit-ui-i18n-compatibility.ts": {
+    "mtime": 1781431484.195125,
+    "ast_hash": "0f774ba30c17f1ae3ba0e9a7c9d82e4a",
+    "semantic_hash": ""
+  },
+  "scripts/audit-unified-ui-i18n.ts": {
+    "mtime": 1781488458.9854352,
+    "ast_hash": "8f3c958a2edf8d96806968b7af65136d",
+    "semantic_hash": ""
+  },
+  "scripts/check-db.ts": {
+    "mtime": 1781424024.4252012,
+    "ast_hash": "22a4c78e05538b64cd6644692d90af1b",
+    "semantic_hash": ""
+  },
+  "scripts/clear-cache.ts": {
+    "mtime": 1781421530.8253655,
+    "ast_hash": "e54af8c609b4e3ead2269df25b5b4d79",
+    "semantic_hash": ""
+  },
+  "scripts/dev-server.ts": {
+    "mtime": 1781425245.6529107,
+    "ast_hash": "aec44f584d2618c0d967dd9c57cf4bae",
+    "semantic_hash": ""
+  },
+  "scripts/export-to-json.ts": {
+    "mtime": 1781426146.793718,
+    "ast_hash": "04cfbf363ec2804b318e5fb929fa8572",
+    "semantic_hash": ""
+  },
+  "scripts/find-orphans.ts": {
+    "mtime": 1781434693.0440516,
+    "ast_hash": "24347198cdc2a05d2c7c980911a8be2f",
+    "semantic_hash": ""
+  },
+  "scripts/fix-legacy-violations.ts": {
+    "mtime": 1781435898.3325827,
+    "ast_hash": "68bcbe130ca0eca38abdc87e8a7a5b99",
+    "semantic_hash": ""
+  },
+  "scripts/generate-feature.ts": {
+    "mtime": 1781434922.693622,
+    "ast_hash": "a5b75212b5c139a2552cb12d1b76b9cd",
+    "semantic_hash": ""
+  },
+  "scripts/generate-translation-keys.ts": {
+    "mtime": 1781450183.7573287,
+    "ast_hash": "6a0af5fafc9bb7764eb71f80c6fda84f",
+    "semantic_hash": ""
+  },
+  "scripts/init-migration-queue.ts": {
+    "mtime": 1781438804.5114844,
+    "ast_hash": "524be49792e807b75291ede3de8c804c",
+    "semantic_hash": ""
+  },
+  "scripts/migrate-feature.ts": {
+    "mtime": 1781436204.5166116,
+    "ast_hash": "95dbb4dafed1b750a0aabb86c0b9348a",
+    "semantic_hash": ""
+  },
+  "scripts/scan-legacy-violations.ts": {
+    "mtime": 1781435718.6831887,
+    "ast_hash": "f321774ef8463b47156f82eeab54ef02",
+    "semantic_hash": ""
+  },
+  "scripts/server-manager.ts": {
+    "mtime": 1781423317.871734,
+    "ast_hash": "43f809c1a3953b646b4eec4ddc3afaa8",
+    "semantic_hash": ""
+  },
+  "scripts/skip-false-positives.ts": {
+    "mtime": 1781439208.5482616,
+    "ast_hash": "9f319c8f4b0cc4b4c0cc255ec14da112",
+    "semantic_hash": ""
+  },
+  "scripts/validate-clean-state.ts": {
+    "mtime": 1781437282.6520333,
+    "ast_hash": "7b601f52950c1b2d3d54bb6162cc627c",
+    "semantic_hash": ""
+  },
+  "scripts/validate-images.ts": {
+    "mtime": 1781424350.7673829,
+    "ast_hash": "9d5008a56836f584c15cd45d067dcb5e",
+    "semantic_hash": ""
+  },
+  "scripts/validate-translations.ts": {
+    "mtime": 1781429083.762091,
+    "ast_hash": "42de6f60facc2bf4614a22a6597b1441",
+    "semantic_hash": ""
+  },
+  "src/app/home/layout.tsx": {
+    "mtime": 1781443712.612595,
+    "ast_hash": "aeedc852aba94e8018325051bdfd1715",
+    "semantic_hash": ""
+  },
+  "src/app/home/page.tsx": {
+    "mtime": 1781443699.485126,
+    "ast_hash": "46a77f14b8c382637ca1b70960630d0b",
+    "semantic_hash": ""
+  },
+  "src/app/layout.tsx": {
+    "mtime": 1781446474.704993,
+    "ast_hash": "e044d490cce4fa287ddce5a9b28b5f36",
+    "semantic_hash": ""
+  },
+  "src/app/page.tsx": {
+    "mtime": 1781446141.934633,
+    "ast_hash": "c6509d031027cc1565fb114edd1ba153",
+    "semantic_hash": ""
+  },
+  "src/components/home/CategoriesGrid.tsx": {
+    "mtime": 1781451138.3379593,
+    "ast_hash": "cde5e0fff8e4d8c1013a46cf0f3a7074",
+    "semantic_hash": ""
+  },
+  "src/components/home/CuratedOffers.tsx": {
+    "mtime": 1781451231.4675112,
+    "ast_hash": "fd18e6a93cc88207898d258f84eba90e",
+    "semantic_hash": ""
+  },
+  "src/components/home/FeaturedMarquee.tsx": {
+    "mtime": 1781451160.6421828,
+    "ast_hash": "cf23f5cdadaca0533b870ed9231ebeb4",
+    "semantic_hash": ""
+  },
+  "src/components/home/HeroSlider.tsx": {
+    "mtime": 1781449896.3623998,
+    "ast_hash": "7ad010e9c5fd104c02f396668463bbee",
+    "semantic_hash": ""
+  },
+  "src/components/home/PromoBanner.tsx": {
+    "mtime": 1781451153.5839236,
+    "ast_hash": "e9b00cdb0e53c08ab2f358d99abb3d9c",
+    "semantic_hash": ""
+  },
+  "src/components/home/TrendingRibbon.tsx": {
+    "mtime": 1781451145.8957455,
+    "ast_hash": "3214ba9f014f7fac26d0a93fd5419cd7",
+    "semantic_hash": ""
+  },
+  "src/components/layouts/AppHeader.tsx": {
+    "mtime": 1781485400.5273807,
+    "ast_hash": "a0233c5fdc786f9dea3a45593736e5be",
+    "semantic_hash": ""
+  },
+  "src/components/layouts/AppShell.tsx": {
+    "mtime": 1781450923.261491,
+    "ast_hash": "8f784f247a13d918f9cbdff588c424be",
+    "semantic_hash": ""
+  },
+  "src/components/layouts/BottomNavBar.tsx": {
+    "mtime": 1781450948.3086522,
+    "ast_hash": "c8d18740e311349818414519c442edbd",
+    "semantic_hash": ""
+  },
+  "src/components/shared/LanguageSwitcher.tsx": {
+    "mtime": 1781450627.181027,
+    "ast_hash": "346fe7c6e6ca4b7bda7acc788ea66f43",
+    "semantic_hash": ""
+  },
+  "src/components/shared/error-boundary.tsx": {
+    "mtime": 1781430134.3771913,
+    "ast_hash": "0911b86989e7608ee8afab8940db454e",
+    "semantic_hash": ""
+  },
+  "src/components/splash/BottomRibbons.tsx": {
+    "mtime": 1781451130.8277645,
+    "ast_hash": "c6891f91469088c279f8ac1e951bb1f2",
+    "semantic_hash": ""
+  },
+  "src/components/splash/ProgressIndicator.tsx": {
+    "mtime": 1781446160.2277894,
+    "ast_hash": "6deb09c7197271746dc249224da6ec3b",
+    "semantic_hash": ""
+  },
+  "src/components/splash/SplashInitializer.tsx": {
+    "mtime": 1781441333.8317864,
+    "ast_hash": "93979c05fb913f44762e1b3cc05bd584",
+    "semantic_hash": ""
+  },
+  "src/components/splash/SplashLogo.tsx": {
+    "mtime": 1781416596.5520577,
+    "ast_hash": "0ae386f0b6ee279e5ed64c49e9bfd91a",
+    "semantic_hash": ""
+  },
+  "src/components/splash/SplashScreen.tsx": {
+    "mtime": 1781451113.7582283,
+    "ast_hash": "e2c373b0dad9c6bf93e82aaaa747623f",
+    "semantic_hash": ""
+  },
+  "src/components/splash/TopMarquee.tsx": {
+    "mtime": 1781451124.2698262,
+    "ast_hash": "ac04de0b83037a2acf0bd84105bdc967",
+    "semantic_hash": ""
+  },
+  "src/components/ui-identified/button.tsx": {
+    "mtime": 1781488476.1755838,
+    "ast_hash": "2a83f49dee71b09f271901a011cdd79a",
+    "semantic_hash": ""
+  },
+  "src/components/ui-identified/checkbox.tsx": {
+    "mtime": 1781429961.115959,
+    "ast_hash": "1e4512004212218121f9d5f7f1457ab4",
+    "semantic_hash": ""
+  },
+  "src/components/ui-identified/index.ts": {
+    "mtime": 1781429295.6725128,
+    "ast_hash": "3fa4d7f9f043720af83ec662dc93f5d4",
+    "semantic_hash": ""
+  },
+  "src/components/ui-identified/input.tsx": {
+    "mtime": 1781429955.0824242,
+    "ast_hash": "57ff064e0e2c72ffd848c5c10dc134bd",
+    "semantic_hash": ""
+  },
+  "src/components/ui-identified/link.tsx": {
+    "mtime": 1781488481.313039,
+    "ast_hash": "84771c75dc78aeb5d17369b371b60386",
+    "semantic_hash": ""
+  },
+  "src/components/ui-identified/radio.tsx": {
+    "mtime": 1781429962.2396924,
+    "ast_hash": "6dbebeec987bdfcb616ef9b538f2fe14",
+    "semantic_hash": ""
+  },
+  "src/components/ui-identified/select.tsx": {
+    "mtime": 1781429957.021941,
+    "ast_hash": "07aedb91a0eda391d3f680c773cfce90",
+    "semantic_hash": ""
+  },
+  "src/components/ui-identified/switch.tsx": {
+    "mtime": 1781429963.8025868,
+    "ast_hash": "b53cb0033e92a686f22a149b59ca536d",
+    "semantic_hash": ""
+  },
+  "src/components/ui-identified/textarea.tsx": {
+    "mtime": 1781429959.0482678,
+    "ast_hash": "b3068ef65b3e9ca9073719c6717bfd70",
+    "semantic_hash": ""
+  },
+  "src/components/ui.ts": {
+    "mtime": 1781438966.2530382,
+    "ast_hash": "892ff108bce6db8aeaaa9c921dd3c74e",
+    "semantic_hash": ""
+  },
+  "src/components/ui/button.tsx": {
+    "mtime": 1781488497.6736193,
+    "ast_hash": "d45150535b15b30b9e9fd37f6c10f89b",
+    "semantic_hash": ""
+  },
+  "src/components/ui/checkbox.tsx": {
+    "mtime": 1781429149.3292496,
+    "ast_hash": "7ea0e916b161a0793f09442bde54c3cc",
+    "semantic_hash": ""
+  },
+  "src/components/ui/input.tsx": {
+    "mtime": 1781429144.9800413,
+    "ast_hash": "7b5e905a2d99d726b9540cf23e8f202a",
+    "semantic_hash": ""
+  },
+  "src/components/ui/link.tsx": {
+    "mtime": 1781429205.536167,
+    "ast_hash": "d9100f17736a1a49c3ac13fa4f9bc476",
+    "semantic_hash": ""
+  },
+  "src/components/ui/logo.tsx": {
+    "mtime": 1781414218.2828336,
+    "ast_hash": "4812951ce88db4db90199a26bd8e2640",
+    "semantic_hash": ""
+  },
+  "src/components/ui/radio.tsx": {
+    "mtime": 1781429150.5636935,
+    "ast_hash": "a93342c2b21ca20144e68b901a1f2667",
+    "semantic_hash": ""
+  },
+  "src/components/ui/select.tsx": {
+    "mtime": 1781429146.4794528,
+    "ast_hash": "041b66ebcdbf8133548678a9b6cf65ca",
+    "semantic_hash": ""
+  },
+  "src/components/ui/switch.tsx": {
+    "mtime": 1781429151.7634668,
+    "ast_hash": "0c2cc814f0440282a7f0ab4445b12116",
+    "semantic_hash": ""
+  },
+  "src/components/ui/textarea.tsx": {
+    "mtime": 1781429147.449362,
+    "ast_hash": "28699f2a61fd0ae77125002e647a91fc",
+    "semantic_hash": ""
+  },
+  "src/data/active_ingredient_forms.json": {
+    "mtime": 1781426373.0596867,
+    "ast_hash": "72adb697cd39e0c863301fefd162b3f1",
+    "semantic_hash": ""
+  },
+  "src/data/active_ingredient_strengths.json": {
+    "mtime": 1781426373.0627134,
+    "ast_hash": "f5dd17dc433ac031962cacd4501d6f07",
+    "semantic_hash": ""
+  },
+  "src/data/active_ingredients.json": {
+    "mtime": 1781426373.0677142,
+    "ast_hash": "de41db21d5d80298da5e7f1bcd2a5f4f",
+    "semantic_hash": ""
+  },
+  "src/data/categories.json": {
+    "mtime": 1781426373.0702076,
+    "ast_hash": "682d7a4b311c15047a9b5adf0c6658a7",
+    "semantic_hash": ""
+  },
+  "src/data/forms.json": {
+    "mtime": 1781426373.073954,
+    "ast_hash": "2ce1ff7de520e9251e6dfe0a9a86a872",
+    "semantic_hash": ""
+  },
+  "src/data/pharmacy_categories.json": {
+    "mtime": 1781426373.0759554,
+    "ast_hash": "dc5e081bc0b813da7600940cb1496fbb",
+    "semantic_hash": ""
+  },
+  "src/data/pharmacy_subcategories.json": {
+    "mtime": 1781426373.0799174,
+    "ast_hash": "2767f2fcf03f0626e02a5b4167e77e27",
+    "semantic_hash": ""
+  },
+  "src/data/product_brands.json": {
+    "mtime": 1781426373.0861945,
+    "ast_hash": "dd3308fa186752231889c227bf77c445",
+    "semantic_hash": ""
+  },
+  "src/data/setting.json": {
+    "mtime": 1781426373.09436,
+    "ast_hash": "a66b826aae32dc6a1ecdd5ab0f99af13",
+    "semantic_hash": ""
+  },
+  "src/data/strengths.json": {
+    "mtime": 1781426373.0872116,
+    "ast_hash": "b71d81047c7cddb87d39c79064f2c901",
+    "semantic_hash": ""
+  },
+  "src/data/subcategories.json": {
+    "mtime": 1781426373.0917945,
+    "ast_hash": "556093922fed4377505ced7f085311df",
+    "semantic_hash": ""
+  },
+  "src/features/auth/i18n/ar.json": {
+    "mtime": 1781441552.9872215,
+    "ast_hash": "2ec677fdb500a6ed690e801706dfaff9",
+    "semantic_hash": ""
+  },
+  "src/features/auth/i18n/en.json": {
+    "mtime": 1781441533.00463,
+    "ast_hash": "599c549815d6b3f8dd9fa9ddac262876",
+    "semantic_hash": ""
+  },
+  "src/features/common/i18n/ar.json": {
+    "mtime": 1781450909.7606454,
+    "ast_hash": "80c6287ed2ec056fad8adefb431ece77",
+    "semantic_hash": ""
+  },
+  "src/features/common/i18n/en.json": {
+    "mtime": 1781450917.28869,
+    "ast_hash": "27f8a84e9f2759fbb6511660f9cf6779",
+    "semantic_hash": ""
+  },
+  "src/features/contact/i18n/ar.json": {
+    "mtime": 1781450060.7322853,
+    "ast_hash": "37004b5bfd7e6b09f2fbb07454a2de4f",
+    "semantic_hash": ""
+  },
+  "src/features/contact/i18n/en.json": {
+    "mtime": 1781450066.2556925,
+    "ast_hash": "13fe842b58c890729caf48f22efc2842",
+    "semantic_hash": ""
+  },
+  "src/features/dashboard/i18n/ar.json": {
+    "mtime": 1781450026.7923408,
+    "ast_hash": "5da8f1530b16996b9bc9ecd91b057ebd",
+    "semantic_hash": ""
+  },
+  "src/features/dashboard/i18n/en.json": {
+    "mtime": 1781450033.6476953,
+    "ast_hash": "4f5256292bd95c5bb717a38e90a12fe9",
+    "semantic_hash": ""
+  },
+  "src/features/error-boundary/i18n/ar.json": {
+    "mtime": 1781450072.934443,
+    "ast_hash": "0a620b0ea364fb7735641455c5a0e158",
+    "semantic_hash": ""
+  },
+  "src/features/error-boundary/i18n/en.json": {
+    "mtime": 1781450077.6103919,
+    "ast_hash": "56bd14220dcca2d0ea5599ae15578403",
+    "semantic_hash": ""
+  },
+  "src/features/home/i18n/ar.json": {
+    "mtime": 1781450044.1854086,
+    "ast_hash": "37a9eafc59b0a00c7d04b6bc2154509e",
+    "semantic_hash": ""
+  },
+  "src/features/home/i18n/en.json": {
+    "mtime": 1781450053.230301,
+    "ast_hash": "354ea06784722fbdcb8d5564841c0845",
+    "semantic_hash": ""
+  },
+  "src/features/settings/i18n/ar.json": {
+    "mtime": 1781441786.7872455,
+    "ast_hash": "092fdb6afffe74eecbc06df419574065",
+    "semantic_hash": ""
+  },
+  "src/features/settings/i18n/en.json": {
+    "mtime": 1781441777.70138,
+    "ast_hash": "033c19c3db25078f13b97958db6151bd",
+    "semantic_hash": ""
+  },
+  "src/features/shared-layout/i18n/ar.json": {
+    "mtime": 1781485905.7270195,
+    "ast_hash": "c56d17b561558d437c4721bd3dc48dbb",
+    "semantic_hash": ""
+  },
+  "src/features/shared-layout/i18n/en.json": {
+    "mtime": 1781485890.5994718,
+    "ast_hash": "ab42606c5da5a406512fcba6b84d1eae",
+    "semantic_hash": ""
+  },
+  "src/features/signup/i18n/ar.json": {
+    "mtime": 1781450083.9927082,
+    "ast_hash": "4e420f39bd5cb73ae9cc96b895bc5497",
+    "semantic_hash": ""
+  },
+  "src/features/signup/i18n/en.json": {
+    "mtime": 1781450089.033759,
+    "ast_hash": "549358c8d74c28d92477f9ff8972ecb6",
+    "semantic_hash": ""
+  },
+  "src/features/splash/i18n/ar.json": {
+    "mtime": 1781441409.2113874,
+    "ast_hash": "e003555810d0c31c6939319a7d4f6290",
+    "semantic_hash": ""
+  },
+  "src/features/splash/i18n/en.json": {
+    "mtime": 1781441416.462035,
+    "ast_hash": "f783a29b73549825cfb9d861b301c659",
+    "semantic_hash": ""
+  },
+  "src/lib/api-client.ts": {
+    "mtime": 1781439070.3783064,
+    "ast_hash": "10cc64586ae04058cbd3af4e9e7cb30c",
+    "semantic_hash": ""
+  },
+  "src/lib/api-error-normalizer.ts": {
+    "mtime": 1781413452.216994,
+    "ast_hash": "b2e1c952bfd5c99296c78c137e928800",
+    "semantic_hash": ""
+  },
+  "src/lib/data/json-reader.ts": {
+    "mtime": 1781420802.6428256,
+    "ast_hash": "05c9f5d0ab3099a738c12166716f3396",
+    "semantic_hash": ""
+  },
+  "src/lib/db/index.ts": {
+    "mtime": 1781420762.6647508,
+    "ast_hash": "385e6d6d08003f6ec07a1a09531a38ff",
+    "semantic_hash": ""
+  },
+  "src/lib/db/schema.ts": {
+    "mtime": 1781413873.7400594,
+    "ast_hash": "9debf576fb8659a3a56ac2c793a17baf",
+    "semantic_hash": ""
+  },
+  "src/lib/dynamic-imports.ts": {
+    "mtime": 1781441483.9676428,
+    "ast_hash": "dd582bcc2ed9a1df549a2214c14cd8dd",
+    "semantic_hash": ""
+  },
+  "src/lib/error-handler.ts": {
+    "mtime": 1781413452.216994,
+    "ast_hash": "cdc2d008863e0d5f5ad0ef2712083e7a",
+    "semantic_hash": ""
+  },
+  "src/lib/image-optimization.ts": {
+    "mtime": 1781413452.2210107,
+    "ast_hash": "1cc89bc76ab610b16486436e6dffd28e",
+    "semantic_hash": ""
+  },
+  "src/lib/images/selectors.ts": {
+    "mtime": 1781420841.9474435,
+    "ast_hash": "7dcdd969252feb8b4a261bd779be2f76",
+    "semantic_hash": ""
+  },
+  "src/lib/initialization/initialization.ts": {
+    "mtime": 1781416811.4615774,
+    "ast_hash": "c521ac2a566e59d68711d66e59aff1c8",
+    "semantic_hash": ""
+  },
+  "src/lib/security.ts": {
+    "mtime": 1781413452.2210107,
+    "ast_hash": "a5add5f13e1a5f6d725095872aabcb13",
+    "semantic_hash": ""
+  },
+  "src/lib/utils.ts": {
+    "mtime": 1781429082.1115088,
+    "ast_hash": "8595c2f874aa1ff8c7cc28df2999f354",
+    "semantic_hash": ""
+  },
+  "src/middleware.ts": {
+    "mtime": 1781413452.2210107,
+    "ast_hash": "ed9984c3b980995197f5feead4ef4f70",
+    "semantic_hash": ""
+  },
+  "src/repositories/base-repository.ts": {
+    "mtime": 1781439070.5169282,
+    "ast_hash": "4f9b9132be824fa57eb36ec4987a579b",
+    "semantic_hash": ""
+  },
+  "src/services/base-service.ts": {
+    "mtime": 1781439070.567659,
+    "ast_hash": "93c6f1062c8d490d93ec8718eb532d41",
+    "semantic_hash": ""
+  },
+  "src/shared/i18n/core/enforceBoundary.ts": {
+    "mtime": 1781429447.1346862,
+    "ast_hash": "910e9eb5bc34de6836b60fcbe8639422",
+    "semantic_hash": ""
+  },
+  "src/shared/i18n/core/getDictionary.ts": {
+    "mtime": 1781429652.9688396,
+    "ast_hash": "72bc48442e6916173993dfb909907fd5",
+    "semantic_hash": ""
+  },
+  "src/shared/i18n/core/provider.tsx": {
+    "mtime": 1781427405.97434,
+    "ast_hash": "4691884d5f09f752eda636ba8b2d187b",
+    "semantic_hash": ""
+  },
+  "src/shared/i18n/core/t.ts": {
+    "mtime": 1781427339.2039034,
+    "ast_hash": "0ecf968d9cbe094fa4d8bc4ef2d3ed73",
+    "semantic_hash": ""
+  },
+  "src/shared/i18n/core/types.ts": {
+    "mtime": 1781429031.5685587,
+    "ast_hash": "5573ebff4455ed3c8b6f25f47f1eb783",
+    "semantic_hash": ""
+  },
+  "src/shared/i18n/core/useTranslation.ts": {
+    "mtime": 1781429476.244879,
+    "ast_hash": "11d175c3286773574eca34fb1a19fcd7",
+    "semantic_hash": ""
+  },
+  "src/shared/i18n/storage/CookieLocaleAdapter.ts": {
+    "mtime": 1781429711.1021006,
+    "ast_hash": "dd05e02d6e45328d1c9c543bcdd9dee1",
+    "semantic_hash": ""
+  },
+  "src/shared/i18n/storage/IndexedDbLocaleAdapter.ts": {
+    "mtime": 1781429755.121678,
+    "ast_hash": "998e91dc55b774d25ef706a2564afac2",
+    "semantic_hash": ""
+  },
+  "src/shared/i18n/storage/LocaleStorageAdapter.ts": {
+    "mtime": 1781429708.2848856,
+    "ast_hash": "b06c1dd274b6761768b8d60209dab7c5",
+    "semantic_hash": ""
+  },
+  "src/shared/i18n/storage/LocaleStorageManager.ts": {
+    "mtime": 1781429722.8870385,
+    "ast_hash": "02af566cff070e7f2f1e95afaf546ae3",
+    "semantic_hash": ""
+  },
+  "src/shared/i18n/translation-keys.d.ts": {
+    "mtime": 1781485929.642922,
+    "ast_hash": "0d089545d04aeef3a8a178236e8296cd",
+    "semantic_hash": ""
+  },
+  "src/shared/i18n/utils/createFeatureLayout.tsx": {
+    "mtime": 1781427631.0652547,
+    "ast_hash": "7fa1bfa78c543e430505fb95dba59e5d",
+    "semantic_hash": ""
+  },
+  "src/shared/i18n/utils/discoverFeatures.ts": {
+    "mtime": 1781429008.159395,
+    "ast_hash": "30379dd40a49518e7df5e5d8017f7499",
+    "semantic_hash": ""
+  },
+  "src/shared/i18n/utils/getLocale.ts": {
+    "mtime": 1781427601.7808216,
+    "ast_hash": "eca940b9f8c3b61a73351944552f90ef",
+    "semantic_hash": ""
+  },
+  "src/shared/migration/legacy-guard.ts": {
+    "mtime": 1781436412.3518956,
+    "ast_hash": "96e30117fa936aa61a924f701c3bec2e",
+    "semantic_hash": ""
+  },
+  "src/shared/migration/migration-queue.ts": {
+    "mtime": 1781439958.5544486,
+    "ast_hash": "aad87de2207182dd051be18cb90c6926",
+    "semantic_hash": ""
+  },
+  "src/shared/ui-registry.ts": {
+    "mtime": 1781488288.0138373,
+    "ast_hash": "68b04f1e8f00539abbcf821e5b4abb23",
+    "semantic_hash": ""
+  },
+  "src/shared/unified-ui-i18n/registry-binding.ts": {
+    "mtime": 1781433944.334306,
+    "ast_hash": "144c15365beb076edfd1a2af8bb32c48",
+    "semantic_hash": ""
+  },
+  "src/shared/unified-ui-i18n/useBoundUI.ts": {
+    "mtime": 1781434600.089621,
+    "ast_hash": "860e7af4e10a934d89133a47a5ee815b",
+    "semantic_hash": ""
+  },
+  "src/store/index.ts": {
+    "mtime": 1781413452.230937,
+    "ast_hash": "9f143bb888007f256db45439c7d951aa",
+    "semantic_hash": ""
+  },
+  "src/store/settings.store.ts": {
+    "mtime": 1781441341.4141219,
+    "ast_hash": "89b3e7c7b6220b10d1c493ddc4a4bcda",
+    "semantic_hash": ""
+  },
+  "src/store/ui-store.ts": {
+    "mtime": 1781413452.230937,
+    "ast_hash": "32864bd96cfa19e2ac0f3ff053cdd72c",
+    "semantic_hash": ""
+  },
+  "src/tests/example.test.ts": {
+    "mtime": 1781413452.230937,
+    "ast_hash": "07ee18e035ef7a867299991b75a5c012",
+    "semantic_hash": ""
+  },
+  "src/types/errors.ts": {
+    "mtime": 1781413452.230937,
+    "ast_hash": "773c79ba0d69cb8f6c2f595604ccd106",
+    "semantic_hash": ""
+  },
+  "src/types/splash.ts": {
+    "mtime": 1781416419.3275073,
+    "ast_hash": "795dea3571e703b7b04d89416f366dfb",
+    "semantic_hash": ""
+  },
+  "tools/optimize_logo.py": {
+    "mtime": 1781414195.9669435,
+    "ast_hash": "a44ceda690c745ebfdcf96bf94def654",
+    "semantic_hash": ""
+  },
+  "tsconfig.json": {
+    "mtime": 1781416782.807068,
+    "ast_hash": "ddbcb3b98e91e17296a1c417bbdb7035",
+    "semantic_hash": ""
+  },
+  ".github/workflows/build.yml": {
+    "mtime": 1781413452.1884258,
+    "ast_hash": "0fe718c2bb2079b2a53d9547fd5f3e0f",
+    "semantic_hash": ""
+  },
+  ".github/workflows/lint.yml": {
+    "mtime": 1781413452.1914296,
+    "ast_hash": "88bd3f9797de59194cca35c26b7ffc34",
+    "semantic_hash": ""
+  },
+  ".github/workflows/test.yml": {
+    "mtime": 1781413452.1944275,
+    "ast_hash": "3e6ed42d5dbcf46af848bfbbb1619542",
+    "semantic_hash": ""
+  },
+  ".github/workflows/typecheck.yml": {
+    "mtime": 1781413452.195987,
+    "ast_hash": "8bbc082d32a3a99bc0f2d32e24b40c6f",
+    "semantic_hash": ""
+  },
+  "AGENTS.md": {
+    "mtime": 1781413452.2019584,
+    "ast_hash": "9346a4897ff955555ddedb7bebf77adb",
+    "semantic_hash": ""
+  },
+  "CLAUDE.md": {
+    "mtime": 1781413452.2019584,
+    "ast_hash": "771faa62feb60b7de901a397aebb29b0",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1781413452.2039788,
+    "ast_hash": "175d71dbb9b69f8ead9a7a5ab733b3da",
+    "semantic_hash": ""
+  },
+  "docs/architecture.md": {
+    "mtime": 1781413452.2039788,
+    "ast_hash": "426dbd64093d7b9635a482a88e0056b1",
+    "semantic_hash": ""
+  },
+  "docs/audits/final-enforcement-report.md": {
+    "mtime": 1781433690.5672274,
+    "ast_hash": "c01c4ec9c1c219cb06158c0e433c95b7",
+    "semantic_hash": ""
+  },
+  "docs/audits/orphan-report.md": {
+    "mtime": 1781439538.8328707,
+    "ast_hash": "1b8293cec1255cc8608158db5d38f1a6",
+    "semantic_hash": ""
+  },
+  "docs/audits/ui-i18n-consistency-report.md": {
+    "mtime": 1781432066.1849363,
+    "ast_hash": "7a69b88b5ab04912c184ccd72782fe44",
+    "semantic_hash": ""
+  },
+  "docs/audits/ui-i18n-enterprise-readiness.md": {
+    "mtime": 1781432259.8662574,
+    "ast_hash": "8c94e9ff26ea4defa21c34e0ba9ffd1c",
+    "semantic_hash": ""
+  },
+  "docs/audits/unified-ui-i18n-audit.md": {
+    "mtime": 1781488465.0572402,
+    "ast_hash": "d14fc7f1ce82f393a55baba82d0a418f",
+    "semantic_hash": ""
+  },
+  "docs/audits/unified-ui-i18n-final-report.md": {
+    "mtime": 1781435266.9163625,
+    "ast_hash": "97403d8b8d07f69410ac3fde926106f2",
+    "semantic_hash": ""
+  },
+  "docs/coding-standards.md": {
+    "mtime": 1781413452.2059941,
+    "ast_hash": "4a59b35ac52c9c17f79327a2516e5f87",
+    "semantic_hash": ""
+  },
+  "docs/development-guide.md": {
+    "mtime": 1781413452.2069294,
+    "ast_hash": "ed37bc4fcfd81e5b991aa661509139e7",
+    "semantic_hash": ""
+  },
+  "docs/migration/clean-state-validation.md": {
+    "mtime": 1781440099.4992075,
+    "ast_hash": "39ae99e8c7a4af167e0003205e223d94",
+    "semantic_hash": ""
+  },
+  "docs/migration/final-cleanup-report.md": {
+    "mtime": 1781437455.5718713,
+    "ast_hash": "293b33ec60be3c942d349f3b522e31e1",
+    "semantic_hash": ""
+  },
+  "docs/migration/final-execution-report.md": {
+    "mtime": 1781440214.413178,
+    "ast_hash": "269a3c0d0b1bdf593ef026c4e16c7b34",
+    "semantic_hash": ""
+  },
+  "docs/migration/fix-report.md": {
+    "mtime": 1781438967.1605866,
+    "ast_hash": "cbc013d9c7abd2db558e19545effbc25",
+    "semantic_hash": ""
+  },
+  "docs/migration/legacy-violations.md": {
+    "mtime": 1781438506.3906403,
+    "ast_hash": "143baac90c264e24a3dcde30ce477230",
+    "semantic_hash": ""
+  },
+  "docs/ui-identification-system.md": {
+    "mtime": 1781430261.628104,
+    "ast_hash": "f8206efe2ea2422bf5219da95d8f12b1",
+    "semantic_hash": ""
+  },
+  "src/components/ui/LOGO_CONFIG.md": {
+    "mtime": 1781414227.468841,
+    "ast_hash": "6856e207282dc3fb71fd25bc7f3359f4",
+    "semantic_hash": ""
+  },
+  "public/file.svg": {
+    "mtime": 1781274737.1946511,
+    "ast_hash": "d09f95206c3fa0bb9bd9fefabfd0ea71",
+    "semantic_hash": ""
+  },
+  "public/globe.svg": {
+    "mtime": 1781274737.2150037,
+    "ast_hash": "2aaafa6a49b6563925fe440891e32717",
+    "semantic_hash": ""
+  },
+  "public/images/icons/Log3.png": {
+    "mtime": 1775987585.336353,
+    "ast_hash": "37ad4f61283b479a1bb2f5f9f0fba46f",
+    "semantic_hash": ""
+  },
+  "public/images/icons/log1.png": {
+    "mtime": 1775987585.351003,
+    "ast_hash": "16898854a01b50d890ad5a3a307c1f0b",
+    "semantic_hash": ""
+  },
+  "public/images/icons/logo.png": {
+    "mtime": 1775987585.367279,
+    "ast_hash": "2173184b67c9c282c2939dd314790626",
+    "semantic_hash": ""
+  },
+  "public/images/logo.png": {
+    "mtime": 1781403842.0,
+    "ast_hash": "0fd77a110bb2a8e88e8a5855d6e6be3e",
+    "semantic_hash": ""
+  },
+  "public/images/logos/logo-full.png": {
+    "mtime": 1781414203.0845864,
+    "ast_hash": "cde4904b7a7da05b1996ba0c51e44436",
+    "semantic_hash": ""
+  },
+  "public/images/logos/logo-full.webp": {
+    "mtime": 1781414204.2929502,
+    "ast_hash": "ee5ba6384fbca643f7cd878570ca8a95",
+    "semantic_hash": ""
+  },
+  "public/images/logos/logo-icon.png": {
+    "mtime": 1781414203.7021222,
+    "ast_hash": "f3c669e6352aade6cf3e59c5db3449c9",
+    "semantic_hash": ""
+  },
+  "public/images/logos/logo-md.png": {
+    "mtime": 1781414203.658936,
+    "ast_hash": "4c42c765a282035a8ba01be637dbaee9",
+    "semantic_hash": ""
+  },
+  "public/images/logos/logo-original.png": {
+    "mtime": 1781414206.270504,
+    "ast_hash": "6f07d4a080e8b97cb98decf04ebd9beb",
+    "semantic_hash": ""
+  },
+  "public/images/logos/logo-sm.png": {
+    "mtime": 1781414203.2510262,
+    "ast_hash": "a7806116e0da9e7e4243c65c7ce6c267",
+    "semantic_hash": ""
+  },
+  "public/images/logos/logo-sm.webp": {
+    "mtime": 1781414204.375202,
+    "ast_hash": "0ca5a0f5a046d5300845279236929cd9",
+    "semantic_hash": ""
+  },
+  "public/images/mainCategories/Arts & Crafts.webp": {
+    "mtime": 1767872533.81658,
+    "ast_hash": "184f42deaafdc37b747aa331ef7124ea",
+    "semantic_hash": ""
+  },
+  "public/images/mainCategories/Avon.webp": {
+    "mtime": 1775908326.61,
+    "ast_hash": "4fdace54a154dc5dc4baf40f24d888a5",
+    "semantic_hash": ""
+  },
+  "public/images/mainCategories/Beauty Store.webp": {
+    "mtime": 1776006926.708,
+    "ast_hash": "cd5797914aa9d4bfeeca826809fd5205",
+    "semantic_hash": ""
+  },
+  "public/images/mainCategories/Clothing & Fashion.webp": {
+    "mtime": 1767872534.476894,
+    "ast_hash": "7470bcbaefd1415db493e2713e348921",
+    "semantic_hash": ""
+  },
+  "public/images/mainCategories/Educational Services.webp": {
+    "mtime": 1775784043.792,
+    "ast_hash": "2e8ffde7441fe543cd0893b9215df5d9",
+    "semantic_hash": ""
+  },
+  "public/images/mainCategories/Events & Gifts.webp": {
+    "mtime": 1767872534.516214,
+    "ast_hash": "2ec3bf34d290f4470dc6a57fa776c8a2",
+    "semantic_hash": ""
+  },
+  "public/images/mainCategories/Food & Beverages.webp": {
+    "mtime": 1767872534.8640616,
+    "ast_hash": "629d7ab27f9adbc7ef04da9b1a52b680",
+    "semantic_hash": ""
+  },
+  "public/images/mainCategories/General Services.webp": {
+    "mtime": 1767872534.930062,
+    "ast_hash": "e6be4696a88ff41511f9ad8aa4a266a2",
+    "semantic_hash": ""
+  },
+  "public/images/mainCategories/Health & Beauty.webp": {
+    "mtime": 1767872535.0065749,
+    "ast_hash": "f4ae2a47818037e717ee14e44dab099f",
+    "semantic_hash": ""
+  },
+  "public/images/mainCategories/Home & Furniture.webp": {
+    "mtime": 1767872535.0717614,
+    "ast_hash": "cb875ee6028910c8a01c4a8960d3220f",
+    "semantic_hash": ""
+  },
+  "public/images/mainCategories/Medical Services.webp": {
+    "mtime": 1767872535.1422498,
+    "ast_hash": "578c713ed3f617ccf2fe552c2985ea2e",
+    "semantic_hash": ""
+  },
+  "public/images/mainCategories/My Way.webp": {
+    "mtime": 1767872535.170411,
+    "ast_hash": "cea4cb88df82d389420c634a38b1b7ce",
+    "semantic_hash": ""
+  },
+  "public/images/mainCategories/Oriflame.webp": {
+    "mtime": 1767872535.1917226,
+    "ast_hash": "2003ac2ad788cbdfaa42c5d0c6b01f80",
+    "semantic_hash": ""
+  },
+  "public/images/mainCategories/Pets.webp": {
+    "mtime": 1768192343.556,
+    "ast_hash": "84687a17b68d9bafb529548d833d961a",
+    "semantic_hash": ""
+  },
+  "public/images/mainCategories/Real Estate.webp": {
+    "mtime": 1767872535.720325,
+    "ast_hash": "d154cc6ec8ffc358a212096a5e0c145d",
+    "semantic_hash": ""
+  },
+  "public/images/mainCategories/Shipping & Delivery.webp": {
+    "mtime": 1775535156.7299283,
+    "ast_hash": "c6ef8f76a7de4d639f39178e93faaf2b",
+    "semantic_hash": ""
+  },
+  "public/images/mainCategories/Sports.webp": {
+    "mtime": 1767872535.7769365,
+    "ast_hash": "67300f45d2dd35410f5784f2c9174cc7",
+    "semantic_hash": ""
+  },
+  "public/images/mainCategories/Tech & Electronics.webp": {
+    "mtime": 1767872535.8055367,
+    "ast_hash": "20c4ea55272a4a4e5b4861e1e1e28746",
+    "semantic_hash": ""
+  },
+  "public/images/mainCategories/Vehicles Market.webp": {
+    "mtime": 1768106340.377,
+    "ast_hash": "0b8b3a7dadecdbfbad31ea14dce5fa91",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Allergy and Immunology.webp": {
+    "mtime": 1778644375.525,
+    "ast_hash": "8bceda9954673feb6c7ac8112010c8cb",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Animal Care & Training.webp": {
+    "mtime": 1767872803.7626526,
+    "ast_hash": "33c97da8054d9f813e6d5ca9d99ca39b",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Apartments & Houses for Sale.webp": {
+    "mtime": 1767872803.831405,
+    "ast_hash": "8a3c163506078dee81a1c2e62bfe93a2",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Art Tools & Supplies.webp": {
+    "mtime": 1767872803.8519053,
+    "ast_hash": "26ea9e48c0ff71981e3e499b489e768d",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Artworks & Decor.webp": {
+    "mtime": 1768450900.964,
+    "ast_hash": "d08b8ac9a6ec572fa676da391716bf7d",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Audiology.webp": {
+    "mtime": 1778644439.594,
+    "ast_hash": "8a69e0c0769b2edb72ae379664b2e1ac",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Bakery & Pastry.webp": {
+    "mtime": 1767872803.8940277,
+    "ast_hash": "07f7c2a81ab00f94466723189418445c",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Bariatric Surgery.webp": {
+    "mtime": 1778644702.728,
+    "ast_hash": "420aa65e77d47da8a08fccaad75e32bb",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Bathroom & Toilet Supplies.webp": {
+    "mtime": 1767872803.9109168,
+    "ast_hash": "780cb4e6f83f527787b27e21c141497d",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Bedding, Covers & Pillows.webp": {
+    "mtime": 1767872803.9668934,
+    "ast_hash": "22e1e827b85f268f87445026a9a65707",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Bicycle Services.webp": {
+    "mtime": 1775909681.406,
+    "ast_hash": "ac9f59dc2b1d331a7d63c07fe27f1f0f",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Books, Magazines & Media.webp": {
+    "mtime": 1767872804.0269184,
+    "ast_hash": "efecea7f3a0df81bbcdf7cc8f21d6aed",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Buying & Selling Pets.webp": {
+    "mtime": 1767872807.470331,
+    "ast_hash": "9a2335ee37698c0259e1acc5f21a5699",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Cafes.webp": {
+    "mtime": 1775824695.323,
+    "ast_hash": "2be1d03737a34995659cbc6af2cbde4e",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Candles & Home Fragrances.webp": {
+    "mtime": 1767872804.1236498,
+    "ast_hash": "95d73ff5d198d14877696da77da8e637",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Canned Food.webp": {
+    "mtime": 1775814098.615,
+    "ast_hash": "2fae9eaf185866e351ed5a15798c3e63",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Cardiology.webp": {
+    "mtime": 1778643243.451,
+    "ast_hash": "8ab0c0c4cde047d4524e569963d99cc1",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Cardiothoracic Surgery.webp": {
+    "mtime": 1778644409.372,
+    "ast_hash": "a65f13c07b1851cdbafb2075d539c8ed",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Carpets, Curtains & Rugs.webp": {
+    "mtime": 1775907642.681,
+    "ast_hash": "7bd868ab30813622fa2b6e1e7719bf7d",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Cars for Sale.webp": {
+    "mtime": 1775909033.545,
+    "ast_hash": "0e9277540c5aeebbb53fff8fb20a5def",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Chalets & Villas.webp": {
+    "mtime": 1767872804.2183409,
+    "ast_hash": "16154ab3518ea5ea0989bb5cdb576dec",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Chest.webp": {
+    "mtime": 1778643091.096,
+    "ast_hash": "10d4dbc986b410fff129c3813e69d678",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Child Orthopaedics.webp": {
+    "mtime": 1778644712.779,
+    "ast_hash": "01b695be1d30d400a9aea2e09d45472f",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Children's & Newborn Clothing.webp": {
+    "mtime": 1767872804.2388544,
+    "ast_hash": "ca8d095908dfa0454c6de3ee166cb804",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Cosmetics.webp": {
+    "mtime": 1767872804.2734578,
+    "ast_hash": "900c9e2f6e7151281ce2717705b60dd9",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Dairy & Eggs.webp": {
+    "mtime": 1775908159.027,
+    "ast_hash": "b22a1aa3aedf20a1ec3bf683de5f5754",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Dental.webp": {
+    "mtime": 1778642534.024,
+    "ast_hash": "bbc1bfb8febc51c5ad6e90cc2ec4b296",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Dermatology and Andrology.webp": {
+    "mtime": 1778644242.301,
+    "ast_hash": "649ee3f588bcc57157de926f2912ee3c",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Diagnostic Radiology.webp": {
+    "mtime": 1778644525.608,
+    "ast_hash": "f85469709c7687409993fdf38904c421",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Digital Accessories.webp": {
+    "mtime": 1767872804.354851,
+    "ast_hash": "4cc5746ee3bbefe8dc05511f2f95bc77",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Drawing & Artworks.webp": {
+    "mtime": 1767872804.4006407,
+    "ast_hash": "26ea9e48c0ff71981e3e499b489e768d",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Drinks & Natural Juices.webp": {
+    "mtime": 1775824481.482,
+    "ast_hash": "0a54805c95c4f53e82cb933e03d71f5c",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Ear Nose and Throat.webp": {
+    "mtime": 1778643612.347,
+    "ast_hash": "e62e0c762dfd071128ab97157da54b77",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Educational Centers.webp": {
+    "mtime": 1775784319.964,
+    "ast_hash": "d1f6664a61e4eea8891deb0c00402f89",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Educational Services.webp": {
+    "mtime": 1767872804.4535148,
+    "ast_hash": "cb08bcacc5b47b9e313fdccfc8ab2545",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Elderly & Special Needs Care.webp": {
+    "mtime": 1767872804.4719663,
+    "ast_hash": "f3b8f523a1c16eb85ed5310e4ebb059f",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Electric Personal Care Tools.webp": {
+    "mtime": 1775919701.606,
+    "ast_hash": "9c367a7cde0b8272d41a8ba4d18c25c0",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Embroidery & Sewing.webp": {
+    "mtime": 1767923750.8367796,
+    "ast_hash": "ada3e4f5e027d9151071a2c933cb5c83",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Endocrinology.webp": {
+    "mtime": 1778644129.371,
+    "ast_hash": "edbad5e1e6fbe3ea972c227d2e58592a",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Event Planning Services.webp": {
+    "mtime": 1767872804.5654273,
+    "ast_hash": "332b747bfa95565cf40544a9d1f88f22",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Family Medicine.webp": {
+    "mtime": 1778644468.085,
+    "ast_hash": "36eb6ea470690195d54157ea327d1e81",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Formal Wear (Weddings, Parties).webp": {
+    "mtime": 1771391243.125,
+    "ast_hash": "d900eb9417af3277e514b02c5a4ab124",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Garden & Outdoor Decor.webp": {
+    "mtime": 1775907746.391,
+    "ast_hash": "80f3827b425d2c40f56f6726733974aa",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Gastroenterology and Hepatology.webp": {
+    "mtime": 1778643866.244,
+    "ast_hash": "24caec9797c98487640b6533a921e8b6",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Gastrointestinal Surgery.webp": {
+    "mtime": 1778645006.228,
+    "ast_hash": "d2aa07d6228d4df8c9b093bdc846b8db",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/General Practice.webp": {
+    "mtime": 1778644596.978,
+    "ast_hash": "10fc4e2d964c99e77977d57f9c646555",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/General Surgery.webp": {
+    "mtime": 1778643172.876,
+    "ast_hash": "883773758502cd9b826e2ff559caf572",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Genetics.webp": {
+    "mtime": 1778644748.161,
+    "ast_hash": "68f852ed3ea0bc69dccb7c378f6111f9",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Geriatrics.webp": {
+    "mtime": 1778644570.703,
+    "ast_hash": "1630a7442ffc9df1666386759035a791",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Gifts & Flower Arrangements.webp": {
+    "mtime": 1767872804.8985045,
+    "ast_hash": "a16d98e379988434dac821d9d2d28ad8",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Good Condition Used Clothes.webp": {
+    "mtime": 1767872804.922504,
+    "ast_hash": "a5f8ea9a930e7e8652d8bec1e1df33fa",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Gym.webp": {
+    "mtime": 1767872805.2056315,
+    "ast_hash": "f04bb19f2b95f0ec8f1651819c4a4f60",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Hair Care.webp": {
+    "mtime": 1767872805.223225,
+    "ast_hash": "9478b43bdfa5ae2e2fb913e79c3dd918",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Handmade Jewelry.webp": {
+    "mtime": 1767872805.2545896,
+    "ast_hash": "4c56216d5242293d0ca3fd5cef37a1e8",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Hematology.webp": {
+    "mtime": 1778644268.369,
+    "ast_hash": "91c4c84fc1ef8cb5473cd9d4ea3b123b",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Heritage & Traditional Crafts.webp": {
+    "mtime": 1767872805.278061,
+    "ast_hash": "c2f0729761f1e552e28336f4801f3189",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Hijab Fashion.webp": {
+    "mtime": 1775619265.596,
+    "ast_hash": "7b5659e8eb5bd9896e5d53e63d5bc96a",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Home Electrical Appliances.webp": {
+    "mtime": 1775907484.625,
+    "ast_hash": "14f4cb67c8fc9c366dc9577c0377d2c5",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Home Nursing.webp": {
+    "mtime": 1767872805.5060632,
+    "ast_hash": "3e4c5753e3e99a21ee615d4c63dcc329",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Household Cleaners.webp": {
+    "mtime": 1775814028.594,
+    "ast_hash": "b88ffef04edd05c7fd4e914c5e53d96d",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Hygiene & Bath Supplies.webp": {
+    "mtime": 1775825129.594,
+    "ast_hash": "72b3e7203db0d167fe0541298e61aed5",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/IVF and Infertility.webp": {
+    "mtime": 1778644726.247,
+    "ast_hash": "aa042c8985ba06c67d009ca39341fa7b",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Interior Design & Decoration.webp": {
+    "mtime": 1767872805.7484925,
+    "ast_hash": "0257a850160937d1963af02409be872e",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Internal Medicine.webp": {
+    "mtime": 1778642584.939,
+    "ast_hash": "2e4dadf44d1c1aa2b4c67a0f83186a6b",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Interventional Radiology.webp": {
+    "mtime": 1778644678.685,
+    "ast_hash": "a29f29b6a81685ec663958a3c619b7f9",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Kitchen Furniture.webp": {
+    "mtime": 1775824809.732,
+    "ast_hash": "4626fa0d4315089d8c150964b6784c82",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Kitchen Supplies.webp": {
+    "mtime": 1775824750.404,
+    "ast_hash": "d18096eaab6532c3ed3779f652b619b5",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Lab Tests & Checks.webp": {
+    "mtime": 1767872805.827107,
+    "ast_hash": "b9eeff18bd3d661fe759effd485a2f20",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Lands & Commercial Property.webp": {
+    "mtime": 1767872805.867452,
+    "ast_hash": "21eba3be5d678d23f24c99d865e26389",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Laptops & Desktops.webp": {
+    "mtime": 1767872805.8956838,
+    "ast_hash": "899d73841a326a2af5058db06c63eb88",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Leather & Wood Products.webp": {
+    "mtime": 1767872805.9126828,
+    "ast_hash": "a813d0aa7a4fdb8809e56adc44892465",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Lighting & Lamps.webp": {
+    "mtime": 1767872805.9509952,
+    "ast_hash": "d213a66b7b6917ed2a1507151b40f7e4",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Living Room & Reception Furniture.webp": {
+    "mtime": 1767872805.9640226,
+    "ast_hash": "980a6f860f17ec21e7413903bd336aa1",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Makeup & Beauty Tools.webp": {
+    "mtime": 1767872806.023898,
+    "ast_hash": "ebb4d2023c0a59cced687e0c44d85bf0",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Meat, Poultry & Fish.webp": {
+    "mtime": 1767872806.1302097,
+    "ast_hash": "f093a3de788463b2f3b98bb9fd8d461c",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Medical Devices.webp": {
+    "mtime": 1775785243.883,
+    "ast_hash": "cda03243776ba41aedc64ba57ce5db82",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Men's & Women's Accessories.webp": {
+    "mtime": 1767872806.2996202,
+    "ast_hash": "f3fc8b6bf2b85978d15977a28f879294",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Men's & Women's Perfumes.webp": {
+    "mtime": 1767872806.3450568,
+    "ast_hash": "314930f0d69b34361352218276436d89",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Men's Clothing.webp": {
+    "mtime": 1775897776.072,
+    "ast_hash": "4d7b41d3ae5ca654d4fcf5b5bacccc21",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Nephrology and Urology.webp": {
+    "mtime": 1778644431.579,
+    "ast_hash": "7006bd987332a21cff1bc305d7877f96",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Networking & Telecom.webp": {
+    "mtime": 1767872806.5073693,
+    "ast_hash": "7b2dcc12f54415291727e7306bf451d9",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Neurology.webp": {
+    "mtime": 1778643157.05,
+    "ast_hash": "8ca1cedaedeb33e4dca9736044514fcc",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Neurosurgery.webp": {
+    "mtime": 1778643822.431,
+    "ast_hash": "130d7a4b80e38811ce4a9d216535a717",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Nutrition.webp": {
+    "mtime": 1778643191.792,
+    "ast_hash": "eccb43885ce6177926a0e18d26e33173",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Nuts, Seeds & Dried Fruits.webp": {
+    "mtime": 1767872806.5634134,
+    "ast_hash": "7106da98a84ae37ff22eca5ffd869edc",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Obstetrics and Gynaecology.webp": {
+    "mtime": 1778642499.738,
+    "ast_hash": "3ecf1208774c32ede7e17ec7d346f530",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Office Furniture & Workspaces.webp": {
+    "mtime": 1775907399.607,
+    "ast_hash": "725af5b39d5e0c56e9e3fa9526881e3d",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Offices & Workspaces.webp": {
+    "mtime": 1767872806.903327,
+    "ast_hash": "ad74b917648430760149c09927532777",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Oncology.webp": {
+    "mtime": 1778644349.124,
+    "ast_hash": "95f348b5eaa3c24f9e476fd6de57a794",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Oncosurgeon.webp": {
+    "mtime": 1778644300.035,
+    "ast_hash": "4afcd31a4ade1ca043be8d82f574cb43",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Ophthalmology.webp": {
+    "mtime": 1778643798.741,
+    "ast_hash": "5e1cc02cda824fc3f866bb575d057a33",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Orthopedic.webp": {
+    "mtime": 1778642524.377,
+    "ast_hash": "382ee0fed9cfd585db428880a5ce527e",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Pain Management.webp": {
+    "mtime": 1778644306.805,
+    "ast_hash": "2668d42fa1dac4802bef3d5024d87396",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Pediatric Surgery.webp": {
+    "mtime": 1778644253.764,
+    "ast_hash": "0d707d7aa48b5b09a7c4afa5984ab2c2",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Pediatrics and New Born.webp": {
+    "mtime": 1778643208.652,
+    "ast_hash": "e69c2eb37e331439e206ae4329ebd7c4",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Perfumes, Incense & Burners.webp": {
+    "mtime": 1767872807.1298633,
+    "ast_hash": "a1721e2f99be0aba623fcdada481238f",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Personal Beauty Services.webp": {
+    "mtime": 1767872807.1657856,
+    "ast_hash": "ba9d713751188b485097d7386899c62a",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Pet Food & Supplies.webp": {
+    "mtime": 1767872807.2033017,
+    "ast_hash": "503a7beebbd6ca720129b73e0d8da039",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Pets.webp": {
+    "mtime": 1767872807.470331,
+    "ast_hash": "9a2335ee37698c0259e1acc5f21a5699",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Pharmacies.webp": {
+    "mtime": 1775784961.988,
+    "ast_hash": "87fae38f8de980252190cc0fbf6337c0",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Phoniatrics.webp": {
+    "mtime": 1778644320.88,
+    "ast_hash": "58ed5c5cf753d9af25947aad786caa84",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Photography & Video.webp": {
+    "mtime": 1767872807.5710125,
+    "ast_hash": "22566ccf9b3bf6960ae0322a4479eca9",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Physical Medicine and Sport Injuries.webp": {
+    "mtime": 1778644179.534,
+    "ast_hash": "bc2cd40881671ab0cf0bb7e7a5a1646d",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Physical Therapy.webp": {
+    "mtime": 1775785107.443,
+    "ast_hash": "084659c26c5b1013c00494b60ecbb6ea",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Plastic Surgery.webp": {
+    "mtime": 1778643968.808,
+    "ast_hash": "df82f3ec178b2509a966ea6d52fdef33",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Platforms.webp": {
+    "mtime": 1775784404.465,
+    "ast_hash": "530860571b405a06a2bc106930617717",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Printing Presses.webp": {
+    "mtime": 1775784545.567,
+    "ast_hash": "8d3223574ee5c10f4cac2de8d5bdffc6",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Psychiatry.webp": {
+    "mtime": 1778642560.811,
+    "ast_hash": "311547290b36f03b11e34cb1aad7717e",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Quick Dishes & Fast Meals.webp": {
+    "mtime": 1775905298.585,
+    "ast_hash": "8985b7307bb19bf3942548db981a4424",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Restaurants.webp": {
+    "mtime": 1775907860.588,
+    "ast_hash": "9cb4ba2a2826f17dc0c95338c6fe737f",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Rheumatology.webp": {
+    "mtime": 1778643999.562,
+    "ast_hash": "92149bb30211cf9b54ac79fbd26dc7e1",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Security & Home Monitoring.webp": {
+    "mtime": 1767872807.7008255,
+    "ast_hash": "49458bf7367d88b7fb285191f23ca2a0",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Shoes, Leather & Fabric Bags.webp": {
+    "mtime": 1775898532.692,
+    "ast_hash": "93dbdafa59ea9206abd8c32158e982cd",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Skin & Face Care.webp": {
+    "mtime": 1767872808.0067556,
+    "ast_hash": "52404f69fff21d4172300624e467768e",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Smartphones & Tablets.webp": {
+    "mtime": 1767872808.0544758,
+    "ast_hash": "e4b3b5d155b3cb5384b8890b9830bbbb",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Software & Digital Solutions.webp": {
+    "mtime": 1767872808.0797758,
+    "ast_hash": "0661fa0d407565a8bb0fe2e3725afe20",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Spare Parts, Engines & Oils.webp": {
+    "mtime": 1767872808.1157386,
+    "ast_hash": "9d344bd4725794c906e8cf6d0b9b7083",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Spices & Herbs.webp": {
+    "mtime": 1775824407.292,
+    "ast_hash": "6ccc75378bc3528fb522297e8ce36024",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Sports Equipment.webp": {
+    "mtime": 1775784650.453,
+    "ast_hash": "3c9569ccb14aa783ce47ddc5c5dc2a8b",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Sportswear.webp": {
+    "mtime": 1775897914.601,
+    "ast_hash": "26b2fa6ffb7105260702c51f0c275ff3",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Sweets.webp": {
+    "mtime": 1775908052.443,
+    "ast_hash": "3515c50478ca4b0d738ad8e1bf6ae1c7",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Underwear & Sleepwear.webp": {
+    "mtime": 1775785528.291,
+    "ast_hash": "81766bf65c982b860b31784b7ca9e7e2",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Vascular Surgery.webp": {
+    "mtime": 1778643774.216,
+    "ast_hash": "e6a8b8ed28500ed3379d18e47cf37591",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Vehicle Accessories.webp": {
+    "mtime": 1775909328.4,
+    "ast_hash": "a91fea6c21bb74d4791e640de9d60ef5",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Vehicle Maintenance.webp": {
+    "mtime": 1767872808.6588764,
+    "ast_hash": "3de33ad916dbc71857632f6ca6283986",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Vehicle Rental.webp": {
+    "mtime": 1767872808.6898756,
+    "ast_hash": "361ea4ad0345fb216b985f7bb1291c05",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Vehicle Tires & Wheels.webp": {
+    "mtime": 1775907278.559,
+    "ast_hash": "48ef181d4238a7c5fa4795e79d569d89",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/Women's Clothing.webp": {
+    "mtime": 1767872808.9148164,
+    "ast_hash": "e3335248ea3d1f7c311b5f5a18298955",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/X-Ray Services.webp": {
+    "mtime": 1767872808.941969,
+    "ast_hash": "ea104d2473bd5f630cb5cf2316c817a2",
+    "semantic_hash": ""
+  },
+  "public/images/subCategories/doctors_appointment.webp": {
+    "mtime": 1778694325.583,
+    "ast_hash": "37472c6765f5caf4d10cd71a78efcf2a",
+    "semantic_hash": ""
+  },
+  "public/next.svg": {
+    "mtime": 1781274737.2447886,
+    "ast_hash": "8e061864f388b47f33a1c3780831193e",
+    "semantic_hash": ""
+  },
+  "public/vercel.svg": {
+    "mtime": 1781274737.266818,
+    "ast_hash": "c0af2f507b369b085b35ef4bbe3bcf1e",
+    "semantic_hash": ""
+  },
+  "public/window.svg": {
+    "mtime": 1781274737.2915552,
+    "ast_hash": "a2760511c65806022ad20adf74370ff3",
+    "semantic_hash": ""
+  }
+}

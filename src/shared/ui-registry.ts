@@ -174,41 +174,32 @@ export const UI_REGISTRY = {
   ...SHARED_LAYOUT,
 } as const;
 
-/**
- * Extract all identifier values for validation
- */
-export const ALL_UI_IDENTIFIERS = Object.values(UI_REGISTRY).reduce<string[]>(
-  (acc, value) => {
-    if (typeof value === 'string') {
-      acc.push(value);
-    } else if (typeof value === 'object' && value !== null) {
-      Object.values(value).forEach((nestedValue) => {
-        if (typeof nestedValue === 'string') {
-          acc.push(nestedValue);
-        } else if (typeof nestedValue === 'object' && nestedValue !== null) {
-          Object.values(nestedValue).forEach((deepValue) => {
-            if (typeof deepValue === 'string') {
-              acc.push(deepValue);
-            } else if (typeof deepValue === 'object' && deepValue !== null) {
-              Object.values(deepValue).forEach((deepestValue) => {
-                if (typeof deepestValue === 'string') {
-                  acc.push(deepestValue);
-                }
-              });
-            }
-          });
-        }
-      });
+function flattenObject(obj: any): string[] {
+  const result: string[] = [];
+  function recurse(current: any) {
+    if (typeof current === 'string') {
+      result.push(current);
+    } else if (typeof current === 'object' && current !== null) {
+      Object.values(current).forEach(recurse);
     }
-    return acc;
-  },
-  []
-) as readonly string[];
+  }
+  recurse(obj);
+  return result;
+}
+
+export const ALL_UI_IDENTIFIERS = flattenObject(UI_REGISTRY) as readonly string[];
 
 /**
  * Type for all valid UI identifiers
  */
 export type UiIdentifier = typeof ALL_UI_IDENTIFIERS[number];
+
+/**
+ * UI identifiers that do not require explicit bound translations (e.g., they use dynamic text or brand links).
+ */
+export const NO_TRANSLATION_REQUIRED: readonly UiIdentifier[] = [
+  SHARED_LAYOUT.HEADER.BRAND.BRAND_LINK,
+] as const;
 
 /**
  * Validation regex for UI identifier naming convention
