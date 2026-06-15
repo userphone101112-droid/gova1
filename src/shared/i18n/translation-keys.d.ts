@@ -190,6 +190,7 @@ export type homeTranslationKey =
   | 'home.promo-banner.bannerButton'
   | 'home.curated-offers.showMoreButton'
   | 'home.curated-offers.addToCartButton'
+  | 'home.curated-offers.addToFavoritesButton'
   | 'home.categories-grid.toggleButton'
   | 'home.categories-grid.categoryButton'
 ;

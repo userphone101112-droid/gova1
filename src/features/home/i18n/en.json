@@ -96,7 +96,8 @@
     },
     "curated-offers": {
       "showMoreButton": "Show More",
-      "addToCartButton": "Add to Cart"
+      "addToCartButton": "Add to Cart",
+      "addToFavoritesButton": "Add to Favorites"
     },
     "categories-grid": {
       "toggleButton": "Toggle Layout",

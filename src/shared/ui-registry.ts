@@ -72,6 +72,16 @@ export const HOME = {
       createdAt: '2026-06-15',
       updatedAt: '2026-06-15',
     } as const,
+    ADD_TO_FAVORITES: {
+      id: 'UI_HOME_CURATED_OFFERS_FAVORITE',
+      path: 'home.curated-offers.actions.add-to-favorites-button',
+      description: 'Add item to favorites button',
+      category: 'action',
+      feature: 'home',
+      version: '1.0.0',
+      createdAt: '2026-06-15',
+      updatedAt: '2026-06-15',
+    } as const,
   },
   CATEGORIES_GRID: {
     TOGGLE: {

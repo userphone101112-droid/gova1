@@ -90,7 +90,7 @@ export function CuratedOffers() {
                 className="w-full h-full object-cover transition-transform active:scale-110"
               />
               <UiButton
-                ui={HOME.CURATED_OFFERS.ADD_TO_CART}
+                ui={HOME.CURATED_OFFERS.ADD_TO_FAVORITES}
                 id={p.favId}
                 className="absolute top-2 start-2 w-8 h-8 rounded-full bg-white/90 backdrop-blur flex items-center justify-center shadow-sm transition-transform active:scale-90"
                 aria-label={t('home.curated.addToFavorites')}

@@ -96,7 +96,8 @@
     },
     "curated-offers": {
       "showMoreButton": "عرض المزيد",
-      "addToCartButton": "إضافة للسلة"
+      "addToCartButton": "إضافة للسلة",
+      "addToFavoritesButton": "إضافة للمفضلة"
     },
     "categories-grid": {
       "toggleButton": "تبديل المظهر",
