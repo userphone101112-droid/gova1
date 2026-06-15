@@ -90,6 +90,17 @@
     "hero": {
       "primaryButton": "Get Started",
       "secondaryButton": "Learn More"
+    },
+    "promo-banner": {
+      "bannerButton": "Explore Listings"
+    },
+    "curated-offers": {
+      "showMoreButton": "Show More",
+      "addToCartButton": "Add to Cart"
+    },
+    "categories-grid": {
+      "toggleButton": "Toggle Layout",
+      "categoryButton": "Select Category"
     }
   }
 }

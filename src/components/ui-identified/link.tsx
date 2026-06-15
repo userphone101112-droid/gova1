@@ -1,19 +1,25 @@
 import React from 'react';
 import { Link, LinkProps } from '@/components/ui/link';
-import { type UiIdentifier, isRegisteredUiIdentifier } from '@/shared/ui-registry';
+import { type UiParam, resolveUiParam, validateRuntimeIdentity } from '@/shared/ui-registry';
 
 export interface UiLinkProps extends Omit<LinkProps, 'data-ui'> {
-  ui: UiIdentifier;
+  ui: UiParam;
 }
 
 const UiLink = React.forwardRef<HTMLAnchorElement, UiLinkProps>(
   ({ ui, ...props }, ref) => {
-    if (process.env.NODE_ENV === 'development') {
-      if (!isRegisteredUiIdentifier(ui)) {
-        console.error(`[UI Registry] Unknown identifier: "${ui}"`);
-      }
-    }
-    return <Link ref={ref} data-ui={ui} {...props} />;
+    const identity = resolveUiParam(ui);
+    validateRuntimeIdentity('UiLink', ui, identity);
+
+    return (
+      <Link
+        ref={ref}
+        data-ui-id={identity?.id}
+        data-ui-path={identity?.path}
+        data-ui-feature={identity?.feature}
+        {...props}
+      />
+    );
   }
 );
 UiLink.displayName = 'UiLink';

@@ -23,7 +23,7 @@ export function BottomNavBar() {
   return (
     <nav
       id="bottom-navigation-bar"
-      className="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center pt-2 pb-4 border-t rounded-t-2xl shadow-lg md:hidden"
+      className="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center pt-2 pb-4 border-t rounded-t-2xl shadow-lg"
       style={{
         background: 'rgba(250,248,255,0.90)',
         backdropFilter: 'blur(12px)',

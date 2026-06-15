@@ -1,14 +1,25 @@
 import React from 'react';
 import { Textarea, TextareaProps } from '@/components/ui/textarea';
-import type { UiIdentifier } from '@/shared/ui-registry';
+import { type UiParam, resolveUiParam, validateRuntimeIdentity } from '@/shared/ui-registry';
 
 export interface UiTextareaProps extends Omit<TextareaProps, 'data-ui'> {
-  ui: UiIdentifier;
+  ui: UiParam;
 }
 
 const UiTextarea = React.forwardRef<HTMLTextAreaElement, UiTextareaProps>(
   ({ ui, ...props }, ref) => {
-    return <Textarea ref={ref} data-ui={ui} {...props} />;
+    const identity = resolveUiParam(ui);
+    validateRuntimeIdentity('UiTextarea', ui, identity);
+
+    return (
+      <Textarea
+        ref={ref}
+        data-ui-id={identity?.id}
+        data-ui-path={identity?.path}
+        data-ui-feature={identity?.feature}
+        {...props}
+      />
+    );
   }
 );
 UiTextarea.displayName = 'UiTextarea';

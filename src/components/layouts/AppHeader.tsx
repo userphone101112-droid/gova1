@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslation } from '@/shared/i18n/core/useTranslation';
-import { UiButton, UiLink } from '@/components/ui';
+import { UiButton, UiInput, UiLink } from '@/components/ui';
 import { SHARED_LAYOUT } from '@/shared/ui-registry';
 import { Menu, Search, ShoppingCart } from 'lucide-react';
 
@@ -30,7 +30,7 @@ export function AppHeader() {
             id="header-menu-button"
             variant="ghost"
             size="icon"
-            className="w-10 h-10 flex md:hidden items-center justify-center rounded-full transition-colors active:bg-surface-container"
+            className="w-10 h-10 flex items-center justify-center rounded-full transition-colors active:bg-surface-container"
             aria-label={t('navigation.menu')}
             style={{ color: 'var(--gova-google-blue)' }}
           >
@@ -56,13 +56,13 @@ export function AppHeader() {
 
         {/* Actions & Search */}
         <div className="flex items-center gap-2">
-          {/* Desktop Search Bar */}
-          <div className="hidden md:flex items-center gap-2 bg-surface-container-low border border-outline-variant rounded-full px-4 py-1.5 w-48 lg:w-64">
+          <div className="hidden">
             <Search className="w-4 h-4 text-on-surface-variant/70" />
-            <input
+            <UiInput
+              ui={SHARED_LAYOUT.HEADER.ACTIONS.SEARCH_INPUT}
               type="text"
               placeholder={t('navigation.search') + '...'}
-              className="bg-transparent border-none outline-none text-xs w-full text-on-surface placeholder-on-surface-variant/50"
+              className="bg-transparent border-none outline-none text-xs w-full text-on-surface placeholder-on-surface-variant/50 shadow-none h-auto px-0 py-0 focus-visible:ring-0"
             />
           </div>
 

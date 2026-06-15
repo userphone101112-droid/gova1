@@ -12,8 +12,9 @@ export function enforceLocalizationBoundary(
   currentFeature: Feature,
   requestedFeature: string
 ): void {
-  // Allow access to common dictionary
-  if (requestedFeature === 'common') {
+  // Allow access to common dictionary namespaces
+  const COMMON_NAMESPACES = ['common', 'navigation', 'buttons', 'validation', 'messages'];
+  if (COMMON_NAMESPACES.includes(requestedFeature)) {
     return;
   }
 

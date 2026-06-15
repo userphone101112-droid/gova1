@@ -2,6 +2,8 @@
 
 import { useTranslation } from '@/shared/i18n/core/useTranslation';
 import { Building2 } from 'lucide-react';
+import { UiButton } from '@/components/ui';
+import { HOME } from '@/shared/ui-registry';
 
 export function PromoBanner() {
   const { t } = useTranslation();
@@ -23,13 +25,14 @@ export function PromoBanner() {
         <p id="promo-banner-text" className="text-sm opacity-90 mt-2">
           {t('home.promoBanner.text')}
         </p>
-        <button
+        <UiButton
+          ui={HOME.PROMO_BANNER.ACTION_BUTTON}
           id="promo-banner-cta"
           className="mt-4 px-4 py-2 rounded-lg font-bold text-sm transition-transform active:scale-95"
           style={{ background: 'var(--gova-google-yellow)', color: 'var(--gova-on-surface)' }}
         >
           {t('home.promoBanner.cta')}
-        </button>
+        </UiButton>
       </div>
 
       {/* Decorative icon background */}

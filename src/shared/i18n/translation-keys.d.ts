@@ -187,6 +187,11 @@ export type homeTranslationKey =
   | 'home.language-switcher.arabicButton'
   | 'home.hero.primaryButton'
   | 'home.hero.secondaryButton'
+  | 'home.promo-banner.bannerButton'
+  | 'home.curated-offers.showMoreButton'
+  | 'home.curated-offers.addToCartButton'
+  | 'home.categories-grid.toggleButton'
+  | 'home.categories-grid.categoryButton'
 ;
 
 // settings feature translations
@@ -213,6 +218,7 @@ export type sharedLayoutTranslationKey =
   | 'shared-layout.header.searchButton'
   | 'shared-layout.header.cartButton'
   | 'shared-layout.header.brandLink'
+  | 'shared-layout.header.searchInput'
   | 'shared-layout.bottom-nav.homeLink'
   | 'shared-layout.bottom-nav.notificationsLink'
   | 'shared-layout.bottom-nav.favoritesLink'

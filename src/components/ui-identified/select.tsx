@@ -1,14 +1,25 @@
 import React from 'react';
 import { Select, SelectProps } from '@/components/ui/select';
-import type { UiIdentifier } from '@/shared/ui-registry';
+import { type UiParam, resolveUiParam, validateRuntimeIdentity } from '@/shared/ui-registry';
 
 export interface UiSelectProps extends Omit<SelectProps, 'data-ui'> {
-  ui: UiIdentifier;
+  ui: UiParam;
 }
 
 const UiSelect = React.forwardRef<HTMLSelectElement, UiSelectProps>(
   ({ ui, ...props }, ref) => {
-    return <Select ref={ref} data-ui={ui} {...props} />;
+    const identity = resolveUiParam(ui);
+    validateRuntimeIdentity('UiSelect', ui, identity);
+
+    return (
+      <Select
+        ref={ref}
+        data-ui-id={identity?.id}
+        data-ui-path={identity?.path}
+        data-ui-feature={identity?.feature}
+        {...props}
+      />
+    );
   }
 );
 UiSelect.displayName = 'UiSelect';

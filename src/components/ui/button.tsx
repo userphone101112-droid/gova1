@@ -13,16 +13,16 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         className={cn(
           'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50',
           {
-            'bg-primary text-primary-foreground shadow active:bg-primary/90':
+            'bg-primary text-primary-foreground shadow active:bg-primary/90 [@media(hover:hover)]:hover:bg-primary/90':
               variant === 'default',
-            'bg-destructive text-destructive-foreground shadow-sm active:bg-destructive/90':
+            'bg-destructive text-destructive-foreground shadow-sm active:bg-destructive/90 [@media(hover:hover)]:hover:bg-destructive/90':
               variant === 'destructive',
-            'border border-input bg-background shadow-sm active:bg-accent active:text-accent-foreground':
+            'border border-input bg-background shadow-sm active:bg-accent active:text-accent-foreground [@media(hover:hover)]:hover:bg-accent [@media(hover:hover)]:hover:text-accent-foreground':
               variant === 'outline',
-            'bg-secondary text-secondary-foreground shadow-sm active:bg-secondary/80':
+            'bg-secondary text-secondary-foreground shadow-sm active:bg-secondary/80 [@media(hover:hover)]:hover:bg-secondary/80':
               variant === 'secondary',
-            'active:bg-accent active:text-accent-foreground': variant === 'ghost',
-            'text-primary underline-offset-4 active:underline': variant === 'link',
+            'active:bg-accent active:text-accent-foreground [@media(hover:hover)]:hover:bg-accent [@media(hover:hover)]:hover:text-accent-foreground': variant === 'ghost',
+            'text-primary underline-offset-4 active:underline [@media(hover:hover)]:hover:underline': variant === 'link',
           },
           {
             'h-9 px-4 py-2': size === 'default',

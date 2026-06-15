@@ -1,14 +1,25 @@
 import React from 'react';
 import { Radio, RadioProps } from '@/components/ui/radio';
-import type { UiIdentifier } from '@/shared/ui-registry';
+import { type UiParam, resolveUiParam, validateRuntimeIdentity } from '@/shared/ui-registry';
 
 export interface UiRadioProps extends Omit<RadioProps, 'data-ui'> {
-  ui: UiIdentifier;
+  ui: UiParam;
 }
 
 const UiRadio = React.forwardRef<HTMLInputElement, UiRadioProps>(
   ({ ui, ...props }, ref) => {
-    return <Radio ref={ref} data-ui={ui} {...props} />;
+    const identity = resolveUiParam(ui);
+    validateRuntimeIdentity('UiRadio', ui, identity);
+
+    return (
+      <Radio
+        ref={ref}
+        data-ui-id={identity?.id}
+        data-ui-path={identity?.path}
+        data-ui-feature={identity?.feature}
+        {...props}
+      />
+    );
   }
 );
 UiRadio.displayName = 'UiRadio';

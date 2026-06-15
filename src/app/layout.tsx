@@ -1,9 +1,15 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import { I18nProvider } from "@/shared/i18n/core/provider";
 import { getDictionaryCached } from "@/shared/i18n/core/getDictionary";
 import { getLocale, getDirection } from "@/shared/i18n/utils/getLocale";
+
+const DevUiOverlay = process.env.NODE_ENV === 'development'
+  ? require('@/components/dev/DevUiOverlay').DevUiOverlay
+  : null;
+
+import { MaolProvider } from '@/providers/MaolProvider';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,6 +19,14 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+// Inter loaded locally via next/font — avoids CSP violations from Google Fonts CDN
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -52,14 +66,8 @@ export default async function RootLayout({
     <html
       lang={locale}
       dir={direction}
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} h-full antialiased`}
     >
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
-      </head>
       <body className="min-h-full flex flex-col">
         <I18nProvider
           initialLocale={locale}
@@ -68,6 +76,8 @@ export default async function RootLayout({
         >
           {children}
         </I18nProvider>
+        {DevUiOverlay && <DevUiOverlay />}
+        {process.env.NEXT_PUBLIC_MAOL_ENABLED === 'true' && <MaolProvider />}
       </body>
     </html>
   );

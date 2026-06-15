@@ -90,6 +90,17 @@
     "hero": {
       "primaryButton": "ابدأ الآن",
       "secondaryButton": "اقرأ المزيد"
+    },
+    "promo-banner": {
+      "bannerButton": "استكشف العقارات"
+    },
+    "curated-offers": {
+      "showMoreButton": "عرض المزيد",
+      "addToCartButton": "إضافة للسلة"
+    },
+    "categories-grid": {
+      "toggleButton": "تبديل المظهر",
+      "categoryButton": "اختر الفئة"
     }
   }
 }

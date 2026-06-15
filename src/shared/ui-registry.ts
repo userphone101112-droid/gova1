@@ -1,98 +1,99 @@
-/**
- * Centralized UI Registry
- * 
- * This is the single source of truth for all UI identifiers in the application.
- * Every interactive element MUST use an identifier from this registry.
- * 
- * Naming convention: page.section.component.element
- * Pattern: ^[a-z0-9-]+\.[a-z0-9-]+\.[a-z0-9-]+\.[a-z0-9-]+$
- * 
- * To add a new identifier:
- * 1. Add it to the appropriate section below
- * 2. Follow the naming convention strictly
- * 3. Ensure uniqueness (no duplicates allowed)
- * 4. The identifier will be automatically validated at build time
- */
+import { UI_SOURCE_INDEX, type UiSourceLocation } from './ui-source-index';
+export type { UiSourceLocation };
 
-// ============================================================================
-// AUTHENTICATION PAGE IDENTIFIERS
-// ============================================================================
-export const AUTH = {
-  LOGIN: {
-    FORM: {
-      SUBMIT_BUTTON: 'auth.login.form.submit-button' as const,
-      EMAIL_INPUT: 'auth.login.form.email-input' as const,
-      PASSWORD_INPUT: 'auth.login.form.password-input' as const,
-    },
-  },
-  REGISTER: {
-    FORM: {
-      SUBMIT_BUTTON: 'auth.register.form.submit-button' as const,
-      EMAIL_INPUT: 'auth.register.form.email-input' as const,
-      PASSWORD_INPUT: 'auth.register.form.password-input' as const,
-    },
-  },
-} as const;
+export interface UiIdentity {
+  readonly id: string;
+  readonly path: string;
+  readonly description: string;
+  readonly category: 'action' | 'input' | 'navigation' | 'display' | 'container';
+  readonly feature: string;
+  readonly version: string;
+  readonly createdAt: string;
+  readonly updatedAt: string;
+  readonly deprecated?: boolean;
+}
 
 // ============================================================================
 // HOME PAGE IDENTIFIERS
 // ============================================================================
 export const HOME = {
   LANGUAGE_SWITCHER: {
-    ENGLISH_BUTTON: 'home.language-switcher.buttons.english-button' as const,
-    ARABIC_BUTTON: 'home.language-switcher.buttons.arabic-button' as const,
+    ENGLISH_BUTTON: {
+      id: 'UI_HOME_LANG_ENGLISH',
+      path: 'home.language-switcher.buttons.english-button',
+      description: 'English language switcher button',
+      category: 'action',
+      feature: 'home',
+      version: '1.0.0',
+      createdAt: '2026-06-15',
+      updatedAt: '2026-06-15',
+    } as const,
+    ARABIC_BUTTON: {
+      id: 'UI_HOME_LANG_ARABIC',
+      path: 'home.language-switcher.buttons.arabic-button',
+      description: 'Arabic language switcher button',
+      category: 'action',
+      feature: 'home',
+      version: '1.0.0',
+      createdAt: '2026-06-15',
+      updatedAt: '2026-06-15',
+    } as const,
   },
-  HERO: {
-    CTA: {
-      PRIMARY_BUTTON: 'home.hero.cta.primary-button' as const,
-      SECONDARY_BUTTON: 'home.hero.cta.secondary-button' as const,
-    },
+  PROMO_BANNER: {
+    ACTION_BUTTON: {
+      id: 'UI_HOME_PROMO_BANNER_ACTION',
+      path: 'home.promo-banner.actions.banner-button',
+      description: 'Promo banner call-to-action button',
+      category: 'action',
+      feature: 'home',
+      version: '1.0.0',
+      createdAt: '2026-06-15',
+      updatedAt: '2026-06-15',
+    } as const,
   },
-} as const;
-
-// ============================================================================
-// DASHBOARD PAGE IDENTIFIERS
-// ============================================================================
-export const DASHBOARD = {
-  SIDEBAR: {
-    NAVIGATION: {
-      USERS_LINK: 'dashboard.sidebar.navigation.users-link' as const,
-      SETTINGS_LINK: 'dashboard.sidebar.navigation.settings-link' as const,
-      ANALYTICS_LINK: 'dashboard.sidebar.navigation.analytics-link' as const,
-    },
+  CURATED_OFFERS: {
+    SHOW_MORE: {
+      id: 'UI_HOME_CURATED_OFFERS_MORE',
+      path: 'home.curated-offers.actions.show-more-button',
+      description: 'Show more curated offers button',
+      category: 'action',
+      feature: 'home',
+      version: '1.0.0',
+      createdAt: '2026-06-15',
+      updatedAt: '2026-06-15',
+    } as const,
+    ADD_TO_CART: {
+      id: 'UI_HOME_CURATED_OFFERS_ADD_TO_CART',
+      path: 'home.curated-offers.actions.add-to-cart-button',
+      description: 'Add item to cart button',
+      category: 'action',
+      feature: 'home',
+      version: '1.0.0',
+      createdAt: '2026-06-15',
+      updatedAt: '2026-06-15',
+    } as const,
   },
-  HEADER: {
-    LOGOUT_BUTTON: 'dashboard.header.actions.logout-button' as const,
-    PROFILE_BUTTON: 'dashboard.header.actions.profile-button' as const,
-  },
-} as const;
-
-// ============================================================================
-// SETTINGS PAGE IDENTIFIERS
-// ============================================================================
-export const SETTINGS = {
-  LANGUAGE: {
-    SELECTOR: {
-      CURRENT_LANGUAGE: 'settings.language.selector.current-language' as const,
-    },
-  },
-  NOTIFICATIONS: {
+  CATEGORIES_GRID: {
     TOGGLE: {
-      EMAIL_NOTIFICATIONS: 'settings.notifications.toggle.email-notifications' as const,
-      PUSH_NOTIFICATIONS: 'settings.notifications.toggle.push-notifications' as const,
-    },
-  },
-} as const;
-
-// ============================================================================
-// CONTACT PAGE IDENTIFIERS
-// ============================================================================
-export const CONTACT = {
-  FORM: {
-    SUBMIT_BUTTON: 'contact.form.buttons.submit-button' as const,
-    EMAIL_INPUT: 'contact.form.inputs.email-input' as const,
-    SUBJECT_INPUT: 'contact.form.inputs.subject-input' as const,
-    MESSAGE_TEXTAREA: 'contact.form.inputs.message-textarea' as const,
+      id: 'UI_HOME_CATEGORIES_GRID_TOGGLE',
+      path: 'home.categories-grid.actions.toggle-button',
+      description: 'Toggle categories grid layout button',
+      category: 'action',
+      feature: 'home',
+      version: '1.0.0',
+      createdAt: '2026-06-15',
+      updatedAt: '2026-06-15',
+    } as const,
+    ITEM: {
+      id: 'UI_HOME_CATEGORIES_GRID_ITEM',
+      path: 'home.categories-grid.actions.category-button',
+      description: 'Select category button',
+      category: 'action',
+      feature: 'home',
+      version: '1.0.0',
+      createdAt: '2026-06-15',
+      updatedAt: '2026-06-15',
+    } as const,
   },
 } as const;
 
@@ -100,19 +101,16 @@ export const CONTACT = {
 // ERROR BOUNDARY IDENTIFIERS
 // ============================================================================
 export const ERROR_BOUNDARY = {
-  RELOAD_BUTTON: 'error-boundary.main.actions.reload-button' as const,
-} as const;
-
-// ============================================================================
-// SIGNUP PAGE IDENTIFIERS
-// ============================================================================
-export const SIGNUP = {
-  FORM: {
-    SUBMIT_BUTTON: 'signup.form.buttons.submit-button' as const,
-    EMAIL_INPUT: 'signup.form.inputs.email-input' as const,
-    PASSWORD_INPUT: 'signup.form.inputs.password-input' as const,
-    TERMS_CHECKBOX: 'signup.form.inputs.terms-checkbox' as const,
-  },
+  RELOAD_BUTTON: {
+    id: 'UI_ERROR_BOUNDARY_RELOAD',
+    path: 'error-boundary.main.actions.reload-button',
+    description: 'Reload button for crashed application state',
+    category: 'action',
+    feature: 'error-boundary',
+    version: '1.0.0',
+    createdAt: '2026-06-15',
+    updatedAt: '2026-06-15',
+  } as const,
 } as const;
 
 // ============================================================================
@@ -121,8 +119,26 @@ export const SIGNUP = {
 export const SPLASH = {
   MAINTENANCE: {
     FORM: {
-      PIN_INPUT: 'splash.maintenance.form.pin-input' as const,
-      SUBMIT_BUTTON: 'splash.maintenance.form.submit-button' as const,
+      PIN_INPUT: {
+        id: 'UI_SPLASH_MAINT_PIN',
+        path: 'splash.maintenance.form.pin-input',
+        description: 'Developer bypass PIN input',
+        category: 'input',
+        feature: 'splash',
+        version: '1.0.0',
+        createdAt: '2026-06-15',
+        updatedAt: '2026-06-15',
+      } as const,
+      SUBMIT_BUTTON: {
+        id: 'UI_SPLASH_MAINT_SUBMIT',
+        path: 'splash.maintenance.form.submit-button',
+        description: 'Bypass maintenance mode button',
+        category: 'action',
+        feature: 'splash',
+        version: '1.0.0',
+        createdAt: '2026-06-15',
+        updatedAt: '2026-06-15',
+      } as const,
     },
   },
 } as const;
@@ -133,23 +149,114 @@ export const SPLASH = {
 export const SHARED_LAYOUT = {
   HEADER: {
     MENU: {
-      MENU_BUTTON: 'shared-layout.header.menu.menu-button' as const,
+      MENU_BUTTON: {
+        id: 'UI_SHARED_HEADER_MENU',
+        path: 'shared-layout.header.menu.menu-button',
+        description: 'Toggle mobile menu button',
+        category: 'action',
+        feature: 'shared-layout',
+        version: '1.0.0',
+        createdAt: '2026-06-15',
+        updatedAt: '2026-06-15',
+      } as const,
     },
     BRAND: {
-      BRAND_LINK: 'shared-layout.header.brand.brand-link' as const,
+      BRAND_LINK: {
+        id: 'UI_SHARED_HEADER_BRAND_LINK',
+        path: 'shared-layout.header.brand.brand-link',
+        description: 'Brand logo home link',
+        category: 'navigation',
+        feature: 'shared-layout',
+        version: '1.0.0',
+        createdAt: '2026-06-15',
+        updatedAt: '2026-06-15',
+      } as const,
     },
     ACTIONS: {
-      SEARCH_BUTTON: 'shared-layout.header.actions.search-button' as const,
-      CART_BUTTON: 'shared-layout.header.actions.cart-button' as const,
+      SEARCH_BUTTON: {
+        id: 'UI_SHARED_HEADER_SEARCH_BUTTON',
+        path: 'shared-layout.header.actions.search-button',
+        description: 'Trigger search button',
+        category: 'action',
+        feature: 'shared-layout',
+        version: '1.0.0',
+        createdAt: '2026-06-15',
+        updatedAt: '2026-06-15',
+      } as const,
+      CART_BUTTON: {
+        id: 'UI_SHARED_HEADER_CART_BUTTON',
+        path: 'shared-layout.header.actions.cart-button',
+        description: 'Header shopping cart button',
+        category: 'action',
+        feature: 'shared-layout',
+        version: '1.0.0',
+        createdAt: '2026-06-15',
+        updatedAt: '2026-06-15',
+      } as const,
+      SEARCH_INPUT: {
+        id: 'UI_SHARED_HEADER_SEARCH_INPUT',
+        path: 'shared-layout.header.actions.search-input',
+        description: 'Desktop header search input field',
+        category: 'input',
+        feature: 'shared-layout',
+        version: '1.0.0',
+        createdAt: '2026-06-15',
+        updatedAt: '2026-06-15',
+      } as const,
     },
   },
   BOTTOM_NAV: {
     ITEMS: {
-      HOME_LINK: 'shared-layout.bottom-nav.items.home-link' as const,
-      NOTIFICATIONS_LINK: 'shared-layout.bottom-nav.items.notifications-link' as const,
-      FAVORITES_LINK: 'shared-layout.bottom-nav.items.favorites-link' as const,
-      ORDERS_LINK: 'shared-layout.bottom-nav.items.orders-link' as const,
-      PROFILE_LINK: 'shared-layout.bottom-nav.items.profile-link' as const,
+      HOME_LINK: {
+        id: 'UI_SHARED_BOTTOM_NAV_HOME',
+        path: 'shared-layout.bottom-nav.items.home-link',
+        description: 'Bottom navigation home link',
+        category: 'navigation',
+        feature: 'shared-layout',
+        version: '1.0.0',
+        createdAt: '2026-06-15',
+        updatedAt: '2026-06-15',
+      } as const,
+      NOTIFICATIONS_LINK: {
+        id: 'UI_SHARED_BOTTOM_NAV_NOTIFICATIONS',
+        path: 'shared-layout.bottom-nav.items.notifications-link',
+        description: 'Bottom navigation notifications link',
+        category: 'navigation',
+        feature: 'shared-layout',
+        version: '1.0.0',
+        createdAt: '2026-06-15',
+        updatedAt: '2026-06-15',
+      } as const,
+      FAVORITES_LINK: {
+        id: 'UI_SHARED_BOTTOM_NAV_FAVORITES',
+        path: 'shared-layout.bottom-nav.items.favorites-link',
+        description: 'Bottom navigation favorites link',
+        category: 'navigation',
+        feature: 'shared-layout',
+        version: '1.0.0',
+        createdAt: '2026-06-15',
+        updatedAt: '2026-06-15',
+      } as const,
+      ORDERS_LINK: {
+        id: 'UI_SHARED_BOTTOM_NAV_ORDERS',
+        path: 'shared-layout.bottom-nav.items.orders-link',
+        description: 'Bottom navigation orders link',
+        category: 'navigation',
+        feature: 'shared-layout',
+        version: '1.0.0',
+        createdAt: '2026-06-15',
+        updatedAt: '2026-06-15',
+      } as const,
+      PROFILE_LINK: {
+        id: 'UI_SHARED_BOTTOM_NAV_PROFILE',
+        path: 'shared-layout.bottom-nav.items.profile-link',
+        description: 'Bottom navigation profile link',
+        category: 'navigation',
+        feature: 'shared-layout',
+        version: '1.0.0',
+        createdAt: '2026-06-15',
+        updatedAt: '2026-06-15',
+      } as const,
     },
   },
 } as const;
@@ -158,48 +265,128 @@ export const SHARED_LAYOUT = {
 // REGISTRY VALIDATION
 // ============================================================================
 
-/**
- * All registered UI identifiers
- * This is used for validation and uniqueness checks
- */
 export const UI_REGISTRY = {
-  ...AUTH,
-  ...HOME,
-  ...DASHBOARD,
-  ...SETTINGS,
-  ...CONTACT,
-  ...ERROR_BOUNDARY,
-  ...SIGNUP,
-  ...SPLASH,
-  ...SHARED_LAYOUT,
+  HOME,
+  ERROR_BOUNDARY,
+  SPLASH,
+  SHARED_LAYOUT,
 } as const;
 
-function flattenObject(obj: any): string[] {
-  const result: string[] = [];
+function flattenObject(obj: any): any[] {
+  const result: any[] = [];
   function recurse(current: any) {
-    if (typeof current === 'string') {
-      result.push(current);
-    } else if (typeof current === 'object' && current !== null) {
-      Object.values(current).forEach(recurse);
+    if (typeof current === 'object' && current !== null) {
+      if ('id' in current && 'path' in current) {
+        result.push(current);
+      } else {
+        Object.values(current).forEach(recurse);
+      }
     }
   }
   recurse(obj);
   return result;
 }
 
-export const ALL_UI_IDENTIFIERS = flattenObject(UI_REGISTRY) as readonly string[];
+export const ALL_UI_IDENTITIES = [
+  ...flattenObject(HOME),
+  ...flattenObject(ERROR_BOUNDARY),
+  ...flattenObject(SPLASH),
+  ...flattenObject(SHARED_LAYOUT),
+] as readonly UiIdentity[];
+
+export const ALL_UI_IDENTIFIERS = ALL_UI_IDENTITIES.map((id) => id.path) as readonly string[];
 
 /**
- * Type for all valid UI identifiers
+ * Type for all valid UI identifiers (backward compatibility)
  */
 export type UiIdentifier = typeof ALL_UI_IDENTIFIERS[number];
+
+/**
+ * Type for UI identifier parameter (backward compatibility)
+ */
+export type UiParam = UiIdentifier | UiIdentity;
 
 /**
  * UI identifiers that do not require explicit bound translations (e.g., they use dynamic text or brand links).
  */
 export const NO_TRANSLATION_REQUIRED: readonly UiIdentifier[] = [
-  SHARED_LAYOUT.HEADER.BRAND.BRAND_LINK,
+  SHARED_LAYOUT.HEADER.BRAND.BRAND_LINK.path,
 ] as const;
+
+// ============================================================================
+// CENTRAL LOOKUP MAPS & HELPERS (PHASE 2)
+// ============================================================================
+
+export const UI_ID_MAP: Record<string, UiIdentity> = ALL_UI_IDENTITIES.reduce((acc, identity) => {
+  acc[identity.id] = identity;
+  return acc;
+}, {} as Record<string, UiIdentity>);
+
+export const UI_PATH_MAP: Record<string, UiIdentity> = ALL_UI_IDENTITIES.reduce((acc, identity) => {
+  acc[identity.path] = identity;
+  return acc;
+}, {} as Record<string, UiIdentity>);
+
+export const FEATURE_MAP: Record<string, UiIdentity[]> = ALL_UI_IDENTITIES.reduce((acc, identity) => {
+  if (!acc[identity.feature]) {
+    acc[identity.feature] = [];
+  }
+  acc[identity.feature].push(identity);
+  return acc;
+}, {} as Record<string, UiIdentity[]>);
+
+export function getUiIdentityById(id: string): UiIdentity | undefined {
+  return UI_ID_MAP[id];
+}
+
+export function getUiIdentityByPath(path: string): UiIdentity | undefined {
+  return UI_PATH_MAP[path];
+}
+
+export function isUiIdentity(obj: any): obj is UiIdentity {
+  return obj && typeof obj === 'object' && 'id' in obj && 'path' in obj;
+}
+
+export function resolveUiParam(param: UiParam): UiIdentity | undefined {
+  if (typeof param === 'string') {
+    if (process.env.NODE_ENV === 'development') {
+      console.warn(
+        `[UI Registry Deprecation] Legacy string-based UI identity "${param}" is deprecated. ` +
+        `Please use the registered registry object constant instead.`
+      );
+    }
+    const resolved = getUiIdentityByPath(param);
+    if (resolved && resolved.deprecated && process.env.NODE_ENV === 'development') {
+      console.warn(`[UI Registry Deprecation] UI Identity "${resolved.id}" is deprecated.`);
+    }
+    return resolved;
+  }
+  
+  if (param && param.deprecated && process.env.NODE_ENV === 'development') {
+    console.warn(`[UI Registry Deprecation] UI Identity "${param.id}" is deprecated.`);
+  }
+  return param;
+}
+
+export function getUiIdentity(param: UiParam): UiIdentity | undefined {
+  if (typeof param === 'string') {
+    return getUiIdentityByPath(param) || getUiIdentityById(param);
+  }
+  if (isUiIdentity(param)) {
+    return getUiIdentityById(param.id);
+  }
+  return undefined;
+}
+
+export function getUiIdentityByFeature(feature: string): UiIdentity[] {
+  return FEATURE_MAP[feature] || [];
+}
+
+export function resolveSourceFromIdentity(param: UiParam): UiSourceLocation | undefined {
+  const identity = getUiIdentity(param);
+  if (!identity) return undefined;
+  return UI_SOURCE_INDEX[identity.id];
+}
 
 /**
  * Validation regex for UI identifier naming convention
@@ -210,15 +397,15 @@ export const UI_IDENTIFIER_REGEX = /^[a-z0-9-]+\.[a-z0-9-]+\.[a-z0-9-]+\.[a-z0-9
 /**
  * Validate a UI identifier against the naming convention
  */
-export function isValidUiIdentifier(identifier: string): identifier is UiIdentifier {
+export function isValidUiIdentifier(identifier: string): boolean {
   return UI_IDENTIFIER_REGEX.test(identifier);
 }
 
 /**
  * Check if an identifier is registered in the registry
  */
-export function isRegisteredUiIdentifier(identifier: string): identifier is UiIdentifier {
-  return ALL_UI_IDENTIFIERS.includes(identifier as any);
+export function isRegisteredUiIdentifier(identifier: string): boolean {
+  return ALL_UI_IDENTIFIERS.includes(identifier);
 }
 
 /**
@@ -239,6 +426,68 @@ export function getDuplicateIdentifiers(): string[] {
 }
 
 /**
+ * Get all duplicate Stable IDs (should always return empty array)
+ */
+export function getDuplicateStableIds(): string[] {
+  const seen = new Set<string>();
+  const duplicates: string[] = [];
+  
+  ALL_UI_IDENTITIES.forEach((identity) => {
+    if (seen.has(identity.id)) {
+      duplicates.push(identity.id);
+    }
+    seen.add(identity.id);
+  });
+  
+  return duplicates;
+}
+
+/**
+ * Production-safe runtime validation helper for identified components.
+ * Warns in development mode only; does not affect production execution.
+ */
+export function validateRuntimeIdentity(
+  componentName: string,
+  ui: UiParam,
+  resolvedIdentity: UiIdentity | undefined
+): void {
+  if (process.env.NODE_ENV !== 'development') {
+    return;
+  }
+
+  // 1. Detect missing or invalid identity
+  if (!resolvedIdentity) {
+    console.error(
+      `[UI Registry Error] Unknown UI Identity.\n` +
+      ` - Component: ${componentName}\n` +
+      ` - Provided: ${JSON.stringify(ui)}\n` +
+      ` - Fix: Register this UI Identity in 'src/shared/ui-registry.ts' before using it.`
+    );
+    return;
+  }
+
+  // 2. Validate data-ui-path matches registry
+  const expectedId = typeof ui === 'object' && ui !== null ? ui.id : undefined;
+  if (expectedId && resolvedIdentity.id !== expectedId) {
+    console.error(
+      `[UI Registry Error] Broken UI Identity Mapping.\n` +
+      ` - Component: ${componentName}\n` +
+      ` - Path: "${resolvedIdentity.path}"\n` +
+      ` - Expected ID: "${resolvedIdentity.id}"\n` +
+      ` - Provided ID: "${expectedId}"\n` +
+      ` - Fix: Use the registered registry object constant instead of creating ad-hoc objects.`
+    );
+  }
+
+  // 3. Warn about deprecated identity
+  if (resolvedIdentity.deprecated) {
+    console.warn(
+      `[UI Registry Deprecation] UI Identity "${resolvedIdentity.id}" (path: "${resolvedIdentity.path}") is deprecated.`
+    );
+  }
+}
+
+/**
  * Validate the entire registry
  * Throws an error if validation fails
  */
@@ -246,7 +495,14 @@ export function validateRegistry(): void {
   const duplicates = getDuplicateIdentifiers();
   if (duplicates.length > 0) {
     throw new Error(
-      `Duplicate UI identifiers found in registry: ${duplicates.join(', ')}`
+      `Duplicate UI paths found in registry: ${duplicates.join(', ')}`
+    );
+  }
+
+  const duplicateIds = getDuplicateStableIds();
+  if (duplicateIds.length > 0) {
+    throw new Error(
+      `Duplicate UI Stable IDs found in registry: ${duplicateIds.join(', ')}`
     );
   }
   
@@ -256,7 +512,7 @@ export function validateRegistry(): void {
   
   if (invalidIdentifiers.length > 0) {
     throw new Error(
-      `Invalid UI identifiers found (must match pattern page.section.component.element): ${invalidIdentifiers.join(', ')}`
+      `Invalid UI paths found (must match pattern page.section.component.element): ${invalidIdentifiers.join(', ')}`
     );
   }
 }

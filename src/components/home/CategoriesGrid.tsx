@@ -2,6 +2,8 @@
 
 import { useTranslation } from '@/shared/i18n/core/useTranslation';
 import { Store, ChevronLeft, ChevronRight } from 'lucide-react';
+import { UiButton } from '@/components/ui';
+import { HOME } from '@/shared/ui-registry';
 
 const CATEGORIES = [
   {
@@ -84,7 +86,8 @@ export function CategoriesGrid() {
             {t('home.categories.sectionTitle')}
           </h3>
         </div>
-        <button
+        <UiButton
+          ui={HOME.CATEGORIES_GRID.TOGGLE}
           id="view-all-categories"
           className="flex items-center gap-1 px-4 py-1.5 rounded-full border transition-colors active:bg-surface-container"
           style={{
@@ -97,13 +100,14 @@ export function CategoriesGrid() {
         >
           <span>{t('home.categories.viewAll')}</span>
           {locale === 'ar' ? <ChevronLeft className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}
-        </button>
+        </UiButton>
       </div>
 
       {/* Grid responsive column count */}
       <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-4 sm:gap-6 pb-2">
         {CATEGORIES.map((cat) => (
-          <button
+          <UiButton
+            ui={HOME.CATEGORIES_GRID.ITEM}
             key={cat.id}
             id={`category-${cat.id}`}
             className="flex flex-col items-center gap-2 group"
@@ -131,7 +135,7 @@ export function CategoriesGrid() {
             >
               {t(cat.nameKey)}
             </span>
-          </button>
+          </UiButton>
         ))}
       </div>
     </section>

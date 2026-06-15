@@ -1,14 +1,25 @@
 import React from 'react';
 import { Checkbox, CheckboxProps } from '@/components/ui/checkbox';
-import type { UiIdentifier } from '@/shared/ui-registry';
+import { type UiParam, resolveUiParam, validateRuntimeIdentity } from '@/shared/ui-registry';
 
 export interface UiCheckboxProps extends Omit<CheckboxProps, 'data-ui'> {
-  ui: UiIdentifier;
+  ui: UiParam;
 }
 
 const UiCheckbox = React.forwardRef<HTMLInputElement, UiCheckboxProps>(
   ({ ui, ...props }, ref) => {
-    return <Checkbox ref={ref} data-ui={ui} {...props} />;
+    const identity = resolveUiParam(ui);
+    validateRuntimeIdentity('UiCheckbox', ui, identity);
+
+    return (
+      <Checkbox
+        ref={ref}
+        data-ui-id={identity?.id}
+        data-ui-path={identity?.path}
+        data-ui-feature={identity?.feature}
+        {...props}
+      />
+    );
   }
 );
 UiCheckbox.displayName = 'UiCheckbox';

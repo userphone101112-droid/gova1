@@ -1,14 +1,25 @@
 import React from 'react';
 import { Input, InputProps } from '@/components/ui/input';
-import type { UiIdentifier } from '@/shared/ui-registry';
+import { type UiParam, resolveUiParam, validateRuntimeIdentity } from '@/shared/ui-registry';
 
 export interface UiInputProps extends Omit<InputProps, 'data-ui'> {
-  ui: UiIdentifier;
+  ui: UiParam;
 }
 
 const UiInput = React.forwardRef<HTMLInputElement, UiInputProps>(
   ({ ui, ...props }, ref) => {
-    return <Input ref={ref} data-ui={ui} {...props} />;
+    const identity = resolveUiParam(ui);
+    validateRuntimeIdentity('UiInput', ui, identity);
+
+    return (
+      <Input
+        ref={ref}
+        data-ui-id={identity?.id}
+        data-ui-path={identity?.path}
+        data-ui-feature={identity?.feature}
+        {...props}
+      />
+    );
   }
 );
 UiInput.displayName = 'UiInput';

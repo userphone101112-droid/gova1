@@ -4,7 +4,8 @@
       "menuButton": "القائمة",
       "searchButton": "بحث",
       "cartButton": "سلة التسوق",
-      "brandLink": "سوق GoVa"
+      "brandLink": "سوق GoVa",
+      "searchInput": "البحث"
     },
     "bottom-nav": {
       "homeLink": "الرئيسية",

@@ -2,6 +2,8 @@
 
 import { Heart, ShoppingCart, Tag } from 'lucide-react';
 import { useTranslation } from '@/shared/i18n/core/useTranslation';
+import { UiButton } from '@/components/ui';
+import { HOME } from '@/shared/ui-registry';
 
 const PRODUCTS = [
   {
@@ -87,7 +89,8 @@ export function CuratedOffers() {
                 alt={t(p.titleKey)}
                 className="w-full h-full object-cover transition-transform active:scale-110"
               />
-              <button
+              <UiButton
+                ui={HOME.CURATED_OFFERS.ADD_TO_CART}
                 id={p.favId}
                 className="absolute top-2 start-2 w-8 h-8 rounded-full bg-white/90 backdrop-blur flex items-center justify-center shadow-sm transition-transform active:scale-90"
                 aria-label={t('home.curated.addToFavorites')}
@@ -97,7 +100,7 @@ export function CuratedOffers() {
                   size={18}
                   fill={p.favFilled ? 'currentColor' : 'none'}
                 />
-              </button>
+              </UiButton>
             </div>
 
             <div className="p-3 space-y-1">
@@ -111,18 +114,35 @@ export function CuratedOffers() {
                 <span className="text-base font-bold" style={{ color: 'var(--gova-google-blue)' }}>
                   {t(p.priceKey)}
                 </span>
-                <button
+                <UiButton
+                  ui={HOME.CURATED_OFFERS.ADD_TO_CART}
                   id={p.addId}
                   className="w-8 h-8 rounded-lg flex items-center justify-center transition-transform active:scale-90"
                   style={{ background: 'var(--gova-google-blue)', color: '#fff' }}
                   aria-label={t('home.curated.addToCart')}
                 >
                   <ShoppingCart size={18} />
-                </button>
+                </UiButton>
               </div>
             </div>
           </article>
         ))}
+      </div>
+
+      {/* Show More Button */}
+      <div className="flex justify-center pt-2">
+        <UiButton
+          ui={HOME.CURATED_OFFERS.SHOW_MORE}
+          id="curated-offers-show-more"
+          className="px-6 py-2 rounded-full font-bold text-sm border transition-transform active:scale-95"
+          style={{
+            background: 'var(--gova-surface-container-low)',
+            borderColor: 'rgba(195,198,213,0.30)',
+            color: 'var(--gova-google-blue)',
+          }}
+        >
+          {t('home.curated-offers.showMoreButton')}
+        </UiButton>
       </div>
     </section>
   );

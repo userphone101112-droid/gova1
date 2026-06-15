@@ -1,41 +1,47 @@
-import { readFileSync, readdirSync, existsSync } from 'fs';
+import { readFileSync, readdirSync, existsSync, writeFileSync } from 'fs';
 import { join } from 'path';
 import { 
   generateTranslationKeyFromUi,
   extractFeatureFromUiIdentifier
 } from '../src/shared/unified-ui-i18n/registry-binding';
 import {
-  AUTH,
   HOME,
-  DASHBOARD,
-  SETTINGS,
-  CONTACT,
   ERROR_BOUNDARY,
-  SIGNUP,
   SPLASH,
   SHARED_LAYOUT,
   ALL_UI_IDENTIFIERS,
-  NO_TRANSLATION_REQUIRED
+  NO_TRANSLATION_REQUIRED,
+  ALL_UI_IDENTITIES
 } from '../src/shared/ui-registry';
 
 const REGISTRY_SOURCES = {
-  AUTH,
   HOME,
-  DASHBOARD,
-  SETTINGS,
-  CONTACT,
   ERROR_BOUNDARY,
-  SIGNUP,
   SPLASH,
   SHARED_LAYOUT,
 };
+
+const sourceMappings: Record<string, any> = {};
+
+function getComponentName(content: string, filePath: string): string {
+  const exportFuncMatch = content.match(/export\s+function\s+([A-Za-z0-9_]+)/);
+  if (exportFuncMatch) return exportFuncMatch[1];
+  const exportConstMatch = content.match(/export\s+const\s+([A-Za-z0-9_]+)/);
+  if (exportConstMatch) return exportConstMatch[1];
+  const base = filePath.split(/[/\\]/).pop() || '';
+  return base.replace(/\.(tsx|ts)$/, '');
+}
 
 function getReferenceVariants(sources: Record<string, any>): Record<string, string[]> {
   const map: Record<string, string[]> = {};
   const leafCounts: Record<string, number> = {};
 
+  function isIdentity(obj: any): boolean {
+    return obj && typeof obj === 'object' && 'id' in obj && 'path' in obj;
+  }
+
   function countLeaves(current: any, leaf: string) {
-    if (typeof current === 'string') {
+    if (isIdentity(current)) {
       leafCounts[leaf] = (leafCounts[leaf] || 0) + 1;
     } else if (typeof current === 'object' && current !== null) {
       for (const [key, value] of Object.entries(current)) {
@@ -48,11 +54,12 @@ function getReferenceVariants(sources: Record<string, any>): Record<string, stri
   }
 
   function traverse(current: any, path: string[]) {
-    if (typeof current === 'string') {
+    if (isIdentity(current)) {
       const leaf = path[path.length - 1];
       const fullPath = path.join('.');
+      const value = current.path;
       const variants = [
-        current,
+        value,
         fullPath,
       ];
       if (leafCounts[leaf] === 1) {
@@ -61,7 +68,7 @@ function getReferenceVariants(sources: Record<string, any>): Record<string, stri
         variants.push(`"${leaf}"`);
         variants.push(`\`${leaf}\``);
       }
-      map[current] = [...new Set(variants)];
+      map[value] = [...new Set(variants)];
     } else if (typeof current === 'object' && current !== null) {
       for (const [key, value] of Object.entries(current)) {
         traverse(value, [...path, key]);
@@ -105,6 +112,7 @@ interface ComponentUsageResult {
   uiUsageByFile: Record<string, string[]>;
   translationUsageByFile: Record<string, string[]>;
   hardcodedText: Array<{ file: string; line: number; text: string }>;
+  strictViolations: string[];
 }
 
 interface BindingMatrix {
@@ -287,6 +295,7 @@ function scanComponentUsage(): ComponentUsageResult {
   const uiUsageByFile: Record<string, string[]> = {};
   const translationUsageByFile: Record<string, string[]> = {};
   const hardcodedText: Array<{ file: string; line: number; text: string }> = [];
+  const strictViolations: string[] = [];
   
   // Scan all TypeScript and TSX files
   scanDirectory(srcPath, {
@@ -295,11 +304,13 @@ function scanComponentUsage(): ComponentUsageResult {
     uiUsageByFile,
     translationUsageByFile,
     hardcodedText,
+    strictViolations,
   });
   
   console.log(`Found ${usedUiIdentifiers.size} used UI identifiers`);
   console.log(`Found ${usedTranslationKeys.size} used translation keys`);
   console.log(`Found ${hardcodedText.length} hardcoded text instances`);
+  console.log(`Found ${strictViolations.length} strict UI violations`);
   
   return {
     usedUiIdentifiers,
@@ -307,6 +318,7 @@ function scanComponentUsage(): ComponentUsageResult {
     uiUsageByFile,
     translationUsageByFile,
     hardcodedText,
+    strictViolations,
   };
 }
 
@@ -334,7 +346,7 @@ function scanDirectory(
       if (item.name.endsWith('.d.ts') || item.name.endsWith('.test.ts') || item.name.endsWith('.spec.ts') || item.name.endsWith('.test.tsx') || item.name.endsWith('.spec.tsx')) {
         continue;
       }
-      if (item.name === 'ui.ts' || item.name === 'ui-registry.ts' || item.name === 'registry-binding.ts') {
+      if (item.name === 'ui.ts' || item.name === 'ui-registry.ts' || item.name === 'registry-binding.ts' || item.name === 'ui-source-index.ts' || item.name === 'ui-test-helpers.ts') {
         continue;
       }
       scanFile(fullPath, state);
@@ -358,6 +370,30 @@ function scanFile(filePath: string, state: ComponentUsageResult): void {
           state.uiUsageByFile[filePath] = [];
         }
         state.uiUsageByFile[filePath].push(identifier);
+
+        // Phase 3: Add to source mapping index
+        const identity = ALL_UI_IDENTITIES.find(id => id.path === identifier);
+        if (identity) {
+          const relativePath = filePath.replace(process.cwd(), '').replace(/\\/g, '/');
+          const componentName = getComponentName(content, filePath);
+          
+          let sourceLine = 1;
+          for (let i = 0; i < lines.length; i++) {
+            if (variants.some(variant => lines[i].includes(variant))) {
+              sourceLine = i + 1;
+              break;
+            }
+          }
+
+          sourceMappings[identity.id] = {
+            id: identity.id,
+            path: identity.path,
+            sourceFile: relativePath,
+            sourceComponent: componentName,
+            sourceLine,
+            feature: identity.feature
+          };
+        }
       }
     });
     
@@ -389,6 +425,57 @@ function scanFile(filePath: string, state: ComponentUsageResult): void {
           });
         }
       }
+    }
+
+    // Strict coverage checks:
+    let idx = 0;
+    while (true) {
+      const sliceContent = content.slice(idx);
+      const startMatch = sliceContent.match(/<(UiButton|UiInput|UiLink|UiCheckbox|UiRadio|UiSelect|UiSwitch|UiTextarea)\b/);
+      if (!startMatch || startMatch.index === undefined) break;
+
+      const tagStartIdx = idx + startMatch.index;
+      const componentName = startMatch[1];
+      
+      // Find the end of the tag '>' taking braces into account
+      let braceCount = 0;
+      let tagEndIdx = -1;
+      for (let i = tagStartIdx; i < content.length; i++) {
+        const char = content[i];
+        if (char === '{') braceCount++;
+        else if (char === '}') braceCount--;
+        else if (char === '>' && braceCount === 0) {
+          tagEndIdx = i;
+          break;
+        }
+      }
+
+      if (tagEndIdx === -1) {
+        idx = tagStartIdx + 1;
+        continue;
+      }
+
+      const tagContent = content.slice(tagStartIdx, tagEndIdx + 1);
+      const relativePath = filePath.replace(process.cwd(), '').replace(/\\/g, '/');
+      let lineNo = content.slice(0, tagStartIdx).split('\n').length;
+
+      // 1. Check if 'ui' prop is missing
+      if (!/\bui\s*=/g.test(tagContent)) {
+        state.strictViolations.push(
+          `Strict Coverage Violation: Component <${componentName}> in file "${relativePath}:${lineNo}" is missing the mandatory "ui" prop.`
+        );
+      } else {
+        // 2. Check if 'ui' prop is a string literal (e.g. ui="string" or ui={'string'})
+        const stringUiMatch = tagContent.match(/\bui\s*=\s*(?:["']([^"']+)["']|\{\s*["']([^"']+)["']\s*\})/);
+        if (stringUiMatch) {
+          const rawStringValue = stringUiMatch[1] || stringUiMatch[2];
+          state.strictViolations.push(
+            `Strict Coverage Violation: Component <${componentName}> in file "${relativePath}:${lineNo}" uses deprecated string-based ui prop: "${rawStringValue}". You must use a registered registry object reference.`
+          );
+        }
+      }
+
+      idx = tagEndIdx + 1;
     }
   } catch (error) {
     console.error(`Error scanning ${filePath}:`, error);
@@ -563,45 +650,51 @@ function calculateOverallResult(
   const errors: string[] = [];
   const warnings: string[] = [];
   let score = 100;
-  
-  // Check for missing language pairs
+
+  // Check strict UI violations — HARD FAILURE: build must stop
+  if (usageResult.strictViolations && usageResult.strictViolations.length > 0) {
+    usageResult.strictViolations.forEach(violation => errors.push(violation));
+    score -= 20;
+  }
+
+  // Check for missing language pairs — HARD FAILURE
   if (translationResult.missingLanguagePairs.length > 0) {
     errors.push(`Missing language pairs: ${translationResult.missingLanguagePairs.join(', ')}`);
     score -= 10;
   }
-  
-  // Check for orphan UI identifiers
-  if (orphanResult.orphanUiIdentifiers.length > 0) {
-    warnings.push(`Orphan UI identifiers: ${orphanResult.orphanUiIdentifiers.length} found`);
-    score -= 5;
-  }
-  
-  // Check for orphan translations
-  if (orphanResult.orphanTranslations.length > 0) {
-    warnings.push(`Orphan translations: ${orphanResult.orphanTranslations.length} found`);
-    score -= 5;
-  }
-  
-  // Check for missing bindings
+
+  // Check for missing bindings — HARD FAILURE (UI identity without translation)
   if (orphanResult.missingBindings.length > 0) {
     errors.push(`Missing bindings: ${orphanResult.missingBindings.length} UI identifiers without translations`);
     score -= 15;
   }
-  
-  // Check for cross-feature violations
+
+  // Check for cross-feature violations — HARD FAILURE
   if (orphanResult.crossFeatureViolations.length > 0) {
     errors.push(`Cross-feature violations: ${orphanResult.crossFeatureViolations.length} found`);
     score -= 20;
   }
-  
-  // Check for hardcoded text
-  if (usageResult.hardcodedText.length > 0) {
-    errors.push(`Hardcoded text: ${usageResult.hardcodedText.length} instances found`);
-    score -= 10;
+
+  // Orphan UI identifiers — WARNING only (registered but unused; expected during migration)
+  if (orphanResult.orphanUiIdentifiers.length > 0) {
+    warnings.push(`Orphan UI identifiers: ${orphanResult.orphanUiIdentifiers.length} found (registered but not used in code yet)`);
+    score -= 2;
   }
-  
+
+  // Orphan translations — WARNING only (features not yet migrated to UI identity platform)
+  if (orphanResult.orphanTranslations.length > 0) {
+    warnings.push(`Orphan translations: ${orphanResult.orphanTranslations.length} found (features pending UI identity migration)`);
+    // No score deduction — migration is in progress
+  }
+
+  // Hardcoded text — WARNING only (may be intentional brand/icon text)
+  if (usageResult.hardcodedText.length > 0) {
+    warnings.push(`Hardcoded text: ${usageResult.hardcodedText.length} instance(s) found — review if intentional`);
+    score -= 2;
+  }
+
   const pass = errors.length === 0 && score >= 70;
-  
+
   return {
     isValid: errors.length === 0,
     errors,
@@ -641,11 +734,110 @@ function main() {
     
     // Generate report
     generateReport(result);
+
+    // Phase 3: Write source index file
+    const sourceIndexPath = join(process.cwd(), 'src', 'shared', 'ui-source-index.ts');
+    const indexContent = `/**
+ * Automatically generated by audit-unified-ui-i18n.ts.
+ * Do not edit this file manually.
+ */
+
+export interface UiSourceLocation {
+  id: string;
+  path: string;
+  sourceFile: string;
+  sourceComponent: string;
+  sourceLine: number;
+  feature: string;
+}
+
+export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = ${JSON.stringify(sourceMappings, null, 2)};
+`;
+    writeFileSync(sourceIndexPath, indexContent, 'utf-8');
+    console.log(`📄 Generated source index: ${sourceIndexPath}`);
+
+    // Phase 6: Generate identity-audit.md
+    const identityErrors: string[] = [];
+    const identityWarnings: string[] = [];
+
+    // Check duplicate Stable IDs
+    const seenIds = new Set<string>();
+    const duplicateIds = new Set<string>();
+    ALL_UI_IDENTITIES.forEach(id => {
+      if (seenIds.has(id.id)) duplicateIds.add(id.id);
+      seenIds.add(id.id);
+    });
+    if (duplicateIds.size > 0) {
+      identityErrors.push(`Duplicate Stable IDs found in registry: ${Array.from(duplicateIds).join(', ')}`);
+    }
+
+    // Check duplicate Paths
+    const seenPaths = new Set<string>();
+    const duplicatePaths = new Set<string>();
+    ALL_UI_IDENTITIES.forEach(id => {
+      if (seenPaths.has(id.path)) duplicatePaths.add(id.path);
+      seenPaths.add(id.path);
+    });
+    if (duplicatePaths.size > 0) {
+      identityErrors.push(`Duplicate Paths found in registry: ${Array.from(duplicatePaths).join(', ')}`);
+    }
+
+    // Check metadata validity
+    const validCategories = ['action', 'input', 'navigation', 'display', 'container'];
+    ALL_UI_IDENTITIES.forEach(id => {
+      if (!id.id) {
+        identityErrors.push(`UI Identity path "${id.path}" has missing or empty Stable ID.`);
+      }
+      if (!id.description) {
+        identityErrors.push(`UI Identity "${id.id}" has missing or empty description.`);
+      }
+      if (!id.feature) {
+        identityErrors.push(`UI Identity "${id.id}" has missing or empty feature ownership.`);
+      }
+      if (!id.category || !validCategories.includes(id.category)) {
+        identityErrors.push(`UI Identity "${id.id}" has invalid category: "${id.category}". Valid categories are: ${validCategories.join(', ')}`);
+      }
+    });
+
+    // Check Orphans (unused IDs)
+    const orphansList: string[] = [];
+    ALL_UI_IDENTITIES.forEach(id => {
+      if (!sourceMappings[id.id]) {
+        orphansList.push(id.id);
+        identityWarnings.push(`Orphan UI Identity: "${id.id}" (registered but not used in code).`);
+      }
+    });
+
+    const identityAuditReport = `# UI Identity Platform Audit Report
+
+Generated: ${new Date().toISOString()}
+
+## Summary
+- Total Registered Identities: ${ALL_UI_IDENTITIES.length}
+- Mapped to Code: ${Object.keys(sourceMappings).length}
+- Orphan/Unused Identities: ${orphansList.length}
+- Status: ${identityErrors.length === 0 ? '✅ PASS' : '❌ FAIL'}
+
+## Errors (${identityErrors.length})
+${identityErrors.length > 0 ? identityErrors.map(e => `- 🔴 ${e}`).join('\n') : '- No identity errors found.'}
+
+## Warnings (${identityWarnings.length})
+${identityWarnings.length > 0 ? identityWarnings.map(w => `- 🟡 ${w}`).join('\n') : '- No identity warnings found.'}
+
+## Mapped Source Registry
+| Stable ID | Path | Feature | Source File | Component | Line |
+|-----------|------|---------|-------------|-----------|------|
+${Object.values(sourceMappings).map((m: any) => `| \`${m.id}\` | \`${m.path}\` | \`${m.feature}\` | [${m.sourceFile}](file:///${join(process.cwd(), m.sourceFile).replace(/\\/g, '/')}) | \`${m.sourceComponent}\` | \`${m.sourceLine}\` |`).join('\n')}
+`;
+
+    const identityReportPath = join(process.cwd(), 'docs', 'audits', 'identity-audit.md');
+    writeFileSync(identityReportPath, identityAuditReport, 'utf-8');
+    console.log(`📄 Generated identity audit report: ${identityReportPath}`);
     
-    console.log(`\n${overall.pass ? '✅ AUDIT PASSED' : '❌ AUDIT FAILED'}`);
+    console.log(`\n${overall.pass && identityErrors.length === 0 ? '✅ AUDIT PASSED' : '❌ AUDIT FAILED'}`);
     console.log(`Score: ${overall.score}/100`);
     
-    if (!overall.pass) {
+    if (!overall.pass || identityErrors.length > 0 || identityWarnings.length > 0) {
       process.exit(1);
     }
   } catch (error) {

@@ -4,7 +4,8 @@
       "menuButton": "Menu",
       "searchButton": "Search",
       "cartButton": "Shopping Cart",
-      "brandLink": "GoVa Market"
+      "brandLink": "GoVa Market",
+      "searchInput": "Search"
     },
     "bottom-nav": {
       "homeLink": "Home",
