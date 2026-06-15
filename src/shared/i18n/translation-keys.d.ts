@@ -212,6 +212,7 @@ export type sharedLayoutTranslationKey =
   | 'shared-layout.header.menuButton'
   | 'shared-layout.header.searchButton'
   | 'shared-layout.header.cartButton'
+  | 'shared-layout.header.brandLink'
   | 'shared-layout.bottom-nav.homeLink'
   | 'shared-layout.bottom-nav.notificationsLink'
   | 'shared-layout.bottom-nav.favoritesLink'

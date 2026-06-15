@@ -135,6 +135,9 @@ export const SHARED_LAYOUT = {
     MENU: {
       MENU_BUTTON: 'shared-layout.header.menu.menu-button' as const,
     },
+    BRAND: {
+      BRAND_LINK: 'shared-layout.header.brand.brand-link' as const,
+    },
     ACTIONS: {
       SEARCH_BUTTON: 'shared-layout.header.actions.search-button' as const,
       CART_BUTTON: 'shared-layout.header.actions.cart-button' as const,

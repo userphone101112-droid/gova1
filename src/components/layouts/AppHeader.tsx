@@ -3,15 +3,7 @@
 import { useTranslation } from '@/shared/i18n/core/useTranslation';
 import { UiButton, UiLink } from '@/components/ui';
 import { SHARED_LAYOUT } from '@/shared/ui-registry';
-import { Menu, Search, ShoppingCart, Home, Bell, Heart, Receipt, User } from 'lucide-react';
-
-const DESKTOP_NAV_ITEMS = [
-  { key: 'home',          icon: Home,          tKey: 'navigation.home',          id: 'desktop-nav-home',          registryKey: 'HOME_LINK' },
-  { key: 'notifications', icon: Bell,          tKey: 'navigation.notifications', id: 'desktop-nav-notifications', registryKey: 'NOTIFICATIONS_LINK' },
-  { key: 'favorites',     icon: Heart,         tKey: 'navigation.favorites',     id: 'desktop-nav-favorites',     registryKey: 'FAVORITES_LINK' },
-  { key: 'orders',        icon: Receipt,       tKey: 'navigation.orders',        id: 'desktop-nav-orders',        registryKey: 'ORDERS_LINK' },
-  { key: 'profile',       icon: User,          tKey: 'navigation.profile',       id: 'desktop-nav-profile',       registryKey: 'PROFILE_LINK' },
-] as const;
+import { Menu, Search, ShoppingCart } from 'lucide-react';
 
 export function AppHeader() {
   const { t } = useTranslation();
@@ -45,13 +37,9 @@ export function AppHeader() {
             <Menu className="w-5 h-5" />
           </UiButton>
           <UiLink
-            ui={SHARED_LAYOUT.BOTTOM_NAV.ITEMS.HOME_LINK}
+            ui={SHARED_LAYOUT.HEADER.BRAND.BRAND_LINK}
             id="header-brand-link"
-            href="#"
-            onClick={(e) => {
-              e.preventDefault();
-              window.location.href = '/home';
-            }}
+            href="/home"
             className="font-bold transition-all active:scale-95 flex items-center"
             style={{
               color: 'var(--gova-primary)',
@@ -65,30 +53,6 @@ export function AppHeader() {
             {t('navigation.brandTitle')}
           </UiLink>
         </div>
-
-        {/* Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center gap-2">
-          {DESKTOP_NAV_ITEMS.map(({ key, icon: Icon, tKey, id, registryKey }) => (
-            <UiLink
-              key={key}
-              ui={SHARED_LAYOUT.BOTTOM_NAV.ITEMS[registryKey]}
-              id={id}
-              href="#"
-              className="flex items-center gap-1.5 py-1.5 px-3 rounded-full transition-all active:scale-95 text-sm font-semibold hover:bg-surface-container"
-              style={{
-                color: 'var(--gova-on-surface-variant)',
-                textDecoration: 'none',
-              }}
-              onClick={(e) => {
-                e.preventDefault();
-                window.location.href = key === 'home' ? '/home' : '#';
-              }}
-            >
-              <Icon className="w-4 h-4" />
-              <span>{t(tKey)}</span>
-            </UiLink>
-          ))}
-        </nav>
 
         {/* Actions & Search */}
         <div className="flex items-center gap-2">
@@ -108,7 +72,7 @@ export function AppHeader() {
             id="header-search-button"
             variant="ghost"
             size="icon"
-            className="w-10 h-10 flex md:hidden items-center justify-center rounded-full transition-colors active:bg-surface-container"
+            className="w-10 h-10 flex items-center justify-center rounded-full transition-colors active:bg-surface-container"
             aria-label={t('navigation.search')}
             style={{ color: 'var(--gova-on-surface-variant)' }}
           >

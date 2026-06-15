@@ -1,6 +1,6 @@
 # Unified UI + i18n Audit Report
 
-Generated: 2026-06-14T15:34:30.730Z
+Generated: 2026-06-15T01:12:06.815Z
 
 ## Executive Summary
 
@@ -9,12 +9,12 @@ Generated: 2026-06-14T15:34:30.730Z
 
 ## Phase 1: UI Registry Scan
 
-- Total UI Identifiers: 37
+- Total UI Identifiers: 38
 - Features: auth, home, dashboard, settings, contact, error-boundary, signup, splash, shared-layout
 
 ## Phase 2: Translation Scan
 
-- Total Translation Keys: 196
+- Total Translation Keys: 197
 - Features: auth, common, contact, dashboard, error-boundary, home, settings, shared-layout, signup, splash
 
 ## Phase 3: Component Usage
@@ -35,13 +35,13 @@ Generated: 2026-06-14T15:34:30.730Z
 | error-boundary | 1 | 1 | 1 | 0 | 0 |
 | signup | 4 | 4 | 4 | 0 | 0 |
 | splash | 2 | 6 | 2 | 0 | 0 |
-| shared-layout | 8 | 8 | 8 | 0 | 0 |
+| shared-layout | 9 | 9 | 9 | 0 | 0 |
 | common | 0 | 51 | 0 | 0 | 0 |
 
 ## Phase 5: Orphan Detection
 
-- Orphan UI Identifiers: 37
-- Orphan Translations: 167
+- Orphan UI Identifiers: 38
+- Orphan Translations: 168
 - Missing Bindings: 0
 - Cross-Feature Violations: 0
 
@@ -51,5 +51,5 @@ None
 
 ## Warnings
 
-- Orphan UI identifiers: 37 found
-- Orphan translations: 167 found
+- Orphan UI identifiers: 38 found
+- Orphan translations: 168 found

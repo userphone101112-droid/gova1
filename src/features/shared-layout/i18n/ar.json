@@ -3,7 +3,8 @@
     "header": {
       "menuButton": "القائمة",
       "searchButton": "بحث",
-      "cartButton": "سلة التسوق"
+      "cartButton": "سلة التسوق",
+      "brandLink": "سوق GoVa"
     },
     "bottom-nav": {
       "homeLink": "الرئيسية",

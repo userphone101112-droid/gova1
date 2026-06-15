@@ -3,7 +3,8 @@
     "header": {
       "menuButton": "Menu",
       "searchButton": "Search",
-      "cartButton": "Shopping Cart"
+      "cartButton": "Shopping Cart",
+      "brandLink": "GoVa Market"
     },
     "bottom-nav": {
       "homeLink": "Home",
