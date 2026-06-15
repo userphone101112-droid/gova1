@@ -1,15 +1,15 @@
 # Unified UI + i18n Audit Report
 
-Generated: 2026-06-15T04:23:38.408Z
+Generated: 2026-06-15T04:35:07.313Z
 
 ## Executive Summary
 
-**Overall Result: ✅ PASS**
-**Score: 98/100**
+**Overall Result: ❌ FAIL**
+**Score: 83/100**
 
 ## Phase 1: UI Registry Scan
 
-- Total UI Identifiers: 20
+- Total UI Identifiers: 39
 - Features: home, error-boundary, splash, shared-layout
 
 ## Phase 2: Translation Scan
@@ -19,7 +19,7 @@ Generated: 2026-06-15T04:23:38.408Z
 
 ## Phase 3: Component Usage
 
-- Used UI Identifiers: 20
+- Used UI Identifiers: 39
 - Used Translation Keys: 45
 - Hardcoded Text Instances: 1
 
@@ -27,10 +27,10 @@ Generated: 2026-06-15T04:23:38.408Z
 
 | Feature | UI Elements | Translation Keys | Bindings | Orphans UI | Orphans Translation |
 |----------|-------------|------------------|----------|------------|-------------------|
-| home | 7 | 74 | 7 | 0 | 0 |
-| error-boundary | 1 | 1 | 1 | 0 | 0 |
-| splash | 2 | 6 | 2 | 0 | 0 |
-| shared-layout | 10 | 10 | 10 | 0 | 0 |
+| home | 16 | 74 | 7 | 9 | 0 |
+| error-boundary | 4 | 1 | 1 | 3 | 0 |
+| splash | 7 | 6 | 2 | 5 | 0 |
+| shared-layout | 12 | 10 | 10 | 2 | 0 |
 | auth | 0 | 25 | 0 | 0 | 25 |
 | common | 0 | 51 | 0 | 0 | 0 |
 | contact | 0 | 4 | 0 | 0 | 4 |
@@ -42,12 +42,12 @@ Generated: 2026-06-15T04:23:38.408Z
 
 - Orphan UI Identifiers: 0
 - Orphan Translations: 140
-- Missing Bindings: 0
+- Missing Bindings: 19
 - Cross-Feature Violations: 0
 
 ## Errors
 
-None
+- Missing bindings: 19 UI identifiers without translations
 
 ## Warnings
 

@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { useTranslation } from '@/shared/i18n/core/useTranslation';
+import { HOME } from '@/shared/ui-registry';
 
 const SLIDES = [
   {
@@ -40,6 +41,9 @@ export function HeroSlider() {
   return (
     <section
       id="hero-slider-section"
+      data-ui-id={HOME.HERO_SLIDER.CONTAINER.id}
+      data-ui-path={HOME.HERO_SLIDER.CONTAINER.path}
+      data-ui-feature={HOME.HERO_SLIDER.CONTAINER.feature}
       className="reveal active mt-4 relative overflow-hidden rounded-xl shadow-sm h-48 sm:h-64 md:h-80 lg:h-96 w-full"
     >
       <div

@@ -13,12 +13,20 @@ export interface UiSourceLocation {
 }
 
 export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
+  "UI_HOME_CATEGORIES_CONTAINER": {
+    "id": "UI_HOME_CATEGORIES_CONTAINER",
+    "path": "home.categories-grid.container.wrapper",
+    "sourceFile": "/src/components/home/CategoriesGrid.tsx",
+    "sourceComponent": "CategoriesGrid",
+    "sourceLine": 65,
+    "feature": "home"
+  },
   "UI_HOME_CATEGORIES_GRID_TOGGLE": {
     "id": "UI_HOME_CATEGORIES_GRID_TOGGLE",
     "path": "home.categories-grid.actions.toggle-button",
     "sourceFile": "/src/components/home/CategoriesGrid.tsx",
     "sourceComponent": "CategoriesGrid",
-    "sourceLine": 90,
+    "sourceLine": 96,
     "feature": "home"
   },
   "UI_HOME_CATEGORIES_GRID_ITEM": {
@@ -29,12 +37,20 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "sourceLine": 11,
     "feature": "home"
   },
+  "UI_HOME_CURATED_CONTAINER": {
+    "id": "UI_HOME_CURATED_CONTAINER",
+    "path": "home.curated-offers.container.wrapper",
+    "sourceFile": "/src/components/home/CuratedOffers.tsx",
+    "sourceComponent": "CuratedOffers",
+    "sourceLine": 57,
+    "feature": "home"
+  },
   "UI_HOME_CURATED_OFFERS_MORE": {
     "id": "UI_HOME_CURATED_OFFERS_MORE",
     "path": "home.curated-offers.actions.show-more-button",
     "sourceFile": "/src/components/home/CuratedOffers.tsx",
     "sourceComponent": "CuratedOffers",
-    "sourceLine": 135,
+    "sourceLine": 141,
     "feature": "home"
   },
   "UI_HOME_CURATED_OFFERS_ADD_TO_CART": {
@@ -42,7 +58,47 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "path": "home.curated-offers.actions.add-to-cart-button",
     "sourceFile": "/src/components/home/CuratedOffers.tsx",
     "sourceComponent": "CuratedOffers",
-    "sourceLine": 93,
+    "sourceLine": 99,
+    "feature": "home"
+  },
+  "UI_HOME_FEATURED_MARQUEE_CONTAINER": {
+    "id": "UI_HOME_FEATURED_MARQUEE_CONTAINER",
+    "path": "home.featured-marquee.container.wrapper",
+    "sourceFile": "/src/components/home/FeaturedMarquee.tsx",
+    "sourceComponent": "FeaturedMarquee",
+    "sourceLine": 48,
+    "feature": "home"
+  },
+  "UI_HOME_HERO_SLIDER_CONTAINER": {
+    "id": "UI_HOME_HERO_SLIDER_CONTAINER",
+    "path": "home.hero-slider.container.wrapper",
+    "sourceFile": "/src/components/home/HeroSlider.tsx",
+    "sourceComponent": "HeroSlider",
+    "sourceLine": 44,
+    "feature": "home"
+  },
+  "UI_HOME_PROMO_CONTAINER": {
+    "id": "UI_HOME_PROMO_CONTAINER",
+    "path": "home.promo-banner.container.wrapper",
+    "sourceFile": "/src/components/home/PromoBanner.tsx",
+    "sourceComponent": "PromoBanner",
+    "sourceLine": 14,
+    "feature": "home"
+  },
+  "UI_HOME_PROMO_TITLE": {
+    "id": "UI_HOME_PROMO_TITLE",
+    "path": "home.promo-banner.display.title",
+    "sourceFile": "/src/components/home/PromoBanner.tsx",
+    "sourceComponent": "PromoBanner",
+    "sourceLine": 23,
+    "feature": "home"
+  },
+  "UI_HOME_PROMO_TEXT": {
+    "id": "UI_HOME_PROMO_TEXT",
+    "path": "home.promo-banner.display.text",
+    "sourceFile": "/src/components/home/PromoBanner.tsx",
+    "sourceComponent": "PromoBanner",
+    "sourceLine": 33,
     "feature": "home"
   },
   "UI_HOME_PROMO_BANNER_ACTION": {
@@ -50,15 +106,31 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "path": "home.promo-banner.actions.banner-button",
     "sourceFile": "/src/components/home/PromoBanner.tsx",
     "sourceComponent": "PromoBanner",
-    "sourceLine": 29,
+    "sourceLine": 41,
     "feature": "home"
+  },
+  "UI_HOME_TRENDING_RIBBON_CONTAINER": {
+    "id": "UI_HOME_TRENDING_RIBBON_CONTAINER",
+    "path": "home.trending-ribbon.container.wrapper",
+    "sourceFile": "/src/components/home/TrendingRibbon.tsx",
+    "sourceComponent": "TrendingRibbon",
+    "sourceLine": 25,
+    "feature": "home"
+  },
+  "UI_SHARED_HEADER_CONTAINER": {
+    "id": "UI_SHARED_HEADER_CONTAINER",
+    "path": "shared-layout.header.container.wrapper",
+    "sourceFile": "/src/components/layouts/AppHeader.tsx",
+    "sourceComponent": "AppHeader",
+    "sourceLine": 14,
+    "feature": "shared-layout"
   },
   "UI_SHARED_HEADER_MENU": {
     "id": "UI_SHARED_HEADER_MENU",
     "path": "shared-layout.header.menu.menu-button",
     "sourceFile": "/src/components/layouts/AppHeader.tsx",
     "sourceComponent": "AppHeader",
-    "sourceLine": 29,
+    "sourceLine": 32,
     "feature": "shared-layout"
   },
   "UI_SHARED_HEADER_BRAND_LINK": {
@@ -66,7 +138,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "path": "shared-layout.header.brand.brand-link",
     "sourceFile": "/src/components/layouts/AppHeader.tsx",
     "sourceComponent": "AppHeader",
-    "sourceLine": 40,
+    "sourceLine": 43,
     "feature": "shared-layout"
   },
   "UI_SHARED_HEADER_SEARCH_BUTTON": {
@@ -74,7 +146,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "path": "shared-layout.header.actions.search-button",
     "sourceFile": "/src/components/layouts/AppHeader.tsx",
     "sourceComponent": "AppHeader",
-    "sourceLine": 71,
+    "sourceLine": 74,
     "feature": "shared-layout"
   },
   "UI_SHARED_HEADER_CART_BUTTON": {
@@ -82,7 +154,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "path": "shared-layout.header.actions.cart-button",
     "sourceFile": "/src/components/layouts/AppHeader.tsx",
     "sourceComponent": "AppHeader",
-    "sourceLine": 84,
+    "sourceLine": 87,
     "feature": "shared-layout"
   },
   "UI_SHARED_HEADER_SEARCH_INPUT": {
@@ -90,7 +162,15 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "path": "shared-layout.header.actions.search-input",
     "sourceFile": "/src/components/layouts/AppHeader.tsx",
     "sourceComponent": "AppHeader",
-    "sourceLine": 62,
+    "sourceLine": 65,
+    "feature": "shared-layout"
+  },
+  "UI_SHARED_BOTTOM_NAV_CONTAINER": {
+    "id": "UI_SHARED_BOTTOM_NAV_CONTAINER",
+    "path": "shared-layout.bottom-nav.container.wrapper",
+    "sourceFile": "/src/components/layouts/BottomNavBar.tsx",
+    "sourceComponent": "BottomNavBar",
+    "sourceLine": 26,
     "feature": "shared-layout"
   },
   "UI_SHARED_BOTTOM_NAV_HOME": {
@@ -133,20 +213,52 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "sourceLine": 16,
     "feature": "shared-layout"
   },
+  "UI_ERROR_BOUNDARY_CONTAINER": {
+    "id": "UI_ERROR_BOUNDARY_CONTAINER",
+    "path": "error-boundary.main.container.wrapper",
+    "sourceFile": "/src/components/shared/error-boundary.tsx",
+    "sourceComponent": "error-boundary",
+    "sourceLine": 54,
+    "feature": "error-boundary"
+  },
+  "UI_ERROR_BOUNDARY_TITLE": {
+    "id": "UI_ERROR_BOUNDARY_TITLE",
+    "path": "error-boundary.main.display.title",
+    "sourceFile": "/src/components/shared/error-boundary.tsx",
+    "sourceComponent": "error-boundary",
+    "sourceLine": 61,
+    "feature": "error-boundary"
+  },
+  "UI_ERROR_BOUNDARY_TEXT": {
+    "id": "UI_ERROR_BOUNDARY_TEXT",
+    "path": "error-boundary.main.display.text",
+    "sourceFile": "/src/components/shared/error-boundary.tsx",
+    "sourceComponent": "error-boundary",
+    "sourceLine": 69,
+    "feature": "error-boundary"
+  },
   "UI_ERROR_BOUNDARY_RELOAD": {
     "id": "UI_ERROR_BOUNDARY_RELOAD",
     "path": "error-boundary.main.actions.reload-button",
     "sourceFile": "/src/components/shared/error-boundary.tsx",
     "sourceComponent": "error-boundary",
-    "sourceLine": 61,
+    "sourceLine": 76,
     "feature": "error-boundary"
+  },
+  "UI_HOME_LANG_CONTAINER": {
+    "id": "UI_HOME_LANG_CONTAINER",
+    "path": "home.language-switcher.container.wrapper",
+    "sourceFile": "/src/components/shared/LanguageSwitcher.tsx",
+    "sourceComponent": "LanguageSwitcher",
+    "sourceLine": 19,
+    "feature": "home"
   },
   "UI_HOME_LANG_ENGLISH": {
     "id": "UI_HOME_LANG_ENGLISH",
     "path": "home.language-switcher.buttons.english-button",
     "sourceFile": "/src/components/shared/LanguageSwitcher.tsx",
     "sourceComponent": "LanguageSwitcher",
-    "sourceLine": 20,
+    "sourceLine": 25,
     "feature": "home"
   },
   "UI_HOME_LANG_ARABIC": {
@@ -154,15 +266,55 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "path": "home.language-switcher.buttons.arabic-button",
     "sourceFile": "/src/components/shared/LanguageSwitcher.tsx",
     "sourceComponent": "LanguageSwitcher",
-    "sourceLine": 28,
+    "sourceLine": 33,
     "feature": "home"
+  },
+  "UI_SPLASH_CONTAINER": {
+    "id": "UI_SPLASH_CONTAINER",
+    "path": "splash.main.container.wrapper",
+    "sourceFile": "/src/components/splash/SplashScreen.tsx",
+    "sourceComponent": "SplashScreen",
+    "sourceLine": 73,
+    "feature": "splash"
+  },
+  "UI_SPLASH_STATUS_TEXT": {
+    "id": "UI_SPLASH_STATUS_TEXT",
+    "path": "splash.main.display.status-text",
+    "sourceFile": "/src/components/splash/ProgressIndicator.tsx",
+    "sourceComponent": "ProgressIndicator",
+    "sourceLine": 54,
+    "feature": "splash"
+  },
+  "UI_SPLASH_PROGRESS_BAR": {
+    "id": "UI_SPLASH_PROGRESS_BAR",
+    "path": "splash.main.display.progress-bar",
+    "sourceFile": "/src/components/splash/ProgressIndicator.tsx",
+    "sourceComponent": "ProgressIndicator",
+    "sourceLine": 66,
+    "feature": "splash"
+  },
+  "UI_SPLASH_TITLE": {
+    "id": "UI_SPLASH_TITLE",
+    "path": "splash.main.display.title",
+    "sourceFile": "/src/components/splash/SplashScreen.tsx",
+    "sourceComponent": "SplashScreen",
+    "sourceLine": 138,
+    "feature": "splash"
+  },
+  "UI_SPLASH_SUBTITLE": {
+    "id": "UI_SPLASH_SUBTITLE",
+    "path": "splash.main.display.subtitle",
+    "sourceFile": "/src/components/splash/SplashScreen.tsx",
+    "sourceComponent": "SplashScreen",
+    "sourceLine": 146,
+    "feature": "splash"
   },
   "UI_SPLASH_MAINT_PIN": {
     "id": "UI_SPLASH_MAINT_PIN",
     "path": "splash.maintenance.form.pin-input",
     "sourceFile": "/src/components/splash/SplashScreen.tsx",
     "sourceComponent": "SplashScreen",
-    "sourceLine": 87,
+    "sourceLine": 90,
     "feature": "splash"
   },
   "UI_SPLASH_MAINT_SUBMIT": {
@@ -170,7 +322,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "path": "splash.maintenance.form.submit-button",
     "sourceFile": "/src/components/splash/SplashScreen.tsx",
     "sourceComponent": "SplashScreen",
-    "sourceLine": 104,
+    "sourceLine": 107,
     "feature": "splash"
   }
 };

@@ -68,6 +68,9 @@ export default function SplashScreen() {
       <div 
         className="min-h-screen bg-background text-on-background flex items-center justify-center p-4 selection:bg-primary-fixed selection:text-on-primary-fixed" 
         dir={lang === 'ar' ? 'rtl' : 'ltr'}
+        data-ui-id="UI_SPLASH_MAINT_CONTAINER"
+        data-ui-path="splash.maintenance.container.wrapper"
+        data-ui-feature={SPLASH.CONTAINER.feature}
       >
         <div className="bg-surface-container border border-outline-variant rounded-2xl p-8 max-w-md w-full shadow-2xl flex flex-col items-center gap-6">
           <div className="mb-2 relative group">
@@ -113,7 +116,12 @@ export default function SplashScreen() {
   }
 
   return (
-    <div className="bg-background text-on-background min-h-screen relative w-full flex flex-col items-center justify-between py-12 px-4 overflow-hidden selection:bg-primary-fixed selection:text-on-primary-fixed">
+    <div
+      className="bg-background text-on-background min-h-screen relative w-full flex flex-col items-center justify-between py-12 px-4 overflow-hidden selection:bg-primary-fixed selection:text-on-primary-fixed"
+      data-ui-id={SPLASH.CONTAINER.id}
+      data-ui-path={SPLASH.CONTAINER.path}
+      data-ui-feature={SPLASH.CONTAINER.feature}
+    >
       {/* Top Visual Context: Animated Category Banner */}
       <TopMarquee categories={data?.categories || []} />
       
@@ -125,10 +133,20 @@ export default function SplashScreen() {
             <Store className="w-14 h-14 text-white" />
           </div>
         </div>
-        <h1 className="text-3xl font-bold text-primary mb-1 tracking-tight text-center">
+        <h1
+          className="text-3xl font-bold text-primary mb-1 tracking-tight text-center"
+          data-ui-id={SPLASH.TITLE.id}
+          data-ui-path={SPLASH.TITLE.path}
+          data-ui-feature={SPLASH.TITLE.feature}
+        >
           {lang === 'ar' ? 'سوق جوفا' : 'GoVa Marketplace'}
         </h1>
-        <p className="text-base text-on-surface-variant font-medium tracking-wide">
+        <p
+          className="text-base text-on-surface-variant font-medium tracking-wide"
+          data-ui-id={SPLASH.SUBTITLE.id}
+          data-ui-path={SPLASH.SUBTITLE.path}
+          data-ui-feature={SPLASH.SUBTITLE.feature}
+        >
           {lang === 'ar' ? 'السويس بين يديك' : 'Suez at Your Fingertips'}
         </p>
         

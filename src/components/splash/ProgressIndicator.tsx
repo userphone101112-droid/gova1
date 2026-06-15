@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useSettingsStore } from '@/store/settings.store';
+import { SPLASH } from '@/shared/ui-registry';
 
 interface ProgressIndicatorProps {
   progress: number;
@@ -40,11 +41,19 @@ export default function ProgressIndicator({ progress, status }: ProgressIndicato
   }, [messages.length]);
 
   return (
-    <div className="w-full max-w-xs flex flex-col items-center z-10 px-4">
+    <div
+      className="w-full max-w-xs flex flex-col items-center z-10 px-4"
+      data-ui-id={SPLASH.CONTAINER.id}
+      data-ui-path="splash.main.display.progress-indicator"
+      data-ui-feature={SPLASH.CONTAINER.feature}
+    >
       {/* Marketing message rotating */}
       <div 
         className="h-8 text-xs font-semibold text-secondary text-center px-4 transition-all duration-500 ease-in-out"
         style={{ color: 'var(--gova-secondary)' }}
+        data-ui-id={SPLASH.STATUS_TEXT.id}
+        data-ui-path={SPLASH.STATUS_TEXT.path}
+        data-ui-feature={SPLASH.STATUS_TEXT.feature}
       >
         {status || messages[msgIndex]}
       </div>
@@ -54,6 +63,9 @@ export default function ProgressIndicator({ progress, status }: ProgressIndicato
         <div 
           className="h-full bg-primary transition-all duration-300 ease-out shadow-[0_0_8px_rgba(0,50,125,0.5)]" 
           style={{ width: `${progress}%` }}
+          data-ui-id={SPLASH.PROGRESS_BAR.id}
+          data-ui-path={SPLASH.PROGRESS_BAR.path}
+          data-ui-feature={SPLASH.PROGRESS_BAR.feature}
         />
       </div>
       

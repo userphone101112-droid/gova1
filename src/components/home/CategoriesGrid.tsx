@@ -60,7 +60,13 @@ export function CategoriesGrid() {
   const { t, locale } = useTranslation();
 
   return (
-    <section id="categories-section" className="reveal active">
+    <section
+      id="categories-section"
+      data-ui-id={HOME.CATEGORIES_GRID.CONTAINER.id}
+      data-ui-path={HOME.CATEGORIES_GRID.CONTAINER.path}
+      data-ui-feature={HOME.CATEGORIES_GRID.CONTAINER.feature}
+      className="reveal active"
+    >
       {/* Section Header */}
       <div className="flex justify-between items-end mb-4">
         <div
