@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Inter } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { I18nProvider } from "@/shared/i18n/core/provider";
 import { getDictionaryCached } from "@/shared/i18n/core/getDictionary";
@@ -11,21 +11,11 @@ const DevUiOverlay = process.env.NODE_ENV === 'development'
 
 import { MaolProvider } from '@/providers/MaolProvider';
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 // Inter loaded locally via next/font — avoids CSP violations from Google Fonts CDN
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["400", "600", "700"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -66,7 +56,7 @@ export default async function RootLayout({
     <html
       lang={locale}
       dir={direction}
-      className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} h-full antialiased`}
+      className={`${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <I18nProvider
