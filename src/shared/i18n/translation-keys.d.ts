@@ -38,6 +38,14 @@ export type commonTranslationKey =
   | 'navigation.login'
   | 'navigation.logout'
   | 'navigation.register'
+  | 'navigation.notifications'
+  | 'navigation.favorites'
+  | 'navigation.orders'
+  | 'navigation.profile'
+  | 'navigation.cart'
+  | 'navigation.search'
+  | 'navigation.menu'
+  | 'navigation.brandTitle'
   | 'buttons.submit'
   | 'buttons.cancel'
   | 'buttons.save'
@@ -77,6 +85,14 @@ export type commonTranslationKey =
   | 'messages.somethingWentWrong'
 ;
 
+// contact feature translations
+export type contactTranslationKey =
+  | 'contact.form.submitButton'
+  | 'contact.form.emailInput'
+  | 'contact.form.subjectInput'
+  | 'contact.form.messageTextarea'
+;
+
 // dashboard feature translations
 export type dashboardTranslationKey =
   | 'dashboard.title'
@@ -91,22 +107,86 @@ export type dashboardTranslationKey =
   | 'dashboard.sidebar.usersLink'
   | 'dashboard.sidebar.settingsLink'
   | 'dashboard.sidebar.analyticsLink'
+  | 'dashboard.header.logoutButton'
+  | 'dashboard.header.profileButton'
+;
+
+// error-boundary feature translations
+export type errorBoundaryTranslationKey =
+  | 'error-boundary.main.reloadButton'
 ;
 
 // home feature translations
 export type homeTranslationKey =
-  | 'home.title'
-  | 'home.subtitle'
-  | 'home.welcome'
-  | 'home.description'
-  | 'home.cta.getStarted'
-  | 'home.cta.learnMore'
+  | 'home.nav.home'
+  | 'home.nav.notifications'
+  | 'home.nav.favorites'
+  | 'home.nav.orders'
+  | 'home.nav.profile'
+  | 'home.nav.cart'
+  | 'home.nav.search'
+  | 'home.nav.menu'
+  | 'home.header.brandTitle'
+  | 'home.header.searchLabel'
+  | 'home.header.cartLabel'
+  | 'home.categories.title'
+  | 'home.categories.sectionTitle'
+  | 'home.categories.viewAll'
+  | 'home.categories.fashion'
+  | 'home.categories.cars'
+  | 'home.categories.automotive'
+  | 'home.categories.realEstate'
+  | 'home.categories.realestate'
+  | 'home.categories.medical'
+  | 'home.categories.pharmacy'
+  | 'home.categories.education'
+  | 'home.categories.electronics'
+  | 'home.categories.industrial'
+  | 'home.categories.food'
+  | 'home.heroSlider.slide1Badge'
+  | 'home.heroSlider.slide1Title'
+  | 'home.heroSlider.slide2Badge'
+  | 'home.heroSlider.slide2Title'
+  | 'home.featured.title'
+  | 'home.featured.sectionTitle'
+  | 'home.featured.item1Title'
+  | 'home.featured.item2Title'
+  | 'home.featured.item3Title'
+  | 'home.featured.item4Title'
+  | 'home.trending.label'
+  | 'home.trending.item1'
+  | 'home.trending.item2'
+  | 'home.trending.item3'
+  | 'home.trending.item4'
+  | 'home.curated.title'
+  | 'home.curated.limitedTime'
+  | 'home.curated.product1Category'
+  | 'home.curated.product1Title'
+  | 'home.curated.product1Price'
+  | 'home.curated.product2Category'
+  | 'home.curated.product2Title'
+  | 'home.curated.product2Price'
+  | 'home.curated.product3Category'
+  | 'home.curated.product3Title'
+  | 'home.curated.product3Price'
+  | 'home.curated.product4Category'
+  | 'home.curated.product4Title'
+  | 'home.curated.product4Price'
+  | 'home.curated.addToCart'
+  | 'home.curated.addToFavorites'
+  | 'home.promoBanner.title'
+  | 'home.promoBanner.text'
+  | 'home.promoBanner.cta'
+  | 'home.marquee.card1Title'
+  | 'home.marquee.card1Price'
+  | 'home.marquee.card2Title'
+  | 'home.marquee.card2Price'
+  | 'home.marquee.card3Title'
+  | 'home.marquee.card3Price'
+  | 'home.language-switcher.englishButton'
+  | 'home.language-switcher.arabicButton'
   | 'home.hero.primaryButton'
   | 'home.hero.secondaryButton'
-  | 'home.features.title'
-  | 'home.features.quality'
-  | 'home.features.fastDelivery'
-  | 'home.features.support'
 ;
 
 // settings feature translations
@@ -127,6 +207,26 @@ export type settingsTranslationKey =
   | 'settings.saveChanges'
 ;
 
+// shared-layout feature translations
+export type sharedLayoutTranslationKey =
+  | 'shared-layout.header.menuButton'
+  | 'shared-layout.header.searchButton'
+  | 'shared-layout.header.cartButton'
+  | 'shared-layout.bottom-nav.homeLink'
+  | 'shared-layout.bottom-nav.notificationsLink'
+  | 'shared-layout.bottom-nav.favoritesLink'
+  | 'shared-layout.bottom-nav.ordersLink'
+  | 'shared-layout.bottom-nav.profileLink'
+;
+
+// signup feature translations
+export type signupTranslationKey =
+  | 'signup.form.submitButton'
+  | 'signup.form.emailInput'
+  | 'signup.form.passwordInput'
+  | 'signup.form.termsCheckbox'
+;
+
 // splash feature translations
 export type splashTranslationKey =
   | 'splash.loading'
@@ -142,9 +242,13 @@ export type splashTranslationKey =
 export type AllTranslationKeys =
   | authTranslationKey
   | commonTranslationKey
+  | contactTranslationKey
   | dashboardTranslationKey
+  | errorBoundaryTranslationKey
   | homeTranslationKey
   | settingsTranslationKey
+  | sharedLayoutTranslationKey
+  | signupTranslationKey
   | splashTranslationKey
 
 export type TranslationKey = AllTranslationKeys;

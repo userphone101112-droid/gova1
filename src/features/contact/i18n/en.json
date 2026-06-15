@@ -1,0 +1,10 @@
+{
+  "contact": {
+    "form": {
+      "submitButton": "Send Message",
+      "emailInput": "Email Address",
+      "subjectInput": "Subject",
+      "messageTextarea": "Message"
+    }
+  }
+}

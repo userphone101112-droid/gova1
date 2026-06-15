@@ -1,0 +1,10 @@
+{
+  "contact": {
+    "form": {
+      "submitButton": "إرسال الرسالة",
+      "emailInput": "البريد الإلكتروني",
+      "subjectInput": "الموضوع",
+      "messageTextarea": "الرسالة"
+    }
+  }
+}

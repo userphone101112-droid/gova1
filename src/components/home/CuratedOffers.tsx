@@ -1,5 +1,6 @@
 'use client';
 
+import { Heart, ShoppingCart, Tag } from 'lucide-react';
 import { useTranslation } from '@/shared/i18n/core/useTranslation';
 
 const PRODUCTS = [
@@ -53,9 +54,7 @@ export function CuratedOffers() {
       {/* Section header */}
       <div className="flex justify-between items-center">
         <div className="flex items-center gap-2">
-          <span className="material-symbols-outlined text-2xl" style={{ color: 'var(--gova-primary)' }}>
-            {"sell"}
-          </span>
+          <Tag size={24} style={{ color: 'var(--gova-primary)' }} />
           <h3 className="text-xl font-bold" style={{ color: 'var(--gova-on-surface)' }}>
             {t('home.curated.title')}
           </h3>
@@ -69,8 +68,8 @@ export function CuratedOffers() {
         </span>
       </div>
 
-      {/* 2-col product grid */}
-      <div id="product-grid-display" className="grid grid-cols-2 gap-4">
+      {/* Responsive product grid */}
+      <div id="product-grid-display" className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-6">
         {PRODUCTS.map(p => (
           <article
             key={p.id}
@@ -94,12 +93,10 @@ export function CuratedOffers() {
                 aria-label={t('home.curated.addToFavorites')}
                 style={{ color: p.favFilled ? 'var(--gova-google-red)' : 'var(--gova-on-surface-variant)' }}
               >
-                <span
-                  className="material-symbols-outlined text-lg"
-                  style={{ fontVariationSettings: p.favFilled ? "'FILL' 1" : "'FILL' 0" }}
-                >
-                  {"favorite"}
-                </span>
+                <Heart
+                  size={18}
+                  fill={p.favFilled ? 'currentColor' : 'none'}
+                />
               </button>
             </div>
 
@@ -120,7 +117,7 @@ export function CuratedOffers() {
                   style={{ background: 'var(--gova-google-blue)', color: '#fff' }}
                   aria-label={t('home.curated.addToCart')}
                 >
-                  <span className="material-symbols-outlined text-xl">{"add_shopping_cart"}</span>
+                  <ShoppingCart size={18} />
                 </button>
               </div>
             </div>

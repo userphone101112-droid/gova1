@@ -17,15 +17,19 @@
     },
     "categories": {
       "title": "أسواق السويس",
+      "sectionTitle": "أسواق السويس",
       "viewAll": "عرض الكل",
       "fashion": "أزياء",
       "cars": "سيارات",
+      "automotive": "سيارات",
       "realEstate": "عقارات",
+      "realestate": "عقارات",
       "medical": "خدمات طبية",
       "pharmacy": "صيدلية",
       "education": "تعليم",
       "electronics": "إلكترونيات",
-      "industrial": "صناعي"
+      "industrial": "صناعي",
+      "food": "مطاعم"
     },
     "heroSlider": {
       "slide1Badge": "موسم جديد",
@@ -34,7 +38,12 @@
       "slide2Title": "سيارات مميزة"
     },
     "featured": {
-      "title": "المنتجات المتميزة"
+      "title": "المنتجات المتميزة",
+      "sectionTitle": "المنتجات المتميزة",
+      "item1Title": "بدلة فاخرة",
+      "item2Title": "فيلا فاخرة",
+      "item3Title": "فستان مصمم",
+      "item4Title": "سيدان فاخرة"
     },
     "trending": {
       "label": "الأكثر رواجاً:",
@@ -73,6 +82,14 @@
       "card2Price": "$1.2M",
       "card3Title": "فستان مصمم",
       "card3Price": "$850"
+    },
+    "language-switcher": {
+      "englishButton": "الإنجليزية",
+      "arabicButton": "العربية"
+    },
+    "hero": {
+      "primaryButton": "ابدأ الآن",
+      "secondaryButton": "اقرأ المزيد"
     }
   }
 }

@@ -1,35 +1,39 @@
-import Image from 'next/image';
-import { CategoryItem } from '@/types/splash';
+'use client';
 
-interface TopMarqueeProps {
-  categories: CategoryItem[];
-}
+import { useSettingsStore } from '@/store/settings.store';
+import { Shirt, Car, Building2, HeartPulse } from 'lucide-react';
 
-export default function TopMarquee({ categories }: TopMarqueeProps) {
-  // Duplicate categories for seamless scroll
-  const displayCategories = [...categories, ...categories];
+const STATIC_CATEGORIES = [
+  { icon: Shirt, titleEn: 'Fashion', titleAr: 'موضة' },
+  { icon: Car, titleEn: 'Automotive', titleAr: 'سيارات' },
+  { icon: Building2, titleEn: 'Real Estate', titleAr: 'عقارات' },
+  { icon: HeartPulse, titleEn: 'Medical', titleAr: 'طب وصحة' },
+] as const;
+
+export default function TopMarquee({}: { categories?: any[] }) {
+  const getEffectiveLanguage = useSettingsStore((state) => state.getEffectiveLanguage);
+  const lang = getEffectiveLanguage();
+
+  // Duplicate for seamless loop
+  const displayItems = [...STATIC_CATEGORIES, ...STATIC_CATEGORIES, ...STATIC_CATEGORIES];
 
   return (
-    <div className="w-full mt-8 overflow-hidden">
-      <div className="flex gap-4 animate-marquee-right">
-        {displayCategories.map((category, index) => (
-          <div
-            key={`${category.id}-${index}`}
-            className="relative w-64 h-40 rounded-2xl overflow-hidden border border-white/20 shadow-md flex-shrink-0"
-          >
-            <Image
-              src={`/images/mainCategories/${category.image}`}
-              alt={category.titleAr}
-              fill
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-black/20 flex items-end p-4">
-              <span className="text-white font-bold text-base">
-                {category.titleAr}
+    <div className="absolute top-0 left-0 w-full overflow-hidden opacity-40 pointer-events-none z-0">
+      <div className="flex gap-4 py-4 shrink-0 animate-marquee-right">
+        {displayItems.map((item, index) => {
+          const Icon = item.icon;
+          return (
+            <div
+              key={index}
+              className="w-48 h-32 rounded-xl bg-surface-container-high flex flex-col items-center justify-center border border-outline-variant flex-shrink-0"
+            >
+              <Icon className="text-primary w-10 h-10 mb-2" />
+              <span className="text-xs font-semibold text-on-surface">
+                {lang === 'ar' ? item.titleAr : item.titleEn}
               </span>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );

@@ -17,15 +17,19 @@
     },
     "categories": {
       "title": "Suez Markets",
+      "sectionTitle": "Suez Markets",
       "viewAll": "View All",
       "fashion": "Fashion",
       "cars": "Cars",
+      "automotive": "Cars",
       "realEstate": "Real Estate",
+      "realestate": "Real Estate",
       "medical": "Medical",
       "pharmacy": "Pharmacy",
       "education": "Education",
       "electronics": "Electronics",
-      "industrial": "Industrial"
+      "industrial": "Industrial",
+      "food": "Restaurants"
     },
     "heroSlider": {
       "slide1Badge": "New Season",
@@ -34,7 +38,12 @@
       "slide2Title": "Premium Vehicles"
     },
     "featured": {
-      "title": "Featured Products"
+      "title": "Featured Products",
+      "sectionTitle": "Featured Products",
+      "item1Title": "Premium Suit",
+      "item2Title": "Luxury Villa",
+      "item3Title": "Designer Dress",
+      "item4Title": "Premium Sedan"
     },
     "trending": {
       "label": "Trending:",
@@ -73,6 +82,14 @@
       "card2Price": "$1.2M",
       "card3Title": "Designer Dress",
       "card3Price": "$850"
+    },
+    "language-switcher": {
+      "englishButton": "English",
+      "arabicButton": "Arabic"
+    },
+    "hero": {
+      "primaryButton": "Get Started",
+      "secondaryButton": "Learn More"
     }
   }
 }

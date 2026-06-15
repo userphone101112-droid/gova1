@@ -1,0 +1,16 @@
+{
+  "shared-layout": {
+    "header": {
+      "menuButton": "القائمة",
+      "searchButton": "بحث",
+      "cartButton": "سلة التسوق"
+    },
+    "bottom-nav": {
+      "homeLink": "الرئيسية",
+      "notificationsLink": "الإشعارات",
+      "favoritesLink": "المفضلة",
+      "ordersLink": "الطلبات",
+      "profileLink": "الملف الشخصي"
+    }
+  }
+}

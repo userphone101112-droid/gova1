@@ -1,6 +1,4 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
 
 :root {
   /* Base Colors */
@@ -121,8 +119,48 @@
 
 @theme inline {
   /* Color System */
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background: var(--gova-background);
+  --color-foreground: var(--gova-on-background);
+  --color-primary: var(--gova-primary);
+  --color-on-primary: var(--gova-on-primary);
+  --color-primary-container: var(--gova-primary-container);
+  --color-on-primary-container: var(--gova-on-primary-container);
+  --color-secondary: var(--gova-secondary);
+  --color-on-secondary: var(--gova-on-secondary);
+  --color-secondary-container: var(--gova-secondary-container);
+  --color-on-secondary-container: var(--gova-on-secondary-container);
+  --color-tertiary: var(--gova-tertiary);
+  --color-on-tertiary: var(--gova-on-tertiary);
+  --color-tertiary-container: var(--gova-tertiary-container);
+  --color-on-tertiary-container: var(--gova-on-tertiary-container);
+  --color-error: var(--gova-error);
+  --color-on-error: var(--gova-on-error);
+  --color-error-container: var(--gova-error-container);
+  --color-on-error-container: var(--gova-on-error-container);
+  --color-on-background: var(--gova-on-background);
+  
+  --color-surface: var(--gova-surface);
+  --color-on-surface: var(--gova-on-surface);
+  --color-surface-variant: var(--gova-surface-variant);
+  --color-on-surface-variant: var(--gova-on-surface-variant);
+  
+  --color-surface-dim: var(--gova-surface-dim);
+  --color-surface-bright: var(--gova-surface-bright);
+  --color-surface-container-lowest: var(--gova-surface-container-lowest);
+  --color-surface-container-low: var(--gova-surface-container-low);
+  --color-surface-container: var(--gova-surface-container);
+  --color-surface-container-high: var(--gova-surface-container-high);
+  --color-surface-container-highest: var(--gova-surface-container-highest);
+  
+  --color-outline: var(--gova-outline);
+  --color-outline-variant: var(--gova-outline-variant);
+  --color-surface-tint: var(--gova-surface-tint);
+  
+  --color-google-blue: var(--gova-google-blue);
+  --color-google-red: var(--gova-google-red);
+  --color-google-yellow: var(--gova-google-yellow);
+  --color-google-green: var(--gova-google-green);
+
   --color-primary-50: var(--primary-50);
   --color-primary-100: var(--primary-100);
   --color-primary-200: var(--primary-200);
@@ -145,7 +183,6 @@
   --color-secondary-900: var(--secondary-900);
   --color-success: var(--success);
   --color-warning: var(--warning);
-  --color-error: var(--error);
   --color-info: var(--info);
   --color-gray-50: var(--gray-50);
   --color-gray-100: var(--gray-100);
@@ -166,6 +203,10 @@
   --spacing-xl: var(--spacing-xl);
   --spacing-2xl: var(--spacing-2xl);
   --spacing-3xl: var(--spacing-3xl);
+  --spacing-gutter: 12px;
+  --spacing-container-margin: 16px;
+  --spacing-container_margin: 16px;
+  --spacing-base: 4px;
   
   /* Border Radius */
   --radius-sm: var(--radius-sm);
@@ -221,8 +262,8 @@
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--gova-background);
+  color: var(--gova-on-background);
   font-family: var(--font-sans);
   -webkit-tap-highlight-color: transparent;
   min-height: 100dvh;

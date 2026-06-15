@@ -1,6 +1,7 @@
 'use client';
 
 import { useTranslation } from '@/shared/i18n/core/useTranslation';
+import { TrendingUp } from 'lucide-react';
 
 const TRENDING_ITEMS = [
   'home.trending.item1',
@@ -29,12 +30,10 @@ export function TrendingRibbon() {
         className="flex items-center gap-2 px-4 z-10 border-s"
         style={{ background: 'var(--gova-surface-container-low)', borderColor: 'var(--gova-outline-variant)' }}
       >
-        <span
-          className="material-symbols-outlined text-xl animate-pulse"
+        <TrendingUp
+          className="w-5 h-5 animate-pulse"
           style={{ color: 'var(--gova-google-red)' }}
-        >
-          {"trending_up"}
-        </span>
+        />
         <span className="text-xs font-bold" style={{ color: 'var(--gova-on-surface)' }}>
           {t('home.trending.label')}
         </span>

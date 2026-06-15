@@ -25,7 +25,7 @@ const SLIDES = [
 ];
 
 export function HeroSlider() {
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
   const [current, setCurrent] = useState(0);
 
   const advance = useCallback(() => {
@@ -40,13 +40,12 @@ export function HeroSlider() {
   return (
     <section
       id="hero-slider-section"
-      className="reveal active mt-4 relative overflow-hidden rounded-xl shadow-sm"
-      style={{ height: '192px' }}
+      className="reveal active mt-4 relative overflow-hidden rounded-xl shadow-sm h-48 sm:h-64 md:h-80 lg:h-96 w-full"
     >
       <div
         id="hero-main-slider"
         className="flex h-full transition-transform duration-500 ease-out"
-        style={{ transform: `translateX(${current * 100}%)` }}
+        style={{ transform: `translateX(${locale === 'ar' ? current * 100 : -current * 100}%)` }}
       >
         {SLIDES.map(slide => (
           <div

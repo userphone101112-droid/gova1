@@ -1,0 +1,10 @@
+{
+  "signup": {
+    "form": {
+      "submitButton": "إنشاء حساب",
+      "emailInput": "البريد الإلكتروني",
+      "passwordInput": "كلمة المرور",
+      "termsCheckbox": "أوافق على الشروط والأحكام"
+    }
+  }
+}

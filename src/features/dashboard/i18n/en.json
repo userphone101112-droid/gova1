@@ -15,6 +15,10 @@
       "usersLink": "Users",
       "settingsLink": "Settings",
       "analyticsLink": "Analytics"
+    },
+    "header": {
+      "logoutButton": "Logout",
+      "profileButton": "Profile"
     }
   }
 }

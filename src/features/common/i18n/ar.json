@@ -11,7 +11,9 @@
     "orders": "الطلبات",
     "profile": "الملف الشخصي",
     "cart": "السلة",
-    "search": "بحث"
+    "search": "بحث",
+    "menu": "القائمة",
+    "brandTitle": "سوق جوفا"
   },
   "buttons": {
     "submit": "إرسال",

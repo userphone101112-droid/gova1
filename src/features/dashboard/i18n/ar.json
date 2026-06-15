@@ -15,6 +15,10 @@
       "usersLink": "المستخدمون",
       "settingsLink": "الإعدادات",
       "analyticsLink": "التحليلات"
+    },
+    "header": {
+      "logoutButton": "تسجيل الخروج",
+      "profileButton": "الملف الشخصي"
     }
   }
 }

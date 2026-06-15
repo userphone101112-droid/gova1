@@ -1,0 +1,16 @@
+{
+  "shared-layout": {
+    "header": {
+      "menuButton": "Menu",
+      "searchButton": "Search",
+      "cartButton": "Shopping Cart"
+    },
+    "bottom-nav": {
+      "homeLink": "Home",
+      "notificationsLink": "Notifications",
+      "favoritesLink": "Favorites",
+      "ordersLink": "Orders",
+      "profileLink": "Profile"
+    }
+  }
+}

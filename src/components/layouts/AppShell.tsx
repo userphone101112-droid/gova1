@@ -14,8 +14,8 @@ export function AppShell({ children }: AppShellProps) {
   return (
     <>
       <AppHeader />
-      {/* pt-16 = header height, pb-24 = bottom nav height */}
-      <main className="pt-16 pb-24 min-h-screen" style={{ background: 'var(--gova-background)' }}>
+      {/* pt-16 = header height, pb-24 = bottom nav height on mobile, pb-6 on desktop */}
+      <main className="pt-16 pb-24 md:pb-6 min-h-screen" style={{ background: 'var(--gova-background)' }}>
         {children}
       </main>
       <BottomNavBar />

@@ -1,0 +1,10 @@
+{
+  "signup": {
+    "form": {
+      "submitButton": "Sign Up",
+      "emailInput": "Email Address",
+      "passwordInput": "Password",
+      "termsCheckbox": "I agree to the Terms and Conditions"
+    }
+  }
+}

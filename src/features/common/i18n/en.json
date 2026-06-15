@@ -11,7 +11,9 @@
     "orders": "Orders",
     "profile": "Profile",
     "cart": "Cart",
-    "search": "Search"
+    "search": "Search",
+    "menu": "Menu",
+    "brandTitle": "GoVa Market"
   },
   "buttons": {
     "submit": "Submit",

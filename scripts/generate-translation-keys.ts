@@ -35,9 +35,10 @@ function generateTypeFromStructure(
  */
 function generateFeatureType(feature: string, enTranslations: TranslationStructure): string {
   const keys = generateTypeFromStructure(enTranslations);
+  const safeFeatureName = feature.replace(/-([a-z])/g, (_, c) => c.toUpperCase());
   
   return `// ${feature} feature translations
-export type ${feature}TranslationKey =
+export type ${safeFeatureName}TranslationKey =
 ${keys};
 `;
 }
@@ -98,7 +99,8 @@ function generateTranslationKeysType() {
 export type AllTranslationKeys =\n`;
   
   for (const feature of Object.keys(translations)) {
-    typeDefinition += `  | ${feature}TranslationKey\n`;
+    const safeFeatureName = feature.replace(/-([a-z])/g, (_, c) => c.toUpperCase());
+    typeDefinition += `  | ${safeFeatureName}TranslationKey\n`;
   }
   
   typeDefinition += `\nexport type TranslationKey = AllTranslationKeys;\n`;

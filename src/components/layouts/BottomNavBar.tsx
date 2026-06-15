@@ -4,16 +4,17 @@ import { useState } from 'react';
 import { useTranslation } from '@/shared/i18n/core/useTranslation';
 import { UiLink } from '@/components/ui';
 import { SHARED_LAYOUT } from '@/shared/ui-registry';
+import { Home, Bell, Heart, Receipt, User } from 'lucide-react';
 
 type NavItem = 'home' | 'notifications' | 'favorites' | 'orders' | 'profile';
 
-const NAV_ITEMS: { key: NavItem; icon: string; tKey: string; id: string; registryKey: keyof typeof SHARED_LAYOUT.BOTTOM_NAV.ITEMS }[] = [
-  { key: 'home',          icon: 'home',          tKey: 'home.nav.home',          id: 'nav-item-home',          registryKey: 'HOME_LINK' },
-  { key: 'notifications', icon: 'notifications', tKey: 'home.nav.notifications', id: 'nav-item-notifications', registryKey: 'NOTIFICATIONS_LINK' },
-  { key: 'favorites',     icon: 'favorite',      tKey: 'home.nav.favorites',     id: 'nav-item-favorites',     registryKey: 'FAVORITES_LINK' },
-  { key: 'orders',        icon: 'receipt_long',  tKey: 'home.nav.orders',        id: 'nav-item-orders',        registryKey: 'ORDERS_LINK' },
-  { key: 'profile',       icon: 'person',        tKey: 'home.nav.profile',       id: 'nav-item-profile',       registryKey: 'PROFILE_LINK' },
-];
+const NAV_ITEMS = [
+  { key: 'home',          icon: Home,    tKey: 'navigation.home',          id: 'nav-item-home',          registryKey: 'HOME_LINK' },
+  { key: 'notifications', icon: Bell,    tKey: 'navigation.notifications', id: 'nav-item-notifications', registryKey: 'NOTIFICATIONS_LINK' },
+  { key: 'favorites',     icon: Heart,   tKey: 'navigation.favorites',     id: 'nav-item-favorites',     registryKey: 'FAVORITES_LINK' },
+  { key: 'orders',        icon: Receipt, tKey: 'navigation.orders',        id: 'nav-item-orders',        registryKey: 'ORDERS_LINK' },
+  { key: 'profile',       icon: User,    tKey: 'navigation.profile',       id: 'nav-item-profile',       registryKey: 'PROFILE_LINK' },
+] as const;
 
 export function BottomNavBar() {
   const { t } = useTranslation();
@@ -22,10 +23,15 @@ export function BottomNavBar() {
   return (
     <nav
       id="bottom-navigation-bar"
-      className="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center pt-2 pb-4 glass-effect border-t rounded-t-2xl shadow-lg"
-      style={{ borderColor: 'var(--gova-outline-variant)', paddingLeft: '4px', paddingRight: '4px' }}
+      className="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center pt-2 pb-4 border-t rounded-t-2xl shadow-lg md:hidden"
+      style={{
+        background: 'rgba(250,248,255,0.90)',
+        backdropFilter: 'blur(12px)',
+        WebkitBackdropFilter: 'blur(12px)',
+        borderColor: 'rgba(195,198,213,0.40)',
+      }}
     >
-      {NAV_ITEMS.map(({ key, icon, tKey, id, registryKey }) => {
+      {NAV_ITEMS.map(({ key, icon: Icon, tKey, id, registryKey }) => {
         const isActive = active === key;
         const isNotif = key === 'notifications';
         return (
@@ -34,22 +40,15 @@ export function BottomNavBar() {
             ui={SHARED_LAYOUT.BOTTOM_NAV.ITEMS[registryKey]}
             id={id}
             href="#"
-            className="flex flex-col items-center justify-center relative py-1 transition-transform active:scale-90"
+            className="flex flex-col items-center justify-center relative py-1 px-3 transition-transform active:scale-90"
             style={{
-              color: isActive ? 'var(--gova-google-blue)' : 'var(--gova-on-surface-variant)',
+              color: isActive ? 'var(--gova-primary)' : 'var(--gova-on-surface-variant)',
               fontWeight: isActive ? '700' : '400',
               textDecoration: 'none',
             }}
             onClick={(e) => { e.preventDefault(); setActive(key); }}
           >
-            <span
-              className="material-symbols-outlined"
-              style={{
-                fontVariationSettings: isActive ? "'FILL' 1" : "'FILL' 0",
-              }}
-            >
-              {icon}
-            </span>
+            <Icon className="w-5 h-5 transition-transform duration-200" style={{ transform: isActive ? 'scale(1.1)' : 'scale(1)' }} />
             {isNotif && (
               <span
                 id="nav-notif-badge"
@@ -58,6 +57,9 @@ export function BottomNavBar() {
               />
             )}
             <span className="text-xs leading-4 font-semibold mt-0.5">{t(tKey)}</span>
+            {isActive && (
+              <span className="absolute bottom-0 w-1.5 h-1.5 rounded-full bg-primary animate-pulse-gova" />
+            )}
           </UiLink>
         );
       })}

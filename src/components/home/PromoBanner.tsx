@@ -1,6 +1,7 @@
 'use client';
 
 import { useTranslation } from '@/shared/i18n/core/useTranslation';
+import { Building2 } from 'lucide-react';
 
 export function PromoBanner() {
   const { t } = useTranslation();
@@ -11,7 +12,7 @@ export function PromoBanner() {
       className="rounded-xl p-6 text-white relative overflow-hidden reveal active"
       style={{ background: 'var(--gova-primary)' }}
     >
-      <div className="relative z-10 max-w-[60%]">
+      <div className="relative z-10 max-w-full md:max-w-[70%] lg:max-w-[60%]">
         <h3
           id="promo-banner-title"
           className="text-2xl font-bold"
@@ -34,11 +35,9 @@ export function PromoBanner() {
       {/* Decorative icon background */}
       <div
         id="promo-banner-icon-bg"
-        className="absolute end-0 top-0 h-full w-1/3 opacity-20 flex items-center justify-center pointer-events-none"
+        className="absolute end-0 top-0 h-full w-1/3 opacity-20 flex items-center justify-center pointer-events-none text-white"
       >
-        <span className="material-symbols-outlined text-9xl -rotate-12 scale-150">
-          {"home_work"}
-        </span>
+        <Building2 className="w-32 h-32 -rotate-12 scale-150" />
       </div>
     </section>
   );
