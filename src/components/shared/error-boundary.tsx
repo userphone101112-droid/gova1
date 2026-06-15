@@ -49,27 +49,12 @@ export class ErrorBoundary extends Component<Props, State> {
       }
 
       return (
-        <div
-          className="flex min-h-[400px] items-center justify-center p-4"
-          data-ui-id={ERROR_BOUNDARY.CONTAINER.id}
-          data-ui-path={ERROR_BOUNDARY.CONTAINER.path}
-          data-ui-feature={ERROR_BOUNDARY.CONTAINER.feature}
-        >
+        <div className="flex min-h-[400px] items-center justify-center p-4">
           <div className="max-w-md text-center">
-            <h2
-              className="mb-4 text-2xl font-bold text-gray-900 dark:text-gray-100"
-              data-ui-id={ERROR_BOUNDARY.TITLE.id}
-              data-ui-path={ERROR_BOUNDARY.TITLE.path}
-              data-ui-feature={ERROR_BOUNDARY.TITLE.feature}
-            >
+            <h2 className="mb-4 text-2xl font-bold text-gray-900 dark:text-gray-100">
               Something went wrong
             </h2>
-            <p
-              className="mb-6 text-gray-600 dark:text-gray-400"
-              data-ui-id={ERROR_BOUNDARY.TEXT.id}
-              data-ui-path={ERROR_BOUNDARY.TEXT.path}
-              data-ui-feature={ERROR_BOUNDARY.TEXT.feature}
-            >
+            <p className="mb-6 text-gray-600 dark:text-gray-400">
               {this.state.error?.message || 'An unexpected error occurred'}
             </p>
             <UiButton

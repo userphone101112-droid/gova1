@@ -11,30 +11,18 @@ export function PromoBanner() {
   return (
     <section
       id="industrial-promo-banner"
-      data-ui-id={HOME.PROMO_BANNER.CONTAINER.id}
-      data-ui-path={HOME.PROMO_BANNER.CONTAINER.path}
-      data-ui-feature={HOME.PROMO_BANNER.CONTAINER.feature}
       className="rounded-xl p-6 text-white relative overflow-hidden reveal active"
       style={{ background: 'var(--gova-primary)' }}
     >
       <div className="relative z-10 max-w-full md:max-w-[70%] lg:max-w-[60%]">
         <h3
           id="promo-banner-title"
-          data-ui-id={HOME.PROMO_BANNER.TITLE.id}
-          data-ui-path={HOME.PROMO_BANNER.TITLE.path}
-          data-ui-feature={HOME.PROMO_BANNER.TITLE.feature}
           className="text-2xl font-bold"
           style={{ fontFamily: 'Inter, sans-serif' }}
         >
           {t('home.promoBanner.title')}
         </h3>
-        <p
-          id="promo-banner-text"
-          data-ui-id={HOME.PROMO_BANNER.TEXT.id}
-          data-ui-path={HOME.PROMO_BANNER.TEXT.path}
-          data-ui-feature={HOME.PROMO_BANNER.TEXT.feature}
-          className="text-sm opacity-90 mt-2"
-        >
+        <p id="promo-banner-text" className="text-sm opacity-90 mt-2">
           {t('home.promoBanner.text')}
         </p>
         <UiButton

@@ -14,12 +14,7 @@ export function LanguageSwitcher() {
   };
 
   return (
-    <div
-      className="flex items-center gap-2"
-      data-ui-id={HOME.LANGUAGE_SWITCHER.CONTAINER.id}
-      data-ui-path={HOME.LANGUAGE_SWITCHER.CONTAINER.path}
-      data-ui-feature={HOME.LANGUAGE_SWITCHER.CONTAINER.feature}
-    >
+    <div className="flex items-center gap-2">
       <Globe className="w-4 h-4" />
       <UiButton
         ui={HOME.LANGUAGE_SWITCHER.ENGLISH_BUTTON}

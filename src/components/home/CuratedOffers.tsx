@@ -52,13 +52,7 @@ export function CuratedOffers() {
   const { t } = useTranslation();
 
   return (
-    <section
-      id="curated-offers-section"
-      data-ui-id={HOME.CURATED_OFFERS.CONTAINER.id}
-      data-ui-path={HOME.CURATED_OFFERS.CONTAINER.path}
-      data-ui-feature={HOME.CURATED_OFFERS.CONTAINER.feature}
-      className="reveal active space-y-4"
-    >
+    <section id="curated-offers-section" className="reveal active space-y-4">
       {/* Section header */}
       <div className="flex justify-between items-center">
         <div className="flex items-center gap-2">

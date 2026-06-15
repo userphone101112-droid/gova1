@@ -2,7 +2,6 @@
 
 import { useTranslation } from '@/shared/i18n/core/useTranslation';
 import { TrendingUp } from 'lucide-react';
-import { HOME } from '@/shared/ui-registry';
 
 const TRENDING_ITEMS = [
   'home.trending.item1',
@@ -22,9 +21,6 @@ export function TrendingRibbon() {
   return (
     <div
       id="trending-ribbon-container"
-      data-ui-id={HOME.TRENDING_RIBBON.CONTAINER.id}
-      data-ui-path={HOME.TRENDING_RIBBON.CONTAINER.path}
-      data-ui-feature={HOME.TRENDING_RIBBON.CONTAINER.feature}
       className="border-y overflow-hidden whitespace-nowrap relative flex items-center py-2"
       style={{ background: 'var(--gova-surface-container-low)', borderColor: 'var(--gova-outline-variant)' }}
     >

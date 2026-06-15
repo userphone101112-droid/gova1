@@ -11,9 +11,6 @@ export function AppHeader() {
   return (
     <header
       id="header-main-nav"
-      data-ui-id={SHARED_LAYOUT.HEADER.CONTAINER.id}
-      data-ui-path={SHARED_LAYOUT.HEADER.CONTAINER.path}
-      data-ui-feature={SHARED_LAYOUT.HEADER.CONTAINER.feature}
       className="fixed top-0 w-full z-50 shadow-sm border-b"
       style={{
         background: 'rgba(250,248,255,0.80)',

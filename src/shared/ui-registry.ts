@@ -18,16 +18,6 @@ export interface UiIdentity {
 // ============================================================================
 export const HOME = {
   LANGUAGE_SWITCHER: {
-    CONTAINER: {
-      id: 'UI_HOME_LANG_CONTAINER',
-      path: 'home.language-switcher.container.wrapper',
-      description: 'Language switcher container wrapper',
-      category: 'container',
-      feature: 'home',
-      version: '1.0.0',
-      createdAt: '2026-06-15',
-      updatedAt: '2026-06-15',
-    } as const,
     ENGLISH_BUTTON: {
       id: 'UI_HOME_LANG_ENGLISH',
       path: 'home.language-switcher.buttons.english-button',
@@ -50,36 +40,6 @@ export const HOME = {
     } as const,
   },
   PROMO_BANNER: {
-    CONTAINER: {
-      id: 'UI_HOME_PROMO_CONTAINER',
-      path: 'home.promo-banner.container.wrapper',
-      description: 'Promo banner component wrapper',
-      category: 'container',
-      feature: 'home',
-      version: '1.0.0',
-      createdAt: '2026-06-15',
-      updatedAt: '2026-06-15',
-    } as const,
-    TITLE: {
-      id: 'UI_HOME_PROMO_TITLE',
-      path: 'home.promo-banner.display.title',
-      description: 'Promo banner title text display',
-      category: 'display',
-      feature: 'home',
-      version: '1.0.0',
-      createdAt: '2026-06-15',
-      updatedAt: '2026-06-15',
-    } as const,
-    TEXT: {
-      id: 'UI_HOME_PROMO_TEXT',
-      path: 'home.promo-banner.display.text',
-      description: 'Promo banner description text display',
-      category: 'display',
-      feature: 'home',
-      version: '1.0.0',
-      createdAt: '2026-06-15',
-      updatedAt: '2026-06-15',
-    } as const,
     ACTION_BUTTON: {
       id: 'UI_HOME_PROMO_BANNER_ACTION',
       path: 'home.promo-banner.actions.banner-button',
@@ -92,16 +52,6 @@ export const HOME = {
     } as const,
   },
   CURATED_OFFERS: {
-    CONTAINER: {
-      id: 'UI_HOME_CURATED_CONTAINER',
-      path: 'home.curated-offers.container.wrapper',
-      description: 'Curated offers section wrapper',
-      category: 'container',
-      feature: 'home',
-      version: '1.0.0',
-      createdAt: '2026-06-15',
-      updatedAt: '2026-06-15',
-    } as const,
     SHOW_MORE: {
       id: 'UI_HOME_CURATED_OFFERS_MORE',
       path: 'home.curated-offers.actions.show-more-button',
@@ -124,16 +74,6 @@ export const HOME = {
     } as const,
   },
   CATEGORIES_GRID: {
-    CONTAINER: {
-      id: 'UI_HOME_CATEGORIES_CONTAINER',
-      path: 'home.categories-grid.container.wrapper',
-      description: 'Categories grid section wrapper',
-      category: 'container',
-      feature: 'home',
-      version: '1.0.0',
-      createdAt: '2026-06-15',
-      updatedAt: '2026-06-15',
-    } as const,
     TOGGLE: {
       id: 'UI_HOME_CATEGORIES_GRID_TOGGLE',
       path: 'home.categories-grid.actions.toggle-button',
@@ -155,78 +95,12 @@ export const HOME = {
       updatedAt: '2026-06-15',
     } as const,
   },
-  HERO_SLIDER: {
-    CONTAINER: {
-      id: 'UI_HOME_HERO_SLIDER_CONTAINER',
-      path: 'home.hero-slider.container.wrapper',
-      description: 'Hero image slider section wrapper',
-      category: 'container',
-      feature: 'home',
-      version: '1.0.0',
-      createdAt: '2026-06-15',
-      updatedAt: '2026-06-15',
-    } as const,
-  },
-  FEATURED_MARQUEE: {
-    CONTAINER: {
-      id: 'UI_HOME_FEATURED_MARQUEE_CONTAINER',
-      path: 'home.featured-marquee.container.wrapper',
-      description: 'Featured items marquee section wrapper',
-      category: 'container',
-      feature: 'home',
-      version: '1.0.0',
-      createdAt: '2026-06-15',
-      updatedAt: '2026-06-15',
-    } as const,
-  },
-  TRENDING_RIBBON: {
-    CONTAINER: {
-      id: 'UI_HOME_TRENDING_RIBBON_CONTAINER',
-      path: 'home.trending-ribbon.container.wrapper',
-      description: 'Trending topics ribbon container',
-      category: 'container',
-      feature: 'home',
-      version: '1.0.0',
-      createdAt: '2026-06-15',
-      updatedAt: '2026-06-15',
-    } as const,
-  },
 } as const;
 
 // ============================================================================
 // ERROR BOUNDARY IDENTIFIERS
 // ============================================================================
 export const ERROR_BOUNDARY = {
-  CONTAINER: {
-    id: 'UI_ERROR_BOUNDARY_CONTAINER',
-    path: 'error-boundary.main.container.wrapper',
-    description: 'Error boundary main container wrapper',
-    category: 'container',
-    feature: 'error-boundary',
-    version: '1.0.0',
-    createdAt: '2026-06-15',
-    updatedAt: '2026-06-15',
-  } as const,
-  TITLE: {
-    id: 'UI_ERROR_BOUNDARY_TITLE',
-    path: 'error-boundary.main.display.title',
-    description: 'Error boundary title text display',
-    category: 'display',
-    feature: 'error-boundary',
-    version: '1.0.0',
-    createdAt: '2026-06-15',
-    updatedAt: '2026-06-15',
-  } as const,
-  TEXT: {
-    id: 'UI_ERROR_BOUNDARY_TEXT',
-    path: 'error-boundary.main.display.text',
-    description: 'Error boundary text display',
-    category: 'display',
-    feature: 'error-boundary',
-    version: '1.0.0',
-    createdAt: '2026-06-15',
-    updatedAt: '2026-06-15',
-  } as const,
   RELOAD_BUTTON: {
     id: 'UI_ERROR_BOUNDARY_RELOAD',
     path: 'error-boundary.main.actions.reload-button',
@@ -243,56 +117,6 @@ export const ERROR_BOUNDARY = {
 // SPLASH PAGE IDENTIFIERS
 // ============================================================================
 export const SPLASH = {
-  CONTAINER: {
-    id: 'UI_SPLASH_CONTAINER',
-    path: 'splash.main.container.wrapper',
-    description: 'Splash screen container wrapper',
-    category: 'container',
-    feature: 'splash',
-    version: '1.0.0',
-    createdAt: '2026-06-15',
-    updatedAt: '2026-06-15',
-  } as const,
-  TITLE: {
-    id: 'UI_SPLASH_TITLE',
-    path: 'splash.main.display.title',
-    description: 'Splash screen title text display',
-    category: 'display',
-    feature: 'splash',
-    version: '1.0.0',
-    createdAt: '2026-06-15',
-    updatedAt: '2026-06-15',
-  } as const,
-  SUBTITLE: {
-    id: 'UI_SPLASH_SUBTITLE',
-    path: 'splash.main.display.subtitle',
-    description: 'Splash screen subtitle text display',
-    category: 'display',
-    feature: 'splash',
-    version: '1.0.0',
-    createdAt: '2026-06-15',
-    updatedAt: '2026-06-15',
-  } as const,
-  STATUS_TEXT: {
-    id: 'UI_SPLASH_STATUS_TEXT',
-    path: 'splash.main.display.status-text',
-    description: 'Splash screen loading status text display',
-    category: 'display',
-    feature: 'splash',
-    version: '1.0.0',
-    createdAt: '2026-06-15',
-    updatedAt: '2026-06-15',
-  } as const,
-  PROGRESS_BAR: {
-    id: 'UI_SPLASH_PROGRESS_BAR',
-    path: 'splash.main.display.progress-bar',
-    description: 'Splash screen progress bar display',
-    category: 'display',
-    feature: 'splash',
-    version: '1.0.0',
-    createdAt: '2026-06-15',
-    updatedAt: '2026-06-15',
-  } as const,
   MAINTENANCE: {
     FORM: {
       PIN_INPUT: {
@@ -324,16 +148,6 @@ export const SPLASH = {
 // ============================================================================
 export const SHARED_LAYOUT = {
   HEADER: {
-    CONTAINER: {
-      id: 'UI_SHARED_HEADER_CONTAINER',
-      path: 'shared-layout.header.container.wrapper',
-      description: 'Header main navigation container wrapper',
-      category: 'container',
-      feature: 'shared-layout',
-      version: '1.0.0',
-      createdAt: '2026-06-15',
-      updatedAt: '2026-06-15',
-    } as const,
     MENU: {
       MENU_BUTTON: {
         id: 'UI_SHARED_HEADER_MENU',
@@ -392,16 +206,6 @@ export const SHARED_LAYOUT = {
     },
   },
   BOTTOM_NAV: {
-    CONTAINER: {
-      id: 'UI_SHARED_BOTTOM_NAV_CONTAINER',
-      path: 'shared-layout.bottom-nav.container.wrapper',
-      description: 'Bottom navigation bar container wrapper',
-      category: 'container',
-      feature: 'shared-layout',
-      version: '1.0.0',
-      createdAt: '2026-06-15',
-      updatedAt: '2026-06-15',
-    } as const,
     ITEMS: {
       HOME_LINK: {
         id: 'UI_SHARED_BOTTOM_NAV_HOME',

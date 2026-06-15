@@ -2,7 +2,6 @@
 
 import { useTranslation } from '@/shared/i18n/core/useTranslation';
 import { Sparkles } from 'lucide-react';
-import { HOME } from '@/shared/ui-registry';
 
 const FEATURED = [
   {
@@ -43,13 +42,7 @@ export function FeaturedMarquee() {
   const items = [...FEATURED, ...FEATURED];
 
   return (
-    <section
-      id="featured-marquee-section"
-      data-ui-id={HOME.FEATURED_MARQUEE.CONTAINER.id}
-      data-ui-path={HOME.FEATURED_MARQUEE.CONTAINER.path}
-      data-ui-feature={HOME.FEATURED_MARQUEE.CONTAINER.feature}
-      className="space-y-3 overflow-hidden reveal active"
-    >
+    <section id="featured-marquee-section" className="space-y-3 overflow-hidden reveal active">
       {/* Section Header */}
       <div className="flex justify-between items-center">
         <div
