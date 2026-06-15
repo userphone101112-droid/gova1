@@ -1,0 +1,57 @@
+{
+  "maol_UfRgXsde5y": [
+    {
+      "route": "/home",
+      "timestamp": 1781552064513,
+      "totalIdentified": 29,
+      "tree": {
+        "type": "page",
+        "children": [
+          {
+            "name": "shared-layout",
+            "uiIds": [
+              "UI_SHARED_HEADER_MENU",
+              "UI_SHARED_HEADER_BRAND_LINK",
+              "UI_SHARED_HEADER_SEARCH_INPUT",
+              "UI_SHARED_HEADER_SEARCH_BUTTON",
+              "UI_SHARED_HEADER_CART_BUTTON",
+              "UI_SHARED_BOTTOM_NAV_HOME",
+              "UI_SHARED_BOTTOM_NAV_NOTIFICATIONS",
+              "UI_SHARED_BOTTOM_NAV_FAVORITES",
+              "UI_SHARED_BOTTOM_NAV_ORDERS",
+              "UI_SHARED_BOTTOM_NAV_PROFILE"
+            ],
+            "tags": [
+              "button",
+              "a",
+              "input"
+            ]
+          },
+          {
+            "name": "home",
+            "uiIds": [
+              "UI_HOME_CATEGORIES_GRID_TOGGLE",
+              "UI_HOME_CATEGORIES_GRID_ITEM",
+              "UI_HOME_CURATED_OFFERS_FAVORITE",
+              "UI_HOME_CURATED_OFFERS_ADD_TO_CART",
+              "UI_HOME_CURATED_OFFERS_MORE",
+              "UI_HOME_PROMO_BANNER_ACTION"
+            ],
+            "tags": [
+              "button"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "route": "/",
+      "timestamp": 1781545554268,
+      "totalIdentified": 0,
+      "tree": {
+        "type": "page",
+        "children": []
+      }
+    }
+  ]
+}

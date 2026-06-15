@@ -22,6 +22,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "GoVa Marketplace",
   description: "السويس بين يديك - GoVa Marketplace Platform",
+  metadataBase: new URL('http://localhost:3001'),
   icons: {
     icon: "/images/logo.png",
     apple: "/images/logo.png",

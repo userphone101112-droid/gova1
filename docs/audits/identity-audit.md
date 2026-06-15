@@ -1,18 +1,20 @@
 # UI Identity Platform Audit Report
 
-Generated: 2026-06-15T05:02:38.250Z
+Generated: 2026-06-15T17:41:55.422Z
 
 ## Summary
-- Total Registered Identities: 21
+- Total Registered Identities: 24
 - Mapped to Code: 21
-- Orphan/Unused Identities: 0
+- Orphan/Unused Identities: 3
 - Status: ✅ PASS
 
 ## Errors (0)
 - No identity errors found.
 
-## Warnings (0)
-- No identity warnings found.
+## Warnings (3)
+- 🟡 Orphan UI Identity: "UI_HOME_PROMO_BANNER_TITLE" (registered but not used in code).
+- 🟡 Orphan UI Identity: "UI_HOME_PROMO_BANNER_DESCRIPTION" (registered but not used in code).
+- 🟡 Orphan UI Identity: "UI_HOME_PROMO_BANNER_LOGO" (registered but not used in code).
 
 ## Mapped Source Registry
 | Stable ID | Path | Feature | Source File | Component | Line |

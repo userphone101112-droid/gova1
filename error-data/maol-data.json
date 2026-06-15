@@ -1,0 +1,15 @@
+{
+  "maol_UfRgXsde5y": {
+    "errors": [],
+    "warnings": [
+      {
+        "type": "warning",
+        "message": "⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using \"http://localhost:3001\". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase Server",
+        "route": "/home",
+        "severity": "low",
+        "timestamp": 1781545077603,
+        "env": "dev"
+      }
+    ]
+  }
+}

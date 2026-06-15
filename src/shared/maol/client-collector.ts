@@ -27,6 +27,31 @@ import type {
 
 const INGEST_URL = '/api/maol/ingest';
 const IS_DEV = process.env.NODE_ENV === 'development';
+let isMaolEnabledGetter: (() => boolean) = () => true;
+
+export function setMaolEnabledGetter(getter: () => boolean) {
+  isMaolEnabledGetter = getter;
+}
+
+function sanitizeMessage(msg: string): string {
+  // Remove %c and all CSS styles from console.warn messages
+  let cleaned = msg;
+  
+  // Remove %c tokens
+  cleaned = cleaned.replace(/%c/g, '');
+  
+  // Remove CSS style strings (look for "background:" or "color:" patterns)
+  // Split by whitespace and remove any CSS property/value pairs
+  cleaned = cleaned.replace(/background:[^;]+;?/gi, '');
+  cleaned = cleaned.replace(/color:[^;]+;?/gi, '');
+  cleaned = cleaned.replace(/border-radius:[^;]+;?/gi, '');
+  cleaned = cleaned.replace(/\s{2,}/g, ' ');
+  
+  // Trim whitespace and remove extra leading/trailing spaces
+  cleaned = cleaned.trim();
+  
+  return cleaned;
+}
 
 function getCurrentRoute(): string {
   if (typeof window === 'undefined') return '/';
@@ -53,6 +78,7 @@ function resolveUiContext(target: EventTarget | null): string | undefined {
  * Falls back to fetch if sendBeacon is unavailable.
  */
 function sendPayload(payload: MaolIngestPayload): void {
+  if (!isMaolEnabledGetter()) return;
   try {
     const blob = new Blob([JSON.stringify(payload)], { type: 'application/json' });
     if (navigator.sendBeacon) {
@@ -91,10 +117,11 @@ export function initMaolErrorCollector(sessionId: string): () => void {
   const env = IS_DEV ? 'dev' : 'prod';
 
   const onError = (event: ErrorEvent) => {
+    if (!isMaolEnabledGetter()) return;
     try {
       const error: MaolErrorEvent = {
         type: 'error',
-        message: event.message || 'Unknown error',
+        message: sanitizeMessage(event.message || 'Unknown error'),
         // Stack only in dev mode
         stack: IS_DEV ? event.error?.stack : undefined,
         route: getCurrentRoute(),
@@ -109,13 +136,14 @@ export function initMaolErrorCollector(sessionId: string): () => void {
   };
 
   const onUnhandledRejection = (event: PromiseRejectionEvent) => {
+    if (!isMaolEnabledGetter()) return;
     try {
       const reason = event.reason;
       const message =
         reason instanceof Error
-          ? reason.message
+          ? sanitizeMessage(reason.message)
           : typeof reason === 'string'
-          ? reason
+          ? sanitizeMessage(reason)
           : 'Unhandled Promise Rejection';
 
       const error: MaolErrorEvent = {
@@ -204,21 +232,24 @@ export function initMaolWarningCollector(sessionId: string): () => void {
     // Always call original first — preserves dev experience
     _originalConsoleWarn!(...args);
 
+    if (!isMaolEnabledGetter()) return;
+
     try {
       const message = args
         .map((a) => (typeof a === 'string' ? a : JSON.stringify(a)))
         .join(' ');
 
-      const severity = detectSeverity(message);
+      const sanitizedMsg = sanitizeMessage(message);
+      const severity = detectSeverity(sanitizedMsg);
 
       // PROD mode: only forward high/medium severity to reduce noise
       if (!IS_DEV && severity === 'low') return;
 
       const warning: MaolWarningEvent = {
         type: 'warning',
-        message: message.substring(0, 500), // cap at 500 chars
+        message: sanitizedMsg.substring(0, 500), // cap at 500 chars
         route: getCurrentRoute(),
-        component: IS_DEV ? extractComponent(message) : undefined,
+        component: IS_DEV ? extractComponent(sanitizedMsg) : undefined,
         severity,
         timestamp: Date.now(),
         env,

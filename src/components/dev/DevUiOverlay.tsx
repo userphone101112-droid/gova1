@@ -3,20 +3,29 @@
 /**
  * DevUiOverlay — Developer Visual Inspector
  *
- * Activated with Ctrl+Shift+U.
+ * 🔓 Always visible and active in development mode!
+ * Activated with Ctrl+Shift+U (but stays visible across screen sizes).
+ *
  * Renders colored frames around all [data-ui-id] elements:
  *   - Blue:   valid, active identity
  *   - Amber:  deprecated identity
  *   - Red:    unknown / unregistered element
  *
- * A floating tooltip shows Stable ID, path, feature, version, and source file.
+ * Features:
+ *   - Floating tooltip shows Stable ID, path, feature, version, and source file
+ *   - Database section: Toggle ON/OFF to add inf1/inf2/inf3 fields
+ *   - Attributes section: Toggle ON/OFF to add Attribute1/Attribute2/Attribute3 checkboxes
+ *   - MAOL Toggle: Turn MAOL (Minimal Agent Observability Layer) ON/OFF
  *
  * This component is tree-shaken from production builds via process.env check.
+ *
+ * @see docs/SERVER_ARCHITECTURE.md for complete documentation
  */
 
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { UI_ID_MAP } from '@/shared/ui-registry';
 import { UI_SOURCE_INDEX } from '@/shared/ui-source-index';
+import { useMaolStore } from '@/store/index';
 
 interface TooltipState {
   visible: boolean;
@@ -30,6 +39,18 @@ interface TooltipState {
   sourceFile: string;
   sourceComponent: string;
   sourceLine: number;
+  // New fields for database & attributes
+  databaseEnabled: boolean;
+  inf1: string;
+  inf2: string;
+  inf3: string;
+  attributesEnabled: boolean;
+  attribute1: boolean;
+  attribute2: boolean;
+  attribute3: boolean;
+  // New fields for data-ui-path and data-ui-feature
+  dataUiPath: string;
+  dataUiFeature: string;
 }
 
 interface OverlayFrame {
@@ -83,13 +104,10 @@ const COLOR_MAP = {
 };
 
 export function DevUiOverlay() {
-  const [active, setActive] = useState<boolean>(() => {
-    try {
-      return localStorage.getItem(STORAGE_KEY) === 'true';
-    } catch {
-      return false;
-    }
-  });
+  // Always default to active!
+  const [active, setActive] = useState<boolean>(true);
+  const isMaolEnabled = useMaolStore((state) => state.isEnabled);
+  const toggleMaol = useMaolStore((state) => state.toggleMaol);
 
   const [frames, setFrames] = useState<OverlayFrame[]>([]);
   const [tooltip, setTooltip] = useState<TooltipState>({
@@ -98,9 +116,39 @@ export function DevUiOverlay() {
     id: '', path: '', feature: '', version: '',
     deprecated: false,
     sourceFile: '', sourceComponent: '', sourceLine: 0,
+    databaseEnabled: false,
+    inf1: '',
+    inf2: '',
+    inf3: '',
+    attributesEnabled: false,
+    attribute1: false,
+    attribute2: false,
+    attribute3: false,
+    dataUiPath: '',
+    dataUiFeature: '',
   });
 
+  const [allInspectorData, setAllInspectorData] = useState<Record<string, any>>({});
+  const [isSaving, setIsSaving] = useState(false);
+  const [saveStatus, setSaveStatus] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
+
   const rafRef = useRef<number | null>(null);
+
+  // Load all inspector data on mount
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const response = await fetch('/api/ui-inspector');
+        if (response.ok) {
+          const data = await response.json();
+          setAllInspectorData(data);
+        }
+      } catch (error) {
+        console.error('Failed to load inspector data:', error);
+      }
+    };
+    loadData();
+  }, []);
 
   const refresh = useCallback(() => {
     if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
@@ -144,19 +192,14 @@ export function DevUiOverlay() {
     };
   }, [active, refresh]);
 
-  // Dismiss tooltip on scroll
-  useEffect(() => {
-    if (!active) return;
-    const hide = () => setTooltip((t) => ({ ...t, visible: false }));
-    window.addEventListener('scroll', hide, true);
-    return () => window.removeEventListener('scroll', hide, true);
-  }, [active]);
-
   const handleFrameClick = useCallback((e: React.MouseEvent, frame: OverlayFrame) => {
     e.stopPropagation();
     const identity = UI_ID_MAP[frame.id];
     const source = UI_SOURCE_INDEX[frame.id];
 
+    // Load saved data from our API data first, fallback to defaults
+    const savedData = allInspectorData[frame.id];
+    
     setTooltip({
       visible: true,
       x: e.clientX + 12,
@@ -169,12 +212,77 @@ export function DevUiOverlay() {
       sourceFile: source?.sourceFile || '—',
       sourceComponent: source?.sourceComponent || '—',
       sourceLine: source?.sourceLine || 0,
+      databaseEnabled: savedData?.databaseEnabled ?? false,
+      inf1: savedData?.inf1 || '',
+      inf2: savedData?.inf2 || '',
+      inf3: savedData?.inf3 || '',
+      attributesEnabled: savedData?.attributesEnabled ?? false,
+      attribute1: savedData?.attribute1 ?? false,
+      attribute2: savedData?.attribute2 ?? false,
+      attribute3: savedData?.attribute3 ?? false,
+      dataUiPath: savedData?.dataUiPath || identity?.path || '',
+      dataUiFeature: savedData?.dataUiFeature || identity?.feature || '',
     });
-  }, []);
+  }, [allInspectorData]);
 
   const dismissTooltip = useCallback(() => {
     setTooltip((t) => ({ ...t, visible: false }));
   }, []);
+
+  const handleSave = async () => {
+    if (!tooltip.id) return;
+    
+    setIsSaving(true);
+    setSaveStatus('saving');
+    
+    try {
+      const response = await fetch('/api/ui-inspector', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          uiId: tooltip.id,
+          databaseEnabled: tooltip.databaseEnabled,
+          inf1: tooltip.inf1,
+          inf2: tooltip.inf2,
+          inf3: tooltip.inf3,
+          attributesEnabled: tooltip.attributesEnabled,
+          attribute1: tooltip.attribute1,
+          attribute2: tooltip.attribute2,
+          attribute3: tooltip.attribute3,
+        }),
+      });
+
+      if (response.ok) {
+        setSaveStatus('saved');
+        // Update our local data
+        setAllInspectorData(prev => ({
+          ...prev,
+          [tooltip.id]: {
+            databaseEnabled: tooltip.databaseEnabled,
+            inf1: tooltip.inf1,
+            inf2: tooltip.inf2,
+            inf3: tooltip.inf3,
+            attributesEnabled: tooltip.attributesEnabled,
+            attribute1: tooltip.attribute1,
+            attribute2: tooltip.attribute2,
+            attribute3: tooltip.attribute3,
+          }
+        }));
+        // Reset status after 2 seconds
+        setTimeout(() => setSaveStatus('idle'), 2000);
+      } else {
+        throw new Error('Failed to save');
+      }
+    } catch (error) {
+      console.error('Error saving data:', error);
+      setSaveStatus('error');
+      setTimeout(() => setSaveStatus('idle'), 2000);
+    } finally {
+      setIsSaving(false);
+    }
+  };
 
   if (!active && frames.length === 0) {
     return (
@@ -205,7 +313,7 @@ export function DevUiOverlay() {
 
   return (
     <>
-      {/* Control bar */}
+      {/* Control bar - Always visible, works across all screen sizes */}
       <div
         style={{
           position: 'fixed',
@@ -230,6 +338,24 @@ export function DevUiOverlay() {
         <span style={{ color: '#22c55e' }}>{frames.filter(f => f.color === 'blue').length} ok</span>
         <span style={{ color: '#f59e0b' }}>{frames.filter(f => f.color === 'amber').length} dep</span>
         <span style={{ color: '#ef4444' }}>{frames.filter(f => f.color === 'red').length} err</span>
+        <span>|</span>
+        {/* MAOL Toggle - Toggle MAOL ON/OFF directly from here */}
+        <button
+          onClick={toggleMaol}
+          style={{
+            padding: '2px 8px',
+            borderRadius: '10px',
+            border: 'none',
+            cursor: 'pointer',
+            fontSize: '10px',
+            fontWeight: 600,
+            background: isMaolEnabled ? '#22c55e' : '#475569',
+            color: '#fff',
+            fontFamily: 'monospace',
+          }}
+        >
+          MAOL {isMaolEnabled ? 'ON' : 'OFF'}
+        </button>
         <span>|</span>
         <button
           onClick={() => {
@@ -298,45 +424,239 @@ export function DevUiOverlay() {
         );
       })}
 
-      {/* Tooltip */}
+      {/* Tooltip - Only closes on ✕ button click */}
       {tooltip.visible && (
         <div
-          onClick={dismissTooltip}
+          onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside
           style={{
             position: 'fixed',
-            top: Math.min(tooltip.y, window.innerHeight - 260),
-            left: Math.min(tooltip.x, window.innerWidth - 300),
+            top: Math.min(tooltip.y, 20),
+            left: Math.min(tooltip.x, window.innerWidth - 380),
             zIndex: 100000,
             background: '#0f172a',
             border: '1px solid #1e40af',
             borderRadius: '10px',
-            padding: '12px 14px',
+            padding: '14px 16px',
             boxShadow: '0 8px 32px rgba(0,0,0,0.6)',
             fontSize: '11px',
             fontFamily: 'monospace',
             color: '#e2e8f0',
-            minWidth: '260px',
-            maxWidth: '340px',
-            cursor: 'pointer',
+            minWidth: '340px',
+            maxWidth: '380px',
+            maxHeight: '80vh',
+            overflowY: 'auto',
             lineHeight: 1.6,
           }}
         >
-          <div style={{ color: '#60a5fa', fontWeight: 700, marginBottom: '8px', fontSize: '12px' }}>
-            UI Identity Inspector
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
+            <div style={{ color: '#60a5fa', fontWeight: 700, fontSize: '13px' }}>
+              UI Identity Inspector
+            </div>
+            <button
+              onClick={dismissTooltip}
+              style={{
+                background: 'transparent',
+                border: 'none',
+                color: '#64748b',
+                cursor: 'pointer',
+                fontSize: '14px',
+                padding: 0,
+              }}
+            >
+              ✕
+            </button>
           </div>
-          <Row label="Stable ID" value={tooltip.id} color="#a78bfa" />
-          <Row label="Path" value={tooltip.path} color="#6ee7b7" />
-          <Row label="Feature" value={tooltip.feature} color="#fbbf24" />
-          <Row label="Version" value={tooltip.version} color="#94a3b8" />
-          {tooltip.deprecated && (
-            <div style={{ color: '#f87171', marginTop: '4px', fontWeight: 600 }}>⚠ DEPRECATED</div>
-          )}
+          
+          <div style={{ marginBottom: '12px' }}>
+            <Row label="Stable ID" value={tooltip.id} color="#a78bfa" />
+            <Row label="Path" value={tooltip.path} color="#6ee7b7" />
+            <Row label="Feature" value={tooltip.feature} color="#fbbf24" />
+            <Row label="Version" value={tooltip.version} color="#94a3b8" />
+            {tooltip.deprecated && (
+              <div style={{ color: '#f87171', marginTop: '4px', fontWeight: 600 }}>⚠ DEPRECATED</div>
+            )}
+          </div>
+
           <div style={{ borderTop: '1px solid #1e293b', marginTop: '8px', paddingTop: '8px' }}>
             <Row label="Component" value={tooltip.sourceComponent} color="#f472b6" />
             <Row label="File" value={tooltip.sourceFile} color="#94a3b8" />
             {tooltip.sourceLine > 0 && <Row label="Line" value={String(tooltip.sourceLine)} color="#94a3b8" />}
           </div>
-          <div style={{ color: '#475569', marginTop: '6px', fontSize: '9px' }}>click to dismiss</div>
+
+          {/* Database Section */}
+          <div style={{ borderTop: '1px solid #1e293b', marginTop: '12px', paddingTop: '12px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
+              <span style={{ color: '#60a5fa', fontWeight: 600, fontSize: '12px' }}>Database</span>
+              <button
+                onClick={() => setTooltip(t => ({ ...t, databaseEnabled: !t.databaseEnabled }))}
+                style={{
+                  padding: '4px 12px',
+                  borderRadius: '12px',
+                  border: 'none',
+                  cursor: 'pointer',
+                  fontSize: '10px',
+                  fontWeight: 600,
+                  background: tooltip.databaseEnabled ? '#22c55e' : '#475569',
+                  color: '#fff',
+                  fontFamily: 'monospace',
+                }}
+              >
+                {tooltip.databaseEnabled ? 'ON' : 'OFF'}
+              </button>
+            </div>
+
+            {/* Database Inputs (only if enabled) */}
+            {tooltip.databaseEnabled && (
+              <div style={{ marginBottom: '16px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <span style={{ color: '#94a3b8', fontSize: '11px', minWidth: '40px' }}>inf1</span>
+                  <input
+                    type="text"
+                    value={tooltip.inf1}
+                    onChange={(e) => setTooltip(t => ({ ...t, inf1: e.target.value }))}
+                    style={{
+                      flex: 1,
+                      background: '#1e293b',
+                      border: '1px solid #334155',
+                      borderRadius: '6px',
+                      padding: '8px',
+                      color: '#e2e8f0',
+                      fontSize: '11px',
+                      fontFamily: 'monospace',
+                      boxSizing: 'border-box',
+                    }}
+                  />
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <span style={{ color: '#94a3b8', fontSize: '11px', minWidth: '40px' }}>inf2</span>
+                  <input
+                    type="text"
+                    value={tooltip.inf2}
+                    onChange={(e) => setTooltip(t => ({ ...t, inf2: e.target.value }))}
+                    style={{
+                      flex: 1,
+                      background: '#1e293b',
+                      border: '1px solid #334155',
+                      borderRadius: '6px',
+                      padding: '8px',
+                      color: '#e2e8f0',
+                      fontSize: '11px',
+                      fontFamily: 'monospace',
+                      boxSizing: 'border-box',
+                    }}
+                  />
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <span style={{ color: '#94a3b8', fontSize: '11px', minWidth: '40px' }}>inf3</span>
+                  <input
+                    type="text"
+                    value={tooltip.inf3}
+                    onChange={(e) => setTooltip(t => ({ ...t, inf3: e.target.value }))}
+                    style={{
+                      flex: 1,
+                      background: '#1e293b',
+                      border: '1px solid #334155',
+                      borderRadius: '6px',
+                      padding: '8px',
+                      color: '#e2e8f0',
+                      fontSize: '11px',
+                      fontFamily: 'monospace',
+                      boxSizing: 'border-box',
+                    }}
+                  />
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Attributes Section */}
+          <div style={{ borderTop: '1px solid #1e293b', marginTop: '12px', paddingTop: '12px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
+              <span style={{ color: '#f472b6', fontWeight: 600, fontSize: '12px' }}>Attributes</span>
+              <button
+                onClick={() => setTooltip(t => ({ ...t, attributesEnabled: !t.attributesEnabled }))}
+                style={{
+                  padding: '4px 12px',
+                  borderRadius: '12px',
+                  border: 'none',
+                  cursor: 'pointer',
+                  fontSize: '10px',
+                  fontWeight: 600,
+                  background: tooltip.attributesEnabled ? '#22c55e' : '#475569',
+                  color: '#fff',
+                  fontFamily: 'monospace',
+                }}
+              >
+                {tooltip.attributesEnabled ? 'ON' : 'OFF'}
+              </button>
+            </div>
+
+            {/* Attributes Checkboxes (only if enabled) */}
+            {tooltip.attributesEnabled && (
+              <div style={{ marginBottom: '16px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
+                  <input
+                    type="checkbox"
+                    checked={tooltip.attribute1}
+                    onChange={(e) => setTooltip(t => ({ ...t, attribute1: e.target.checked }))}
+                    style={{ cursor: 'pointer' }}
+                  />
+                  <span style={{ color: '#94a3b8', fontSize: '11px' }}>Attribute 1</span>
+                </label>
+                <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
+                  <input
+                    type="checkbox"
+                    checked={tooltip.attribute2}
+                    onChange={(e) => setTooltip(t => ({ ...t, attribute2: e.target.checked }))}
+                    style={{ cursor: 'pointer' }}
+                  />
+                  <span style={{ color: '#94a3b8', fontSize: '11px' }}>Attribute 2</span>
+                </label>
+                <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
+                  <input
+                    type="checkbox"
+                    checked={tooltip.attribute3}
+                    onChange={(e) => setTooltip(t => ({ ...t, attribute3: e.target.checked }))}
+                    style={{ cursor: 'pointer' }}
+                  />
+                  <span style={{ color: '#94a3b8', fontSize: '11px' }}>Attribute 3</span>
+                </label>
+              </div>
+            )}
+          </div>
+
+          {/* Save Button */}
+          <div style={{ marginTop: '12px' }}>
+            <button
+              onClick={handleSave}
+              disabled={isSaving}
+              style={{
+                width: '100%',
+                padding: '10px 16px',
+                border: 'none',
+                borderRadius: '6px',
+                fontSize: '12px',
+                fontWeight: 600,
+                cursor: isSaving ? 'not-allowed' : 'pointer',
+                background: saveStatus === 'saved' 
+                  ? '#22c55e' 
+                  : saveStatus === 'error' 
+                  ? '#ef4444' 
+                  : '#2563eb',
+                color: '#fff',
+                transition: 'all 0.2s',
+                fontFamily: 'monospace',
+              }}
+            >
+              {isSaving 
+                ? 'Saving...' 
+                : saveStatus === 'saved' 
+                ? '✓ Saved!' 
+                : saveStatus === 'error' 
+                ? '✗ Failed' 
+                : '💾 Save Data'}
+            </button>
+          </div>
         </div>
       )}
     </>

@@ -92,7 +92,10 @@
       "secondaryButton": "اقرأ المزيد"
     },
     "promo-banner": {
-      "bannerButton": "استكشف العقارات"
+      "bannerButton": "استكشف العقارات",
+      "title": "عقارات النخبة",
+      "description": "اعثر على مساحتك الصناعية القادمة مع شركاء السويس المعتمدين.",
+      "logo": "شعار جوفا"
     },
     "curated-offers": {
       "showMoreButton": "عرض المزيد",

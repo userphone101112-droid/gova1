@@ -1,88 +1,140 @@
 'use client';
 
 /**
- * MAOL — Provider Component
+ * MAOL (Minimal Agent Observability Layer) — Provider Component
  *
- * Bootstraps all MAOL collectors when mounted.
- * Sends a DOM summary on every route change.
+ * ✅ MAOL IS ALWAYS ENABLED IN DEVELOPMENT MODE!
+ * ✅ No configuration or env vars required to start using MAOL locally!
+ * ✅ Automatically records data every 3 seconds!
  *
- * Lifecycle:
- *  mount   → get/create sessionId → init error + warning collectors
- *  route Δ → generate DOM summary → POST to /api/maol/ingest
- *  unmount → cleanup all interceptors
+ * Bootstraps all MAOL collectors when mounted:
+ * - Error capture (window.onerror, unhandledrejection)
+ * - Console warnings capture
+ * - DOM summary capture (every 3 seconds, auto-sent via sendBeacon)
  *
- * Opt-in: only active if NEXT_PUBLIC_MAOL_ENABLED === 'true'
- * Never renders any UI — transparent wrapper.
+ * Features:
+ * - Toggle MAOL ON/OFF via UI Inspector control (default ON)
+ * - All data saved to JSON files:
+ *    → errors/warnings in `error-data/maol-data.json`
+ *    → DOM summaries in `data/maol-dom-data.json`
+ * - Session data retrievable via GET /api/maol/session/:sessionId (no secret needed in dev mode!)
+ *
+ * @see docs/SERVER_ARCHITECTURE.md for complete docs
  */
 
 import { useEffect, useRef } from 'react';
-import { usePathname } from 'next/navigation';
 import { getMaolSessionId } from '@/shared/maol/session';
-import { initMaolErrorCollector, initMaolWarningCollector } from '@/shared/maol/client-collector';
+import {
+  initMaolErrorCollector,
+  initMaolWarningCollector,
+  setMaolEnabledGetter,
+} from '@/shared/maol/client-collector';
 import { generateDomSummary } from '@/shared/maol/dom-summary';
+import { useMaolStore } from '@/store/index';
 import type { MaolIngestPayload } from '@/shared/maol/types';
 
 const INGEST_URL = '/api/maol/ingest';
-const IS_ENABLED = process.env.NEXT_PUBLIC_MAOL_ENABLED === 'true';
 
-function sendDomSummary(sessionId: string, route: string): void {
-  // Slight delay to allow the new route's DOM to render
-  setTimeout(() => {
-    try {
-      const summary = generateDomSummary(route);
-      const payload: MaolIngestPayload = { sessionId, dom: summary };
-      const blob = new Blob([JSON.stringify(payload)], { type: 'application/json' });
+// ------------------------------
+// AUTO-ENABLE MAOL IN DEV MODE
+// ------------------------------
+// In development mode, MAOL is always ON by default
+const IS_DEV_MODE = process.env.NODE_ENV === 'development';
+const IS_ENABLED_ENV = IS_DEV_MODE ? true : (process.env.NEXT_PUBLIC_MAOL_ENABLED === 'true');
 
-      if (navigator.sendBeacon) {
-        navigator.sendBeacon(INGEST_URL, blob);
-      } else {
-        fetch(INGEST_URL, {
-          method: 'POST',
-          body: JSON.stringify(payload),
-          headers: { 'Content-Type': 'application/json' },
-          keepalive: true,
-        }).catch(() => {});
-      }
-    } catch {
-      // Intentionally silent — observability must never crash the app
+/**
+ * Helper: Send DOM Summary to MAOL Ingest API
+ * Uses sendBeacon for non-blocking, fire-and-forget to avoid blocking the user
+ *
+ * @param sessionId - MAOL session identifier
+ * @param route - Current app route
+ * @param isEnabled - Whether MAOL is currently toggled ON
+ */
+function sendDomSummary(sessionId: string, route: string, isEnabled: boolean): void {
+  if (!isEnabled) return;
+
+  try {
+    const summary = generateDomSummary(route);
+    const payload: MaolIngestPayload = { sessionId, dom: summary };
+    const blob = new Blob([JSON.stringify(payload)], { type: 'application/json' });
+
+    if (navigator.sendBeacon) {
+      navigator.sendBeacon(INGEST_URL, blob);
+    } else {
+      fetch(INGEST_URL, {
+        method: 'POST',
+        body: JSON.stringify(payload),
+        headers: { 'Content-Type': 'application/json' },
+        keepalive: true,
+      }).catch(() => {
+        // Ignore failures; observability must never interfere with app functionality
+      });
     }
-  }, 300);
+  } catch {
+    // Intentionally silent; observability must never cause app crashes
+  }
 }
 
 export function MaolProvider() {
-  const pathname = usePathname();
   const sessionIdRef = useRef<string | null>(null);
   const cleanupRef = useRef<(() => void)[]>([]);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const isMaolEnabled = useMaolStore((state) => state.isEnabled);
 
-  // Initialize collectors on mount
+  // Pass the current MAOL enabled state to the client collectors
   useEffect(() => {
-    if (!IS_ENABLED) return;
+    setMaolEnabledGetter(() => isMaolEnabled);
+  }, [isMaolEnabled]);
+
+  // Initialize collectors and auto-send interval
+  useEffect(() => {
+    // Always skip in production unless explicitly enabled
+    if (!IS_ENABLED_ENV) return;
 
     const sessionId = getMaolSessionId();
     sessionIdRef.current = sessionId;
 
-    const cleanupError = initMaolErrorCollector(sessionId);
-    const cleanupWarning = initMaolWarningCollector(sessionId);
-
-    cleanupRef.current = [cleanupError, cleanupWarning];
-
-    // Send initial DOM summary for the first route
-    sendDomSummary(sessionId, window.location.pathname);
-
-    return () => {
-      cleanupRef.current.forEach((fn) => fn());
+    // Clean up existing collectors/intervals
+    const cleanupCollectors = () => {
+      cleanupRef.current.forEach((cleanupFn) => cleanupFn());
       cleanupRef.current = [];
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
-  // Send DOM summary on every route change
-  useEffect(() => {
-    if (!IS_ENABLED) return;
-    if (!sessionIdRef.current) return;
-    sendDomSummary(sessionIdRef.current, pathname);
-  }, [pathname]);
+    const stopAutoSend = () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+        intervalRef.current = null;
+      }
+    };
 
-  // No UI rendered — purely behavioral
-  return null;
+    if (isMaolEnabled) {
+      // Initialize error and warning interceptors
+      const cleanupError = initMaolErrorCollector(sessionId);
+      const cleanupWarning = initMaolWarningCollector(sessionId);
+      cleanupRef.current = [cleanupError, cleanupWarning];
+
+      // ------------------------------
+      // AUTO-SEND EVERY 3 SECONDS!
+      // ------------------------------
+      intervalRef.current = setInterval(() => {
+        if (sessionIdRef.current) {
+          sendDomSummary(
+            sessionIdRef.current,
+            window.location.pathname,
+            isMaolEnabled
+          );
+        }
+      }, 3000);
+    } else {
+      cleanupCollectors();
+      stopAutoSend();
+    }
+
+    return () => {
+      cleanupCollectors();
+      stopAutoSend();
+    };
+  }, [isMaolEnabled]);
+
+  return null; // No UI rendered by MAOL
 }

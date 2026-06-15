@@ -21,3 +21,12 @@ export type { UiSwitchProps } from './switch';
 
 export { UiLink } from './link';
 export type { UiLinkProps } from './link';
+
+export { UiLabel } from './label';
+export type { UiLabelProps } from './label';
+
+export { UiHeader } from './header';
+export type { UiHeaderProps } from './header';
+
+export { UiImage } from './image';
+export type { UiImageProps } from './image';

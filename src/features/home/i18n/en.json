@@ -92,7 +92,10 @@
       "secondaryButton": "Learn More"
     },
     "promo-banner": {
-      "bannerButton": "Explore Listings"
+      "bannerButton": "Explore Listings",
+      "title": "Elite Real Estate",
+      "description": "Find your next industrial space with Suez certified partners.",
+      "logo": "GoVa Logo"
     },
     "curated-offers": {
       "showMoreButton": "Show More",

@@ -1,21 +1,22 @@
 /**
- * MAOL — SQLite Persistent Store
+ * MAOL (Minimal Agent Observability Layer) — JSON Persistent Store
  *
- * Server-side singleton that persists all observability events.
- * Uses better-sqlite3 (already in project dependencies).
+ * Handles all server-side data persistence for MAOL.
  *
- * Storage: logs/maol.sqlite (persistent across server restarts)
- * Max records: 200 per session per table (FIFO eviction)
+ * Storage:
+ *  - Errors/Warnings: `error-data/maol-data.json` (no duplicates!)
+ *  - DOM Summaries: `data/maol-dom-data.json`
  *
- * Security:
- *  - All payloads stored as JSON strings (sanitized via JSON round-trip)
- *  - No raw SQL string concatenation — all queries use parameterized statements
- *  - sessionId validated before every write/read
+ * Features:
+ *  ✅ Deduplication: same errors/warnings aren't saved multiple times!
+ *  ✅ Auto-cleanup: max 200 records per session to avoid bloat
+ *  ✅ Auto-create directories/files if they don't exist yet
+ *
+ * @see docs/SERVER_ARCHITECTURE.md for complete documentation
  */
 
-import Database from 'better-sqlite3';
 import { join } from 'path';
-import { existsSync, mkdirSync } from 'fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'fs';
 import { isValidMaolSessionId } from '@/shared/maol/session';
 import type {
   MaolErrorEvent,
@@ -29,138 +30,197 @@ import type {
 // ---------------------------------------------------------------------------
 // Constants
 // ---------------------------------------------------------------------------
-
-const MAX_RECORDS_PER_SESSION = 200;
-const LOGS_DIR = join(process.cwd(), 'logs');
-const DB_PATH = join(LOGS_DIR, 'maol.sqlite');
+const MAX_RECORDS_PER_SESSION = 200; // Keep sessions light
+const ERROR_DATA_DIR = join(process.cwd(), 'error-data');
+const DATA_DIR = join(process.cwd(), 'data');
+const ERROR_DATA_PATH = join(ERROR_DATA_DIR, 'maol-data.json');
+const DOM_DATA_PATH = join(DATA_DIR, 'maol-dom-data.json');
 
 // ---------------------------------------------------------------------------
-// Singleton DB Instance
+// Types (for our internal store structure)
+// ---------------------------------------------------------------------------
+interface ErrorWarningData {
+  [sessionId: string]: {
+    errors: MaolErrorEvent[];
+    warnings: MaolWarningEvent[];
+  };
+}
+
+interface DomData {
+  [sessionId: string]: MaolDomSummary[];
+}
+
+// ---------------------------------------------------------------------------
+// Helper Functions
 // ---------------------------------------------------------------------------
 
-let _db: Database.Database | null = null;
-
-function getDb(): Database.Database {
-  if (_db) return _db;
-
-  // Ensure logs directory exists
-  if (!existsSync(LOGS_DIR)) {
-    mkdirSync(LOGS_DIR, { recursive: true });
+/**
+ * Ensure directories exist (auto-create if missing)
+ */
+function ensureDirExists(dir: string) {
+  if (!existsSync(dir)) {
+    mkdirSync(dir, { recursive: true });
   }
-
-  _db = new Database(DB_PATH);
-
-  // Enable WAL mode for better concurrent read performance
-  _db.pragma('journal_mode = WAL');
-  _db.pragma('foreign_keys = ON');
-
-  // Create tables
-  _db.exec(`
-    CREATE TABLE IF NOT EXISTS maol_errors (
-      id        INTEGER PRIMARY KEY AUTOINCREMENT,
-      sessionId TEXT    NOT NULL,
-      payload   TEXT    NOT NULL,
-      createdAt TEXT    NOT NULL DEFAULT (datetime('now'))
-    );
-
-    CREATE TABLE IF NOT EXISTS maol_warnings (
-      id        INTEGER PRIMARY KEY AUTOINCREMENT,
-      sessionId TEXT    NOT NULL,
-      payload   TEXT    NOT NULL,
-      createdAt TEXT    NOT NULL DEFAULT (datetime('now'))
-    );
-
-    CREATE TABLE IF NOT EXISTS maol_dom (
-      id        INTEGER PRIMARY KEY AUTOINCREMENT,
-      sessionId TEXT    NOT NULL,
-      route     TEXT    NOT NULL,
-      payload   TEXT    NOT NULL,
-      createdAt TEXT    NOT NULL DEFAULT (datetime('now'))
-    );
-
-    CREATE INDEX IF NOT EXISTS idx_errors_session   ON maol_errors(sessionId);
-    CREATE INDEX IF NOT EXISTS idx_warnings_session ON maol_warnings(sessionId);
-    CREATE INDEX IF NOT EXISTS idx_dom_session      ON maol_dom(sessionId);
-  `);
-
-  return _db;
 }
 
-// ---------------------------------------------------------------------------
-// FIFO Eviction Helper
-// ---------------------------------------------------------------------------
-
-function evictOldRecords(table: string, sessionId: string): void {
-  const db = getDb();
-  db.prepare(`
-    DELETE FROM ${table}
-    WHERE sessionId = ?
-      AND id NOT IN (
-        SELECT id FROM ${table}
-        WHERE sessionId = ?
-        ORDER BY id DESC
-        LIMIT ?
-      )
-  `).run(sessionId, sessionId, MAX_RECORDS_PER_SESSION);
+/**
+ * Clean up messages by removing console formatting (%c, CSS styles)
+ */
+function sanitizeMessage(msg: string): string {
+  let cleaned = msg;
+  cleaned = cleaned.replace(/%c/g, ''); // Remove color tokens
+  cleaned = cleaned.replace(/background:[^;]+;?/gi, '');
+  cleaned = cleaned.replace(/color:[^;]+;?/gi, '');
+  cleaned = cleaned.replace(/border-radius:[^;]+;?/gi, '');
+  cleaned = cleaned.replace(/\s{2,}/g, ' '); // Normalize whitespace
+  return cleaned.trim();
 }
 
-// ---------------------------------------------------------------------------
-// Sanitize helper — prevents injecting malformed JSON into DB
-// ---------------------------------------------------------------------------
+/**
+ * Read error/warning data from disk
+ */
+function readErrorData(): ErrorWarningData {
+  ensureDirExists(ERROR_DATA_DIR);
+  try {
+    const content = readFileSync(ERROR_DATA_PATH, 'utf8');
+    return JSON.parse(content);
+  } catch {
+    return {}; // Start with empty object if file isn't there yet
+  }
+}
 
-function sanitize<T>(data: T): string {
-  return JSON.stringify(JSON.parse(JSON.stringify(data)));
+/**
+ * Write error/warning data to disk (with indentation for readability)
+ */
+function writeErrorData(data: ErrorWarningData): void {
+  ensureDirExists(ERROR_DATA_DIR);
+  writeFileSync(ERROR_DATA_PATH, JSON.stringify(data, null, 2));
+}
+
+/**
+ * Read DOM summary data from disk
+ */
+function readDomData(): DomData {
+  ensureDirExists(DATA_DIR);
+  try {
+    const content = readFileSync(DOM_DATA_PATH, 'utf8');
+    return JSON.parse(content);
+  } catch {
+    return {};
+  }
+}
+
+/**
+ * Write DOM summary data to disk
+ */
+function writeDomData(data: DomData): void {
+  ensureDirExists(DATA_DIR);
+  writeFileSync(DOM_DATA_PATH, JSON.stringify(data, null, 2));
+}
+
+/**
+ * Create a unique key for errors to check for duplicates
+ */
+function getErrorKey(event: MaolErrorEvent): string {
+  return `${event.message}-${event.route}-${event.stack || 'no-stack'}`;
+}
+
+/**
+ * Create a unique key for warnings to check for duplicates
+ */
+function getWarningKey(event: MaolWarningEvent): string {
+  return `${event.message}-${event.route}-${event.component || 'no-component'}-${event.severity}`;
+}
+
+/**
+ * Keep only the latest N records to avoid file bloat
+ */
+function evictOldRecords<T>(arr: T[], max: number): T[] {
+  if (arr.length <= max) return arr;
+  return arr.slice(-max); // Keep newest ones
 }
 
 // ---------------------------------------------------------------------------
 // Write Operations
 // ---------------------------------------------------------------------------
 
+/**
+ * Store an error event (if not already stored)
+ */
 export function storeError(sessionId: string, event: MaolErrorEvent): void {
   if (!isValidMaolSessionId(sessionId)) return;
   try {
-    const db = getDb();
-    db.prepare(
-      'INSERT INTO maol_errors (sessionId, payload) VALUES (?, ?)'
-    ).run(sessionId, sanitize(event));
-    evictOldRecords('maol_errors', sessionId);
+    const data = readErrorData();
+    if (!data[sessionId]) {
+      data[sessionId] = { errors: [], warnings: [] };
+    }
+
+    const sanitizedEvent = {
+      ...event,
+      message: sanitizeMessage(event.message),
+    };
+
+    const key = getErrorKey(sanitizedEvent);
+    const exists = data[sessionId].errors.some((e) => getErrorKey(e) === key);
+    if (!exists) {
+      data[sessionId].errors.push(sanitizedEvent);
+      data[sessionId].errors = evictOldRecords(data[sessionId].errors, MAX_RECORDS_PER_SESSION);
+      writeErrorData(data);
+    }
   } catch (err) {
     console.error('[MAOL Store] Failed to store error:', err);
   }
 }
 
+/**
+ * Store a warning event (if not already stored)
+ */
 export function storeWarning(sessionId: string, event: MaolWarningEvent): void {
   if (!isValidMaolSessionId(sessionId)) return;
   try {
-    const db = getDb();
-    db.prepare(
-      'INSERT INTO maol_warnings (sessionId, payload) VALUES (?, ?)'
-    ).run(sessionId, sanitize(event));
-    evictOldRecords('maol_warnings', sessionId);
+    const data = readErrorData();
+    if (!data[sessionId]) {
+      data[sessionId] = { errors: [], warnings: [] };
+    }
+
+    const sanitizedEvent = {
+      ...event,
+      message: sanitizeMessage(event.message),
+    };
+
+    const key = getWarningKey(sanitizedEvent);
+    const exists = data[sessionId].warnings.some((w) => getWarningKey(w) === key);
+    if (!exists) {
+      data[sessionId].warnings.push(sanitizedEvent);
+      data[sessionId].warnings = evictOldRecords(data[sessionId].warnings, MAX_RECORDS_PER_SESSION);
+      writeErrorData(data);
+    }
   } catch (err) {
     console.error('[MAOL Store] Failed to store warning:', err);
   }
 }
 
+/**
+ * Store a DOM summary
+ * Updates existing entry if same route already exists, otherwise adds a new one
+ */
 export function storeDomSummary(sessionId: string, summary: MaolDomSummary): void {
   if (!isValidMaolSessionId(sessionId)) return;
   try {
-    const db = getDb();
-    // Upsert: replace existing DOM summary for the same session+route
-    const existing = db.prepare(
-      'SELECT id FROM maol_dom WHERE sessionId = ? AND route = ?'
-    ).get(sessionId, summary.route) as { id: number } | undefined;
-
-    if (existing) {
-      db.prepare(
-        'UPDATE maol_dom SET payload = ?, createdAt = datetime(\'now\') WHERE id = ?'
-      ).run(sanitize(summary), existing.id);
-    } else {
-      db.prepare(
-        'INSERT INTO maol_dom (sessionId, route, payload) VALUES (?, ?, ?)'
-      ).run(sessionId, summary.route, sanitize(summary));
-      evictOldRecords('maol_dom', sessionId);
+    const data = readDomData();
+    if (!data[sessionId]) {
+      data[sessionId] = [];
     }
+
+    const existingIndex = data[sessionId].findIndex((d) => d.route === summary.route);
+    if (existingIndex !== -1) {
+      data[sessionId][existingIndex] = summary; // Update existing route summary
+    } else {
+      data[sessionId].push(summary); // Add new route summary
+      data[sessionId] = evictOldRecords(data[sessionId], MAX_RECORDS_PER_SESSION);
+    }
+
+    writeDomData(data);
   } catch (err) {
     console.error('[MAOL Store] Failed to store DOM summary:', err);
   }
@@ -170,28 +230,21 @@ export function storeDomSummary(sessionId: string, summary: MaolDomSummary): voi
 // Read Operations
 // ---------------------------------------------------------------------------
 
+/**
+ * Retrieve complete session data for the agent
+ */
 export function getSessionData(sessionId: string): MaolAgentResponse | null {
   if (!isValidMaolSessionId(sessionId)) return null;
 
   try {
-    const db = getDb();
+    const errorData = readErrorData();
+    const domData = readDomData();
 
-    const errorRows = db.prepare(
-      'SELECT payload, createdAt FROM maol_errors WHERE sessionId = ? ORDER BY id ASC'
-    ).all(sessionId) as { payload: string; createdAt: string }[];
+    const errors = errorData[sessionId]?.errors || [];
+    const warnings = errorData[sessionId]?.warnings || [];
+    const dom = domData[sessionId] || [];
 
-    const warningRows = db.prepare(
-      'SELECT payload, createdAt FROM maol_warnings WHERE sessionId = ? ORDER BY id ASC'
-    ).all(sessionId) as { payload: string; createdAt: string }[];
-
-    const domRows = db.prepare(
-      'SELECT payload FROM maol_dom WHERE sessionId = ? ORDER BY id ASC'
-    ).all(sessionId) as { payload: string }[];
-
-    const errors: MaolErrorEvent[] = errorRows.map((r) => JSON.parse(r.payload));
-    const warnings: MaolWarningEvent[] = warningRows.map((r) => JSON.parse(r.payload));
-    const dom: MaolDomSummary[] = domRows.map((r) => JSON.parse(r.payload));
-
+    // Calculate unique routes visited
     const routesVisited = [
       ...new Set([
         ...errors.map((e) => e.route),
@@ -200,6 +253,7 @@ export function getSessionData(sessionId: string): MaolAgentResponse | null {
       ]),
     ];
 
+    // Calculate warning severity counts
     const warnBySeverity: Record<MaolWarningSeverity, number> = {
       low: 0,
       medium: 0,
@@ -209,6 +263,7 @@ export function getSessionData(sessionId: string): MaolAgentResponse | null {
       warnBySeverity[w.severity] = (warnBySeverity[w.severity] || 0) + 1;
     });
 
+    // Get session start and last activity timestamps
     const allTimestamps = [
       ...errors.map((e) => e.timestamp),
       ...warnings.map((w) => w.timestamp),
@@ -244,14 +299,16 @@ export function getSessionData(sessionId: string): MaolAgentResponse | null {
 // ---------------------------------------------------------------------------
 // Cleanup (for testing or manual purge)
 // ---------------------------------------------------------------------------
-
 export function purgeSession(sessionId: string): void {
   if (!isValidMaolSessionId(sessionId)) return;
   try {
-    const db = getDb();
-    db.prepare('DELETE FROM maol_errors WHERE sessionId = ?').run(sessionId);
-    db.prepare('DELETE FROM maol_warnings WHERE sessionId = ?').run(sessionId);
-    db.prepare('DELETE FROM maol_dom WHERE sessionId = ?').run(sessionId);
+    const errorData = readErrorData();
+    delete errorData[sessionId];
+    writeErrorData(errorData);
+
+    const domData = readDomData();
+    delete domData[sessionId];
+    writeDomData(domData);
   } catch (err) {
     console.error('[MAOL Store] Failed to purge session:', err);
   }

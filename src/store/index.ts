@@ -20,3 +20,23 @@ export const useAppStore = create<AppState>()(
     )
   )
 );
+
+interface MaolState {
+  isEnabled: boolean;
+  toggleMaol: () => void;
+}
+
+export const useMaolStore = create<MaolState>()(
+  devtools(
+    persist(
+      (set) => ({
+        isEnabled: true, // default ON
+        toggleMaol: () => set((state) => ({ isEnabled: !state.isEnabled })),
+      }),
+      {
+        name: 'maol-storage',
+        partialize: (state) => ({ isEnabled: state.isEnabled }),
+      }
+    )
+  )
+);

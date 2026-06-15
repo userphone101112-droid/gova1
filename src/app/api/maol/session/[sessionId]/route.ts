@@ -3,7 +3,9 @@
  * GET /api/maol/session/[sessionId]
  *
  * Returns full structured observability data for a given session.
- * Protected by MAOL_SECRET token (Authorization: Bearer <token>).
+ *
+ * 🔓 DEVELOPMENT MODE: NO AUTH REQUIRED! Just call it directly!
+ * 🔒 PRODUCTION MODE: Requires MAOL_SECRET token (Authorization: Bearer <token>)
  *
  * Response shape:
  * {
@@ -13,6 +15,8 @@
  *   dom: MaolDomSummary[],
  *   summary: MaolSessionSummary
  * }
+ *
+ * @see docs/SERVER_ARCHITECTURE.md for complete documentation
  */
 
 import { NextRequest, NextResponse } from 'next/server';
@@ -23,16 +27,31 @@ import { getSessionData } from '@/lib/maol-store';
 // Authentication helpers
 // ---------------------------------------------------------------------------
 
+/**
+ * MAOL IS ALWAYS ENABLED IN DEVELOPMENT MODE!
+ * Only check flag in production.
+ */
 function isMaolEnabled(): boolean {
+  if (process.env.NODE_ENV === 'development') {
+    return true;
+  }
   return process.env.NEXT_PUBLIC_MAOL_ENABLED === 'true';
 }
 
 /**
  * Validate the Bearer token from the Authorization header.
- * Requires MAOL_SECRET env var to be set on the server.
+ *
+ * 🔓 In DEV MODE: always returns true! No auth required!
+ * 🔒 In PRODUCTION MODE: Requires MAOL_SECRET env var
+ *
  * Also accepts x-maol-token header as an alternative.
  */
 function isAuthorized(request: NextRequest): boolean {
+  // Skip auth in dev mode
+  if (process.env.NODE_ENV === 'development') {
+    return true;
+  }
+
   const secret = process.env.MAOL_SECRET;
 
   // If no secret is configured, endpoint is disabled entirely
@@ -68,7 +87,7 @@ export async function GET(
     );
   }
 
-  // 2. Authentication
+  // 2. Authentication (skipped in dev mode!)
   if (!isAuthorized(request)) {
     return NextResponse.json(
       { error: 'Unauthorized. Provide a valid MAOL_SECRET token.' },

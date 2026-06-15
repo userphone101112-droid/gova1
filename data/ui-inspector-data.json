@@ -1,0 +1,41 @@
+{
+  "UI_SHARED_BOTTOM_NAV_ORDERS": {
+    "databaseEnabled": false,
+    "inf1": "",
+    "inf2": "",
+    "inf3": "",
+    "attributesEnabled": true,
+    "attribute1": true,
+    "attribute2": false,
+    "attribute3": false,
+    "dataUiPath": "shared-layout.bottom-nav.items.orders-link",
+    "dataUiFeature": "shared-layout",
+    "updatedAt": "2026-06-15T16:52:51.319Z"
+  },
+  "UI_SHARED_BOTTOM_NAV_PROFILE": {
+    "databaseEnabled": true,
+    "inf1": "1",
+    "inf2": "",
+    "inf3": "",
+    "attributesEnabled": false,
+    "attribute1": false,
+    "attribute2": false,
+    "attribute3": false,
+    "dataUiPath": "shared-layout.bottom-nav.items.profile-link",
+    "dataUiFeature": "shared-layout",
+    "updatedAt": "2026-06-15T16:52:58.514Z"
+  },
+  "UI_SHARED_BOTTOM_NAV_FAVORITES": {
+    "databaseEnabled": false,
+    "inf1": "",
+    "inf2": "",
+    "inf3": "",
+    "attributesEnabled": false,
+    "attribute1": false,
+    "attribute2": false,
+    "attribute3": false,
+    "dataUiPath": "shared-layout.bottom-nav.items.favorites-link",
+    "dataUiFeature": "shared-layout",
+    "updatedAt": "2026-06-15T16:16:22.554Z"
+  }
+}

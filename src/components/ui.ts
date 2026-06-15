@@ -42,3 +42,12 @@ export type { UiSwitchProps } from './ui-identified/switch';
 
 export { UiLink } from './ui-identified/link';
 export type { UiLinkProps } from './ui-identified/link';
+
+export { UiLabel } from './ui-identified/label';
+export type { UiLabelProps } from './ui-identified/label';
+
+export { UiHeader } from './ui-identified/header';
+export type { UiHeaderProps } from './ui-identified/header';
+
+export { UiImage } from './ui-identified/image';
+export type { UiImageProps } from './ui-identified/image';
