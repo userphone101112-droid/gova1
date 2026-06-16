@@ -59,6 +59,8 @@ const ALL_COMPONENT_TYPES = [
 type ComponentType = typeof ALL_COMPONENT_TYPES[number];
 
 function computeFrames(selectedTypes: Set<ComponentType>): OverlayFrame[] {
+  if (typeof window === 'undefined') return [];
+  
   const elements = document.querySelectorAll<HTMLElement>('[data-ui-id]');
   const frames: OverlayFrame[] = [];
 
@@ -109,6 +111,12 @@ export function DevUiOverlay() {
 
   // Function to compute component type counts
   const getComponentCounts = useCallback(() => {
+    if (typeof window === 'undefined') {
+      const counts: Record<string, number> = {};
+      ALL_COMPONENT_TYPES.forEach(type => counts[type] = 0);
+      return counts;
+    }
+    
     const counts: Record<string, number> = {};
     ALL_COMPONENT_TYPES.forEach(type => counts[type] = 0);
     const elements = document.querySelectorAll<HTMLElement>('[data-ui-id]');
@@ -122,6 +130,11 @@ export function DevUiOverlay() {
   }, []);
 
   const [frames, setFrames] = useState<OverlayFrame[]>([]);
+  const [componentCounts, setComponentCounts] = useState<Record<string, number>>(() => {
+    const initial: Record<string, number> = {};
+    ALL_COMPONENT_TYPES.forEach(type => initial[type] = 0);
+    return initial;
+  });
 
   const [tooltip, setTooltip] = useState<TooltipState>({
     visible: false,
@@ -166,9 +179,11 @@ export function DevUiOverlay() {
   const refresh = useCallback(() => {
     if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
     rafRef.current = requestAnimationFrame(() => {
-      setFrames(computeFrames(selectedComponentTypes));
+      const newFrames = computeFrames(selectedComponentTypes);
+      setFrames(newFrames);
+      setComponentCounts(getComponentCounts());
     });
-  }, [selectedComponentTypes]);
+  }, [selectedComponentTypes, getComponentCounts]);
 
   // Keyboard toggle: Ctrl+Shift+U
   useEffect(() => {
@@ -319,7 +334,12 @@ export function DevUiOverlay() {
     }
   };
 
-  const componentCounts = useMemo(() => getComponentCounts(), [frames, getComponentCounts]);
+  // Update component counts when frames change
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setComponentCounts(getComponentCounts());
+    }
+  }, [frames, getComponentCounts]);
 
   if (!active && frames.length === 0) {
     return (
@@ -581,7 +601,7 @@ export function DevUiOverlay() {
           style={{
             position: 'fixed',
             top: Math.min(tooltip.y, 20),
-            left: Math.min(tooltip.x, window.innerWidth - 380),
+            left: Math.min(tooltip.x, (typeof window !== 'undefined' ? window.innerWidth : 1000) - 380),
             zIndex: 100000,
             background: '#0f172a',
             border: '1px solid #1e40af',

@@ -130,6 +130,14 @@
         "severity": "low",
         "timestamp": 1781556382781,
         "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "{}",
+        "route": "/home",
+        "severity": "low",
+        "timestamp": 1781578450514,
+        "env": "dev"
       }
     ]
   },
