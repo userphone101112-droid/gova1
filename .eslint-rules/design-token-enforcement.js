@@ -7,7 +7,7 @@ const designTokenEnforcementRules = {
   rules: {
     "no-hardcoded-design-tokens": {
       meta: {
-        type: "suggestion",
+        type: "problem", // Change to problem so build fails on violation!
         docs: {
           description: "Disallow hardcoded design token values, use design system tokens instead",
           recommended: true,
@@ -19,6 +19,8 @@ const designTokenEnforcementRules = {
           hardcodedSpacing: "Hardcoded spacing value '{{ value }}' found. Use a design system token instead.",
           hardcodedBorderRadius: "Hardcoded border-radius value '{{ value }}' found. Use a design system token instead.",
           hardcodedShadow: "Hardcoded shadow value '{{ value }}' found. Use a design system token instead.",
+          arbitraryTailwindValue: "Tailwind arbitrary value '{{ value }}' found. Use design system tokens or predefined utilities instead.",
+          inlineStyleAttribute: "Inline 'style' attribute detected. Use Tailwind classes instead.",
         },
       },
       create(context) {
@@ -29,6 +31,7 @@ const designTokenEnforcementRules = {
         const spacingValueRegex = /\b(\d+(?:\.\d+)?)(?:px|rem|em)\b/;
         const borderRadiusRegex = /borderRadius|border-radius/;
         const shadowRegex = /boxShadow|box-shadow|textShadow|text-shadow/;
+        const arbitraryValueRegex = /-\[.*?\]/;
 
         // Helper to check if value should be flagged
         const isHardcodedColor = (value) => {
@@ -104,6 +107,39 @@ const designTokenEnforcementRules = {
         return {
           ObjectExpression(node) {
             checkObjectExpression(node);
+          },
+          
+          // Check className attributes for arbitrary values
+          JSXAttribute(node) {
+            if (node.name.name === 'className' && node.value) {
+              let classNameValue = '';
+              
+              if (node.value.type === 'Literal') {
+                classNameValue = node.value.value || '';
+              } else if (node.value.type === 'JSXExpressionContainer') {
+                // Handle template literals and simple expressions
+                if (node.value.expression.type === 'TemplateLiteral') {
+                  classNameValue = node.value.expression.quasis.map(q => q.value.raw).join(' ');
+                }
+              }
+
+              if (arbitraryValueRegex.test(classNameValue)) {
+                const match = classNameValue.match(arbitraryValueRegex);
+                context.report({
+                  node: node.value,
+                  messageId: "arbitraryTailwindValue",
+                  data: { value: match ? match[0] : classNameValue },
+                });
+              }
+            }
+            
+            // Check for inline style attribute completely!
+            if (node.name.name === 'style') {
+              context.report({
+                node: node,
+                messageId: "inlineStyleAttribute",
+              });
+            }
           },
         };
       },

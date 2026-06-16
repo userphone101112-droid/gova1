@@ -5,7 +5,7 @@ import { UiButton } from '@/components/ui';
 import { SHARED_LAYOUT } from '@/shared/ui-registry';
 import { X, LogIn, Globe, Sun, Moon, Monitor, ChevronDown } from 'lucide-react';
 import { useTranslation } from '@/shared/i18n/core/useTranslation';
-import { useSettingsStore } from '@/store/settings.store';
+import { useGlobalSSOTStore } from '@/store/global-ssot.store';
 
 interface AppSidebarProps {
   isOpen: boolean;
@@ -15,7 +15,7 @@ interface AppSidebarProps {
 export function AppSidebar({ isOpen, onClose }: AppSidebarProps) {
   const sidebarRef = useRef<HTMLDivElement>(null);
   const { locale, setLocale } = useTranslation();
-  const { settings, setSettings } = useSettingsStore();
+  const { themeMode, setThemeMode } = useGlobalSSOTStore();
   const [languageDropdownOpen, setLanguageDropdownOpen] = useState(false);
   const [themeDropdownOpen, setThemeDropdownOpen] = useState(false);
   const languageDropdownRef = useRef<HTMLDivElement>(null);
@@ -66,26 +66,21 @@ export function AppSidebar({ isOpen, onClose }: AppSidebarProps) {
   // Change language
   const changeLanguage = (newLocale: 'ar' | 'en') => {
     setLocale(newLocale);
-    // Update settings to reflect the change
-    setSettings({
-      language: newLocale,
-      languageMode: 'manual'
-    });
     setLanguageDropdownOpen(false);
   };
 
   // Change theme
   const changeTheme = (newTheme: 'light' | 'dark' | 'system') => {
-    setSettings({ theme: newTheme });
+    setThemeMode(newTheme);
     setThemeDropdownOpen(false);
   };
 
   // Determine current theme icon
   const getThemeIcon = () => {
-    if (settings.theme === 'dark') {
+    if (themeMode === 'dark') {
       return <Moon className="w-5 h-5" />;
     }
-    if (settings.theme === 'light') {
+    if (themeMode === 'light') {
       return <Sun className="w-5 h-5" />;
     }
     // System theme
@@ -98,8 +93,8 @@ export function AppSidebar({ isOpen, onClose }: AppSidebarProps) {
   };
 
   const getThemeLabel = () => {
-    if (settings.theme === 'dark') return locale === 'ar' ? 'الوضع المعتم' : 'Dark Mode';
-    if (settings.theme === 'light') return locale === 'ar' ? 'الوضع الفاتح' : 'Light Mode';
+    if (themeMode === 'dark') return locale === 'ar' ? 'الوضع المعتم' : 'Dark Mode';
+    if (themeMode === 'light') return locale === 'ar' ? 'الوضع الفاتح' : 'Light Mode';
     return locale === 'ar' ? 'الوضع الافتراضي' : 'System Default';
   };
 
@@ -191,14 +186,14 @@ export function AppSidebar({ isOpen, onClose }: AppSidebarProps) {
               {languageDropdownOpen && (
                 <div className="absolute z-50 top-full mt-2 w-full bg-background border border-border rounded-lg shadow-lg overflow-hidden">
                   <button
-                    className={`w-full px-4 py-3 text-left hover:bg-muted transition-colors flex items-center justify-between ${locale === 'ar' ? 'bg-primary/10 text-primary' : ''}`}
+                    className={`w-full px-4 py-3 text-start hover:bg-muted transition-colors flex items-center justify-between ${locale === 'ar' ? 'bg-primary/10 text-primary' : ''}`}
                     onClick={() => changeLanguage('ar')}
                   >
                     <span>العربية</span>
                     {locale === 'ar' && <div className="w-2 h-2 rounded-full bg-primary" />}
                   </button>
                   <button
-                    className={`w-full px-4 py-3 text-left hover:bg-muted transition-colors flex items-center justify-between ${locale === 'en' ? 'bg-primary/10 text-primary' : ''}`}
+                    className={`w-full px-4 py-3 text-start hover:bg-muted transition-colors flex items-center justify-between ${locale === 'en' ? 'bg-primary/10 text-primary' : ''}`}
                     onClick={() => changeLanguage('en')}
                   >
                     <span>English</span>
@@ -221,7 +216,7 @@ export function AppSidebar({ isOpen, onClose }: AppSidebarProps) {
                   <span>{getThemeLabel()}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="font-semibold capitalize">{settings.theme}</span>
+                  <span className="font-semibold capitalize">{themeMode}</span>
                   <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${themeDropdownOpen ? 'rotate-180' : ''}`} />
                 </div>
               </UiButton>
@@ -230,28 +225,28 @@ export function AppSidebar({ isOpen, onClose }: AppSidebarProps) {
               {themeDropdownOpen && (
                 <div className="absolute z-50 top-full mt-2 w-full bg-background border border-border rounded-lg shadow-lg overflow-hidden">
                   <button
-                    className={`w-full px-4 py-3 text-left hover:bg-muted transition-colors flex items-center gap-3 ${settings.theme === 'light' ? 'bg-primary/10 text-primary' : ''}`}
+                    className={`w-full px-4 py-3 text-start hover:bg-muted transition-colors flex items-center gap-3 ${themeMode === 'light' ? 'bg-primary/10 text-primary' : ''}`}
                     onClick={() => changeTheme('light')}
                   >
                     <Sun className="w-4 h-4" />
                     <span>{locale === 'ar' ? 'الوضع الفاتح' : 'Light Mode'}</span>
-                    {settings.theme === 'light' && <div className="w-2 h-2 rounded-full bg-primary ms-auto" />}
+                    {themeMode === 'light' && <div className="w-2 h-2 rounded-full bg-primary ms-auto" />}
                   </button>
                   <button
-                    className={`w-full px-4 py-3 text-left hover:bg-muted transition-colors flex items-center gap-3 ${settings.theme === 'dark' ? 'bg-primary/10 text-primary' : ''}`}
+                    className={`w-full px-4 py-3 text-start hover:bg-muted transition-colors flex items-center gap-3 ${themeMode === 'dark' ? 'bg-primary/10 text-primary' : ''}`}
                     onClick={() => changeTheme('dark')}
                   >
                     <Moon className="w-4 h-4" />
                     <span>{locale === 'ar' ? 'الوضع المعتم' : 'Dark Mode'}</span>
-                    {settings.theme === 'dark' && <div className="w-2 h-2 rounded-full bg-primary ms-auto" />}
+                    {themeMode === 'dark' && <div className="w-2 h-2 rounded-full bg-primary ms-auto" />}
                   </button>
                   <button
-                    className={`w-full px-4 py-3 text-left hover:bg-muted transition-colors flex items-center gap-3 ${settings.theme === 'system' ? 'bg-primary/10 text-primary' : ''}`}
+                    className={`w-full px-4 py-3 text-start hover:bg-muted transition-colors flex items-center gap-3 ${themeMode === 'system' ? 'bg-primary/10 text-primary' : ''}`}
                     onClick={() => changeTheme('system')}
                   >
                     <Monitor className="w-4 h-4" />
                     <span>{locale === 'ar' ? 'الوضع الافتراضي' : 'System Default'}</span>
-                    {settings.theme === 'system' && <div className="w-2 h-2 rounded-full bg-primary ms-auto" />}
+                    {themeMode === 'system' && <div className="w-2 h-2 rounded-full bg-primary ms-auto" />}
                   </button>
                 </div>
               )}

@@ -101,7 +101,14 @@ const COLOR_MAP = {
 };
 
 export function DevUiOverlay() {
-  const [active, setActive] = useState<boolean>(true);
+  const [active, setActive] = useState<boolean>(() => {
+    // Initialize from localStorage if exists, otherwise default to false
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      return saved === 'true';
+    }
+    return false;
+  });
   const isMaolEnabled = useMaolStore((state) => state.isEnabled);
   const toggleMaol = useMaolStore((state) => state.toggleMaol);
 

@@ -3,6 +3,7 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { Locale, Feature, I18nContext, TranslationDictionary } from './types';
 import { getDictionary } from './getDictionary';
+import { useGlobalSSOTStore } from '../../../store/global-ssot.store';
 
 const I18nContextInstance = createContext<I18nContext | undefined>(undefined);
 
@@ -19,7 +20,8 @@ export function I18nProvider({
   initialDictionary,
   feature,
 }: I18nProviderProps) {
-  const [locale, setLocale] = useState<Locale>(initialLocale);
+  // Get language from global SSOT store
+  const { language: locale, setLanguage: setLocaleSSOT } = useGlobalSSOTStore();
   const [dictionary, setDictionary] = useState<TranslationDictionary>(initialDictionary);
   const [isClient, setIsClient] = useState(false);
 
@@ -28,29 +30,44 @@ export function I18nProvider({
     setIsClient(true);
   }, []);
 
-  // Handle locale change
+  // Sync initial locale from server to SSOT store on client mount
+  useEffect(() => {
+    if (isClient) {
+      // Set store to initial locale from server (if different)
+      const storeLocale = useGlobalSSOTStore.getState().language;
+      if (storeLocale !== initialLocale) {
+        setLocaleSSOT(initialLocale);
+      }
+      // Load dictionary for current store language
+      if (storeLocale !== initialLocale) {
+        getDictionary(storeLocale, feature).then((dict) => {
+          setDictionary(dict);
+        });
+      }
+    }
+  }, [isClient, feature, initialLocale, setLocaleSSOT]);
+
+  // Handle locale change - delegates to SSOT store
   const handleSetLocale = async (newLocale: Locale) => {
-    setLocale(newLocale);
+    // 1. Tell SSOT store to update
+    setLocaleSSOT(newLocale);
     
-    // Load new dictionary for the new locale
+    // 2. Load new dictionary for the new locale
     const newDictionary = await getDictionary(newLocale, feature);
     setDictionary(newDictionary);
     
-    // Update document direction
-    document.documentElement.dir = newLocale === 'ar' ? 'rtl' : 'ltr';
-    document.documentElement.lang = newLocale;
-    
-    // Store locale in cookie
+    // 3. Set cookie for server-side rendering
     document.cookie = `locale=${newLocale}; path=/; max-age=31536000`;
   };
 
-  // Set initial document direction and language
+  // Listen for SSOT language changes (e.g., from settings)
   useEffect(() => {
     if (isClient) {
-      document.documentElement.dir = locale === 'ar' ? 'rtl' : 'ltr';
-      document.documentElement.lang = locale;
+      getDictionary(locale, feature).then((dict) => {
+        setDictionary(dict);
+      });
     }
-  }, [locale, isClient]);
+  }, [locale, feature, isClient]);
 
   const contextValue: I18nContext = {
     locale,
