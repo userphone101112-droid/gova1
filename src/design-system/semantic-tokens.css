@@ -168,7 +168,7 @@
  * Dark Mode Semantics
  * ────────────────────────────────────────────────────────── */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not(.light) {
     --gova-background: var(--gova-primitive-color-neutral-950);
     --gova-on-background: var(--gova-primitive-color-neutral-50);
 
@@ -229,4 +229,134 @@
     --gova-info-container: var(--gova-primitive-color-info-900);
     --gova-on-info-container: var(--gova-primitive-color-info-100);
   }
+}
+
+/* Manual dark mode override */
+html.dark {
+  --gova-background: var(--gova-primitive-color-neutral-950);
+  --gova-on-background: var(--gova-primitive-color-neutral-50);
+
+  --gova-primary: var(--gova-primitive-color-primary-300);
+  --gova-primary-fixed: var(--gova-primitive-color-primary-900);
+  --gova-primary-container: var(--gova-primitive-color-primary-800);
+  --gova-on-primary: var(--gova-primitive-color-primary-950);
+  --gova-on-primary-container: var(--gova-primitive-color-primary-100);
+  --gova-inverse-primary: var(--gova-primitive-color-primary-600);
+
+  --gova-secondary: var(--gova-primitive-color-neutral-300);
+  --gova-secondary-fixed: var(--gova-primitive-color-neutral-700);
+  --gova-secondary-fixed-dim: var(--gova-primitive-color-neutral-800);
+  --gova-on-secondary: var(--gova-primitive-color-neutral-900);
+  --gova-on-secondary-fixed: var(--gova-primitive-color-neutral-100);
+  --gova-on-secondary-fixed-variant: var(--gova-primitive-color-neutral-400);
+
+  --gova-tertiary: var(--gova-primitive-color-neutral-300);
+  --gova-tertiary-container: var(--gova-primitive-color-neutral-700);
+  --gova-tertiary-fixed: var(--gova-primitive-color-neutral-700);
+  --gova-tertiary-fixed-dim: var(--gova-primitive-color-neutral-800);
+  --gova-on-tertiary: var(--gova-primitive-color-neutral-900);
+  --gova-on-tertiary-container: var(--gova-primitive-color-neutral-100);
+  --gova-on-tertiary-fixed: var(--gova-primitive-color-neutral-100);
+  --gova-on-tertiary-fixed-variant: var(--gova-primitive-color-neutral-400);
+
+  --gova-surface: var(--gova-primitive-color-neutral-950);
+  --gova-surface-dim: var(--gova-primitive-color-neutral-900);
+  --gova-surface-bright: var(--gova-primitive-color-neutral-800);
+  --gova-surface-container-lowest: var(--gova-primitive-color-neutral-950);
+  --gova-surface-container-low: var(--gova-primitive-color-neutral-900);
+  --gova-surface-container: var(--gova-primitive-color-neutral-800);
+  --gova-surface-container-high: var(--gova-primitive-color-neutral-700);
+  --gova-surface-container-highest: var(--gova-primitive-color-neutral-600);
+  --gova-surface-tint: var(--gova-primitive-color-primary-300);
+  --gova-on-surface: var(--gova-primitive-color-neutral-100);
+  --gova-on-surface-variant: var(--gova-primitive-color-neutral-400);
+  --gova-surface-variant: var(--gova-primitive-color-neutral-800);
+  --gova-inverse-surface: var(--gova-primitive-color-neutral-100);
+  --gova-inverse-on-surface: var(--gova-primitive-color-neutral-900);
+
+  --gova-outline: var(--gova-primitive-color-neutral-600);
+  --gova-outline-variant: var(--gova-primitive-color-neutral-700);
+
+  --gova-success: var(--gova-primitive-color-success-400);
+  --gova-success-container: var(--gova-primitive-color-success-900);
+  --gova-on-success-container: var(--gova-primitive-color-success-100);
+
+  --gova-warning: var(--gova-primitive-color-warning-400);
+  --gova-warning-container: var(--gova-primitive-color-warning-900);
+  --gova-on-warning-container: var(--gova-primitive-color-warning-100);
+
+  --gova-error: var(--gova-primitive-color-error-400);
+  --gova-error-container: var(--gova-primitive-color-error-900);
+  --gova-on-error-container: var(--gova-primitive-color-error-100);
+
+  --gova-info: var(--gova-primitive-color-info-400);
+  --gova-info-container: var(--gova-primitive-color-info-900);
+  --gova-on-info-container: var(--gova-primitive-color-info-100);
+}
+
+/* Manual light mode override */
+html.light {
+  --gova-background: var(--gova-primitive-color-login-surface);
+  --gova-on-background: var(--gova-primitive-color-login-text);
+
+  --gova-primary: var(--gova-primitive-color-login-blue);
+  --gova-primary-fixed: var(--gova-primitive-color-login-blue-light);
+  --gova-primary-container: var(--gova-primitive-color-login-blue-medium);
+  --gova-on-primary: var(--gova-primitive-color-white);
+  --gova-on-primary-container: var(--gova-primitive-color-white);
+  --gova-inverse-primary: var(--gova-primitive-color-primary-300);
+
+  --gova-secondary: var(--gova-primitive-color-neutral-600);
+  --gova-secondary-fixed: var(--gova-primitive-color-neutral-200);
+  --gova-secondary-fixed-dim: var(--gova-primitive-color-neutral-300);
+  --gova-on-secondary: var(--gova-primitive-color-white);
+  --gova-on-secondary-fixed: var(--gova-primitive-color-neutral-900);
+  --gova-on-secondary-fixed-variant: var(--gova-primitive-color-neutral-700);
+
+  --gova-tertiary: var(--gova-primitive-color-neutral-600);
+  --gova-tertiary-container: var(--gova-primitive-color-neutral-500);
+  --gova-tertiary-fixed: var(--gova-primitive-color-neutral-200);
+  --gova-tertiary-fixed-dim: var(--gova-primitive-color-neutral-300);
+  --gova-on-tertiary: var(--gova-primitive-color-white);
+  --gova-on-tertiary-container: var(--gova-primitive-color-white);
+  --gova-on-tertiary-fixed: var(--gova-primitive-color-neutral-900);
+  --gova-on-tertiary-fixed-variant: var(--gova-primitive-color-neutral-700);
+
+  --gova-surface: var(--gova-primitive-color-login-surface);
+  --gova-surface-dim: var(--gova-primitive-color-login-surface-dim);
+  --gova-surface-bright: var(--gova-primitive-color-login-surface);
+  --gova-surface-container-lowest: var(--gova-primitive-color-white);
+  --gova-surface-container-low: var(--gova-primitive-color-neutral-50);
+  --gova-surface-container: var(--gova-primitive-color-neutral-100);
+  --gova-surface-container-high: var(--gova-primitive-color-neutral-200);
+  --gova-surface-container-highest: var(--gova-primitive-color-neutral-300);
+  --gova-surface-tint: var(--gova-primitive-color-login-blue);
+  --gova-on-surface: var(--gova-primitive-color-neutral-900);
+  --gova-on-surface-variant: var(--gova-primitive-color-neutral-600);
+  --gova-surface-variant: var(--gova-primitive-color-neutral-200);
+  --gova-inverse-surface: var(--gova-primitive-color-neutral-800);
+  --gova-inverse-on-surface: var(--gova-primitive-color-neutral-100);
+
+  --gova-outline: var(--gova-primitive-color-neutral-400);
+  --gova-outline-variant: var(--gova-primitive-color-neutral-300);
+
+  --gova-success: var(--gova-primitive-color-success-600);
+  --gova-on-success: var(--gova-primitive-color-white);
+  --gova-success-container: var(--gova-primitive-color-success-100);
+  --gova-on-success-container: var(--gova-primitive-color-success-900);
+
+  --gova-warning: var(--gova-primitive-color-warning-600);
+  --gova-on-warning: var(--gova-primitive-color-white);
+  --gova-warning-container: var(--gova-primitive-color-warning-100);
+  --gova-on-warning-container: var(--gova-primitive-color-warning-900);
+
+  --gova-error: var(--gova-primitive-color-error-600);
+  --gova-on-error: var(--gova-primitive-color-white);
+  --gova-error-container: var(--gova-primitive-color-error-100);
+  --gova-on-error-container: var(--gova-primitive-color-error-900);
+
+  --gova-info: var(--gova-primitive-color-info-600);
+  --gova-on-info: var(--gova-primitive-color-white);
+  --gova-info-container: var(--gova-primitive-color-info-100);
+  --gova-on-info-container: var(--gova-primitive-color-info-900);
 }

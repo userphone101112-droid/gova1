@@ -2,8 +2,8 @@
   "maol_UfRgXsde5y": [
     {
       "route": "/home",
-      "timestamp": 1781579873188,
-      "totalIdentified": 73,
+      "timestamp": 1781580551450,
+      "totalIdentified": 77,
       "tree": {
         "type": "page",
         "children": [
@@ -15,6 +15,10 @@
               "UI_SHARED_HEADER_SEARCH_INPUT",
               "UI_SHARED_HEADER_SEARCH_BUTTON",
               "UI_SHARED_HEADER_CART_BUTTON",
+              "UI_SHARED_SIDEBAR_CLOSE",
+              "UI_SHARED_SIDEBAR_LOGIN",
+              "UI_SHARED_SIDEBAR_LANGUAGE",
+              "UI_SHARED_SIDEBAR_THEME",
               "UI_SHARED_BOTTOM_NAV_HOME",
               "UI_SHARED_BOTTOM_NAV_NOTIFICATIONS",
               "UI_SHARED_BOTTOM_NAV_FAVORITES",
@@ -74,7 +78,7 @@
     },
     {
       "route": "/login",
-      "timestamp": 1781575611322,
+      "timestamp": 1781579983074,
       "totalIdentified": 7,
       "tree": {
         "type": "page",

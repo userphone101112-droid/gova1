@@ -464,6 +464,26 @@ export const SHARED_LAYOUT = {
       createdAt: '2026-06-16',
       updatedAt: '2026-06-16',
     } as const,
+    LANGUAGE_TOGGLE: {
+      id: 'UI_SHARED_SIDEBAR_LANGUAGE',
+      path: 'shared-layout.sidebar.actions.language-toggle',
+      description: 'Language switcher button',
+      category: 'action',
+      feature: 'shared-layout',
+      version: '1.0.0',
+      createdAt: '2026-06-16',
+      updatedAt: '2026-06-16',
+    } as const,
+    THEME_TOGGLE: {
+      id: 'UI_SHARED_SIDEBAR_THEME',
+      path: 'shared-layout.sidebar.actions.theme-toggle',
+      description: 'Dark/light mode toggle',
+      category: 'action',
+      feature: 'shared-layout',
+      version: '1.0.0',
+      createdAt: '2026-06-16',
+      updatedAt: '2026-06-16',
+    } as const,
   },
 } as const;
 

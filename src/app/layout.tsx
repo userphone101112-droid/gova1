@@ -4,6 +4,7 @@ import "./globals.css";
 import { I18nProvider } from "@/shared/i18n/core/provider";
 import { getDictionaryCached } from "@/shared/i18n/core/getDictionary";
 import { getLocale, getDirection } from "@/shared/i18n/utils/getLocale";
+import { ThemeProvider } from "@/providers/ThemeProvider";
 
 const DevUiOverlay = process.env.NODE_ENV === 'development'
   ? require('@/components/dev/DevUiOverlay').DevUiOverlay
@@ -67,13 +68,15 @@ export default async function RootLayout({
       className={`${inter.variable} ${notoSansArabic.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <I18nProvider
-          initialLocale={locale}
-          initialDictionary={dictionary}
-          feature="common"
-        >
-          {children}
-        </I18nProvider>
+        <ThemeProvider>
+          <I18nProvider
+            initialLocale={locale}
+            initialDictionary={dictionary}
+            feature="common"
+          >
+            {children}
+          </I18nProvider>
+        </ThemeProvider>
         {DevUiOverlay && <DevUiOverlay />}
         {process.env.NEXT_PUBLIC_MAOL_ENABLED === 'true' && <MaolProvider />}
       </body>
