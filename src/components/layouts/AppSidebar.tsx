@@ -116,12 +116,14 @@ export function AppSidebar({ isOpen, onClose }: AppSidebarProps) {
       {/* Sidebar with slide animation */}
     <div
       ref={sidebarRef}
-      className={`absolute w-80 bg-background shadow-2xl transition-transform duration-300 ease-out overflow-y-auto ${
+      className={`absolute bg-background shadow-2xl transition-transform duration-300 ease-out overflow-y-auto ${
         locale === 'ar'
           ? isOpen ? 'translate-x-0' : '-translate-x-full'
           : isOpen ? 'translate-x-0' : 'translate-x-full'
       }`}
       style={{
+        width: 'min(80vw, 320px)', // max 80% viewport width, min 320px, never over 50%
+        maxWidth: '50vw', // never exceed 50% of viewport width
         top: '64px', // header height is h-16 = 64px
         bottom: '0',
         height: 'calc(100dvh - 64px - 72px)', // 64px header, 72px bottom nav
