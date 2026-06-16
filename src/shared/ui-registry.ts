@@ -443,6 +443,28 @@ export const SHARED_LAYOUT = {
       } as const,
     },
   },
+  SIDEBAR: {
+    CLOSE_BUTTON: {
+      id: 'UI_SHARED_SIDEBAR_CLOSE',
+      path: 'shared-layout.sidebar.actions.close-button',
+      description: 'Close sidebar button',
+      category: 'action',
+      feature: 'shared-layout',
+      version: '1.0.0',
+      createdAt: '2026-06-16',
+      updatedAt: '2026-06-16',
+    } as const,
+    LOGIN_BUTTON: {
+      id: 'UI_SHARED_SIDEBAR_LOGIN',
+      path: 'shared-layout.sidebar.actions.login-button',
+      description: 'Login button in sidebar',
+      category: 'action',
+      feature: 'shared-layout',
+      version: '1.0.0',
+      createdAt: '2026-06-16',
+      updatedAt: '2026-06-16',
+    } as const,
+  },
 } as const;
 
 // ============================================================================
