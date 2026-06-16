@@ -97,27 +97,63 @@ export function initializeGlobalSSOT() {
 
 // --- Store ---
 
+// Function to get initial state from cookie (client side)
+function getInitialStateFromCookie(): Partial<GlobalSSOTState> {
+  if (typeof window === 'undefined') return {};
+  const cookies = document.cookie.split(';');
+  for (const cookie of cookies) {
+    const [name, value] = cookie.trim().split('=');
+    if (name === 'gova-global-ssot') {
+      try {
+        const parsed = JSON.parse(decodeURIComponent(value));
+        return {
+          language: parsed.language,
+          themeMode: parsed.themeMode
+        };
+      } catch (e) {
+        return {};
+      }
+    }
+  }
+  return {};
+}
+
 export const useGlobalSSOTStore = create<GlobalSSOTState>()(
   devtools(
     persist(
-      (set, get) => ({
-        // Initial State
-        language: 'en',
-        direction: 'ltr',
-        themeMode: 'system',
+      (set, get) => {
+        // Get initial state from cookie first
+        const cookieState = getInitialStateFromCookie();
+        
+        return {
+          // Initial State (with cookie overrides)
+          language: cookieState.language || 'en',
+          direction: getDirectionForLanguage(cookieState.language || 'en'),
+          themeMode: cookieState.themeMode || 'system',
 
-        // Actions
-        setLanguage: (lang: Language) => {
-          const direction = getDirectionForLanguage(lang);
-          set({ language: lang, direction });
-          syncDOMFromSSOT(lang, get().themeMode);
-        },
+          // Actions
+          setLanguage: (lang: Language) => {
+            const direction = getDirectionForLanguage(lang);
+            set({ language: lang, direction });
+            syncDOMFromSSOT(lang, get().themeMode);
+            // Sync to cookie for server-side access
+            if (typeof window !== 'undefined') {
+              const currentState = get();
+              document.cookie = `gova-global-ssot=${JSON.stringify({ language: currentState.language, themeMode: currentState.themeMode })}; path=/; max-age=31536000`;
+            }
+          },
 
-        setThemeMode: (mode: ThemeMode) => {
-          set({ themeMode: mode });
-          syncDOMFromSSOT(get().language, mode);
-        },
-      }),
+          setThemeMode: (mode: ThemeMode) => {
+            set({ themeMode: mode });
+            syncDOMFromSSOT(get().language, mode);
+            // Sync to cookie for server-side access
+            if (typeof window !== 'undefined') {
+              const currentState = get();
+              document.cookie = `gova-global-ssot=${JSON.stringify({ language: currentState.language, themeMode: currentState.themeMode })}; path=/; max-age=31536000`;
+            }
+          },
+        };
+      },
       {
         name: 'gova-global-ssot', // Unique localStorage key
         partialize: (state) => ({

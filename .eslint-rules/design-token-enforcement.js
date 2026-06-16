@@ -133,13 +133,27 @@ const designTokenEnforcementRules = {
               }
             }
             
-            // Check for inline style attribute completely!
-            if (node.name.name === 'style') {
+            // Check for inline style attribute completely, but allow on Image/img elements
+          if (node.name.name === 'style') {
+            const parent = node.parent;
+            if (
+              parent.type === 'JSXOpeningElement' && 
+              (parent.name.name === 'Image' || parent.name.name === 'img')
+            ) {
+              // Allow style props on Image/img elements
+            } else if (
+              parent.type === 'JSXOpeningElement' && 
+              parent.name.name && 
+              (parent.name.name.startsWith('Dev') || parent.name.name.includes('Dev'))
+            ) {
+              // Allow style props on dev-only components
+            } else {
               context.report({
                 node: node,
                 messageId: "inlineStyleAttribute",
               });
             }
+          }
           },
         };
       },

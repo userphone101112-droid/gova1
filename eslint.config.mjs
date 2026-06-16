@@ -50,7 +50,7 @@ const eslintConfig = defineConfig([
       'i18n-enforcement/enforce-ui-translation-coupling': 'warn',
       'i18n-enforcement/no-directional-violations': 'error',
       // Design Token Enforcement rules
-      'design-token-enforcement/no-hardcoded-design-tokens': 'warn',
+        'design-token-enforcement/no-hardcoded-design-tokens': 'error',
     },
   },
   // Override default ignores of eslint-config-next.

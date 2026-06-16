@@ -3,8 +3,9 @@ import { Inter, Noto_Sans_Arabic } from "next/font/google";
 import "./globals.css";
 import { I18nProvider } from "@/shared/i18n/core/provider";
 import { getDictionaryCached } from "@/shared/i18n/core/getDictionary";
-import { getLocale, getDirection } from "@/shared/i18n/utils/getLocale";
+import { getLocale, getDirection, getThemeMode, getEffectiveTheme } from "@/shared/i18n/utils/getLocale";
 import { ThemeProvider } from "@/providers/ThemeProvider";
+import { SSOTGuard } from "@/components/shared/SSOTGuard";
 
 const DevUiOverlay = process.env.NODE_ENV === 'development'
   ? require('@/components/dev/DevUiOverlay').DevUiOverlay
@@ -57,6 +58,8 @@ export default async function RootLayout({
   // Get locale from cookie or default
   const locale = await getLocale();
   const direction = getDirection(locale);
+  const themeMode = await getThemeMode();
+  const effectiveTheme = getEffectiveTheme(themeMode);
   
   // Load common dictionary for root layout
   const dictionary = await getDictionaryCached(locale, 'common');
@@ -65,7 +68,8 @@ export default async function RootLayout({
     <html
       lang={locale}
       dir={direction}
-      className={`${inter.variable} ${notoSansArabic.variable} h-full antialiased`}
+      data-theme={effectiveTheme}
+      className={`${inter.variable} ${notoSansArabic.variable} h-full antialiased ${effectiveTheme}`}
     >
       <body className="min-h-full flex flex-col">
         <ThemeProvider>
@@ -79,6 +83,7 @@ export default async function RootLayout({
         </ThemeProvider>
         {DevUiOverlay && <DevUiOverlay />}
         {process.env.NEXT_PUBLIC_MAOL_ENABLED === 'true' && <MaolProvider />}
+        <SSOTGuard />
       </body>
     </html>
   );

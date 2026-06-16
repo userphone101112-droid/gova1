@@ -225,3 +225,34 @@ body {
 [dir="rtl"] .icon {
   transform: scaleX(-1);
 }
+
+/* App Sidebar styles to enforce SSOT */
+.app-sidebar {
+  /* On small screens, use min(80vw, 320px), ensure it's at least 280px */
+  width: min(80vw, 320px);
+  min-width: 280px;
+  /* On screens wider than 640px, max width 50vw */
+  max-width: 100%;
+  top: 64px;
+  bottom: 0;
+  height: calc(100dvh - 64px - 72px);
+}
+
+/* On screens wider than 640px, max width is 50vw */
+@media (min-width: 640px) {
+  .app-sidebar {
+    max-width: 50vw;
+  }
+}
+
+[dir="ltr"] .app-sidebar {
+  inset-inline-start: 0;
+  inset-inline-end: auto;
+  border-inline-start: 1px solid var(--gova-outline-variant);
+}
+
+[dir="rtl"] .app-sidebar {
+  inset-inline-end: 0;
+  inset-inline-start: auto;
+  border-inline-end: 1px solid var(--gova-outline-variant);
+}
