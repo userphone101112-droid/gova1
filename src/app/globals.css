@@ -1,7 +1,9 @@
 @import "tailwindcss";
 
-/* Import Design System Tokens */
-@import "@/design-system/component-tokens.css";
+/* Import Design System Tokens (Primitive → Semantic → Component) */
+@import "../design-system/primitive-tokens.css";
+@import "../design-system/semantic-tokens.css";
+@import "../design-system/component-tokens.css";
 
 /* Configure Tailwind CSS 4 to use our Design System Tokens */
 @theme inline {
