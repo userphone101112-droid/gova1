@@ -1,137 +1,264 @@
-# 🚀 HTML → React + Tailwind + UI Identity Pipeline
+# 🚀 HTML → React + Tailwind + UI Identity + SSOT Design System Pipeline
 
-This pipeline governs the conversion and integration of imported HTML/CSS pages into the Suez Bazaar / Gova codebase. All future agents and developers must strictly adhere to this protocol when importing external user interface designs.
+This pipeline governs the **mandatory transformation** of any imported HTML/CSS into the Gova/Suez Bazaar system.
+
+It is a **strict architectural enforcement layer**, not a guideline.
+
+All agents MUST follow it without exception.
+
+---
+
+## 0. NON-NEGOTIABLE FOUNDATION (NEW)
+
+Before any conversion:
+
+* The **Design System SSOT is the ONLY source of styling truth**
+* No hardcoded styles are allowed under any condition
+* No Tailwind arbitrary values are allowed (`text-[..]`, `bg-[#..]`, `p-[..]`)
+* No inline CSS is allowed
+* No component-level styling overrides outside tokens
+
+ALL styling MUST come from:
+
+> `Design System Tokens (Primitive → Semantic → Component)`
+
+### Design System Reference:
+
+- **Tokens Location**: `src/design-system/`
+  - `primitive-tokens.css`: Raw, immutable values
+  - `semantic-tokens.css`: Meaningful values mapped to primitives
+  - `component-tokens.css`: Component-specific tokens
+- **Type Definitions**: `src/design-system/tokens.ts`
+- **Documentation**: `docs/design-system.md`
+- **Audit Script**: `npm run audit:design-system`
 
 ---
 
 ## 1. HTML PARSING LAYER
 
-* Parse raw HTML into a structured AST-like representation.
-* Identify:
-  * Layout containers
-  * Interactive elements (`button`, `a`, `input`, `form`)
-  * Content blocks (`cards`, `sections`)
-* Ignore scripts and inline event handlers.
+Parse HTML into a structured representation:
+
+### Extract:
+
+* Layout containers
+* UI regions (header, footer, sections)
+* Interactive elements
+* Repeated patterns
+* Content blocks
+
+### Ignore:
+
+* `<script>` tags
+* Inline event handlers
+* Non-visual metadata
 
 ---
 
-## 2. COMPONENT DECOMPOSITION RULE
+## 2. ARCHITECTURAL DECOMPOSITION RULE
 
-Convert HTML into React components using this mapping:
+Convert HTML into **atomic React components only**
+
+### Mapping:
+
 * `<header>` → `Header.tsx`
 * `<section>` → `Section.tsx`
 * `<nav>` → `Navigation.tsx`
-* Repeated UI patterns → Reusable components (`Card`, `Button`, `Input`)
-* Layout wrappers → Layout components
+* Repeated patterns → reusable components (`Card`, `Button`, `Input`)
+* Layout wrappers → layout system components only
 
-Each component must:
-* Be atomic
-* Not exceed single responsibility
-* Not contain raw HTML blobs
+### Rules:
+
+* Each component = single responsibility
+* No mixed concerns
+* No raw HTML blobs inside components
+* No styling inside components (except token usage)
 
 ---
 
-## 3. TAILWIND MIGRATION ENGINE
+## 3. TAILWIND + DESIGN TOKEN ENGINE (UPDATED)
 
-Convert all CSS into Tailwind classes:
+Tailwind is ONLY allowed as a **token consumer layer**
 
-### Rules:
-* Inline styles → Tailwind utilities
-* Class selectors → Mapped & merged into Tailwind
-* Remove all global CSS unless absolutely necessary
-* Resolve conflicts and duplicate styles
+### Allowed:
+
+* `var(--gova-*)` tokens
+* Tailwind utilities mapped to tokens only (configured in `src/app/globals.css`)
 
 ### Forbidden:
-* Global CSS dependencies
-* Deeply nested selectors
-* Unused styles
+
+* `bg-red-500`, `text-blue-600`, etc.
+* Arbitrary values (`p-[18px]`, `text-[14px]`)
+* Custom one-off utility hacks
+
+### Rule:
+
+> Tailwind must act as a renderer of the Design System, not a styling source.
 
 ---
 
 ## 4. UI IDENTITY INTEGRATION LAYER (CRITICAL)
 
-Every interactive element MUST be mapped into the UI Identity system.
+Every interactive element MUST be registered in UI Identity System.
 
-### Rules:
-* Buttons → `UI_*_BUTTON`
-* Inputs → `UI_*_INPUT`
-* Links → `UI_*_LINK`
-* Clickable cards → `UI_*_CARD_ACTION`
+### Mapping rules:
 
-### Output format:
+* Button → `UI_*_BUTTON`
+* Input → `UI_*_INPUT`
+* Link → `UI_*_LINK`
+* Card action → `UI_*_CARD_ACTION`
+
+### Usage format:
+
 ```tsx
-<UiButton ui={SCOPE.FEATURE.ELEMENT}>
+<UiButton ui={SCOPE.FEATURE.ELEMENT} />
 ```
 
 ### If identity does not exist:
-* Generate a candidate identity.
-* Register it in `src/shared/ui-registry.ts`.
-* Ensure uniqueness and stability.
+
+* Generate deterministic identity
+* Register it in `src/shared/ui-registry.ts`
+* Ensure:
+
+  * uniqueness
+  * stability
+  * semantic meaning
 
 ---
 
-## 5. COMPONENT OUTPUT STRUCTURE
+## 5. COMPONENT OUTPUT STRUCTURE (STRICT)
 
-Generated output must follow:
 ```
 /src/components/imported/<page-name>/
-  ├── index.tsx (main page)
+  ├── index.tsx
   ├── components/
   │    ├── Header.tsx
   │    ├── Hero.tsx
   │    ├── Section.tsx
   │    ├── Card.tsx
-  ├── hooks/ (if needed)
+  ├── hooks/
   ├── types.ts
 ```
+
+### Rules:
+
+* No deviation allowed
+* No extra styling folders
+* No duplicated component systems
 
 ---
 
 ## 6. STATE & INTERACTIVITY RULES
 
-* Convert forms → React Hook Form + Zod schema.
-* Convert buttons → `UiButton` with identity.
-* Remove inline JS completely.
-* Replace DOM manipulation with React state.
+* Forms → React Hook Form + Zod ONLY
+* Validation → Zod schemas ONLY
+* Buttons → UiButton ONLY
+* No direct DOM manipulation
+* No vanilla JS logic
+* All state → React state / Zustand / React Query ONLY
 
 ---
 
-## 7. IMAGE & ASSET HANDLING
+## 7. DESIGN SYSTEM ENFORCEMENT LAYER (NEW CRITICAL LAYER)
 
-* Images → Next.js `<Image />` component with layout optimizations.
-* Icons → Lucide React (or local registry icons).
-* Fonts → `next/font` system.
+ALL UI must comply with SSOT:
+
+### Required:
+
+* Colors → semantic tokens only
+* Spacing → spacing tokens only
+* Typography → typography system only
+* Radius → radius tokens only
+* Shadows → shadow tokens only
+* Motion → motion system only
+
+### Forbidden:
+
+* Any raw value usage
+* Any Tailwind arbitrary styling
+* Any inline styles
+* Any component-local design decisions
+
+### ESLint Enforcement:
+
+- Rule: `design-token-enforcement/no-hardcoded-design-tokens`
+- Location: `.eslint-rules/design-token-enforcement.js`
 
 ---
 
-## 8. VALIDATION LAYER (MANDATORY)
+## 8. ASSET HANDLING RULES
+
+* Images → `next/image` only
+* Icons → Lucide React only
+* Fonts → `next/font` only
+* No external CDN styling
+* No inline font definitions
+
+---
+
+## 9. VALIDATION LAYER (MANDATORY GATE)
 
 Before output is accepted:
-* Ensure no raw HTML remains.
-* Ensure every interactive element has UI Identity.
-* Ensure no global CSS leaks.
-* Ensure all components are React-based.
-* Ensure Tailwind replaces CSS.
+
+### MUST PASS:
+
+* No raw HTML remains
+* No inline styles exist
+* No hardcoded design values exist
+* All UI elements have Identity mapping
+* All components use design tokens only
+* No arbitrary Tailwind values exist
+* No duplicate styling systems exist
+
+### How to Validate:
+
+1. Run `npm run typecheck`
+2. Run `npm run lint`
+3. Run `npm run audit:design-system`
 
 ---
 
-## 9. OUTPUT REQUIREMENT
+## 10. BUILD ENFORCEMENT RULE (NEW)
 
-Return:
-1. Full React component tree.
-2. Tailwind-migrated UI.
-3. UI Identity mapping updates (if new IDs added).
-4. Clean Next.js App Router compatible structure.
+If violations exist:
+
+* Build MUST fail
+* Lint MUST fail
+* CI MUST block merge
+
+Violations include:
+
+* Hardcoded colors
+* Arbitrary spacing
+* Inline styles
+* Missing UI identity
+* Missing token usage
 
 ---
 
-## 🎯 GOAL
+## 11. OUTPUT REQUIREMENT
 
-Transform any imported HTML/CSS page into:
-> Fully modular, typed, UI-tracked, production-ready Next.js system.
+Final output MUST include:
+
+1. Full React component tree
+2. Tailwind + token-based UI only
+3. UI Identity registry updates (if any)
+4. Clean Next.js App Router structure
+5. Proof of SSOT compliance
 
 ---
 
-## 💡 IMPORTANT DESIGN PRINCIPLE
+## 🎯 FINAL GOAL
 
-This is not simple "conversion" — it is a complete **re-architecture into the project's system standard**.
+Transform any HTML into:
+
+> A fully modular, strongly typed, UI-identity tracked, **SSOT-compliant Next.js system with zero styling fragmentation**
+
+---
+
+## 💡 CORE PRINCIPLE (UPDATED)
+
+This is NOT conversion.
+
+This is:
+
+> A full architectural migration into a single-source-of-truth design-driven system with enforced global consistency and zero deviation tolerance.

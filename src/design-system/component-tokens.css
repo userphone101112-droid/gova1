@@ -1,0 +1,188 @@
+/**
+ * Design System - Component Tokens
+ * Tokens specific to individual components
+ */
+
+@import "./semantic-tokens.css";
+
+:root {
+  /* ──────────────────────────────────────────────────────────
+   * 1. Button Component Tokens
+   * ────────────────────────────────────────────────────────── */
+  --gova-component-button-primary-bg: var(--gova-primary);
+  --gova-component-button-primary-color: var(--gova-on-primary);
+  --gova-component-button-primary-hover-bg: var(--gova-primary-container);
+  --gova-component-button-primary-disabled-bg: var(--gova-surface-variant);
+  --gova-component-button-primary-disabled-color: var(--gova-on-surface-variant);
+
+  --gova-component-button-secondary-bg: var(--gova-surface-container);
+  --gova-component-button-secondary-color: var(--gova-on-surface);
+  --gova-component-button-secondary-hover-bg: var(--gova-surface-container-high);
+
+  --gova-component-button-tertiary-bg: transparent;
+  --gova-component-button-tertiary-color: var(--gova-primary);
+  --gova-component-button-tertiary-hover-bg: var(--gova-surface-container-low);
+
+  --gova-component-button-radius: var(--gova-radius-lg);
+  --gova-component-button-padding-y: var(--gova-spacing-sm);
+  --gova-component-button-padding-x: var(--gova-spacing-lg);
+  --gova-component-button-shadow: var(--gova-shadow-sm);
+
+  /* ──────────────────────────────────────────────────────────
+   * 2. Input Component Tokens
+   * ────────────────────────────────────────────────────────── */
+  --gova-component-input-bg: var(--gova-surface-container-lowest);
+  --gova-component-input-border-color: var(--gova-outline);
+  --gova-component-input-border-focus-color: var(--gova-primary);
+  --gova-component-input-color: var(--gova-on-surface);
+  --gova-component-input-placeholder-color: var(--gova-on-surface-variant);
+  --gova-component-input-radius: var(--gova-radius-md);
+  --gova-component-input-padding: var(--gova-spacing-md);
+  --gova-component-input-border-width: 1px;
+
+  /* ──────────────────────────────────────────────────────────
+   * 3. Card Component Tokens
+   * ────────────────────────────────────────────────────────── */
+  --gova-component-card-bg: var(--gova-surface-container-low);
+  --gova-component-card-radius: var(--gova-radius-xl);
+  --gova-component-card-shadow: var(--gova-shadow-md);
+  --gova-component-card-padding: var(--gova-spacing-lg);
+
+  /* ──────────────────────────────────────────────────────────
+   * 4. Badge Component Tokens
+   * ────────────────────────────────────────────────────────── */
+  --gova-component-badge-primary-bg: var(--gova-primary-container);
+  --gova-component-badge-primary-color: var(--gova-on-primary-container);
+  --gova-component-badge-success-bg: var(--gova-success-container);
+  --gova-component-badge-success-color: var(--gova-on-success-container);
+  --gova-component-badge-warning-bg: var(--gova-warning-container);
+  --gova-component-badge-warning-color: var(--gova-on-warning-container);
+  --gova-component-badge-error-bg: var(--gova-error-container);
+  --gova-component-badge-error-color: var(--gova-on-error-container);
+  --gova-component-badge-radius: var(--gova-radius-full);
+  --gova-component-badge-padding-y: var(--gova-spacing-xs);
+  --gova-component-badge-padding-x: var(--gova-spacing-sm);
+
+  /* ──────────────────────────────────────────────────────────
+   * 5. Login Page Component Tokens (from imported HTML)
+   * ────────────────────────────────────────────────────────── */
+  --gova-component-login-primary: var(--gova-primary);
+  --gova-component-login-primary-fixed: var(--gova-primary-fixed);
+  --gova-component-login-primary-container: var(--gova-primary-container);
+  --gova-component-login-on-primary: var(--gova-on-primary);
+  --gova-component-login-on-primary-container: var(--gova-on-primary-container);
+  --gova-component-login-inverse-primary: var(--gova-inverse-primary);
+  --gova-component-login-surface: var(--gova-surface);
+  --gova-component-login-surface-dim: var(--gova-surface-dim);
+  --gova-component-login-surface-bright: var(--gova-surface-bright);
+  --gova-component-login-surface-container-lowest: var(--gova-surface-container-lowest);
+  --gova-component-login-surface-container-low: var(--gova-surface-container-low);
+  --gova-component-login-surface-container: var(--gova-surface-container);
+  --gova-component-login-surface-container-high: var(--gova-surface-container-high);
+  --gova-component-login-surface-container-highest: var(--gova-surface-container-highest);
+  --gova-component-login-surface-tint: var(--gova-surface-tint);
+  --gova-component-login-on-surface: var(--gova-on-surface);
+  --gova-component-login-on-surface-variant: var(--gova-on-surface-variant);
+  --gova-component-login-surface-variant: var(--gova-surface-variant);
+  --gova-component-login-inverse-surface: var(--gova-inverse-surface);
+  --gova-component-login-inverse-on-surface: var(--gova-inverse-on-surface);
+  --gova-component-login-outline: var(--gova-outline);
+  --gova-component-login-outline-variant: var(--gova-outline-variant);
+  --gova-component-login-secondary: var(--gova-secondary);
+  --gova-component-login-on-secondary: var(--gova-on-secondary);
+  --gova-component-login-secondary-fixed: var(--gova-secondary-fixed);
+  --gova-component-login-secondary-fixed-dim: var(--gova-secondary-fixed-dim);
+  --gova-component-login-on-secondary-fixed: var(--gova-on-secondary-fixed);
+  --gova-component-login-on-secondary-fixed-variant: var(--gova-on-secondary-fixed-variant);
+  --gova-component-login-tertiary: var(--gova-tertiary);
+  --gova-component-login-on-tertiary: var(--gova-on-tertiary);
+  --gova-component-login-tertiary-container: var(--gova-tertiary-container);
+  --gova-component-login-on-tertiary-container: var(--gova-on-tertiary-container);
+  --gova-component-login-tertiary-fixed: var(--gova-tertiary-fixed);
+  --gova-component-login-tertiary-fixed-dim: var(--gova-tertiary-fixed-dim);
+  --gova-component-login-on-tertiary-fixed: var(--gova-on-tertiary-fixed);
+  --gova-component-login-on-tertiary-fixed-variant: var(--gova-on-tertiary-fixed-variant);
+  --gova-component-login-error: var(--gova-error);
+  --gova-component-login-on-error: var(--gova-on-error);
+  --gova-component-login-error-container: var(--gova-error-container);
+  --gova-component-login-on-error-container: var(--gova-on-error-container);
+  --gova-component-login-background: var(--gova-background);
+  --gova-component-login-on-background: var(--gova-on-background);
+
+  /* ──────────────────────────────────────────────────────────
+   * 6. Special Effects Tokens (glass, skeleton, etc.)
+   * ────────────────────────────────────────────────────────── */
+  --gova-component-glass-bg: rgba(255, 255, 255, 0.75);
+  --gova-component-glass-blur: 12px;
+  --gova-component-reveal-offset: 20px;
+  --gova-component-shimmer-color-1: #f0f0f0;
+  --gova-component-shimmer-color-2: #e0e0e0;
+  --gova-component-shimmer-size: 1000px;
+  --gova-component-marquee-gap: 8px;
+  --gova-component-marquee-speed: 30s;
+  --gova-component-pulse-speed: 2s;
+  --gova-component-trending-speed: 20s;
+
+  /* ──────────────────────────────────────────────────────────
+   * 7. Dev UI Overlay Tokens
+   * ────────────────────────────────────────────────────────── */
+  --gova-component-dev-ui-blue-border: #3b82f6;
+  --gova-component-dev-ui-blue-bg: rgba(59, 130, 246, 0.06);
+  --gova-component-dev-ui-blue-badge: #2563eb;
+  --gova-component-dev-ui-amber-border: #f59e0b;
+  --gova-component-dev-ui-amber-bg: rgba(245, 158, 11, 0.06);
+  --gova-component-dev-ui-amber-badge: #d97706;
+  --gova-component-dev-ui-red-border: #ef4444;
+  --gova-component-dev-ui-red-bg: rgba(239, 68, 68, 0.08);
+  --gova-component-dev-ui-red-badge: #dc2626;
+  --gova-component-dev-ui-bg-dark: #0f172a;
+  --gova-component-dev-ui-bg-darker: #1e293b;
+  --gova-component-dev-ui-border-color: #334155;
+  --gova-component-dev-ui-border-light: #1e40af;
+  --gova-component-dev-ui-text-primary: #e2e8f0;
+  --gova-component-dev-ui-text-secondary: #94a3b8;
+  --gova-component-dev-ui-text-muted: #64748b;
+  --gova-component-dev-ui-primary: #3b82f6;
+  --gova-component-dev-ui-primary-light: #60a5fa;
+  --gova-component-dev-ui-success: #22c55e;
+  --gova-component-dev-ui-amber: #f59e0b;
+  --gova-component-dev-ui-error: #ef4444;
+  --gova-component-dev-ui-secondary: #475569;
+  --gova-component-dev-ui-accent-purple: #a78bfa;
+  --gova-component-dev-ui-accent-green: #6ee7b7;
+  --gova-component-dev-ui-accent-amber: #fbbf24;
+  --gova-component-dev-ui-accent-pink: #f472b6;
+  --gova-component-dev-ui-spacing-xs: 2px;
+  --gova-component-dev-ui-spacing-sm: 4px;
+  --gova-component-dev-ui-spacing-md: 6px;
+  --gova-component-dev-ui-spacing-lg: 8px;
+  --gova-component-dev-ui-spacing-xl: 10px;
+  --gova-component-dev-ui-spacing-2xl: 12px;
+  --gova-component-dev-ui-spacing-3xl: 14px;
+  --gova-component-dev-ui-spacing-4xl: 16px;
+  --gova-component-dev-ui-radius-sm: 4px;
+  --gova-component-dev-ui-radius-md: 6px;
+  --gova-component-dev-ui-radius-lg: 8px;
+  --gova-component-dev-ui-radius-xl: 10px;
+  --gova-component-dev-ui-radius-2xl: 12px;
+  --gova-component-dev-ui-font-size-xs: 9px;
+  --gova-component-dev-ui-font-size-sm: 10px;
+  --gova-component-dev-ui-font-size-md: 11px;
+  --gova-component-dev-ui-font-size-lg: 12px;
+  --gova-component-dev-ui-font-size-xl: 13px;
+  --gova-component-dev-ui-position-offset: 12px;
+  --gova-component-dev-ui-position-bottom-1: 72px;
+  --gova-component-dev-ui-position-bottom-2: 110px;
+  --gova-component-dev-ui-shadow-1: 0 4px 20px rgba(0, 0, 0, 0.4);
+  --gova-component-dev-ui-shadow-2: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --gova-component-dev-ui-shadow-3: 0 8px 32px rgba(0, 0, 0, 0.6);
+  --gova-component-dev-ui-min-width: 200px;
+  --gova-component-dev-ui-max-height-1: 300px;
+  --gova-component-dev-ui-min-width-tooltip: 340px;
+  --gova-component-dev-ui-max-width-tooltip: 380px;
+  --gova-component-dev-ui-z-index-frame: 99900;
+  --gova-component-dev-ui-z-index-button: 99990;
+  --gova-component-dev-ui-z-index-panel: 99998;
+  --gova-component-dev-ui-z-index-control: 99999;
+  --gova-component-dev-ui-z-index-tooltip: 100000;
+}

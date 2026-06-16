@@ -40,7 +40,8 @@
     "ci:pre-commit": "npm run ci:i18n",
     "prebuild": "npm run ci:i18n && npm run audit:unified-ui-i18n",
     "maol:diff": "tsx scripts/track-ui-identity-diff.ts",
-    "maol:test": "tsx scripts/test-maol.ts"
+    "maol:test": "tsx scripts/test-maol.ts",
+    "audit:design-system": "tsx scripts/audit-design-system.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.4.0",

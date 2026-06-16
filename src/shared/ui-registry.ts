@@ -446,6 +446,134 @@ export const SHARED_LAYOUT = {
 } as const;
 
 // ============================================================================
+// AUTH PAGE IDENTIFIERS
+// ============================================================================
+export const AUTH = {
+  LOGIN: {
+    LOGO: {
+      id: 'UI_AUTH_LOGIN_LOGO',
+      path: 'auth.login.display.logo',
+      description: 'Login page logo',
+      category: 'display',
+      feature: 'auth',
+      version: '1.0.0',
+      createdAt: '2026-06-16',
+      updatedAt: '2026-06-16',
+    } as const,
+    HEADING: {
+      id: 'UI_AUTH_LOGIN_HEADING',
+      path: 'auth.login.display.heading',
+      description: 'Login page main heading',
+      category: 'display',
+      feature: 'auth',
+      version: '1.0.0',
+      createdAt: '2026-06-16',
+      updatedAt: '2026-06-16',
+    } as const,
+    SUBHEADING: {
+      id: 'UI_AUTH_LOGIN_SUBHEADING',
+      path: 'auth.login.display.subheading',
+      description: 'Login page subheading',
+      category: 'display',
+      feature: 'auth',
+      version: '1.0.0',
+      createdAt: '2026-06-16',
+      updatedAt: '2026-06-16',
+    } as const,
+    PHONE_INPUT: {
+      id: 'UI_AUTH_LOGIN_PHONE_INPUT',
+      path: 'auth.login.form.phone-input',
+      description: 'Login page phone number input',
+      category: 'input',
+      feature: 'auth',
+      version: '1.0.0',
+      createdAt: '2026-06-16',
+      updatedAt: '2026-06-16',
+    } as const,
+    PASSWORD_INPUT: {
+      id: 'UI_AUTH_LOGIN_PASSWORD_INPUT',
+      path: 'auth.login.form.password-input',
+      description: 'Login page password input',
+      category: 'input',
+      feature: 'auth',
+      version: '1.0.0',
+      createdAt: '2026-06-16',
+      updatedAt: '2026-06-16',
+    } as const,
+    TOGGLE_PASSWORD_VISIBILITY: {
+      id: 'UI_AUTH_LOGIN_TOGGLE_PASSWORD',
+      path: 'auth.login.form.toggle-password-visibility',
+      description: 'Toggle password visibility button',
+      category: 'action',
+      feature: 'auth',
+      version: '1.0.0',
+      createdAt: '2026-06-16',
+      updatedAt: '2026-06-16',
+    } as const,
+    FORGOT_PASSWORD_LINK: {
+      id: 'UI_AUTH_LOGIN_FORGOT_PASSWORD',
+      path: 'auth.login.form.forgot-password-link',
+      description: 'Forgot password link',
+      category: 'navigation',
+      feature: 'auth',
+      version: '1.0.0',
+      createdAt: '2026-06-16',
+      updatedAt: '2026-06-16',
+    } as const,
+    LOGIN_BUTTON: {
+      id: 'UI_AUTH_LOGIN_SUBMIT',
+      path: 'auth.login.form.submit-button',
+      description: 'Login form submit button',
+      category: 'action',
+      feature: 'auth',
+      version: '1.0.0',
+      createdAt: '2026-06-16',
+      updatedAt: '2026-06-16',
+    } as const,
+    GUEST_LOGIN_BUTTON: {
+      id: 'UI_AUTH_LOGIN_GUEST',
+      path: 'auth.login.actions.guest-login-button',
+      description: 'Guest login button',
+      category: 'action',
+      feature: 'auth',
+      version: '1.0.0',
+      createdAt: '2026-06-16',
+      updatedAt: '2026-06-16',
+    } as const,
+    SIGNUP_LINK: {
+      id: 'UI_AUTH_LOGIN_SIGNUP_LINK',
+      path: 'auth.login.actions.signup-link',
+      description: 'Sign up link',
+      category: 'navigation',
+      feature: 'auth',
+      version: '1.0.0',
+      createdAt: '2026-06-16',
+      updatedAt: '2026-06-16',
+    } as const,
+    ENGLISH_LANGUAGE_LINK: {
+      id: 'UI_AUTH_LOGIN_ENGLISH_LANG',
+      path: 'auth.login.footer.english-language-link',
+      description: 'English language switcher link',
+      category: 'action',
+      feature: 'auth',
+      version: '1.0.0',
+      createdAt: '2026-06-16',
+      updatedAt: '2026-06-16',
+    } as const,
+    DARK_MODE_TOGGLE: {
+      id: 'UI_AUTH_LOGIN_DARK_MODE',
+      path: 'auth.login.footer.dark-mode-toggle',
+      description: 'Dark mode toggle button',
+      category: 'action',
+      feature: 'auth',
+      version: '1.0.0',
+      createdAt: '2026-06-16',
+      updatedAt: '2026-06-16',
+    } as const,
+  },
+} as const;
+
+// ============================================================================
 // REGISTRY VALIDATION
 // ============================================================================
 
@@ -454,6 +582,7 @@ export const UI_REGISTRY = {
   ERROR_BOUNDARY,
   SPLASH,
   SHARED_LAYOUT,
+  AUTH,
 } as const;
 
 function flattenObject(obj: any): any[] {
@@ -476,6 +605,7 @@ export const ALL_UI_IDENTITIES = [
   ...flattenObject(ERROR_BOUNDARY),
   ...flattenObject(SPLASH),
   ...flattenObject(SHARED_LAYOUT),
+  ...flattenObject(AUTH),
 ] as readonly UiIdentity[];
 
 export const ALL_UI_IDENTIFIERS = ALL_UI_IDENTITIES.map((id) => id.path) as readonly string[];

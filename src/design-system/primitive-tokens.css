@@ -1,0 +1,273 @@
+/**
+ * Design System - Primitive Tokens
+ * The fundamental, immutable values of the design system
+ * Directly maps to physical values (no semantic meaning)
+ */
+
+:root {
+  /* ──────────────────────────────────────────────────────────
+   * 1. Color Primitives
+   * Full color palettes (not semantic)
+   * ────────────────────────────────────────────────────────── */
+
+  /* Primary Color (Blue) */
+  --gova-primitive-color-primary-50: #eff6ff;
+  --gova-primitive-color-primary-100: #dbeafe;
+  --gova-primitive-color-primary-200: #bfdbfe;
+  --gova-primitive-color-primary-300: #93c5fd;
+  --gova-primitive-color-primary-400: #60a5fa;
+  --gova-primitive-color-primary-500: #3b82f6;
+  --gova-primitive-color-primary-600: #2563eb;
+  --gova-primitive-color-primary-700: #1d4ed8;
+  --gova-primitive-color-primary-800: #1e40af;
+  --gova-primitive-color-primary-900: #1e3a8a;
+  --gova-primitive-color-primary-950: #172554;
+
+  /* Secondary Color (Purple) */
+  --gova-primitive-color-secondary-50: #f5f3ff;
+  --gova-primitive-color-secondary-100: #ede9fe;
+  --gova-primitive-color-secondary-200: #ddd6fe;
+  --gova-primitive-color-secondary-300: #c4b5fd;
+  --gova-primitive-color-secondary-400: #a78bfa;
+  --gova-primitive-color-secondary-500: #8b5cf6;
+  --gova-primitive-color-secondary-600: #7c3aed;
+  --gova-primitive-color-secondary-700: #6d28d9;
+  --gova-primitive-color-secondary-800: #5b21b6;
+  --gova-primitive-color-secondary-900: #4c1d95;
+  --gova-primitive-color-secondary-950: #2e1065;
+
+  /* Accent Color (Teal) */
+  --gova-primitive-color-accent-50: #f0fdfa;
+  --gova-primitive-color-accent-100: #ccfbf1;
+  --gova-primitive-color-accent-200: #99f6e4;
+  --gova-primitive-color-accent-300: #5eead4;
+  --gova-primitive-color-accent-400: #2dd4bf;
+  --gova-primitive-color-accent-500: #14b8a6;
+  --gova-primitive-color-accent-600: #0d9488;
+  --gova-primitive-color-accent-700: #0f766e;
+  --gova-primitive-color-accent-800: #115e59;
+  --gova-primitive-color-accent-900: #134e4a;
+  --gova-primitive-color-accent-950: #042f2e;
+
+  /* Neutral Colors (Gray) */
+  --gova-primitive-color-neutral-50: #f9fafb;
+  --gova-primitive-color-neutral-100: #f3f4f6;
+  --gova-primitive-color-neutral-200: #e5e7eb;
+  --gova-primitive-color-neutral-300: #d1d5db;
+  --gova-primitive-color-neutral-400: #9ca3af;
+  --gova-primitive-color-neutral-500: #6b7280;
+  --gova-primitive-color-neutral-600: #4b5563;
+  --gova-primitive-color-neutral-700: #374151;
+  --gova-primitive-color-neutral-800: #1f2937;
+  --gova-primitive-color-neutral-900: #111827;
+  --gova-primitive-color-neutral-950: #030712;
+
+  /* Semantic Status Colors */
+  --gova-primitive-color-success-50: #f0fdf4;
+  --gova-primitive-color-success-100: #dcfce7;
+  --gova-primitive-color-success-200: #bbf7d0;
+  --gova-primitive-color-success-300: #86efac;
+  --gova-primitive-color-success-400: #4ade80;
+  --gova-primitive-color-success-500: #22c55e;
+  --gova-primitive-color-success-600: #16a34a;
+  --gova-primitive-color-success-700: #15803d;
+  --gova-primitive-color-success-800: #166534;
+  --gova-primitive-color-success-900: #14532d;
+
+  --gova-primitive-color-warning-50: #fffbeb;
+  --gova-primitive-color-warning-100: #fef3c7;
+  --gova-primitive-color-warning-200: #fde68a;
+  --gova-primitive-color-warning-300: #fcd34d;
+  --gova-primitive-color-warning-400: #fbbf24;
+  --gova-primitive-color-warning-500: #f59e0b;
+  --gova-primitive-color-warning-600: #d97706;
+  --gova-primitive-color-warning-700: #b45309;
+  --gova-primitive-color-warning-800: #92400e;
+  --gova-primitive-color-warning-900: #78350f;
+
+  --gova-primitive-color-error-50: #fef2f2;
+  --gova-primitive-color-error-100: #fee2e2;
+  --gova-primitive-color-error-200: #fecaca;
+  --gova-primitive-color-error-300: #fca5a5;
+  --gova-primitive-color-error-400: #f87171;
+  --gova-primitive-color-error-500: #ef4444;
+  --gova-primitive-color-error-600: #dc2626;
+  --gova-primitive-color-error-700: #b91c1c;
+  --gova-primitive-color-error-800: #991b1b;
+  --gova-primitive-color-error-900: #7f1d1d;
+
+  --gova-primitive-color-info-50: #eff6ff;
+  --gova-primitive-color-info-100: #dbeafe;
+  --gova-primitive-color-info-200: #bfdbfe;
+  --gova-primitive-color-info-300: #93c5fd;
+  --gova-primitive-color-info-400: #60a5fa;
+  --gova-primitive-color-info-500: #3b82f6;
+  --gova-primitive-color-info-600: #2563eb;
+  --gova-primitive-color-info-700: #1d4ed8;
+  --gova-primitive-color-info-800: #1e40af;
+  --gova-primitive-color-info-900: #1e3a8a;
+
+  /* Login Page Specific Primitives (from imported HTML) */
+  --gova-primitive-color-login-blue: #2f5d8e;
+  --gova-primitive-color-login-blue-light: #d2e4ff;
+  --gova-primitive-color-login-blue-medium: #4a76a8;
+  --gova-primitive-color-login-surface: #f9f9ff;
+  --gova-primitive-color-login-surface-dim: #d3d9ea;
+  --gova-primitive-color-login-text: #151c27;
+
+  /* White & Black */
+  --gova-primitive-color-white: #ffffff;
+  --gova-primitive-color-black: #000000;
+
+  /* ──────────────────────────────────────────────────────────
+   * 2. Typography Primitives
+   * Font families, font sizes, line heights, font weights
+   * ────────────────────────────────────────────────────────── */
+
+  /* Font Families */
+  --gova-primitive-font-family-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+  --gova-primitive-font-family-arabic: 'Noto Sans Arabic', system-ui, -apple-system, sans-serif;
+  --gova-primitive-font-family-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+
+  /* Font Sizes */
+  --gova-primitive-font-size-3xs: 0.625rem;   /* 10px */
+  --gova-primitive-font-size-2xs: 0.75rem;    /* 12px */
+  --gova-primitive-font-size-xs: 0.8125rem;   /* 13px */
+  --gova-primitive-font-size-sm: 0.875rem;    /* 14px */
+  --gova-primitive-font-size-md: 1rem;        /* 16px */
+  --gova-primitive-font-size-lg: 1.125rem;    /* 18px */
+  --gova-primitive-font-size-xl: 1.25rem;     /* 20px */
+  --gova-primitive-font-size-2xl: 1.5rem;     /* 24px */
+  --gova-primitive-font-size-3xl: 1.875rem;   /* 30px */
+  --gova-primitive-font-size-4xl: 2.25rem;    /* 36px */
+  --gova-primitive-font-size-5xl: 3rem;       /* 48px */
+  --gova-primitive-font-size-6xl: 3.75rem;    /* 60px */
+  --gova-primitive-font-size-7xl: 4.5rem;     /* 72px */
+
+  /* Font Weights */
+  --gova-primitive-font-weight-thin: 100;
+  --gova-primitive-font-weight-extralight: 200;
+  --gova-primitive-font-weight-light: 300;
+  --gova-primitive-font-weight-normal: 400;
+  --gova-primitive-font-weight-medium: 500;
+  --gova-primitive-font-weight-semibold: 600;
+  --gova-primitive-font-weight-bold: 700;
+  --gova-primitive-font-weight-extrabold: 800;
+  --gova-primitive-font-weight-black: 900;
+
+  /* Line Heights */
+  --gova-primitive-line-height-tight: 1.25;
+  --gova-primitive-line-height-snug: 1.375;
+  --gova-primitive-line-height-normal: 1.5;
+  --gova-primitive-line-height-relaxed: 1.625;
+  --gova-primitive-line-height-loose: 2;
+
+  /* Letter Spacing */
+  --gova-primitive-letter-spacing-tighter: -0.05em;
+  --gova-primitive-letter-spacing-tight: -0.025em;
+  --gova-primitive-letter-spacing-normal: 0em;
+  --gova-primitive-letter-spacing-wide: 0.025em;
+  --gova-primitive-letter-spacing-wider: 0.05em;
+  --gova-primitive-letter-spacing-widest: 0.1em;
+
+  /* ──────────────────────────────────────────────────────────
+   * 3. Spacing Primitives
+   * ────────────────────────────────────────────────────────── */
+  --gova-primitive-spacing-0: 0;
+  --gova-primitive-spacing-0.5: 0.125rem;  /* 2px */
+  --gova-primitive-spacing-1: 0.25rem;     /* 4px */
+  --gova-primitive-spacing-1.5: 0.375rem;  /* 6px */
+  --gova-primitive-spacing-2: 0.5rem;      /* 8px */
+  --gova-primitive-spacing-2.5: 0.625rem;  /* 10px */
+  --gova-primitive-spacing-3: 0.75rem;     /* 12px */
+  --gova-primitive-spacing-3.5: 0.875rem;  /* 14px */
+  --gova-primitive-spacing-4: 1rem;        /* 16px */
+  --gova-primitive-spacing-5: 1.25rem;     /* 20px */
+  --gova-primitive-spacing-6: 1.5rem;      /* 24px */
+  --gova-primitive-spacing-7: 1.75rem;     /* 28px */
+  --gova-primitive-spacing-8: 2rem;        /* 32px */
+  --gova-primitive-spacing-9: 2.25rem;     /* 36px */
+  --gova-primitive-spacing-10: 2.5rem;     /* 40px */
+  --gova-primitive-spacing-12: 3rem;       /* 48px */
+  --gova-primitive-spacing-14: 3.5rem;     /* 56px */
+  --gova-primitive-spacing-16: 4rem;       /* 64px */
+  --gova-primitive-spacing-20: 5rem;       /* 80px */
+  --gova-primitive-spacing-24: 6rem;       /* 96px */
+  --gova-primitive-spacing-28: 7rem;       /* 112px */
+  --gova-primitive-spacing-32: 8rem;       /* 128px */
+  --gova-primitive-spacing-36: 9rem;       /* 144px */
+  --gova-primitive-spacing-40: 10rem;      /* 160px */
+  --gova-primitive-spacing-44: 11rem;      /* 176px */
+  --gova-primitive-spacing-48: 12rem;      /* 192px */
+  --gova-primitive-spacing-52: 13rem;      /* 208px */
+  --gova-primitive-spacing-56: 14rem;      /* 224px */
+  --gova-primitive-spacing-60: 15rem;      /* 240px */
+  --gova-primitive-spacing-64: 16rem;      /* 256px */
+  --gova-primitive-spacing-72: 18rem;      /* 288px */
+  --gova-primitive-spacing-80: 20rem;      /* 320px */
+  --gova-primitive-spacing-96: 24rem;      /* 384px */
+
+  /* ──────────────────────────────────────────────────────────
+   * 4. Border Radius Primitives
+   * ────────────────────────────────────────────────────────── */
+  --gova-primitive-radius-none: 0;
+  --gova-primitive-radius-xs: 0.125rem;    /* 2px */
+  --gova-primitive-radius-sm: 0.25rem;     /* 4px */
+  --gova-primitive-radius-md: 0.5rem;      /* 8px */
+  --gova-primitive-radius-lg: 0.75rem;     /* 12px */
+  --gova-primitive-radius-xl: 1rem;        /* 16px */
+  --gova-primitive-radius-2xl: 1.5rem;     /* 24px */
+  --gova-primitive-radius-3xl: 2rem;       /* 32px */
+  --gova-primitive-radius-full: 9999px;
+
+  /* ──────────────────────────────────────────────────────────
+   * 5. Shadows Primitives
+   * ────────────────────────────────────────────────────────── */
+  --gova-primitive-shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --gova-primitive-shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --gova-primitive-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --gova-primitive-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --gova-primitive-shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --gova-primitive-shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --gova-primitive-shadow-inner: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+  --gova-primitive-shadow-none: none;
+
+  /* ──────────────────────────────────────────────────────────
+   * 6. Transitions & Animations Primitives
+   * ────────────────────────────────────────────────────────── */
+  --gova-primitive-duration-75: 75ms;
+  --gova-primitive-duration-100: 100ms;
+  --gova-primitive-duration-150: 150ms;
+  --gova-primitive-duration-200: 200ms;
+  --gova-primitive-duration-300: 300ms;
+  --gova-primitive-duration-500: 500ms;
+  --gova-primitive-duration-700: 700ms;
+  --gova-primitive-duration-1000: 1000ms;
+
+  --gova-primitive-ease-linear: linear;
+  --gova-primitive-ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --gova-primitive-ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --gova-primitive-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ──────────────────────────────────────────────────────────
+   * 7. Z-Index Primitives
+   * ────────────────────────────────────────────────────────── */
+  --gova-primitive-z-index-auto: auto;
+  --gova-primitive-z-index-base: 0;
+  --gova-primitive-z-index-dropdown: 10;
+  --gova-primitive-z-index-sticky: 20;
+  --gova-primitive-z-index-overlay: 30;
+  --gova-primitive-z-index-modal: 40;
+  --gova-primitive-z-index-toast: 50;
+  --gova-primitive-z-index-tooltip: 60;
+
+  /* ──────────────────────────────────────────────────────────
+   * 8. Breakpoints Primitives
+   * ────────────────────────────────────────────────────────── */
+  --gova-primitive-breakpoint-xs: 480px;
+  --gova-primitive-breakpoint-sm: 640px;
+  --gova-primitive-breakpoint-md: 768px;
+  --gova-primitive-breakpoint-lg: 1024px;
+  --gova-primitive-breakpoint-xl: 1280px;
+  --gova-primitive-breakpoint-2xl: 1536px;
+}

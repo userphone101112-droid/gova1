@@ -3,6 +3,7 @@ import nextVitals from "eslint-config-next/core-web-vitals";
 import nextTs from "eslint-config-next/typescript";
 import uiIdentificationRules from "./.eslint-rules/ui-identification.js";
 import i18nEnforcementRules from "./.eslint-rules/i18n-enforcement.js";
+import designTokenEnforcementRules from "./.eslint-rules/design-token-enforcement.js";
 
 const uiIdentificationPlugin = {
   meta: {
@@ -18,6 +19,13 @@ const i18nEnforcementPlugin = {
   rules: i18nEnforcementRules.rules,
 };
 
+const designTokenEnforcementPlugin = {
+  meta: {
+    name: 'design-token-enforcement',
+  },
+  rules: designTokenEnforcementRules.rules,
+};
+
 const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
@@ -25,6 +33,7 @@ const eslintConfig = defineConfig([
     plugins: {
       'ui-identification': uiIdentificationPlugin,
       'i18n-enforcement': i18nEnforcementPlugin,
+      'design-token-enforcement': designTokenEnforcementPlugin,
     },
     rules: {
       // UI Identification System rules
@@ -39,6 +48,8 @@ const eslintConfig = defineConfig([
       'i18n-enforcement/require-ui-i18n-binding': 'error',
       'i18n-enforcement/no-orphan-translations': 'warn',
       'i18n-enforcement/enforce-ui-translation-coupling': 'warn',
+      // Design Token Enforcement rules
+      'design-token-enforcement/no-hardcoded-design-tokens': 'warn',
     },
   },
   // Override default ignores of eslint-config-next.

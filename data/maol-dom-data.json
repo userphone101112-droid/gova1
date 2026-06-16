@@ -71,6 +71,32 @@
         "type": "page",
         "children": []
       }
+    },
+    {
+      "route": "/login",
+      "timestamp": 1781575611322,
+      "totalIdentified": 7,
+      "tree": {
+        "type": "page",
+        "children": [
+          {
+            "name": "auth",
+            "uiIds": [
+              "UI_AUTH_LOGIN_PHONE_INPUT",
+              "UI_AUTH_LOGIN_PASSWORD_INPUT",
+              "UI_AUTH_LOGIN_TOGGLE_PASSWORD",
+              "UI_AUTH_LOGIN_SUBMIT",
+              "UI_AUTH_LOGIN_GUEST",
+              "UI_AUTH_LOGIN_ENGLISH_LANG",
+              "UI_AUTH_LOGIN_DARK_MODE"
+            ],
+            "tags": [
+              "input",
+              "button"
+            ]
+          }
+        ]
+      }
     }
   ],
   "maol_YF7ZyhV6Gy": [
