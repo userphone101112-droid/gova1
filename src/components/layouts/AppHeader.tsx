@@ -1,41 +1,46 @@
 'use client';
 
+import { useState } from 'react';
 import { useTranslation } from '@/shared/i18n/core/useTranslation';
 import { UiButton, UiInput, UiLink } from '@/components/ui';
 import { SHARED_LAYOUT } from '@/shared/ui-registry';
 import { Menu, Search, ShoppingCart } from 'lucide-react';
+import { AppSidebar } from './AppSidebar';
 
 export function AppHeader() {
   const { t } = useTranslation();
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
-    <header
-      id="header-main-nav"
-      className="fixed top-0 w-full z-50 shadow-sm border-b"
-      style={{
-        background: 'rgba(250,248,255,0.80)',
-        backdropFilter: 'blur(12px)',
-        WebkitBackdropFilter: 'blur(12px)',
-        borderColor: 'rgba(195,198,213,0.30)',
-      }}
-    >
-      <div
-        className="flex justify-between items-center h-16 w-full max-w-7xl mx-auto"
-        style={{ padding: '0 16px' }}
+    <>
+      <header
+        id="header-main-nav"
+        className="fixed top-0 w-full z-50 shadow-sm border-b"
+        style={{
+          background: 'rgba(250,248,255,0.80)',
+          backdropFilter: 'blur(12px)',
+          WebkitBackdropFilter: 'blur(12px)',
+          borderColor: 'rgba(195,198,213,0.30)',
+        }}
       >
-        {/* Brand + Menu (Mobile) */}
-        <div className="flex items-center gap-3">
-          <UiButton
-            ui={SHARED_LAYOUT.HEADER.MENU.MENU_BUTTON}
-            id="header-menu-button"
-            variant="ghost"
-            size="icon"
-            className="w-10 h-10 flex items-center justify-center rounded-full transition-colors active:bg-surface-container"
-            aria-label={t('navigation.menu')}
-            style={{ color: 'var(--gova-google-blue)' }}
-          >
-            <Menu className="w-5 h-5" />
-          </UiButton>
+        <div
+          className="flex justify-between items-center h-16 w-full max-w-7xl mx-auto"
+          style={{ padding: '0 16px' }}
+        >
+          {/* Brand + Menu (Mobile) */}
+          <div className="flex items-center gap-3">
+            <UiButton
+              ui={SHARED_LAYOUT.HEADER.MENU.MENU_BUTTON}
+              id="header-menu-button"
+              variant="ghost"
+              size="icon"
+              className="w-10 h-10 flex items-center justify-center rounded-full transition-colors active:bg-surface-container"
+              aria-label={t('navigation.menu')}
+              style={{ color: 'var(--gova-google-blue)' }}
+              onClick={() => setIsSidebarOpen(true)}
+            >
+              <Menu className="w-5 h-5" />
+            </UiButton>
           <UiLink
             ui={SHARED_LAYOUT.HEADER.BRAND.BRAND_LINK}
             id="header-brand-link"
@@ -92,12 +97,17 @@ export function AppHeader() {
             <ShoppingCart className="w-5 h-5" />
             <span
               id="header-cart-badge"
-              className="absolute top-2 right-2 w-2 h-2 rounded-full border border-white animate-pulse-gova"
+              className="absolute top-2 end-2 w-2 h-2 rounded-full border border-white animate-pulse-gova"
               style={{ background: 'var(--gova-google-red)' }}
             />
           </UiButton>
         </div>
       </div>
-    </header>
+      </header>
+      <AppSidebar
+        isOpen={isSidebarOpen}
+        onClose={() => setIsSidebarOpen(false)}
+      />
+    </>
   );
 }

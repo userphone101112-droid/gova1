@@ -89,7 +89,7 @@ export function HeroSlider() {
       {/* Dot indicators */}
       <div
         id="slider-indicators"
-        className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2"
+        className="absolute bottom-4 start-1/2 -translate-x-1/2 flex gap-2"
       >
         {SLIDES.map((_, i) => (
           <div

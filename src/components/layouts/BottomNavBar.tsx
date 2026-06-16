@@ -23,7 +23,7 @@ export function BottomNavBar() {
   return (
     <nav
       id="bottom-navigation-bar"
-      className="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center pt-2 pb-4 border-t rounded-t-2xl shadow-lg"
+      className="fixed bottom-0 start-0 w-full z-50 flex justify-around items-center pt-2 pb-4 border-t rounded-t-2xl shadow-lg"
       style={{
         background: 'rgba(250,248,255,0.90)',
         backdropFilter: 'blur(12px)',
@@ -52,7 +52,7 @@ export function BottomNavBar() {
             {isNotif && (
               <span
                 id="nav-notif-badge"
-                className="absolute top-0 right-1/2 translate-x-3 w-2.5 h-2.5 rounded-full border-2 border-white animate-pulse-gova"
+                className="absolute top-0 end-1/2 translate-x-3 w-2.5 h-2.5 rounded-full border-2 border-white animate-pulse-gova"
                 style={{ background: 'var(--gova-google-red)' }}
               />
             )}

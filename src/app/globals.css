@@ -219,3 +219,9 @@ body {
     animation: none;
   }
 }
+
+/* Global RTL icon flipping */
+[dir="rtl"] svg,
+[dir="rtl"] .icon {
+  transform: scaleX(-1);
+}

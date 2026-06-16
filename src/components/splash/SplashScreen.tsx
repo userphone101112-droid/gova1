@@ -139,7 +139,7 @@ export default function SplashScreen() {
       </div>
 
       {/* Background Decorative Element (Subtle Glass Gradient) */}
-      <div className="fixed bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-primary/5 to-transparent pointer-events-none -z-10"></div>
+      <div className="fixed bottom-0 start-0 w-full h-1/3 bg-gradient-to-t from-primary/5 to-transparent pointer-events-none -z-10"></div>
 
       {/* Lower Secondary Banner (Opposite Direction) */}
       <BottomRibbons subcategories={data?.subcategories || []} />

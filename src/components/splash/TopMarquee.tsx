@@ -18,7 +18,7 @@ export default function TopMarquee({}: { categories?: any[] }) {
   const displayItems = [...STATIC_CATEGORIES, ...STATIC_CATEGORIES, ...STATIC_CATEGORIES];
 
   return (
-    <div className="absolute top-0 left-0 w-full overflow-hidden opacity-40 pointer-events-none z-0">
+    <div className="absolute top-0 start-0 w-full overflow-hidden opacity-40 pointer-events-none z-0">
       <div className="flex gap-4 py-4 shrink-0 animate-marquee-right">
         {displayItems.map((item, index) => {
           const Icon = item.icon;

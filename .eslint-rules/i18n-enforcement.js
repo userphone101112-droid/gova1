@@ -568,6 +568,119 @@ const enforceUiTranslationCoupling = {
   },
 };
 
+/**
+ * Rule: No Directional Violations (enforce logical properties)
+ * Blocks all physical directional properties (ml, mr, left, right, text-left, text-right)
+ * and enforces use of logical properties (ms, me, start, end, text-start, text-end)
+ */
+const noDirectionalViolations = {
+  meta: {
+    type: 'problem',
+    docs: {
+      description: 'Disallow physical directional properties (ml, mr, left, right, text-left, text-right). Use logical properties (ms, me, start, end, text-start, text-end) instead for RTL/LTR compatibility.',
+      category: 'Best Practices',
+      recommended: true,
+    },
+    schema: [],
+    messages: {
+      directionalViolation: 'Physical directional property "{{property}}" found. Use logical property "{{replacement}}" instead for RTL/LTR compatibility.',
+    },
+  },
+  create(context) {
+    const filename = (context.filename || context.getFilename()).replace(/\\/g, '/');
+    
+    // Skip test files and storybook files
+    if (filename.includes('.test.') || 
+        filename.includes('.spec.') || 
+        filename.includes('.stories.') ||
+        filename.includes('__tests__') ||
+        filename.includes('__stories__')) {
+      return {};
+    }
+    
+    // In migration mode, downgrade errors to warnings
+    const severity = MIGRATION_MODE ? 'warn' : 'error';
+    
+    // Define violation patterns and their replacements
+    const violations = {
+      'ml-': 'ms-',
+      'mr-': 'me-',
+      'text-left': 'text-start',
+      'text-right': 'text-end',
+      'left-': 'start-',
+      'right-': 'end-',
+    };
+    
+    return {
+      // Check className attributes in JSX
+      JSXAttribute(node) {
+        if (node.name.name === 'className' && node.value) {
+          let classNameValue = '';
+          
+          if (node.value.type === 'Literal') {
+            classNameValue = node.value.value || '';
+          } else if (node.value.type === 'JSXExpressionContainer') {
+            // Handle template literals and simple expressions
+            if (node.value.expression.type === 'TemplateLiteral') {
+              classNameValue = node.value.expression.quasis.map(q => q.value.raw).join(' ');
+            }
+          }
+          
+          // Check for violations in className
+          for (const [violation, replacement] of Object.entries(violations)) {
+            if (classNameValue.includes(violation)) {
+              context.report({
+                node: node.value,
+                messageId: 'directionalViolation',
+                data: {
+                  property: violation,
+                  replacement: replacement,
+                },
+                severity,
+              });
+            }
+          }
+        }
+      },
+      
+      // Check inline styles in JSX
+      JSXAttribute(node) {
+        if (node.name.name === 'style' && node.value) {
+          if (node.value.type === 'JSXExpressionContainer') {
+            const expression = node.value.expression;
+            
+            // Check for style objects with left/right properties
+            if (expression.type === 'ObjectExpression') {
+              expression.properties.forEach(prop => {
+                if (prop.type === 'ObjectProperty') {
+                  const keyName = prop.key.type === 'Identifier' 
+                    ? prop.key.name 
+                    : prop.key.type === 'Literal' 
+                      ? prop.key.value 
+                      : '';
+                  
+                  if (keyName === 'left' || keyName === 'right' || 
+                      keyName === 'marginLeft' || keyName === 'marginRight') {
+                    context.report({
+                      node: prop,
+                      messageId: 'directionalViolation',
+                      data: {
+                        property: keyName,
+                        replacement: keyName.replace('left', 'Start').replace('right', 'End').replace('Left', 'Start').replace('Right', 'End'),
+                      },
+                      severity,
+                    });
+                  }
+                }
+              });
+            }
+          }
+        }
+      },
+    };
+  },
+};
+
 module.exports = {
   rules: {
     'validate-translation-keys': validateTranslationKeys,
@@ -576,5 +689,6 @@ module.exports = {
     'require-ui-i18n-binding': requireUiI18nBinding,
     'no-orphan-translations': noOrphanTranslations,
     'enforce-ui-translation-coupling': enforceUiTranslationCoupling,
+    'no-directional-violations': noDirectionalViolations,
   },
 };

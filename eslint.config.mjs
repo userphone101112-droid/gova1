@@ -48,6 +48,7 @@ const eslintConfig = defineConfig([
       'i18n-enforcement/require-ui-i18n-binding': 'error',
       'i18n-enforcement/no-orphan-translations': 'warn',
       'i18n-enforcement/enforce-ui-translation-coupling': 'warn',
+      'i18n-enforcement/no-directional-violations': 'error',
       // Design Token Enforcement rules
       'design-token-enforcement/no-hardcoded-design-tokens': 'warn',
     },

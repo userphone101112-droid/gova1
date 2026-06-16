@@ -78,7 +78,7 @@ const LoginPage = () => {
                 رقم الهاتف
               </label>
               <div className="relative group rounded-2xl bg-surface-container-low transition-all duration-300 focus-within:bg-white focus-within:shadow-sm">
-                <span className="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-outline">
+                <span className="material-symbols-outlined absolute end-4 top-1/2 -translate-y-1/2 text-outline">
                   call
                 </span>
                 <Controller
@@ -92,7 +92,7 @@ const LoginPage = () => {
                       type="tel"
                       dir="ltr"
                       placeholder="05x xxxx xxx"
-                      className="w-full h-14 bg-transparent border-none rounded-2xl pr-12 pl-4 text-on-surface focus:ring-0 font-body-md placeholder:text-outline-variant"
+                      className="w-full h-14 bg-transparent border-none rounded-2xl pe-12 ps-4 text-on-surface focus:ring-0 font-body-md placeholder:text-outline-variant"
                     />
                   )}
                 />
@@ -110,7 +110,7 @@ const LoginPage = () => {
                 </Link>
               </div>
               <div className="relative group rounded-2xl bg-surface-container-low transition-all duration-300 focus-within:bg-white focus-within:shadow-sm">
-                <span className="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-outline">
+                <span className="material-symbols-outlined absolute end-4 top-1/2 -translate-y-1/2 text-outline">
                   lock
                 </span>
                 <Controller
@@ -123,14 +123,14 @@ const LoginPage = () => {
                       id="password"
                       type={showPassword ? 'text' : 'password'}
                       placeholder="••••••••"
-                      className="w-full h-14 bg-transparent border-none rounded-2xl pr-12 pl-12 text-on-surface focus:ring-0 font-body-md placeholder:text-outline-variant"
+                      className="w-full h-14 bg-transparent border-none rounded-2xl pe-12 ps-12 text-on-surface focus:ring-0 font-body-md placeholder:text-outline-variant"
                     />
                   )}
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 text-outline-variant hover:text-outline transition-colors"
+                  className="absolute start-4 top-1/2 -translate-y-1/2 text-outline-variant hover:text-outline transition-colors"
                   data-ui-id={AUTH.LOGIN.TOGGLE_PASSWORD_VISIBILITY.id}
                   data-ui-path={AUTH.LOGIN.TOGGLE_PASSWORD_VISIBILITY.path}
                   data-ui-feature={AUTH.LOGIN.TOGGLE_PASSWORD_VISIBILITY.feature}
@@ -161,7 +161,7 @@ const LoginPage = () => {
               variant="outline"
               className="w-full h-14 bg-transparent border border-outline-variant text-secondary rounded-2xl font-label-md hover:bg-surface-container-low transition-all active:scale-[0.98]"
             >
-              <span className="material-symbols-outlined mr-2" style={{ fontVariationSettings: "'opsz' 20" }}>
+              <span className="material-symbols-outlined me-2" style={{ fontVariationSettings: "'opsz' 20" }}>
                 person_outline
               </span>
               الدخول كضيف
@@ -208,7 +208,7 @@ const LoginPage = () => {
       </main>
 
       {/* Decorative Bottom Gradient */}
-      <div className="fixed bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white/80 to-transparent pointer-events-none" />
+      <div className="fixed bottom-0 start-0 w-full h-32 bg-gradient-to-t from-white/80 to-transparent pointer-events-none" />
     </div>
   );
 };

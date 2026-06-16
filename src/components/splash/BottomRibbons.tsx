@@ -16,7 +16,7 @@ export default function BottomRibbons({}: { subcategories?: any[] }) {
   const displayItems = [...STATIC_SUBCATEGORIES, ...STATIC_SUBCATEGORIES, ...STATIC_SUBCATEGORIES, ...STATIC_SUBCATEGORIES];
 
   return (
-    <div className="absolute bottom-0 left-0 w-full overflow-hidden opacity-30 pointer-events-none mb-8 z-0">
+    <div className="absolute bottom-0 start-0 w-full overflow-hidden opacity-30 pointer-events-none mb-8 z-0">
       <div className="flex gap-4 py-4 shrink-0 animate-marquee-left">
         {displayItems.map((item, index) => {
           const Icon = item.icon;
