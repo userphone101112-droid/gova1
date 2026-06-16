@@ -1,9 +1,9 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { UiButton } from '@/components/ui';
 import { SHARED_LAYOUT } from '@/shared/ui-registry';
-import { X, LogIn, Globe, Sun, Moon } from 'lucide-react';
+import { X, LogIn, Globe, Sun, Moon, Monitor, ChevronDown } from 'lucide-react';
 import { useTranslation } from '@/shared/i18n/core/useTranslation';
 import { useSettingsStore } from '@/store/settings.store';
 
@@ -16,6 +16,10 @@ export function AppSidebar({ isOpen, onClose }: AppSidebarProps) {
   const sidebarRef = useRef<HTMLDivElement>(null);
   const { locale, setLocale } = useTranslation();
   const { settings, setSettings } = useSettingsStore();
+  const [languageDropdownOpen, setLanguageDropdownOpen] = useState(false);
+  const [themeDropdownOpen, setThemeDropdownOpen] = useState(false);
+  const languageDropdownRef = useRef<HTMLDivElement>(null);
+  const themeDropdownRef = useRef<HTMLDivElement>(null);
 
   // Close sidebar when clicking outside
   useEffect(() => {
@@ -26,6 +30,20 @@ export function AppSidebar({ isOpen, onClose }: AppSidebarProps) {
         isOpen
       ) {
         onClose();
+      }
+      // Close language dropdown if clicked outside
+      if (
+        languageDropdownRef.current &&
+        !languageDropdownRef.current.contains(event.target as Node)
+      ) {
+        setLanguageDropdownOpen(false);
+      }
+      // Close theme dropdown if clicked outside
+      if (
+        themeDropdownRef.current &&
+        !themeDropdownRef.current.contains(event.target as Node)
+      ) {
+        setThemeDropdownOpen(false);
       }
     };
 
@@ -45,21 +63,21 @@ export function AppSidebar({ isOpen, onClose }: AppSidebarProps) {
     return () => document.removeEventListener('keydown', handleEscapeKey);
   }, [isOpen, onClose]);
 
-  // Toggle language
-  const toggleLanguage = () => {
-    const newLocale = locale === 'ar' ? 'en' : 'ar';
+  // Change language
+  const changeLanguage = (newLocale: 'ar' | 'en') => {
     setLocale(newLocale);
     // Update settings to reflect the change
     setSettings({
       language: newLocale,
       languageMode: 'manual'
     });
+    setLanguageDropdownOpen(false);
   };
 
-  // Toggle theme
-  const toggleTheme = () => {
-    const newTheme = settings.theme === 'dark' ? 'light' : settings.theme === 'light' ? 'dark' : 'system';
+  // Change theme
+  const changeTheme = (newTheme: 'light' | 'dark' | 'system') => {
     setSettings({ theme: newTheme });
+    setThemeDropdownOpen(false);
   };
 
   // Determine current theme icon
@@ -70,8 +88,19 @@ export function AppSidebar({ isOpen, onClose }: AppSidebarProps) {
     if (settings.theme === 'light') {
       return <Sun className="w-5 h-5" />;
     }
-    // System theme - use sun/moon based on system preference
-    return <Sun className="w-5 h-5" />;
+    // System theme
+    return <Monitor className="w-5 h-5" />;
+  };
+
+  const getLanguageLabel = () => {
+    if (locale === 'ar') return 'العربية';
+    return 'English';
+  };
+
+  const getThemeLabel = () => {
+    if (settings.theme === 'dark') return locale === 'ar' ? 'الوضع المعتم' : 'Dark Mode';
+    if (settings.theme === 'light') return locale === 'ar' ? 'الوضع الفاتح' : 'Light Mode';
+    return locale === 'ar' ? 'الوضع الافتراضي' : 'System Default';
   };
 
   return (
@@ -135,33 +164,93 @@ export function AppSidebar({ isOpen, onClose }: AppSidebarProps) {
             {/* Divider */}
             <div className="h-px bg-border w-full" />
 
-            {/* Language Toggle */}
-            <UiButton
-              ui={SHARED_LAYOUT.SIDEBAR.LANGUAGE_TOGGLE}
-              variant="secondary"
-              className="w-full flex items-center justify-between gap-3 h-12 text-base"
-              onClick={toggleLanguage}
-            >
-              <div className="flex items-center gap-3">
-                <Globe className="w-5 h-5" />
-                <span>{locale === 'ar' ? 'اللغة' : 'Language'}</span>
-              </div>
-              <span className="font-semibold">{locale === 'ar' ? 'EN' : 'عربي'}</span>
-            </UiButton>
+            {/* Language Dropdown */}
+            <div className="relative" ref={languageDropdownRef}>
+              <UiButton
+                ui={SHARED_LAYOUT.SIDEBAR.LANGUAGE_TOGGLE}
+                variant="secondary"
+                className="w-full flex items-center justify-between gap-3 h-12 text-base"
+                onClick={() => setLanguageDropdownOpen(!languageDropdownOpen)}
+              >
+                <div className="flex items-center gap-3">
+                  <Globe className="w-5 h-5" />
+                  <span>{locale === 'ar' ? 'اللغة' : 'Language'}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="font-semibold">{getLanguageLabel()}</span>
+                  <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${languageDropdownOpen ? 'rotate-180' : ''}`} />
+                </div>
+              </UiButton>
 
-            {/* Theme Toggle */}
-            <UiButton
-              ui={SHARED_LAYOUT.SIDEBAR.THEME_TOGGLE}
-              variant="secondary"
-              className="w-full flex items-center justify-between gap-3 h-12 text-base"
-              onClick={toggleTheme}
-            >
-              <div className="flex items-center gap-3">
-                {getThemeIcon()}
-                <span>{settings.theme === 'dark' ? 'الوضع المعتم' : settings.theme === 'light' ? 'الوضع الفاتح' : 'الوضع الافتراضي'}</span>
-              </div>
-              <span className="font-semibold capitalize">{settings.theme}</span>
-            </UiButton>
+              {/* Language Dropdown Menu */}
+              {languageDropdownOpen && (
+                <div className="absolute z-50 top-full mt-2 w-full bg-background border border-border rounded-lg shadow-lg overflow-hidden">
+                  <button
+                    className={`w-full px-4 py-3 text-left hover:bg-muted transition-colors flex items-center justify-between ${locale === 'ar' ? 'bg-primary/10 text-primary' : ''}`}
+                    onClick={() => changeLanguage('ar')}
+                  >
+                    <span>العربية</span>
+                    {locale === 'ar' && <div className="w-2 h-2 rounded-full bg-primary" />}
+                  </button>
+                  <button
+                    className={`w-full px-4 py-3 text-left hover:bg-muted transition-colors flex items-center justify-between ${locale === 'en' ? 'bg-primary/10 text-primary' : ''}`}
+                    onClick={() => changeLanguage('en')}
+                  >
+                    <span>English</span>
+                    {locale === 'en' && <div className="w-2 h-2 rounded-full bg-primary" />}
+                  </button>
+                </div>
+              )}
+            </div>
+
+            {/* Theme Dropdown */}
+            <div className="relative" ref={themeDropdownRef}>
+              <UiButton
+                ui={SHARED_LAYOUT.SIDEBAR.THEME_TOGGLE}
+                variant="secondary"
+                className="w-full flex items-center justify-between gap-3 h-12 text-base"
+                onClick={() => setThemeDropdownOpen(!themeDropdownOpen)}
+              >
+                <div className="flex items-center gap-3">
+                  {getThemeIcon()}
+                  <span>{getThemeLabel()}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="font-semibold capitalize">{settings.theme}</span>
+                  <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${themeDropdownOpen ? 'rotate-180' : ''}`} />
+                </div>
+              </UiButton>
+
+              {/* Theme Dropdown Menu */}
+              {themeDropdownOpen && (
+                <div className="absolute z-50 top-full mt-2 w-full bg-background border border-border rounded-lg shadow-lg overflow-hidden">
+                  <button
+                    className={`w-full px-4 py-3 text-left hover:bg-muted transition-colors flex items-center gap-3 ${settings.theme === 'light' ? 'bg-primary/10 text-primary' : ''}`}
+                    onClick={() => changeTheme('light')}
+                  >
+                    <Sun className="w-4 h-4" />
+                    <span>{locale === 'ar' ? 'الوضع الفاتح' : 'Light Mode'}</span>
+                    {settings.theme === 'light' && <div className="w-2 h-2 rounded-full bg-primary ms-auto" />}
+                  </button>
+                  <button
+                    className={`w-full px-4 py-3 text-left hover:bg-muted transition-colors flex items-center gap-3 ${settings.theme === 'dark' ? 'bg-primary/10 text-primary' : ''}`}
+                    onClick={() => changeTheme('dark')}
+                  >
+                    <Moon className="w-4 h-4" />
+                    <span>{locale === 'ar' ? 'الوضع المعتم' : 'Dark Mode'}</span>
+                    {settings.theme === 'dark' && <div className="w-2 h-2 rounded-full bg-primary ms-auto" />}
+                  </button>
+                  <button
+                    className={`w-full px-4 py-3 text-left hover:bg-muted transition-colors flex items-center gap-3 ${settings.theme === 'system' ? 'bg-primary/10 text-primary' : ''}`}
+                    onClick={() => changeTheme('system')}
+                  >
+                    <Monitor className="w-4 h-4" />
+                    <span>{locale === 'ar' ? 'الوضع الافتراضي' : 'System Default'}</span>
+                    {settings.theme === 'system' && <div className="w-2 h-2 rounded-full bg-primary ms-auto" />}
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>
