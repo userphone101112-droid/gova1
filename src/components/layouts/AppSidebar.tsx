@@ -14,7 +14,7 @@ interface AppSidebarProps {
 
 export function AppSidebar({ isOpen, onClose }: AppSidebarProps) {
   const sidebarRef = useRef<HTMLDivElement>(null);
-  const { locale, setLocale } = useTranslation();
+  const { locale, setLocale, t } = useTranslation();
   const { themeMode, setThemeMode } = useGlobalSSOTStore();
   const [languageDropdownOpen, setLanguageDropdownOpen] = useState(false);
   const [themeDropdownOpen, setThemeDropdownOpen] = useState(false);
@@ -88,14 +88,15 @@ export function AppSidebar({ isOpen, onClose }: AppSidebarProps) {
   };
 
   const getLanguageLabel = () => {
-    if (locale === 'ar') return 'العربية';
-    return 'English';
+    return locale === 'ar' 
+      ? t('shared-layout.sidebar.arabic') 
+      : t('shared-layout.sidebar.english');
   };
 
   const getThemeLabel = () => {
-    if (themeMode === 'dark') return locale === 'ar' ? 'الوضع المعتم' : 'Dark Mode';
-    if (themeMode === 'light') return locale === 'ar' ? 'الوضع الفاتح' : 'Light Mode';
-    return locale === 'ar' ? 'الوضع الافتراضي' : 'System Default';
+    if (themeMode === 'dark') return t('shared-layout.sidebar.dark');
+    if (themeMode === 'light') return t('shared-layout.sidebar.light');
+    return t('shared-layout.sidebar.system');
   };
 
   return (
@@ -119,7 +120,7 @@ export function AppSidebar({ isOpen, onClose }: AppSidebarProps) {
     >
         {/* Sidebar Header */}
         <div className="flex items-center justify-between p-6 border-b border-border">
-          <h2 className="text-xl font-bold text-primary">القائمة</h2>
+          <h2 className="text-xl font-bold text-primary">{t('navigation.menu')}</h2>
           <UiButton
             ui={SHARED_LAYOUT.SIDEBAR.CLOSE_BUTTON}
             variant="ghost"
@@ -144,7 +145,7 @@ export function AppSidebar({ isOpen, onClose }: AppSidebarProps) {
               }}
             >
               <LogIn className="w-5 h-5" />
-              <span>تسجيل الدخول</span>
+              <span>{t('navigation.login')}</span>
             </UiButton>
 
             {/* Divider */}
@@ -160,7 +161,7 @@ export function AppSidebar({ isOpen, onClose }: AppSidebarProps) {
               >
                 <div className="flex items-center gap-3">
                   <Globe className="w-5 h-5" />
-                  <span>{locale === 'ar' ? 'اللغة' : 'Language'}</span>
+                  <span>{t('shared-layout.sidebar.language')}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="font-semibold">{getLanguageLabel()}</span>
@@ -175,14 +176,14 @@ export function AppSidebar({ isOpen, onClose }: AppSidebarProps) {
                     className={`w-full px-4 py-3 text-start hover:bg-muted transition-colors flex items-center justify-between ${locale === 'ar' ? 'bg-primary/10 text-primary' : ''}`}
                     onClick={() => changeLanguage('ar')}
                   >
-                    <span>العربية</span>
+                    <span>{t('shared-layout.sidebar.arabic')}</span>
                     {locale === 'ar' && <div className="w-2 h-2 rounded-full bg-primary" />}
                   </button>
                   <button
                     className={`w-full px-4 py-3 text-start hover:bg-muted transition-colors flex items-center justify-between ${locale === 'en' ? 'bg-primary/10 text-primary' : ''}`}
                     onClick={() => changeLanguage('en')}
                   >
-                    <span>English</span>
+                    <span>{t('shared-layout.sidebar.english')}</span>
                     {locale === 'en' && <div className="w-2 h-2 rounded-full bg-primary" />}
                   </button>
                 </div>
@@ -202,7 +203,7 @@ export function AppSidebar({ isOpen, onClose }: AppSidebarProps) {
                   <span>{getThemeLabel()}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="font-semibold capitalize">{themeMode}</span>
+                  <span className="font-semibold capitalize">{getThemeLabel()}</span>
                   <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${themeDropdownOpen ? 'rotate-180' : ''}`} />
                 </div>
               </UiButton>
@@ -215,7 +216,7 @@ export function AppSidebar({ isOpen, onClose }: AppSidebarProps) {
                     onClick={() => changeTheme('light')}
                   >
                     <Sun className="w-4 h-4" />
-                    <span>{locale === 'ar' ? 'الوضع الفاتح' : 'Light Mode'}</span>
+                    <span>{t('shared-layout.sidebar.light')}</span>
                     {themeMode === 'light' && <div className="w-2 h-2 rounded-full bg-primary ms-auto" />}
                   </button>
                   <button
@@ -223,7 +224,7 @@ export function AppSidebar({ isOpen, onClose }: AppSidebarProps) {
                     onClick={() => changeTheme('dark')}
                   >
                     <Moon className="w-4 h-4" />
-                    <span>{locale === 'ar' ? 'الوضع المعتم' : 'Dark Mode'}</span>
+                    <span>{t('shared-layout.sidebar.dark')}</span>
                     {themeMode === 'dark' && <div className="w-2 h-2 rounded-full bg-primary ms-auto" />}
                   </button>
                   <button
@@ -231,7 +232,7 @@ export function AppSidebar({ isOpen, onClose }: AppSidebarProps) {
                     onClick={() => changeTheme('system')}
                   >
                     <Monitor className="w-4 h-4" />
-                    <span>{locale === 'ar' ? 'الوضع الافتراضي' : 'System Default'}</span>
+                    <span>{t('shared-layout.sidebar.system')}</span>
                     {themeMode === 'system' && <div className="w-2 h-2 rounded-full bg-primary ms-auto" />}
                   </button>
                 </div>

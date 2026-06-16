@@ -188,11 +188,26 @@ export type homeTranslationKey =
   | 'home.hero.primaryButton'
   | 'home.hero.secondaryButton'
   | 'home.promo-banner.bannerButton'
+  | 'home.promo-banner.title'
+  | 'home.promo-banner.description'
+  | 'home.promo-banner.logo'
   | 'home.curated-offers.showMoreButton'
   | 'home.curated-offers.addToCartButton'
   | 'home.curated-offers.addToFavoritesButton'
+  | 'home.curated-offers.productImage'
+  | 'home.curated-offers.categoryLabel'
+  | 'home.curated-offers.productTitle'
+  | 'home.curated-offers.priceLabel'
+  | 'home.curated-offers.sectionTitle'
+  | 'home.curated-offers.promoTag'
+  | 'home.hero-slider.slideImage'
+  | 'home.hero-slider.slideTitle'
+  | 'home.hero-slider.slideBadge'
   | 'home.categories-grid.toggleButton'
   | 'home.categories-grid.categoryButton'
+  | 'home.categories-grid.categoryImage'
+  | 'home.categories-grid.categoryName'
+  | 'home.categories-grid.sectionTitle'
 ;
 
 // settings feature translations
@@ -225,6 +240,13 @@ export type sharedLayoutTranslationKey =
   | 'shared-layout.bottom-nav.favoritesLink'
   | 'shared-layout.bottom-nav.ordersLink'
   | 'shared-layout.bottom-nav.profileLink'
+  | 'shared-layout.sidebar.language'
+  | 'shared-layout.sidebar.english'
+  | 'shared-layout.sidebar.arabic'
+  | 'shared-layout.sidebar.theme'
+  | 'shared-layout.sidebar.light'
+  | 'shared-layout.sidebar.dark'
+  | 'shared-layout.sidebar.system'
 ;
 
 // signup feature translations
@@ -241,6 +263,8 @@ export type splashTranslationKey =
   | 'splash.initializing'
   | 'splash.complete'
   | 'splash.progress'
+  | 'splash.logo.logoImage'
+  | 'splash.logo.heading'
   | 'splash.maintenance.pinInput'
   | 'splash.maintenance.submitButton'
 ;

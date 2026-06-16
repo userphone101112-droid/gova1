@@ -13,7 +13,7 @@ export function enforceLocalizationBoundary(
   requestedFeature: string
 ): void {
   // Allow access to common dictionary namespaces
-  const COMMON_NAMESPACES = ['common', 'navigation', 'buttons', 'validation', 'messages'];
+  const COMMON_NAMESPACES = ['common', 'navigation', 'buttons', 'validation', 'messages', 'shared-layout'];
   if (COMMON_NAMESPACES.includes(requestedFeature)) {
     return;
   }

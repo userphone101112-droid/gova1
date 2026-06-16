@@ -13,6 +13,15 @@
       "favoritesLink": "المفضلة",
       "ordersLink": "الطلبات",
       "profileLink": "الملف الشخصي"
+    },
+    "sidebar": {
+      "language": "اللغة",
+      "english": "English",
+      "arabic": "العربية",
+      "theme": "المظهر",
+      "light": "فاتح",
+      "dark": "داكن",
+      "system": "النظام"
     }
   }
 }

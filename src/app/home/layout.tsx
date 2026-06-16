@@ -11,13 +11,14 @@ interface HomeLayoutProps {
 export default async function HomeLayout({ children }: HomeLayoutProps) {
   const locale = await getLocale();
 
-  // Merge home + common dictionaries so AppShell nav labels resolve correctly
-  const [homeDictionary, commonDictionary] = await Promise.all([
+  // Merge home + common + shared-layout dictionaries so AppShell nav labels resolve correctly
+  const [homeDictionary, commonDictionary, sharedLayoutDictionary] = await Promise.all([
     getDictionaryCached(locale, 'home'),
     getDictionaryCached(locale, 'common'),
+    getDictionaryCached(locale, 'shared-layout'),
   ]);
 
-  const mergedDictionary = { ...commonDictionary, ...homeDictionary };
+  const mergedDictionary = { ...commonDictionary, ...sharedLayoutDictionary, ...homeDictionary };
 
   return (
     <I18nProvider

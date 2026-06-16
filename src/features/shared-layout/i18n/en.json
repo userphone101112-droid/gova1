@@ -13,6 +13,15 @@
       "favoritesLink": "Favorites",
       "ordersLink": "Orders",
       "profileLink": "Profile"
+    },
+    "sidebar": {
+      "language": "Language",
+      "english": "English",
+      "arabic": "العربية",
+      "theme": "Theme",
+      "light": "Light",
+      "dark": "Dark",
+      "system": "System"
     }
   }
 }
