@@ -100,11 +100,25 @@
     "curated-offers": {
       "showMoreButton": "عرض المزيد",
       "addToCartButton": "إضافة للسلة",
-      "addToFavoritesButton": "إضافة للمفضلة"
+      "addToFavoritesButton": "إضافة للمفضلة",
+      "productImage": "منتج",
+      "categoryLabel": "فئة",
+      "productTitle": "منتج",
+      "priceLabel": "سعر",
+      "sectionTitle": "عروض مختارة",
+      "promoTag": "لفترة محدودة"
+    },
+    "hero-slider": {
+      "slideImage": "صورة الشريحة",
+      "slideTitle": "عنوان الشريحة",
+      "slideBadge": "شارة الشريحة"
     },
     "categories-grid": {
       "toggleButton": "تبديل المظهر",
-      "categoryButton": "اختر الفئة"
+      "categoryButton": "اختر الفئة",
+      "categoryImage": "صورة الفئة",
+      "categoryName": "الفئة",
+      "sectionTitle": "أسواق السويس"
     }
   }
 }

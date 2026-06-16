@@ -17,6 +17,7 @@ const UiButton = React.forwardRef<HTMLButtonElement, UiButtonProps>(
         data-ui-id={identity?.id}
         data-ui-path={identity?.path}
         data-ui-feature={identity?.feature}
+        data-ui-component="UiButton"
         {...props}
       />
     );

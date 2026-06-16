@@ -17,6 +17,7 @@ const UiSelect = React.forwardRef<HTMLSelectElement, UiSelectProps>(
         data-ui-id={identity?.id}
         data-ui-path={identity?.path}
         data-ui-feature={identity?.feature}
+        data-ui-component="UiSelect"
         {...props}
       />
     );

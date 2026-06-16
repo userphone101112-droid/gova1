@@ -4,6 +4,10 @@
     "initializing": "جاري التهيئة...",
     "complete": "مكتمل",
     "progress": "التقدم",
+    "logo": {
+      "logoImage": "الشعار",
+      "heading": "السويس بين يديك"
+    },
     "maintenance": {
       "pinInput": "أدخل رمز الدخول",
       "submitButton": "تحقق"

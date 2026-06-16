@@ -17,6 +17,7 @@ const UiLink = React.forwardRef<HTMLAnchorElement, UiLinkProps>(
         data-ui-id={identity?.id}
         data-ui-path={identity?.path}
         data-ui-feature={identity?.feature}
+        data-ui-component="UiLink"
         {...props}
       />
     );

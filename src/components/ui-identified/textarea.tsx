@@ -17,6 +17,7 @@ const UiTextarea = React.forwardRef<HTMLTextAreaElement, UiTextareaProps>(
         data-ui-id={identity?.id}
         data-ui-path={identity?.path}
         data-ui-feature={identity?.feature}
+        data-ui-component="UiTextarea"
         {...props}
       />
     );

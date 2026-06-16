@@ -2,7 +2,7 @@
 
 import { Heart, ShoppingCart, Tag } from 'lucide-react';
 import { useTranslation } from '@/shared/i18n/core/useTranslation';
-import { UiButton } from '@/components/ui';
+import { UiButton, UiImage, UiLabel, UiHeader } from '@/components/ui';
 import { HOME } from '@/shared/ui-registry';
 
 const PRODUCTS = [
@@ -57,17 +57,23 @@ export function CuratedOffers() {
       <div className="flex justify-between items-center">
         <div className="flex items-center gap-2">
           <Tag size={24} style={{ color: 'var(--gova-primary)' }} />
-          <h3 className="text-xl font-bold" style={{ color: 'var(--gova-on-surface)' }}>
+          <UiHeader
+            ui={HOME.CURATED_OFFERS.SECTION_TITLE}
+            level={3}
+            className="text-xl font-bold"
+            style={{ color: 'var(--gova-on-surface)' }}
+          >
             {t('home.curated.title')}
-          </h3>
+          </UiHeader>
         </div>
-        <span
+        <UiLabel
+          ui={HOME.CURATED_OFFERS.PROMO_TAG}
           id="promo-tag-badge"
           className="px-2 py-1 rounded-lg text-xs font-semibold"
           style={{ background: 'var(--gova-google-yellow)', color: '#000' }}
         >
           {t('home.curated.limitedTime')}
-        </span>
+        </UiLabel>
       </div>
 
       {/* Responsive product grid */}
@@ -83,11 +89,12 @@ export function CuratedOffers() {
             }}
           >
             <div className="relative aspect-square">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <UiImage
+                ui={HOME.CURATED_OFFERS.PRODUCT_IMAGE}
                 src={p.img}
                 alt={t(p.titleKey)}
-                className="w-full h-full object-cover transition-transform active:scale-110"
+                fill
+                className="object-cover transition-transform active:scale-110"
               />
               <UiButton
                 ui={HOME.CURATED_OFFERS.ADD_TO_FAVORITES}
@@ -104,16 +111,28 @@ export function CuratedOffers() {
             </div>
 
             <div className="p-3 space-y-1">
-              <span className="text-xs font-semibold" style={{ color: 'var(--gova-google-green)' }}>
+              <UiLabel
+                ui={HOME.CURATED_OFFERS.CATEGORY_LABEL}
+                className="text-xs font-semibold"
+                style={{ color: 'var(--gova-google-green)' }}
+              >
                 {t(p.categoryKey)}
-              </span>
-              <h4 className="text-sm font-bold truncate" style={{ color: 'var(--gova-on-surface)' }}>
+              </UiLabel>
+              <UiLabel
+                ui={HOME.CURATED_OFFERS.PRODUCT_TITLE}
+                className="text-sm font-bold truncate"
+                style={{ color: 'var(--gova-on-surface)' }}
+              >
                 {t(p.titleKey)}
-              </h4>
+              </UiLabel>
               <div className="flex justify-between items-center pt-1">
-                <span className="text-base font-bold" style={{ color: 'var(--gova-google-blue)' }}>
+                <UiLabel
+                  ui={HOME.CURATED_OFFERS.PRICE_LABEL}
+                  className="text-base font-bold"
+                  style={{ color: 'var(--gova-google-blue)' }}
+                >
                   {t(p.priceKey)}
-                </span>
+                </UiLabel>
                 <UiButton
                   ui={HOME.CURATED_OFFERS.ADD_TO_CART}
                   id={p.addId}

@@ -112,6 +112,98 @@ export const HOME = {
       createdAt: '2026-06-15',
       updatedAt: '2026-06-15',
     } as const,
+    PRODUCT_IMAGE: {
+      id: 'UI_HOME_CURATED_OFFERS_PRODUCT_IMAGE',
+      path: 'home.curated-offers.display.product-image',
+      description: 'Product image in curated offers',
+      category: 'display',
+      feature: 'home',
+      version: '1.0.0',
+      createdAt: '2026-06-15',
+      updatedAt: '2026-06-15',
+    } as const,
+    CATEGORY_LABEL: {
+      id: 'UI_HOME_CURATED_OFFERS_CATEGORY_LABEL',
+      path: 'home.curated-offers.display.category-label',
+      description: 'Product category label',
+      category: 'display',
+      feature: 'home',
+      version: '1.0.0',
+      createdAt: '2026-06-15',
+      updatedAt: '2026-06-15',
+    } as const,
+    PRODUCT_TITLE: {
+      id: 'UI_HOME_CURATED_OFFERS_PRODUCT_TITLE',
+      path: 'home.curated-offers.display.product-title',
+      description: 'Product title',
+      category: 'display',
+      feature: 'home',
+      version: '1.0.0',
+      createdAt: '2026-06-15',
+      updatedAt: '2026-06-15',
+    } as const,
+    PRICE_LABEL: {
+      id: 'UI_HOME_CURATED_OFFERS_PRICE_LABEL',
+      path: 'home.curated-offers.display.price-label',
+      description: 'Product price label',
+      category: 'display',
+      feature: 'home',
+      version: '1.0.0',
+      createdAt: '2026-06-15',
+      updatedAt: '2026-06-15',
+    } as const,
+    SECTION_TITLE: {
+      id: 'UI_HOME_CURATED_OFFERS_SECTION_TITLE',
+      path: 'home.curated-offers.display.section-title',
+      description: 'Curated offers section title',
+      category: 'display',
+      feature: 'home',
+      version: '1.0.0',
+      createdAt: '2026-06-15',
+      updatedAt: '2026-06-15',
+    } as const,
+    PROMO_TAG: {
+      id: 'UI_HOME_CURATED_OFFERS_PROMO_TAG',
+      path: 'home.curated-offers.display.promo-tag',
+      description: 'Curated offers promo tag',
+      category: 'display',
+      feature: 'home',
+      version: '1.0.0',
+      createdAt: '2026-06-15',
+      updatedAt: '2026-06-15',
+    } as const,
+  },
+  HERO_SLIDER: {
+    SLIDE_IMAGE: {
+      id: 'UI_HOME_HERO_SLIDER_SLIDE_IMAGE',
+      path: 'home.hero-slider.display.slide-image',
+      description: 'Hero slider slide image',
+      category: 'display',
+      feature: 'home',
+      version: '1.0.0',
+      createdAt: '2026-06-15',
+      updatedAt: '2026-06-15',
+    } as const,
+    SLIDE_TITLE: {
+      id: 'UI_HOME_HERO_SLIDER_SLIDE_TITLE',
+      path: 'home.hero-slider.display.slide-title',
+      description: 'Hero slider slide title',
+      category: 'display',
+      feature: 'home',
+      version: '1.0.0',
+      createdAt: '2026-06-15',
+      updatedAt: '2026-06-15',
+    } as const,
+    SLIDE_BADGE: {
+      id: 'UI_HOME_HERO_SLIDER_SLIDE_BADGE',
+      path: 'home.hero-slider.display.slide-badge',
+      description: 'Hero slider slide badge',
+      category: 'display',
+      feature: 'home',
+      version: '1.0.0',
+      createdAt: '2026-06-15',
+      updatedAt: '2026-06-15',
+    } as const,
   },
   CATEGORIES_GRID: {
     TOGGLE: {
@@ -134,29 +226,65 @@ export const HOME = {
       createdAt: '2026-06-15',
       updatedAt: '2026-06-15',
     } as const,
+    CATEGORY_IMAGE: {
+      id: 'UI_HOME_CATEGORIES_GRID_CATEGORY_IMAGE',
+      path: 'home.categories-grid.display.category-image',
+      description: 'Category image in grid',
+      category: 'display',
+      feature: 'home',
+      version: '1.0.0',
+      createdAt: '2026-06-15',
+      updatedAt: '2026-06-15',
+    } as const,
+    CATEGORY_NAME: {
+      id: 'UI_HOME_CATEGORIES_GRID_CATEGORY_NAME',
+      path: 'home.categories-grid.display.category-name',
+      description: 'Category name label',
+      category: 'display',
+      feature: 'home',
+      version: '1.0.0',
+      createdAt: '2026-06-15',
+      updatedAt: '2026-06-15',
+    } as const,
+    SECTION_TITLE: {
+      id: 'UI_HOME_CATEGORIES_GRID_SECTION_TITLE',
+      path: 'home.categories-grid.display.section-title',
+      description: 'Categories section title',
+      category: 'display',
+      feature: 'home',
+      version: '1.0.0',
+      createdAt: '2026-06-15',
+      updatedAt: '2026-06-15',
+    } as const,
   },
-} as const;
-
-// ============================================================================
-// ERROR BOUNDARY IDENTIFIERS
-// ============================================================================
-export const ERROR_BOUNDARY = {
-  RELOAD_BUTTON: {
-    id: 'UI_ERROR_BOUNDARY_RELOAD',
-    path: 'error-boundary.main.actions.reload-button',
-    description: 'Reload button for crashed application state',
-    category: 'action',
-    feature: 'error-boundary',
-    version: '1.0.0',
-    createdAt: '2026-06-15',
-    updatedAt: '2026-06-15',
-  } as const,
 } as const;
 
 // ============================================================================
 // SPLASH PAGE IDENTIFIERS
 // ============================================================================
 export const SPLASH = {
+  LOGO: {
+    IMAGE: {
+      id: 'UI_SPLASH_LOGO_IMAGE',
+      path: 'splash.logo.display.logo-image',
+      description: 'Splash screen logo image',
+      category: 'display',
+      feature: 'splash',
+      version: '1.0.0',
+      createdAt: '2026-06-15',
+      updatedAt: '2026-06-15',
+    } as const,
+    HEADING: {
+      id: 'UI_SPLASH_LOGO_HEADING',
+      path: 'splash.logo.display.heading',
+      description: 'Splash screen main heading',
+      category: 'display',
+      feature: 'splash',
+      version: '1.0.0',
+      createdAt: '2026-06-15',
+      updatedAt: '2026-06-15',
+    } as const,
+  },
   MAINTENANCE: {
     FORM: {
       PIN_INPUT: {
@@ -181,6 +309,22 @@ export const SPLASH = {
       } as const,
     },
   },
+} as const;
+
+// ============================================================================
+// ERROR BOUNDARY IDENTIFIERS
+// ============================================================================
+export const ERROR_BOUNDARY = {
+  RELOAD_BUTTON: {
+    id: 'UI_ERROR_BOUNDARY_RELOAD',
+    path: 'error-boundary.main.actions.reload-button',
+    description: 'Reload button for crashed application state',
+    category: 'action',
+    feature: 'error-boundary',
+    version: '1.0.0',
+    createdAt: '2026-06-15',
+    updatedAt: '2026-06-15',
+  } as const,
 } as const;
 
 // ============================================================================

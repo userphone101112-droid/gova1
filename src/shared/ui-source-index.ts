@@ -13,12 +13,20 @@ export interface UiSourceLocation {
 }
 
 export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
+  "UI_HOME_PROMO_BANNER_TITLE": {
+    "id": "UI_HOME_PROMO_BANNER_TITLE",
+    "path": "home.promo-banner.display.title",
+    "sourceFile": "/src/components/home/PromoBanner.tsx",
+    "sourceComponent": "PromoBanner",
+    "sourceLine": 26,
+    "feature": "home"
+  },
   "UI_HOME_CATEGORIES_GRID_TOGGLE": {
     "id": "UI_HOME_CATEGORIES_GRID_TOGGLE",
     "path": "home.categories-grid.actions.toggle-button",
     "sourceFile": "/src/components/home/CategoriesGrid.tsx",
     "sourceComponent": "CategoriesGrid",
-    "sourceLine": 90,
+    "sourceLine": 92,
     "feature": "home"
   },
   "UI_HOME_CATEGORIES_GRID_ITEM": {
@@ -29,12 +37,44 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "sourceLine": 11,
     "feature": "home"
   },
+  "UI_HOME_CATEGORIES_GRID_CATEGORY_IMAGE": {
+    "id": "UI_HOME_CATEGORIES_GRID_CATEGORY_IMAGE",
+    "path": "home.categories-grid.display.category-image",
+    "sourceFile": "/src/components/home/CategoriesGrid.tsx",
+    "sourceComponent": "CategoriesGrid",
+    "sourceLine": 123,
+    "feature": "home"
+  },
+  "UI_HOME_CATEGORIES_GRID_CATEGORY_NAME": {
+    "id": "UI_HOME_CATEGORIES_GRID_CATEGORY_NAME",
+    "path": "home.categories-grid.display.category-name",
+    "sourceFile": "/src/components/home/CategoriesGrid.tsx",
+    "sourceComponent": "CategoriesGrid",
+    "sourceLine": 130,
+    "feature": "home"
+  },
+  "UI_HOME_CATEGORIES_GRID_SECTION_TITLE": {
+    "id": "UI_HOME_CATEGORIES_GRID_SECTION_TITLE",
+    "path": "home.categories-grid.display.section-title",
+    "sourceFile": "/src/components/home/CategoriesGrid.tsx",
+    "sourceComponent": "CategoriesGrid",
+    "sourceLine": 78,
+    "feature": "home"
+  },
+  "UI_SPLASH_LOGO_IMAGE": {
+    "id": "UI_SPLASH_LOGO_IMAGE",
+    "path": "splash.logo.display.logo-image",
+    "sourceFile": "/src/components/splash/SplashLogo.tsx",
+    "sourceComponent": "SplashLogo",
+    "sourceLine": 11,
+    "feature": "splash"
+  },
   "UI_HOME_CURATED_OFFERS_MORE": {
     "id": "UI_HOME_CURATED_OFFERS_MORE",
     "path": "home.curated-offers.actions.show-more-button",
     "sourceFile": "/src/components/home/CuratedOffers.tsx",
     "sourceComponent": "CuratedOffers",
-    "sourceLine": 135,
+    "sourceLine": 153,
     "feature": "home"
   },
   "UI_HOME_CURATED_OFFERS_ADD_TO_CART": {
@@ -42,7 +82,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "path": "home.curated-offers.actions.add-to-cart-button",
     "sourceFile": "/src/components/home/CuratedOffers.tsx",
     "sourceComponent": "CuratedOffers",
-    "sourceLine": 118,
+    "sourceLine": 136,
     "feature": "home"
   },
   "UI_HOME_CURATED_OFFERS_FAVORITE": {
@@ -50,7 +90,79 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "path": "home.curated-offers.actions.add-to-favorites-button",
     "sourceFile": "/src/components/home/CuratedOffers.tsx",
     "sourceComponent": "CuratedOffers",
+    "sourceLine": 99,
+    "feature": "home"
+  },
+  "UI_HOME_CURATED_OFFERS_PRODUCT_IMAGE": {
+    "id": "UI_HOME_CURATED_OFFERS_PRODUCT_IMAGE",
+    "path": "home.curated-offers.display.product-image",
+    "sourceFile": "/src/components/home/CuratedOffers.tsx",
+    "sourceComponent": "CuratedOffers",
     "sourceLine": 93,
+    "feature": "home"
+  },
+  "UI_HOME_CURATED_OFFERS_CATEGORY_LABEL": {
+    "id": "UI_HOME_CURATED_OFFERS_CATEGORY_LABEL",
+    "path": "home.curated-offers.display.category-label",
+    "sourceFile": "/src/components/home/CuratedOffers.tsx",
+    "sourceComponent": "CuratedOffers",
+    "sourceLine": 114,
+    "feature": "home"
+  },
+  "UI_HOME_CURATED_OFFERS_PRODUCT_TITLE": {
+    "id": "UI_HOME_CURATED_OFFERS_PRODUCT_TITLE",
+    "path": "home.curated-offers.display.product-title",
+    "sourceFile": "/src/components/home/CuratedOffers.tsx",
+    "sourceComponent": "CuratedOffers",
+    "sourceLine": 121,
+    "feature": "home"
+  },
+  "UI_HOME_CURATED_OFFERS_PRICE_LABEL": {
+    "id": "UI_HOME_CURATED_OFFERS_PRICE_LABEL",
+    "path": "home.curated-offers.display.price-label",
+    "sourceFile": "/src/components/home/CuratedOffers.tsx",
+    "sourceComponent": "CuratedOffers",
+    "sourceLine": 129,
+    "feature": "home"
+  },
+  "UI_HOME_CURATED_OFFERS_SECTION_TITLE": {
+    "id": "UI_HOME_CURATED_OFFERS_SECTION_TITLE",
+    "path": "home.curated-offers.display.section-title",
+    "sourceFile": "/src/components/home/CuratedOffers.tsx",
+    "sourceComponent": "CuratedOffers",
+    "sourceLine": 61,
+    "feature": "home"
+  },
+  "UI_HOME_CURATED_OFFERS_PROMO_TAG": {
+    "id": "UI_HOME_CURATED_OFFERS_PROMO_TAG",
+    "path": "home.curated-offers.display.promo-tag",
+    "sourceFile": "/src/components/home/CuratedOffers.tsx",
+    "sourceComponent": "CuratedOffers",
+    "sourceLine": 70,
+    "feature": "home"
+  },
+  "UI_HOME_HERO_SLIDER_SLIDE_IMAGE": {
+    "id": "UI_HOME_HERO_SLIDER_SLIDE_IMAGE",
+    "path": "home.hero-slider.display.slide-image",
+    "sourceFile": "/src/components/home/HeroSlider.tsx",
+    "sourceComponent": "HeroSlider",
+    "sourceLine": 60,
+    "feature": "home"
+  },
+  "UI_HOME_HERO_SLIDER_SLIDE_TITLE": {
+    "id": "UI_HOME_HERO_SLIDER_SLIDE_TITLE",
+    "path": "home.hero-slider.display.slide-title",
+    "sourceFile": "/src/components/home/HeroSlider.tsx",
+    "sourceComponent": "HeroSlider",
+    "sourceLine": 77,
+    "feature": "home"
+  },
+  "UI_HOME_HERO_SLIDER_SLIDE_BADGE": {
+    "id": "UI_HOME_HERO_SLIDER_SLIDE_BADGE",
+    "path": "home.hero-slider.display.slide-badge",
+    "sourceFile": "/src/components/home/HeroSlider.tsx",
+    "sourceComponent": "HeroSlider",
+    "sourceLine": 70,
     "feature": "home"
   },
   "UI_HOME_PROMO_BANNER_ACTION": {
@@ -58,7 +170,23 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "path": "home.promo-banner.actions.banner-button",
     "sourceFile": "/src/components/home/PromoBanner.tsx",
     "sourceComponent": "PromoBanner",
-    "sourceLine": 29,
+    "sourceLine": 42,
+    "feature": "home"
+  },
+  "UI_HOME_PROMO_BANNER_DESCRIPTION": {
+    "id": "UI_HOME_PROMO_BANNER_DESCRIPTION",
+    "path": "home.promo-banner.display.description",
+    "sourceFile": "/src/components/home/PromoBanner.tsx",
+    "sourceComponent": "PromoBanner",
+    "sourceLine": 35,
+    "feature": "home"
+  },
+  "UI_HOME_PROMO_BANNER_LOGO": {
+    "id": "UI_HOME_PROMO_BANNER_LOGO",
+    "path": "home.promo-banner.display.logo",
+    "sourceFile": "/src/components/splash/SplashLogo.tsx",
+    "sourceComponent": "SplashLogo",
+    "sourceLine": 11,
     "feature": "home"
   },
   "UI_SHARED_HEADER_MENU": {
@@ -164,6 +292,14 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "sourceComponent": "LanguageSwitcher",
     "sourceLine": 28,
     "feature": "home"
+  },
+  "UI_SPLASH_LOGO_HEADING": {
+    "id": "UI_SPLASH_LOGO_HEADING",
+    "path": "splash.logo.display.heading",
+    "sourceFile": "/src/components/splash/SplashLogo.tsx",
+    "sourceComponent": "SplashLogo",
+    "sourceLine": 19,
+    "feature": "splash"
   },
   "UI_SPLASH_MAINT_PIN": {
     "id": "UI_SPLASH_MAINT_PIN",

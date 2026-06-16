@@ -4,6 +4,10 @@
     "initializing": "Initializing...",
     "complete": "Complete",
     "progress": "Progress",
+    "logo": {
+      "logoImage": "Logo",
+      "heading": "السويس بين يديك"
+    },
     "maintenance": {
       "pinInput": "Enter access code",
       "submitButton": "Verify"

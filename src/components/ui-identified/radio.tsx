@@ -17,6 +17,7 @@ const UiRadio = React.forwardRef<HTMLInputElement, UiRadioProps>(
         data-ui-id={identity?.id}
         data-ui-path={identity?.path}
         data-ui-feature={identity?.feature}
+        data-ui-component="UiRadio"
         {...props}
       />
     );

@@ -30,3 +30,5 @@ export type { UiHeaderProps } from './header';
 
 export { UiImage } from './image';
 export type { UiImageProps } from './image';
+
+export { DevUiOverlay as UiDev } from '../dev/DevUiOverlay';

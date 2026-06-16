@@ -2,7 +2,7 @@
 
 import { useTranslation } from '@/shared/i18n/core/useTranslation';
 import { Store, ChevronLeft, ChevronRight } from 'lucide-react';
-import { UiButton } from '@/components/ui';
+import { UiButton, UiImage, UiLabel, UiHeader } from '@/components/ui';
 import { HOME } from '@/shared/ui-registry';
 
 const CATEGORIES = [
@@ -74,7 +74,9 @@ export function CategoriesGrid() {
             className="w-5 h-5"
             style={{ color: 'var(--gova-google-blue)' }}
           />
-          <h3
+          <UiHeader
+            ui={HOME.CATEGORIES_GRID.SECTION_TITLE}
+            level={3}
             className="font-semibold"
             style={{
               color: 'var(--gova-google-blue)',
@@ -84,7 +86,7 @@ export function CategoriesGrid() {
             }}
           >
             {t('home.categories.sectionTitle')}
-          </h3>
+          </UiHeader>
         </div>
         <UiButton
           ui={HOME.CATEGORIES_GRID.TOGGLE}
@@ -114,17 +116,19 @@ export function CategoriesGrid() {
             aria-label={cat.imgAlt}
           >
             <div
-              className="rounded-full overflow-hidden border-2 border-transparent group-active:border-googleBlue transition-all w-full aspect-square"
+              className="rounded-full overflow-hidden border-2 border-transparent group-active:border-googleBlue transition-all w-full aspect-square relative"
               style={{ background: 'var(--gova-surface-container)' }}
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <UiImage
+                ui={HOME.CATEGORIES_GRID.CATEGORY_IMAGE}
                 src={cat.imgSrc}
                 alt={cat.imgAlt}
-                className="w-full h-full object-cover"
+                fill
+                className="object-cover"
               />
             </div>
-            <span
+            <UiLabel
+              ui={HOME.CATEGORIES_GRID.CATEGORY_NAME}
               className="text-center"
               style={{
                 color: 'var(--gova-on-surface-variant)',
@@ -134,7 +138,7 @@ export function CategoriesGrid() {
               }}
             >
               {t(cat.nameKey)}
-            </span>
+            </UiLabel>
           </UiButton>
         ))}
       </div>

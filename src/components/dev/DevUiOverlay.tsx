@@ -1,28 +1,6 @@
 'use client';
 
-/**
- * DevUiOverlay — Developer Visual Inspector
- *
- * 🔓 Always visible and active in development mode!
- * Activated with Ctrl+Shift+U (but stays visible across screen sizes).
- *
- * Renders colored frames around all [data-ui-id] elements:
- *   - Blue:   valid, active identity
- *   - Amber:  deprecated identity
- *   - Red:    unknown / unregistered element
- *
- * Features:
- *   - Floating tooltip shows Stable ID, path, feature, version, and source file
- *   - Database section: Toggle ON/OFF to add inf1/inf2/inf3 fields
- *   - Attributes section: Toggle ON/OFF to add Attribute1/Attribute2/Attribute3 checkboxes
- *   - MAOL Toggle: Turn MAOL (Minimal Agent Observability Layer) ON/OFF
- *
- * This component is tree-shaken from production builds via process.env check.
- *
- * @see docs/SERVER_ARCHITECTURE.md for complete documentation
- */
-
-import React, { useEffect, useRef, useState, useCallback } from 'react';
+import React, { useEffect, useRef, useState, useCallback, useMemo } from 'react';
 import { UI_ID_MAP } from '@/shared/ui-registry';
 import { UI_SOURCE_INDEX } from '@/shared/ui-source-index';
 import { useMaolStore } from '@/store/index';
@@ -39,7 +17,6 @@ interface TooltipState {
   sourceFile: string;
   sourceComponent: string;
   sourceLine: number;
-  // New fields for database & attributes
   databaseEnabled: boolean;
   inf1: string;
   inf2: string;
@@ -48,7 +25,6 @@ interface TooltipState {
   attribute1: boolean;
   attribute2: boolean;
   attribute3: boolean;
-  // New fields for data-ui-path and data-ui-feature
   dataUiPath: string;
   dataUiFeature: string;
 }
@@ -61,16 +37,34 @@ interface OverlayFrame {
   height: number;
   color: 'blue' | 'amber' | 'red';
   label: string;
+  componentType: string;
 }
 
 const STORAGE_KEY = 'dev-ui-overlay-active';
 
-function computeFrames(): OverlayFrame[] {
+const ALL_COMPONENT_TYPES = [
+  'UiButton',
+  'UiInput',
+  'UiTextarea',
+  'UiSelect',
+  'UiLink',
+  'UiImage',
+  'UiLabel',
+  'UiHeader',
+  'UiCheckbox',
+  'UiRadio',
+  'UiSwitch'
+] as const;
+
+type ComponentType = typeof ALL_COMPONENT_TYPES[number];
+
+function computeFrames(selectedTypes: Set<ComponentType>): OverlayFrame[] {
   const elements = document.querySelectorAll<HTMLElement>('[data-ui-id]');
   const frames: OverlayFrame[] = [];
 
   elements.forEach((el) => {
     const id = el.getAttribute('data-ui-id') || '';
+    const componentType = el.getAttribute('data-ui-component') || 'Unknown';
     const rect = el.getBoundingClientRect();
     if (rect.width === 0 && rect.height === 0) return;
 
@@ -91,10 +85,11 @@ function computeFrames(): OverlayFrame[] {
       height: rect.height,
       color,
       label,
+      componentType,
     });
   });
 
-  return frames;
+  return frames.filter(f => selectedTypes.size === 0 || selectedTypes.has(f.componentType as ComponentType));
 }
 
 const COLOR_MAP = {
@@ -104,12 +99,30 @@ const COLOR_MAP = {
 };
 
 export function DevUiOverlay() {
-  // Always default to active!
   const [active, setActive] = useState<boolean>(true);
   const isMaolEnabled = useMaolStore((state) => state.isEnabled);
   const toggleMaol = useMaolStore((state) => state.toggleMaol);
 
+  // Filter state
+  const [isFilterPanelOpen, setIsFilterPanelOpen] = useState(false);
+  const [selectedComponentTypes, setSelectedComponentTypes] = useState<Set<ComponentType>>(new Set(ALL_COMPONENT_TYPES));
+
+  // Function to compute component type counts
+  const getComponentCounts = useCallback(() => {
+    const counts: Record<string, number> = {};
+    ALL_COMPONENT_TYPES.forEach(type => counts[type] = 0);
+    const elements = document.querySelectorAll<HTMLElement>('[data-ui-id]');
+    elements.forEach(el => {
+      const type = el.getAttribute('data-ui-component');
+      if (type) {
+        counts[type] = (counts[type] || 0) + 1;
+      }
+    });
+    return counts;
+  }, []);
+
   const [frames, setFrames] = useState<OverlayFrame[]>([]);
+
   const [tooltip, setTooltip] = useState<TooltipState>({
     visible: false,
     x: 0, y: 0,
@@ -153,9 +166,9 @@ export function DevUiOverlay() {
   const refresh = useCallback(() => {
     if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
     rafRef.current = requestAnimationFrame(() => {
-      setFrames(computeFrames());
+      setFrames(computeFrames(selectedComponentTypes));
     });
-  }, []);
+  }, [selectedComponentTypes]);
 
   // Keyboard toggle: Ctrl+Shift+U
   useEffect(() => {
@@ -284,6 +297,30 @@ export function DevUiOverlay() {
     }
   };
 
+  // Filter functions
+  const toggleComponentFilter = (type: ComponentType) => {
+    setSelectedComponentTypes(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(type)) newSet.delete(type);
+      else newSet.add(type);
+      return newSet;
+    });
+  };
+
+  const selectAllComponents = () => {
+    if (selectedComponentTypes.size < ALL_COMPONENT_TYPES.length) {
+      setSelectedComponentTypes(new Set(ALL_COMPONENT_TYPES));
+    }
+  };
+
+  const deselectAllComponents = () => {
+    if (selectedComponentTypes.size > 0) {
+      setSelectedComponentTypes(new Set());
+    }
+  };
+
+  const componentCounts = useMemo(() => getComponentCounts(), [frames, getComponentCounts]);
+
   if (!active && frames.length === 0) {
     return (
       <button
@@ -339,6 +376,24 @@ export function DevUiOverlay() {
         <span style={{ color: '#f59e0b' }}>{frames.filter(f => f.color === 'amber').length} dep</span>
         <span style={{ color: '#ef4444' }}>{frames.filter(f => f.color === 'red').length} err</span>
         <span>|</span>
+        {/* Filter Types Button */}
+        <button
+                onClick={() => setIsFilterPanelOpen(!isFilterPanelOpen)}
+                style={{
+                  padding: '2px 10px',
+                  borderRadius: '10px',
+                  border: 'none',
+                  cursor: 'pointer',
+                  fontSize: '10px',
+                  fontWeight: 600,
+                  background: isFilterPanelOpen ? '#22c55e' : '#475569',
+                  color: '#fff',
+                  fontFamily: 'monospace',
+                }}
+              >
+                أنواع العناصر
+              </button>
+        <span>|</span>
         {/* MAOL Toggle - Toggle MAOL ON/OFF directly from here */}
         <button
           onClick={toggleMaol}
@@ -377,6 +432,101 @@ export function DevUiOverlay() {
           ✕
         </button>
       </div>
+
+      {/* Filter Panel */}
+      {isFilterPanelOpen && (
+        <div
+          style={{
+            position: 'fixed',
+            bottom: '110px',
+            right: '12px',
+            zIndex: 99998,
+            background: '#0f172a',
+            border: '1px solid #334155',
+            borderRadius: '10px',
+            padding: '12px',
+            boxShadow: '0 8px 24px rgba(0,0,0,0.5)',
+            fontSize: '11px',
+            fontFamily: 'monospace',
+            minWidth: '200px',
+            maxHeight: '300px',
+            overflowY: 'auto',
+          }}
+        >
+          <div style={{ 
+            position: 'sticky',
+            top: 0,
+            background: '#0f172a',
+            zIndex: 1,
+            paddingBottom: '8px',
+            display: 'flex', 
+            justifyContent: 'space-between', 
+            alignItems: 'center', 
+            marginBottom: '4px',
+            borderBottom: '1px solid #334155'
+          }}>
+            <span style={{ color: '#60a5fa', fontWeight: 700, fontSize: '12px' }}>أنواع المكونات</span>
+            <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
+              <label style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer', color: '#e2e8f0', fontSize: '11px' }}>
+                <input
+                  type="checkbox"
+                  checked={selectedComponentTypes.size === ALL_COMPONENT_TYPES.length}
+                  onChange={selectAllComponents}
+                  style={{ cursor: 'pointer' }}
+                />
+                اختيار الكل
+              </label>
+              <label style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer', color: '#e2e8f0', fontSize: '11px' }}>
+                <input
+                  type="checkbox"
+                  checked={selectedComponentTypes.size === 0}
+                  onChange={deselectAllComponents}
+                  style={{ cursor: 'pointer' }}
+                />
+                إلغاء الكل
+              </label>
+            </div>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', marginTop: '8px' }}>
+            {ALL_COMPONENT_TYPES.map((type) => (
+              <div
+                key={type}
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  padding: '6px 8px',
+                  borderRadius: '6px',
+                  background: selectedComponentTypes.has(type) ? 'rgba(34,197,94,0.1)' : 'transparent',
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <span style={{ color: '#e2e8f0' }}>{type}</span>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <span style={{ color: '#94a3b8', fontSize: '10px' }}>{componentCounts[type] || 0}</span>
+                  <button
+                    onClick={() => toggleComponentFilter(type)}
+                    style={{
+                      padding: '2px 6px',
+                      borderRadius: '6px',
+                      border: 'none',
+                      cursor: 'pointer',
+                      fontSize: '10px',
+                      fontWeight: 600,
+                      background: selectedComponentTypes.has(type) ? '#22c55e' : '#475569',
+                      color: '#fff',
+                      fontFamily: 'monospace',
+                    }}
+                  >
+                    {selectedComponentTypes.has(type) ? 'ON' : 'OFF'}
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Frames overlay */}
       {frames.map((frame, i) => {

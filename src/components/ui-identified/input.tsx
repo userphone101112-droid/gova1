@@ -17,6 +17,7 @@ const UiInput = React.forwardRef<HTMLInputElement, UiInputProps>(
         data-ui-id={identity?.id}
         data-ui-path={identity?.path}
         data-ui-feature={identity?.feature}
+        data-ui-component="UiInput"
         {...props}
       />
     );

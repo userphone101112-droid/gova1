@@ -17,6 +17,7 @@ const UiCheckbox = React.forwardRef<HTMLInputElement, UiCheckboxProps>(
         data-ui-id={identity?.id}
         data-ui-path={identity?.path}
         data-ui-feature={identity?.feature}
+        data-ui-component="UiCheckbox"
         {...props}
       />
     );

@@ -100,11 +100,25 @@
     "curated-offers": {
       "showMoreButton": "Show More",
       "addToCartButton": "Add to Cart",
-      "addToFavoritesButton": "Add to Favorites"
+      "addToFavoritesButton": "Add to Favorites",
+      "productImage": "Product",
+      "categoryLabel": "Category",
+      "productTitle": "Product",
+      "priceLabel": "Price",
+      "sectionTitle": "Curated Offers",
+      "promoTag": "Limited Time"
+    },
+    "hero-slider": {
+      "slideImage": "Slide Image",
+      "slideTitle": "Slide Title",
+      "slideBadge": "Slide Badge"
     },
     "categories-grid": {
       "toggleButton": "Toggle Layout",
-      "categoryButton": "Select Category"
+      "categoryButton": "Select Category",
+      "categoryImage": "Category Image",
+      "categoryName": "Category",
+      "sectionTitle": "Suez Markets"
     }
   }
 }

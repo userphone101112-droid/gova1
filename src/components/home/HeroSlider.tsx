@@ -2,6 +2,8 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { useTranslation } from '@/shared/i18n/core/useTranslation';
+import { UiImage, UiLabel, UiHeader } from '@/components/ui';
+import { HOME } from '@/shared/ui-registry';
 
 const SLIDES = [
   {
@@ -54,25 +56,31 @@ export function HeroSlider() {
             className="min-w-full h-full relative"
             style={{ flexShrink: 0 }}
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <UiImage
+              ui={HOME.HERO_SLIDER.SLIDE_IMAGE}
               src={slide.imgSrc}
               alt={slide.imgAlt}
-              className="w-full h-full object-cover"
+              fill
+              className="object-cover"
             />
             <div
               className="absolute inset-0 flex flex-col justify-center px-6 text-white"
               style={{ background: 'linear-gradient(to left, rgba(0,50,125,0.7), rgba(0,50,125,0.3), transparent)' }}
             >
-              <span
+              <UiLabel
+                ui={HOME.HERO_SLIDER.SLIDE_BADGE}
                 className="text-xs font-semibold px-2 py-0.5 rounded-full w-fit mb-2"
                 style={{ background: slide.badgeColor, color: slide.badgeTextColor }}
               >
                 {t(slide.badgeKey)}
-              </span>
-              <h2 className="text-2xl font-bold leading-tight">
+              </UiLabel>
+              <UiHeader
+                ui={HOME.HERO_SLIDER.SLIDE_TITLE}
+                level={2}
+                className="text-2xl font-bold leading-tight"
+              >
                 {t(slide.titleKey)}
-              </h2>
+              </UiHeader>
             </div>
           </div>
         ))}

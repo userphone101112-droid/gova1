@@ -51,3 +51,5 @@ export type { UiHeaderProps } from './ui-identified/header';
 
 export { UiImage } from './ui-identified/image';
 export type { UiImageProps } from './ui-identified/image';
+
+export { UiDev } from './ui-identified';

@@ -17,6 +17,7 @@ const UiHeader = React.forwardRef<HTMLHeadingElement, UiHeaderProps>(
         data-ui-id={identity?.id}
         data-ui-path={identity?.path}
         data-ui-feature={identity?.feature}
+        data-ui-component="UiHeader"
         {...props}
       />
     );
