@@ -95,7 +95,12 @@
       "bannerButton": "استكشف العقارات",
       "title": "عقارات النخبة",
       "description": "اعثر على مساحتك الصناعية القادمة مع شركاء السويس المعتمدين.",
-      "logo": "شعار جوفا"
+      "logo": "شعار جوفا",
+      "container": "حاوية",
+      "contentWrapper": "غلاف المحتوى",
+      "logoImage": "الشعار",
+      "heading": "السويس بين يديك",
+      "background": "خلفية"
     },
     "curated-offers": {
       "showMoreButton": "عرض المزيد",
@@ -106,19 +111,38 @@
       "productTitle": "منتج",
       "priceLabel": "سعر",
       "sectionTitle": "عروض مختارة",
-      "promoTag": "لفترة محدودة"
+      "promoTag": "لفترة محدودة",
+      "container": "حاوية",
+      "header": "رأس",
+      "productGrid": "شبكة المنتجات",
+      "productCard": "بطاقة المنتج",
+      "productImageContainer": "حاوية صورة المنتج",
+      "productInfo": "معلومات المنتج",
+      "priceRow": "صف السعر",
+      "showMoreContainer": "حاوية عرض المزيد"
     },
     "hero-slider": {
       "slideImage": "صورة الشريحة",
       "slideTitle": "عنوان الشريحة",
-      "slideBadge": "شارة الشريحة"
+      "slideBadge": "شارة الشريحة",
+      "container": "حاوية",
+      "sliderTrack": "مسار الشريحة",
+      "slide": "شريحة",
+      "slideContent": "محتوى الشريحة",
+      "indicators": "مؤشرات"
     },
     "categories-grid": {
       "toggleButton": "تبديل المظهر",
       "categoryButton": "اختر الفئة",
       "categoryImage": "صورة الفئة",
       "categoryName": "الفئة",
-      "sectionTitle": "أسواق السويس"
+      "sectionTitle": "أسواق السويس",
+      "arabic": "العربية",
+      "english": "English",
+      "dark": "داكن",
+      "light": "فاتح",
+      "system": "النظام",
+      "language": "اللغة"
     }
   }
 }

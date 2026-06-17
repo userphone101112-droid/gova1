@@ -2,6 +2,8 @@
 
 import { useTranslation } from '@/shared/i18n/core/useTranslation';
 import { Sparkles } from 'lucide-react';
+import { UiDiv, UiSection, UiHeader, UiImage, UiP } from '@/components/ui';
+import { DECORATIVE } from '@/shared/ui-registry/categories';
 
 const FEATURED = [
   {
@@ -42,10 +44,11 @@ export function FeaturedMarquee() {
   const items = [...FEATURED, ...FEATURED];
 
   return (
-    <section id="featured-marquee-section" className="space-y-3 overflow-hidden reveal active">
+    <UiSection ui={DECORATIVE.SPACER} id="featured-marquee-section" className="space-y-3 overflow-hidden reveal active">
       {/* Section Header */}
-      <div className="flex justify-between items-center">
-        <div
+      <UiDiv ui={DECORATIVE.SPACER} className="flex justify-between items-center">
+        <UiDiv
+          ui={DECORATIVE.SPACER}
           className="flex items-center gap-2 px-4 py-2 rounded-full border shadow-sm"
           style={{
             background: 'rgba(251,188,5,0.10)',
@@ -56,7 +59,9 @@ export function FeaturedMarquee() {
             className="animate-pulse-gova"
             style={{ color: 'var(--gova-google-yellow)', width: '20px', height: '20px' }}
           />
-          <h3
+          <UiHeader
+            ui={DECORATIVE.SPACER}
+            level={3}
             className="font-bold"
             style={{
               color: 'var(--gova-on-surface)',
@@ -66,50 +71,54 @@ export function FeaturedMarquee() {
             }}
           >
             {t('home.featured.title')}
-          </h3>
-        </div>
-      </div>
+          </UiHeader>
+        </UiDiv>
+      </UiDiv>
 
       {/* Marquee strip */}
-      <div
+      <UiDiv
+        ui={DECORATIVE.SPACER}
         className="relative flex overflow-hidden py-4 border-y"
         style={{
           background: 'var(--gova-surface-container-low)',
           borderColor: 'rgba(195,198,213,0.30)',
         }}
       >
-        <div className="flex gap-4 animate-marquee-cards whitespace-nowrap pr-4">
+        <UiDiv ui={DECORATIVE.SPACER} className="flex gap-4 animate-marquee-cards whitespace-nowrap pr-4">
           {items.map((item, idx) => (
-            <div
+            <UiDiv
               key={`${item.id}-${idx}`}
+              ui={DECORATIVE.SPACER}
               className="flex-none w-40 rounded-xl p-2 shadow-sm border"
               style={{
                 background: 'var(--gova-surface-container-lowest)',
                 borderColor: 'rgba(195,198,213,0.30)',
               }}
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <UiImage
+                ui={DECORATIVE.SPACER}
                 src={item.imgSrc}
                 alt={item.imgAlt}
                 className="w-full aspect-square object-cover rounded-lg mb-2"
               />
-              <p
+              <UiP
+                ui={DECORATIVE.SPACER}
                 className="truncate font-bold"
                 style={{ fontSize: '12px', fontWeight: '600', color: 'var(--gova-on-surface)' }}
               >
                 {t(item.titleKey)}
-              </p>
-              <p
+              </UiP>
+              <UiP
+                ui={DECORATIVE.SPACER}
                 className="font-bold"
                 style={{ fontSize: '12px', fontWeight: '700', color: 'var(--gova-google-blue)' }}
               >
                 {item.price}
-              </p>
-            </div>
+              </UiP>
+            </UiDiv>
           ))}
-        </div>
-      </div>
-    </section>
+        </UiDiv>
+      </UiDiv>
+    </UiSection>
   );
 }

@@ -95,7 +95,12 @@
       "bannerButton": "Explore Listings",
       "title": "Elite Real Estate",
       "description": "Find your next industrial space with Suez certified partners.",
-      "logo": "GoVa Logo"
+      "logo": "GoVa Logo",
+      "container": "Container",
+      "contentWrapper": "Content Wrapper",
+      "logoImage": "Logo",
+      "heading": "السويس بين يديك",
+      "background": "Background"
     },
     "curated-offers": {
       "showMoreButton": "Show More",
@@ -106,19 +111,38 @@
       "productTitle": "Product",
       "priceLabel": "Price",
       "sectionTitle": "Curated Offers",
-      "promoTag": "Limited Time"
+      "promoTag": "Limited Time",
+      "container": "Container",
+      "header": "Header",
+      "productGrid": "Product Grid",
+      "productCard": "Product Card",
+      "productImageContainer": "Product Image Container",
+      "productInfo": "Product Info",
+      "priceRow": "Price Row",
+      "showMoreContainer": "Show More Container"
     },
     "hero-slider": {
       "slideImage": "Slide Image",
       "slideTitle": "Slide Title",
-      "slideBadge": "Slide Badge"
+      "slideBadge": "Slide Badge",
+      "container": "Container",
+      "sliderTrack": "Slider Track",
+      "slide": "Slide",
+      "slideContent": "Slide Content",
+      "indicators": "Indicators"
     },
     "categories-grid": {
       "toggleButton": "Toggle Layout",
       "categoryButton": "Select Category",
       "categoryImage": "Category Image",
       "categoryName": "Category",
-      "sectionTitle": "Suez Markets"
+      "sectionTitle": "Suez Markets",
+      "arabic": "العربية",
+      "english": "English",
+      "dark": "Dark",
+      "light": "Light",
+      "system": "System",
+      "language": "Language"
     }
   }
 }

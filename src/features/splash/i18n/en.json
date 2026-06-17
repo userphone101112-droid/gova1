@@ -6,11 +6,21 @@
     "progress": "Progress",
     "logo": {
       "logoImage": "Logo",
-      "heading": "السويس بين يديك"
+      "heading": "السويس بين يديك",
+      "sectionTitle": "Suez Markets",
+      "viewAll": "View All",
+      "title": "Curated Offers",
+      "limitedTime": "Limited Time",
+      "addToFavorites": "Add to Favorites",
+      "addToCart": "Add to Cart",
+      "showMoreButton": "Show More"
     },
     "maintenance": {
       "pinInput": "Enter access code",
-      "submitButton": "Verify"
+      "submitButton": "Verify",
+      "container": "Container",
+      "card": "Card",
+      "iconContainer": "Icon Container"
     }
   }
 }

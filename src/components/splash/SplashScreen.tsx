@@ -3,9 +3,10 @@
 import { useEffect, useState } from 'react';
 import { Store } from 'lucide-react';
 
-import { UiButton, UiInput } from '@/components/ui-identified';
+import { UiButton, UiInput, UiDiv, UiHeader, UiMain } from '@/components/ui';
 import { runInitialization } from '@/lib/initialization/initialization';
 import { SPLASH } from '@/shared/ui-registry';
+import { DECORATIVE } from '@/shared/ui-registry/categories';
 import { useSettingsStore } from '@/store/settings.store';
 import { SplashData } from '@/types/splash';
 
@@ -65,24 +66,35 @@ export default function SplashScreen() {
 
   if (activeMaint) {
     return (
-      <div 
-        className="min-h-screen bg-background text-on-background flex items-center justify-center p-4 selection:bg-primary-fixed selection:text-on-primary-fixed" 
+      <UiDiv
+        ui={SPLASH.MAINTENANCE.CONTAINER}
+        className="min-h-screen bg-background text-on-background flex items-center justify-center p-4 selection:bg-primary-fixed selection:text-on-primary-fixed"
         dir={lang === 'ar' ? 'rtl' : 'ltr'}
       >
-        <div className="bg-surface-container border border-outline-variant rounded-2xl p-8 max-w-md w-full shadow-2xl flex flex-col items-center gap-6">
-          <div className="mb-2 relative group">
-            <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full"></div>
-            <div className="w-20 h-20 bg-primary text-on-primary rounded-2xl flex items-center justify-center shadow-2xl relative border-2 border-white/20">
+        <UiDiv
+          ui={SPLASH.MAINTENANCE.CARD}
+          className="bg-surface-container border border-outline-variant rounded-2xl p-8 max-w-md w-full shadow-2xl flex flex-col items-center gap-6"
+        >
+          <UiDiv
+            ui={SPLASH.MAINTENANCE.ICON_CONTAINER}
+            className="mb-2 relative group"
+          >
+            <UiDiv ui={DECORATIVE.BACKGROUND} className="absolute inset-0 bg-primary/20 blur-3xl rounded-full"></UiDiv>
+            <UiDiv ui={DECORATIVE.SPACER} className="w-20 h-20 bg-primary text-on-primary rounded-2xl flex items-center justify-center shadow-2xl relative border-2 border-white/20">
               <Store className="w-12 h-12 text-white" />
-            </div>
-          </div>
-          <h2 className="text-2xl font-bold text-primary text-center mt-2">
+            </UiDiv>
+          </UiDiv>
+          <UiHeader
+            ui={DECORATIVE.SPACER}
+            level={2}
+            className="text-2xl font-bold text-primary text-center mt-2"
+          >
             {t.title}
-          </h2>
-          <p className="text-center text-on-surface-variant text-sm leading-relaxed">
+          </UiHeader>
+          <UiDiv ui={DECORATIVE.SPACER} className="text-center text-on-surface-variant text-sm leading-relaxed">
             {settings.maintenance.message || t.defaultMsg}
-          </p>
-          <div className="w-full flex flex-col gap-2 mt-2">
+          </UiDiv>
+          <UiDiv ui={DECORATIVE.SPACER} className="w-full flex flex-col gap-2 mt-2">
             <UiInput
               ui={SPLASH.MAINTENANCE.FORM.PIN_INPUT}
               type="password"
@@ -95,11 +107,11 @@ export default function SplashScreen() {
               className="w-full px-4 py-3 bg-surface-container-low border border-outline rounded-xl text-on-surface placeholder-on-surface-variant/50 text-center outline-none focus:border-primary transition-all"
             />
             {errorMsg && (
-              <span className="text-error text-xs text-center font-medium mt-1">
+              <UiDiv ui={DECORATIVE.SPACER} className="text-error text-xs text-center font-medium mt-1">
                 {errorMsg}
-              </span>
+              </UiDiv>
             )}
-          </div>
+          </UiDiv>
           <UiButton
             ui={SPLASH.MAINTENANCE.FORM.SUBMIT_BUTTON}
             onClick={handleVerify}
@@ -107,42 +119,46 @@ export default function SplashScreen() {
           >
             {t.verify}
           </UiButton>
-        </div>
-      </div>
+        </UiDiv>
+      </UiDiv>
     );
   }
 
   return (
-    <div className="bg-background text-on-background min-h-screen relative w-full flex flex-col items-center justify-between py-12 px-4 overflow-hidden selection:bg-primary-fixed selection:text-on-primary-fixed">
+    <UiMain className="bg-background text-on-background min-h-screen relative w-full flex flex-col items-center justify-between py-12 px-4 overflow-hidden selection:bg-primary-fixed selection:text-on-primary-fixed">
       {/* Top Visual Context: Animated Category Banner */}
       <TopMarquee categories={data?.categories || []} />
       
       {/* Center Identity Section */}
-      <div className="flex-1 flex flex-col items-center justify-center z-10 w-full max-w-sm">
-        <div className="mb-6 relative group">
-          <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full"></div>
-          <div className="w-24 h-24 bg-primary text-on-primary rounded-2xl flex items-center justify-center shadow-2xl relative border-2 border-white/20">
+      <UiDiv ui={DECORATIVE.SPACER} className="flex-1 flex flex-col items-center justify-center z-10 w-full max-w-sm">
+        <UiDiv ui={DECORATIVE.SPACER} className="mb-6 relative group">
+          <UiDiv ui={DECORATIVE.BACKGROUND} className="absolute inset-0 bg-primary/20 blur-3xl rounded-full"></UiDiv>
+          <UiDiv ui={DECORATIVE.SPACER} className="w-24 h-24 bg-primary text-on-primary rounded-2xl flex items-center justify-center shadow-2xl relative border-2 border-white/20">
             <Store className="w-14 h-14 text-white" />
-          </div>
-        </div>
-        <h1 className="text-3xl font-bold text-primary mb-1 tracking-tight text-center">
+          </UiDiv>
+        </UiDiv>
+        <UiHeader
+          ui={SPLASH.LOGO.HEADING}
+          level={1}
+          className="text-3xl font-bold text-primary mb-1 tracking-tight text-center"
+        >
           {lang === 'ar' ? 'سوق جوفا' : 'GoVa Marketplace'}
-        </h1>
-        <p className="text-base text-on-surface-variant font-medium tracking-wide">
+        </UiHeader>
+        <UiDiv ui={DECORATIVE.SPACER} className="text-base text-on-surface-variant font-medium tracking-wide">
           {lang === 'ar' ? 'السويس بين يديك' : 'Suez at Your Fingertips'}
-        </p>
+        </UiDiv>
         
         {/* Bottom Context: Loading & Messages */}
-        <div className="mt-8 w-full flex flex-col items-center">
+        <UiDiv ui={DECORATIVE.SPACER} className="mt-8 w-full flex flex-col items-center">
           <SplashInitializer />
-        </div>
-      </div>
+        </UiDiv>
+      </UiDiv>
 
       {/* Background Decorative Element (Subtle Glass Gradient) */}
-      <div className="fixed bottom-0 start-0 w-full h-1/3 bg-gradient-to-t from-primary/5 to-transparent pointer-events-none -z-10"></div>
+      <UiDiv ui={DECORATIVE.BACKGROUND} className="fixed bottom-0 start-0 w-full h-1/3 bg-gradient-to-t from-primary/5 to-transparent pointer-events-none -z-10"></UiDiv>
 
       {/* Lower Secondary Banner (Opposite Direction) */}
       <BottomRibbons subcategories={data?.subcategories || []} />
-    </div>
+    </UiMain>
   );
 }

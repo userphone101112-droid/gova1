@@ -167,5 +167,109 @@
         ]
       }
     }
+  ],
+  "maol_Xa9endCnFU": [
+    {
+      "route": "/",
+      "timestamp": 1781700634780,
+      "totalIdentified": 0,
+      "tree": {
+        "type": "page",
+        "children": []
+      }
+    },
+    {
+      "route": "/home",
+      "timestamp": 1781707873184,
+      "totalIdentified": 77,
+      "tree": {
+        "type": "page",
+        "children": [
+          {
+            "name": "shared-layout",
+            "uiIds": [
+              "UI_SHARED_HEADER_MENU",
+              "UI_SHARED_HEADER_BRAND_LINK",
+              "UI_SHARED_HEADER_SEARCH_INPUT",
+              "UI_SHARED_HEADER_SEARCH_BUTTON",
+              "UI_SHARED_HEADER_CART_BUTTON",
+              "UI_SHARED_SIDEBAR_CLOSE",
+              "UI_SHARED_SIDEBAR_LOGIN",
+              "UI_SHARED_SIDEBAR_LANGUAGE",
+              "UI_SHARED_SIDEBAR_THEME",
+              "UI_SHARED_BOTTOM_NAV_HOME",
+              "UI_SHARED_BOTTOM_NAV_NOTIFICATIONS",
+              "UI_SHARED_BOTTOM_NAV_FAVORITES",
+              "UI_SHARED_BOTTOM_NAV_ORDERS",
+              "UI_SHARED_BOTTOM_NAV_PROFILE"
+            ],
+            "tags": [
+              "button",
+              "a",
+              "input"
+            ]
+          },
+          {
+            "name": "home",
+            "uiIds": [
+              "UI_HOME_HERO_SLIDER_SLIDE_IMAGE",
+              "UI_HOME_HERO_SLIDER_SLIDE_BADGE",
+              "UI_HOME_HERO_SLIDER_SLIDE_TITLE",
+              "UI_HOME_CATEGORIES_GRID_SECTION_TITLE",
+              "UI_HOME_CATEGORIES_GRID_TOGGLE",
+              "UI_HOME_CATEGORIES_GRID_ITEM",
+              "UI_HOME_CATEGORIES_GRID_CATEGORY_IMAGE",
+              "UI_HOME_CATEGORIES_GRID_CATEGORY_NAME",
+              "UI_HOME_CURATED_OFFERS_SECTION_TITLE",
+              "UI_HOME_CURATED_OFFERS_PROMO_TAG",
+              "UI_HOME_CURATED_OFFERS_PRODUCT_IMAGE",
+              "UI_HOME_CURATED_OFFERS_FAVORITE",
+              "UI_HOME_CURATED_OFFERS_CATEGORY_LABEL",
+              "UI_HOME_CURATED_OFFERS_PRODUCT_TITLE",
+              "UI_HOME_CURATED_OFFERS_PRICE_LABEL",
+              "UI_HOME_CURATED_OFFERS_ADD_TO_CART",
+              "UI_HOME_CURATED_OFFERS_MORE",
+              "UI_HOME_PROMO_BANNER_LOGO",
+              "UI_HOME_PROMO_BANNER_TITLE",
+              "UI_HOME_PROMO_BANNER_DESCRIPTION",
+              "UI_HOME_PROMO_BANNER_ACTION"
+            ],
+            "tags": [
+              "img",
+              "span",
+              "h2",
+              "h3",
+              "button"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "route": "/login",
+      "timestamp": 1781705092711,
+      "totalIdentified": 7,
+      "tree": {
+        "type": "page",
+        "children": [
+          {
+            "name": "auth",
+            "uiIds": [
+              "UI_AUTH_LOGIN_PHONE_INPUT",
+              "UI_AUTH_LOGIN_PASSWORD_INPUT",
+              "UI_AUTH_LOGIN_TOGGLE_PASSWORD",
+              "UI_AUTH_LOGIN_SUBMIT",
+              "UI_AUTH_LOGIN_GUEST",
+              "UI_AUTH_LOGIN_ENGLISH_LANG",
+              "UI_AUTH_LOGIN_DARK_MODE"
+            ],
+            "tags": [
+              "input",
+              "button"
+            ]
+          }
+        ]
+      }
+    }
   ]
 }

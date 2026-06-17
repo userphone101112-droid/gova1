@@ -2,8 +2,9 @@
 
 import { useState } from 'react';
 import { useTranslation } from '@/shared/i18n/core/useTranslation';
-import { UiLink } from '@/components/ui';
+import { UiLink, UiNav, UiDiv } from '@/components/ui';
 import { SHARED_LAYOUT } from '@/shared/ui-registry';
+import { DECORATIVE } from '@/shared/ui-registry/categories';
 import { Home, Bell, Heart, Receipt, User } from 'lucide-react';
 
 type NavItem = 'home' | 'notifications' | 'favorites' | 'orders' | 'profile';
@@ -21,7 +22,8 @@ export function BottomNavBar() {
   const [active, setActive] = useState<NavItem>('home');
 
   return (
-    <nav
+    <UiNav
+      ui={SHARED_LAYOUT.BOTTOM_NAV.CONTAINER}
       id="bottom-navigation-bar"
       className="fixed bottom-0 start-0 w-full z-50 flex justify-around items-center pt-2 pb-4 border-t rounded-t-2xl shadow-lg"
       style={{
@@ -50,7 +52,8 @@ export function BottomNavBar() {
           >
             <Icon className="w-5 h-5 transition-transform duration-200" style={{ transform: isActive ? 'scale(1.1)' : 'scale(1)' }} />
             {isNotif && (
-              <span
+              <UiDiv
+                ui={DECORATIVE.SPACER}
                 id="nav-notif-badge"
                 className="absolute top-0 end-1/2 translate-x-3 w-2.5 h-2.5 rounded-full border-2 border-white animate-pulse-gova"
                 style={{ background: 'var(--gova-google-red)' }}
@@ -58,11 +61,11 @@ export function BottomNavBar() {
             )}
             <span className="text-xs leading-4 font-semibold mt-0.5">{t(tKey)}</span>
             {isActive && (
-              <span className="absolute bottom-0 w-1.5 h-1.5 rounded-full bg-primary animate-pulse-gova" />
+              <UiDiv ui={DECORATIVE.SPACER} className="absolute bottom-0 w-1.5 h-1.5 rounded-full bg-primary animate-pulse-gova" />
             )}
           </UiLink>
         );
       })}
-    </nav>
+    </UiNav>
   );
 }

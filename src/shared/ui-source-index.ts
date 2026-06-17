@@ -16,25 +16,25 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
   "UI_HOME_PROMO_BANNER_TITLE": {
     "id": "UI_HOME_PROMO_BANNER_TITLE",
     "path": "home.promo-banner.display.title",
-    "sourceFile": "/src/components/home/PromoBanner.tsx",
-    "sourceComponent": "PromoBanner",
-    "sourceLine": 26,
+    "sourceFile": "/src/shared/ui-registry/categories/components.ts",
+    "sourceComponent": "COMMON_COMPONENTS",
+    "sourceLine": 31,
     "feature": "home"
   },
   "UI_HOME_CATEGORIES_GRID_TOGGLE": {
     "id": "UI_HOME_CATEGORIES_GRID_TOGGLE",
     "path": "home.categories-grid.actions.toggle-button",
-    "sourceFile": "/src/components/home/CategoriesGrid.tsx",
-    "sourceComponent": "CategoriesGrid",
-    "sourceLine": 92,
+    "sourceFile": "/src/components/layouts/AppSidebar.tsx",
+    "sourceComponent": "AppSidebar",
+    "sourceLine": 169,
     "feature": "home"
   },
   "UI_HOME_CATEGORIES_GRID_ITEM": {
     "id": "UI_HOME_CATEGORIES_GRID_ITEM",
     "path": "home.categories-grid.actions.category-button",
-    "sourceFile": "/src/components/layouts/BottomNavBar.tsx",
-    "sourceComponent": "BottomNavBar",
-    "sourceLine": 11,
+    "sourceFile": "/src/shared/ui-registry/categories/components.ts",
+    "sourceComponent": "COMMON_COMPONENTS",
+    "sourceLine": 221,
     "feature": "home"
   },
   "UI_HOME_CATEGORIES_GRID_CATEGORY_IMAGE": {
@@ -42,7 +42,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "path": "home.categories-grid.display.category-image",
     "sourceFile": "/src/components/home/CategoriesGrid.tsx",
     "sourceComponent": "CategoriesGrid",
-    "sourceLine": 123,
+    "sourceLine": 126,
     "feature": "home"
   },
   "UI_HOME_CATEGORIES_GRID_CATEGORY_NAME": {
@@ -50,7 +50,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "path": "home.categories-grid.display.category-name",
     "sourceFile": "/src/components/home/CategoriesGrid.tsx",
     "sourceComponent": "CategoriesGrid",
-    "sourceLine": 130,
+    "sourceLine": 134,
     "feature": "home"
   },
   "UI_HOME_CATEGORIES_GRID_SECTION_TITLE": {
@@ -58,23 +58,87 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "path": "home.categories-grid.display.section-title",
     "sourceFile": "/src/components/home/CategoriesGrid.tsx",
     "sourceComponent": "CategoriesGrid",
-    "sourceLine": 78,
+    "sourceLine": 80,
     "feature": "home"
   },
   "UI_SPLASH_LOGO_IMAGE": {
     "id": "UI_SPLASH_LOGO_IMAGE",
     "path": "splash.logo.display.logo-image",
-    "sourceFile": "/src/components/splash/SplashLogo.tsx",
-    "sourceComponent": "SplashLogo",
-    "sourceLine": 11,
+    "sourceFile": "/src/shared/ui-registry/categories/components.ts",
+    "sourceComponent": "COMMON_COMPONENTS",
+    "sourceLine": 21,
     "feature": "splash"
+  },
+  "UI_HOME_CURATED_OFFERS_CONTAINER": {
+    "id": "UI_HOME_CURATED_OFFERS_CONTAINER",
+    "path": "home.curated-offers.layout.container",
+    "sourceFile": "/src/components/home/CuratedOffers.tsx",
+    "sourceComponent": "CuratedOffers",
+    "sourceLine": 57,
+    "feature": "home"
+  },
+  "UI_HOME_CURATED_OFFERS_HEADER": {
+    "id": "UI_HOME_CURATED_OFFERS_HEADER",
+    "path": "home.curated-offers.layout.header",
+    "sourceFile": "/src/components/home/CuratedOffers.tsx",
+    "sourceComponent": "CuratedOffers",
+    "sourceLine": 63,
+    "feature": "home"
+  },
+  "UI_HOME_CURATED_OFFERS_PRODUCT_GRID": {
+    "id": "UI_HOME_CURATED_OFFERS_PRODUCT_GRID",
+    "path": "home.curated-offers.layout.product-grid",
+    "sourceFile": "/src/components/home/CuratedOffers.tsx",
+    "sourceComponent": "CuratedOffers",
+    "sourceLine": 89,
+    "feature": "home"
+  },
+  "UI_HOME_CURATED_OFFERS_PRODUCT_CARD": {
+    "id": "UI_HOME_CURATED_OFFERS_PRODUCT_CARD",
+    "path": "home.curated-offers.layout.product-card",
+    "sourceFile": "/src/components/home/CuratedOffers.tsx",
+    "sourceComponent": "CuratedOffers",
+    "sourceLine": 95,
+    "feature": "home"
+  },
+  "UI_HOME_CURATED_OFFERS_PRODUCT_IMAGE_CONTAINER": {
+    "id": "UI_HOME_CURATED_OFFERS_PRODUCT_IMAGE_CONTAINER",
+    "path": "home.curated-offers.layout.product-image-container",
+    "sourceFile": "/src/components/home/CuratedOffers.tsx",
+    "sourceComponent": "CuratedOffers",
+    "sourceLine": 105,
+    "feature": "home"
+  },
+  "UI_HOME_CURATED_OFFERS_PRODUCT_INFO": {
+    "id": "UI_HOME_CURATED_OFFERS_PRODUCT_INFO",
+    "path": "home.curated-offers.layout.product-info",
+    "sourceFile": "/src/components/home/CuratedOffers.tsx",
+    "sourceComponent": "CuratedOffers",
+    "sourceLine": 130,
+    "feature": "home"
+  },
+  "UI_HOME_CURATED_OFFERS_PRICE_ROW": {
+    "id": "UI_HOME_CURATED_OFFERS_PRICE_ROW",
+    "path": "home.curated-offers.layout.price-row",
+    "sourceFile": "/src/components/home/CuratedOffers.tsx",
+    "sourceComponent": "CuratedOffers",
+    "sourceLine": 148,
+    "feature": "home"
+  },
+  "UI_HOME_CURATED_OFFERS_SHOW_MORE_CONTAINER": {
+    "id": "UI_HOME_CURATED_OFFERS_SHOW_MORE_CONTAINER",
+    "path": "home.curated-offers.layout.show-more-container",
+    "sourceFile": "/src/components/home/CuratedOffers.tsx",
+    "sourceComponent": "CuratedOffers",
+    "sourceLine": 175,
+    "feature": "home"
   },
   "UI_HOME_CURATED_OFFERS_MORE": {
     "id": "UI_HOME_CURATED_OFFERS_MORE",
     "path": "home.curated-offers.actions.show-more-button",
     "sourceFile": "/src/components/home/CuratedOffers.tsx",
     "sourceComponent": "CuratedOffers",
-    "sourceLine": 153,
+    "sourceLine": 175,
     "feature": "home"
   },
   "UI_HOME_CURATED_OFFERS_ADD_TO_CART": {
@@ -82,7 +146,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "path": "home.curated-offers.actions.add-to-cart-button",
     "sourceFile": "/src/components/home/CuratedOffers.tsx",
     "sourceComponent": "CuratedOffers",
-    "sourceLine": 136,
+    "sourceLine": 159,
     "feature": "home"
   },
   "UI_HOME_CURATED_OFFERS_FAVORITE": {
@@ -90,7 +154,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "path": "home.curated-offers.actions.add-to-favorites-button",
     "sourceFile": "/src/components/home/CuratedOffers.tsx",
     "sourceComponent": "CuratedOffers",
-    "sourceLine": 99,
+    "sourceLine": 116,
     "feature": "home"
   },
   "UI_HOME_CURATED_OFFERS_PRODUCT_IMAGE": {
@@ -98,7 +162,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "path": "home.curated-offers.display.product-image",
     "sourceFile": "/src/components/home/CuratedOffers.tsx",
     "sourceComponent": "CuratedOffers",
-    "sourceLine": 93,
+    "sourceLine": 105,
     "feature": "home"
   },
   "UI_HOME_CURATED_OFFERS_CATEGORY_LABEL": {
@@ -106,7 +170,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "path": "home.curated-offers.display.category-label",
     "sourceFile": "/src/components/home/CuratedOffers.tsx",
     "sourceComponent": "CuratedOffers",
-    "sourceLine": 114,
+    "sourceLine": 134,
     "feature": "home"
   },
   "UI_HOME_CURATED_OFFERS_PRODUCT_TITLE": {
@@ -114,7 +178,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "path": "home.curated-offers.display.product-title",
     "sourceFile": "/src/components/home/CuratedOffers.tsx",
     "sourceComponent": "CuratedOffers",
-    "sourceLine": 121,
+    "sourceLine": 141,
     "feature": "home"
   },
   "UI_HOME_CURATED_OFFERS_PRICE_LABEL": {
@@ -122,7 +186,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "path": "home.curated-offers.display.price-label",
     "sourceFile": "/src/components/home/CuratedOffers.tsx",
     "sourceComponent": "CuratedOffers",
-    "sourceLine": 129,
+    "sourceLine": 152,
     "feature": "home"
   },
   "UI_HOME_CURATED_OFFERS_SECTION_TITLE": {
@@ -130,7 +194,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "path": "home.curated-offers.display.section-title",
     "sourceFile": "/src/components/home/CuratedOffers.tsx",
     "sourceComponent": "CuratedOffers",
-    "sourceLine": 61,
+    "sourceLine": 69,
     "feature": "home"
   },
   "UI_HOME_CURATED_OFFERS_PROMO_TAG": {
@@ -138,7 +202,55 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "path": "home.curated-offers.display.promo-tag",
     "sourceFile": "/src/components/home/CuratedOffers.tsx",
     "sourceComponent": "CuratedOffers",
-    "sourceLine": 70,
+    "sourceLine": 78,
+    "feature": "home"
+  },
+  "UI_SPLASH_MAINTENANCE_CARD": {
+    "id": "UI_SPLASH_MAINTENANCE_CARD",
+    "path": "splash.maintenance.layout.card",
+    "sourceFile": "/src/shared/ui-registry/categories/components.ts",
+    "sourceComponent": "COMMON_COMPONENTS",
+    "sourceLine": 10,
+    "feature": "splash"
+  },
+  "UI_HOME_HERO_SLIDER_CONTAINER": {
+    "id": "UI_HOME_HERO_SLIDER_CONTAINER",
+    "path": "home.hero-slider.layout.container",
+    "sourceFile": "/src/components/home/HeroSlider.tsx",
+    "sourceComponent": "HeroSlider",
+    "sourceLine": 45,
+    "feature": "home"
+  },
+  "UI_HOME_HERO_SLIDER_SLIDER_TRACK": {
+    "id": "UI_HOME_HERO_SLIDER_SLIDER_TRACK",
+    "path": "home.hero-slider.layout.slider-track",
+    "sourceFile": "/src/components/home/HeroSlider.tsx",
+    "sourceComponent": "HeroSlider",
+    "sourceLine": 50,
+    "feature": "home"
+  },
+  "UI_HOME_HERO_SLIDER_SLIDE": {
+    "id": "UI_HOME_HERO_SLIDER_SLIDE",
+    "path": "home.hero-slider.layout.slide",
+    "sourceFile": "/src/components/home/HeroSlider.tsx",
+    "sourceComponent": "HeroSlider",
+    "sourceLine": 9,
+    "feature": "home"
+  },
+  "UI_HOME_HERO_SLIDER_SLIDE_CONTENT": {
+    "id": "UI_HOME_HERO_SLIDER_SLIDE_CONTENT",
+    "path": "home.hero-slider.layout.slide-content",
+    "sourceFile": "/src/components/home/HeroSlider.tsx",
+    "sourceComponent": "HeroSlider",
+    "sourceLine": 71,
+    "feature": "home"
+  },
+  "UI_HOME_HERO_SLIDER_INDICATORS": {
+    "id": "UI_HOME_HERO_SLIDER_INDICATORS",
+    "path": "home.hero-slider.layout.indicators",
+    "sourceFile": "/src/components/home/HeroSlider.tsx",
+    "sourceComponent": "HeroSlider",
+    "sourceLine": 96,
     "feature": "home"
   },
   "UI_HOME_HERO_SLIDER_SLIDE_IMAGE": {
@@ -146,7 +258,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "path": "home.hero-slider.display.slide-image",
     "sourceFile": "/src/components/home/HeroSlider.tsx",
     "sourceComponent": "HeroSlider",
-    "sourceLine": 60,
+    "sourceLine": 64,
     "feature": "home"
   },
   "UI_HOME_HERO_SLIDER_SLIDE_TITLE": {
@@ -154,7 +266,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "path": "home.hero-slider.display.slide-title",
     "sourceFile": "/src/components/home/HeroSlider.tsx",
     "sourceComponent": "HeroSlider",
-    "sourceLine": 77,
+    "sourceLine": 83,
     "feature": "home"
   },
   "UI_HOME_HERO_SLIDER_SLIDE_BADGE": {
@@ -162,7 +274,31 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "path": "home.hero-slider.display.slide-badge",
     "sourceFile": "/src/components/home/HeroSlider.tsx",
     "sourceComponent": "HeroSlider",
-    "sourceLine": 70,
+    "sourceLine": 76,
+    "feature": "home"
+  },
+  "UI_SHARED_SIDEBAR_CONTENT": {
+    "id": "UI_SHARED_SIDEBAR_CONTENT",
+    "path": "shared-layout.sidebar.layout.content",
+    "sourceFile": "/src/shared/ui-registry/categories/components.ts",
+    "sourceComponent": "COMMON_COMPONENTS",
+    "sourceLine": 105,
+    "feature": "shared-layout"
+  },
+  "UI_HOME_PROMO_BANNER_CONTAINER": {
+    "id": "UI_HOME_PROMO_BANNER_CONTAINER",
+    "path": "home.promo-banner.layout.container",
+    "sourceFile": "/src/components/home/PromoBanner.tsx",
+    "sourceComponent": "PromoBanner",
+    "sourceLine": 13,
+    "feature": "home"
+  },
+  "UI_HOME_PROMO_BANNER_CONTENT_WRAPPER": {
+    "id": "UI_HOME_PROMO_BANNER_CONTENT_WRAPPER",
+    "path": "home.promo-banner.layout.content-wrapper",
+    "sourceFile": "/src/components/home/PromoBanner.tsx",
+    "sourceComponent": "PromoBanner",
+    "sourceLine": 19,
     "feature": "home"
   },
   "UI_HOME_PROMO_BANNER_ACTION": {
@@ -170,31 +306,87 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "path": "home.promo-banner.actions.banner-button",
     "sourceFile": "/src/components/home/PromoBanner.tsx",
     "sourceComponent": "PromoBanner",
-    "sourceLine": 42,
+    "sourceLine": 48,
     "feature": "home"
   },
   "UI_HOME_PROMO_BANNER_DESCRIPTION": {
     "id": "UI_HOME_PROMO_BANNER_DESCRIPTION",
     "path": "home.promo-banner.display.description",
-    "sourceFile": "/src/components/home/PromoBanner.tsx",
-    "sourceComponent": "PromoBanner",
-    "sourceLine": 35,
+    "sourceFile": "/src/shared/ui-registry/categories/components.ts",
+    "sourceComponent": "COMMON_COMPONENTS",
+    "sourceLine": 41,
     "feature": "home"
   },
   "UI_HOME_PROMO_BANNER_LOGO": {
     "id": "UI_HOME_PROMO_BANNER_LOGO",
     "path": "home.promo-banner.display.logo",
-    "sourceFile": "/src/components/splash/SplashLogo.tsx",
-    "sourceComponent": "SplashLogo",
-    "sourceLine": 11,
+    "sourceFile": "/src/components/splash/SplashScreen.tsx",
+    "sourceComponent": "SplashScreen",
+    "sourceLine": 141,
     "feature": "home"
+  },
+  "UI_HOME_PROMO_BANNER_DECORATIVE_BACKGROUND": {
+    "id": "UI_HOME_PROMO_BANNER_DECORATIVE_BACKGROUND",
+    "path": "home.promo-banner.decorative.background",
+    "sourceFile": "/src/shared/ui-registry/categories/layout.ts",
+    "sourceComponent": "COMMON_LAYOUT",
+    "sourceLine": 142,
+    "feature": "home"
+  },
+  "UI_SPLASH_LOGO_HEADING": {
+    "id": "UI_SPLASH_LOGO_HEADING",
+    "path": "splash.logo.display.heading",
+    "sourceFile": "/src/components/ui-identified/html-components.ts",
+    "sourceComponent": "UiDiv",
+    "sourceLine": 24,
+    "feature": "splash"
+  },
+  "UI_SHARED_SIDEBAR_LOGIN": {
+    "id": "UI_SHARED_SIDEBAR_LOGIN",
+    "path": "shared-layout.sidebar.actions.login-button",
+    "sourceFile": "/src/components/layouts/AppSidebar.tsx",
+    "sourceComponent": "AppSidebar",
+    "sourceLine": 153,
+    "feature": "shared-layout"
+  },
+  "UI_SHARED_HEADER_CONTAINER": {
+    "id": "UI_SHARED_HEADER_CONTAINER",
+    "path": "shared-layout.header.layout.container",
+    "sourceFile": "/src/components/layouts/AppHeader.tsx",
+    "sourceComponent": "AppHeader",
+    "sourceLine": 18,
+    "feature": "shared-layout"
+  },
+  "UI_SHARED_HEADER_INNER_WRAPPER": {
+    "id": "UI_SHARED_HEADER_INNER_WRAPPER",
+    "path": "shared-layout.header.layout.inner-wrapper",
+    "sourceFile": "/src/components/layouts/AppHeader.tsx",
+    "sourceComponent": "AppHeader",
+    "sourceLine": 29,
+    "feature": "shared-layout"
+  },
+  "UI_SHARED_HEADER_BRAND_SECTION": {
+    "id": "UI_SHARED_HEADER_BRAND_SECTION",
+    "path": "shared-layout.header.layout.brand-section",
+    "sourceFile": "/src/components/layouts/AppHeader.tsx",
+    "sourceComponent": "AppHeader",
+    "sourceLine": 35,
+    "feature": "shared-layout"
+  },
+  "UI_SHARED_HEADER_ACTIONS_SECTION": {
+    "id": "UI_SHARED_HEADER_ACTIONS_SECTION",
+    "path": "shared-layout.header.layout.actions-section",
+    "sourceFile": "/src/components/layouts/AppHeader.tsx",
+    "sourceComponent": "AppHeader",
+    "sourceLine": 70,
+    "feature": "shared-layout"
   },
   "UI_SHARED_HEADER_MENU": {
     "id": "UI_SHARED_HEADER_MENU",
     "path": "shared-layout.header.menu.menu-button",
     "sourceFile": "/src/components/layouts/AppHeader.tsx",
     "sourceComponent": "AppHeader",
-    "sourceLine": 29,
+    "sourceLine": 39,
     "feature": "shared-layout"
   },
   "UI_SHARED_HEADER_BRAND_LINK": {
@@ -202,7 +394,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "path": "shared-layout.header.brand.brand-link",
     "sourceFile": "/src/components/layouts/AppHeader.tsx",
     "sourceComponent": "AppHeader",
-    "sourceLine": 40,
+    "sourceLine": 51,
     "feature": "shared-layout"
   },
   "UI_SHARED_HEADER_SEARCH_BUTTON": {
@@ -210,7 +402,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "path": "shared-layout.header.actions.search-button",
     "sourceFile": "/src/components/layouts/AppHeader.tsx",
     "sourceComponent": "AppHeader",
-    "sourceLine": 71,
+    "sourceLine": 85,
     "feature": "shared-layout"
   },
   "UI_SHARED_HEADER_CART_BUTTON": {
@@ -218,7 +410,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "path": "shared-layout.header.actions.cart-button",
     "sourceFile": "/src/components/layouts/AppHeader.tsx",
     "sourceComponent": "AppHeader",
-    "sourceLine": 84,
+    "sourceLine": 98,
     "feature": "shared-layout"
   },
   "UI_SHARED_HEADER_SEARCH_INPUT": {
@@ -226,7 +418,79 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "path": "shared-layout.header.actions.search-input",
     "sourceFile": "/src/components/layouts/AppHeader.tsx",
     "sourceComponent": "AppHeader",
-    "sourceLine": 62,
+    "sourceLine": 76,
+    "feature": "shared-layout"
+  },
+  "UI_SHARED_SIDEBAR_CONTAINER": {
+    "id": "UI_SHARED_SIDEBAR_CONTAINER",
+    "path": "shared-layout.sidebar.layout.container",
+    "sourceFile": "/src/components/layouts/AppSidebar.tsx",
+    "sourceComponent": "AppSidebar",
+    "sourceLine": 104,
+    "feature": "shared-layout"
+  },
+  "UI_SHARED_SIDEBAR_OVERLAY": {
+    "id": "UI_SHARED_SIDEBAR_OVERLAY",
+    "path": "shared-layout.sidebar.layout.overlay",
+    "sourceFile": "/src/shared/ui-registry/categories/layout.ts",
+    "sourceComponent": "COMMON_LAYOUT",
+    "sourceLine": 151,
+    "feature": "shared-layout"
+  },
+  "UI_SHARED_SIDEBAR_PANEL": {
+    "id": "UI_SHARED_SIDEBAR_PANEL",
+    "path": "shared-layout.sidebar.layout.panel",
+    "sourceFile": "/src/components/layouts/AppSidebar.tsx",
+    "sourceComponent": "AppSidebar",
+    "sourceLine": 116,
+    "feature": "shared-layout"
+  },
+  "UI_SHARED_SIDEBAR_HEADER": {
+    "id": "UI_SHARED_SIDEBAR_HEADER",
+    "path": "shared-layout.sidebar.layout.header",
+    "sourceFile": "/src/components/layouts/AppSidebar.tsx",
+    "sourceComponent": "AppSidebar",
+    "sourceLine": 126,
+    "feature": "shared-layout"
+  },
+  "UI_SHARED_SIDEBAR_ACTIONS_SECTION": {
+    "id": "UI_SHARED_SIDEBAR_ACTIONS_SECTION",
+    "path": "shared-layout.sidebar.layout.actions-section",
+    "sourceFile": "/src/components/layouts/AppSidebar.tsx",
+    "sourceComponent": "AppSidebar",
+    "sourceLine": 148,
+    "feature": "shared-layout"
+  },
+  "UI_SHARED_SIDEBAR_CLOSE": {
+    "id": "UI_SHARED_SIDEBAR_CLOSE",
+    "path": "shared-layout.sidebar.actions.close-button",
+    "sourceFile": "/src/shared/ui-registry/categories/components.ts",
+    "sourceComponent": "COMMON_COMPONENTS",
+    "sourceLine": 115,
+    "feature": "shared-layout"
+  },
+  "UI_SHARED_SIDEBAR_LANGUAGE": {
+    "id": "UI_SHARED_SIDEBAR_LANGUAGE",
+    "path": "shared-layout.sidebar.actions.language-toggle",
+    "sourceFile": "/src/components/layouts/AppSidebar.tsx",
+    "sourceComponent": "AppSidebar",
+    "sourceLine": 169,
+    "feature": "shared-layout"
+  },
+  "UI_SHARED_SIDEBAR_THEME": {
+    "id": "UI_SHARED_SIDEBAR_THEME",
+    "path": "shared-layout.sidebar.actions.theme-toggle",
+    "sourceFile": "/src/components/layouts/AppSidebar.tsx",
+    "sourceComponent": "AppSidebar",
+    "sourceLine": 208,
+    "feature": "shared-layout"
+  },
+  "UI_SHARED_BOTTOM_NAV_CONTAINER": {
+    "id": "UI_SHARED_BOTTOM_NAV_CONTAINER",
+    "path": "shared-layout.bottom-nav.layout.container",
+    "sourceFile": "/src/components/layouts/BottomNavBar.tsx",
+    "sourceComponent": "BottomNavBar",
+    "sourceLine": 26,
     "feature": "shared-layout"
   },
   "UI_SHARED_BOTTOM_NAV_HOME": {
@@ -234,7 +498,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "path": "shared-layout.bottom-nav.items.home-link",
     "sourceFile": "/src/components/layouts/BottomNavBar.tsx",
     "sourceComponent": "BottomNavBar",
-    "sourceLine": 12,
+    "sourceLine": 13,
     "feature": "shared-layout"
   },
   "UI_SHARED_BOTTOM_NAV_NOTIFICATIONS": {
@@ -242,7 +506,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "path": "shared-layout.bottom-nav.items.notifications-link",
     "sourceFile": "/src/components/layouts/BottomNavBar.tsx",
     "sourceComponent": "BottomNavBar",
-    "sourceLine": 13,
+    "sourceLine": 14,
     "feature": "shared-layout"
   },
   "UI_SHARED_BOTTOM_NAV_FAVORITES": {
@@ -250,7 +514,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "path": "shared-layout.bottom-nav.items.favorites-link",
     "sourceFile": "/src/components/layouts/BottomNavBar.tsx",
     "sourceComponent": "BottomNavBar",
-    "sourceLine": 14,
+    "sourceLine": 15,
     "feature": "shared-layout"
   },
   "UI_SHARED_BOTTOM_NAV_ORDERS": {
@@ -258,7 +522,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "path": "shared-layout.bottom-nav.items.orders-link",
     "sourceFile": "/src/components/layouts/BottomNavBar.tsx",
     "sourceComponent": "BottomNavBar",
-    "sourceLine": 15,
+    "sourceLine": 16,
     "feature": "shared-layout"
   },
   "UI_SHARED_BOTTOM_NAV_PROFILE": {
@@ -266,7 +530,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "path": "shared-layout.bottom-nav.items.profile-link",
     "sourceFile": "/src/components/layouts/BottomNavBar.tsx",
     "sourceComponent": "BottomNavBar",
-    "sourceLine": 16,
+    "sourceLine": 17,
     "feature": "shared-layout"
   },
   "UI_ERROR_BOUNDARY_RELOAD": {
@@ -274,7 +538,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "path": "error-boundary.main.actions.reload-button",
     "sourceFile": "/src/components/shared/error-boundary.tsx",
     "sourceComponent": "error-boundary",
-    "sourceLine": 61,
+    "sourceLine": 66,
     "feature": "error-boundary"
   },
   "UI_HOME_LANG_ENGLISH": {
@@ -282,7 +546,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "path": "home.language-switcher.buttons.english-button",
     "sourceFile": "/src/components/shared/LanguageSwitcher.tsx",
     "sourceComponent": "LanguageSwitcher",
-    "sourceLine": 20,
+    "sourceLine": 21,
     "feature": "home"
   },
   "UI_HOME_LANG_ARABIC": {
@@ -290,15 +554,23 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "path": "home.language-switcher.buttons.arabic-button",
     "sourceFile": "/src/components/shared/LanguageSwitcher.tsx",
     "sourceComponent": "LanguageSwitcher",
-    "sourceLine": 28,
+    "sourceLine": 29,
     "feature": "home"
   },
-  "UI_SPLASH_LOGO_HEADING": {
-    "id": "UI_SPLASH_LOGO_HEADING",
-    "path": "splash.logo.display.heading",
-    "sourceFile": "/src/components/splash/SplashLogo.tsx",
-    "sourceComponent": "SplashLogo",
-    "sourceLine": 19,
+  "UI_SPLASH_MAINTENANCE_CONTAINER": {
+    "id": "UI_SPLASH_MAINTENANCE_CONTAINER",
+    "path": "splash.maintenance.layout.container",
+    "sourceFile": "/src/components/splash/SplashScreen.tsx",
+    "sourceComponent": "SplashScreen",
+    "sourceLine": 70,
+    "feature": "splash"
+  },
+  "UI_SPLASH_MAINTENANCE_ICON_CONTAINER": {
+    "id": "UI_SPLASH_MAINTENANCE_ICON_CONTAINER",
+    "path": "splash.maintenance.layout.icon-container",
+    "sourceFile": "/src/components/splash/SplashScreen.tsx",
+    "sourceComponent": "SplashScreen",
+    "sourceLine": 79,
     "feature": "splash"
   },
   "UI_SPLASH_MAINT_PIN": {
@@ -306,7 +578,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "path": "splash.maintenance.form.pin-input",
     "sourceFile": "/src/components/splash/SplashScreen.tsx",
     "sourceComponent": "SplashScreen",
-    "sourceLine": 87,
+    "sourceLine": 99,
     "feature": "splash"
   },
   "UI_SPLASH_MAINT_SUBMIT": {
@@ -314,7 +586,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "path": "splash.maintenance.form.submit-button",
     "sourceFile": "/src/components/splash/SplashScreen.tsx",
     "sourceComponent": "SplashScreen",
-    "sourceLine": 104,
+    "sourceLine": 116,
     "feature": "splash"
   }
 };

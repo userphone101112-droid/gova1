@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import { useSettingsStore } from '@/store/settings.store';
+import { UiDiv, UiSpan } from '@/components/ui';
+import { DECORATIVE } from '@/shared/ui-registry/categories';
 
 interface ProgressIndicatorProps {
   progress: number;
@@ -40,32 +42,34 @@ export default function ProgressIndicator({ progress, status }: ProgressIndicato
   }, [messages.length]);
 
   return (
-    <div className="w-full max-w-xs flex flex-col items-center z-10 px-4">
+    <UiDiv ui={DECORATIVE.SPACER} className="w-full max-w-xs flex flex-col items-center z-10 px-4">
       {/* Marketing message rotating */}
-      <div 
+      <UiDiv 
+        ui={DECORATIVE.SPACER}
         className="h-8 text-xs font-semibold text-secondary text-center px-4 transition-all duration-500 ease-in-out"
         style={{ color: 'var(--gova-secondary)' }}
       >
         {status || messages[msgIndex]}
-      </div>
+      </UiDiv>
       
       {/* Progress bar track */}
-      <div className="w-full mt-4 bg-surface-container-highest h-1 rounded-full overflow-hidden relative shadow-inner">
-        <div 
+      <UiDiv ui={DECORATIVE.SPACER} className="w-full mt-4 bg-surface-container-highest h-1 rounded-full overflow-hidden relative shadow-inner">
+        <UiDiv 
+          ui={DECORATIVE.SPACER}
           className="h-full bg-primary transition-all duration-300 ease-out shadow-[0_0_8px_rgba(0,50,125,0.5)]" 
           style={{ width: `${progress}%` }}
         />
-      </div>
+      </UiDiv>
       
       {/* Percentage and Loading text */}
-      <div className="flex items-center gap-1.5 mt-2">
-        <span className="text-xs font-semibold text-on-surface-variant">
+      <UiDiv ui={DECORATIVE.SPACER} className="flex items-center gap-1.5 mt-2">
+        <UiSpan ui={DECORATIVE.SPACER} className="text-xs font-semibold text-on-surface-variant">
           {lang === 'ar' ? 'جاري التحميل...' : 'Loading...'}
-        </span>
-        <span className="text-xs font-semibold text-primary">
+        </UiSpan>
+        <UiSpan ui={DECORATIVE.SPACER} className="text-xs font-semibold text-primary">
           {progress}%
-        </span>
-      </div>
-    </div>
+        </UiSpan>
+      </UiDiv>
+    </UiDiv>
   );
 }

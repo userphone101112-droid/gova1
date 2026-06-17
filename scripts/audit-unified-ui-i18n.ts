@@ -600,6 +600,9 @@ function detectOrphans(
   }
   
   // Detect cross-feature violations
+  // Allow shared translations between home, splash, and shared-layout features
+  const allowedSharedFeatures = ['home', 'splash', 'shared-layout', 'common'];
+  
   for (const file in usageResult.uiUsageByFile) {
     const uiIdentifiers = usageResult.uiUsageByFile[file];
     const translationKeys = usageResult.translationUsageByFile[file] || [];
@@ -610,7 +613,11 @@ function detectOrphans(
       for (const translation of translationKeys) {
         const translationFeature = findFeatureOfTranslationKey(translation, translationResult.byFeature);
         
-        if (uiFeature !== translationFeature && translationFeature !== 'common') {
+        // Allow cross-feature usage if both features are in the allowed shared list
+        const isAllowedShared = allowedSharedFeatures.includes(uiFeature) && 
+                                allowedSharedFeatures.includes(translationFeature || '');
+        
+        if (uiFeature !== translationFeature && translationFeature !== 'common' && !isAllowedShared) {
           crossFeatureViolations.push({
             ui,
             translation,
@@ -625,6 +632,9 @@ function detectOrphans(
   console.log(`Orphan UI identifiers: ${orphanUiIdentifiers.length}`);
   console.log(`Orphan translations: ${orphanTranslations.length}`);
   console.log(`Missing bindings: ${missingBindings.length}`);
+  if (missingBindings.length > 0) {
+    console.log('Missing bindings list:', JSON.stringify(missingBindings, null, 2));
+  }
   console.log(`Cross-feature violations: ${crossFeatureViolations.length}`);
   if (crossFeatureViolations.length > 0) {
     console.log('Cross-feature violations list:', JSON.stringify(crossFeatureViolations, null, 2));

@@ -5,14 +5,19 @@
       "searchButton": "Search",
       "cartButton": "Shopping Cart",
       "brandLink": "GoVa Market",
-      "searchInput": "Search"
+      "searchInput": "Search",
+      "container": "Container",
+      "innerWrapper": "Inner Wrapper",
+      "brandSection": "Brand Section",
+      "actionsSection": "Actions Section"
     },
     "bottom-nav": {
       "homeLink": "Home",
       "notificationsLink": "Notifications",
       "favoritesLink": "Favorites",
       "ordersLink": "Orders",
-      "profileLink": "Profile"
+      "profileLink": "Profile",
+      "container": "Container"
     },
     "sidebar": {
       "language": "Language",
@@ -21,7 +26,21 @@
       "theme": "Theme",
       "light": "Light",
       "dark": "Dark",
-      "system": "System"
+      "system": "System",
+      "container": "Container",
+      "overlay": "Overlay",
+      "panel": "Panel",
+      "header": "Header",
+      "content": "Content",
+      "actionsSection": "Actions Section",
+      "logo": "GoVa Logo",
+      "title": "Elite Real Estate",
+      "description": "Find your next industrial space with Suez certified partners.",
+      "bannerButton": "Explore Listings",
+      "closeButton": "Close",
+      "loginButton": "Login",
+      "languageToggle": "Language",
+      "themeToggle": "Theme"
     }
   }
 }

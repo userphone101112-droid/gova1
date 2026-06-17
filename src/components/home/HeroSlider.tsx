@@ -2,8 +2,9 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { useTranslation } from '@/shared/i18n/core/useTranslation';
-import { UiImage, UiLabel, UiHeader } from '@/components/ui';
+import { UiImage, UiLabel, UiHeader, UiSection, UiDiv } from '@/components/ui';
 import { HOME } from '@/shared/ui-registry';
+import { DECORATIVE } from '@/shared/ui-registry/categories';
 
 const SLIDES = [
   {
@@ -40,17 +41,20 @@ export function HeroSlider() {
   }, [advance]);
 
   return (
-    <section
+    <UiSection
+      ui={HOME.HERO_SLIDER.CONTAINER}
       id="hero-slider-section"
       className="reveal active mt-4 relative overflow-hidden rounded-xl shadow-sm h-48 sm:h-64 md:h-80 lg:h-96 w-full"
     >
-      <div
+      <UiDiv
+        ui={HOME.HERO_SLIDER.SLIDER_TRACK}
         id="hero-main-slider"
         className="flex h-full transition-transform duration-500 ease-out"
         style={{ transform: `translateX(${locale === 'ar' ? current * 100 : -current * 100}%)` }}
       >
         {SLIDES.map(slide => (
-          <div
+          <UiDiv
+            ui={HOME.HERO_SLIDER.SLIDE}
             key={slide.id}
             id={slide.id}
             className="min-w-full h-full relative"
@@ -63,7 +67,8 @@ export function HeroSlider() {
               fill
               className="object-cover"
             />
-            <div
+            <UiDiv
+              ui={HOME.HERO_SLIDER.SLIDE_CONTENT}
               className="absolute inset-0 flex flex-col justify-center px-6 text-white"
               style={{ background: 'linear-gradient(to left, rgba(0,50,125,0.7), rgba(0,50,125,0.3), transparent)' }}
             >
@@ -81,25 +86,27 @@ export function HeroSlider() {
               >
                 {t(slide.titleKey)}
               </UiHeader>
-            </div>
-          </div>
+            </UiDiv>
+          </UiDiv>
         ))}
-      </div>
+      </UiDiv>
 
       {/* Dot indicators */}
-      <div
+      <UiDiv
+        ui={HOME.HERO_SLIDER.INDICATORS}
         id="slider-indicators"
         className="absolute bottom-4 start-1/2 -translate-x-1/2 flex gap-2"
       >
         {SLIDES.map((_, i) => (
-          <div
+          <UiDiv
+            ui={DECORATIVE.SPACER}
             key={i}
             id={`indicator-${i}`}
             className="h-1.5 rounded-full bg-white transition-all"
             style={{ width: i === current ? '32px' : '8px', opacity: i === current ? 1 : 0.4 }}
           />
         ))}
-      </div>
-    </section>
+      </UiDiv>
+    </UiSection>
   );
 }

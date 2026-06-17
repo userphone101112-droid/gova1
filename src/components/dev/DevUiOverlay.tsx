@@ -1,9 +1,11 @@
 'use client';
 
-import React, { useEffect, useRef, useState, useCallback, useMemo } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { UI_ID_MAP } from '@/shared/ui-registry';
 import { UI_SOURCE_INDEX } from '@/shared/ui-source-index';
 import { useMaolStore } from '@/store/index';
+import { UiButton, UiDiv } from '@/components/ui';
+import { DECORATIVE } from '@/shared/ui-registry/categories';
 
 interface TooltipState {
   visible: boolean;
@@ -350,7 +352,8 @@ export function DevUiOverlay() {
 
   if (!active && frames.length === 0) {
     return (
-      <button
+      <UiButton
+        ui={DECORATIVE.SPACER}
         aria-label="Toggle UI Identity Overlay (Ctrl+Shift+U)"
         title="Toggle UI Identity Overlay (Ctrl+Shift+U)"
         onClick={() => setActive(true)}
@@ -371,14 +374,15 @@ export function DevUiOverlay() {
         }}
       >
         UI Inspector
-      </button>
+      </UiButton>
     );
   }
 
   return (
     <>
       {/* Control bar - Always visible, works across all screen sizes */}
-      <div
+      <UiDiv
+        ui={DECORATIVE.SPACER}
         style={{
           position: 'fixed',
           bottom: '72px',
@@ -404,7 +408,8 @@ export function DevUiOverlay() {
         <span style={{ color: '#ef4444' }}>{frames.filter(f => f.color === 'red').length} err</span>
         <span>|</span>
         {/* Filter Types Button */}
-        <button
+        <UiButton
+                ui={DECORATIVE.SPACER}
                 onClick={() => setIsFilterPanelOpen(!isFilterPanelOpen)}
                 style={{
                   padding: '2px 10px',
@@ -419,10 +424,11 @@ export function DevUiOverlay() {
                 }}
               >
                 أنواع العناصر
-              </button>
+              </UiButton>
         <span>|</span>
         {/* MAOL Toggle - Toggle MAOL ON/OFF directly from here */}
-        <button
+        <UiButton
+          ui={DECORATIVE.SPACER}
           onClick={toggleMaol}
           style={{
             padding: '2px 8px',
@@ -437,9 +443,10 @@ export function DevUiOverlay() {
           }}
         >
           MAOL {isMaolEnabled ? 'ON' : 'OFF'}
-        </button>
+        </UiButton>
         <span>|</span>
-        <button
+        <UiButton
+          ui={DECORATIVE.SPACER}
           onClick={() => {
             setActive(false);
             setTooltip(t => ({ ...t, visible: false }));
@@ -457,12 +464,13 @@ export function DevUiOverlay() {
           title="Close (Ctrl+Shift+U)"
         >
           ✕
-        </button>
-      </div>
+        </UiButton>
+      </UiDiv>
 
       {/* Filter Panel */}
       {isFilterPanelOpen && (
-        <div
+        <UiDiv
+          ui={DECORATIVE.SPACER}
           style={{
             position: 'fixed',
             bottom: '110px',
@@ -552,15 +560,16 @@ export function DevUiOverlay() {
               </div>
             ))}
           </div>
-        </div>
+        </UiDiv>
       )}
 
       {/* Frames overlay */}
       {frames.map((frame, i) => {
         const colors = COLOR_MAP[frame.color];
         return (
-          <div
+          <UiDiv
             key={`${frame.id}-${i}`}
+            ui={DECORATIVE.SPACER}
             onClick={(e) => handleFrameClick(e, frame)}
             style={{
               position: 'absolute',
@@ -597,13 +606,14 @@ export function DevUiOverlay() {
             >
               {frame.label}
             </span>
-          </div>
+          </UiDiv>
         );
       })}
 
       {/* Tooltip - Only closes on ✕ button click */}
       {tooltip.visible && (
-        <div
+        <UiDiv
+          ui={DECORATIVE.SPACER}
           onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside
           style={{
             position: 'fixed',
@@ -804,7 +814,8 @@ export function DevUiOverlay() {
 
           {/* Save Button */}
           <div style={{ marginTop: '12px' }}>
-            <button
+            <UiButton
+              ui={DECORATIVE.SPACER}
               onClick={handleSave}
               disabled={isSaving}
               style={{
@@ -832,9 +843,9 @@ export function DevUiOverlay() {
                 : saveStatus === 'error' 
                 ? '✗ Failed' 
                 : '💾 Save Data'}
-            </button>
+            </UiButton>
           </div>
-        </div>
+        </UiDiv>
       )}
     </>
   );

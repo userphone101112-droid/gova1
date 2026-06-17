@@ -1,8 +1,9 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
-import { UiButton } from '@/components/ui';
+import { UiButton, UiDiv } from '@/components/ui';
 import { SHARED_LAYOUT } from '@/shared/ui-registry';
+import { DECORATIVE } from '@/shared/ui-registry/categories';
 import { X, LogIn, Globe, Sun, Moon, Monitor, ChevronDown } from 'lucide-react';
 import { useTranslation } from '@/shared/i18n/core/useTranslation';
 import { useGlobalSSOTStore } from '@/store/global-ssot.store';
@@ -100,9 +101,10 @@ export function AppSidebar({ isOpen, onClose }: AppSidebarProps) {
   };
 
   return (
-    <div className="fixed inset-0 z-40">
+    <UiDiv ui={SHARED_LAYOUT.SIDEBAR.CONTAINER} className="fixed inset-0 z-40">
       {/* Overlay with fade animation */}
-      <div
+      <UiDiv
+        ui={SHARED_LAYOUT.SIDEBAR.OVERLAY}
         className={`absolute inset-0 bg-black/50 transition-opacity duration-300 ${
           isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
         }`}
@@ -110,17 +112,21 @@ export function AppSidebar({ isOpen, onClose }: AppSidebarProps) {
       />
 
       {/* Sidebar with slide animation */}
-    <div
-      ref={sidebarRef}
-      className={`absolute bg-background shadow-2xl transition-transform duration-300 ease-out overflow-y-auto glass-effect app-sidebar ${
-        locale === 'ar'
-          ? isOpen ? 'translate-x-0' : 'translate-x-full'
-          : isOpen ? 'translate-x-0' : '-translate-x-full'
-      }`}
-    >
+      <UiDiv
+        ui={SHARED_LAYOUT.SIDEBAR.SIDEBAR_PANEL}
+        ref={sidebarRef}
+        className={`absolute bg-background shadow-2xl transition-transform duration-300 ease-out overflow-y-auto glass-effect app-sidebar ${
+          locale === 'ar'
+            ? isOpen ? 'translate-x-0' : 'translate-x-full'
+            : isOpen ? 'translate-x-0' : '-translate-x-full'
+        }`}
+      >
         {/* Sidebar Header */}
-        <div className="flex items-center justify-between p-6 border-b border-border">
-          <h2 className="text-xl font-bold text-primary">{t('navigation.menu')}</h2>
+        <UiDiv
+          ui={SHARED_LAYOUT.SIDEBAR.HEADER}
+          className="flex items-center justify-between p-6 border-b border-border"
+        >
+          <UiDiv ui={DECORATIVE.SPACER} className="text-xl font-bold text-primary">{t('navigation.menu')}</UiDiv>
           <UiButton
             ui={SHARED_LAYOUT.SIDEBAR.CLOSE_BUTTON}
             variant="ghost"
@@ -130,12 +136,18 @@ export function AppSidebar({ isOpen, onClose }: AppSidebarProps) {
           >
             <X className="w-6 h-6" />
           </UiButton>
-        </div>
+        </UiDiv>
 
         {/* Sidebar Content */}
-        <div className="flex-1 p-6 space-y-6">
+        <UiDiv
+          ui={SHARED_LAYOUT.SIDEBAR.CONTENT}
+          className="flex-1 p-6 space-y-6"
+        >
           {/* Action Buttons */}
-          <div className="space-y-4">
+          <UiDiv
+            ui={SHARED_LAYOUT.SIDEBAR.ACTIONS_SECTION}
+            className="space-y-4"
+          >
             {/* Login Button */}
             <UiButton
               ui={SHARED_LAYOUT.SIDEBAR.LOGIN_BUTTON}
@@ -149,75 +161,75 @@ export function AppSidebar({ isOpen, onClose }: AppSidebarProps) {
             </UiButton>
 
             {/* Divider */}
-            <div className="h-px bg-border w-full" />
+            <UiDiv ui={DECORATIVE.DIVIDER} className="h-px bg-border w-full" />
 
             {/* Language Dropdown */}
-            <div className="relative" ref={languageDropdownRef}>
+            <UiDiv ui={DECORATIVE.SPACER} className="relative" ref={languageDropdownRef}>
               <UiButton
                 ui={SHARED_LAYOUT.SIDEBAR.LANGUAGE_TOGGLE}
                 variant="secondary"
                 className="w-full flex items-center justify-between gap-3 h-12 text-base"
                 onClick={() => setLanguageDropdownOpen(!languageDropdownOpen)}
               >
-                <div className="flex items-center gap-3">
+                <UiDiv ui={DECORATIVE.SPACER} className="flex items-center gap-3">
                   <Globe className="w-5 h-5" />
                   <span>{t('shared-layout.sidebar.language')}</span>
-                </div>
-                <div className="flex items-center gap-2">
+                </UiDiv>
+                <UiDiv ui={DECORATIVE.SPACER} className="flex items-center gap-2">
                   <span className="font-semibold">{getLanguageLabel()}</span>
                   <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${languageDropdownOpen ? 'rotate-180' : ''}`} />
-                </div>
+                </UiDiv>
               </UiButton>
 
               {/* Language Dropdown Menu */}
               {languageDropdownOpen && (
-                <div className="absolute z-50 top-full mt-2 w-full bg-background border border-border rounded-lg shadow-lg overflow-hidden">
+                <UiDiv ui={DECORATIVE.SPACER} className="absolute z-50 top-full mt-2 w-full bg-background border border-border rounded-lg shadow-lg overflow-hidden">
                   <button
                     className={`w-full px-4 py-3 text-start hover:bg-muted transition-colors flex items-center justify-between ${locale === 'ar' ? 'bg-primary/10 text-primary' : ''}`}
                     onClick={() => changeLanguage('ar')}
                   >
                     <span>{t('shared-layout.sidebar.arabic')}</span>
-                    {locale === 'ar' && <div className="w-2 h-2 rounded-full bg-primary" />}
+                    {locale === 'ar' && <UiDiv ui={DECORATIVE.SPACER} className="w-2 h-2 rounded-full bg-primary" />}
                   </button>
                   <button
                     className={`w-full px-4 py-3 text-start hover:bg-muted transition-colors flex items-center justify-between ${locale === 'en' ? 'bg-primary/10 text-primary' : ''}`}
                     onClick={() => changeLanguage('en')}
                   >
                     <span>{t('shared-layout.sidebar.english')}</span>
-                    {locale === 'en' && <div className="w-2 h-2 rounded-full bg-primary" />}
+                    {locale === 'en' && <UiDiv ui={DECORATIVE.SPACER} className="w-2 h-2 rounded-full bg-primary" />}
                   </button>
-                </div>
+                </UiDiv>
               )}
-            </div>
+            </UiDiv>
 
             {/* Theme Dropdown */}
-            <div className="relative" ref={themeDropdownRef}>
+            <UiDiv ui={DECORATIVE.SPACER} className="relative" ref={themeDropdownRef}>
               <UiButton
                 ui={SHARED_LAYOUT.SIDEBAR.THEME_TOGGLE}
                 variant="secondary"
                 className="w-full flex items-center justify-between gap-3 h-12 text-base"
                 onClick={() => setThemeDropdownOpen(!themeDropdownOpen)}
               >
-                <div className="flex items-center gap-3">
+                <UiDiv ui={DECORATIVE.SPACER} className="flex items-center gap-3">
                   {getThemeIcon()}
                   <span>{getThemeLabel()}</span>
-                </div>
-                <div className="flex items-center gap-2">
+                </UiDiv>
+                <UiDiv ui={DECORATIVE.SPACER} className="flex items-center gap-2">
                   <span className="font-semibold capitalize">{getThemeLabel()}</span>
                   <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${themeDropdownOpen ? 'rotate-180' : ''}`} />
-                </div>
+                </UiDiv>
               </UiButton>
 
               {/* Theme Dropdown Menu */}
               {themeDropdownOpen && (
-                <div className="absolute z-50 top-full mt-2 w-full bg-background border border-border rounded-lg shadow-lg overflow-hidden">
+                <UiDiv ui={DECORATIVE.SPACER} className="absolute z-50 top-full mt-2 w-full bg-background border border-border rounded-lg shadow-lg overflow-hidden">
                   <button
                     className={`w-full px-4 py-3 text-start hover:bg-muted transition-colors flex items-center gap-3 ${themeMode === 'light' ? 'bg-primary/10 text-primary' : ''}`}
                     onClick={() => changeTheme('light')}
                   >
                     <Sun className="w-4 h-4" />
                     <span>{t('shared-layout.sidebar.light')}</span>
-                    {themeMode === 'light' && <div className="w-2 h-2 rounded-full bg-primary ms-auto" />}
+                    {themeMode === 'light' && <UiDiv ui={DECORATIVE.SPACER} className="w-2 h-2 rounded-full bg-primary ms-auto" />}
                   </button>
                   <button
                     className={`w-full px-4 py-3 text-start hover:bg-muted transition-colors flex items-center gap-3 ${themeMode === 'dark' ? 'bg-primary/10 text-primary' : ''}`}
@@ -225,7 +237,7 @@ export function AppSidebar({ isOpen, onClose }: AppSidebarProps) {
                   >
                     <Moon className="w-4 h-4" />
                     <span>{t('shared-layout.sidebar.dark')}</span>
-                    {themeMode === 'dark' && <div className="w-2 h-2 rounded-full bg-primary ms-auto" />}
+                    {themeMode === 'dark' && <UiDiv ui={DECORATIVE.SPACER} className="w-2 h-2 rounded-full bg-primary ms-auto" />}
                   </button>
                   <button
                     className={`w-full px-4 py-3 text-start hover:bg-muted transition-colors flex items-center gap-3 ${themeMode === 'system' ? 'bg-primary/10 text-primary' : ''}`}
@@ -233,14 +245,14 @@ export function AppSidebar({ isOpen, onClose }: AppSidebarProps) {
                   >
                     <Monitor className="w-4 h-4" />
                     <span>{t('shared-layout.sidebar.system')}</span>
-                    {themeMode === 'system' && <div className="w-2 h-2 rounded-full bg-primary ms-auto" />}
+                    {themeMode === 'system' && <UiDiv ui={DECORATIVE.SPACER} className="w-2 h-2 rounded-full bg-primary ms-auto" />}
                   </button>
-                </div>
+                </UiDiv>
               )}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+            </UiDiv>
+          </UiDiv>
+        </UiDiv>
+      </UiDiv>
+    </UiDiv>
   );
 }

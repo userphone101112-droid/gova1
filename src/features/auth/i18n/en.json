@@ -10,7 +10,21 @@
       "signUp": "Sign up",
       "emailInput": "Enter email address",
       "passwordInput": "Enter password",
-      "submitButton": "Login"
+      "submitButton": "Login",
+      "logo": "Logo",
+      "heading": "Login",
+      "subheading": "Welcome back",
+      "phoneInput": "Phone Number",
+      "togglePassword": "Show Password",
+      "guest": "Continue as Guest",
+      "signupLink": "Create account",
+      "englishLang": "English",
+      "darkMode": "Dark Mode",
+      "togglePasswordVisibility": "Show Password",
+      "forgotPasswordLink": "Forgot password?",
+      "guestLoginButton": "Continue as Guest",
+      "englishLanguageLink": "English",
+      "darkModeToggle": "Dark Mode"
     },
     "register": {
       "title": "Create Account",

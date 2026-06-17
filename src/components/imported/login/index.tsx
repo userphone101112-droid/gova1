@@ -1,14 +1,13 @@
 'use client';
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import Link from 'next/link';
-import { UiButton } from '@/components/ui-identified/button';
-import { UiInput } from '@/components/ui-identified/input';
+import { UiButton, UiInput, UiDiv, UiHeader, UiMain, UiSection, UiForm, UiLabel, UiFooter, UiP } from '@/components/ui';
 import { AUTH } from '@/shared/ui-registry';
-import { useBoundTranslation } from '@/shared/unified-ui-i18n/registry-binding';
+import { DECORATIVE } from '@/shared/ui-registry/categories';
 
 const loginSchema = z.object({
   phone: z.string().min(1, 'Phone is required'),
@@ -33,15 +32,16 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center relative bg-surface-container-low">
+    <UiDiv ui={DECORATIVE.SPACER} className="min-h-screen flex flex-col items-center justify-center relative bg-surface-container-low">
       {/* Background Subtle Atmospheric Element */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden opacity-30" />
+      <UiDiv ui={DECORATIVE.BACKGROUND} className="fixed inset-0 pointer-events-none overflow-hidden opacity-30" />
 
       {/* Main Content Canvas */}
-      <main className="w-full max-w-[480px] px-margin-mobile md:px-0 z-10 flex flex-col items-center">
+      <UiMain ui={DECORATIVE.SPACER} className="w-full max-w-[480px] px-margin-mobile md:px-0 z-10 flex flex-col items-center">
         {/* App Logo Area */}
-        <header className="mb-stack-lg flex flex-col items-center text-center">
-          <div
+        <UiHeader ui={DECORATIVE.SPACER} className="mb-stack-lg flex flex-col items-center text-center">
+          <UiDiv
+            ui={DECORATIVE.SPACER}
             className="w-20 h-20 mb-stack-sm rounded-full bg-white flex items-center justify-center"
             style={{ boxShadow: '0 10px 30px rgba(0,0,0,0.04)' }}
           >
@@ -51,33 +51,42 @@ const LoginPage = () => {
             >
               sailing
             </span>
-          </div>
-          <h1 className="font-headline-md text-headline-md text-primary tracking-tight">
+          </UiDiv>
+          <UiHeader
+            ui={AUTH.LOGIN.HEADING}
+            level={1}
+            className="font-headline-md text-headline-md text-primary tracking-tight"
+          >
             Suez In Your Hands
-          </h1>
-        </header>
+          </UiHeader>
+        </UiHeader>
 
         {/* Login Card */}
-        <section
+        <UiSection
+          ui={DECORATIVE.SPACER}
           className="w-full bg-surface-container-lowest rounded-3xl p-8 md:p-10 border border-white/50"
           style={{ boxShadow: '0 30px 60px -12px rgba(0,0,0,0.04)' }}
         >
-          <div className="mb-stack-md text-center">
-            <h2 className="font-headline-lg text-headline-lg text-on-surface mb-2">
+          <UiDiv ui={DECORATIVE.SPACER} className="mb-stack-md text-center">
+            <UiHeader
+              ui={AUTH.LOGIN.SUBHEADING}
+              level={2}
+              className="font-headline-lg text-headline-lg text-on-surface mb-2"
+            >
               مرحباً بك مجدداً
-            </h2>
-            <p className="font-body-md text-on-surface-variant">
+            </UiHeader>
+            <UiP ui={DECORATIVE.SPACER} className="font-body-md text-on-surface-variant">
               الرجاء إدخال بياناتك للمتابعة
-            </p>
-          </div>
+            </UiP>
+          </UiDiv>
 
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-stack-md">
+          <UiForm ui={DECORATIVE.SPACER} onSubmit={handleSubmit(onSubmit)} className="space-y-stack-md">
             {/* Phone Number Input */}
-            <div className="space-y-2">
-              <label className="font-label-md text-secondary block px-1" htmlFor="phone">
+            <UiDiv ui={DECORATIVE.SPACER} className="space-y-2">
+              <UiLabel ui={DECORATIVE.SPACER} className="font-label-md text-secondary block px-1">
                 رقم الهاتف
-              </label>
-              <div className="relative group rounded-2xl bg-surface-container-low transition-all duration-300 focus-within:bg-white focus-within:shadow-sm">
+              </UiLabel>
+              <UiDiv ui={DECORATIVE.SPACER} className="relative group rounded-2xl bg-surface-container-low transition-all duration-300 focus-within:bg-white focus-within:shadow-sm">
                 <span className="material-symbols-outlined absolute end-4 top-1/2 -translate-y-1/2 text-outline">
                   call
                 </span>
@@ -96,20 +105,20 @@ const LoginPage = () => {
                     />
                   )}
                 />
-              </div>
-            </div>
+              </UiDiv>
+            </UiDiv>
 
             {/* Password Input */}
-            <div className="space-y-2">
-              <div className="flex justify-between items-center px-1">
-                <label className="font-label-md text-secondary" htmlFor="password">
+            <UiDiv ui={DECORATIVE.SPACER} className="space-y-2">
+              <UiDiv ui={DECORATIVE.SPACER} className="flex justify-between items-center px-1">
+                <UiLabel ui={DECORATIVE.SPACER} className="font-label-md text-secondary">
                   كلمة المرور
-                </label>
+                </UiLabel>
                 <Link href="#" className="font-label-sm text-primary hover:underline transition-all">
                   نسيت كلمة المرور؟
                 </Link>
-              </div>
-              <div className="relative group rounded-2xl bg-surface-container-low transition-all duration-300 focus-within:bg-white focus-within:shadow-sm">
+              </UiDiv>
+              <UiDiv ui={DECORATIVE.SPACER} className="relative group rounded-2xl bg-surface-container-low transition-all duration-300 focus-within:bg-white focus-within:shadow-sm">
                 <span className="material-symbols-outlined absolute end-4 top-1/2 -translate-y-1/2 text-outline">
                   lock
                 </span>
@@ -127,21 +136,18 @@ const LoginPage = () => {
                     />
                   )}
                 />
-                <button
+                <UiButton
+                  ui={AUTH.LOGIN.TOGGLE_PASSWORD_VISIBILITY}
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
                   className="absolute start-4 top-1/2 -translate-y-1/2 text-outline-variant hover:text-outline transition-colors"
-                  data-ui-id={AUTH.LOGIN.TOGGLE_PASSWORD_VISIBILITY.id}
-                  data-ui-path={AUTH.LOGIN.TOGGLE_PASSWORD_VISIBILITY.path}
-                  data-ui-feature={AUTH.LOGIN.TOGGLE_PASSWORD_VISIBILITY.feature}
-                  data-ui-component="UiButton"
                 >
                   <span className="material-symbols-outlined">
                     {showPassword ? 'visibility_off' : 'visibility'}
                   </span>
-                </button>
-              </div>
-            </div>
+                </UiButton>
+              </UiDiv>
+            </UiDiv>
 
             {/* Login Action */}
             <UiButton
@@ -152,10 +158,10 @@ const LoginPage = () => {
             >
               تسجيل الدخول
             </UiButton>
-          </form>
+          </UiForm>
 
           {/* Secondary Options */}
-          <div className="mt-stack-md pt-stack-md border-t border-surface-variant flex flex-col gap-4">
+          <UiDiv ui={DECORATIVE.SPACER} className="mt-stack-md pt-stack-md border-t border-surface-variant flex flex-col gap-4">
             <UiButton
               ui={AUTH.LOGIN.GUEST_LOGIN_BUTTON}
               variant="outline"
@@ -166,50 +172,44 @@ const LoginPage = () => {
               </span>
               الدخول كضيف
             </UiButton>
-            <div className="text-center mt-2">
-              <span className="font-body-md text-on-surface-variant">
+            <UiDiv ui={DECORATIVE.SPACER} className="text-center mt-2">
+              <UiP ui={DECORATIVE.SPACER} className="font-body-md text-on-surface-variant">
                 ليس لديك حساب؟{' '}
-              </span>
+              </UiP>
               <Link href="#" className="font-label-md text-primary hover:underline font-semibold">
                 إنشاء حساب جديد
               </Link>
-            </div>
-          </div>
-        </section>
+            </UiDiv>
+          </UiDiv>
+        </UiSection>
 
         {/* Language & Theme Footer (Mini) */}
-        <footer className="mt-stack-lg py-base flex flex-col items-center gap-4 w-full">
-          <div className="flex items-center gap-6">
-            <button
+        <UiFooter ui={DECORATIVE.SPACER} className="mt-stack-lg py-base flex flex-col items-center gap-4 w-full">
+          <UiDiv ui={DECORATIVE.SPACER} className="flex items-center gap-6">
+            <UiButton
+              ui={AUTH.LOGIN.ENGLISH_LANGUAGE_LINK}
               className="font-label-sm text-secondary hover:text-primary transition-colors"
-              data-ui-id={AUTH.LOGIN.ENGLISH_LANGUAGE_LINK.id}
-              data-ui-path={AUTH.LOGIN.ENGLISH_LANGUAGE_LINK.path}
-              data-ui-feature={AUTH.LOGIN.ENGLISH_LANGUAGE_LINK.feature}
-              data-ui-component="UiButton"
             >
               English
-            </button>
-            <div className="w-[1px] h-3 bg-outline-variant" />
-            <button
+            </UiButton>
+            <UiDiv ui={DECORATIVE.DIVIDER} className="w-[1px] h-3 bg-outline-variant" />
+            <UiButton
+              ui={AUTH.LOGIN.DARK_MODE_TOGGLE}
               className="flex items-center gap-1 font-label-sm text-secondary hover:text-primary transition-colors"
-              data-ui-id={AUTH.LOGIN.DARK_MODE_TOGGLE.id}
-              data-ui-path={AUTH.LOGIN.DARK_MODE_TOGGLE.path}
-              data-ui-feature={AUTH.LOGIN.DARK_MODE_TOGGLE.feature}
-              data-ui-component="UiButton"
             >
               <span className="material-symbols-outlined text-[18px]">dark_mode</span>
               المظهر الداكن
-            </button>
-          </div>
-          <p className="font-label-sm text-on-surface-variant opacity-60">
+            </UiButton>
+          </UiDiv>
+          <UiP ui={DECORATIVE.SPACER} className="font-label-sm text-on-surface-variant opacity-60">
             © 2024 Suez Marketplace. جميع الحقوق محفوظة.
-          </p>
-        </footer>
-      </main>
+          </UiP>
+        </UiFooter>
+      </UiMain>
 
       {/* Decorative Bottom Gradient */}
-      <div className="fixed bottom-0 start-0 w-full h-32 bg-gradient-to-t from-white/80 to-transparent pointer-events-none" />
-    </div>
+      <UiDiv ui={DECORATIVE.BACKGROUND} className="fixed bottom-0 start-0 w-full h-32 bg-gradient-to-t from-white/80 to-transparent pointer-events-none" />
+    </UiDiv>
   );
 };
 

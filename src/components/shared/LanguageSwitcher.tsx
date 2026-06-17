@@ -3,8 +3,9 @@
 import { useTranslation } from '@/shared/i18n/core/useTranslation';
 import { Locale } from '@/shared/i18n/core/types';
 import { Globe } from 'lucide-react';
-import { UiButton } from '@/components/ui-identified';
+import { UiButton, UiDiv } from '@/components/ui';
 import { HOME } from '@/shared/ui-registry';
+import { DECORATIVE } from '@/shared/ui-registry/categories';
 
 export function LanguageSwitcher() {
   const { locale, setLocale } = useTranslation();
@@ -14,7 +15,7 @@ export function LanguageSwitcher() {
   };
 
   return (
-    <div className="flex items-center gap-2">
+    <UiDiv ui={DECORATIVE.SPACER} className="flex items-center gap-2">
       <Globe className="w-4 h-4" />
       <UiButton
         ui={HOME.LANGUAGE_SWITCHER.ENGLISH_BUTTON}
@@ -32,6 +33,6 @@ export function LanguageSwitcher() {
       >
         AR
       </UiButton>
-    </div>
+    </UiDiv>
   );
 }

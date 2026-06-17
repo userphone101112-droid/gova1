@@ -4,8 +4,9 @@ import React, { Component, ReactNode } from 'react';
 
 import { errorHandler } from '@/lib/error-handler';
 import { AppError } from '@/types/errors';
-import { UiButton } from '@/components/ui-identified';
+import { UiButton, UiDiv, UiHeader, UiMain } from '@/components/ui';
 import { ERROR_BOUNDARY } from '@/shared/ui-registry';
+import { DECORATIVE } from '@/shared/ui-registry/categories';
 
 interface Props {
   children: ReactNode;
@@ -49,22 +50,26 @@ export class ErrorBoundary extends Component<Props, State> {
       }
 
       return (
-        <div className="flex min-h-[400px] items-center justify-center p-4">
-          <div className="max-w-md text-center">
-            <h2 className="mb-4 text-2xl font-bold text-gray-900 dark:text-gray-100">
+        <UiMain className="flex min-h-[400px] items-center justify-center p-4">
+          <UiDiv ui={DECORATIVE.SPACER} className="max-w-md text-center">
+            <UiHeader
+              ui={DECORATIVE.SPACER}
+              level={2}
+              className="mb-4 text-2xl font-bold text-gray-900 dark:text-gray-100"
+            >
               Something went wrong
-            </h2>
-            <p className="mb-6 text-gray-600 dark:text-gray-400">
+            </UiHeader>
+            <UiDiv ui={DECORATIVE.SPACER} className="mb-6 text-gray-600 dark:text-gray-400">
               {this.state.error?.message || 'An unexpected error occurred'}
-            </p>
+            </UiDiv>
             <UiButton
               ui={ERROR_BOUNDARY.RELOAD_BUTTON}
               onClick={() => window.location.reload()}
             >
               Reload Page
             </UiButton>
-          </div>
-        </div>
+          </UiDiv>
+        </UiMain>
       );
     }
 

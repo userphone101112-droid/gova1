@@ -2,8 +2,9 @@
 
 import { useTranslation } from '@/shared/i18n/core/useTranslation';
 import { Store, ChevronLeft, ChevronRight } from 'lucide-react';
-import { UiButton, UiImage, UiLabel, UiHeader } from '@/components/ui';
+import { UiButton, UiImage, UiLabel, UiHeader, UiDiv, UiSection } from '@/components/ui';
 import { HOME } from '@/shared/ui-registry';
+import { DECORATIVE } from '@/shared/ui-registry/categories';
 
 const CATEGORIES = [
   {
@@ -60,10 +61,11 @@ export function CategoriesGrid() {
   const { t, locale } = useTranslation();
 
   return (
-    <section id="categories-section" className="reveal active">
+    <UiSection ui={DECORATIVE.SPACER} id="categories-section" className="reveal active">
       {/* Section Header */}
-      <div className="flex justify-between items-end mb-4">
-        <div
+      <UiDiv ui={DECORATIVE.SPACER} className="flex justify-between items-end mb-4">
+        <UiDiv
+          ui={DECORATIVE.SPACER}
           className="flex items-center gap-2 px-4 py-2 rounded-full border shadow-sm"
           style={{
             background: 'rgba(66,133,244,0.10)',
@@ -87,7 +89,7 @@ export function CategoriesGrid() {
           >
             {t('home.categories.sectionTitle')}
           </UiHeader>
-        </div>
+        </UiDiv>
         <UiButton
           ui={HOME.CATEGORIES_GRID.TOGGLE}
           id="view-all-categories"
@@ -103,10 +105,10 @@ export function CategoriesGrid() {
           <span>{t('home.categories.viewAll')}</span>
           {locale === 'ar' ? <ChevronLeft className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}
         </UiButton>
-      </div>
+      </UiDiv>
 
       {/* Grid responsive column count */}
-      <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-4 sm:gap-6 pb-2">
+      <UiDiv ui={DECORATIVE.SPACER} className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-4 sm:gap-6 pb-2">
         {CATEGORIES.map((cat) => (
           <UiButton
             ui={HOME.CATEGORIES_GRID.ITEM}
@@ -115,7 +117,8 @@ export function CategoriesGrid() {
             className="flex flex-col items-center gap-2 group"
             aria-label={cat.imgAlt}
           >
-            <div
+            <UiDiv
+              ui={DECORATIVE.SPACER}
               className="rounded-full overflow-hidden border-2 border-transparent group-active:border-googleBlue transition-all w-full aspect-square relative"
               style={{ background: 'var(--gova-surface-container)' }}
             >
@@ -126,7 +129,7 @@ export function CategoriesGrid() {
                 fill
                 className="object-cover"
               />
-            </div>
+            </UiDiv>
             <UiLabel
               ui={HOME.CATEGORIES_GRID.CATEGORY_NAME}
               className="text-center"
@@ -141,7 +144,7 @@ export function CategoriesGrid() {
             </UiLabel>
           </UiButton>
         ))}
-      </div>
-    </section>
+      </UiDiv>
+    </UiSection>
   );
 }

@@ -2,8 +2,9 @@
 
 import { Heart, ShoppingCart, Tag } from 'lucide-react';
 import { useTranslation } from '@/shared/i18n/core/useTranslation';
-import { UiButton, UiImage, UiLabel, UiHeader } from '@/components/ui';
+import { UiButton, UiImage, UiLabel, UiHeader, UiSection, UiDiv, UiArticle } from '@/components/ui';
 import { HOME } from '@/shared/ui-registry';
+import { DECORATIVE } from '@/shared/ui-registry/categories';
 
 const PRODUCTS = [
   {
@@ -52,10 +53,17 @@ export function CuratedOffers() {
   const { t } = useTranslation();
 
   return (
-    <section id="curated-offers-section" className="reveal active space-y-4">
+    <UiSection
+      ui={HOME.CURATED_OFFERS.CONTAINER}
+      id="curated-offers-section"
+      className="reveal active space-y-4"
+    >
       {/* Section header */}
-      <div className="flex justify-between items-center">
-        <div className="flex items-center gap-2">
+      <UiDiv
+        ui={HOME.CURATED_OFFERS.HEADER}
+        className="flex justify-between items-center"
+      >
+        <UiDiv ui={DECORATIVE.SPACER} className="flex items-center gap-2">
           <Tag size={24} style={{ color: 'var(--gova-primary)' }} />
           <UiHeader
             ui={HOME.CURATED_OFFERS.SECTION_TITLE}
@@ -65,7 +73,7 @@ export function CuratedOffers() {
           >
             {t('home.curated.title')}
           </UiHeader>
-        </div>
+        </UiDiv>
         <UiLabel
           ui={HOME.CURATED_OFFERS.PROMO_TAG}
           id="promo-tag-badge"
@@ -74,12 +82,17 @@ export function CuratedOffers() {
         >
           {t('home.curated.limitedTime')}
         </UiLabel>
-      </div>
+      </UiDiv>
 
       {/* Responsive product grid */}
-      <div id="product-grid-display" className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-6">
+      <UiDiv
+        ui={HOME.CURATED_OFFERS.PRODUCT_GRID}
+        id="product-grid-display"
+        className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-6"
+      >
         {PRODUCTS.map(p => (
-          <article
+          <UiArticle
+            ui={HOME.CURATED_OFFERS.PRODUCT_CARD}
             key={p.id}
             id={p.id}
             className="rounded-xl overflow-hidden shadow-sm border transition-all active:scale-95"
@@ -88,7 +101,10 @@ export function CuratedOffers() {
               borderColor: 'var(--gova-outline-variant)',
             }}
           >
-            <div className="relative aspect-square">
+            <UiDiv
+              ui={HOME.CURATED_OFFERS.PRODUCT_IMAGE_CONTAINER}
+              className="relative aspect-square"
+            >
               <UiImage
                 ui={HOME.CURATED_OFFERS.PRODUCT_IMAGE}
                 src={p.img}
@@ -108,9 +124,12 @@ export function CuratedOffers() {
                   fill={p.favFilled ? 'currentColor' : 'none'}
                 />
               </UiButton>
-            </div>
+            </UiDiv>
 
-            <div className="p-3 space-y-1">
+            <UiDiv
+              ui={HOME.CURATED_OFFERS.PRODUCT_INFO}
+              className="p-3 space-y-1"
+            >
               <UiLabel
                 ui={HOME.CURATED_OFFERS.CATEGORY_LABEL}
                 className="text-xs font-semibold"
@@ -125,7 +144,10 @@ export function CuratedOffers() {
               >
                 {t(p.titleKey)}
               </UiLabel>
-              <div className="flex justify-between items-center pt-1">
+              <UiDiv
+                ui={HOME.CURATED_OFFERS.PRICE_ROW}
+                className="flex justify-between items-center pt-1"
+              >
                 <UiLabel
                   ui={HOME.CURATED_OFFERS.PRICE_LABEL}
                   className="text-base font-bold"
@@ -142,14 +164,17 @@ export function CuratedOffers() {
                 >
                   <ShoppingCart size={18} />
                 </UiButton>
-              </div>
-            </div>
-          </article>
+              </UiDiv>
+            </UiDiv>
+          </UiArticle>
         ))}
-      </div>
+      </UiDiv>
 
       {/* Show More Button */}
-      <div className="flex justify-center pt-2">
+      <UiDiv
+        ui={HOME.CURATED_OFFERS.SHOW_MORE_CONTAINER}
+        className="flex justify-center pt-2"
+      >
         <UiButton
           ui={HOME.CURATED_OFFERS.SHOW_MORE}
           id="curated-offers-show-more"
@@ -162,7 +187,7 @@ export function CuratedOffers() {
         >
           {t('home.curated-offers.showMoreButton')}
         </UiButton>
-      </div>
-    </section>
+      </UiDiv>
+    </UiSection>
   );
 }

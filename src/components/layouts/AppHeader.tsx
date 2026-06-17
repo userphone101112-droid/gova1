@@ -2,8 +2,9 @@
 
 import { useState } from 'react';
 import { useTranslation } from '@/shared/i18n/core/useTranslation';
-import { UiButton, UiInput, UiLink } from '@/components/ui';
+import { UiButton, UiInput, UiLink, UiHeader, UiDiv } from '@/components/ui';
 import { SHARED_LAYOUT } from '@/shared/ui-registry';
+import { DECORATIVE } from '@/shared/ui-registry/categories';
 import { Menu, Search, ShoppingCart } from 'lucide-react';
 import { AppSidebar } from './AppSidebar';
 
@@ -13,7 +14,8 @@ export function AppHeader() {
 
   return (
     <>
-      <header
+      <UiHeader
+        ui={SHARED_LAYOUT.HEADER.CONTAINER}
         id="header-main-nav"
         className="fixed top-0 w-full z-50 shadow-sm border-b"
         style={{
@@ -23,12 +25,16 @@ export function AppHeader() {
           borderColor: 'rgba(195,198,213,0.30)',
         }}
       >
-        <div
+        <UiDiv
+          ui={SHARED_LAYOUT.HEADER.INNER_WRAPPER}
           className="flex justify-between items-center h-16 w-full max-w-7xl mx-auto"
           style={{ padding: '0 16px' }}
         >
           {/* Brand + Menu (Mobile) */}
-          <div className="flex items-center gap-3">
+          <UiDiv
+            ui={SHARED_LAYOUT.HEADER.BRAND_SECTION}
+            className="flex items-center gap-3"
+          >
             <UiButton
               ui={SHARED_LAYOUT.HEADER.MENU.MENU_BUTTON}
               id="header-menu-button"
@@ -57,11 +63,14 @@ export function AppHeader() {
           >
             {t('navigation.brandTitle')}
           </UiLink>
-        </div>
+        </UiDiv>
 
         {/* Actions & Search */}
-        <div className="flex items-center gap-2">
-          <div className="hidden">
+        <UiDiv
+          ui={SHARED_LAYOUT.HEADER.ACTIONS_SECTION}
+          className="flex items-center gap-2"
+        >
+          <UiDiv ui={DECORATIVE.SPACER} className="hidden">
             <Search className="w-4 h-4 text-on-surface-variant/70" />
             <UiInput
               ui={SHARED_LAYOUT.HEADER.ACTIONS.SEARCH_INPUT}
@@ -69,7 +78,7 @@ export function AppHeader() {
               placeholder={t('navigation.search') + '...'}
               className="bg-transparent border-none outline-none text-xs w-full text-on-surface placeholder-on-surface-variant/50 shadow-none h-auto px-0 py-0 focus-visible:ring-0"
             />
-          </div>
+          </UiDiv>
 
           {/* Mobile Search Button */}
           <UiButton
@@ -95,15 +104,16 @@ export function AppHeader() {
             style={{ color: 'var(--gova-on-surface-variant)' }}
           >
             <ShoppingCart className="w-5 h-5" />
-            <span
+            <UiDiv
+              ui={DECORATIVE.SPACER}
               id="header-cart-badge"
               className="absolute top-2 end-2 w-2 h-2 rounded-full border border-white animate-pulse-gova"
               style={{ background: 'var(--gova-google-red)' }}
             />
           </UiButton>
-        </div>
-      </div>
-      </header>
+        </UiDiv>
+      </UiDiv>
+      </UiHeader>
       <AppSidebar
         isOpen={isSidebarOpen}
         onClose={() => setIsSidebarOpen(false)}

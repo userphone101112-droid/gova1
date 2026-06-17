@@ -2,19 +2,23 @@
 
 import { useTranslation } from '@/shared/i18n/core/useTranslation';
 import { Building2 } from 'lucide-react';
-import { UiButton, UiHeader, UiLabel, UiImage } from '@/components/ui';
+import { UiButton, UiHeader, UiLabel, UiImage, UiSection, UiDiv } from '@/components/ui';
 import { HOME } from '@/shared/ui-registry';
 
 export function PromoBanner() {
   const { t } = useTranslation();
 
   return (
-    <section
+    <UiSection
+      ui={HOME.PROMO_BANNER.CONTAINER}
       id="industrial-promo-banner"
       className="rounded-xl p-6 text-white relative overflow-hidden reveal active"
       style={{ background: 'var(--gova-primary)' }}
     >
-      <div className="relative z-10 max-w-full md:max-w-[70%] lg:max-w-[60%]">
+      <UiDiv
+        ui={HOME.PROMO_BANNER.CONTENT_WRAPPER}
+        className="relative z-10 max-w-full md:max-w-[70%] lg:max-w-[60%]"
+      >
         <UiImage
           ui={HOME.PROMO_BANNER.LOGO}
           src="/images/logos/logo-full.webp"
@@ -48,15 +52,16 @@ export function PromoBanner() {
         >
           {t('home.promo-banner.bannerButton')}
         </UiButton>
-      </div>
+      </UiDiv>
 
       {/* Decorative icon background */}
-      <div
+      <UiDiv
+        ui={HOME.PROMO_BANNER.DECORATIVE_BACKGROUND}
         id="promo-banner-icon-bg"
         className="absolute end-0 top-0 h-full w-1/3 opacity-20 flex items-center justify-center pointer-events-none text-white"
       >
         <Building2 className="w-32 h-32 -rotate-12 scale-150" />
-      </div>
-    </section>
+      </UiDiv>
+    </UiSection>
   );
 }

@@ -10,7 +10,21 @@
       "signUp": "إنشاء حساب",
       "emailInput": "أدخل البريد الإلكتروني",
       "passwordInput": "أدخل كلمة المرور",
-      "submitButton": "تسجيل الدخول"
+      "submitButton": "تسجيل الدخول",
+      "logo": "الشعار",
+      "heading": "تسجيل الدخول",
+      "subheading": "مرحباً بعودتك",
+      "phoneInput": "رقم الهاتف",
+      "togglePassword": "إظهار كلمة المرور",
+      "guest": "المتابعة كزائر",
+      "signupLink": "إنشاء حساب",
+      "englishLang": "الإنجليزية",
+      "darkMode": "الوضع الداكن",
+      "togglePasswordVisibility": "إظهار كلمة المرور",
+      "forgotPasswordLink": "نسيت كلمة المرور؟",
+      "guestLoginButton": "المتابعة كزائر",
+      "englishLanguageLink": "الإنجليزية",
+      "darkModeToggle": "الوضع الداكن"
     },
     "register": {
       "title": "إنشاء حساب",

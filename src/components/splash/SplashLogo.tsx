@@ -1,12 +1,13 @@
-import { UiImage, UiHeader } from "@/components/ui";
+import { UiImage, UiHeader, UiDiv } from "@/components/ui";
 import { useTranslation } from "@/shared/i18n/core/useTranslation";
 import { SPLASH } from "@/shared/ui-registry";
+import { DECORATIVE } from "@/shared/ui-registry/categories";
 
 export default function SplashLogo() {
   const { t } = useTranslation();
   
   return (
-    <div className="flex flex-col items-center gap-6 z-10 py-4">
+    <UiDiv ui={DECORATIVE.SPACER} className="flex flex-col items-center gap-6 z-10 py-4">
       <UiImage
         ui={SPLASH.LOGO.IMAGE}
         src="/images/logo.png"
@@ -22,6 +23,6 @@ export default function SplashLogo() {
       >
         {t('splash.logo.heading')}
       </UiHeader>
-    </div>
+    </UiDiv>
   );
 }
