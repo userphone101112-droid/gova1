@@ -6,6 +6,7 @@ import { getDictionaryCached } from "@/shared/i18n/core/getDictionary";
 import { getLocale, getDirection, getThemeMode, getEffectiveTheme } from "@/shared/i18n/utils/getLocale";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import { SSOTGuard } from "@/components/shared/SSOTGuard";
+import { LocaleProvider } from "@/components/shared/LocaleProvider";
 
 const DevUiOverlay = process.env.NODE_ENV === 'development'
   ? require('@/components/dev/DevUiOverlay').DevUiOverlay
@@ -73,6 +74,7 @@ export default async function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <ThemeProvider>
+          <LocaleProvider initialLocale={locale} initialDirection={direction} />
           <I18nProvider
             initialLocale={locale}
             initialDictionary={dictionary}

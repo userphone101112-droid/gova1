@@ -1,6 +1,6 @@
 # UI Identity Platform Audit Report
 
-Generated: 2026-06-17T18:00:07.245Z
+Generated: 2026-06-17T18:29:40.032Z
 
 ## Summary
 - Total Registered Identities: 84
@@ -29,7 +29,7 @@ Generated: 2026-06-17T18:00:07.245Z
 | Stable ID | Path | Feature | Source File | Component | Line |
 |-----------|------|---------|-------------|-----------|------|
 | `UI_HOME_PROMO_BANNER_TITLE` | `home.promo-banner.display.title` | `home` | [/src/shared/ui-registry/categories/components.ts](file:///C:/Users/hesham/Desktop/gova/src/shared/ui-registry/categories/components.ts) | `COMMON_COMPONENTS` | `31` |
-| `UI_HOME_CATEGORIES_GRID_TOGGLE` | `home.categories-grid.actions.toggle-button` | `home` | [/src/components/layouts/AppSidebar.tsx](file:///C:/Users/hesham/Desktop/gova/src/components/layouts/AppSidebar.tsx) | `AppSidebar` | `169` |
+| `UI_HOME_CATEGORIES_GRID_TOGGLE` | `home.categories-grid.actions.toggle-button` | `home` | [/src/components/layouts/AppSidebar.tsx](file:///C:/Users/hesham/Desktop/gova/src/components/layouts/AppSidebar.tsx) | `AppSidebar` | `176` |
 | `UI_HOME_CATEGORIES_GRID_ITEM` | `home.categories-grid.actions.category-button` | `home` | [/src/shared/ui-registry/categories/components.ts](file:///C:/Users/hesham/Desktop/gova/src/shared/ui-registry/categories/components.ts) | `COMMON_COMPONENTS` | `221` |
 | `UI_HOME_CATEGORIES_GRID_CATEGORY_IMAGE` | `home.categories-grid.display.category-image` | `home` | [/src/components/home/CategoriesGrid.tsx](file:///C:/Users/hesham/Desktop/gova/src/components/home/CategoriesGrid.tsx) | `CategoriesGrid` | `126` |
 | `UI_HOME_CATEGORIES_GRID_CATEGORY_NAME` | `home.categories-grid.display.category-name` | `home` | [/src/components/home/CategoriesGrid.tsx](file:///C:/Users/hesham/Desktop/gova/src/components/home/CategoriesGrid.tsx) | `CategoriesGrid` | `134` |
@@ -66,10 +66,10 @@ Generated: 2026-06-17T18:00:07.245Z
 | `UI_HOME_PROMO_BANNER_CONTENT_WRAPPER` | `home.promo-banner.layout.content-wrapper` | `home` | [/src/components/home/PromoBanner.tsx](file:///C:/Users/hesham/Desktop/gova/src/components/home/PromoBanner.tsx) | `PromoBanner` | `19` |
 | `UI_HOME_PROMO_BANNER_ACTION` | `home.promo-banner.actions.banner-button` | `home` | [/src/components/home/PromoBanner.tsx](file:///C:/Users/hesham/Desktop/gova/src/components/home/PromoBanner.tsx) | `PromoBanner` | `48` |
 | `UI_HOME_PROMO_BANNER_DESCRIPTION` | `home.promo-banner.display.description` | `home` | [/src/shared/ui-registry/categories/components.ts](file:///C:/Users/hesham/Desktop/gova/src/shared/ui-registry/categories/components.ts) | `COMMON_COMPONENTS` | `41` |
-| `UI_HOME_PROMO_BANNER_LOGO` | `home.promo-banner.display.logo` | `home` | [/src/components/splash/SplashScreen.tsx](file:///C:/Users/hesham/Desktop/gova/src/components/splash/SplashScreen.tsx) | `SplashScreen` | `141` |
+| `UI_HOME_PROMO_BANNER_LOGO` | `home.promo-banner.display.logo` | `home` | [/src/components/splash/SplashScreen.tsx](file:///C:/Users/hesham/Desktop/gova/src/components/splash/SplashScreen.tsx) | `SplashScreen` | `128` |
 | `UI_HOME_PROMO_BANNER_DECORATIVE_BACKGROUND` | `home.promo-banner.decorative.background` | `home` | [/src/shared/ui-registry/categories/layout.ts](file:///C:/Users/hesham/Desktop/gova/src/shared/ui-registry/categories/layout.ts) | `COMMON_LAYOUT` | `142` |
 | `UI_SPLASH_LOGO_HEADING` | `splash.logo.display.heading` | `splash` | [/src/components/ui-identified/html-components.ts](file:///C:/Users/hesham/Desktop/gova/src/components/ui-identified/html-components.ts) | `UiDiv` | `24` |
-| `UI_SHARED_SIDEBAR_LOGIN` | `shared-layout.sidebar.actions.login-button` | `shared-layout` | [/src/components/layouts/AppSidebar.tsx](file:///C:/Users/hesham/Desktop/gova/src/components/layouts/AppSidebar.tsx) | `AppSidebar` | `153` |
+| `UI_SHARED_SIDEBAR_LOGIN` | `shared-layout.sidebar.actions.login-button` | `shared-layout` | [/src/components/layouts/AppSidebar.tsx](file:///C:/Users/hesham/Desktop/gova/src/components/layouts/AppSidebar.tsx) | `AppSidebar` | `160` |
 | `UI_SHARED_HEADER_CONTAINER` | `shared-layout.header.layout.container` | `shared-layout` | [/src/components/layouts/AppHeader.tsx](file:///C:/Users/hesham/Desktop/gova/src/components/layouts/AppHeader.tsx) | `AppHeader` | `18` |
 | `UI_SHARED_HEADER_INNER_WRAPPER` | `shared-layout.header.layout.inner-wrapper` | `shared-layout` | [/src/components/layouts/AppHeader.tsx](file:///C:/Users/hesham/Desktop/gova/src/components/layouts/AppHeader.tsx) | `AppHeader` | `29` |
 | `UI_SHARED_HEADER_BRAND_SECTION` | `shared-layout.header.layout.brand-section` | `shared-layout` | [/src/components/layouts/AppHeader.tsx](file:///C:/Users/hesham/Desktop/gova/src/components/layouts/AppHeader.tsx) | `AppHeader` | `35` |
@@ -79,14 +79,14 @@ Generated: 2026-06-17T18:00:07.245Z
 | `UI_SHARED_HEADER_SEARCH_BUTTON` | `shared-layout.header.actions.search-button` | `shared-layout` | [/src/components/layouts/AppHeader.tsx](file:///C:/Users/hesham/Desktop/gova/src/components/layouts/AppHeader.tsx) | `AppHeader` | `85` |
 | `UI_SHARED_HEADER_CART_BUTTON` | `shared-layout.header.actions.cart-button` | `shared-layout` | [/src/components/layouts/AppHeader.tsx](file:///C:/Users/hesham/Desktop/gova/src/components/layouts/AppHeader.tsx) | `AppHeader` | `98` |
 | `UI_SHARED_HEADER_SEARCH_INPUT` | `shared-layout.header.actions.search-input` | `shared-layout` | [/src/components/layouts/AppHeader.tsx](file:///C:/Users/hesham/Desktop/gova/src/components/layouts/AppHeader.tsx) | `AppHeader` | `76` |
-| `UI_SHARED_SIDEBAR_CONTAINER` | `shared-layout.sidebar.layout.container` | `shared-layout` | [/src/components/layouts/AppSidebar.tsx](file:///C:/Users/hesham/Desktop/gova/src/components/layouts/AppSidebar.tsx) | `AppSidebar` | `104` |
+| `UI_SHARED_SIDEBAR_CONTAINER` | `shared-layout.sidebar.layout.container` | `shared-layout` | [/src/components/layouts/AppSidebar.tsx](file:///C:/Users/hesham/Desktop/gova/src/components/layouts/AppSidebar.tsx) | `AppSidebar` | `111` |
 | `UI_SHARED_SIDEBAR_OVERLAY` | `shared-layout.sidebar.layout.overlay` | `shared-layout` | [/src/shared/ui-registry/categories/layout.ts](file:///C:/Users/hesham/Desktop/gova/src/shared/ui-registry/categories/layout.ts) | `COMMON_LAYOUT` | `151` |
-| `UI_SHARED_SIDEBAR_PANEL` | `shared-layout.sidebar.layout.panel` | `shared-layout` | [/src/components/layouts/AppSidebar.tsx](file:///C:/Users/hesham/Desktop/gova/src/components/layouts/AppSidebar.tsx) | `AppSidebar` | `116` |
-| `UI_SHARED_SIDEBAR_HEADER` | `shared-layout.sidebar.layout.header` | `shared-layout` | [/src/components/layouts/AppSidebar.tsx](file:///C:/Users/hesham/Desktop/gova/src/components/layouts/AppSidebar.tsx) | `AppSidebar` | `126` |
-| `UI_SHARED_SIDEBAR_ACTIONS_SECTION` | `shared-layout.sidebar.layout.actions-section` | `shared-layout` | [/src/components/layouts/AppSidebar.tsx](file:///C:/Users/hesham/Desktop/gova/src/components/layouts/AppSidebar.tsx) | `AppSidebar` | `148` |
+| `UI_SHARED_SIDEBAR_PANEL` | `shared-layout.sidebar.layout.panel` | `shared-layout` | [/src/components/layouts/AppSidebar.tsx](file:///C:/Users/hesham/Desktop/gova/src/components/layouts/AppSidebar.tsx) | `AppSidebar` | `123` |
+| `UI_SHARED_SIDEBAR_HEADER` | `shared-layout.sidebar.layout.header` | `shared-layout` | [/src/components/layouts/AppSidebar.tsx](file:///C:/Users/hesham/Desktop/gova/src/components/layouts/AppSidebar.tsx) | `AppSidebar` | `133` |
+| `UI_SHARED_SIDEBAR_ACTIONS_SECTION` | `shared-layout.sidebar.layout.actions-section` | `shared-layout` | [/src/components/layouts/AppSidebar.tsx](file:///C:/Users/hesham/Desktop/gova/src/components/layouts/AppSidebar.tsx) | `AppSidebar` | `155` |
 | `UI_SHARED_SIDEBAR_CLOSE` | `shared-layout.sidebar.actions.close-button` | `shared-layout` | [/src/shared/ui-registry/categories/components.ts](file:///C:/Users/hesham/Desktop/gova/src/shared/ui-registry/categories/components.ts) | `COMMON_COMPONENTS` | `115` |
-| `UI_SHARED_SIDEBAR_LANGUAGE` | `shared-layout.sidebar.actions.language-toggle` | `shared-layout` | [/src/components/layouts/AppSidebar.tsx](file:///C:/Users/hesham/Desktop/gova/src/components/layouts/AppSidebar.tsx) | `AppSidebar` | `169` |
-| `UI_SHARED_SIDEBAR_THEME` | `shared-layout.sidebar.actions.theme-toggle` | `shared-layout` | [/src/components/layouts/AppSidebar.tsx](file:///C:/Users/hesham/Desktop/gova/src/components/layouts/AppSidebar.tsx) | `AppSidebar` | `208` |
+| `UI_SHARED_SIDEBAR_LANGUAGE` | `shared-layout.sidebar.actions.language-toggle` | `shared-layout` | [/src/components/layouts/AppSidebar.tsx](file:///C:/Users/hesham/Desktop/gova/src/components/layouts/AppSidebar.tsx) | `AppSidebar` | `176` |
+| `UI_SHARED_SIDEBAR_THEME` | `shared-layout.sidebar.actions.theme-toggle` | `shared-layout` | [/src/components/layouts/AppSidebar.tsx](file:///C:/Users/hesham/Desktop/gova/src/components/layouts/AppSidebar.tsx) | `AppSidebar` | `215` |
 | `UI_SHARED_BOTTOM_NAV_CONTAINER` | `shared-layout.bottom-nav.layout.container` | `shared-layout` | [/src/components/layouts/BottomNavBar.tsx](file:///C:/Users/hesham/Desktop/gova/src/components/layouts/BottomNavBar.tsx) | `BottomNavBar` | `26` |
 | `UI_SHARED_BOTTOM_NAV_HOME` | `shared-layout.bottom-nav.items.home-link` | `shared-layout` | [/src/components/layouts/BottomNavBar.tsx](file:///C:/Users/hesham/Desktop/gova/src/components/layouts/BottomNavBar.tsx) | `BottomNavBar` | `13` |
 | `UI_SHARED_BOTTOM_NAV_NOTIFICATIONS` | `shared-layout.bottom-nav.items.notifications-link` | `shared-layout` | [/src/components/layouts/BottomNavBar.tsx](file:///C:/Users/hesham/Desktop/gova/src/components/layouts/BottomNavBar.tsx) | `BottomNavBar` | `14` |

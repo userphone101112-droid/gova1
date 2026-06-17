@@ -99,6 +99,8 @@ export function FeaturedMarquee() {
                 ui={DECORATIVE.SPACER}
                 src={item.imgSrc}
                 alt={item.imgAlt}
+                width={160}
+                height={160}
                 className="w-full aspect-square object-cover rounded-lg mb-2"
               />
               <UiP

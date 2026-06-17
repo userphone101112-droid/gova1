@@ -125,7 +125,7 @@ export default function SplashScreen() {
   }
 
   return (
-    <UiMain className="bg-background text-on-background min-h-screen relative w-full flex flex-col items-center justify-between py-12 px-4 overflow-hidden selection:bg-primary-fixed selection:text-on-primary-fixed">
+    <UiMain ui={SPLASH.LOGO.IMAGE} className="bg-background text-on-background min-h-screen relative w-full flex flex-col items-center justify-between py-12 px-4 overflow-hidden selection:bg-primary-fixed selection:text-on-primary-fixed">
       {/* Top Visual Context: Animated Category Banner */}
       <TopMarquee categories={data?.categories || []} />
       

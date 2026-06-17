@@ -231,6 +231,22 @@
         "severity": "low",
         "timestamp": 1781705109985,
         "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "{}",
+        "route": "/login",
+        "severity": "low",
+        "timestamp": 1781720834100,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[Fast Refresh] performing full reload Fast Refresh will perform a full reload when you edit a file that's imported by modules outside of the React rendering tree.\nYou might have a file which exports a React component but also exports a value that is imported by a non-React component file.\nConsider migrating the non-React component export to a separate file and importing it into both files. It is also possible the parent component of the component you edited is a class component, which disables F",
+        "route": "/home",
+        "severity": "low",
+        "timestamp": 1781721100175,
+        "env": "dev"
       }
     ]
   }

@@ -21,6 +21,11 @@ export function AppSidebar({ isOpen, onClose }: AppSidebarProps) {
   const [themeDropdownOpen, setThemeDropdownOpen] = useState(false);
   const languageDropdownRef = useRef<HTMLDivElement>(null);
   const themeDropdownRef = useRef<HTMLDivElement>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Close sidebar when clicking outside
   useEffect(() => {
@@ -89,12 +94,14 @@ export function AppSidebar({ isOpen, onClose }: AppSidebarProps) {
   };
 
   const getLanguageLabel = () => {
+    if (!mounted) return t('shared-layout.sidebar.english');
     return locale === 'ar' 
       ? t('shared-layout.sidebar.arabic') 
       : t('shared-layout.sidebar.english');
   };
 
   const getThemeLabel = () => {
+    if (!mounted) return t('shared-layout.sidebar.system');
     if (themeMode === 'dark') return t('shared-layout.sidebar.dark');
     if (themeMode === 'light') return t('shared-layout.sidebar.light');
     return t('shared-layout.sidebar.system');
@@ -173,7 +180,7 @@ export function AppSidebar({ isOpen, onClose }: AppSidebarProps) {
               >
                 <UiDiv ui={DECORATIVE.SPACER} className="flex items-center gap-3">
                   <Globe className="w-5 h-5" />
-                  <span>{t('shared-layout.sidebar.language')}</span>
+                  <span>{t('shared-layout.sidebar.languageToggle')}</span>
                 </UiDiv>
                 <UiDiv ui={DECORATIVE.SPACER} className="flex items-center gap-2">
                   <span className="font-semibold">{getLanguageLabel()}</span>

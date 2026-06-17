@@ -26,7 +26,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "path": "home.categories-grid.actions.toggle-button",
     "sourceFile": "/src/components/layouts/AppSidebar.tsx",
     "sourceComponent": "AppSidebar",
-    "sourceLine": 169,
+    "sourceLine": 176,
     "feature": "home"
   },
   "UI_HOME_CATEGORIES_GRID_ITEM": {
@@ -322,7 +322,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "path": "home.promo-banner.display.logo",
     "sourceFile": "/src/components/splash/SplashScreen.tsx",
     "sourceComponent": "SplashScreen",
-    "sourceLine": 141,
+    "sourceLine": 128,
     "feature": "home"
   },
   "UI_HOME_PROMO_BANNER_DECORATIVE_BACKGROUND": {
@@ -346,7 +346,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "path": "shared-layout.sidebar.actions.login-button",
     "sourceFile": "/src/components/layouts/AppSidebar.tsx",
     "sourceComponent": "AppSidebar",
-    "sourceLine": 153,
+    "sourceLine": 160,
     "feature": "shared-layout"
   },
   "UI_SHARED_HEADER_CONTAINER": {
@@ -426,7 +426,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "path": "shared-layout.sidebar.layout.container",
     "sourceFile": "/src/components/layouts/AppSidebar.tsx",
     "sourceComponent": "AppSidebar",
-    "sourceLine": 104,
+    "sourceLine": 111,
     "feature": "shared-layout"
   },
   "UI_SHARED_SIDEBAR_OVERLAY": {
@@ -442,7 +442,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "path": "shared-layout.sidebar.layout.panel",
     "sourceFile": "/src/components/layouts/AppSidebar.tsx",
     "sourceComponent": "AppSidebar",
-    "sourceLine": 116,
+    "sourceLine": 123,
     "feature": "shared-layout"
   },
   "UI_SHARED_SIDEBAR_HEADER": {
@@ -450,7 +450,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "path": "shared-layout.sidebar.layout.header",
     "sourceFile": "/src/components/layouts/AppSidebar.tsx",
     "sourceComponent": "AppSidebar",
-    "sourceLine": 126,
+    "sourceLine": 133,
     "feature": "shared-layout"
   },
   "UI_SHARED_SIDEBAR_ACTIONS_SECTION": {
@@ -458,7 +458,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "path": "shared-layout.sidebar.layout.actions-section",
     "sourceFile": "/src/components/layouts/AppSidebar.tsx",
     "sourceComponent": "AppSidebar",
-    "sourceLine": 148,
+    "sourceLine": 155,
     "feature": "shared-layout"
   },
   "UI_SHARED_SIDEBAR_CLOSE": {
@@ -474,7 +474,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "path": "shared-layout.sidebar.actions.language-toggle",
     "sourceFile": "/src/components/layouts/AppSidebar.tsx",
     "sourceComponent": "AppSidebar",
-    "sourceLine": 169,
+    "sourceLine": 176,
     "feature": "shared-layout"
   },
   "UI_SHARED_SIDEBAR_THEME": {
@@ -482,7 +482,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "path": "shared-layout.sidebar.actions.theme-toggle",
     "sourceFile": "/src/components/layouts/AppSidebar.tsx",
     "sourceComponent": "AppSidebar",
-    "sourceLine": 208,
+    "sourceLine": 215,
     "feature": "shared-layout"
   },
   "UI_SHARED_BOTTOM_NAV_CONTAINER": {
