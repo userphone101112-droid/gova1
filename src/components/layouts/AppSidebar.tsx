@@ -1,9 +1,8 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { UiButton, UiDiv } from '@/platform/ui';
+import { UiDiv } from '@/platform/ui';
 import { SHARED_LAYOUT } from '@/platform/ui';
-import { LogIn, Globe } from 'lucide-react';
 import { useTranslation } from '@/platform/ui';
 
 interface AppSidebarProps {
@@ -75,29 +74,6 @@ export function AppSidebar({ isOpen, onClose }: AppSidebarProps) {
           className="flex flex-1 flex-col gap-1 overflow-y-auto p-3 pt-5"
         >
           <UiDiv ui={SHARED_LAYOUT.SIDEBAR.ACTIONS_SECTION} className="flex flex-col gap-1">
-            <UiButton
-              ui={SHARED_LAYOUT.SIDEBAR.LOGIN_BUTTON}
-              variant="ghost"
-              className="h-11 w-full justify-start gap-3 rounded-lg px-3 text-sm font-medium"
-              onClick={() => {
-                window.location.href = '/login';
-              }}
-            >
-              <LogIn className="h-5 w-5 shrink-0 opacity-70" />
-              <span>{t(SHARED_LAYOUT.SIDEBAR.LOGIN_BUTTON)}</span>
-            </UiButton>
-
-            <UiButton
-              ui={SHARED_LAYOUT.SIDEBAR.LANGUAGE_TOGGLE}
-              variant="ghost"
-              className="h-11 w-full justify-start gap-3 rounded-lg px-3 text-sm font-medium"
-              onClick={() => {
-                window.location.href = '/language';
-              }}
-            >
-              <Globe className="h-5 w-5 shrink-0 opacity-70" />
-              <span>{t(SHARED_LAYOUT.SIDEBAR.LANGUAGE_TOGGLE)}</span>
-            </UiButton>
           </UiDiv>
         </UiDiv>
       </UiDiv>

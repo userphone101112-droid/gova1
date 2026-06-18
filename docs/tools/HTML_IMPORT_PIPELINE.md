@@ -1,6 +1,6 @@
 # 🚀 HTML → React + Tailwind + UI Identity + SSOT Design System Pipeline
 
-This pipeline governs the **mandatory transformation** of any imported HTML/CSS into the Gova/Suez Bazaar system.
+This pipeline governs the **mandatory transformation** of any imported HTML/CSS into the Gova system.
 
 It is a **strict architectural enforcement layer**, not a guideline.
 
@@ -8,7 +8,7 @@ All agents MUST follow it without exception.
 
 ---
 
-## 0. NON-NEGOTIABLE FOUNDATION (NEW)
+## 0. NON-NEGOTIABLE FOUNDATION
 
 Before any conversion:
 
@@ -29,8 +29,7 @@ ALL styling MUST come from:
   - `semantic-tokens.css`: Meaningful values mapped to primitives
   - `component-tokens.css`: Component-specific tokens
 - **Type Definitions**: `src/design-system/tokens.ts`
-- **Documentation**: `docs/design-system.md`
-- **Audit Script**: `npm run audit:design-system`
+- **Documentation**: `docs/PROJECT_ARCHITECTURE_AR.md`
 
 ---
 
@@ -75,7 +74,7 @@ Convert HTML into **atomic React components only**
 
 ---
 
-## 3. TAILWIND + DESIGN TOKEN ENGINE (UPDATED)
+## 3. TAILWIND + DESIGN TOKEN ENGINE
 
 Tailwind is ONLY allowed as a **token consumer layer**
 
@@ -89,6 +88,7 @@ Tailwind is ONLY allowed as a **token consumer layer**
 * `bg-red-500`, `text-blue-600`, etc.
 * Arbitrary values (`p-[18px]`, `text-[14px]`)
 * Custom one-off utility hacks
+* RTL-specific classes (`ml-`, `mr-`, `text-left`, `text-right`) - use logical properties instead
 
 ### Rule:
 
@@ -113,30 +113,41 @@ Every interactive element MUST be registered in UI Identity System.
 <UiButton ui={SCOPE.FEATURE.ELEMENT} />
 ```
 
+### Registry Location:
+
+* **UI Registry**: `src/platform/ui/registry/`
+* **Features**: `src/platform/ui/registry/features/`
+* **Categories**: `src/platform/ui/registry/categories.ts`
+
 ### If identity does not exist:
 
 * Generate deterministic identity
-* Register it in `src/shared/ui-registry.ts`
+* Register it in the appropriate feature file
 * Ensure:
 
   * uniqueness
   * stability
   * semantic meaning
+  * proper feature/page/section/component/element hierarchy
+
+### Identity Pattern:
+
+```
+page.section.component.element
+Example: home.categories-grid.actions.toggle-button
+```
 
 ---
 
 ## 5. COMPONENT OUTPUT STRUCTURE (STRICT)
 
 ```
-/src/components/imported/<page-name>/
-  ├── index.tsx
-  ├── components/
-  │    ├── Header.tsx
-  │    ├── Hero.tsx
-  │    ├── Section.tsx
-  │    ├── Card.tsx
+/src/components/<feature>/
+  ├── ComponentName.tsx
+  ├── SubComponent.tsx
   ├── hooks/
-  ├── types.ts
+  │    └── useComponentHook.ts
+  └── types.ts
 ```
 
 ### Rules:
@@ -144,6 +155,7 @@ Every interactive element MUST be registered in UI Identity System.
 * No deviation allowed
 * No extra styling folders
 * No duplicated component systems
+* Use `src/platform/ui/runtime/components` for UI primitives
 
 ---
 
@@ -158,7 +170,7 @@ Every interactive element MUST be registered in UI Identity System.
 
 ---
 
-## 7. DESIGN SYSTEM ENFORCEMENT LAYER (NEW CRITICAL LAYER)
+## 7. DESIGN SYSTEM ENFORCEMENT LAYER
 
 ALL UI must comply with SSOT:
 
@@ -177,11 +189,15 @@ ALL UI must comply with SSOT:
 * Any Tailwind arbitrary styling
 * Any inline styles
 * Any component-local design decisions
+* RTL-specific classes (use logical properties)
 
-### ESLint Enforcement:
+### Enforcement Tools:
 
-- Rule: `design-token-enforcement/no-hardcoded-design-tokens`
-- Location: `.eslint-rules/design-token-enforcement.js`
+- **SSOT Guard**: `src/components/shared/SSOTGuard.tsx`
+  - Detects forbidden class patterns
+  - Detects inline styles
+  - Detects RTL-specific classes
+  - Runs in development mode only
 
 ---
 
@@ -208,16 +224,17 @@ Before output is accepted:
 * All components use design tokens only
 * No arbitrary Tailwind values exist
 * No duplicate styling systems exist
+* No RTL-specific classes exist
 
 ### How to Validate:
 
 1. Run `npm run typecheck`
 2. Run `npm run lint`
-3. Run `npm run audit:design-system`
+3. Check browser console for SSOT Guard warnings
 
 ---
 
-## 10. BUILD ENFORCEMENT RULE (NEW)
+## 10. BUILD ENFORCEMENT RULE
 
 If violations exist:
 
@@ -232,6 +249,7 @@ Violations include:
 * Inline styles
 * Missing UI identity
 * Missing token usage
+* RTL-specific classes
 
 ---
 
@@ -244,6 +262,31 @@ Final output MUST include:
 3. UI Identity registry updates (if any)
 4. Clean Next.js App Router structure
 5. Proof of SSOT compliance
+6. Translation keys in `src/platform/ui/i18n/locales/`
+
+---
+
+## 12. I18N INTEGRATION (NEW)
+
+All text MUST be translatable:
+
+### Usage format:
+
+```tsx
+const { t } = useTranslation();
+<span>{t(FEATURE.ELEMENT)}</span>
+```
+
+### Translation File Location:
+
+* `src/platform/ui/i18n/locales/<feature>/ar.json`
+* `src/platform/ui/i18n/locales/<feature>/en.json`
+
+### Binding System:
+
+* UI identities are automatically bound to translation keys
+* Use `useBoundUI` and `useBoundTranslation` for type-safe translations
+* See `src/platform/ui/i18n/binding/` for details
 
 ---
 
@@ -251,14 +294,14 @@ Final output MUST include:
 
 Transform any HTML into:
 
-> A fully modular, strongly typed, UI-identity tracked, **SSOT-compliant Next.js system with zero styling fragmentation**
+> A fully modular, strongly typed, UI-identity tracked, **SSOT-compliant Next.js system with zero styling fragmentation and full i18n support**
 
 ---
 
-## 💡 CORE PRINCIPLE (UPDATED)
+## 💡 CORE PRINCIPLE
 
 This is NOT conversion.
 
 This is:
 
-> A full architectural migration into a single-source-of-truth design-driven system with enforced global consistency and zero deviation tolerance.
+> A full architectural migration into a single-source-of-truth design-driven system with enforced global consistency, zero deviation tolerance, and full internationalization support.
