@@ -4,9 +4,9 @@ import React, { Component, ReactNode } from 'react';
 
 import { errorHandler } from '@/lib/error-handler';
 import { AppError } from '@/types/errors';
-import { UiButton, UiDiv, UiHeader, UiMain } from '@/components/ui';
-import { ERROR_BOUNDARY } from '@/shared/ui-registry';
-import { DECORATIVE } from '@/shared/ui-registry/categories';
+import { UiButton, UiDiv, UiHeader, UiMain, useTranslation } from '@/platform/ui';
+import { ERROR_BOUNDARY } from '@/platform/ui';
+import { COMMON_LAYOUT } from '@/platform/ui/registry/categories';
 
 interface Props {
   children: ReactNode;
@@ -17,6 +17,36 @@ interface Props {
 interface State {
   hasError: boolean;
   error: AppError | null;
+}
+
+function ErrorFallback({
+  error,
+  onReload,
+}: {
+  error: AppError | null;
+  onReload: () => void;
+}) {
+  const { t } = useTranslation();
+
+  return (
+    <UiMain ui={COMMON_LAYOUT.MAIN} className="flex min-h-[400px] items-center justify-center p-4">
+      <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="max-w-md text-center">
+        <UiHeader
+          ui={ERROR_BOUNDARY.TITLE}
+          level={2}
+          className="mb-4 text-2xl font-bold text-gray-900 dark:text-gray-100"
+        >
+          {t(ERROR_BOUNDARY.TITLE)}
+        </UiHeader>
+        <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="mb-6 text-gray-600 dark:text-gray-400">
+          {error?.message || t(ERROR_BOUNDARY.DEFAULT_MESSAGE)}
+        </UiDiv>
+        <UiButton ui={ERROR_BOUNDARY.RELOAD_BUTTON} onClick={onReload}>
+          {t(ERROR_BOUNDARY.RELOAD_BUTTON)}
+        </UiButton>
+      </UiDiv>
+    </UiMain>
+  );
 }
 
 export class ErrorBoundary extends Component<Props, State> {
@@ -39,7 +69,7 @@ export class ErrorBoundary extends Component<Props, State> {
   componentDidCatch(error: Error, _errorInfo: React.ErrorInfo): void {
     const appError = errorHandler.handleError(error, 'ErrorBoundary');
     errorHandler.logError(appError, 'ErrorBoundary componentDidCatch');
-    
+
     this.props.onError?.(appError);
   }
 
@@ -50,26 +80,10 @@ export class ErrorBoundary extends Component<Props, State> {
       }
 
       return (
-        <UiMain className="flex min-h-[400px] items-center justify-center p-4">
-          <UiDiv ui={DECORATIVE.SPACER} className="max-w-md text-center">
-            <UiHeader
-              ui={DECORATIVE.SPACER}
-              level={2}
-              className="mb-4 text-2xl font-bold text-gray-900 dark:text-gray-100"
-            >
-              Something went wrong
-            </UiHeader>
-            <UiDiv ui={DECORATIVE.SPACER} className="mb-6 text-gray-600 dark:text-gray-400">
-              {this.state.error?.message || 'An unexpected error occurred'}
-            </UiDiv>
-            <UiButton
-              ui={ERROR_BOUNDARY.RELOAD_BUTTON}
-              onClick={() => window.location.reload()}
-            >
-              Reload Page
-            </UiButton>
-          </UiDiv>
-        </UiMain>
+        <ErrorFallback
+          error={this.state.error}
+          onReload={() => window.location.reload()}
+        />
       );
     }
 

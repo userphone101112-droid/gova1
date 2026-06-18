@@ -1,0 +1,39 @@
+{
+  "shared-layout": {
+    "header": {
+      "menuButton": "القائمة",
+      "searchButton": "بحث",
+      "cartButton": "سلة التسوق",
+      "searchInput": "البحث",
+      "container": "حاوية",
+      "innerWrapper": "غلاف داخلي",
+      "brandSection": "قسم العلامة التجارية",
+      "actionsSection": "قسم الإجراءات"
+    },
+    "bottom-nav": {
+      "homeLink": "الرئيسية",
+      "notificationsLink": "الإشعارات",
+      "favoritesLink": "المفضلة",
+      "ordersLink": "الطلبات",
+      "profileLink": "الملف الشخصي",
+      "container": "حاوية"
+    },
+    "sidebar": {
+      "english": "English",
+      "arabic": "العربية",
+      "light": "فاتح",
+      "dark": "داكن",
+      "system": "النظام",
+      "container": "حاوية",
+      "overlay": "تراكب",
+      "panel": "لوحة",
+      "header": "رأس",
+      "content": "محتوى",
+      "actionsSection": "قسم الإجراءات",
+      "closeButton": "إغلاق",
+      "loginButton": "تسجيل الدخول",
+      "languageToggle": "اللغة",
+      "themeToggle": "المظهر"
+    }
+  }
+}

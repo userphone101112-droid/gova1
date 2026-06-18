@@ -1,12 +1,19 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import { useTranslation } from '@/shared/i18n/core/useTranslation';
-import { UiImage, UiLabel, UiHeader, UiSection, UiDiv } from '@/components/ui';
-import { HOME } from '@/shared/ui-registry';
-import { DECORATIVE } from '@/shared/ui-registry/categories';
+import { useTranslation, type TranslationKey } from '@/platform/ui';
+import { UiImage, UiLabel, UiHeader, UiSection, UiDiv } from '@/platform/ui';
+import { HOME } from '@/platform/ui';
+import { COMMON_LAYOUT } from '@/platform/ui/registry/categories';
 
-const SLIDES = [
+const SLIDES: Array<{
+  id: string;
+  badgeKey: TranslationKey;
+  titleKey: TranslationKey;
+  badgeColor: string;
+  badgeTextColor: string;
+  imgSrc: string;
+}> = [
   {
     id: 'hero-slide-1',
     badgeKey: 'home.heroSlider.slide1Badge',
@@ -14,7 +21,6 @@ const SLIDES = [
     badgeColor: 'var(--gova-google-yellow)',
     badgeTextColor: '#000',
     imgSrc: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC8-m7Ccp-1Px2GILiQBkEVbicyFRjjkymFy8ZFtdhuYRL8pQON8o1CIXyU6BN7JVfZrAI0yvezebhNWRoGVMHvg0DN77QP6OfeYY8W2MCXLeJfVyaMNxSGJlX3P3iAMznOw9eICUGva3NKPLGLvI8cNctLItAwJr7ENeM_1D_78vtUOVOwDnSGcbsS5HOdrkOT1zMs8uhh-xaosMu8LdnGFafiAQEvo9WJamGcpA3K5rbhwKVtLkguHv9lD35rXTuja9bBvgTzrkIj',
-    imgAlt: 'أزياء راقية',
   },
   {
     id: 'hero-slide-2',
@@ -23,7 +29,6 @@ const SLIDES = [
     badgeColor: 'var(--gova-google-green)',
     badgeTextColor: '#fff',
     imgSrc: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB5BKAM75HnyHLdSANV4UMPvSgTfcM9isT6xav32tg3Gvhoo2VHZS2bjvuAmMZ-WMizUytLM-OSXNJGlwlpSSHUzeUCPhSlf-13GvVtmlFYRo8KBxJHUd6C7-TfCGGAm31WcQmrU3uAhVycmQoa7cbdByUtAph_Lnc9fP7QJRlCAh2IAm_pBfGGn-_wmPqP3YSDPVN7R81BJObut_pcxju-opt0cQMpN0kLCsQLQnttGb-QWeNyipOCwPx-GmOSicTzoq5QKsdZTA',
-    imgAlt: 'سيارات فاخرة',
   },
 ];
 
@@ -63,7 +68,7 @@ export function HeroSlider() {
             <UiImage
               ui={HOME.HERO_SLIDER.SLIDE_IMAGE}
               src={slide.imgSrc}
-              alt={slide.imgAlt}
+              alt={t(slide.titleKey)}
               fill
               className="object-cover"
             />
@@ -98,8 +103,7 @@ export function HeroSlider() {
         className="absolute bottom-4 start-1/2 -translate-x-1/2 flex gap-2"
       >
         {SLIDES.map((_, i) => (
-          <UiDiv
-            ui={DECORATIVE.SPACER}
+          <UiDiv ui={COMMON_LAYOUT.CONTAINER}
             key={i}
             id={`indicator-${i}`}
             className="h-1.5 rounded-full bg-white transition-all"

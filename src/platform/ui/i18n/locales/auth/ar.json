@@ -1,0 +1,19 @@
+{
+  "auth": {
+    "login": {
+      "passwordInput": "أدخل كلمة المرور",
+      "submitButton": "تسجيل الدخول",
+      "logo": "الشعار",
+      "heading": "تسجيل الدخول",
+      "subheading": "مرحباً بعودتك",
+      "phoneInput": "رقم الهاتف",
+      "signupLink": "إنشاء حساب",
+      "togglePasswordVisibility": "إظهار كلمة المرور",
+      "forgotPasswordLink": "نسيت كلمة المرور؟",
+      "guestLoginButton": "المتابعة كزائر",
+      "englishLanguageLink": "الإنجليزية",
+      "darkModeToggle": "الوضع الداكن",
+      "copyright": "© 2024 سوق السويس. جميع الحقوق محفوظة."
+    }
+  }
+}

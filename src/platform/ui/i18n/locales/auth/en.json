@@ -1,0 +1,19 @@
+{
+  "auth": {
+    "login": {
+      "passwordInput": "Enter password",
+      "submitButton": "Login",
+      "logo": "Logo",
+      "heading": "Login",
+      "subheading": "Welcome back",
+      "phoneInput": "Phone Number",
+      "signupLink": "Create account",
+      "togglePasswordVisibility": "Show Password",
+      "forgotPasswordLink": "Forgot password?",
+      "guestLoginButton": "Continue as Guest",
+      "englishLanguageLink": "English",
+      "darkModeToggle": "Dark Mode",
+      "copyright": "© 2024 Suez Marketplace. All rights reserved."
+    }
+  }
+}

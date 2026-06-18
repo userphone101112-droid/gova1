@@ -23,6 +23,9 @@
       }
     ],
     "paths": {
+      "@/platform/ui": ["./src/platform/ui/index.ts"],
+      "@/platform/ui/server": ["./src/platform/ui/server.ts"],
+      "@/platform/ui/*": ["./src/platform/ui/*"],
       "@/*": ["./src/*"],
       "@/components/*": ["./src/components/*"],
       "@/features/*": ["./src/features/*"],

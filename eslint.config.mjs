@@ -1,8 +1,8 @@
 import { defineConfig, globalIgnores } from "eslint/config";
 import nextVitals from "eslint-config-next/core-web-vitals";
 import nextTs from "eslint-config-next/typescript";
-import uiIdentificationRules from "./.eslint-rules/ui-identification.js";
-import i18nEnforcementRules from "./.eslint-rules/i18n-enforcement.js";
+import uiIdentificationRules from "./src/platform/ui/enforcement/eslint/ui-identification.js";
+import i18nEnforcementRules from "./src/platform/ui/enforcement/eslint/i18n-enforcement.js";
 import designTokenEnforcementRules from "./.eslint-rules/design-token-enforcement.js";
 
 const uiIdentificationPlugin = {
@@ -44,6 +44,7 @@ const eslintConfig = defineConfig([
       // i18n Enforcement rules
       'i18n-enforcement/validate-translation-keys': 'error',
       'i18n-enforcement/no-hardcoded-text': 'error',
+      'i18n-enforcement/no-decorative-with-text': 'error',
       'i18n-enforcement/validate-ui-i18n-alignment': 'error',
       'i18n-enforcement/require-ui-i18n-binding': 'error',
       'i18n-enforcement/no-orphan-translations': 'warn',

@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import fs from 'fs/promises';
 import path from 'path';
-import { UI_ID_MAP } from '@/shared/ui-registry';
+import { UI_ID_MAP } from '@/platform/ui';
 
 // Define the type for our inspector data
 interface InspectorData {

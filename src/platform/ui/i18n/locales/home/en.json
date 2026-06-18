@@ -1,0 +1,97 @@
+{
+  "home": {
+    "categories": {
+      "fashion": "Fashion",
+      "automotive": "Cars",
+      "realestate": "Real Estate",
+      "medical": "Medical",
+      "pharmacy": "Pharmacy",
+      "education": "Education",
+      "electronics": "Electronics",
+      "food": "Restaurants"
+    },
+    "featured": {
+      "title": "Featured Products",
+      "item1Title": "Nova S24 Pro Phone",
+      "item2Title": "Elite Real Estate",
+      "item3Title": "Pro Runner Shoes",
+      "item4Title": "Luxury Watch"
+    },
+    "trending": {
+      "label": "Trending:",
+      "item1": "Nova S24 Pro Phone",
+      "item2": "TimePiece Watch",
+      "item3": "Pro Runner Shoes",
+      "item4": "CheckUp v4 Device"
+    },
+    "language-switcher": {
+      "englishButton": "English",
+      "arabicButton": "Arabic"
+    },
+    "promo-banner": {
+      "bannerButton": "Explore Listings",
+      "title": "Elite Real Estate",
+      "description": "Find your next industrial space with Suez certified partners.",
+      "logo": "GoVa Logo",
+      "container": "Container",
+      "contentWrapper": "Content Wrapper",
+      "background": "Background"
+    },
+    "curated-offers": {
+      "showMoreButton": "Show More",
+      "addToCartButton": "Add to Cart",
+      "addToFavoritesButton": "Add to Favorites",
+      "productImage": "Product",
+      "categoryLabel": "Category",
+      "productTitle": "Product",
+      "priceLabel": "Price",
+      "sectionTitle": "Curated Offers",
+      "promoTag": "Limited Time",
+      "container": "Container",
+      "header": "Header",
+      "productGrid": "Product Grid",
+      "productCard": "Product Card",
+      "productImageContainer": "Product Image Container",
+      "productInfo": "Product Info",
+      "priceRow": "Price Row",
+      "showMoreContainer": "Show More Container"
+    },
+    "curated": {
+      "product1Category": "Fashion",
+      "product1Title": "Pro Runner Shoes",
+      "product1Price": "$120",
+      "product2Category": "Medical",
+      "product2Title": "CheckUp v4 Device",
+      "product2Price": "$850",
+      "product3Category": "Electronics",
+      "product3Title": "Nova S24 Pro Phone",
+      "product3Price": "$599",
+      "product4Category": "Accessories",
+      "product4Title": "TimePiece Watch",
+      "product4Price": "$250"
+    },
+    "hero-slider": {
+      "slideImage": "Slide Image",
+      "slideTitle": "Slide Title",
+      "slideBadge": "Slide Badge",
+      "container": "Container",
+      "sliderTrack": "Slider Track",
+      "slide": "Slide",
+      "slideContent": "Slide Content",
+      "indicators": "Indicators"
+    },
+    "heroSlider": {
+      "slide1Badge": "New Arrival",
+      "slide1Title": "Industrial Excellence in Suez",
+      "slide2Badge": "Featured",
+      "slide2Title": "Premium Marketplace Deals"
+    },
+    "categories-grid": {
+      "toggleButton": "Toggle Layout",
+      "categoryButton": "Select Category",
+      "categoryImage": "Category Image",
+      "categoryName": "Category",
+      "sectionTitle": "Suez Markets"
+    }
+  }
+}

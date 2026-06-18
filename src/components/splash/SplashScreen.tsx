@@ -3,10 +3,10 @@
 import { useEffect, useState } from 'react';
 import { Store } from 'lucide-react';
 
-import { UiButton, UiInput, UiDiv, UiHeader, UiMain } from '@/components/ui';
+import { UiButton, UiInput, UiDiv, UiHeader, UiMain, useTranslation } from '@/platform/ui';
 import { runInitialization } from '@/lib/initialization/initialization';
-import { SPLASH } from '@/shared/ui-registry';
-import { DECORATIVE } from '@/shared/ui-registry/categories';
+import { SPLASH } from '@/platform/ui';
+import { COMMON_LAYOUT, DECORATIVE } from '@/platform/ui/registry/categories';
 import { useSettingsStore } from '@/store/settings.store';
 import { SplashData } from '@/types/splash';
 
@@ -15,6 +15,7 @@ import SplashInitializer from './SplashInitializer';
 import TopMarquee from './TopMarquee';
 
 export default function SplashScreen() {
+  const { t } = useTranslation();
   const [data, setData] = useState<SplashData | null>(null);
   const [accessCodeInput, setAccessCodeInput] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
@@ -43,26 +44,9 @@ export default function SplashScreen() {
       setMaintenanceBypass(true);
       setErrorMsg('');
     } else {
-      setErrorMsg(lang === 'ar' ? 'رمز الدخول غير صحيح' : 'Invalid access code');
+      setErrorMsg(t(SPLASH.MAINTENANCE.INVALID_CODE));
     }
   };
-
-  const translations = {
-    en: {
-      title: 'Under Maintenance',
-      placeholder: 'Enter access code',
-      verify: 'Verify',
-      defaultMsg: 'The system is currently undergoing scheduled maintenance. Please enter the access code to bypass.',
-    },
-    ar: {
-      title: 'النظام قيد الصيانة',
-      placeholder: 'أدخل رمز الدخول',
-      verify: 'تحقق',
-      defaultMsg: 'النظام حالياً قيد الصيانة المبرمجة. يرجى إدخل رمز الدخول للمتابعة.',
-    }
-  };
-
-  const t = translations[lang === 'ar' ? 'ar' : 'en'];
 
   if (activeMaint) {
     return (
@@ -80,25 +64,25 @@ export default function SplashScreen() {
             className="mb-2 relative group"
           >
             <UiDiv ui={DECORATIVE.BACKGROUND} className="absolute inset-0 bg-primary/20 blur-3xl rounded-full"></UiDiv>
-            <UiDiv ui={DECORATIVE.SPACER} className="w-20 h-20 bg-primary text-on-primary rounded-2xl flex items-center justify-center shadow-2xl relative border-2 border-white/20">
+            <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="w-20 h-20 bg-primary text-on-primary rounded-2xl flex items-center justify-center shadow-2xl relative border-2 border-white/20">
               <Store className="w-12 h-12 text-white" />
             </UiDiv>
           </UiDiv>
           <UiHeader
-            ui={DECORATIVE.SPACER}
+            ui={SPLASH.MAINTENANCE.TITLE}
             level={2}
             className="text-2xl font-bold text-primary text-center mt-2"
           >
-            {t.title}
+            {t(SPLASH.MAINTENANCE.TITLE)}
           </UiHeader>
-          <UiDiv ui={DECORATIVE.SPACER} className="text-center text-on-surface-variant text-sm leading-relaxed">
-            {settings.maintenance.message || t.defaultMsg}
+          <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="text-center text-on-surface-variant text-sm leading-relaxed">
+            {settings.maintenance.message || t(SPLASH.MAINTENANCE.DEFAULT_MESSAGE)}
           </UiDiv>
-          <UiDiv ui={DECORATIVE.SPACER} className="w-full flex flex-col gap-2 mt-2">
+          <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="w-full flex flex-col gap-2 mt-2">
             <UiInput
               ui={SPLASH.MAINTENANCE.FORM.PIN_INPUT}
               type="password"
-              placeholder={t.placeholder}
+              placeholder={t(SPLASH.MAINTENANCE.FORM.PIN_INPUT)}
               value={accessCodeInput}
               onChange={(e) => setAccessCodeInput(e.target.value)}
               onKeyDown={(e) => {
@@ -107,7 +91,7 @@ export default function SplashScreen() {
               className="w-full px-4 py-3 bg-surface-container-low border border-outline rounded-xl text-on-surface placeholder-on-surface-variant/50 text-center outline-none focus:border-primary transition-all"
             />
             {errorMsg && (
-              <UiDiv ui={DECORATIVE.SPACER} className="text-error text-xs text-center font-medium mt-1">
+              <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="text-error text-xs text-center font-medium mt-1">
                 {errorMsg}
               </UiDiv>
             )}
@@ -117,7 +101,7 @@ export default function SplashScreen() {
             onClick={handleVerify}
             className="w-full py-3 bg-primary text-white font-semibold rounded-xl active:scale-95 transition-transform shadow-lg cursor-pointer"
           >
-            {t.verify}
+            {t(SPLASH.MAINTENANCE.FORM.SUBMIT_BUTTON)}
           </UiButton>
         </UiDiv>
       </UiDiv>
@@ -126,14 +110,12 @@ export default function SplashScreen() {
 
   return (
     <UiMain ui={SPLASH.LOGO.IMAGE} className="bg-background text-on-background min-h-screen relative w-full flex flex-col items-center justify-between py-12 px-4 overflow-hidden selection:bg-primary-fixed selection:text-on-primary-fixed">
-      {/* Top Visual Context: Animated Category Banner */}
       <TopMarquee categories={data?.categories || []} />
-      
-      {/* Center Identity Section */}
-      <UiDiv ui={DECORATIVE.SPACER} className="flex-1 flex flex-col items-center justify-center z-10 w-full max-w-sm">
-        <UiDiv ui={DECORATIVE.SPACER} className="mb-6 relative group">
+
+      <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="flex-1 flex flex-col items-center justify-center z-10 w-full max-w-sm">
+        <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="mb-6 relative group">
           <UiDiv ui={DECORATIVE.BACKGROUND} className="absolute inset-0 bg-primary/20 blur-3xl rounded-full"></UiDiv>
-          <UiDiv ui={DECORATIVE.SPACER} className="w-24 h-24 bg-primary text-on-primary rounded-2xl flex items-center justify-center shadow-2xl relative border-2 border-white/20">
+          <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="w-24 h-24 bg-primary text-on-primary rounded-2xl flex items-center justify-center shadow-2xl relative border-2 border-white/20">
             <Store className="w-14 h-14 text-white" />
           </UiDiv>
         </UiDiv>
@@ -142,22 +124,19 @@ export default function SplashScreen() {
           level={1}
           className="text-3xl font-bold text-primary mb-1 tracking-tight text-center"
         >
-          {lang === 'ar' ? 'سوق جوفا' : 'GoVa Marketplace'}
+          {t(SPLASH.LOGO.HEADING)}
         </UiHeader>
-        <UiDiv ui={DECORATIVE.SPACER} className="text-base text-on-surface-variant font-medium tracking-wide">
-          {lang === 'ar' ? 'السويس بين يديك' : 'Suez at Your Fingertips'}
+        <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="text-base text-on-surface-variant font-medium tracking-wide">
+          {t(SPLASH.LOGO.TAGLINE)}
         </UiDiv>
-        
-        {/* Bottom Context: Loading & Messages */}
-        <UiDiv ui={DECORATIVE.SPACER} className="mt-8 w-full flex flex-col items-center">
+
+        <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="mt-8 w-full flex flex-col items-center">
           <SplashInitializer />
         </UiDiv>
       </UiDiv>
 
-      {/* Background Decorative Element (Subtle Glass Gradient) */}
       <UiDiv ui={DECORATIVE.BACKGROUND} className="fixed bottom-0 start-0 w-full h-1/3 bg-gradient-to-t from-primary/5 to-transparent pointer-events-none -z-10"></UiDiv>
 
-      {/* Lower Secondary Banner (Opposite Direction) */}
       <BottomRibbons subcategories={data?.subcategories || []} />
     </UiMain>
   );

@@ -1,21 +1,21 @@
 'use client';
 
-import { useTranslation } from '@/shared/i18n/core/useTranslation';
-import { Locale } from '@/shared/i18n/core/types';
+import { useTranslation } from '@/platform/ui';
+import { Locale } from '@/platform/ui';
 import { Globe } from 'lucide-react';
-import { UiButton, UiDiv } from '@/components/ui';
-import { HOME } from '@/shared/ui-registry';
-import { DECORATIVE } from '@/shared/ui-registry/categories';
+import { UiButton, UiDiv } from '@/platform/ui';
+import { HOME } from '@/platform/ui';
+import { COMMON_LAYOUT } from '@/platform/ui/registry/categories';
 
 export function LanguageSwitcher() {
-  const { locale, setLocale } = useTranslation();
+  const { t, locale, setLocale } = useTranslation();
 
   const handleLocaleChange = (newLocale: Locale) => {
     setLocale(newLocale);
   };
 
   return (
-    <UiDiv ui={DECORATIVE.SPACER} className="flex items-center gap-2">
+    <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="flex items-center gap-2">
       <Globe className="w-4 h-4" />
       <UiButton
         ui={HOME.LANGUAGE_SWITCHER.ENGLISH_BUTTON}
@@ -23,7 +23,7 @@ export function LanguageSwitcher() {
         variant={locale === 'en' ? 'default' : 'secondary'}
         size="sm"
       >
-        EN
+        {t(HOME.LANGUAGE_SWITCHER.ENGLISH_BUTTON)}
       </UiButton>
       <UiButton
         ui={HOME.LANGUAGE_SWITCHER.ARABIC_BUTTON}
@@ -31,7 +31,7 @@ export function LanguageSwitcher() {
         variant={locale === 'ar' ? 'default' : 'secondary'}
         size="sm"
       >
-        AR
+        {t(HOME.LANGUAGE_SWITCHER.ARABIC_BUTTON)}
       </UiButton>
     </UiDiv>
   );

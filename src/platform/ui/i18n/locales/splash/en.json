@@ -1,0 +1,36 @@
+{
+  "splash": {
+    "loading": "Loading...",
+    "progress": {
+      "message1": "Discover local vendors in real-time",
+      "message2": "Secure payments and fast shipping",
+      "message3": "Suez's largest industrial marketplace",
+      "message4": "Connecting buyers with reliable sellers",
+      "message5": "Exclusive deals on Automotive & Fashion"
+    },
+    "logo": {
+      "logoImage": "Logo",
+      "heading": "Suez at Your Fingertips",
+      "tagline": "GoVa Marketplace"
+    },
+    "maintenance": {
+      "title": "Under Maintenance",
+      "defaultMessage": "The system is currently undergoing scheduled maintenance. Please enter the access code to bypass.",
+      "invalidCode": "Invalid access code",
+      "pinInput": "Enter access code",
+      "submitButton": "Verify",
+      "container": "Container",
+      "card": "Card",
+      "iconContainer": "Icon Container"
+    },
+    "marquee": {
+      "topFashion": "Fashion",
+      "topAutomotive": "Automotive",
+      "topRealEstate": "Real Estate",
+      "topMedical": "Medical",
+      "bottomElectronics": "Electronics",
+      "bottomIndustrial": "Industrial",
+      "bottomSupplies": "Supplies"
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "Ui Component": {
+    "prefix": "uic",
+    "body": [
+      "import { Ui${1:Button} } from '@/platform/ui';",
+      "import { ${2:HOME} } from '@/platform/ui/registry/registry';",
+      "",
+      "export function ${3:ComponentName}() {",
+      "  const { t } = useTranslation();",
+      "",
+      "  return (",
+      "    <Ui${1:Button} ui={${2:HOME}.${4:SECTION}.${5:ELEMENT}}>",
+      "      {t(${2:HOME}.${4:SECTION}.${5:ELEMENT})}",
+      "    </Ui${1:Button}>",
+      "  );",
+      "}"
+    ],
+    "description": "Scaffold Ui* component with registry identity"
+  },
+  "Feature Page": {
+    "prefix": "featpage",
+    "body": [
+      "import { createFeaturePage } from '@/platform/ui/server';",
+      "",
+      "function ${1:Feature}PageContent() {",
+      "  return (",
+      "  );",
+      "}",
+      "",
+      "export default createFeaturePage(${1:Feature}PageContent);"
+    ],
+    "description": "Server feature page scaffold (single root i18n provider)"
+  },
+  "Registry Identity": {
+    "prefix": "uiid",
+    "body": [
+      "${1:ELEMENT}: {",
+      "  id: 'UI_${2:FEATURE}_${3:NAME}',",
+      "  path: '${4:feature}.${5:section}.${6:component}.${7:element}',",
+      "  description: '${8:Description}',",
+      "  category: '${9|action,input,navigation,display,container|}',",
+      "  feature: '${4:feature}',",
+      "  version: '1.0.0',",
+      "  createdAt: '${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}',",
+      "  updatedAt: '${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}',",
+      "} as const,"
+    ],
+    "description": "UI registry identity block"
+  }
+}

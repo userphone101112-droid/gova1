@@ -76,35 +76,14 @@ function generateLayoutScaffold(featureName: string): string {
   const capitalized = featureName.charAt(0).toUpperCase() + featureName.slice(1).replace(/-([a-z])/g, (_, c) => c.toUpperCase());
   
   return `import { ReactNode } from 'react';
-import { I18nProvider } from '@/shared/i18n/core/provider';
-import { getDictionaryCached } from '@/shared/i18n/core/getDictionary';
-import { getLocale, getDirection } from '@/shared/i18n/utils/getLocale';
+import { createFeatureLayout } from '@/platform/ui/server';
 
 interface ${capitalized}LayoutProps {
   children: ReactNode;
 }
 
-export default async function ${capitalized}Layout({ children }: ${capitalized}LayoutProps) {
-  // Get locale from cookie or default
-  const locale = await getLocale();
-  const direction = getDirection(locale);
-  
-  // Load ${featureName} dictionary for this route
-  const dictionary = await getDictionaryCached(locale, '${featureName}');
-
-  return (
-    <html lang={locale} dir={direction}>
-      <body>
-        <I18nProvider
-          initialLocale={locale}
-          initialDictionary={dictionary}
-          feature="${featureName}"
-        >
-          {children}
-        </I18nProvider>
-      </body>
-    </html>
-  );
+export default function ${capitalized}Layout({ children }: ${capitalized}LayoutProps) {
+  return createFeatureLayout({ children });
 }
 `;
 }
@@ -155,7 +134,7 @@ function generateBindingEntry(featureName: string): string {
 // for the ${featureName} feature. This ensures structural coupling between
 // the UI Identification System and Feature-Based i18n System.
 
-import { generateBindingMap, type BindingMap } from '@/shared/unified-ui-i18n/registry-binding';
+import { generateBindingMap, type BindingMap } from '@/platform/ui';
 
 /**
  * Binding map for ${featureName} feature
@@ -181,7 +160,7 @@ export const ${upperFeature}_BINDINGS: BindingMap = {
  * Add UI identifiers to the registry file
  */
 function addUiIdentifiersToRegistry(featureName: string, uiIdentifiers: string): void {
-  const registryPath = join(process.cwd(), 'src', 'shared', 'ui-registry.ts');
+  const registryPath = join(process.cwd(), 'src', 'platform', 'ui', 'registry', 'registry.ts');
   const upperFeature = featureName.toUpperCase().replace(/-/g, '_');
   
   if (!existsSync(registryPath)) {
@@ -242,10 +221,10 @@ function generatePageScaffold(featureName: string): string {
   
   return `'use client';
 
-import { useTranslation } from '@/shared/i18n/core/useTranslation';
-import { UiButton } from '@/components/ui-identified';
-import { ${upperFeature} } from '@/shared/ui-registry';
-import { useBoundUI } from '@/shared/unified-ui-i18n/useBoundUI';
+import { useTranslation } from '@/platform/ui';
+import { UiButton } from '@/platform/ui';
+import { ${upperFeature} } from '@/platform/ui';
+import { useBoundUI } from '@/platform/ui';
 
 export default function ${capitalized}Page() {
   const { t } = useTranslation();
@@ -293,12 +272,13 @@ export function generateFeature(options: FeatureGeneratorOptions): void {
     process.exit(1);
   }
   
-  const featuresPath = join(process.cwd(), 'src', 'features');
-  const featurePath = join(featuresPath, featureName);
-  const i18nPath = join(featurePath, 'i18n');
+  const localesPath = join(process.cwd(), 'src', 'platform', 'ui', 'i18n', 'locales');
+  const i18nPath = join(localesPath, featureName);
   
+  const featurePath = join(process.cwd(), 'src', 'features', featureName);
+
   // Check if feature already exists
-  if (existsSync(featurePath)) {
+  if (existsSync(i18nPath) || existsSync(featurePath)) {
     console.error(`❌ Feature "${featureName}" already exists.`);
     process.exit(1);
   }
@@ -348,7 +328,7 @@ export function generateFeature(options: FeatureGeneratorOptions): void {
   console.log(`   2. Implement your feature logic in ${featurePath}`);
   console.log(`   3. Add the feature route to your app router if needed`);
   console.log(`   4. Run: npm run i18n:validate to check translation coverage`);
-  console.log(`   5. UI identifiers have been added to src/shared/ui-registry.ts`);
+  console.log(`   5. UI identifiers have been added to src/platform/ui/registry/registry.ts`);
 }
 
 /**

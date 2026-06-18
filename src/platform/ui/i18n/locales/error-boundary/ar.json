@@ -1,0 +1,9 @@
+{
+  "error-boundary": {
+    "main": {
+      "title": "حدث خطأ ما",
+      "defaultMessage": "حدث خطأ غير متوقع",
+      "reloadButton": "إعادة التحميل"
+    }
+  }
+}

@@ -68,7 +68,7 @@ interface EnforcementViolation {
 // ============================================================================
 
 function loadUiRegistry(): string[] {
-  const registryPath = join(process.cwd(), 'src', 'shared', 'ui-registry.ts');
+  const registryPath = join(process.cwd(), 'src', 'platform', 'ui', 'registry', 'registry.ts');
   const content = readFileSync(registryPath, 'utf-8');
   
   // Extract all UI identifiers using regex
@@ -84,19 +84,19 @@ function loadUiRegistry(): string[] {
 }
 
 function loadFeatures(): string[] {
-  const featuresPath = join(process.cwd(), 'src', 'features');
+  const localesPath = join(process.cwd(), 'src', 'platform', 'ui', 'i18n', 'locales');
   
-  if (!existsSync(featuresPath)) {
+  if (!existsSync(localesPath)) {
     return [];
   }
   
-  return readdirSync(featuresPath, { withFileTypes: true })
+  return readdirSync(localesPath, { withFileTypes: true })
     .filter(dirent => dirent.isDirectory())
     .map(dirent => dirent.name);
 }
 
 function loadTranslationKeys(feature: string): string[] {
-  const enPath = join(process.cwd(), 'src', 'features', feature, 'i18n', 'en.json');
+  const enPath = join(process.cwd(), 'src', 'platform', 'ui', 'i18n', 'locales', feature, 'en.json');
   
   if (!existsSync(enPath)) {
     return [];

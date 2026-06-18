@@ -1,0 +1,36 @@
+{
+  "splash": {
+    "loading": "جاري التحميل...",
+    "progress": {
+      "message1": "اكتشف البائعين المحليين في الوقت الفعلي",
+      "message2": "دفع آمن وشحن سريع",
+      "message3": "أكبر سوق صناعي في السويس",
+      "message4": "ربط المشترين مع بائعين موثوقين",
+      "message5": "عروض حصرية على السيارات والأزياء"
+    },
+    "logo": {
+      "logoImage": "الشعار",
+      "heading": "السويس بين يديك",
+      "tagline": "سوق جوفا"
+    },
+    "maintenance": {
+      "title": "النظام قيد الصيانة",
+      "defaultMessage": "النظام حالياً قيد الصيانة المبرمجة. يرجى إدخال رمز الدخول للمتابعة.",
+      "invalidCode": "رمز الدخول غير صحيح",
+      "pinInput": "أدخل رمز الدخول",
+      "submitButton": "تحقق",
+      "container": "حاوية",
+      "card": "بطاقة",
+      "iconContainer": "حاوية الأيقونة"
+    },
+    "marquee": {
+      "topFashion": "أزياء",
+      "topAutomotive": "سيارات",
+      "topRealEstate": "عقارات",
+      "topMedical": "طبي",
+      "bottomElectronics": "إلكترونيات",
+      "bottomIndustrial": "صناعي",
+      "bottomSupplies": "مستلزمات"
+    }
+  }
+}

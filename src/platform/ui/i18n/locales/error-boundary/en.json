@@ -1,0 +1,9 @@
+{
+  "error-boundary": {
+    "main": {
+      "title": "Something went wrong",
+      "defaultMessage": "An unexpected error occurred",
+      "reloadButton": "Reload Page"
+    }
+  }
+}

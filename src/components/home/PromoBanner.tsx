@@ -1,9 +1,9 @@
 'use client';
 
-import { useTranslation } from '@/shared/i18n/core/useTranslation';
+import { useTranslation } from '@/platform/ui';
 import { Building2 } from 'lucide-react';
-import { UiButton, UiHeader, UiLabel, UiImage, UiSection, UiDiv } from '@/components/ui';
-import { HOME } from '@/shared/ui-registry';
+import { UiButton, UiHeader, UiLabel, UiImage, UiSection, UiDiv } from '@/platform/ui';
+import { HOME } from '@/platform/ui';
 
 export function PromoBanner() {
   const { t } = useTranslation();
@@ -22,7 +22,7 @@ export function PromoBanner() {
         <UiImage
           ui={HOME.PROMO_BANNER.LOGO}
           src="/images/logos/logo-full.webp"
-          alt={t('home.promo-banner.logo')}
+          alt={t(HOME.PROMO_BANNER.LOGO)}
           width={120}
           height={48}
           className="mb-4 h-12 w-auto"
@@ -35,14 +35,14 @@ export function PromoBanner() {
           className="text-2xl font-bold"
           style={{ fontFamily: 'Inter, sans-serif' }}
         >
-          {t('home.promo-banner.title')}
+          {t(HOME.PROMO_BANNER.TITLE)}
         </UiHeader>
         <UiLabel
           ui={HOME.PROMO_BANNER.DESCRIPTION}
           id="promo-banner-text"
           className="text-sm opacity-90 mt-2"
         >
-          {t('home.promo-banner.description')}
+          {t(HOME.PROMO_BANNER.DESCRIPTION)}
         </UiLabel>
         <UiButton
           ui={HOME.PROMO_BANNER.ACTION_BUTTON}
@@ -50,11 +50,10 @@ export function PromoBanner() {
           className="mt-4 px-4 py-2 rounded-lg font-bold text-sm transition-transform active:scale-95"
           style={{ background: 'var(--gova-google-yellow)', color: 'var(--gova-on-surface)' }}
         >
-          {t('home.promo-banner.bannerButton')}
+          {t(HOME.PROMO_BANNER.ACTION_BUTTON)}
         </UiButton>
       </UiDiv>
 
-      {/* Decorative icon background */}
       <UiDiv
         ui={HOME.PROMO_BANNER.DECORATIVE_BACKGROUND}
         id="promo-banner-icon-bg"

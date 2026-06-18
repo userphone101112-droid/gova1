@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
 import { Inter, Noto_Sans_Arabic } from "next/font/google";
 import "./globals.css";
-import { I18nProvider } from "@/shared/i18n/core/provider";
-import { getDictionaryCached } from "@/shared/i18n/core/getDictionary";
-import { getLocale, getDirection, getThemeMode, getEffectiveTheme } from "@/shared/i18n/utils/getLocale";
+import { I18nProvider } from "@/platform/ui";
+import { getAppDictionaryCached } from "@/platform/ui/server";
+import { getLocale, getDirection, getThemeMode, getEffectiveTheme } from "@/platform/ui/server";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import { SSOTGuard } from "@/components/shared/SSOTGuard";
-import { LocaleProvider } from "@/components/shared/LocaleProvider";
+import { LocaleProvider } from "@/platform/ui";
 
 const DevUiOverlay = process.env.NODE_ENV === 'development'
-  ? require('@/components/dev/DevUiOverlay').DevUiOverlay
+  ? require('@/platform/ui').DevUiOverlay
   : null;
 
 import { MaolProvider } from '@/providers/MaolProvider';
@@ -62,8 +62,7 @@ export default async function RootLayout({
   const themeMode = await getThemeMode();
   const effectiveTheme = getEffectiveTheme(themeMode);
   
-  // Load common dictionary for root layout
-  const dictionary = await getDictionaryCached(locale, 'common');
+  const dictionary = await getAppDictionaryCached(locale);
 
   return (
     <html
@@ -78,7 +77,6 @@ export default async function RootLayout({
           <I18nProvider
             initialLocale={locale}
             initialDictionary={dictionary}
-            feature="common"
           >
             {children}
           </I18nProvider>

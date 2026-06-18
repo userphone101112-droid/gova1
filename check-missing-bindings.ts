@@ -1,25 +1,20 @@
 
 import { 
-  HOME,
-  ERROR_BOUNDARY,
-  SPLASH,
-  SHARED_LAYOUT,
   ALL_UI_IDENTIFIERS,
   NO_TRANSLATION_REQUIRED,
-  ALL_UI_IDENTITIES
-} from './src/shared/ui-registry';
-import { generateTranslationKeyFromUi } from './src/shared/unified-ui-i18n/registry-binding';
+} from './src/platform/ui/registry/registry';
+import { generateTranslationKeyFromUi } from './src/platform/ui/i18n/binding/registry-binding';
 import { readFileSync, existsSync } from 'fs';
 import { join } from 'path';
 
 function scanTranslations() {
-  const featuresPath = join(process.cwd(), 'src', 'features');
+  const featuresPath = join(process.cwd(), 'src', 'platform', 'ui', 'i18n', 'locales');
 
   const translationKeys = new Set<string>();
   const byFeature: Record<string, Set<string>> = {};
   const features = ['home', 'error-boundary', 'splash', 'shared-layout', 'auth', 'common', 'contact', 'dashboard', 'settings', 'signup'];
   for (const feature of features) {
-    const enPath = join(featuresPath, feature, 'i18n', 'en.json');
+    const enPath = join(featuresPath, feature, 'en.json');
     if (existsSync(enPath)) {
       try {
         const content = readFileSync(enPath, 'utf-8');

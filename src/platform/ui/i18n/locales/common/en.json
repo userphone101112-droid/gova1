@@ -1,0 +1,77 @@
+{
+  "navigation": {
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "settings": "Settings",
+    "login": "Login",
+    "logout": "Logout",
+    "register": "Register",
+    "notifications": "Notifications",
+    "favorites": "Favorites",
+    "orders": "Orders",
+    "profile": "Profile",
+    "cart": "Cart",
+    "search": "Search",
+    "menu": "Menu",
+    "brandTitle": "GoVa Market"
+  },
+  "buttons": {
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "confirm": "Confirm"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "success": "Success",
+    "warning": "Warning",
+    "info": "Information",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "view": "View",
+    "actions": "Actions",
+    "select": "Select",
+    "clear": "Clear",
+    "apply": "Apply",
+    "reset": "Reset",
+    "components": {
+      "card": {
+        "container": "Card",
+        "title": "Title"
+      },
+      "modal": {
+        "container": "Dialog",
+        "title": "Dialog Title",
+        "close-button": "Close"
+      },
+      "badge": {
+        "label": "Badge"
+      }
+    }
+  },
+  "validation": {
+    "required": "This field is required",
+    "invalid": "Invalid format",
+    "email": "Invalid email address",
+    "password": "Password must be at least 8 characters",
+    "minLength": "Minimum {min} characters required",
+    "maxLength": "Maximum {max} characters allowed"
+  },
+  "messages": {
+    "saved": "Changes saved successfully",
+    "deleted": "Item deleted successfully",
+    "updated": "Item updated successfully",
+    "created": "Item created successfully",
+    "confirmDelete": "Are you sure you want to delete this item?",
+    "noResults": "No results found",
+    "somethingWentWrong": "Something went wrong. Please try again."
+  }
+}

@@ -13,7 +13,7 @@ const rule: Rule.RuleModule = {
       description: "Disallow hardcoded design token values, use design system tokens instead",
       recommended: true,
     },
-    fixable: null,
+    fixable: undefined,
     schema: [],
     messages: {
       hardcodedColor: "Hardcoded color value '{{ value }}' found. Use a design system token instead.",

@@ -1,12 +1,21 @@
 'use client';
 
 import { Heart, ShoppingCart, Tag } from 'lucide-react';
-import { useTranslation } from '@/shared/i18n/core/useTranslation';
-import { UiButton, UiImage, UiLabel, UiHeader, UiSection, UiDiv, UiArticle } from '@/components/ui';
-import { HOME } from '@/shared/ui-registry';
-import { DECORATIVE } from '@/shared/ui-registry/categories';
+import { useTranslation, type TranslationKey } from '@/platform/ui';
+import { UiButton, UiImage, UiLabel, UiHeader, UiSection, UiDiv, UiArticle } from '@/platform/ui';
+import { HOME } from '@/platform/ui';
+import { COMMON_LAYOUT } from '@/platform/ui/registry/categories';
 
-const PRODUCTS = [
+const PRODUCTS: Array<{
+  id: string;
+  categoryKey: TranslationKey;
+  titleKey: TranslationKey;
+  priceKey: TranslationKey;
+  favId: string;
+  addId: string;
+  favFilled: boolean;
+  img: string;
+}> = [
   {
     id: 'product-card-shoes',
     categoryKey: 'home.curated.product1Category',
@@ -63,7 +72,7 @@ export function CuratedOffers() {
         ui={HOME.CURATED_OFFERS.HEADER}
         className="flex justify-between items-center"
       >
-        <UiDiv ui={DECORATIVE.SPACER} className="flex items-center gap-2">
+        <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="flex items-center gap-2">
           <Tag size={24} style={{ color: 'var(--gova-primary)' }} />
           <UiHeader
             ui={HOME.CURATED_OFFERS.SECTION_TITLE}
@@ -71,7 +80,7 @@ export function CuratedOffers() {
             className="text-xl font-bold"
             style={{ color: 'var(--gova-on-surface)' }}
           >
-            {t('home.curated.title')}
+            {t(HOME.CURATED_OFFERS.SECTION_TITLE)}
           </UiHeader>
         </UiDiv>
         <UiLabel
@@ -80,7 +89,7 @@ export function CuratedOffers() {
           className="px-2 py-1 rounded-lg text-xs font-semibold"
           style={{ background: 'var(--gova-google-yellow)', color: '#000' }}
         >
-          {t('home.curated.limitedTime')}
+          {t(HOME.CURATED_OFFERS.PROMO_TAG)}
         </UiLabel>
       </UiDiv>
 
@@ -116,7 +125,7 @@ export function CuratedOffers() {
                 ui={HOME.CURATED_OFFERS.ADD_TO_FAVORITES}
                 id={p.favId}
                 className="absolute top-2 start-2 w-8 h-8 rounded-full bg-white/90 backdrop-blur flex items-center justify-center shadow-sm transition-transform active:scale-90"
-                aria-label={t('home.curated.addToFavorites')}
+                aria-label={t(HOME.CURATED_OFFERS.ADD_TO_FAVORITES)}
                 style={{ color: p.favFilled ? 'var(--gova-google-red)' : 'var(--gova-on-surface-variant)' }}
               >
                 <Heart
@@ -160,7 +169,7 @@ export function CuratedOffers() {
                   id={p.addId}
                   className="w-8 h-8 rounded-lg flex items-center justify-center transition-transform active:scale-90"
                   style={{ background: 'var(--gova-google-blue)', color: '#fff' }}
-                  aria-label={t('home.curated.addToCart')}
+                  aria-label={t(HOME.CURATED_OFFERS.ADD_TO_CART)}
                 >
                   <ShoppingCart size={18} />
                 </UiButton>
@@ -185,7 +194,7 @@ export function CuratedOffers() {
             color: 'var(--gova-google-blue)',
           }}
         >
-          {t('home.curated-offers.showMoreButton')}
+          {t(HOME.CURATED_OFFERS.SHOW_MORE)}
         </UiButton>
       </UiDiv>
     </UiSection>

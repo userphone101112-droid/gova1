@@ -110,7 +110,7 @@ function getInitialStateFromCookie(): Partial<GlobalSSOTState> {
           language: parsed.language,
           themeMode: parsed.themeMode
         };
-      } catch (e) {
+      } catch {
         return {};
       }
     }
