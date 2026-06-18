@@ -32,6 +32,9 @@ export interface UnifiedStoreState {
   density: Density;
   highContrast: boolean;
   reducedMotion: boolean;
+
+  // Development Tools
+  ssotGuardEnabled: boolean;
 }
 
 export interface UnifiedStoreActions {
@@ -47,6 +50,9 @@ export interface UnifiedStoreActions {
   setDensity: (density: Density) => void;
   setHighContrast: (enabled: boolean) => void;
   setReducedMotion: (enabled: boolean) => void;
+
+  // Development Tools Actions
+  setSSOTGuardEnabled: (enabled: boolean) => void;
 
   // Utility Actions
   reset: () => void;
@@ -68,6 +74,7 @@ const DEFAULT_PREFERENCES = {
   density: 'comfortable' as Density,
   highContrast: false,
   reducedMotion: false,
+  ssotGuardEnabled: false,
 };
 
 // --- Helper Functions ---
@@ -178,6 +185,7 @@ export const useUnifiedStore = create<UnifiedStore>()(
           density: DEFAULT_PREFERENCES.density,
           highContrast: DEFAULT_PREFERENCES.highContrast,
           reducedMotion: DEFAULT_PREFERENCES.reducedMotion,
+          ssotGuardEnabled: DEFAULT_PREFERENCES.ssotGuardEnabled,
           direction: getDirectionForLanguage(DEFAULT_PREFERENCES.language),
 
           // App Settings Actions
@@ -233,6 +241,11 @@ export const useUnifiedStore = create<UnifiedStore>()(
             syncAll();
           },
 
+          // Development Tools Actions
+          setSSOTGuardEnabled: (enabled: boolean) => {
+            set({ ssotGuardEnabled: enabled });
+          },
+
           // Utility Actions
           reset: () => {
             set({
@@ -245,6 +258,7 @@ export const useUnifiedStore = create<UnifiedStore>()(
               density: DEFAULT_PREFERENCES.density,
               highContrast: DEFAULT_PREFERENCES.highContrast,
               reducedMotion: DEFAULT_PREFERENCES.reducedMotion,
+              ssotGuardEnabled: DEFAULT_PREFERENCES.ssotGuardEnabled,
               direction: getDirectionForLanguage(DEFAULT_PREFERENCES.language),
             });
             syncAll();
@@ -258,6 +272,7 @@ export const useUnifiedStore = create<UnifiedStore>()(
               density: DEFAULT_PREFERENCES.density,
               highContrast: DEFAULT_PREFERENCES.highContrast,
               reducedMotion: DEFAULT_PREFERENCES.reducedMotion,
+              ssotGuardEnabled: DEFAULT_PREFERENCES.ssotGuardEnabled,
               direction: getDirectionForLanguage(DEFAULT_PREFERENCES.language),
             });
             syncAll();
@@ -298,6 +313,7 @@ export const useUnifiedStore = create<UnifiedStore>()(
           density: state.density,
           highContrast: state.highContrast,
           reducedMotion: state.reducedMotion,
+          ssotGuardEnabled: state.ssotGuardEnabled,
         }),
         onRehydrateStorage: () => (state) => {
           if (state) {

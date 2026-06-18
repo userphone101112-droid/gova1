@@ -78,5 +78,102 @@
   "language": {
     "title": "اللغة",
     "description": "اختر اللغة المفضلة لك"
+  },
+  "settings": {
+    "title": "الإعدادات",
+    "description": "قم بتخصيص تجربة التطبيق الخاصة بك وفقاً لتفضيلاتك.",
+    "appSettings": {
+      "title": "إعدادات التطبيق",
+      "status": {
+        "title": "حالة النظام",
+        "description": "جميع الأنظمة تعمل بكفاءة عالية في الوقت الحالي.",
+        "active": "نشط"
+      },
+      "maintenance": {
+        "title": "وضع الصيانة",
+        "description": "تفعيل وضع الصيانة للمستخدمين الخارجيين."
+      },
+      "featureFlags": {
+        "title": "ميزات تجريبية",
+        "ai": "الذكاء الاصطناعي",
+        "analytics": "التحليلات المتقدمة",
+        "pdf": "تصدير PDF"
+      }
+    },
+    "languageRegion": {
+      "title": "اللغة والمنطقة",
+      "language": {
+        "title": "اختيار اللغة",
+        "description": "اختر لغة الواجهة المفضلة لديك."
+      },
+      "directionPreview": "معاينة الاتجاه",
+      "timezone": "المنطقة الزمنية",
+      "timezones": {
+        "cairo": "توقيت القاهرة (GMT+3)",
+        "mecca": "توقيت مكة (GMT+3)",
+        "dubai": "توقيت دبي (GMT+4)"
+      }
+    },
+    "appearance": {
+      "title": "المظهر",
+      "theme": {
+        "title": "السمة البصرية",
+        "light": "فاتح",
+        "dark": "داكن",
+        "system": "تلقائي"
+      },
+      "fontSize": {
+        "title": "حجم الخط"
+      },
+      "density": {
+        "title": "كثافة الواجهة",
+        "compact": "مكثفة",
+        "comfortable": "مريحة",
+        "spacious": "واسعة"
+      },
+      "preview": {
+        "title": "معاينة مباشرة",
+        "button": "تغيير الألوان"
+      }
+    },
+    "accessibility": {
+      "title": "إمكانية الوصول",
+      "highContrast": {
+        "title": "تباين عالٍ",
+        "description": "زيادة التباين بين العناصر والخلفية لتحسين الرؤية."
+      },
+      "reducedMotion": {
+        "title": "تقليل الحركة",
+        "description": "إيقاف الرسوم المتحركة والتأثيرات البصرية لتقليل تشتت الانتباه."
+      }
+    },
+    "developerTools": {
+      "title": "أدوات المطورين",
+      "ssotGuard": {
+        "title": "حماية SSOT",
+        "description": "تفعيل نظام 'المصدر الوحيد للحقيقة' للبيانات."
+      },
+      "diagnostics": "تشخيص الأعطال",
+      "startTest": "بدء الاختبار"
+    },
+    "storage": {
+      "title": "التخزين والاستمرارية",
+      "localStorage": "ذاكرة التخزين المحلية",
+      "usage": "2.4 MB مستخدم",
+      "cookies": "ملفات تعريف الارتباط",
+      "clearAll": "مسح الكل"
+    },
+    "summary": {
+      "title": "ملخص الإعدادات",
+      "language": "اللغة النشطة",
+      "theme": "سمة الواجهة",
+      "density": "كثافة البيانات",
+      "timezone": "المنطقة الزمنية"
+    },
+    "actions": {
+      "save": "حفظ التغييرات",
+      "resetPreferences": "إعادة تعيين التفضيلات",
+      "restoreDefaults": "استعادة الافتراضات"
+    }
   }
 }

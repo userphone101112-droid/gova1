@@ -78,5 +78,102 @@
   "language": {
     "title": "Language",
     "description": "Choose your preferred language"
+  },
+  "settings": {
+    "title": "Settings",
+    "description": "Customize your application experience according to your preferences.",
+    "appSettings": {
+      "title": "Application Settings",
+      "status": {
+        "title": "System Status",
+        "description": "All systems are operating at high efficiency at this time.",
+        "active": "Active"
+      },
+      "maintenance": {
+        "title": "Maintenance Mode",
+        "description": "Enable maintenance mode for external users."
+      },
+      "featureFlags": {
+        "title": "Feature Flags",
+        "ai": "Artificial Intelligence",
+        "analytics": "Advanced Analytics",
+        "pdf": "PDF Export"
+      }
+    },
+    "languageRegion": {
+      "title": "Language & Region",
+      "language": {
+        "title": "Language Selection",
+        "description": "Choose your preferred interface language."
+      },
+      "directionPreview": "Direction Preview",
+      "timezone": "Timezone",
+      "timezones": {
+        "cairo": "Cairo Time (GMT+3)",
+        "mecca": "Mecca Time (GMT+3)",
+        "dubai": "Dubai Time (GMT+4)"
+      }
+    },
+    "appearance": {
+      "title": "Appearance",
+      "theme": {
+        "title": "Visual Theme",
+        "light": "Light",
+        "dark": "Dark",
+        "system": "System"
+      },
+      "fontSize": {
+        "title": "Font Size"
+      },
+      "density": {
+        "title": "Interface Density",
+        "compact": "Compact",
+        "comfortable": "Comfortable",
+        "spacious": "Spacious"
+      },
+      "preview": {
+        "title": "Live Preview",
+        "button": "Change Colors"
+      }
+    },
+    "accessibility": {
+      "title": "Accessibility",
+      "highContrast": {
+        "title": "High Contrast",
+        "description": "Increase contrast between elements and background for better visibility."
+      },
+      "reducedMotion": {
+        "title": "Reduced Motion",
+        "description": "Disable animations and visual effects to reduce distraction."
+      }
+    },
+    "developerTools": {
+      "title": "Developer Tools",
+      "ssotGuard": {
+        "title": "SSOT Guard",
+        "description": "Enable the 'Single Source of Truth' data protection system."
+      },
+      "diagnostics": "Diagnostics",
+      "startTest": "Start Test"
+    },
+    "storage": {
+      "title": "Storage & Persistence",
+      "localStorage": "Local Storage",
+      "usage": "2.4 MB used",
+      "cookies": "Cookies",
+      "clearAll": "Clear All"
+    },
+    "summary": {
+      "title": "Settings Summary",
+      "language": "Active Language",
+      "theme": "Interface Theme",
+      "density": "Data Density",
+      "timezone": "Timezone"
+    },
+    "actions": {
+      "save": "Save Changes",
+      "resetPreferences": "Reset Preferences",
+      "restoreDefaults": "Restore Defaults"
+    }
   }
 }

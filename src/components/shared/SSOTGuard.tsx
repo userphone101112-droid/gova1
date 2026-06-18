@@ -2,6 +2,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import { useUnifiedStore } from '@/store/unified.store';
 
 // Forbidden patterns that violate our SSOT rules don't allow!
 const FORBIDDEN_CLASS_PATTERNS = [
@@ -17,8 +18,11 @@ const FORBIDDEN_CLASS_PATTERNS = [
 const FORBIDDEN_INLINE_STYLE_KEYS = ['left', 'right', 'marginLeft', 'marginRight'];
 
 export function SSOTGuard() {
+  const ssotGuardEnabled = useUnifiedStore((state) => state.ssotGuardEnabled);
+
   useEffect(() => {
     if (process.env.NODE_ENV !== 'development') return;
+    if (!ssotGuardEnabled) return;
 
     let lastCheck = Date.now();
 
