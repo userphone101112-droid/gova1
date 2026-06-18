@@ -12,6 +12,7 @@ interface TooltipState {
   x: number;
   y: number;
   id: string;
+  instanceId: string;
   path: string;
   feature: string;
   version: string;
@@ -155,7 +156,7 @@ export function DevUiOverlay() {
   const [tooltip, setTooltip] = useState<TooltipState>({
     visible: false,
     x: 0, y: 0,
-    id: '', path: '', feature: '', version: '',
+    id: '', instanceId: '', path: '', feature: '', version: '',
     deprecated: false,
     sourceFile: '', sourceComponent: '', sourceLine: 0,
     databaseEnabled: false,
@@ -248,35 +249,32 @@ export function DevUiOverlay() {
     // Load saved data from our API data first, fallback to defaults
     const savedData = allInspectorData[frame.id];
 
-    // Close tooltip first if visible, then reopen with new data
-    dismissTooltip();
-
-    setTimeout(() => {
-      setTooltip({
-        visible: true,
-        x: e.clientX + 12,
-        y: e.clientY + 12,
-        id: frame.id,
-        path: identity?.path || '—',
-        feature: identity?.feature || '—',
-        version: identity?.version || '—',
-        deprecated: identity?.deprecated ?? false,
-        sourceFile: source?.sourceFile || '—',
-        sourceComponent: source?.sourceComponent || '—',
-        sourceLine: source?.sourceLine || 0,
-        databaseEnabled: savedData?.databaseEnabled ?? false,
-        inf1: savedData?.inf1 || '',
-        inf2: savedData?.inf2 || '',
-        inf3: savedData?.inf3 || '',
-        attributesEnabled: savedData?.attributesEnabled ?? false,
-        attribute1: savedData?.attribute1 ?? false,
-        attribute2: savedData?.attribute2 ?? false,
-        attribute3: savedData?.attribute3 ?? false,
-        dataUiPath: savedData?.dataUiPath || identity?.path || '',
-        dataUiFeature: savedData?.dataUiFeature || identity?.feature || '',
-      });
-    }, 0);
-  }, [allInspectorData, dismissTooltip]);
+    // Single atomic update with new instanceId to force remount
+    setTooltip({
+      visible: true,
+      x: e.clientX + 12,
+      y: e.clientY + 12,
+      id: frame.id,
+      instanceId: `${frame.id}_${Date.now()}`,
+      path: identity?.path || '—',
+      feature: identity?.feature || '—',
+      version: identity?.version || '—',
+      deprecated: identity?.deprecated ?? false,
+      sourceFile: source?.sourceFile || '—',
+      sourceComponent: source?.sourceComponent || '—',
+      sourceLine: source?.sourceLine || 0,
+      databaseEnabled: savedData?.databaseEnabled ?? false,
+      inf1: savedData?.inf1 || '',
+      inf2: savedData?.inf2 || '',
+      inf3: savedData?.inf3 || '',
+      attributesEnabled: savedData?.attributesEnabled ?? false,
+      attribute1: savedData?.attribute1 ?? false,
+      attribute2: savedData?.attribute2 ?? false,
+      attribute3: savedData?.attribute3 ?? false,
+      dataUiPath: savedData?.dataUiPath || identity?.path || '',
+      dataUiFeature: savedData?.dataUiFeature || identity?.feature || '',
+    });
+  }, [allInspectorData]);
 
   // Hover inspection - show frame on mousemove when enabled
   useEffect(() => {
@@ -331,34 +329,31 @@ export function DevUiOverlay() {
       const source = UI_SOURCE_INDEX[uiId];
       const savedData = allInspectorData[uiId];
 
-      // Close tooltip first if visible, then reopen with new data
-      dismissTooltip();
-
-      setTimeout(() => {
-        setTooltip({
-          visible: true,
-          x: e.clientX + 12,
-          y: e.clientY + 12,
-          id: uiId,
-          path: identity?.path || '—',
-          feature: identity?.feature || '—',
-          version: identity?.version || '—',
-          deprecated: identity?.deprecated ?? false,
-          sourceFile: source?.sourceFile || '—',
-          sourceComponent: source?.sourceComponent || '—',
-          sourceLine: source?.sourceLine || 0,
-          databaseEnabled: savedData?.databaseEnabled ?? false,
-          inf1: savedData?.inf1 || '',
-          inf2: savedData?.inf2 || '',
-          inf3: savedData?.inf3 || '',
-          attributesEnabled: savedData?.attributesEnabled ?? false,
-          attribute1: savedData?.attribute1 ?? false,
-          attribute2: savedData?.attribute2 ?? false,
-          attribute3: savedData?.attribute3 ?? false,
-          dataUiPath: savedData?.dataUiPath || identity?.path || '',
-          dataUiFeature: savedData?.dataUiFeature || identity?.feature || '',
-        });
-      }, 0);
+      // Single atomic update with new instanceId to force remount
+      setTooltip({
+        visible: true,
+        x: e.clientX + 12,
+        y: e.clientY + 12,
+        id: uiId,
+        instanceId: `${uiId}_${Date.now()}`,
+        path: identity?.path || '—',
+        feature: identity?.feature || '—',
+        version: identity?.version || '—',
+        deprecated: identity?.deprecated ?? false,
+        sourceFile: source?.sourceFile || '—',
+        sourceComponent: source?.sourceComponent || '—',
+        sourceLine: source?.sourceLine || 0,
+        databaseEnabled: savedData?.databaseEnabled ?? false,
+        inf1: savedData?.inf1 || '',
+        inf2: savedData?.inf2 || '',
+        inf3: savedData?.inf3 || '',
+        attributesEnabled: savedData?.attributesEnabled ?? false,
+        attribute1: savedData?.attribute1 ?? false,
+        attribute2: savedData?.attribute2 ?? false,
+        attribute3: savedData?.attribute3 ?? false,
+        dataUiPath: savedData?.dataUiPath || identity?.path || '',
+        dataUiFeature: savedData?.dataUiFeature || identity?.feature || '',
+      });
     };
 
     // Add event listeners to document
@@ -784,6 +779,7 @@ export function DevUiOverlay() {
       {/* Tooltip - Only closes on ✕ button click */}
       {tooltip.visible && (
         <UiDiv
+          key={tooltip.instanceId}
           ui={DECORATIVE.SPACER}
           onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside
           style={{
