@@ -7,7 +7,7 @@ import { UiButton, UiInput, UiDiv, UiHeader, UiMain, useTranslation } from '@/pl
 import { runInitialization } from '@/lib/initialization/initialization';
 import { SPLASH } from '@/platform/ui';
 import { COMMON_LAYOUT, DECORATIVE } from '@/platform/ui/registry/categories';
-import { useSettingsStore } from '@/store/settings.store';
+import { useUnifiedStore } from '@/store/unified.store';
 import { SplashData } from '@/types/splash';
 
 import BottomRibbons from './BottomRibbons';
@@ -20,10 +20,10 @@ export default function SplashScreen() {
   const [accessCodeInput, setAccessCodeInput] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
 
-  const settings = useSettingsStore((state) => state.settings);
-  const isMaintenanceActive = useSettingsStore((state) => state.isMaintenanceActive);
-  const getEffectiveLanguage = useSettingsStore((state) => state.getEffectiveLanguage);
-  const setMaintenanceBypass = useSettingsStore((state) => state.setMaintenanceBypass);
+  const settings = useUnifiedStore((state) => state.settings);
+  const isMaintenanceActive = useUnifiedStore((state) => state.isMaintenanceActive);
+  const getEffectiveLanguage = useUnifiedStore((state) => state.getEffectiveLanguage);
+  const setMaintenanceBypass = useUnifiedStore((state) => state.setMaintenanceBypass);
 
   const activeMaint = isMaintenanceActive();
   const lang = getEffectiveLanguage();

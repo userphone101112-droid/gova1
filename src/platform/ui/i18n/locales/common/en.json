@@ -13,7 +13,8 @@
     "cart": "Cart",
     "search": "Search",
     "menu": "Menu",
-    "brandTitle": "GoVa Market"
+    "brandTitle": "GoVa Market",
+    "language": "Language"
   },
   "buttons": {
     "submit": "Submit",
@@ -73,5 +74,9 @@
     "confirmDelete": "Are you sure you want to delete this item?",
     "noResults": "No results found",
     "somethingWentWrong": "Something went wrong. Please try again."
+  },
+  "language": {
+    "title": "Language",
+    "description": "Choose your preferred language"
   }
 }

@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 
 import { runInitialization } from '@/lib/initialization/initialization';
-import { useSettingsStore } from '@/store/settings.store';
+import { useUnifiedStore } from '@/store/unified.store';
 
 import ProgressIndicator from './ProgressIndicator';
 
@@ -14,7 +14,7 @@ export default function SplashInitializer() {
   const [status, setStatus] = useState('');
   const isCompleteRef = useRef(false);
 
-  const isMaintenanceActive = useSettingsStore((state) => state.isMaintenanceActive);
+  const isMaintenanceActive = useUnifiedStore((state) => state.isMaintenanceActive);
   const activeMaint = isMaintenanceActive();
 
   useEffect(() => {

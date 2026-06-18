@@ -13,7 +13,8 @@
     "cart": "السلة",
     "search": "بحث",
     "menu": "القائمة",
-    "brandTitle": "سوق جوفا"
+    "brandTitle": "سوق جوفا",
+    "language": "اللغة"
   },
   "buttons": {
     "submit": "إرسال",
@@ -73,5 +74,9 @@
     "confirmDelete": "هل أنت متأكد من حذف هذا العنصر؟",
     "noResults": "لم يتم العثور على نتائج",
     "somethingWentWrong": "حدث خطأ ما. يرجى المحاولة مرة أخرى."
+  },
+  "language": {
+    "title": "اللغة",
+    "description": "اختر اللغة المفضلة لك"
   }
 }

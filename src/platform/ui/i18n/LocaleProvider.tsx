@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useGlobalSSOTStore } from '@/store/global-ssot.store';
+import { useUnifiedStore } from '@/store/unified.store';
 
 interface LocaleProviderProps {
   initialLocale: string;
@@ -9,7 +9,7 @@ interface LocaleProviderProps {
 }
 
 export function LocaleProvider({ initialLocale: _initialLocale, initialDirection: _initialDirection }: LocaleProviderProps) {
-  const { language } = useGlobalSSOTStore();
+  const { language } = useUnifiedStore();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -19,7 +19,7 @@ export function LocaleProvider({ initialLocale: _initialLocale, initialDirection
   useEffect(() => {
     if (mounted) {
       // Update HTML lang and dir attributes when language changes
-      // Use the current language from SSOT store, not initialLocale
+      // Use the current language from unified store, not initialLocale
       document.documentElement.lang = language;
       document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
     }

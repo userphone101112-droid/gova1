@@ -2,42 +2,54 @@
 
 import { useLayoutEffect, useRef, type ReactNode } from 'react';
 import {
-  applySSOTSnapshot,
-  initializeGlobalSSOT,
-  syncDOMFromSSOT,
-  useGlobalSSOTStore,
-  type SSOTServerSnapshot,
-} from '@/store/global-ssot.store';
+  initializeUnifiedStore,
+  syncDOMFromStore,
+  useUnifiedStore,
+} from '@/store/unified.store';
 
-export type { SSOTServerSnapshot };
-
-interface SSOTProviderProps {
-  snapshot: SSOTServerSnapshot;
+interface UnifiedProviderProps {
+  snapshot: {
+    language: 'en' | 'ar';
+    themeMode: 'light' | 'dark' | 'system';
+    fontSize: number;
+    density: 'compact' | 'comfortable' | 'spacious';
+    highContrast: boolean;
+    reducedMotion: boolean;
+  };
   children: ReactNode;
 }
 
 /**
- * Seeds the client SSOT store from the server snapshot before hydration,
+ * Seeds the client unified store from the server snapshot before hydration,
  * then rehydrates persisted preferences from localStorage.
  */
-export function SSOTProvider({ snapshot, children }: SSOTProviderProps) {
+export function SSOTProvider({ snapshot, children }: UnifiedProviderProps) {
   const seeded = useRef(false);
 
   if (!seeded.current) {
     seeded.current = true;
-    applySSOTSnapshot(snapshot);
+    // Apply snapshot to store
+    useUnifiedStore.setState({
+      language: snapshot.language,
+      themeMode: snapshot.themeMode,
+      fontSize: snapshot.fontSize,
+      density: snapshot.density,
+      highContrast: snapshot.highContrast,
+      reducedMotion: snapshot.reducedMotion,
+      direction: snapshot.language === 'ar' ? 'rtl' : 'ltr',
+    });
   }
 
   useLayoutEffect(() => {
-    initializeGlobalSSOT();
+    initializeUnifiedStore();
 
     const onFinishHydration = () => {
-      const state = useGlobalSSOTStore.getState();
-      syncDOMFromSSOT(state.language, state.themeMode, state);
+      const state = useUnifiedStore.getState();
+      syncDOMFromStore(state);
     };
 
-    const unsub = useGlobalSSOTStore.persist.onFinishHydration(onFinishHydration);
-    void useGlobalSSOTStore.persist.rehydrate();
+    const unsub = useUnifiedStore.persist.onFinishHydration(onFinishHydration);
+    void useUnifiedStore.persist.rehydrate();
 
     return unsub;
   }, []);

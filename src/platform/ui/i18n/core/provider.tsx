@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import { Locale, I18nContext, TranslationDictionary } from './types';
 import { getAppDictionary } from './getDictionary';
 import { resolveFeatureFromPathname } from './i18n-route-manifest';
-import { useGlobalSSOTStore } from '@/store/global-ssot.store';
+import { useUnifiedStore } from '@/store/unified.store';
 
 const I18nContextInstance = createContext<I18nContext | undefined>(undefined);
 
@@ -29,7 +29,7 @@ export function I18nProvider({
     [pathname]
   );
 
-  const { language: locale, setLanguage: setLocaleSSOT } = useGlobalSSOTStore();
+  const { language: locale, setLanguage: setLocaleSSOT } = useUnifiedStore();
   const [dictionary, setDictionary] = useState<TranslationDictionary>(initialDictionary);
 
   const loadDictionary = useCallback(

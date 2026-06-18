@@ -28,23 +28,13 @@ export function CategoriesGrid() {
     <UiSection ui={COMMON_LAYOUT.SECTION} id="categories-section" className="reveal active">
       <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="flex justify-between items-end mb-4">
         <UiDiv ui={COMMON_LAYOUT.WRAPPER}
-          className="flex items-center gap-2 px-4 py-2 rounded-full border shadow-sm"
-          style={{
-            background: 'rgba(66,133,244,0.10)',
-            borderColor: 'rgba(66,133,244,0.30)',
-          }}
+          className="flex items-center gap-2 px-4 py-2 rounded-full border shadow-sm bg-blue-50/10 border-blue-200/30"
         >
-          <Store className="w-5 h-5" style={{ color: 'var(--gova-google-blue)' }} />
+          <Store className="w-5 h-5 text-blue-600" />
           <UiHeader
             ui={HOME.CATEGORIES_GRID.SECTION_TITLE}
             level={3}
-            className="font-semibold"
-            style={{
-              color: 'var(--gova-google-blue)',
-              fontSize: '20px',
-              lineHeight: '28px',
-              fontWeight: '600',
-            }}
+            className="font-semibold text-blue-600 text-xl font-semibold"
           >
             {t(HOME.CATEGORIES_GRID.SECTION_TITLE)}
           </UiHeader>
@@ -52,13 +42,10 @@ export function CategoriesGrid() {
         <UiButton
           ui={HOME.CATEGORIES_GRID.TOGGLE}
           id="view-all-categories"
-          className="flex items-center gap-1 px-4 py-1.5 rounded-full border transition-colors active:bg-surface-container"
-          style={{
-            background: 'var(--gova-surface-container-low)',
-            borderColor: 'rgba(195,198,213,0.30)',
-            color: 'var(--gova-google-blue)',
-            fontSize: '12px',
-            fontWeight: '600',
+          variant="outline"
+          className="flex items-center gap-1 px-4 py-1.5 rounded-full text-xs font-semibold transition-colors active:bg-surface-container"
+          onClick={() => {
+            window.location.href = '/categories';
           }}
         >
           <span>{t(HOME.CATEGORIES_GRID.TOGGLE)}</span>
@@ -76,8 +63,7 @@ export function CategoriesGrid() {
             aria-label={t(cat.nameKey)}
           >
             <UiDiv ui={COMMON_LAYOUT.WRAPPER}
-              className="rounded-full overflow-hidden border-2 border-transparent group-active:border-googleBlue transition-all w-full aspect-square relative"
-              style={{ background: 'var(--gova-surface-container)' }}
+              className="rounded-full overflow-hidden border-2 border-transparent group-active:border-googleBlue transition-all w-full aspect-square relative bg-surface-container"
             >
               <UiImage
                 ui={HOME.CATEGORIES_GRID.CATEGORY_IMAGE}
@@ -89,13 +75,7 @@ export function CategoriesGrid() {
             </UiDiv>
             <UiLabel
               ui={HOME.CATEGORIES_GRID.CATEGORY_NAME}
-              className="text-center"
-              style={{
-                color: 'var(--gova-on-surface-variant)',
-                fontSize: '12px',
-                fontWeight: '600',
-                lineHeight: '16px',
-              }}
+              className="text-center text-xs font-semibold leading-4 text-on-surface-variant"
             >
               {t(cat.nameKey)}
             </UiLabel>

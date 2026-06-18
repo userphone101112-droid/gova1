@@ -171,17 +171,44 @@
   "maol_Xa9endCnFU": [
     {
       "route": "/",
-      "timestamp": 1781700634780,
-      "totalIdentified": 0,
+      "timestamp": 1781791278805,
+      "totalIdentified": 69,
       "tree": {
         "type": "page",
-        "children": []
+        "children": [
+          {
+            "name": "splash",
+            "uiIds": [
+              "UI_SPLASH_LOGO_IMAGE",
+              "UI_SPLASH_LOGO_HEADING"
+            ],
+            "tags": [
+              "main",
+              "h1"
+            ]
+          },
+          {
+            "name": "common",
+            "uiIds": [
+              "UI_COMMON_DECORATIVE_BACKGROUND",
+              "UI_COMMON_LAYOUT_WRAPPER",
+              "UI_COMMON_LAYOUT_CONTAINER",
+              "UI_COMMON_LAYOUT_SPAN",
+              "UI_COMMON_DECORATIVE_SPACER"
+            ],
+            "tags": [
+              "div",
+              "span",
+              "button"
+            ]
+          }
+        ]
       }
     },
     {
       "route": "/home",
-      "timestamp": 1781721122179,
-      "totalIdentified": 229,
+      "timestamp": 1781791350807,
+      "totalIdentified": 218,
       "tree": {
         "type": "page",
         "children": [
@@ -200,13 +227,10 @@
               "UI_SHARED_SIDEBAR_CONTAINER",
               "UI_SHARED_SIDEBAR_OVERLAY",
               "UI_SHARED_SIDEBAR_PANEL",
-              "UI_SHARED_SIDEBAR_HEADER",
-              "UI_SHARED_SIDEBAR_CLOSE",
               "UI_SHARED_SIDEBAR_CONTENT",
               "UI_SHARED_SIDEBAR_ACTIONS_SECTION",
               "UI_SHARED_SIDEBAR_LOGIN",
               "UI_SHARED_SIDEBAR_LANGUAGE",
-              "UI_SHARED_SIDEBAR_THEME",
               "UI_SHARED_BOTTOM_NAV_CONTAINER",
               "UI_SHARED_BOTTOM_NAV_HOME",
               "UI_SHARED_BOTTOM_NAV_NOTIFICATIONS",
@@ -226,8 +250,13 @@
           {
             "name": "common",
             "uiIds": [
-              "UI_COMMON_DECORATIVE_SPACER",
-              "UI_COMMON_DECORATIVE_DIVIDER"
+              "UI_COMMON_LAYOUT_CONTAINER",
+              "UI_COMMON_LAYOUT_MAIN",
+              "UI_COMMON_LAYOUT_SECTION",
+              "UI_COMMON_LAYOUT_WRAPPER",
+              "UI_COMMON_LAYOUT_HEADER",
+              "UI_COMMON_LAYOUT_SPAN",
+              "UI_COMMON_DECORATIVE_SPACER"
             ],
             "tags": [
               "div",
@@ -338,6 +367,84 @@
               "h1",
               "h2",
               "input",
+              "button"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "route": "/settings",
+      "timestamp": 1781791247511,
+      "totalIdentified": 1,
+      "tree": {
+        "type": "page",
+        "children": [
+          {
+            "name": "common",
+            "uiIds": [
+              "UI_COMMON_DECORATIVE_SPACER"
+            ],
+            "tags": [
+              "button"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "route": "/language",
+      "timestamp": 1781792324114,
+      "totalIdentified": 124,
+      "tree": {
+        "type": "page",
+        "children": [
+          {
+            "name": "shared-layout",
+            "uiIds": [
+              "UI_SHARED_HEADER_CONTAINER",
+              "UI_SHARED_HEADER_INNER_WRAPPER",
+              "UI_SHARED_HEADER_BRAND_SECTION",
+              "UI_SHARED_HEADER_MENU",
+              "UI_SHARED_HEADER_BRAND_LINK",
+              "UI_SHARED_HEADER_ACTIONS_SECTION",
+              "UI_SHARED_HEADER_SEARCH_INPUT",
+              "UI_SHARED_HEADER_SEARCH_BUTTON",
+              "UI_SHARED_HEADER_CART_BUTTON",
+              "UI_SHARED_SIDEBAR_CONTAINER",
+              "UI_SHARED_SIDEBAR_OVERLAY",
+              "UI_SHARED_SIDEBAR_PANEL",
+              "UI_SHARED_SIDEBAR_CONTENT",
+              "UI_SHARED_SIDEBAR_ACTIONS_SECTION",
+              "UI_SHARED_SIDEBAR_LOGIN",
+              "UI_SHARED_SIDEBAR_LANGUAGE",
+              "UI_SHARED_BOTTOM_NAV_CONTAINER",
+              "UI_SHARED_BOTTOM_NAV_HOME",
+              "UI_SHARED_BOTTOM_NAV_NOTIFICATIONS",
+              "UI_SHARED_BOTTOM_NAV_FAVORITES",
+              "UI_SHARED_BOTTOM_NAV_ORDERS",
+              "UI_SHARED_BOTTOM_NAV_PROFILE"
+            ],
+            "tags": [
+              "h1",
+              "div",
+              "button",
+              "a",
+              "input",
+              "nav"
+            ]
+          },
+          {
+            "name": "common",
+            "uiIds": [
+              "UI_COMMON_LAYOUT_CONTAINER",
+              "UI_COMMON_LAYOUT_MAIN",
+              "UI_COMMON_LAYOUT_WRAPPER",
+              "UI_COMMON_DECORATIVE_SPACER"
+            ],
+            "tags": [
+              "div",
+              "main",
               "button"
             ]
           }
@@ -525,7 +632,7 @@
     },
     {
       "route": "/settings",
-      "timestamp": 1781784655292,
+      "timestamp": 1781784715508,
       "totalIdentified": 36,
       "tree": {
         "type": "page",
@@ -594,7 +701,7 @@
   "maol_ZCMeXVJPHT": [
     {
       "route": "/settings",
-      "timestamp": 1781784655180,
+      "timestamp": 1781787620285,
       "totalIdentified": 36,
       "tree": {
         "type": "page",

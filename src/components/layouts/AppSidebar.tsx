@@ -3,7 +3,7 @@
 import { useEffect, useRef } from 'react';
 import { UiButton, UiDiv } from '@/platform/ui';
 import { SHARED_LAYOUT } from '@/platform/ui';
-import { LogIn, Settings } from 'lucide-react';
+import { LogIn, Globe } from 'lucide-react';
 import { useTranslation } from '@/platform/ui';
 
 interface AppSidebarProps {
@@ -59,10 +59,10 @@ export function AppSidebar({ isOpen, onClose }: AppSidebarProps) {
         aria-modal={isOpen}
         aria-label={t(SHARED_LAYOUT.HEADER.MENU.MENU_BUTTON)}
         className={[
-          'fixed top-0 z-50 flex h-dvh w-[min(280px,85vw)] flex-col bg-background transition-transform duration-300 ease-out',
+          'fixed top-0 z-50 flex h-dvh w-72 flex-col bg-background transition-transform duration-300 ease-out',
           isArabic
-            ? 'inset-inline-end-0 border-s border-border shadow-[-4px_0_24px_rgba(0,0,0,0.08)]'
-            : 'inset-inline-start-0 border-e border-border shadow-[4px_0_24px_rgba(0,0,0,0.08)]',
+            ? 'inset-inline-end-0 border-s border-border'
+            : 'inset-inline-start-0 border-e border-border',
           isOpen
             ? 'translate-x-0'
             : isArabic
@@ -88,15 +88,15 @@ export function AppSidebar({ isOpen, onClose }: AppSidebarProps) {
             </UiButton>
 
             <UiButton
-              ui={SHARED_LAYOUT.SIDEBAR.SETTINGS_BUTTON}
+              ui={SHARED_LAYOUT.SIDEBAR.LANGUAGE_TOGGLE}
               variant="ghost"
               className="h-11 w-full justify-start gap-3 rounded-lg px-3 text-sm font-medium"
               onClick={() => {
-                window.location.href = '/settings';
+                window.location.href = '/language';
               }}
             >
-              <Settings className="h-5 w-5 shrink-0 opacity-70" />
-              <span>{t(SHARED_LAYOUT.SIDEBAR.SETTINGS_BUTTON)}</span>
+              <Globe className="h-5 w-5 shrink-0 opacity-70" />
+              <span>{t(SHARED_LAYOUT.SIDEBAR.LANGUAGE_TOGGLE)}</span>
             </UiButton>
           </UiDiv>
         </UiDiv>
