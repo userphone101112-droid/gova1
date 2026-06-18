@@ -2,61 +2,80 @@
   "settings": {
     "page": {
       "title": "Settings",
-      "description": "Manage language, direction, theme, and application preferences"
+      "description": "Customize your application experience according to your preferences."
     },
-    "language": {
-      "title": "Language",
-      "description": "Choose the interface language. Changes apply across the entire application."
+    "app-settings": {
+      "sectionTitle": "Application Settings",
+      "active": "Active",
+      "statusTitle": "System Status",
+      "description": "All systems are operating efficiently at this time.",
+      "maintenanceTitle": "Maintenance Mode",
+      "maintenanceDescription": "Enable maintenance mode for external users.",
+      "featureFlagsTitle": "Feature Flags",
+      "ai": "Artificial Intelligence",
+      "analytics": "Advanced Analytics",
+      "pdf": "PDF Export"
     },
-    "direction": {
-      "title": "Text Direction",
-      "description": "Direction is derived from the selected language.",
-      "rtl": "Right to Left (RTL)",
-      "ltr": "Left to Right (LTR)"
+    "language-region": {
+      "sectionTitle": "Language & Region",
+      "languageTitle": "Language Selection",
+      "description": "Choose your preferred interface language.",
+      "arabicButton": "العربية",
+      "englishButton": "English",
+      "previewLabel": "Direction Preview",
+      "rtlPreview": "Right to Left (RTL)",
+      "ltrPreview": "Left to Right (LTR)",
+      "timezoneLabel": "Timezone",
+      "cairo": "Cairo Time (GMT+3)",
+      "mecca": "Mecca Time (GMT+3)",
+      "dubai": "Dubai Time (GMT+4)"
     },
-    "theme": {
-      "title": "Theme",
-      "description": "Choose light, dark, or follow system preference."
-    },
-    "display": {
-      "title": "Display",
-      "fontSize": "Font Size",
-      "density": "Density"
-    },
-    "accessibility": {
-      "title": "Accessibility",
-      "highContrast": "High Contrast",
-      "reducedMotion": "Reduce Motion"
-    },
-    "features": {
-      "title": "Features",
-      "darkMode": "Dark Mode",
-      "multiLanguage": "Multi Language",
-      "advancedSearch": "Advanced Search",
-      "exportData": "Export Data",
-      "importData": "Import Data",
-      "experimentalUi": "Experimental UI",
-      "betaFeatures": "Beta Features",
-      "socialSharing": "Social Sharing",
-      "offlineMode": "Offline Mode"
-    },
-    "maintenance": {
-      "title": "Maintenance",
-      "enabled": "Maintenance Mode",
-      "bypassed": "Bypass Maintenance"
-    },
-    "options": {
-      "english": "English",
-      "arabic": "العربية",
+    "appearance": {
+      "sectionTitle": "Appearance",
+      "themeTitle": "Visual Theme",
       "light": "Light",
       "dark": "Dark",
-      "system": "System",
-      "densityCompact": "Compact",
-      "densityComfortable": "Comfortable",
-      "densitySpacious": "Spacious"
+      "system": "Automatic",
+      "fontSizeTitle": "Font Size",
+      "densityTitle": "Interface Density",
+      "compact": "Compact",
+      "comfortable": "Medium",
+      "spacious": "Comfortable",
+      "previewTitle": "Live Preview",
+      "button": "Change Colors"
+    },
+    "accessibility": {
+      "sectionTitle": "Accessibility",
+      "highContrastTitle": "High Contrast",
+      "highContrastDescription": "Increase contrast between elements and background to improve visibility.",
+      "reducedMotionTitle": "Reduce Motion",
+      "reducedMotionDescription": "Disable animations and visual effects to reduce distraction."
+    },
+    "developer-tools": {
+      "sectionTitle": "Developer Tools",
+      "ssotGuardTitle": "SSOT Guard",
+      "ssotGuardDescription": "Enable the Single Source of Truth system for data.",
+      "diagnosticsLabel": "Diagnostics",
+      "button": "Start Test"
+    },
+    "storage": {
+      "sectionTitle": "Storage & Persistence",
+      "localStorageLabel": "Local Storage",
+      "usageLabel": "2.4 MB used",
+      "cookiesLabel": "Cookies",
+      "button": "Clear All"
+    },
+    "summary": {
+      "sectionTitle": "Configuration Summary",
+      "languageLabel": "Active Language",
+      "themeLabel": "Interface Theme",
+      "densityLabel": "Data Density",
+      "timezoneLabel": "Timezone"
     },
     "actions": {
-      "reset": "Reset to Defaults"
+      "saveButton": "Save Changes",
+      "resetButton": "Reset Preferences",
+      "restoreButton": "Restore Defaults"
     }
   }
 }

@@ -2,7 +2,7 @@
 export const SETTINGS = {
   TITLE: {
     id: 'UI_SETTINGS_TITLE',
-    path: 'settings.page.title',
+    path: 'settings.page.display.title',
     description: 'Settings page title',
     category: 'display',
     feature: 'settings',
@@ -12,7 +12,7 @@ export const SETTINGS = {
   } as const,
   DESCRIPTION: {
     id: 'UI_SETTINGS_DESCRIPTION',
-    path: 'settings.page.description',
+    path: 'settings.page.display.description',
     description: 'Settings page description',
     category: 'display',
     feature: 'settings',
@@ -23,7 +23,7 @@ export const SETTINGS = {
   APP_SETTINGS: {
     TITLE: {
       id: 'UI_SETTINGS_APP_SETTINGS_TITLE',
-      path: 'settings.appSettings.title',
+      path: 'settings.app-settings.display.section-title',
       description: 'Application settings section title',
       category: 'display',
       feature: 'settings',
@@ -33,7 +33,7 @@ export const SETTINGS = {
     } as const,
     ACTIVE: {
       id: 'UI_SETTINGS_APP_SETTINGS_ACTIVE',
-      path: 'settings.appSettings.status.active',
+      path: 'settings.app-settings.status.active',
       description: 'System status active label',
       category: 'display',
       feature: 'settings',
@@ -43,7 +43,7 @@ export const SETTINGS = {
     } as const,
     STATUS_TITLE: {
       id: 'UI_SETTINGS_APP_SETTINGS_STATUS_TITLE',
-      path: 'settings.appSettings.status.title',
+      path: 'settings.app-settings.status.status-title',
       description: 'System status title',
       category: 'display',
       feature: 'settings',
@@ -53,7 +53,7 @@ export const SETTINGS = {
     } as const,
     STATUS_DESCRIPTION: {
       id: 'UI_SETTINGS_APP_SETTINGS_STATUS_DESCRIPTION',
-      path: 'settings.appSettings.status.description',
+      path: 'settings.app-settings.status.description',
       description: 'System status description',
       category: 'display',
       feature: 'settings',
@@ -63,7 +63,7 @@ export const SETTINGS = {
     } as const,
     MAINTENANCE_TITLE: {
       id: 'UI_SETTINGS_APP_SETTINGS_MAINTENANCE_TITLE',
-      path: 'settings.appSettings.maintenance.title',
+      path: 'settings.app-settings.maintenance.maintenance-title',
       description: 'Maintenance mode title',
       category: 'display',
       feature: 'settings',
@@ -73,7 +73,7 @@ export const SETTINGS = {
     } as const,
     MAINTENANCE_DESCRIPTION: {
       id: 'UI_SETTINGS_APP_SETTINGS_MAINTENANCE_DESCRIPTION',
-      path: 'settings.appSettings.maintenance.description',
+      path: 'settings.app-settings.maintenance.maintenance-description',
       description: 'Maintenance mode description',
       category: 'display',
       feature: 'settings',
@@ -83,7 +83,7 @@ export const SETTINGS = {
     } as const,
     FEATURE_FLAGS_TITLE: {
       id: 'UI_SETTINGS_APP_SETTINGS_FEATURE_FLAGS_TITLE',
-      path: 'settings.appSettings.featureFlags.title',
+      path: 'settings.app-settings.feature-flags.feature-flags-title',
       description: 'Feature flags section title',
       category: 'display',
       feature: 'settings',
@@ -93,7 +93,7 @@ export const SETTINGS = {
     } as const,
     AI: {
       id: 'UI_SETTINGS_APP_SETTINGS_AI',
-      path: 'settings.appSettings.featureFlags.ai',
+      path: 'settings.app-settings.feature-flags.ai',
       description: 'AI feature flag label',
       category: 'display',
       feature: 'settings',
@@ -103,7 +103,7 @@ export const SETTINGS = {
     } as const,
     ANALYTICS: {
       id: 'UI_SETTINGS_APP_SETTINGS_ANALYTICS',
-      path: 'settings.appSettings.featureFlags.analytics',
+      path: 'settings.app-settings.feature-flags.analytics',
       description: 'Analytics feature flag label',
       category: 'display',
       feature: 'settings',
@@ -113,7 +113,7 @@ export const SETTINGS = {
     } as const,
     PDF: {
       id: 'UI_SETTINGS_APP_SETTINGS_PDF',
-      path: 'settings.appSettings.featureFlags.pdf',
+      path: 'settings.app-settings.feature-flags.pdf',
       description: 'PDF export feature flag label',
       category: 'display',
       feature: 'settings',
@@ -125,7 +125,7 @@ export const SETTINGS = {
   LANGUAGE_REGION: {
     TITLE: {
       id: 'UI_SETTINGS_LANGUAGE_REGION_TITLE',
-      path: 'settings.languageRegion.title',
+      path: 'settings.language-region.display.section-title',
       description: 'Language & region section title',
       category: 'display',
       feature: 'settings',
@@ -135,7 +135,7 @@ export const SETTINGS = {
     } as const,
     LANGUAGE_TITLE: {
       id: 'UI_SETTINGS_LANGUAGE_REGION_LANGUAGE_TITLE',
-      path: 'settings.languageRegion.language.title',
+      path: 'settings.language-region.language.language-title',
       description: 'Language selection title',
       category: 'display',
       feature: 'settings',
@@ -145,7 +145,7 @@ export const SETTINGS = {
     } as const,
     LANGUAGE_DESCRIPTION: {
       id: 'UI_SETTINGS_LANGUAGE_REGION_LANGUAGE_DESCRIPTION',
-      path: 'settings.languageRegion.language.description',
+      path: 'settings.language-region.language.description',
       description: 'Language selection description',
       category: 'display',
       feature: 'settings',
@@ -153,10 +153,50 @@ export const SETTINGS = {
       createdAt: '2026-06-18',
       updatedAt: '2026-06-18',
     } as const,
+    ARABIC: {
+      id: 'UI_SETTINGS_LANGUAGE_REGION_ARABIC',
+      path: 'settings.language-region.language.arabic-button',
+      description: 'Arabic language option',
+      category: 'action',
+      feature: 'settings',
+      version: '1.0.0',
+      createdAt: '2026-06-18',
+      updatedAt: '2026-06-18',
+    } as const,
+    ENGLISH: {
+      id: 'UI_SETTINGS_LANGUAGE_REGION_ENGLISH',
+      path: 'settings.language-region.language.english-button',
+      description: 'English language option',
+      category: 'action',
+      feature: 'settings',
+      version: '1.0.0',
+      createdAt: '2026-06-18',
+      updatedAt: '2026-06-18',
+    } as const,
     DIRECTION_PREVIEW: {
       id: 'UI_SETTINGS_LANGUAGE_REGION_DIRECTION_PREVIEW',
-      path: 'settings.languageRegion.direction.preview',
+      path: 'settings.language-region.direction.preview-label',
       description: 'Direction preview label',
+      category: 'display',
+      feature: 'settings',
+      version: '1.0.0',
+      createdAt: '2026-06-18',
+      updatedAt: '2026-06-18',
+    } as const,
+    DIRECTION_RTL: {
+      id: 'UI_SETTINGS_LANGUAGE_REGION_DIRECTION_RTL',
+      path: 'settings.language-region.direction.rtl-preview',
+      description: 'RTL direction preview text',
+      category: 'display',
+      feature: 'settings',
+      version: '1.0.0',
+      createdAt: '2026-06-18',
+      updatedAt: '2026-06-18',
+    } as const,
+    DIRECTION_LTR: {
+      id: 'UI_SETTINGS_LANGUAGE_REGION_DIRECTION_LTR',
+      path: 'settings.language-region.direction.ltr-preview',
+      description: 'LTR direction preview text',
       category: 'display',
       feature: 'settings',
       version: '1.0.0',
@@ -165,7 +205,7 @@ export const SETTINGS = {
     } as const,
     TIMEZONE: {
       id: 'UI_SETTINGS_LANGUAGE_REGION_TIMEZONE',
-      path: 'settings.languageRegion.timezone.label',
+      path: 'settings.language-region.timezone.timezone-label',
       description: 'Timezone label',
       category: 'display',
       feature: 'settings',
@@ -175,7 +215,7 @@ export const SETTINGS = {
     } as const,
     CAIRO: {
       id: 'UI_SETTINGS_LANGUAGE_REGION_CAIRO',
-      path: 'settings.languageRegion.timezone.cairo',
+      path: 'settings.language-region.timezone.cairo',
       description: 'Cairo timezone option',
       category: 'display',
       feature: 'settings',
@@ -185,7 +225,7 @@ export const SETTINGS = {
     } as const,
     MECCA: {
       id: 'UI_SETTINGS_LANGUAGE_REGION_MECCA',
-      path: 'settings.languageRegion.timezone.mecca',
+      path: 'settings.language-region.timezone.mecca',
       description: 'Mecca timezone option',
       category: 'display',
       feature: 'settings',
@@ -195,7 +235,7 @@ export const SETTINGS = {
     } as const,
     DUBAI: {
       id: 'UI_SETTINGS_LANGUAGE_REGION_DUBAI',
-      path: 'settings.languageRegion.timezone.dubai',
+      path: 'settings.language-region.timezone.dubai',
       description: 'Dubai timezone option',
       category: 'display',
       feature: 'settings',
@@ -207,7 +247,7 @@ export const SETTINGS = {
   APPEARANCE: {
     TITLE: {
       id: 'UI_SETTINGS_APPEARANCE_TITLE',
-      path: 'settings.appearance.title',
+      path: 'settings.appearance.display.section-title',
       description: 'Appearance section title',
       category: 'display',
       feature: 'settings',
@@ -217,7 +257,7 @@ export const SETTINGS = {
     } as const,
     THEME_TITLE: {
       id: 'UI_SETTINGS_APPEARANCE_THEME_TITLE',
-      path: 'settings.appearance.theme.title',
+      path: 'settings.appearance.theme.theme-title',
       description: 'Theme section title',
       category: 'display',
       feature: 'settings',
@@ -257,7 +297,7 @@ export const SETTINGS = {
     } as const,
     FONT_SIZE_TITLE: {
       id: 'UI_SETTINGS_APPEARANCE_FONT_SIZE_TITLE',
-      path: 'settings.appearance.fontSize.title',
+      path: 'settings.appearance.font-size.font-size-title',
       description: 'Font size section title',
       category: 'display',
       feature: 'settings',
@@ -267,7 +307,7 @@ export const SETTINGS = {
     } as const,
     DENSITY_TITLE: {
       id: 'UI_SETTINGS_APPEARANCE_DENSITY_TITLE',
-      path: 'settings.appearance.density.title',
+      path: 'settings.appearance.density.density-title',
       description: 'Density section title',
       category: 'display',
       feature: 'settings',
@@ -307,7 +347,7 @@ export const SETTINGS = {
     } as const,
     PREVIEW_TITLE: {
       id: 'UI_SETTINGS_APPEARANCE_PREVIEW_TITLE',
-      path: 'settings.appearance.preview.title',
+      path: 'settings.appearance.preview.preview-title',
       description: 'Preview section title',
       category: 'display',
       feature: 'settings',
@@ -329,7 +369,7 @@ export const SETTINGS = {
   ACCESSIBILITY: {
     TITLE: {
       id: 'UI_SETTINGS_ACCESSIBILITY_TITLE',
-      path: 'settings.accessibility.title',
+      path: 'settings.accessibility.display.section-title',
       description: 'Accessibility section title',
       category: 'display',
       feature: 'settings',
@@ -339,7 +379,7 @@ export const SETTINGS = {
     } as const,
     HIGH_CONTRAST_TITLE: {
       id: 'UI_SETTINGS_ACCESSIBILITY_HIGH_CONTRAST_TITLE',
-      path: 'settings.accessibility.highContrast.title',
+      path: 'settings.accessibility.high-contrast.high-contrast-title',
       description: 'High contrast toggle title',
       category: 'display',
       feature: 'settings',
@@ -349,7 +389,7 @@ export const SETTINGS = {
     } as const,
     HIGH_CONTRAST_DESCRIPTION: {
       id: 'UI_SETTINGS_ACCESSIBILITY_HIGH_CONTRAST_DESCRIPTION',
-      path: 'settings.accessibility.highContrast.description',
+      path: 'settings.accessibility.high-contrast.high-contrast-description',
       description: 'High contrast toggle description',
       category: 'display',
       feature: 'settings',
@@ -359,7 +399,7 @@ export const SETTINGS = {
     } as const,
     REDUCED_MOTION_TITLE: {
       id: 'UI_SETTINGS_ACCESSIBILITY_REDUCED_MOTION_TITLE',
-      path: 'settings.accessibility.reducedMotion.title',
+      path: 'settings.accessibility.reduced-motion.reduced-motion-title',
       description: 'Reduced motion toggle title',
       category: 'display',
       feature: 'settings',
@@ -369,7 +409,7 @@ export const SETTINGS = {
     } as const,
     REDUCED_MOTION_DESCRIPTION: {
       id: 'UI_SETTINGS_ACCESSIBILITY_REDUCED_MOTION_DESCRIPTION',
-      path: 'settings.accessibility.reducedMotion.description',
+      path: 'settings.accessibility.reduced-motion.reduced-motion-description',
       description: 'Reduced motion toggle description',
       category: 'display',
       feature: 'settings',
@@ -381,7 +421,7 @@ export const SETTINGS = {
   DEVELOPER_TOOLS: {
     TITLE: {
       id: 'UI_SETTINGS_DEVELOPER_TOOLS_TITLE',
-      path: 'settings.developerTools.title',
+      path: 'settings.developer-tools.display.section-title',
       description: 'Developer tools section title',
       category: 'display',
       feature: 'settings',
@@ -391,7 +431,7 @@ export const SETTINGS = {
     } as const,
     SSOT_GUARD_TITLE: {
       id: 'UI_SETTINGS_DEVELOPER_TOOLS_SSOT_GUARD_TITLE',
-      path: 'settings.developerTools.ssotGuard.title',
+      path: 'settings.developer-tools.ssot-guard.ssot-guard-title',
       description: 'SSOT Guard toggle title',
       category: 'display',
       feature: 'settings',
@@ -401,7 +441,7 @@ export const SETTINGS = {
     } as const,
     SSOT_GUARD_DESCRIPTION: {
       id: 'UI_SETTINGS_DEVELOPER_TOOLS_SSOT_GUARD_DESCRIPTION',
-      path: 'settings.developerTools.ssotGuard.description',
+      path: 'settings.developer-tools.ssot-guard.ssot-guard-description',
       description: 'SSOT Guard toggle description',
       category: 'display',
       feature: 'settings',
@@ -411,7 +451,7 @@ export const SETTINGS = {
     } as const,
     DIAGNOSTICS: {
       id: 'UI_SETTINGS_DEVELOPER_TOOLS_DIAGNOSTICS',
-      path: 'settings.developerTools.diagnostics.label',
+      path: 'settings.developer-tools.diagnostics.diagnostics-label',
       description: 'Diagnostics label',
       category: 'display',
       feature: 'settings',
@@ -421,7 +461,7 @@ export const SETTINGS = {
     } as const,
     START_TEST: {
       id: 'UI_SETTINGS_DEVELOPER_TOOLS_START_TEST',
-      path: 'settings.developerTools.startTest.button',
+      path: 'settings.developer-tools.start-test.button',
       description: 'Start test button label',
       category: 'action',
       feature: 'settings',
@@ -433,7 +473,7 @@ export const SETTINGS = {
   STORAGE: {
     TITLE: {
       id: 'UI_SETTINGS_STORAGE_TITLE',
-      path: 'settings.storage.title',
+      path: 'settings.storage.display.section-title',
       description: 'Storage section title',
       category: 'display',
       feature: 'settings',
@@ -443,7 +483,7 @@ export const SETTINGS = {
     } as const,
     LOCAL_STORAGE: {
       id: 'UI_SETTINGS_STORAGE_LOCAL_STORAGE',
-      path: 'settings.storage.localStorage.label',
+      path: 'settings.storage.local-storage.local-storage-label',
       description: 'Local storage label',
       category: 'display',
       feature: 'settings',
@@ -453,7 +493,7 @@ export const SETTINGS = {
     } as const,
     USAGE: {
       id: 'UI_SETTINGS_STORAGE_USAGE',
-      path: 'settings.storage.usage.label',
+      path: 'settings.storage.usage.usage-label',
       description: 'Storage usage label',
       category: 'display',
       feature: 'settings',
@@ -463,7 +503,7 @@ export const SETTINGS = {
     } as const,
     COOKIES: {
       id: 'UI_SETTINGS_STORAGE_COOKIES',
-      path: 'settings.storage.cookies.label',
+      path: 'settings.storage.cookies.cookies-label',
       description: 'Cookies label',
       category: 'display',
       feature: 'settings',
@@ -473,7 +513,7 @@ export const SETTINGS = {
     } as const,
     CLEAR_ALL: {
       id: 'UI_SETTINGS_STORAGE_CLEAR_ALL',
-      path: 'settings.storage.clearAll.button',
+      path: 'settings.storage.clear-all.button',
       description: 'Clear all button label',
       category: 'action',
       feature: 'settings',
@@ -485,7 +525,7 @@ export const SETTINGS = {
   SUMMARY: {
     TITLE: {
       id: 'UI_SETTINGS_SUMMARY_TITLE',
-      path: 'settings.summary.title',
+      path: 'settings.summary.display.section-title',
       description: 'Summary section title',
       category: 'display',
       feature: 'settings',
@@ -495,7 +535,7 @@ export const SETTINGS = {
     } as const,
     LANGUAGE: {
       id: 'UI_SETTINGS_SUMMARY_LANGUAGE',
-      path: 'settings.summary.language.label',
+      path: 'settings.summary.language.language-label',
       description: 'Active language label',
       category: 'display',
       feature: 'settings',
@@ -505,7 +545,7 @@ export const SETTINGS = {
     } as const,
     THEME: {
       id: 'UI_SETTINGS_SUMMARY_THEME',
-      path: 'settings.summary.theme.label',
+      path: 'settings.summary.theme.theme-label',
       description: 'Interface theme label',
       category: 'display',
       feature: 'settings',
@@ -515,7 +555,7 @@ export const SETTINGS = {
     } as const,
     DENSITY: {
       id: 'UI_SETTINGS_SUMMARY_DENSITY',
-      path: 'settings.summary.density.label',
+      path: 'settings.summary.density.density-label',
       description: 'Data density label',
       category: 'display',
       feature: 'settings',
@@ -525,7 +565,7 @@ export const SETTINGS = {
     } as const,
     TIMEZONE: {
       id: 'UI_SETTINGS_SUMMARY_TIMEZONE',
-      path: 'settings.summary.timezone.label',
+      path: 'settings.summary.timezone.timezone-label',
       description: 'Timezone label',
       category: 'display',
       feature: 'settings',
@@ -537,7 +577,7 @@ export const SETTINGS = {
   ACTIONS: {
     SAVE: {
       id: 'UI_SETTINGS_ACTIONS_SAVE',
-      path: 'settings.actions.save.button',
+      path: 'settings.actions.save.save-button',
       description: 'Save changes button label',
       category: 'action',
       feature: 'settings',
@@ -547,7 +587,7 @@ export const SETTINGS = {
     } as const,
     RESET_PREFERENCES: {
       id: 'UI_SETTINGS_ACTIONS_RESET_PREFERENCES',
-      path: 'settings.actions.resetPreferences.button',
+      path: 'settings.actions.reset-preferences.reset-button',
       description: 'Reset preferences button label',
       category: 'action',
       feature: 'settings',
@@ -557,7 +597,7 @@ export const SETTINGS = {
     } as const,
     RESTORE_DEFAULTS: {
       id: 'UI_SETTINGS_ACTIONS_RESTORE_DEFAULTS',
-      path: 'settings.actions.restoreDefaults.button',
+      path: 'settings.actions.restore-defaults.restore-button',
       description: 'Restore defaults button label',
       category: 'action',
       feature: 'settings',

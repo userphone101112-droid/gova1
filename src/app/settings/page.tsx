@@ -126,20 +126,20 @@ export default function SettingsPage() {
             </div>
             <div className="flex w-fit gap-1 rounded-full bg-surface-container p-1">
               <UiButton
-                ui={COMMON_LAYOUT.WRAPPER}
+                ui={SETTINGS.LANGUAGE_REGION.ARABIC}
                 variant={locale === 'ar' ? 'default' : 'ghost'}
                 className="rounded-full px-6 py-2 text-xs font-semibold"
-                onClick={() => window.location.href = '/language'}
+                onClick={() => { window.location.href = '/language'; }}
               >
-                العربية
+                {t(SETTINGS.LANGUAGE_REGION.ARABIC)}
               </UiButton>
               <UiButton
-                ui={COMMON_LAYOUT.WRAPPER}
+                ui={SETTINGS.LANGUAGE_REGION.ENGLISH}
                 variant={locale === 'en' ? 'default' : 'ghost'}
                 className="rounded-full px-6 py-2 text-xs font-semibold"
-                onClick={() => window.location.href = '/language'}
+                onClick={() => { window.location.href = '/language'; }}
               >
-                English
+                {t(SETTINGS.LANGUAGE_REGION.ENGLISH)}
               </UiButton>
             </div>
           </div>
@@ -153,7 +153,9 @@ export default function SettingsPage() {
                   <Globe className="h-5 w-5" />
                 </div>
                 <span className="text-sm">
-                  {locale === 'ar' ? 'من اليمين إلى اليسار (RTL)' : 'Left to Right (LTR)'}
+                  {locale === 'ar'
+                    ? t(SETTINGS.LANGUAGE_REGION.DIRECTION_RTL)
+                    : t(SETTINGS.LANGUAGE_REGION.DIRECTION_LTR)}
                 </span>
               </UiDiv>
             </div>
@@ -452,7 +454,9 @@ export default function SettingsPage() {
                 {t(SETTINGS.SUMMARY.LANGUAGE)}
               </span>
               <span className="text-sm font-bold text-primary">
-                {locale === 'ar' ? 'العربية' : 'English'}
+                {locale === 'ar'
+                  ? t(SETTINGS.LANGUAGE_REGION.ARABIC)
+                  : t(SETTINGS.LANGUAGE_REGION.ENGLISH)}
               </span>
             </li>
             <li className="flex items-center justify-between border-b border-outline-variant/10 py-2">

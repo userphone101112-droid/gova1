@@ -7,6 +7,13 @@ The project uses an advanced architecture to manage components, UI, and translat
 2. **Primitives & Runtime Components System**
 3. **i18n & Binding System**
 
+### Public entry points
+
+| Import | Purpose |
+|--------|---------|
+| `@/platform/ui` | Client-safe API: registry, `Ui*` components, i18n hooks |
+| `@/platform/ui/server` | Server-only API: dictionaries, locale cookies, feature layouts |
+
 ---
 
 ## 1. UI Registry System
@@ -26,11 +33,12 @@ Each UI element in the registry contains:
   id: string;           // Unique constant identifier (example: 'UI_HOME_PROMO_BANNER_TITLE')
   path: string;         // Hierarchical path (example: 'home.promo-banner.display.title')
   description: string;  // Element description
-  category: string;     // Category (action, display, container, layout)
-  feature: string;      // Feature (home, splash, auth, settings)
+  category: 'action' | 'input' | 'navigation' | 'display' | 'container';
+  feature: string;      // Feature (home, splash, auth, settings, common, …)
   version: string;      // Definition version
-  createdAt: string;   // Creation date
-  updatedAt: string;   // Update date
+  createdAt: string;    // Creation date
+  updatedAt: string;    // Update date
+  deprecated?: boolean; // Optional deprecation flag
 }
 ```
 
@@ -43,6 +51,9 @@ The path follows this pattern:
 Examples:
 - `home.promo-banner.display.title` → Home page, promo banner section, display, title
 - `home.categories-grid.actions.toggle-button` → Home page, categories grid, actions, toggle button
+- `common.layout.wrapper` → Shared layout wrapper (category identity, no bound translation)
+
+Validated at runtime by `UI_IDENTIFIER_REGEX`: `/^[a-z0-9-]+(\.[a-z0-9-]+){2,3}$/`
 
 ### Registry Organization
 
@@ -50,38 +61,72 @@ The registry is organized by features:
 
 ```typescript
 export const UI_REGISTRY = {
-  HOME,              // Home page elements
-  SPLASH,            // Splash screen elements
-  ERROR_BOUNDARY,    // Error handling elements
-  SHARED_LAYOUT,    // Shared layout elements
-  AUTH,              // Authentication elements
-  SETTINGS,          // Settings elements
+  HOME,
+  ERROR_BOUNDARY,
+  SPLASH,
+  SHARED_LAYOUT,
+  AUTH,
+  SETTINGS,
 } as const;
 ```
 
+Feature identities are merged with **category identities** (`ALL_CATEGORY_IDENTITIES` from `categories/`) into `ALL_UI_IDENTITIES`.
+
 ### Registry Files
 
-- `registry.ts` - Main registry and search/validation functions
-- `features/home.ts` - Home page element definitions
-- `features/splash.ts` - Splash screen element definitions
-- `features/auth.ts` - Authentication element definitions
-- `features/settings.ts` - Settings element definitions
-- `categories.ts` - Shared category definitions
+- `registry.ts` — Main registry, lookup maps, search/validation functions (auto-validates on module load)
+- `types.ts` — Core type definitions (`UiIdentity`, etc.)
+- `config.ts` — `UI_REGISTRY_CONFIG` (validation enabled only in development)
+- `source-index.ts` — Maps identity IDs to source file locations
+- `generator.ts` — Registry generation utilities
+- `features/home.ts` — Home page element definitions
+- `features/splash.ts` — Splash screen element definitions
+- `features/auth.ts` — Authentication element definitions
+- `features/settings.ts` — Settings element definitions
+- `features/error-boundary.ts` — Error boundary element definitions
+- `features/shared-layout.ts` — Shared layout element definitions
+- `categories/` — Shared category identities (layout, typography, forms, media, lists, tables, interactive, spacing, template, components)
+- `categories/index.ts` — Re-exports all category modules and `ALL_CATEGORY_IDENTITIES`
 
 ### Registry Functions
 
 ```typescript
-// Search for UI identity by ID
+// Lookup maps (built from ALL_UI_IDENTITIES)
+UI_ID_MAP, UI_PATH_MAP, FEATURE_MAP
+
+// Flattened lists
+ALL_UI_IDENTITIES, ALL_UI_IDENTIFIERS
+
+// Search for UI identity by ID or path
 getUiIdentityById(id: string): UiIdentity | undefined
-
-// Search for UI identity by path
 getUiIdentityByPath(path: string): UiIdentity | undefined
+getUiIdentityByFeature(feature: string): UiIdentity[]
 
-// Resolve UI parameter to identity
+// Resolve UI parameter to identity (UiIdentity object preferred; string paths are deprecated)
 resolveUiParam(param: UiParam): UiIdentity | undefined
+getUiIdentity(param: UiParam): UiIdentity | undefined
 
-// Validate identity at runtime
+// Resolve source file location from identity
+resolveSourceFromIdentity(param: UiParam): UiSourceLocation | undefined
+
+// Validate identity at runtime (development only)
 validateRuntimeIdentity(componentName, ui, resolvedIdentity): void
+
+// Validate entire registry (also runs automatically at module load)
+validateRegistry(): void
+```
+
+### Registry Configuration
+
+```typescript
+export const UI_REGISTRY_CONFIG = {
+  enableValidation: process.env.NODE_ENV === 'development',
+  strictMode: true,
+  warnDeprecated: process.env.NODE_ENV === 'development',
+  warnLegacy: process.env.NODE_ENV === 'development',
+  autoFix: false,
+  logLevel: process.env.NODE_ENV === 'development' ? 'debug' : 'error',
+} as const;
 ```
 
 ---
@@ -92,24 +137,25 @@ validateRuntimeIdentity(componentName, ui, resolvedIdentity): void
 `src/platform/ui/runtime/primitives/`
 
 ### Function
-Basic React components with ready-made styling, used as infrastructure for runtime components.
+Basic React components with ready-made styling, used as infrastructure for runtime components. **Not intended for direct app import** — use `Ui*` components from `@/platform/ui` instead.
 
-### Available Components
+### Available Primitives
 
-- **button.tsx** - Button component with variants (default, destructive, outline, secondary, ghost, link)
-- **input.tsx** - Text input component
-- **select.tsx** - Dropdown list component
-- **textarea.tsx** - Text area component
-- **checkbox.tsx** - Checkbox component
-- **radio.tsx** - Radio button component
-- **switch.tsx** - Toggle switch component
-- **link.tsx** - Link component
-- **label.tsx** - Label component
-- **header.tsx** - Heading component (H1-H6)
-- **image.tsx** - Image component
-- **card.tsx** - Card component
-- **modal.tsx** - Modal window component
-- **badge.tsx** - Badge component
+- **button.tsx** — Button with variants (default, destructive, outline, secondary, ghost, link)
+- **input.tsx** — Text input
+- **select.tsx** — Dropdown list
+- **textarea.tsx** — Text area
+- **checkbox.tsx** — Checkbox
+- **radio.tsx** — Radio button
+- **switch.tsx** — Toggle switch
+- **link.tsx** — Link
+- **label.tsx** — Label
+- **header.tsx** — Heading component (H1–H6 via `level` prop)
+- **image.tsx** — Image component
+- **card.tsx** — Card component
+- **modal.tsx** — Modal window
+- **badge.tsx** — Badge component
+- **logo.tsx** — Logo component
 
 ### Example: Button Component
 
@@ -118,18 +164,6 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   variant?: 'default' | 'destructive' | 'outline' | 'secondary' | 'ghost' | 'link';
   size?: 'default' | 'sm' | 'lg' | 'icon';
 }
-
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant = 'default', size = 'default', ...props }, ref) => {
-    return (
-      <button
-        className={cn(/* CSS styles */)}
-        ref={ref}
-        {...props}
-      />
-    );
-  }
-);
 ```
 
 ---
@@ -139,12 +173,16 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 ### Location
 `src/platform/ui/runtime/components/`
 
+Public exports are defined in `public-api.ts` and re-exported from `@/platform/ui`.
+
 ### Function
 UI components that connect Primitives and UI Registry, adding UI identity to each element.
 
-### Mechanism
+### Two Creation Mechanisms
 
-Uses the `createUiStyledComponent` function to create UI components:
+#### 1. Styled components — `createUiStyledComponent`
+
+Wraps styled primitives (Button, Input, Header, …):
 
 ```typescript
 export function createUiStyledComponent<P extends object, R = HTMLElement>(
@@ -176,6 +214,10 @@ export function createUiStyledComponent<P extends object, R = HTMLElement>(
 }
 ```
 
+#### 2. HTML elements — `createUiComponent` (`component-factory.ts`)
+
+Creates UI-identified wrappers for raw HTML elements (div, section, table, …).
+
 ### Creating a UI Component
 
 ```typescript
@@ -190,28 +232,44 @@ export const UiButton = createUiStyledComponent<ButtonProps, HTMLButtonElement>(
 ### Added Data Attributes
 
 Each UI component gets the following attributes:
-- `data-ui-id` - Unique element identifier
-- `data-ui-path` - Hierarchical element path
-- `data-ui-feature` - Feature it belongs to
-- `data-ui-component` - Component name
+- `data-ui-id` — Unique element identifier
+- `data-ui-path` — Hierarchical element path
+- `data-ui-feature` — Feature it belongs to
+- `data-ui-component` — Component name
 
-### Available Runtime Components
+### Available Runtime Components (from `@/platform/ui`)
 
-- **UiButton** - UI button
-- **UiInput** - UI input
-- **UiSelect** - UI dropdown
-- **UiTextarea** - UI text area
-- **UiCheckbox** - UI checkbox
-- **UiRadio** - UI radio button
-- **UiSwitch** - UI switch
-- **UiLink** - UI link
-- **UiLabel** - UI label
-- **UiHeader** - UI header
-- **UiImage** - UI image
-- **UiCard** - UI card
-- **UiModal** - UI modal
-- **UiBadge** - UI badge
-- **HTML elements** - UiDiv, UiSpan, UiSection, UiMain, UiArticle, UiAside, UiFooter, etc.
+**Styled components:**
+- **UiButton**, **UiInput**, **UiSelect**, **UiTextarea**, **UiCheckbox**, **UiRadio**, **UiSwitch**
+- **UiLink**, **UiLabel**, **UiHeader**, **UiImage**
+- **UiCard**, **UiModal**, **UiBadge**
+
+**HTML structural components** (from `html-components.ts`):
+- Layout: UiDiv, UiSpan, UiNav, UiMain, UiSection, UiArticle, UiAside, UiFooter
+- Headings: UiH1–UiH6
+- Text: UiP, UiStrong, UiEm
+- Media: UiPicture, UiFigure, UiFigcaption, UiVideo, UiAudio, UiIframe
+- Lists: UiUl, UiOl, UiLi
+- Tables: UiTable, UiThead, UiTbody, UiTr, UiTh, UiTd
+- Forms: UiForm, UiOption, UiFieldset, UiLegend
+- Dialog: UiDialog, UiDetails, UiSummary
+- Other: UiA, UiCanvas, UiSvg, UiTemplate, UiSlot, UiBr, UiHr, UiCode, UiPre
+
+**DevTools:**
+- **UiDev** (alias for `DevUiOverlay`) — UI development overlay for debugging
+
+### Shared Layout Categories
+
+Structural elements typically use category identities from `COMMON_LAYOUT` (and related category exports):
+
+```typescript
+import { COMMON_LAYOUT } from '@/platform/ui/registry/categories';
+
+<UiSection ui={COMMON_LAYOUT.SECTION}>…</UiSection>
+<UiDiv ui={COMMON_LAYOUT.WRAPPER}>…</UiDiv>
+```
+
+Category paths under `common.*` do not require bound translations (`isCategoryUiPath`).
 
 ---
 
@@ -228,39 +286,47 @@ Comprehensive system for managing translations and binding them to UI elements, 
 ```
 i18n/
 ├── core/
-│   ├── provider.tsx          - Translation provider (I18nProvider)
-│   ├── useTranslation.ts     - Translation use hook
-│   ├── t.ts                  - Basic translation function
-│   ├── getDictionary.ts     - Load translation dictionaries
-│   ├── types.ts              - Type definitions
-│   ├── enforceBoundary.ts    - Enforce feature boundary
-│   ├── featureScope.ts       - Feature scope determination
-│   ├── i18n-route-manifest.ts - Translation route manifest
-│   └── resolveTranslationSource.ts - Resolve translation source
+│   ├── provider.tsx              - Translation provider (I18nProvider)
+│   ├── useTranslation.ts         - Translation hook
+│   ├── t.ts                      - Basic translation function
+│   ├── getDictionary.ts          - Load/merge/cache dictionaries
+│   ├── types.ts                  - Type definitions
+│   ├── enforceBoundary.ts        - Enforce feature boundary
+│   ├── featureScope.ts           - Feature scope determination (FEATURE_SCOPES)
+│   ├── i18n-route-manifest.ts    - Translation route manifest
+│   └── resolveTranslationSource.ts - Resolve UI identity → translation key
 ├── binding/
-│   ├── registry-binding.ts   - Bind registry to translation
-│   ├── useBoundUI.ts         - Bound UI hook
-│   ├── boundTranslation.ts  - Bound translation
-│   └── translation-validator.ts - Translation validation
+│   ├── registry-binding.ts       - Bind registry to translation
+│   ├── useBoundUI.ts               - Bound UI hook and validation helpers
+│   ├── boundTranslation.ts         - Bound translation helper
+│   └── translation-validator.ts    - Translation validation
 ├── locales/
-│   ├── common/
-│   │   ├── ar.json          - Common translations (Arabic)
-│   │   └── en.json          - Common translations (English)
-│   ├── home/
-│   │   ├── ar.json          - Home page translations (Arabic)
-│   │   └── en.json          - Home page translations (English)
+│   ├── common/                   - ar.json, en.json
+│   ├── home/                     - ar.json, en.json
 │   ├── splash/
 │   ├── auth/
 │   ├── settings/
-│   └── ...
+│   ├── shared-layout/
+│   └── error-boundary/
 ├── storage/
-│   ├── LocaleStorageManager.ts   - Language storage manager
-│   ├── CookieLocaleAdapter.ts    - Cookie adapter
-│   └── IndexedDbLocaleAdapter.ts - IndexedDB adapter
-└── keys.ts                    - Translation key types
+│   ├── LocaleStorageManager.ts
+│   ├── LocaleStorageAdapter.ts
+│   ├── CookieLocaleAdapter.ts
+│   └── IndexedDbLocaleAdapter.ts
+├── utils/
+│   ├── getLocale.ts              - Client locale helpers (direction, theme)
+│   ├── getLocale.server.ts       - Server locale/cookie helpers
+│   ├── createFeatureLayout.tsx   - Feature layout factory
+│   └── discoverFeatures.ts       - Feature discovery
+├── LocaleProvider.tsx            - Syncs HTML lang/dir with unified store
+└── keys.ts                       - Translation key types
 ```
 
+Server-only dictionary APIs live in `@/platform/ui/server` (re-exported from `getDictionary.ts`).
+
 ### Provider (I18nProvider)
+
+Root layout loads the full app dictionary once via `getAppDictionaryCached`, then `I18nProvider` keeps it in sync with locale changes:
 
 ```typescript
 export function I18nProvider({
@@ -282,10 +348,9 @@ export function I18nProvider({
     []
   );
 
-  // Load dictionary when language changes
   useEffect(() => {
     if (locale === initialLocale) return;
-    
+
     let cancelled = false;
     loadDictionary(locale).then((dict) => {
       if (!cancelled) setDictionary(dict);
@@ -301,14 +366,20 @@ export function I18nProvider({
   };
 
   return (
-    <I18nContextInstance.Provider value={{ locale, setLocale: handleSetLocale, dictionary, feature: routeFeature }}>
+    <I18nContextInstance.Provider
+      value={{ locale, setLocale: handleSetLocale, dictionary, feature: routeFeature }}
+    >
       {children}
     </I18nContextInstance.Provider>
   );
 }
 ```
 
+`LocaleProvider` (separate component) updates `document.documentElement.lang` and `.dir` for RTL/LTR when the unified store language changes.
+
 ### Translation Hook (useTranslation)
+
+Accepts either a **UI identity object** or an explicit **translation key** as `TranslationSource`:
 
 ```typescript
 export function useTranslation() {
@@ -316,26 +387,7 @@ export function useTranslation() {
 
   const t: TranslateFn = (source, fallback) => {
     const key = resolveTranslationKey(source);
-
-    if (!key) {
-      if (process.env.NODE_ENV === 'development') {
-        console.warn('[i18n] No translation key for source:', source);
-      }
-      return fallback ?? '';
-    }
-
-    try {
-      validateTranslationKey(key, feature);
-    } catch (error) {
-      console.warn(error);
-    }
-
-    const result = translateKey(key, dictionary, fallback);
-
-    if (result === key && process.env.NODE_ENV === 'development') {
-      console.warn(`[i18n] Missing translation for key "${key}" (feature scope: ${feature})`);
-    }
-
+    // … validateTranslationKey, translateKey …
     return result;
   };
 
@@ -343,12 +395,19 @@ export function useTranslation() {
 }
 ```
 
+`resolveTranslationKey` maps UI paths to keys via `generateTranslationKeyFromUi`, or passes through explicit keys like `'home.categories.fashion'`.
+
 ### Loading Dictionaries
 
 ```typescript
+/** Features merged into the single app-wide dictionary */
+export const APP_DICTIONARY_FEATURES = [
+  'common', 'splash', 'home', 'auth',
+  'shared-layout', 'error-boundary', 'settings',
+] as const;
+
 export async function getAppDictionary(locale: Locale): Promise<TranslationDictionary> {
   const uniqueFeatures = [...new Set(APP_DICTIONARY_FEATURES)];
-
   const dictionaries = await Promise.all(
     uniqueFeatures.map((scopeFeature) =>
       scopeFeature === 'common'
@@ -356,12 +415,25 @@ export async function getAppDictionary(locale: Locale): Promise<TranslationDicti
         : loadFeatureDictionary(scopeFeature, locale)
     )
   );
-
-  return dictionaries.reduce<TranslationDictionary>(
-    (merged, dict) => deepMerge(merged, dict),
-    {}
-  );
+  return dictionaries.reduce(deepMerge, {});
 }
+```
+
+Additional APIs:
+- `getMergedDictionary(locale, feature)` — Merge namespaces for a route scope via `FEATURE_SCOPES`
+- `getDictionary(locale, feature)` — Alias for `getMergedDictionary`
+- `getDictionaryCached` / `getAppDictionaryCached` — Server-side cache (5-minute TTL)
+- `clearDictionaryCache()` / `getDictionaryCacheStats()` — Cache management
+
+### Feature Scopes
+
+```typescript
+export const FEATURE_SCOPES = {
+  home: ['common', 'shared-layout', 'home'],
+  auth: ['common', 'auth'],
+  settings: ['common', 'settings'],
+  // …
+};
 ```
 
 ### Translation File Structure
@@ -423,119 +495,23 @@ export function generateTranslationKeyFromUi(ui: UiIdentifier): string {
 - `home.promo-banner.display.title` → `home.promo-banner.title`
 - `home.categories-grid.actions.toggle-button` → `home.categories-grid.toggleButton`
 
+#### Category Paths (No Translation Required)
+
+```typescript
+export function isCategoryUiPath(ui: UiIdentifier): boolean {
+  return ui.startsWith('common.');
+}
+```
+
+Identities under `common.*` (e.g. `COMMON_LAYOUT.WRAPPER`) are structural and do not resolve to translation keys.
+
 #### Binding Validation
 
-```typescript
-export function validateBinding(
-  ui: UiIdentifier,
-  translationKey: string,
-  availableTranslationKeys: Set<string>
-): BindingValidationResult {
-  const errors: BindingError[] = [];
-  const warnings: BindingWarning[] = [];
-  
-  // Validate UI identifier format
-  if (!validateUiIdentifierFormat(ui)) {
-    errors.push({
-      type: BindingErrorType.INVALID_FORMAT,
-      ui,
-      message: `UI identifier "${ui}" has invalid format. Expected: page.section.component.element`,
-    });
-    return { isValid: false, errors, warnings };
-  }
-  
-  // Extract feature from UI identifier
-  const uiFeature = extractFeatureFromUiIdentifier(ui);
-  
-  // Extract feature from translation key
-  const translationFeature = translationKey.split('.')[0];
-  
-  // Validate no cross-feature binding
-  if (uiFeature !== translationFeature && translationFeature !== 'common') {
-    errors.push({
-      type: BindingErrorType.CROSS_FEATURE_MAPPING,
-      ui,
-      translationKey,
-      feature: uiFeature,
-      message: `UI identifier "${ui}" belongs to feature "${uiFeature}" but translation key "${translationKey}" belongs to feature "${translationFeature}". Cross-feature mapping is not allowed.`,
-    });
-  }
-  
-  // Validate translation key exists
-  if (!availableTranslationKeys.has(translationKey)) {
-    errors.push({
-      type: BindingErrorType.MISSING_TRANSLATION,
-      ui,
-      translationKey,
-      feature: uiFeature,
-      message: `Translation key "${translationKey}" does not exist in translation registry for UI identifier "${ui}".`,
-    });
-  }
-  
-  return {
-    isValid: errors.length === 0,
-    errors,
-    warnings,
-  };
-}
-```
+`validateBinding` checks format, cross-feature mapping, key existence, and emits a `NAMING_MISMATCH` warning when the provided key differs from the expected generated key.
 
-#### Full Registry Validation
+`validateBindingRegistry` checks orphan UI identifiers and orphan translations across the full registry.
 
-```typescript
-export function validateBindingRegistry(
-  uiIdentifiers: UiIdentifier[],
-  translationKeys: Set<string>,
-  usedUiIdentifiers: Set<UiIdentifier>,
-  usedTranslationKeys: Set<string>
-): BindingValidationResult {
-  const errors: BindingError[] = [];
-  const warnings: BindingWarning[] = [];
-  
-  // Validate orphan UI identifiers (registered but not used)
-  for (const ui of uiIdentifiers) {
-    if (!usedUiIdentifiers.has(ui)) {
-      warnings.push({
-        type: 'ORPHAN_UI_IDENTIFIER',
-        message: `UI identifier "${ui}" is registered but never used in any component.`,
-        ui,
-      });
-    }
-    
-    // Validate translation exists for each UI identifier
-    const expectedKey = generateTranslationKeyFromUi(ui);
-    if (!translationKeys.has(expectedKey)) {
-      errors.push({
-        type: BindingErrorType.MISSING_TRANSLATION,
-        ui,
-        translationKey: expectedKey,
-        feature: extractFeatureFromUiIdentifier(ui),
-        message: `UI identifier "${ui}" requires translation key "${expectedKey}" which does not exist.`,
-      });
-    }
-  }
-  
-  // Validate orphan translations (exist but not used)
-  for (const key of translationKeys) {
-    if (!usedTranslationKeys.has(key)) {
-      const feature = key.split('.')[0];
-      if (feature !== 'common') {
-        warnings.push({
-          type: 'ORPHAN_TRANSLATION',
-          message: `Translation key "${key}" exists but is not used by any UI element.`,
-          translationKey: key,
-        });
-      }
-    }
-  }
-  
-  return {
-    isValid: errors.length === 0,
-    errors,
-    warnings,
-  };
-}
-```
+Additional helpers: `createBindingRecord`, `generateBindingMap`, `getFeatureBindings`, `useBoundUI`, `boundTranslation`.
 
 ---
 
@@ -568,36 +544,7 @@ export const HOME = {
       createdAt: '2026-06-15',
       updatedAt: '2026-06-15',
     } as const,
-    ITEM: {
-      id: 'UI_HOME_CATEGORIES_GRID_ITEM',
-      path: 'home.categories-grid.actions.category-button',
-      description: 'Select category button',
-      category: 'action',
-      feature: 'home',
-      version: '1.0.0',
-      createdAt: '2026-06-15',
-      updatedAt: '2026-06-15',
-    } as const,
-    CATEGORY_IMAGE: {
-      id: 'UI_HOME_CATEGORIES_GRID_CATEGORY_IMAGE',
-      path: 'home.categories-grid.display.category-image',
-      description: 'Category image in grid',
-      category: 'display',
-      feature: 'home',
-      version: '1.0.0',
-      createdAt: '2026-06-15',
-      updatedAt: '2026-06-15',
-    } as const,
-    CATEGORY_NAME: {
-      id: 'UI_HOME_CATEGORIES_GRID_CATEGORY_NAME',
-      path: 'home.categories-grid.display.category-name',
-      description: 'Category name label',
-      category: 'display',
-      feature: 'home',
-      version: '1.0.0',
-      createdAt: '2026-06-15',
-      updatedAt: '2026-06-15',
-    } as const,
+    // … ITEM, CATEGORY_IMAGE, CATEGORY_NAME
   },
 } as const;
 ```
@@ -610,8 +557,8 @@ In `src/platform/ui/i18n/locales/home/ar.json`:
 {
   "home": {
     "categories-grid": {
-      "sectionTitle": "الفئات",
-      "toggleButton": "عرض الكل"
+      "sectionTitle": "أسواق السويس",
+      "toggleButton": "تبديل المظهر"
     },
     "categories": {
       "fashion": "أزياء",
@@ -628,8 +575,8 @@ In `src/platform/ui/i18n/locales/home/en.json`:
 {
   "home": {
     "categories-grid": {
-      "sectionTitle": "Categories",
-      "toggleButton": "View All"
+      "sectionTitle": "Suez Markets",
+      "toggleButton": "Toggle Layout"
     },
     "categories": {
       "fashion": "Fashion",
@@ -653,14 +600,10 @@ import { UiButton, UiImage, UiLabel, UiHeader, UiDiv, UiSection } from '@/platfo
 import { HOME } from '@/platform/ui';
 import { COMMON_LAYOUT } from '@/platform/ui/registry/categories';
 
-const CATEGORIES: Array<{
-  id: string;
-  nameKey: TranslationKey;
-  imgSrc: string;
-}> = [
-  { id: 'fashion', nameKey: 'home.categories.fashion', imgSrc: '...' },
-  { id: 'automotive', nameKey: 'home.categories.automotive', imgSrc: '...' },
-  // ...
+const CATEGORIES: Array<{ id: string; nameKey: TranslationKey; imgSrc: string }> = [
+  { id: 'fashion', nameKey: 'home.categories.fashion', imgSrc: '…' },
+  { id: 'automotive', nameKey: 'home.categories.automotive', imgSrc: '…' },
+  // …
 ];
 
 export function CategoriesGrid() {
@@ -669,23 +612,22 @@ export function CategoriesGrid() {
   return (
     <UiSection ui={COMMON_LAYOUT.SECTION} id="categories-section">
       <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="flex justify-between items-end mb-4">
-        <UiHeader
-          ui={HOME.CATEGORIES_GRID.SECTION_TITLE}
-          level={3}
-          className="font-semibold"
-        >
-          {t(HOME.CATEGORIES_GRID.SECTION_TITLE)}
-        </UiHeader>
-        <UiButton ui={HOME.CATEGORIES_GRID.TOGGLE}>
+        <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="flex items-center gap-2 …">
+          <Store className="w-5 h-5 text-blue-600" />
+          <UiHeader ui={HOME.CATEGORIES_GRID.SECTION_TITLE} level={3}>
+            {t(HOME.CATEGORIES_GRID.SECTION_TITLE)}
+          </UiHeader>
+        </UiDiv>
+        <UiButton ui={HOME.CATEGORIES_GRID.TOGGLE} variant="outline">
           <span>{t(HOME.CATEGORIES_GRID.TOGGLE)}</span>
           {locale === 'ar' ? <ChevronLeft /> : <ChevronRight />}
         </UiButton>
       </UiDiv>
 
-      <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="grid grid-cols-4 gap-4">
+      <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="grid grid-cols-4 …">
         {CATEGORIES.map((cat) => (
           <UiButton ui={HOME.CATEGORIES_GRID.ITEM} key={cat.id}>
-            <UiImage ui={HOME.CATEGORIES_GRID.CATEGORY_IMAGE} src={cat.imgSrc} />
+            <UiImage ui={HOME.CATEGORIES_GRID.CATEGORY_IMAGE} src={cat.imgSrc} fill />
             <UiLabel ui={HOME.CATEGORIES_GRID.CATEGORY_NAME}>
               {t(cat.nameKey)}
             </UiLabel>
@@ -732,7 +674,7 @@ export function CategoriesGrid() {
    ↓
    home.categories-grid.toggleButton
    ↓
-   "عرض الكل" (ar) or "View All" (en)
+   "تبديل المظهر" (ar) or "Toggle Layout" (en)
 ```
 
 ---
@@ -741,7 +683,7 @@ export function CategoriesGrid() {
 
 ### 1. **Type Safety**
 - All UI Identifiers are documented in TypeScript
-- Translation Keys are validated at compile time
+- Translation Keys are validated at compile time via `TranslationKey` types
 
 ### 2. **Full Tracking**
 - Each UI element has a unique trackable identity
@@ -749,51 +691,66 @@ export function CategoriesGrid() {
 
 ### 3. **Error Prevention**
 - Binding system prevents elements without translations
-- Runtime validation catches errors early
+- Runtime validation catches errors early (development only)
+- CI scripts validate bindings and translations on every build
 
 ### 4. **Scalability**
-- Easy to add new features
-- Clear separation between layers
+- Easy to add new features via registry feature files and locale directories
+- Clear separation between layers (primitives → runtime → app components)
 
 ### 5. **Multi-language Support**
-- Structured translation file organization
-- Automatic RTL/LTR support
+- Structured translation file organization per feature
+- `LocaleProvider` syncs HTML `lang`/`dir` for RTL/LTR
 
 ### 6. **High Performance**
-- Dictionary caching system
-- Dynamic translation loading
+- Server-side dictionary caching (`getAppDictionaryCached`)
+- Full app dictionary loaded once at root layout
 
 ---
 
 ## 9. Development Tools
 
-### Registry Validation
+### npm Scripts
 
-```typescript
-validateRegistry(); // Validate registry
+```bash
+npm run i18n:validate              # Validate translation files
+npm run i18n:validate-bindings     # Validate UI ↔ translation bindings
+npm run i18n:generate-keys         # Regenerate translation key types
+npm run audit:unified-ui-i18n      # Full UI/i18n audit
+npm run audit:orphans              # Find orphan UI/translation entries
+npm run ci:i18n                    # Runs validate + bindings + generate-keys (used in build)
+npm run platform:doctor            # Platform health check
 ```
 
-### Binding Validation
+### Enforcement Scripts
+
+Located in `src/platform/ui/enforcement/`:
+- `scripts/validate-translations.ts`
+- `scripts/validate-registry-bindings.ts`
+- `scripts/generate-translation-keys.ts`
+- `scripts/audit-unified-ui-i18n.ts`
+- `scripts/find-orphans.ts`
+- `scripts/prune-orphans.ts`
+- `eslint/i18n-enforcement.js`
+- `eslint/ui-identification.js`
+
+### Runtime Helpers
 
 ```typescript
-validateBindingRegistry(
-  uiIdentifiers,
-  translationKeys,
-  usedUiIdentifiers,
-  usedTranslationKeys
-);
+validateRegistry();           // Validate registry (also auto-runs at import)
+validateBindingRegistry(…);   // Validate full binding registry
+getDictionaryCacheStats();    // Dictionary cache statistics
+clearDictionaryCache();       // Clear dictionary cache
 ```
 
-### Cache Statistics
+### DevTools
 
 ```typescript
-getDictionaryCacheStats(); // Get dictionary statistics
-```
+import { DevUiOverlay } from '@/platform/ui';
+// or
+import { UiDev } from '@/platform/ui';
 
-### Development Tools
-
-```typescript
-<DevUiOverlay /> // UI development overlay for debugging
+<DevUiOverlay />  // UI development overlay (development only in root layout)
 ```
 
 ---
@@ -802,13 +759,13 @@ getDictionaryCacheStats(); // Get dictionary statistics
 
 The project uses an advanced architecture that connects three main systems:
 
-1. **UI Registry** - To define and register all UI elements
-2. **Primitives & Runtime Components** - To build components with trackable identity
-3. **i18n & Binding** - To bind translations to UI elements and ensure consistency
+1. **UI Registry** — Define and register all UI elements with stable IDs and paths
+2. **Primitives & Runtime Components** — Build components with trackable identity via `createUiStyledComponent` and `createUiComponent`
+3. **i18n & Binding** — Bind translations to UI elements and ensure consistency
 
 This architecture ensures:
 - Compile-time type safety
 - Full tracking of all UI elements
 - Prevention of errors and missing translations
 - Scalability and maintainability
-- Efficient multi-language support
+- Efficient multi-language support with RTL/LTR handling

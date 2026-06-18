@@ -2,61 +2,80 @@
   "settings": {
     "page": {
       "title": "الإعدادات",
-      "description": "إدارة اللغة والاتجاه والمظهر وتفضيلات التطبيق"
+      "description": "قم بتخصيص تجربة التطبيق الخاصة بك وفقاً لتفضيلاتك."
     },
-    "language": {
-      "title": "اللغة",
-      "description": "اختر لغة الواجهة. التغييرات تُطبَّق على كامل التطبيق."
+    "app-settings": {
+      "sectionTitle": "إعدادات التطبيق",
+      "active": "نشط",
+      "statusTitle": "حالة النظام",
+      "description": "جميع الأنظمة تعمل بكفاءة عالية في الوقت الحالي.",
+      "maintenanceTitle": "وضع الصيانة",
+      "maintenanceDescription": "تفعيل وضع الصيانة للمستخدمين الخارجيين.",
+      "featureFlagsTitle": "ميزات تجريبية (Feature Flags)",
+      "ai": "الذكاء الاصطناعي",
+      "analytics": "التحليلات المتقدمة",
+      "pdf": "تصدير PDF"
     },
-    "direction": {
-      "title": "اتجاه النص",
-      "description": "الاتجاه يُشتق تلقائياً من اللغة المختارة.",
-      "rtl": "من اليمين إلى اليسار (RTL)",
-      "ltr": "من اليسار إلى اليمين (LTR)"
+    "language-region": {
+      "sectionTitle": "اللغة والمنطقة",
+      "languageTitle": "اختيار اللغة",
+      "description": "اختر لغة الواجهة المفضلة لديك.",
+      "arabicButton": "العربية",
+      "englishButton": "English",
+      "previewLabel": "معاينة الاتجاه",
+      "rtlPreview": "من اليمين إلى اليسار (RTL)",
+      "ltrPreview": "من اليسار إلى اليمين (LTR)",
+      "timezoneLabel": "المنطقة الزمنية",
+      "cairo": "توقيت القاهرة (GMT+3)",
+      "mecca": "توقيت مكة (GMT+3)",
+      "dubai": "توقيت دبي (GMT+4)"
     },
-    "theme": {
-      "title": "المظهر",
-      "description": "اختر الوضع الفاتح أو الداكن أو اتبع إعدادات النظام."
-    },
-    "display": {
-      "title": "العرض",
-      "fontSize": "حجم الخط",
-      "density": "الكثافة"
-    },
-    "accessibility": {
-      "title": "إمكانية الوصول",
-      "highContrast": "تباين عالٍ",
-      "reducedMotion": "تقليل الحركة"
-    },
-    "features": {
-      "title": "الميزات",
-      "darkMode": "الوضع الداكن",
-      "multiLanguage": "تعدد اللغات",
-      "advancedSearch": "بحث متقدم",
-      "exportData": "تصدير البيانات",
-      "importData": "استيراد البيانات",
-      "experimentalUi": "واجهة تجريبية",
-      "betaFeatures": "ميزات تجريبية",
-      "socialSharing": "المشاركة الاجتماعية",
-      "offlineMode": "وضع عدم الاتصال"
-    },
-    "maintenance": {
-      "title": "الصيانة",
-      "enabled": "وضع الصيانة",
-      "bypassed": "تجاوز الصيانة"
-    },
-    "options": {
-      "english": "English",
-      "arabic": "العربية",
+    "appearance": {
+      "sectionTitle": "المظهر",
+      "themeTitle": "السمة البصرية",
       "light": "فاتح",
       "dark": "داكن",
-      "system": "النظام",
-      "densityCompact": "مضغوط",
-      "densityComfortable": "مريح",
-      "densitySpacious": "واسع"
+      "system": "تلقائي",
+      "fontSizeTitle": "حجم الخط",
+      "densityTitle": "كثافة الواجهة",
+      "compact": "مكثفة",
+      "comfortable": "متوسطة",
+      "spacious": "مريحة",
+      "previewTitle": "معاينة مباشرة",
+      "button": "تغيير الألوان"
+    },
+    "accessibility": {
+      "sectionTitle": "إمكانية الوصول",
+      "highContrastTitle": "تباين عالٍ",
+      "highContrastDescription": "زيادة التباين بين العناصر والخلفية لتحسين الرؤية.",
+      "reducedMotionTitle": "تقليل الحركة",
+      "reducedMotionDescription": "إيقاف الرسوم المتحركة والتأثيرات البصرية لتقليل تشتت الانتباه."
+    },
+    "developer-tools": {
+      "sectionTitle": "أدوات المطورين",
+      "ssotGuardTitle": "حماية SSOT",
+      "ssotGuardDescription": "تفعيل نظام \"المصدر الوحيد للحقيقة\" للبيانات.",
+      "diagnosticsLabel": "تشخيص الأعطال",
+      "button": "بدء الاختبار"
+    },
+    "storage": {
+      "sectionTitle": "التخزين والاستمرارية",
+      "localStorageLabel": "ذاكرة التخزين المحلية (LocalStorage)",
+      "usageLabel": "2.4 MB مستخدم",
+      "cookiesLabel": "ملفات تعريف الارتباط",
+      "button": "مسح الكل"
+    },
+    "summary": {
+      "sectionTitle": "ملخص الإعدادات",
+      "languageLabel": "اللغة النشطة",
+      "themeLabel": "سمة الواجهة",
+      "densityLabel": "كثافة البيانات",
+      "timezoneLabel": "المنطقة الزمنية"
     },
     "actions": {
-      "reset": "إعادة التعيين"
+      "saveButton": "حفظ التغييرات",
+      "resetButton": "إعادة تعيين التفضيلات",
+      "restoreButton": "استعادة الافتراضات"
     }
   }
 }
