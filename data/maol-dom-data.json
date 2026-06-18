@@ -1,0 +1,73 @@
+{
+  "maol_lgrycBNgEa": [
+    {
+      "route": "/settings",
+      "timestamp": 1781819470963,
+      "totalIdentified": 74,
+      "tree": {
+        "type": "page",
+        "children": [
+          {
+            "name": "shared-layout",
+            "uiIds": [
+              "UI_SHARED_HEADER_CONTAINER",
+              "UI_SHARED_HEADER_INNER_WRAPPER",
+              "UI_SHARED_HEADER_BRAND_SECTION",
+              "UI_SHARED_HEADER_MENU",
+              "UI_SHARED_HEADER_BRAND_LINK",
+              "UI_SHARED_HEADER_ACTIONS_SECTION",
+              "UI_SHARED_HEADER_SEARCH_INPUT",
+              "UI_SHARED_HEADER_SEARCH_BUTTON",
+              "UI_SHARED_HEADER_CART_BUTTON",
+              "UI_SHARED_SIDEBAR_CONTAINER",
+              "UI_SHARED_SIDEBAR_OVERLAY",
+              "UI_SHARED_SIDEBAR_PANEL",
+              "UI_SHARED_SIDEBAR_CONTENT",
+              "UI_SHARED_SIDEBAR_ACTIONS_SECTION",
+              "UI_SHARED_BOTTOM_NAV_CONTAINER",
+              "UI_SHARED_BOTTOM_NAV_HOME",
+              "UI_SHARED_BOTTOM_NAV_NOTIFICATIONS",
+              "UI_SHARED_BOTTOM_NAV_FAVORITES",
+              "UI_SHARED_BOTTOM_NAV_ORDERS",
+              "UI_SHARED_BOTTOM_NAV_PROFILE"
+            ],
+            "tags": [
+              "h1",
+              "div",
+              "button",
+              "a",
+              "input",
+              "nav"
+            ]
+          },
+          {
+            "name": "common",
+            "uiIds": [
+              "UI_COMMON_LAYOUT_CONTAINER",
+              "UI_COMMON_LAYOUT_MAIN",
+              "UI_COMMON_LAYOUT_SECTION",
+              "UI_COMMON_LAYOUT_WRAPPER",
+              "UI_COMMON_DECORATIVE_SPACER"
+            ],
+            "tags": [
+              "div",
+              "main",
+              "section",
+              "button"
+            ]
+          },
+          {
+            "name": "settings",
+            "uiIds": [
+              "UI_SETTINGS_LANGUAGE_REGION_ARABIC",
+              "UI_SETTINGS_LANGUAGE_REGION_ENGLISH"
+            ],
+            "tags": [
+              "button"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -174,6 +174,7 @@ export function DevUiOverlay() {
   const [allInspectorData, setAllInspectorData] = useState<Record<string, any>>({});
   const [isSaving, setIsSaving] = useState(false);
   const [saveStatus, setSaveStatus] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
+  const [currentChildren, setCurrentChildren] = useState<Array<{ id: string; componentType: string }>>([]);
 
   const rafRef = useRef<number | null>(null);
 
@@ -314,6 +315,55 @@ export function DevUiOverlay() {
     // No valid UI element found
     return null;
   }, []);
+
+  // Helper to get child UI elements from a given UI id
+  const getChildUiElements = useCallback((uiId: string): Array<{ id: string; componentType: string }> => {
+    // Find the element by its data-ui-id
+    const parentElement = document.querySelector(`[data-ui-id="${uiId}"]`) as HTMLElement | null;
+    if (!parentElement) return [];
+    
+    // Get all descendant elements that have data-ui-id, but are not nested inside another UI element
+    const children: Array<{ id: string; componentType: string }> = [];
+    
+    // Iterate through all descendants
+    const allDescendants = parentElement.querySelectorAll('[data-ui-id]');
+    for (const descendant of allDescendants) {
+      const descId = descendant.getAttribute('data-ui-id');
+      if (!descId) continue;
+      
+      // Skip decorative spacer
+      if (descId === 'UI_COMMON_DECORATIVE_SPACER') continue;
+      
+      // Check if this descendant is a direct child (not nested inside another UI element)
+      let isDirectChild = true;
+      let current: Element | null = descendant.parentElement;
+      while (current && current !== parentElement) {
+        if (current.hasAttribute('data-ui-id')) {
+          isDirectChild = false;
+          break;
+        }
+        current = current.parentElement;
+      }
+      
+      if (isDirectChild && !children.find(c => c.id === descId)) {
+        children.push({
+          id: descId,
+          componentType: descendant.getAttribute('data-ui-component') || 'Unknown'
+        });
+      }
+    }
+    
+    return children;
+  }, []);
+
+  // Update current children when tooltip id or frames change
+  useEffect(() => {
+    if (!tooltip.visible || !tooltip.id) {
+      setCurrentChildren([]);
+      return;
+    }
+    setCurrentChildren(getChildUiElements(tooltip.id));
+  }, [tooltip.id, tooltip.visible, frames, getChildUiElements]);
 
   // Hover inspection - show frame on mousemove when enabled
   useEffect(() => {
@@ -899,6 +949,100 @@ export function DevUiOverlay() {
             <Row label="Component" value={tooltip.sourceComponent} color="#f472b6" />
             <Row label="File" value={tooltip.sourceFile} color="#94a3b8" />
             {tooltip.sourceLine > 0 && <Row label="Line" value={String(tooltip.sourceLine)} color="#94a3b8" />}
+          </div>
+
+          {/* Children Section */}
+          <div style={{ borderTop: '1px solid #1e293b', marginTop: '12px', paddingTop: '12px' }}>
+            <div style={{ marginBottom: '8px' }}>
+              <span style={{ color: '#a78bfa', fontWeight: 600, fontSize: '12px' }}>العناصر الأبن</span>
+            </div>
+            {currentChildren.length === 0 ? (
+              <div style={{ color: '#64748b', fontSize: '10px', fontStyle: 'italic', padding: '8px 0' }}>
+                لا يوجد عناصر أبن
+              </div>
+            ) : (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', maxHeight: '150px', overflowY: 'auto' }}>
+                {currentChildren.map((child, index) => (
+                  <div 
+                    key={`${child.id}_${index}`}
+                    style={{
+                      background: '#1e293b',
+                      border: '1px solid #334155',
+                      borderRadius: '6px',
+                      padding: '6px 8px',
+                      cursor: 'pointer',
+                      transition: 'all 0.2s',
+                    }}
+                    onMouseEnter={(e) => {
+                      // Show hover frame on child
+                      const el = document.querySelector(`[data-ui-id="${child.id}"]`) as HTMLElement | null;
+                      if (!el) return;
+                      const rect = el.getBoundingClientRect();
+                      const identity = UI_ID_MAP[child.id];
+                      let color: 'blue' | 'amber' | 'red' = 'red';
+                      if (identity) {
+                        color = identity.deprecated ? 'amber' : 'blue';
+                      }
+                      setHoveredFrame({
+                        id: child.id,
+                        top: rect.top + window.scrollY,
+                        left: rect.left + window.scrollX,
+                        width: rect.width,
+                        height: rect.height,
+                        color,
+                        label: child.id,
+                        componentType: child.componentType,
+                      });
+                    }}
+                    onMouseLeave={() => {
+                      setHoveredFrame(null);
+                    }}
+                    onClick={(e) => {
+                      // Select this child element
+                      e.stopPropagation();
+                      const el = document.querySelector(`[data-ui-id="${child.id}"]`) as HTMLElement | null;
+                      if (!el) return;
+                      const identity = UI_ID_MAP[child.id];
+                      const source = UI_SOURCE_INDEX[child.id];
+                      const savedData = allInspectorData[child.id];
+                      const rect = el.getBoundingClientRect();
+
+                      setTooltip({
+                        visible: true,
+                        x: rect.left + rect.width + 12,
+                        y: rect.top,
+                        id: child.id,
+                        instanceId: `${child.id}_${Date.now()}`,
+                        path: identity?.path || '—',
+                        feature: identity?.feature || '—',
+                        version: identity?.version || '—',
+                        deprecated: identity?.deprecated ?? false,
+                        sourceFile: source?.sourceFile || '—',
+                        sourceComponent: source?.sourceComponent || '—',
+                        sourceLine: source?.sourceLine || 0,
+                        databaseEnabled: savedData?.databaseEnabled ?? false,
+                        inf1: savedData?.inf1 || '',
+                        inf2: savedData?.inf2 || '',
+                        inf3: savedData?.inf3 || '',
+                        attributesEnabled: savedData?.attributesEnabled ?? false,
+                        attribute1: savedData?.attribute1 ?? false,
+                        attribute2: savedData?.attribute2 ?? false,
+                        attribute3: savedData?.attribute3 ?? false,
+                        dataUiPath: savedData?.dataUiPath || identity?.path || '',
+                        dataUiFeature: savedData?.dataUiFeature || identity?.feature || '',
+                      });
+                    }}
+                  >
+                    <div style={{ color: '#e2e8f0', fontSize: '11px', fontWeight: 500 }}>
+                      {child.id}
+                    </div>
+                    <div style={{ color: '#64748b', fontSize: '10px', marginTop: '2px' }}>
+                      {child.componentType}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Database Section */}
