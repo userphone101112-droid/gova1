@@ -317,11 +317,13 @@ export function DevUiOverlay() {
     };
 
     const handleClick = (e: MouseEvent) => {
-      // Get the element under the cursor
-      const target = document.elementFromPoint(e.clientX, e.clientY) as HTMLElement;
-      if (!target) return;
+      const target = document.elementFromPoint(e.clientX, e.clientY);
+      if (!target || !(target instanceof HTMLElement)) return;
 
-      const uiId = target.getAttribute('data-ui-id');
+      const uiElement = target.closest('[data-ui-id]') as HTMLElement | null;
+      if (!uiElement) return;
+
+      const uiId = uiElement.getAttribute('data-ui-id');
       if (!uiId) return;
 
       e.stopPropagation();
@@ -364,7 +366,7 @@ export function DevUiOverlay() {
       document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('click', handleClick);
     };
-  }, [isHoverInspectionEnabled, active, allInspectorData, hoveredFrame]);
+  }, [isHoverInspectionEnabled, active, allInspectorData]);
 
   const handleSave = async () => {
     if (!tooltip.id) return;

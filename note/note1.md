@@ -11,7 +11,8 @@ Ctrl + Shift + P
 Simple Browser: Show
 أدخل الرابط:
 http://localhost:3001
-
+لعرض احداث المتصفح في IDE
+@id:chat.sendElementsToChat.enabled,chat.sendElementsToChat.attachCSS,chat.sendElementsToChat.attachImages بحث في الاعداادت
 # لمسح الترمينال
 
 Ctrl + Shift + P

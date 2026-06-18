@@ -50,5 +50,18 @@
     "dataUiPath": "shared-layout.header.layout.inner-wrapper",
     "dataUiFeature": "shared-layout",
     "updatedAt": "2026-06-18T19:08:38.535Z"
+  },
+  "UI_SHARED_BOTTOM_NAV_NOTIFICATIONS": {
+    "databaseEnabled": true,
+    "inf1": "",
+    "inf2": "",
+    "inf3": "",
+    "attributesEnabled": false,
+    "attribute1": false,
+    "attribute2": false,
+    "attribute3": false,
+    "dataUiPath": "shared-layout.bottom-nav.items.notifications-link",
+    "dataUiFeature": "shared-layout",
+    "updatedAt": "2026-06-18T19:42:36.019Z"
   }
 }
