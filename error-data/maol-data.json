@@ -1,0 +1,31 @@
+{
+  "maol_IT2rKxtGv0": {
+    "errors": [],
+    "warnings": [
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"language.title\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/language",
+        "severity": "high",
+        "timestamp": 1781801723782,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "{}",
+        "route": "/language",
+        "severity": "low",
+        "timestamp": 1781801723780,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"language.description\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/language",
+        "severity": "high",
+        "timestamp": 1781801723781,
+        "env": "dev"
+      }
+    ]
+  }
+}

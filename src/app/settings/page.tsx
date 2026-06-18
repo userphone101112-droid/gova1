@@ -7,7 +7,7 @@ import { SETTINGS } from '@/platform/ui/registry/features/settings';
 import { useUnifiedStore } from '@/store/unified.store';
 
 export default function SettingsPage() {
-  const { t, locale } = useTranslation();
+  const { t, locale, setLocale } = useTranslation();
   const { themeMode, setThemeMode, fontSize, setFontSize, density, setDensity, highContrast, setHighContrast, reducedMotion, setReducedMotion, ssotGuardEnabled, setSSOTGuardEnabled } = useUnifiedStore();
 
   return (
@@ -129,7 +129,7 @@ export default function SettingsPage() {
                 ui={SETTINGS.LANGUAGE_REGION.ARABIC}
                 variant={locale === 'ar' ? 'default' : 'ghost'}
                 className="rounded-full px-6 py-2 text-xs font-semibold"
-                onClick={() => { window.location.href = '/language'; }}
+                onClick={() => setLocale('ar')}
               >
                 {t(SETTINGS.LANGUAGE_REGION.ARABIC)}
               </UiButton>
@@ -137,7 +137,7 @@ export default function SettingsPage() {
                 ui={SETTINGS.LANGUAGE_REGION.ENGLISH}
                 variant={locale === 'en' ? 'default' : 'ghost'}
                 className="rounded-full px-6 py-2 text-xs font-semibold"
-                onClick={() => { window.location.href = '/language'; }}
+                onClick={() => setLocale('en')}
               >
                 {t(SETTINGS.LANGUAGE_REGION.ENGLISH)}
               </UiButton>
