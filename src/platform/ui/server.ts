@@ -3,7 +3,8 @@
  * Do not import from Client Components — use @/platform/ui instead.
  */
 
-export { getLocale, getThemeMode } from './i18n/utils/getLocale.server';
+export { getLocale, getThemeMode, getSSOTPreferences } from './i18n/utils/getLocale.server';
+export type { SSOTPreferences } from './i18n/utils/getLocale.server';
 export { getDirection, getEffectiveTheme } from './i18n/utils/getLocale';
 export {
   getDictionary,

@@ -263,6 +263,16 @@ export const SHARED_LAYOUT = {
       createdAt: '2026-06-16',
       updatedAt: '2026-06-16',
     } as const,
+    SETTINGS_BUTTON: {
+      id: 'UI_SHARED_SIDEBAR_SETTINGS',
+      path: 'shared-layout.sidebar.actions.settings-button',
+      description: 'Navigate to settings page',
+      category: 'action',
+      feature: 'shared-layout',
+      version: '1.0.0',
+      createdAt: '2026-06-17',
+      updatedAt: '2026-06-17',
+    } as const,
   },
 } as const;
 

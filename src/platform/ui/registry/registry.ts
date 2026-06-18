@@ -10,12 +10,14 @@ export { SPLASH } from './features/splash';
 export { ERROR_BOUNDARY } from './features/error-boundary';
 export { SHARED_LAYOUT } from './features/shared-layout';
 export { AUTH } from './features/auth';
+export { SETTINGS } from './features/settings';
 
 import { HOME } from './features/home';
 import { SPLASH } from './features/splash';
 import { ERROR_BOUNDARY } from './features/error-boundary';
 import { SHARED_LAYOUT } from './features/shared-layout';
 import { AUTH } from './features/auth';
+import { SETTINGS } from './features/settings';
 
 // ============================================================================
 // REGISTRY VALIDATION
@@ -27,6 +29,7 @@ export const UI_REGISTRY = {
   SPLASH,
   SHARED_LAYOUT,
   AUTH,
+  SETTINGS,
 } as const;
 
 function flattenObject(obj: any): any[] {
@@ -50,6 +53,7 @@ export const ALL_UI_IDENTITIES = [
   ...flattenObject(SPLASH),
   ...flattenObject(SHARED_LAYOUT),
   ...flattenObject(AUTH),
+  ...flattenObject(SETTINGS),
   ...ALL_CATEGORY_IDENTITIES,
 ] as readonly UiIdentity[];
 
@@ -66,11 +70,9 @@ export type UiIdentifier = typeof ALL_UI_IDENTIFIERS[number];
 export type UiParam = UiIdentifier | UiIdentity;
 
 /**
- * UI identifiers that do not require explicit bound translations (e.g., they use dynamic text or brand links).
+ * UI identifiers that do not require explicit bound translations (e.g., dynamic-only content).
  */
-export const NO_TRANSLATION_REQUIRED: readonly UiIdentifier[] = [
-  SHARED_LAYOUT.HEADER.BRAND.BRAND_LINK.path,
-] as const;
+export const NO_TRANSLATION_REQUIRED: readonly UiIdentifier[] = [] as const;
 
 // ============================================================================
 // CENTRAL LOOKUP MAPS & HELPERS (PHASE 2)

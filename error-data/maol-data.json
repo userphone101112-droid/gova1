@@ -685,6 +685,419 @@
         "severity": "high",
         "timestamp": 1781779080358,
         "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[SSOT Guard] Inline styles are NOT allowed! Use Tailwind classes from design tokens instead. {}",
+        "route": "/settings",
+        "severity": "low",
+        "timestamp": 1781783499726,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"settings.direction.rtl\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781783893371,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"settings.options.system\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781783893379,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"settings.options.light\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781783893373,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"settings.options.english\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781783893368,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"settings.options.dark\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781783893376,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"settings.options.arabic\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781783893370,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"settings.display.fontSize\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781783893385,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"settings.display.density\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781783893388,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"settings.options.densityCompact\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781783893394,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"settings.options.densityComfortable\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781783893397,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"settings.options.densitySpacious\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781783893398,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"settings.accessibility.highContrast\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781783893400,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"settings.accessibility.reducedMotion\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781783893401,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"settings.features.darkMode\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781783893403,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"settings.features.multiLanguage\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781783893405,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"settings.features.advancedSearch\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781783893406,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"settings.features.exportData\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781783893408,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"settings.features.importData\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781783893410,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"settings.features.experimentalUI\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781783893412,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"settings.features.betaFeatures\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781783893413,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"settings.features.socialSharing\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781783893415,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"settings.features.offlineMode\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781783893416,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"settings.maintenance.enabled\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781783893418,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"settings.maintenance.bypassed\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781783893421,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"settings.direction.ltr\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781784065279,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[Fast Refresh] performing full reload Fast Refresh will perform a full reload when you edit a file that's imported by modules outside of the React rendering tree.\nYou might have a file which exports a React component but also exports a value that is imported by a non-React component file.\nConsider migrating the non-React component export to a separate file and importing it into both files. It is also possible the parent component of the component you edited is a class component, which disables F",
+        "route": "/settings",
+        "severity": "low",
+        "timestamp": 1781784327929,
+        "env": "dev"
+      }
+    ]
+  },
+  "maol_ZCMeXVJPHT": {
+    "errors": [],
+    "warnings": [
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"settings.options.english\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781784495930,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"settings.options.arabic\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781784495932,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"settings.direction.ltr\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781784495933,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"settings.options.light\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781784495935,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"settings.options.dark\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781784495936,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"settings.options.system\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781784495941,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"settings.display.fontSize\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781784495943,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"settings.display.density\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781784495944,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"settings.options.densityCompact\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781784495946,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"settings.options.densityComfortable\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781784495947,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"settings.options.densitySpacious\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781784495949,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"settings.accessibility.highContrast\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781784495951,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"settings.accessibility.reducedMotion\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781784495954,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"settings.features.darkMode\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781784495960,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"settings.features.multiLanguage\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781784495963,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"settings.features.advancedSearch\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781784495966,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"settings.features.exportData\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781784495969,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"settings.features.importData\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781784495975,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"settings.features.experimentalUI\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781784495977,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"settings.features.betaFeatures\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781784495980,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"settings.features.socialSharing\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781784495983,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"settings.features.offlineMode\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781784495985,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"settings.maintenance.enabled\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781784495990,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"settings.maintenance.bypassed\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781784495998,
+        "env": "dev"
       }
     ]
   }

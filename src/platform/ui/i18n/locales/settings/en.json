@@ -1,0 +1,62 @@
+{
+  "settings": {
+    "page": {
+      "title": "Settings",
+      "description": "Manage language, direction, theme, and application preferences"
+    },
+    "language": {
+      "title": "Language",
+      "description": "Choose the interface language. Changes apply across the entire application."
+    },
+    "direction": {
+      "title": "Text Direction",
+      "description": "Direction is derived from the selected language.",
+      "rtl": "Right to Left (RTL)",
+      "ltr": "Left to Right (LTR)"
+    },
+    "theme": {
+      "title": "Theme",
+      "description": "Choose light, dark, or follow system preference."
+    },
+    "display": {
+      "title": "Display",
+      "fontSize": "Font Size",
+      "density": "Density"
+    },
+    "accessibility": {
+      "title": "Accessibility",
+      "highContrast": "High Contrast",
+      "reducedMotion": "Reduce Motion"
+    },
+    "features": {
+      "title": "Features",
+      "darkMode": "Dark Mode",
+      "multiLanguage": "Multi Language",
+      "advancedSearch": "Advanced Search",
+      "exportData": "Export Data",
+      "importData": "Import Data",
+      "experimentalUi": "Experimental UI",
+      "betaFeatures": "Beta Features",
+      "socialSharing": "Social Sharing",
+      "offlineMode": "Offline Mode"
+    },
+    "maintenance": {
+      "title": "Maintenance",
+      "enabled": "Maintenance Mode",
+      "bypassed": "Bypass Maintenance"
+    },
+    "options": {
+      "english": "English",
+      "arabic": "العربية",
+      "light": "Light",
+      "dark": "Dark",
+      "system": "System",
+      "densityCompact": "Compact",
+      "densityComfortable": "Comfortable",
+      "densitySpacious": "Spacious"
+    },
+    "actions": {
+      "reset": "Reset to Defaults"
+    }
+  }
+}

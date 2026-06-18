@@ -1,13 +1,8 @@
 'use client';
 
-import React, { useEffect } from 'react';
-import { initializeGlobalSSOT } from '@/store/global-ssot.store';
+import React from 'react';
 
+/** @deprecated SSOT init moved to SSOTProvider */
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  useEffect(() => {
-    // Initialize the global SSOT system on client mount
-    initializeGlobalSSOT();
-  }, []);
-
   return <>{children}</>;
 }

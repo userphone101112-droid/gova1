@@ -348,8 +348,8 @@
   "maol_4aqcDsmCWh": [
     {
       "route": "/home",
-      "timestamp": 1781781077630,
-      "totalIdentified": 229,
+      "timestamp": 1781784284539,
+      "totalIdentified": 222,
       "tree": {
         "type": "page",
         "children": [
@@ -373,8 +373,7 @@
               "UI_SHARED_SIDEBAR_CONTENT",
               "UI_SHARED_SIDEBAR_ACTIONS_SECTION",
               "UI_SHARED_SIDEBAR_LOGIN",
-              "UI_SHARED_SIDEBAR_LANGUAGE",
-              "UI_SHARED_SIDEBAR_THEME",
+              "UI_SHARED_SIDEBAR_SETTINGS",
               "UI_SHARED_BOTTOM_NAV_CONTAINER",
               "UI_SHARED_BOTTOM_NAV_HOME",
               "UI_SHARED_BOTTOM_NAV_NOTIFICATIONS",
@@ -394,8 +393,14 @@
           {
             "name": "common",
             "uiIds": [
-              "UI_COMMON_DECORATIVE_SPACER",
-              "UI_COMMON_DECORATIVE_DIVIDER"
+              "UI_COMMON_LAYOUT_CONTAINER",
+              "UI_COMMON_DECORATIVE_DIVIDER",
+              "UI_COMMON_LAYOUT_MAIN",
+              "UI_COMMON_LAYOUT_SECTION",
+              "UI_COMMON_LAYOUT_WRAPPER",
+              "UI_COMMON_LAYOUT_HEADER",
+              "UI_COMMON_LAYOUT_SPAN",
+              "UI_COMMON_DECORATIVE_SPACER"
             ],
             "tags": [
               "div",
@@ -465,7 +470,7 @@
     },
     {
       "route": "/login",
-      "timestamp": 1781779125804,
+      "timestamp": 1781782600961,
       "totalIdentified": 33,
       "tree": {
         "type": "page",
@@ -473,9 +478,14 @@
           {
             "name": "common",
             "uiIds": [
-              "UI_COMMON_DECORATIVE_SPACER",
+              "UI_COMMON_LAYOUT_WRAPPER",
               "UI_COMMON_DECORATIVE_BACKGROUND",
-              "UI_COMMON_DECORATIVE_DIVIDER"
+              "UI_COMMON_LAYOUT_MAIN",
+              "UI_COMMON_LAYOUT_SECTION",
+              "UI_COMMON_LAYOUT_CONTAINER",
+              "UI_COMMON_LAYOUT_FOOTER",
+              "UI_COMMON_DECORATIVE_DIVIDER",
+              "UI_COMMON_DECORATIVE_SPACER"
             ],
             "tags": [
               "div",
@@ -508,6 +518,142 @@
               "input",
               "button",
               "p"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "route": "/settings",
+      "timestamp": 1781784655292,
+      "totalIdentified": 36,
+      "tree": {
+        "type": "page",
+        "children": [
+          {
+            "name": "shared-layout",
+            "uiIds": [
+              "UI_SHARED_HEADER_CONTAINER",
+              "UI_SHARED_HEADER_INNER_WRAPPER",
+              "UI_SHARED_HEADER_BRAND_SECTION",
+              "UI_SHARED_HEADER_MENU",
+              "UI_SHARED_HEADER_BRAND_LINK",
+              "UI_SHARED_HEADER_ACTIONS_SECTION",
+              "UI_SHARED_HEADER_SEARCH_INPUT",
+              "UI_SHARED_HEADER_SEARCH_BUTTON",
+              "UI_SHARED_HEADER_CART_BUTTON",
+              "UI_SHARED_SIDEBAR_CONTAINER",
+              "UI_SHARED_SIDEBAR_OVERLAY",
+              "UI_SHARED_SIDEBAR_PANEL",
+              "UI_SHARED_SIDEBAR_CONTENT",
+              "UI_SHARED_SIDEBAR_ACTIONS_SECTION",
+              "UI_SHARED_SIDEBAR_LOGIN",
+              "UI_SHARED_SIDEBAR_SETTINGS",
+              "UI_SHARED_BOTTOM_NAV_CONTAINER",
+              "UI_SHARED_BOTTOM_NAV_HOME",
+              "UI_SHARED_BOTTOM_NAV_NOTIFICATIONS",
+              "UI_SHARED_BOTTOM_NAV_FAVORITES",
+              "UI_SHARED_BOTTOM_NAV_ORDERS",
+              "UI_SHARED_BOTTOM_NAV_PROFILE"
+            ],
+            "tags": [
+              "h1",
+              "div",
+              "button",
+              "a",
+              "input",
+              "nav"
+            ]
+          },
+          {
+            "name": "common",
+            "uiIds": [
+              "UI_COMMON_LAYOUT_CONTAINER",
+              "UI_COMMON_LAYOUT_MAIN",
+              "UI_COMMON_DECORATIVE_SPACER"
+            ],
+            "tags": [
+              "div",
+              "main",
+              "button"
+            ]
+          },
+          {
+            "name": "settings",
+            "uiIds": [
+              "UI_SETTINGS_ACTION_RESET"
+            ],
+            "tags": [
+              "button"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "maol_ZCMeXVJPHT": [
+    {
+      "route": "/settings",
+      "timestamp": 1781784655180,
+      "totalIdentified": 36,
+      "tree": {
+        "type": "page",
+        "children": [
+          {
+            "name": "shared-layout",
+            "uiIds": [
+              "UI_SHARED_HEADER_CONTAINER",
+              "UI_SHARED_HEADER_INNER_WRAPPER",
+              "UI_SHARED_HEADER_BRAND_SECTION",
+              "UI_SHARED_HEADER_MENU",
+              "UI_SHARED_HEADER_BRAND_LINK",
+              "UI_SHARED_HEADER_ACTIONS_SECTION",
+              "UI_SHARED_HEADER_SEARCH_INPUT",
+              "UI_SHARED_HEADER_SEARCH_BUTTON",
+              "UI_SHARED_HEADER_CART_BUTTON",
+              "UI_SHARED_SIDEBAR_CONTAINER",
+              "UI_SHARED_SIDEBAR_OVERLAY",
+              "UI_SHARED_SIDEBAR_PANEL",
+              "UI_SHARED_SIDEBAR_CONTENT",
+              "UI_SHARED_SIDEBAR_ACTIONS_SECTION",
+              "UI_SHARED_SIDEBAR_LOGIN",
+              "UI_SHARED_SIDEBAR_SETTINGS",
+              "UI_SHARED_BOTTOM_NAV_CONTAINER",
+              "UI_SHARED_BOTTOM_NAV_HOME",
+              "UI_SHARED_BOTTOM_NAV_NOTIFICATIONS",
+              "UI_SHARED_BOTTOM_NAV_FAVORITES",
+              "UI_SHARED_BOTTOM_NAV_ORDERS",
+              "UI_SHARED_BOTTOM_NAV_PROFILE"
+            ],
+            "tags": [
+              "h1",
+              "div",
+              "button",
+              "a",
+              "input",
+              "nav"
+            ]
+          },
+          {
+            "name": "common",
+            "uiIds": [
+              "UI_COMMON_LAYOUT_CONTAINER",
+              "UI_COMMON_LAYOUT_MAIN",
+              "UI_COMMON_DECORATIVE_SPACER"
+            ],
+            "tags": [
+              "div",
+              "main",
+              "button"
+            ]
+          },
+          {
+            "name": "settings",
+            "uiIds": [
+              "UI_SETTINGS_ACTION_RESET"
+            ],
+            "tags": [
+              "button"
             ]
           }
         ]

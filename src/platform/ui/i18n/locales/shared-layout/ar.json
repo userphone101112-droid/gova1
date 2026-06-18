@@ -8,7 +8,8 @@
       "container": "حاوية",
       "innerWrapper": "غلاف داخلي",
       "brandSection": "قسم العلامة التجارية",
-      "actionsSection": "قسم الإجراءات"
+      "actionsSection": "قسم الإجراءات",
+      "brandLink": "سوق جوفا"
     },
     "bottom-nav": {
       "homeLink": "الرئيسية",
@@ -33,7 +34,8 @@
       "closeButton": "إغلاق",
       "loginButton": "تسجيل الدخول",
       "languageToggle": "اللغة",
-      "themeToggle": "المظهر"
+      "themeToggle": "المظهر",
+      "settingsButton": "الإعدادات"
     }
   }
 }

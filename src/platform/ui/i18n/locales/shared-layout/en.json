@@ -8,7 +8,8 @@
       "container": "Container",
       "innerWrapper": "Inner Wrapper",
       "brandSection": "Brand Section",
-      "actionsSection": "Actions Section"
+      "actionsSection": "Actions Section",
+      "brandLink": "GoVa Market"
     },
     "bottom-nav": {
       "homeLink": "Home",
@@ -33,7 +34,8 @@
       "closeButton": "Close",
       "loginButton": "Login",
       "languageToggle": "Language",
-      "themeToggle": "Theme"
+      "themeToggle": "Theme",
+      "settingsButton": "Settings"
     }
   }
 }

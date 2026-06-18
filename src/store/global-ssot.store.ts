@@ -11,19 +11,43 @@ import { devtools, persist } from 'zustand/middleware';
 export type Language = 'en' | 'ar';
 export type Direction = 'ltr' | 'rtl';
 export type ThemeMode = 'light' | 'dark' | 'system';
+export type Density = 'compact' | 'comfortable' | 'spacious';
+
+export interface SSOTServerSnapshot {
+  language: Language;
+  themeMode: ThemeMode;
+  fontSize: number;
+  density: Density;
+  highContrast: boolean;
+  reducedMotion: boolean;
+}
 
 interface GlobalSSOTState {
-  // Language & Direction
   language: Language;
   direction: Direction;
-
-  // Theme
   themeMode: ThemeMode;
+  fontSize: number;
+  density: Density;
+  highContrast: boolean;
+  reducedMotion: boolean;
 
-  // Actions
   setLanguage: (lang: Language) => void;
   setThemeMode: (mode: ThemeMode) => void;
+  setFontSize: (size: number) => void;
+  setDensity: (density: Density) => void;
+  setHighContrast: (enabled: boolean) => void;
+  setReducedMotion: (enabled: boolean) => void;
+  resetPreferences: () => void;
 }
+
+const DEFAULT_PREFERENCES = {
+  language: 'en' as Language,
+  themeMode: 'system' as ThemeMode,
+  fontSize: 16,
+  density: 'comfortable' as Density,
+  highContrast: false,
+  reducedMotion: false,
+};
 
 // --- Helper Functions ---
 
@@ -46,24 +70,44 @@ function getSystemThemePreference(): 'light' | 'dark' {
  * - data-theme
  * - CSS classes
  */
-export function syncDOMFromSSOT(language: Language, themeMode: ThemeMode) {
+export function syncDOMFromSSOT(
+  language: Language,
+  themeMode: ThemeMode,
+  preferences?: Pick<GlobalSSOTState, 'fontSize' | 'density' | 'highContrast' | 'reducedMotion'>
+) {
   if (typeof window === 'undefined') return;
 
   const html = document.documentElement;
   const direction = getDirectionForLanguage(language);
   const effectiveTheme = themeMode === 'system' ? getSystemThemePreference() : themeMode;
+  const fontSize = preferences?.fontSize ?? useGlobalSSOTStore.getState().fontSize;
+  const density = preferences?.density ?? useGlobalSSOTStore.getState().density;
+  const highContrast = preferences?.highContrast ?? useGlobalSSOTStore.getState().highContrast;
+  const reducedMotion = preferences?.reducedMotion ?? useGlobalSSOTStore.getState().reducedMotion;
 
-  // 1. Sync Language & Direction
   html.setAttribute('lang', language);
   html.setAttribute('dir', direction);
-
-  // 2. Sync Theme
-  // Remove old theme classes
   html.classList.remove('light', 'dark');
-  // Add effective theme class
   html.classList.add(effectiveTheme);
-  // Set data-theme attribute (for CSS targeting)
   html.setAttribute('data-theme', effectiveTheme);
+  html.style.fontSize = `${fontSize}px`;
+  html.setAttribute('data-density', density);
+  html.classList.toggle('high-contrast', highContrast);
+  html.classList.toggle('reduce-motion', reducedMotion);
+}
+
+function persistSSOTCookie(state: Pick<GlobalSSOTState, 'language' | 'themeMode' | 'fontSize' | 'density' | 'highContrast' | 'reducedMotion'>) {
+  if (typeof window === 'undefined') return;
+  const payload = JSON.stringify({
+    language: state.language,
+    themeMode: state.themeMode,
+    fontSize: state.fontSize,
+    density: state.density,
+    highContrast: state.highContrast,
+    reducedMotion: state.reducedMotion,
+  });
+  document.cookie = `gova-global-ssot=${encodeURIComponent(payload)}; path=/; max-age=31536000`;
+  document.cookie = `locale=${state.language}; path=/; max-age=31536000`;
 }
 
 let systemThemeMediaQuery: MediaQueryList | null = null;
@@ -95,80 +139,99 @@ export function initializeGlobalSSOT() {
   systemThemeMediaQuery.addEventListener('change', systemThemeChangeListener);
 }
 
-// --- Store ---
+function buildStateFromSnapshot(snapshot: SSOTServerSnapshot): Pick<
+  GlobalSSOTState,
+  'language' | 'direction' | 'themeMode' | 'fontSize' | 'density' | 'highContrast' | 'reducedMotion'
+> {
+  return {
+    language: snapshot.language,
+    direction: getDirectionForLanguage(snapshot.language),
+    themeMode: snapshot.themeMode,
+    fontSize: snapshot.fontSize,
+    density: snapshot.density,
+    highContrast: snapshot.highContrast,
+    reducedMotion: snapshot.reducedMotion,
+  };
+}
 
-// Function to get initial state from cookie (client side)
-function getInitialStateFromCookie(): Partial<GlobalSSOTState> {
-  if (typeof window === 'undefined') return {};
-  const cookies = document.cookie.split(';');
-  for (const cookie of cookies) {
-    const [name, value] = cookie.trim().split('=');
-    if (name === 'gova-global-ssot') {
-      try {
-        const parsed = JSON.parse(decodeURIComponent(value));
-        return {
-          language: parsed.language,
-          themeMode: parsed.themeMode
-        };
-      } catch {
-        return {};
-      }
-    }
-  }
-  return {};
+/** Apply server-rendered snapshot so SSR and first client render match. */
+export function applySSOTSnapshot(snapshot: SSOTServerSnapshot) {
+  useGlobalSSOTStore.setState(buildStateFromSnapshot(snapshot));
 }
 
 export const useGlobalSSOTStore = create<GlobalSSOTState>()(
   devtools(
     persist(
       (set, get) => {
-        // Get initial state from cookie first
-        const cookieState = getInitialStateFromCookie();
-        
-        return {
-          // Initial State (with cookie overrides)
-          language: cookieState.language || 'en',
-          direction: getDirectionForLanguage(cookieState.language || 'en'),
-          themeMode: cookieState.themeMode || 'system',
+        const syncAll = () => {
+          const current = get();
+          syncDOMFromSSOT(current.language, current.themeMode, current);
+          persistSSOTCookie(current);
+        };
 
-          // Actions
+        return {
+          ...buildStateFromSnapshot({
+            language: DEFAULT_PREFERENCES.language,
+            themeMode: DEFAULT_PREFERENCES.themeMode,
+            fontSize: DEFAULT_PREFERENCES.fontSize,
+            density: DEFAULT_PREFERENCES.density,
+            highContrast: DEFAULT_PREFERENCES.highContrast,
+            reducedMotion: DEFAULT_PREFERENCES.reducedMotion,
+          }),
+
           setLanguage: (lang: Language) => {
-            const direction = getDirectionForLanguage(lang);
-            set({ language: lang, direction });
-            syncDOMFromSSOT(lang, get().themeMode);
-            // Sync to cookie for server-side access
-            if (typeof window !== 'undefined') {
-              const currentState = get();
-              document.cookie = `gova-global-ssot=${JSON.stringify({ language: currentState.language, themeMode: currentState.themeMode })}; path=/; max-age=31536000`;
-            }
+            set({ language: lang, direction: getDirectionForLanguage(lang) });
+            syncAll();
           },
 
           setThemeMode: (mode: ThemeMode) => {
             set({ themeMode: mode });
-            syncDOMFromSSOT(get().language, mode);
-            // Sync to cookie for server-side access
-            if (typeof window !== 'undefined') {
-              const currentState = get();
-              document.cookie = `gova-global-ssot=${JSON.stringify({ language: currentState.language, themeMode: currentState.themeMode })}; path=/; max-age=31536000`;
-            }
+            syncAll();
+          },
+
+          setFontSize: (size: number) => {
+            set({ fontSize: size });
+            syncAll();
+          },
+
+          setDensity: (density: Density) => {
+            set({ density });
+            syncAll();
+          },
+
+          setHighContrast: (enabled: boolean) => {
+            set({ highContrast: enabled });
+            syncAll();
+          },
+
+          setReducedMotion: (enabled: boolean) => {
+            set({ reducedMotion: enabled });
+            syncAll();
+          },
+
+          resetPreferences: () => {
+            set({
+              ...DEFAULT_PREFERENCES,
+              direction: getDirectionForLanguage(DEFAULT_PREFERENCES.language),
+            });
+            syncAll();
           },
         };
       },
       {
-        name: 'gova-global-ssot', // Unique localStorage key
+        name: 'gova-global-ssot',
+        skipHydration: true,
         partialize: (state) => ({
-          // Only persist the user-controlled settings
           language: state.language,
           themeMode: state.themeMode,
+          fontSize: state.fontSize,
+          density: state.density,
+          highContrast: state.highContrast,
+          reducedMotion: state.reducedMotion,
         }),
-        // Re-hydrate direction from language
         onRehydrateStorage: () => (state) => {
           if (state) {
             state.direction = getDirectionForLanguage(state.language);
-            // Perform initial DOM sync after rehydration
-            setTimeout(() => {
-              syncDOMFromSSOT(state.language, state.themeMode);
-            }, 0);
           }
         },
       }

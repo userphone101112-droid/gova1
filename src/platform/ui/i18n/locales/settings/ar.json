@@ -1,0 +1,62 @@
+{
+  "settings": {
+    "page": {
+      "title": "الإعدادات",
+      "description": "إدارة اللغة والاتجاه والمظهر وتفضيلات التطبيق"
+    },
+    "language": {
+      "title": "اللغة",
+      "description": "اختر لغة الواجهة. التغييرات تُطبَّق على كامل التطبيق."
+    },
+    "direction": {
+      "title": "اتجاه النص",
+      "description": "الاتجاه يُشتق تلقائياً من اللغة المختارة.",
+      "rtl": "من اليمين إلى اليسار (RTL)",
+      "ltr": "من اليسار إلى اليمين (LTR)"
+    },
+    "theme": {
+      "title": "المظهر",
+      "description": "اختر الوضع الفاتح أو الداكن أو اتبع إعدادات النظام."
+    },
+    "display": {
+      "title": "العرض",
+      "fontSize": "حجم الخط",
+      "density": "الكثافة"
+    },
+    "accessibility": {
+      "title": "إمكانية الوصول",
+      "highContrast": "تباين عالٍ",
+      "reducedMotion": "تقليل الحركة"
+    },
+    "features": {
+      "title": "الميزات",
+      "darkMode": "الوضع الداكن",
+      "multiLanguage": "تعدد اللغات",
+      "advancedSearch": "بحث متقدم",
+      "exportData": "تصدير البيانات",
+      "importData": "استيراد البيانات",
+      "experimentalUi": "واجهة تجريبية",
+      "betaFeatures": "ميزات تجريبية",
+      "socialSharing": "المشاركة الاجتماعية",
+      "offlineMode": "وضع عدم الاتصال"
+    },
+    "maintenance": {
+      "title": "الصيانة",
+      "enabled": "وضع الصيانة",
+      "bypassed": "تجاوز الصيانة"
+    },
+    "options": {
+      "english": "English",
+      "arabic": "العربية",
+      "light": "فاتح",
+      "dark": "داكن",
+      "system": "النظام",
+      "densityCompact": "مضغوط",
+      "densityComfortable": "مريح",
+      "densitySpacious": "واسع"
+    },
+    "actions": {
+      "reset": "إعادة التعيين"
+    }
+  }
+}

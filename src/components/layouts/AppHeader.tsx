@@ -42,7 +42,7 @@ export function AppHeader() {
               className="w-10 h-10 flex items-center justify-center rounded-full transition-colors active:bg-surface-container"
               aria-label={t(SHARED_LAYOUT.HEADER.MENU.MENU_BUTTON)}
               style={{ color: 'var(--gova-google-blue)' }}
-              onClick={() => setIsSidebarOpen((prev) => !prev)}
+              onClick={() => setIsSidebarOpen(true)}
             >
               <Menu className="w-5 h-5" />
             </UiButton>

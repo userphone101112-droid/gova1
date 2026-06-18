@@ -3,8 +3,8 @@ import { Inter, Noto_Sans_Arabic } from "next/font/google";
 import "./globals.css";
 import { I18nProvider } from "@/platform/ui";
 import { getAppDictionaryCached } from "@/platform/ui/server";
-import { getLocale, getDirection, getThemeMode, getEffectiveTheme } from "@/platform/ui/server";
-import { ThemeProvider } from "@/providers/ThemeProvider";
+import { getLocale, getDirection, getThemeMode, getEffectiveTheme, getSSOTPreferences } from "@/platform/ui/server";
+import { SSOTProvider } from "@/providers/SSOTProvider";
 import { SSOTGuard } from "@/components/shared/SSOTGuard";
 import { LocaleProvider } from "@/platform/ui";
 
@@ -61,27 +61,50 @@ export default async function RootLayout({
   const direction = getDirection(locale);
   const themeMode = await getThemeMode();
   const effectiveTheme = getEffectiveTheme(themeMode);
+  const ssotPreferences = await getSSOTPreferences();
   
   const dictionary = await getAppDictionaryCached(locale);
+
+  const htmlClassName = [
+    inter.variable,
+    notoSansArabic.variable,
+    'h-full antialiased',
+    effectiveTheme,
+    ssotPreferences.highContrast ? 'high-contrast' : '',
+    ssotPreferences.reducedMotion ? 'reduce-motion' : '',
+  ]
+    .filter(Boolean)
+    .join(' ');
 
   return (
     <html
       lang={locale}
       dir={direction}
       data-theme={effectiveTheme}
-      className={`${inter.variable} ${notoSansArabic.variable} h-full antialiased ${effectiveTheme}`}
+      data-density={ssotPreferences.density}
+      className={htmlClassName}
+      style={{ fontSize: `${ssotPreferences.fontSize}px` }}
     >
       <body className="min-h-full flex flex-col">
-        <ThemeProvider>
+        <SSOTProvider
+          snapshot={{
+            language: locale,
+            themeMode,
+            fontSize: ssotPreferences.fontSize,
+            density: ssotPreferences.density,
+            highContrast: ssotPreferences.highContrast,
+            reducedMotion: ssotPreferences.reducedMotion,
+          }}
+        >
           <LocaleProvider initialLocale={locale} initialDirection={direction} />
           <I18nProvider
             initialLocale={locale}
             initialDictionary={dictionary}
           >
             {children}
+            {DevUiOverlay && <DevUiOverlay />}
           </I18nProvider>
-        </ThemeProvider>
-        {DevUiOverlay && <DevUiOverlay />}
+        </SSOTProvider>
         {process.env.NEXT_PUBLIC_MAOL_ENABLED === 'true' && <MaolProvider />}
         <SSOTGuard />
       </body>

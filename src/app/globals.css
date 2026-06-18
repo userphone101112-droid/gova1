@@ -50,6 +50,23 @@
   --color-inverse-surface: var(--gova-inverse-surface);
   --color-inverse-on-surface: var(--gova-inverse-on-surface);
 
+  /* shadcn-compatible aliases (used by settings + UI primitives) */
+  --color-card: var(--gova-surface-container);
+  --color-card-foreground: var(--gova-on-surface);
+  --color-muted: var(--gova-surface-container-low);
+  --color-muted-foreground: var(--gova-on-surface-variant);
+  --color-border: var(--gova-outline-variant);
+  --color-input: var(--gova-outline-variant);
+  --color-ring: var(--gova-primary);
+  --color-accent: var(--gova-surface-container-high);
+  --color-accent-foreground: var(--gova-on-surface);
+  --color-popover: var(--gova-surface-container);
+  --color-popover-foreground: var(--gova-on-surface);
+  --color-destructive: var(--gova-error);
+  --color-destructive-foreground: var(--gova-on-error);
+  --color-primary-foreground: var(--gova-on-primary);
+  --color-secondary-foreground: var(--gova-on-secondary);
+
   /* Spacing */
   --spacing-xs: var(--gova-spacing-xs);
   --spacing-sm: var(--gova-spacing-sm);
@@ -226,33 +243,67 @@ body {
   transform: scaleX(-1);
 }
 
-/* App Sidebar styles to enforce SSOT */
-.app-sidebar {
-  /* On small screens, use min(80vw, 320px), ensure it's at least 280px */
-  width: min(80vw, 320px);
-  min-width: 280px;
-  /* On screens wider than 640px, max width 50vw */
-  max-width: 100%;
-  top: 64px;
-  bottom: 0;
-  height: calc(100dvh - 64px - 72px);
+/* ── SSOT: density, accessibility, motion ── */
+html[data-density="compact"] {
+  --gova-density-scale: 0.85;
 }
 
-/* On screens wider than 640px, max width is 50vw */
-@media (min-width: 640px) {
-  .app-sidebar {
-    max-width: 50vw;
-  }
+html[data-density="comfortable"] {
+  --gova-density-scale: 1;
 }
 
-[dir="ltr"] .app-sidebar {
-  inset-inline-start: 0;
-  inset-inline-end: auto;
-  border-inline-start: 1px solid var(--gova-outline-variant);
+html[data-density="spacious"] {
+  --gova-density-scale: 1.15;
 }
 
-[dir="rtl"] .app-sidebar {
-  inset-inline-end: 0;
-  inset-inline-start: auto;
-  border-inline-end: 1px solid var(--gova-outline-variant);
+html[data-density="compact"] #main-content-container {
+  gap: calc(var(--gova-spacing-md) * var(--gova-density-scale));
 }
+
+html[data-density="spacious"] #main-content-container {
+  gap: calc(var(--gova-spacing-xl) * var(--gova-density-scale));
+}
+
+html.high-contrast {
+  --gova-outline: #000000;
+  --gova-outline-variant: #1a1a1a;
+}
+
+html.high-contrast.dark,
+html.high-contrast[data-theme="dark"] {
+  --gova-outline: #ffffff;
+  --gova-outline-variant: #e5e5e5;
+  --gova-on-surface: #ffffff;
+  --gova-on-background: #ffffff;
+}
+
+html.reduce-motion *,
+html.reduce-motion *::before,
+html.reduce-motion *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+/* Settings page slider */
+.settings-slider::-webkit-slider-thumb {
+  appearance: none;
+  height: 1.125rem;
+  width: 1.125rem;
+  border-radius: 9999px;
+  background: var(--gova-primary);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.settings-slider::-moz-range-thumb {
+  height: 1.125rem;
+  width: 1.125rem;
+  border: none;
+  border-radius: 9999px;
+  background: var(--gova-primary);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+

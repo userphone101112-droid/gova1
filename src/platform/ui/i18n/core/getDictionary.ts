@@ -221,6 +221,7 @@ export const APP_DICTIONARY_FEATURES: readonly Feature[] = [
   'auth',
   'shared-layout',
   'error-boundary',
+  'settings',
 ] as const;
 
 const APP_DICTIONARY_CACHE_KEY = '__app__' as Feature;

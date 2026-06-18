@@ -5,6 +5,7 @@
 import { readFileSync, writeFileSync, readdirSync } from 'fs';
 import { join } from 'path';
 import { findOrphans } from './find-orphans';
+import { getRequiredRegistryBindingKeys } from './validate-registry-bindings';
 
 const APPLY = process.argv.includes('--apply');
 const localesRoot = join(process.cwd(), 'src', 'platform', 'ui', 'i18n', 'locales');
@@ -69,6 +70,15 @@ function walkLocales(dir: string, orphanKeys: Set<string>): number {
 console.log('🧹 Translation orphan prune (report-driven)\n');
 const report = findOrphans();
 const orphanKeys = new Set(report.orphanTranslations.map((entry) => entry.key));
+const protectedKeys = getRequiredRegistryBindingKeys();
+const blocked = [...orphanKeys].filter((key) => protectedKeys.has(key));
+if (blocked.length > 0) {
+  console.error(`❌ Refusing to prune ${blocked.length} registry-bound key(s):`);
+  for (const key of blocked) {
+    console.error(`   - ${key}`);
+  }
+  process.exit(1);
+}
 const total = walkLocales(localesRoot, orphanKeys);
 
 console.log(

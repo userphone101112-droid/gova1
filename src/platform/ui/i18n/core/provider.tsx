@@ -38,13 +38,6 @@ export function I18nProvider({
   );
 
   useEffect(() => {
-    const storeLocale = useGlobalSSOTStore.getState().language;
-    if (storeLocale !== initialLocale) {
-      setLocaleSSOT(initialLocale);
-    }
-  }, [initialLocale, setLocaleSSOT]);
-
-  useEffect(() => {
     if (locale === initialLocale) {
       return;
     }
@@ -65,7 +58,6 @@ export function I18nProvider({
     setLocaleSSOT(newLocale);
     const newDictionary = await loadDictionary(newLocale);
     setDictionary(newDictionary);
-    document.cookie = `locale=${newLocale}; path=/; max-age=31536000`;
   };
 
   const contextValue: I18nContext = {

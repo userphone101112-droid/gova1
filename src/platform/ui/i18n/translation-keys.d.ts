@@ -163,6 +163,48 @@ export type homeTranslationKey =
   | 'home.categories-grid.sectionTitle'
 ;
 
+// settings feature translations
+export type settingsTranslationKey =
+  | 'settings.page.title'
+  | 'settings.page.description'
+  | 'settings.language.title'
+  | 'settings.language.description'
+  | 'settings.direction.title'
+  | 'settings.direction.description'
+  | 'settings.direction.rtl'
+  | 'settings.direction.ltr'
+  | 'settings.theme.title'
+  | 'settings.theme.description'
+  | 'settings.display.title'
+  | 'settings.display.fontSize'
+  | 'settings.display.density'
+  | 'settings.accessibility.title'
+  | 'settings.accessibility.highContrast'
+  | 'settings.accessibility.reducedMotion'
+  | 'settings.features.title'
+  | 'settings.features.darkMode'
+  | 'settings.features.multiLanguage'
+  | 'settings.features.advancedSearch'
+  | 'settings.features.exportData'
+  | 'settings.features.importData'
+  | 'settings.features.experimentalUi'
+  | 'settings.features.betaFeatures'
+  | 'settings.features.socialSharing'
+  | 'settings.features.offlineMode'
+  | 'settings.maintenance.title'
+  | 'settings.maintenance.enabled'
+  | 'settings.maintenance.bypassed'
+  | 'settings.options.english'
+  | 'settings.options.arabic'
+  | 'settings.options.light'
+  | 'settings.options.dark'
+  | 'settings.options.system'
+  | 'settings.options.densityCompact'
+  | 'settings.options.densityComfortable'
+  | 'settings.options.densitySpacious'
+  | 'settings.actions.reset'
+;
+
 // shared-layout feature translations
 export type sharedLayoutTranslationKey =
   | 'shared-layout.header.menuButton'
@@ -173,6 +215,7 @@ export type sharedLayoutTranslationKey =
   | 'shared-layout.header.innerWrapper'
   | 'shared-layout.header.brandSection'
   | 'shared-layout.header.actionsSection'
+  | 'shared-layout.header.brandLink'
   | 'shared-layout.bottom-nav.homeLink'
   | 'shared-layout.bottom-nav.notificationsLink'
   | 'shared-layout.bottom-nav.favoritesLink'
@@ -194,6 +237,7 @@ export type sharedLayoutTranslationKey =
   | 'shared-layout.sidebar.loginButton'
   | 'shared-layout.sidebar.languageToggle'
   | 'shared-layout.sidebar.themeToggle'
+  | 'shared-layout.sidebar.settingsButton'
 ;
 
 // splash feature translations
@@ -231,6 +275,7 @@ export type AllTranslationKeys =
   | commonTranslationKey
   | errorBoundaryTranslationKey
   | homeTranslationKey
+  | settingsTranslationKey
   | sharedLayoutTranslationKey
   | splashTranslationKey
 
