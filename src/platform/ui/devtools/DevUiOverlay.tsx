@@ -6,7 +6,6 @@ import { UI_SOURCE_INDEX } from '@/platform/ui/registry/source-index';
 import { useMaolStore } from '@/store/index';
 import { UiButton, UiDiv } from '@/platform/ui';
 import { DECORATIVE } from '@/platform/ui/registry/categories';
-import { useI18nContext } from '@/platform/ui';
 
 interface TooltipState {
   visible: boolean;
@@ -99,7 +98,7 @@ function computeFrames(selectedTypes: Set<ComponentType>): OverlayFrame[] {
     });
   });
 
-  return frames.filter(f => selectedTypes.size === 0 || selectedTypes.has(f.componentType as ComponentType));
+  return frames.filter(f => selectedTypes.has(f.componentType as ComponentType));
 }
 
 const COLOR_MAP = {
@@ -109,7 +108,6 @@ const COLOR_MAP = {
 };
 
 export function DevUiOverlay() {
-  const { feature: routeFeature } = useI18nContext();
   const [active, setActive] = useState<boolean>(() => {
     // Initialize from localStorage if exists, otherwise default to false
     if (typeof window !== 'undefined') {
@@ -123,10 +121,12 @@ export function DevUiOverlay() {
 
   // Filter state
   const [isFilterPanelOpen, setIsFilterPanelOpen] = useState(false);
-  const [selectedComponentTypes, setSelectedComponentTypes] = useState<Set<ComponentType>>(new Set(ALL_COMPONENT_TYPES));
+  const [selectedComponentTypes, setSelectedComponentTypes] = useState<Set<ComponentType>>(new Set());
+  const [isHoverInspectionEnabled, setIsHoverInspectionEnabled] = useState(false);
+  const [hoveredFrame, setHoveredFrame] = useState<OverlayFrame | null>(null);
 
   // Function to compute component type counts
-  const getComponentCounts = useCallback(() => {
+  const getComponentCounts = useCallback((selectedTypes: Set<ComponentType>) => {
     if (typeof window === 'undefined') {
       const counts: Record<string, number> = {};
       ALL_COMPONENT_TYPES.forEach(type => counts[type] = 0);
@@ -138,7 +138,7 @@ export function DevUiOverlay() {
     const elements = document.querySelectorAll<HTMLElement>('[data-ui-id]');
     elements.forEach(el => {
       const type = el.getAttribute('data-ui-component');
-      if (type) {
+      if (type && selectedTypes.has(type as ComponentType)) {
         counts[type] = (counts[type] || 0) + 1;
       }
     });
@@ -197,7 +197,7 @@ export function DevUiOverlay() {
     rafRef.current = requestAnimationFrame(() => {
       const newFrames = computeFrames(selectedComponentTypes);
       setFrames(newFrames);
-      setComponentCounts(getComponentCounts());
+      setComponentCounts(getComponentCounts(selectedComponentTypes));
     });
   }, [selectedComponentTypes, getComponentCounts]);
 
@@ -236,6 +236,10 @@ export function DevUiOverlay() {
     };
   }, [active, refresh]);
 
+  const dismissTooltip = useCallback(() => {
+    setTooltip((t) => ({ ...t, visible: false }));
+  }, []);
+
   const handleFrameClick = useCallback((e: React.MouseEvent, frame: OverlayFrame) => {
     e.stopPropagation();
     const identity = UI_ID_MAP[frame.id];
@@ -243,35 +247,129 @@ export function DevUiOverlay() {
 
     // Load saved data from our API data first, fallback to defaults
     const savedData = allInspectorData[frame.id];
-    
-    setTooltip({
-      visible: true,
-      x: e.clientX + 12,
-      y: e.clientY + 12,
-      id: frame.id,
-      path: identity?.path || '—',
-      feature: identity?.feature || '—',
-      version: identity?.version || '—',
-      deprecated: identity?.deprecated ?? false,
-      sourceFile: source?.sourceFile || '—',
-      sourceComponent: source?.sourceComponent || '—',
-      sourceLine: source?.sourceLine || 0,
-      databaseEnabled: savedData?.databaseEnabled ?? false,
-      inf1: savedData?.inf1 || '',
-      inf2: savedData?.inf2 || '',
-      inf3: savedData?.inf3 || '',
-      attributesEnabled: savedData?.attributesEnabled ?? false,
-      attribute1: savedData?.attribute1 ?? false,
-      attribute2: savedData?.attribute2 ?? false,
-      attribute3: savedData?.attribute3 ?? false,
-      dataUiPath: savedData?.dataUiPath || identity?.path || '',
-      dataUiFeature: savedData?.dataUiFeature || identity?.feature || '',
-    });
-  }, [allInspectorData]);
 
-  const dismissTooltip = useCallback(() => {
-    setTooltip((t) => ({ ...t, visible: false }));
-  }, []);
+    // Close tooltip first if visible, then reopen with new data
+    dismissTooltip();
+
+    setTimeout(() => {
+      setTooltip({
+        visible: true,
+        x: e.clientX + 12,
+        y: e.clientY + 12,
+        id: frame.id,
+        path: identity?.path || '—',
+        feature: identity?.feature || '—',
+        version: identity?.version || '—',
+        deprecated: identity?.deprecated ?? false,
+        sourceFile: source?.sourceFile || '—',
+        sourceComponent: source?.sourceComponent || '—',
+        sourceLine: source?.sourceLine || 0,
+        databaseEnabled: savedData?.databaseEnabled ?? false,
+        inf1: savedData?.inf1 || '',
+        inf2: savedData?.inf2 || '',
+        inf3: savedData?.inf3 || '',
+        attributesEnabled: savedData?.attributesEnabled ?? false,
+        attribute1: savedData?.attribute1 ?? false,
+        attribute2: savedData?.attribute2 ?? false,
+        attribute3: savedData?.attribute3 ?? false,
+        dataUiPath: savedData?.dataUiPath || identity?.path || '',
+        dataUiFeature: savedData?.dataUiFeature || identity?.feature || '',
+      });
+    }, 0);
+  }, [allInspectorData, dismissTooltip]);
+
+  // Hover inspection - show frame on mousemove when enabled
+  useEffect(() => {
+    if (!isHoverInspectionEnabled || !active) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      // Use elementFromPoint to get the element under the cursor
+      const target = document.elementFromPoint(e.clientX, e.clientY) as HTMLElement;
+      if (!target) return;
+
+      const uiId = target.getAttribute('data-ui-id');
+      if (!uiId) return;
+
+      // Skip hover inspection for UI_COMMON_DECORATIVE_SPACER
+      if (uiId === 'UI_COMMON_DECORATIVE_SPACER') return;
+
+      const componentType = target.getAttribute('data-ui-component') || 'Unknown';
+      const rect = target.getBoundingClientRect();
+      if (rect.width === 0 && rect.height === 0) return;
+
+      const identity = UI_ID_MAP[uiId];
+      let color: 'blue' | 'amber' | 'red' = 'red';
+      let label = uiId || '?';
+
+      if (identity) {
+        color = identity.deprecated ? 'amber' : 'blue';
+        label = identity.id;
+      }
+
+      setHoveredFrame({
+        id: uiId,
+        top: rect.top + window.scrollY,
+        left: rect.left + window.scrollX,
+        width: rect.width,
+        height: rect.height,
+        color,
+        label,
+        componentType,
+      });
+    };
+
+    const handleClick = (e: MouseEvent) => {
+      // Get the element under the cursor
+      const target = document.elementFromPoint(e.clientX, e.clientY) as HTMLElement;
+      if (!target) return;
+
+      const uiId = target.getAttribute('data-ui-id');
+      if (!uiId) return;
+
+      e.stopPropagation();
+      const identity = UI_ID_MAP[uiId];
+      const source = UI_SOURCE_INDEX[uiId];
+      const savedData = allInspectorData[uiId];
+
+      // Close tooltip first if visible, then reopen with new data
+      dismissTooltip();
+
+      setTimeout(() => {
+        setTooltip({
+          visible: true,
+          x: e.clientX + 12,
+          y: e.clientY + 12,
+          id: uiId,
+          path: identity?.path || '—',
+          feature: identity?.feature || '—',
+          version: identity?.version || '—',
+          deprecated: identity?.deprecated ?? false,
+          sourceFile: source?.sourceFile || '—',
+          sourceComponent: source?.sourceComponent || '—',
+          sourceLine: source?.sourceLine || 0,
+          databaseEnabled: savedData?.databaseEnabled ?? false,
+          inf1: savedData?.inf1 || '',
+          inf2: savedData?.inf2 || '',
+          inf3: savedData?.inf3 || '',
+          attributesEnabled: savedData?.attributesEnabled ?? false,
+          attribute1: savedData?.attribute1 ?? false,
+          attribute2: savedData?.attribute2 ?? false,
+          attribute3: savedData?.attribute3 ?? false,
+          dataUiPath: savedData?.dataUiPath || identity?.path || '',
+          dataUiFeature: savedData?.dataUiFeature || identity?.feature || '',
+        });
+      }, 0);
+    };
+
+    // Add event listeners to document
+    document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('click', handleClick);
+
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove);
+      document.removeEventListener('click', handleClick);
+    };
+  }, [isHoverInspectionEnabled, active, allInspectorData, hoveredFrame]);
 
   const handleSave = async () => {
     if (!tooltip.id) return;
@@ -353,9 +451,9 @@ export function DevUiOverlay() {
   // Update component counts when frames change
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      setComponentCounts(getComponentCounts());
+      setComponentCounts(getComponentCounts(selectedComponentTypes));
     }
-  }, [frames, getComponentCounts]);
+  }, [frames, selectedComponentTypes, getComponentCounts]);
 
   if (!active && frames.length === 0) {
     return (
@@ -410,12 +508,32 @@ export function DevUiOverlay() {
       >
         <span style={{ color: '#3b82f6', fontWeight: 700 }}>UI Inspector</span>
         <span>|</span>
-        <span style={{ color: '#a78bfa' }} title="Current i18n route feature">{routeFeature}</span>
+        <UiButton
+          ui={DECORATIVE.SPACER}
+          onClick={() => setIsHoverInspectionEnabled(!isHoverInspectionEnabled)}
+          style={{
+            padding: '2px 8px',
+            borderRadius: '10px',
+            border: 'none',
+            cursor: 'pointer',
+            fontSize: '10px',
+            fontWeight: 600,
+            background: isHoverInspectionEnabled ? '#22c55e' : '#475569',
+            color: '#fff',
+            fontFamily: 'monospace',
+          }}
+        >
+          Hover {isHoverInspectionEnabled ? 'ON' : 'OFF'}
+        </UiButton>
         <span>|</span>
-        <span style={{ color: '#22c55e' }}>{frames.filter(f => f.color === 'blue').length} ok</span>
-        <span style={{ color: '#f59e0b' }}>{frames.filter(f => f.color === 'amber').length} dep</span>
-        <span style={{ color: '#ef4444' }}>{frames.filter(f => f.color === 'red').length} err</span>
-        <span>|</span>
+        {isFilterPanelOpen && (
+          <>
+            <span style={{ color: '#22c55e' }}>{frames.filter(f => f.color === 'blue').length} ok</span>
+            <span style={{ color: '#f59e0b' }}>{frames.filter(f => f.color === 'amber').length} dep</span>
+            <span style={{ color: '#ef4444' }}>{frames.filter(f => f.color === 'red').length} err</span>
+            <span>|</span>
+          </>
+        )}
         {/* Filter Types Button */}
         <UiButton
                 ui={DECORATIVE.SPACER}
@@ -548,7 +666,11 @@ export function DevUiOverlay() {
                   <span style={{ color: '#e2e8f0' }}>{type}</span>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <span style={{ color: '#94a3b8', fontSize: '10px' }}>{componentCounts[type] || 0}</span>
+                  {isFilterPanelOpen && (
+                    <span style={{ color: '#94a3b8', fontSize: '10px' }}>
+                      {(componentCounts[type] || 0) > 99 ? '99+' : (componentCounts[type] || 0)}
+                    </span>
+                  )}
                   <button
                     onClick={() => toggleComponentFilter(type)}
                     style={{
@@ -573,7 +695,47 @@ export function DevUiOverlay() {
       )}
 
       {/* Frames overlay */}
-      {frames.map((frame, i) => {
+      {hoveredFrame && (
+        <UiDiv
+          key={`hovered-${hoveredFrame.id}`}
+          ui={DECORATIVE.SPACER}
+          style={{
+            position: 'absolute',
+            top: hoveredFrame.top,
+            left: hoveredFrame.left,
+            width: hoveredFrame.width,
+            height: hoveredFrame.height,
+            border: `2px solid ${COLOR_MAP[hoveredFrame.color].border}`,
+            background: COLOR_MAP[hoveredFrame.color].bg,
+            boxSizing: 'border-box',
+            pointerEvents: 'none',
+            zIndex: 99999,
+          }}
+        >
+          <span
+            style={{
+              position: 'absolute',
+              top: -1,
+              left: 0,
+              background: COLOR_MAP[hoveredFrame.color].badge,
+              color: '#fff',
+              fontSize: '9px',
+              fontFamily: 'monospace',
+              padding: '0 4px',
+              lineHeight: '16px',
+              borderRadius: '0 0 4px 0',
+              maxWidth: hoveredFrame.width - 4,
+              overflow: 'hidden',
+              whiteSpace: 'nowrap',
+              textOverflow: 'ellipsis',
+              pointerEvents: 'none',
+            }}
+          >
+            {hoveredFrame.label}
+          </span>
+        </UiDiv>
+      )}
+      {!hoveredFrame && frames.map((frame, i) => {
         const colors = COLOR_MAP[frame.color];
         return (
           <UiDiv
@@ -642,6 +804,7 @@ export function DevUiOverlay() {
             maxHeight: '80vh',
             overflowY: 'auto',
             lineHeight: 1.6,
+            pointerEvents: 'auto',
           }}
         >
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
@@ -649,7 +812,10 @@ export function DevUiOverlay() {
               UI Identity Inspector
             </div>
             <button
-              onClick={dismissTooltip}
+              onClick={(e) => {
+                e.stopPropagation();
+                dismissTooltip();
+              }}
               style={{
                 background: 'transparent',
                 border: 'none',

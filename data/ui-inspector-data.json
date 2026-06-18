@@ -37,5 +37,18 @@
     "dataUiPath": "shared-layout.bottom-nav.items.favorites-link",
     "dataUiFeature": "shared-layout",
     "updatedAt": "2026-06-15T16:16:22.554Z"
+  },
+  "UI_SHARED_HEADER_INNER_WRAPPER": {
+    "databaseEnabled": false,
+    "inf1": "",
+    "inf2": "",
+    "inf3": "",
+    "attributesEnabled": false,
+    "attribute1": false,
+    "attribute2": false,
+    "attribute3": false,
+    "dataUiPath": "shared-layout.header.layout.inner-wrapper",
+    "dataUiFeature": "shared-layout",
+    "updatedAt": "2026-06-18T19:08:38.535Z"
   }
 }
