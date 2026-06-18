@@ -281,18 +281,32 @@ export function DevUiOverlay() {
     if (!isHoverInspectionEnabled || !active) return;
 
     const handleMouseMove = (e: MouseEvent) => {
-      // Use elementFromPoint to get the element under the cursor
-      const target = document.elementFromPoint(e.clientX, e.clientY) as HTMLElement;
-      if (!target) return;
+      // Temporarily disable pointer events on inspector overlays to see the original element
+      const overlays = document.querySelectorAll('[data-inspector-overlay="true"]');
+      overlays.forEach((el) => {
+        (el as HTMLElement).style.pointerEvents = 'none';
+      });
 
-      const uiId = target.getAttribute('data-ui-id');
+      try {
+        // Use elementFromPoint to get the element under the cursor
+        const target = document.elementFromPoint(e.clientX, e.clientY) as HTMLElement;
+        if (!target) return;
+
+        // Find the closest element with data-ui-id (could be the target itself or a parent)
+        const uiElement = target.closest('[data-ui-id]') as HTMLElement | null;
+        if (!uiElement) {
+          setHoveredFrame(null);
+          return;
+        }
+
+      const uiId = uiElement.getAttribute('data-ui-id');
       if (!uiId) return;
 
       // Skip hover inspection for UI_COMMON_DECORATIVE_SPACER
       if (uiId === 'UI_COMMON_DECORATIVE_SPACER') return;
 
-      const componentType = target.getAttribute('data-ui-component') || 'Unknown';
-      const rect = target.getBoundingClientRect();
+      const componentType = uiElement.getAttribute('data-ui-component') || 'Unknown';
+      const rect = uiElement.getBoundingClientRect();
       if (rect.width === 0 && rect.height === 0) return;
 
       const identity = UI_ID_MAP[uiId];
@@ -314,59 +328,22 @@ export function DevUiOverlay() {
         label,
         componentType,
       });
+      } finally {
+        // Restore pointer events on inspector overlays
+        overlays.forEach((el) => {
+          (el as HTMLElement).style.pointerEvents = 'auto';
+        });
+      }
     };
 
-    const handleClick = (e: MouseEvent) => {
-      const target = document.elementFromPoint(e.clientX, e.clientY);
-      if (!target || !(target instanceof HTMLElement)) return;
-
-      const uiElement = target.closest('[data-ui-id]') as HTMLElement | null;
-      if (!uiElement) return;
-
-      const uiId = uiElement.getAttribute('data-ui-id');
-      if (!uiId) return;
-
-      e.stopPropagation();
-      const identity = UI_ID_MAP[uiId];
-      const source = UI_SOURCE_INDEX[uiId];
-      const savedData = allInspectorData[uiId];
-
-      // Single atomic update with new instanceId to force remount
-      setTooltip({
-        visible: true,
-        x: e.clientX + 12,
-        y: e.clientY + 12,
-        id: uiId,
-        instanceId: `${uiId}_${Date.now()}`,
-        path: identity?.path || '—',
-        feature: identity?.feature || '—',
-        version: identity?.version || '—',
-        deprecated: identity?.deprecated ?? false,
-        sourceFile: source?.sourceFile || '—',
-        sourceComponent: source?.sourceComponent || '—',
-        sourceLine: source?.sourceLine || 0,
-        databaseEnabled: savedData?.databaseEnabled ?? false,
-        inf1: savedData?.inf1 || '',
-        inf2: savedData?.inf2 || '',
-        inf3: savedData?.inf3 || '',
-        attributesEnabled: savedData?.attributesEnabled ?? false,
-        attribute1: savedData?.attribute1 ?? false,
-        attribute2: savedData?.attribute2 ?? false,
-        attribute3: savedData?.attribute3 ?? false,
-        dataUiPath: savedData?.dataUiPath || identity?.path || '',
-        dataUiFeature: savedData?.dataUiFeature || identity?.feature || '',
-      });
-    };
-
-    // Add event listeners to document
+    // Add event listener to document
     document.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('click', handleClick);
 
     return () => {
       document.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('click', handleClick);
+      setHoveredFrame(null);
     };
-  }, [isHoverInspectionEnabled, active, allInspectorData]);
+  }, [isHoverInspectionEnabled, active]);
 
   const handleSave = async () => {
     if (!tooltip.id) return;
@@ -692,52 +669,15 @@ export function DevUiOverlay() {
       )}
 
       {/* Frames overlay */}
-      {hoveredFrame && (
-        <UiDiv
-          key={`hovered-${hoveredFrame.id}`}
-          ui={DECORATIVE.SPACER}
-          style={{
-            position: 'absolute',
-            top: hoveredFrame.top,
-            left: hoveredFrame.left,
-            width: hoveredFrame.width,
-            height: hoveredFrame.height,
-            border: `2px solid ${COLOR_MAP[hoveredFrame.color].border}`,
-            background: COLOR_MAP[hoveredFrame.color].bg,
-            boxSizing: 'border-box',
-            pointerEvents: 'none',
-            zIndex: 99999,
-          }}
-        >
-          <span
-            style={{
-              position: 'absolute',
-              top: -1,
-              left: 0,
-              background: COLOR_MAP[hoveredFrame.color].badge,
-              color: '#fff',
-              fontSize: '9px',
-              fontFamily: 'monospace',
-              padding: '0 4px',
-              lineHeight: '16px',
-              borderRadius: '0 0 4px 0',
-              maxWidth: hoveredFrame.width - 4,
-              overflow: 'hidden',
-              whiteSpace: 'nowrap',
-              textOverflow: 'ellipsis',
-              pointerEvents: 'none',
-            }}
-          >
-            {hoveredFrame.label}
-          </span>
-        </UiDiv>
-      )}
-      {!hoveredFrame && frames.map((frame, i) => {
+      {/* Always render all frames with pointer events for clicking */}
+      {frames.map((frame, i) => {
         const colors = COLOR_MAP[frame.color];
+        const isHovered = hoveredFrame && hoveredFrame.id === frame.id;
         return (
           <UiDiv
             key={`${frame.id}-${i}`}
             ui={DECORATIVE.SPACER}
+            data-inspector-overlay="true"
             onClick={(e) => handleFrameClick(e, frame)}
             style={{
               position: 'absolute',
@@ -745,11 +685,11 @@ export function DevUiOverlay() {
               left: frame.left,
               width: frame.width,
               height: frame.height,
-              border: `1.5px solid ${colors.border}`,
+              border: isHovered ? `2px solid ${colors.border}` : `1.5px solid ${colors.border}`,
               background: colors.bg,
               boxSizing: 'border-box',
               pointerEvents: 'auto',
-              zIndex: 99900,
+              zIndex: isHovered ? 99999 : 99900,
               cursor: 'pointer',
             }}
           >
