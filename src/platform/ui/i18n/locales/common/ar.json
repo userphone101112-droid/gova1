@@ -84,6 +84,11 @@
     "description": "قم بتخصيص تجربة التطبيق الخاصة بك وفقاً لتفضيلاتك.",
     "appSettings": {
       "title": "إعدادات التطبيق",
+      "active": "نشط",
+      "description": "الوصف",
+      "ai": "الذكاء الاصطناعي",
+      "analytics": "التحليلات المتقدمة",
+      "pdf": "تصدير PDF",
       "status": {
         "title": "حالة النظام",
         "description": "جميع الأنظمة تعمل بكفاءة عالية في الوقت الحالي.",
@@ -102,6 +107,10 @@
     },
     "languageRegion": {
       "title": "اللغة والمنطقة",
+      "description": "الوصف",
+      "cairo": "توقيت القاهرة (GMT+3)",
+      "mecca": "توقيت مكة (GMT+3)",
+      "dubai": "توقيت دبي (GMT+4)",
       "language": {
         "title": "اختيار اللغة",
         "description": "اختر لغة الواجهة المفضلة لديك."
@@ -116,6 +125,13 @@
     },
     "appearance": {
       "title": "المظهر",
+      "light": "فاتح",
+      "dark": "داكن",
+      "system": "تلقائي",
+      "compact": "مكثفة",
+      "comfortable": "مريحة",
+      "spacious": "واسعة",
+      "button": "تغيير الألوان",
       "theme": {
         "title": "السمة البصرية",
         "light": "فاتح",
@@ -138,6 +154,7 @@
     },
     "accessibility": {
       "title": "إمكانية الوصول",
+      "description": "الوصف",
       "highContrast": {
         "title": "تباين عالٍ",
         "description": "زيادة التباين بين العناصر والخلفية لتحسين الرؤية."
@@ -149,6 +166,7 @@
     },
     "developerTools": {
       "title": "أدوات المطورين",
+      "description": "الوصف",
       "ssotGuard": {
         "title": "حماية SSOT",
         "description": "تفعيل نظام 'المصدر الوحيد للحقيقة' للبيانات."

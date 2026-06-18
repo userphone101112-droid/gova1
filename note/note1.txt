@@ -1,4 +1,0 @@
-لتغيير سياسة تنفيذ PowerShell، يمكنك استخدام أحد هذه الخيارات:
-
-الخيار 1: تغيير السياسة للمستخدم الحالي (الأكثر أماناً)
-Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned

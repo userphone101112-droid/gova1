@@ -766,5 +766,219 @@
         ]
       }
     }
+  ],
+  "maol_IT2rKxtGv0": [
+    {
+      "route": "/",
+      "timestamp": 1781797780991,
+      "totalIdentified": 69,
+      "tree": {
+        "type": "page",
+        "children": [
+          {
+            "name": "splash",
+            "uiIds": [
+              "UI_SPLASH_LOGO_IMAGE",
+              "UI_SPLASH_LOGO_HEADING"
+            ],
+            "tags": [
+              "main",
+              "h1"
+            ]
+          },
+          {
+            "name": "common",
+            "uiIds": [
+              "UI_COMMON_DECORATIVE_BACKGROUND",
+              "UI_COMMON_LAYOUT_WRAPPER",
+              "UI_COMMON_LAYOUT_CONTAINER",
+              "UI_COMMON_LAYOUT_SPAN",
+              "UI_COMMON_DECORATIVE_SPACER"
+            ],
+            "tags": [
+              "div",
+              "span",
+              "button"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "route": "/home",
+      "timestamp": 1781797802111,
+      "totalIdentified": 867,
+      "tree": {
+        "type": "page",
+        "children": [
+          {
+            "name": "shared-layout",
+            "uiIds": [
+              "UI_SHARED_HEADER_CONTAINER",
+              "UI_SHARED_HEADER_INNER_WRAPPER",
+              "UI_SHARED_HEADER_BRAND_SECTION",
+              "UI_SHARED_HEADER_MENU",
+              "UI_SHARED_HEADER_BRAND_LINK",
+              "UI_SHARED_HEADER_ACTIONS_SECTION",
+              "UI_SHARED_HEADER_SEARCH_INPUT",
+              "UI_SHARED_HEADER_SEARCH_BUTTON",
+              "UI_SHARED_HEADER_CART_BUTTON",
+              "UI_SHARED_SIDEBAR_CONTAINER",
+              "UI_SHARED_SIDEBAR_OVERLAY",
+              "UI_SHARED_SIDEBAR_PANEL",
+              "UI_SHARED_SIDEBAR_CONTENT",
+              "UI_SHARED_SIDEBAR_ACTIONS_SECTION",
+              "UI_SHARED_BOTTOM_NAV_CONTAINER",
+              "UI_SHARED_BOTTOM_NAV_HOME",
+              "UI_SHARED_BOTTOM_NAV_NOTIFICATIONS",
+              "UI_SHARED_BOTTOM_NAV_FAVORITES",
+              "UI_SHARED_BOTTOM_NAV_ORDERS",
+              "UI_SHARED_BOTTOM_NAV_PROFILE"
+            ],
+            "tags": [
+              "h1",
+              "div",
+              "button",
+              "a",
+              "input",
+              "nav"
+            ]
+          },
+          {
+            "name": "common",
+            "uiIds": [
+              "UI_COMMON_LAYOUT_CONTAINER",
+              "UI_COMMON_LAYOUT_MAIN",
+              "UI_COMMON_LAYOUT_SECTION",
+              "UI_COMMON_LAYOUT_WRAPPER",
+              "UI_COMMON_LAYOUT_HEADER",
+              "UI_COMMON_LAYOUT_SPAN",
+              "UI_COMMON_DECORATIVE_SPACER"
+            ],
+            "tags": [
+              "div",
+              "main",
+              "section",
+              "h3",
+              "img",
+              "p",
+              "span",
+              "button"
+            ]
+          },
+          {
+            "name": "home",
+            "uiIds": [
+              "UI_HOME_HERO_SLIDER_CONTAINER",
+              "UI_HOME_HERO_SLIDER_SLIDER_TRACK",
+              "UI_HOME_HERO_SLIDER_SLIDE",
+              "UI_HOME_HERO_SLIDER_SLIDE_IMAGE",
+              "UI_HOME_HERO_SLIDER_SLIDE_CONTENT",
+              "UI_HOME_HERO_SLIDER_SLIDE_BADGE",
+              "UI_HOME_HERO_SLIDER_SLIDE_TITLE",
+              "UI_HOME_HERO_SLIDER_INDICATORS",
+              "UI_HOME_CATEGORIES_GRID_SECTION_TITLE",
+              "UI_HOME_CATEGORIES_GRID_TOGGLE",
+              "UI_HOME_CATEGORIES_GRID_ITEM",
+              "UI_HOME_CATEGORIES_GRID_CATEGORY_IMAGE",
+              "UI_HOME_CATEGORIES_GRID_CATEGORY_NAME",
+              "UI_HOME_CURATED_OFFERS_CONTAINER",
+              "UI_HOME_CURATED_OFFERS_HEADER",
+              "UI_HOME_CURATED_OFFERS_SECTION_TITLE",
+              "UI_HOME_CURATED_OFFERS_PROMO_TAG",
+              "UI_HOME_CURATED_OFFERS_PRODUCT_GRID",
+              "UI_HOME_CURATED_OFFERS_PRODUCT_CARD",
+              "UI_HOME_CURATED_OFFERS_PRODUCT_IMAGE_CONTAINER",
+              "UI_HOME_CURATED_OFFERS_PRODUCT_IMAGE",
+              "UI_HOME_CURATED_OFFERS_FAVORITE",
+              "UI_HOME_CURATED_OFFERS_PRODUCT_INFO",
+              "UI_HOME_CURATED_OFFERS_CATEGORY_LABEL",
+              "UI_HOME_CURATED_OFFERS_PRODUCT_TITLE",
+              "UI_HOME_CURATED_OFFERS_PRICE_ROW",
+              "UI_HOME_CURATED_OFFERS_PRICE_LABEL",
+              "UI_HOME_CURATED_OFFERS_ADD_TO_CART",
+              "UI_HOME_CURATED_OFFERS_SHOW_MORE_CONTAINER",
+              "UI_HOME_CURATED_OFFERS_MORE",
+              "UI_HOME_PROMO_BANNER_CONTAINER",
+              "UI_HOME_PROMO_BANNER_CONTENT_WRAPPER",
+              "UI_HOME_PROMO_BANNER_LOGO",
+              "UI_HOME_PROMO_BANNER_TITLE",
+              "UI_HOME_PROMO_BANNER_DESCRIPTION",
+              "UI_HOME_PROMO_BANNER_ACTION",
+              "UI_HOME_PROMO_BANNER_DECORATIVE_BACKGROUND"
+            ],
+            "tags": [
+              "section",
+              "div",
+              "img",
+              "span",
+              "h2",
+              "h3",
+              "button",
+              "article"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "route": "/settings",
+      "timestamp": 1781798247628,
+      "totalIdentified": 5728,
+      "tree": {
+        "type": "page",
+        "children": [
+          {
+            "name": "shared-layout",
+            "uiIds": [
+              "UI_SHARED_HEADER_CONTAINER",
+              "UI_SHARED_HEADER_INNER_WRAPPER",
+              "UI_SHARED_HEADER_BRAND_SECTION",
+              "UI_SHARED_HEADER_MENU",
+              "UI_SHARED_HEADER_BRAND_LINK",
+              "UI_SHARED_HEADER_ACTIONS_SECTION",
+              "UI_SHARED_HEADER_SEARCH_INPUT",
+              "UI_SHARED_HEADER_SEARCH_BUTTON",
+              "UI_SHARED_HEADER_CART_BUTTON",
+              "UI_SHARED_SIDEBAR_CONTAINER",
+              "UI_SHARED_SIDEBAR_OVERLAY",
+              "UI_SHARED_SIDEBAR_PANEL",
+              "UI_SHARED_SIDEBAR_CONTENT",
+              "UI_SHARED_SIDEBAR_ACTIONS_SECTION",
+              "UI_SHARED_BOTTOM_NAV_CONTAINER",
+              "UI_SHARED_BOTTOM_NAV_HOME",
+              "UI_SHARED_BOTTOM_NAV_NOTIFICATIONS",
+              "UI_SHARED_BOTTOM_NAV_FAVORITES",
+              "UI_SHARED_BOTTOM_NAV_ORDERS",
+              "UI_SHARED_BOTTOM_NAV_PROFILE"
+            ],
+            "tags": [
+              "h1",
+              "div",
+              "button",
+              "a",
+              "input",
+              "nav"
+            ]
+          },
+          {
+            "name": "common",
+            "uiIds": [
+              "UI_COMMON_LAYOUT_CONTAINER",
+              "UI_COMMON_LAYOUT_MAIN",
+              "UI_COMMON_LAYOUT_SECTION",
+              "UI_COMMON_LAYOUT_WRAPPER",
+              "UI_COMMON_DECORATIVE_SPACER"
+            ],
+            "tags": [
+              "div",
+              "main",
+              "section",
+              "button"
+            ]
+          }
+        ]
+      }
+    }
   ]
 }

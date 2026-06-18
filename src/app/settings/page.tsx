@@ -3,6 +3,7 @@
 import { Settings as SettingsIcon, Globe, Palette, Accessibility, Terminal, Database, FileText } from 'lucide-react';
 import { useTranslation, UiButton, UiDiv, UiSection } from '@/platform/ui';
 import { COMMON_LAYOUT } from '@/platform/ui/registry/categories';
+import { SETTINGS } from '@/platform/ui/registry/features/settings';
 import { useUnifiedStore } from '@/store/unified.store';
 
 export default function SettingsPage() {
@@ -17,10 +18,10 @@ export default function SettingsPage() {
       {/* Header */}
       <header className="mb-12 text-center space-y-2">
         <h1 className="text-4xl font-bold text-primary tracking-tight sm:text-5xl">
-          {t('settings.title')}
+          {t(SETTINGS.TITLE)}
         </h1>
         <p className="text-base text-on-surface-variant sm:text-lg">
-          {t('settings.description')}
+          {t(SETTINGS.DESCRIPTION)}
         </p>
       </header>
 
@@ -29,7 +30,7 @@ export default function SettingsPage() {
         <div className="flex items-center gap-3 px-2">
           <SettingsIcon className="h-6 w-6 text-primary" />
           <h2 className="text-xl font-semibold text-on-surface">
-            {t('settings.appSettings.title')}
+            {t(SETTINGS.APP_SETTINGS.TITLE)}
           </h2>
         </div>
         <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="grid grid-cols-1 gap-6 md:grid-cols-2">
@@ -41,15 +42,15 @@ export default function SettingsPage() {
                   <SettingsIcon className="h-6 w-6" />
                 </div>
                 <div className="rounded-full bg-secondary-container px-3 py-1 text-xs font-semibold text-on-secondary-container">
-                  {t('settings.appSettings.status.active')}
+                  {t(SETTINGS.APP_SETTINGS.ACTIVE)}
                 </div>
               </div>
               <div>
                 <h3 className="text-lg font-semibold">
-                  {t('settings.appSettings.status.title')}
+                  {t(SETTINGS.APP_SETTINGS.STATUS_TITLE)}
                 </h3>
                 <p className="text-sm text-on-surface-variant">
-                  {t('settings.appSettings.status.description')}
+                  {t(SETTINGS.APP_SETTINGS.STATUS_DESCRIPTION)}
                 </p>
               </div>
             </div>
@@ -60,10 +61,10 @@ export default function SettingsPage() {
             <div className="flex items-center justify-between">
               <div className="space-y-1">
                 <h3 className="text-lg font-semibold">
-                  {t('settings.appSettings.maintenance.title')}
+                  {t(SETTINGS.APP_SETTINGS.MAINTENANCE_TITLE)}
                 </h3>
                 <p className="text-sm text-on-surface-variant">
-                  {t('settings.appSettings.maintenance.description')}
+                  {t(SETTINGS.APP_SETTINGS.MAINTENANCE_DESCRIPTION)}
                 </p>
               </div>
               <UiButton
@@ -80,24 +81,24 @@ export default function SettingsPage() {
         {/* Feature Flags */}
         <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="rounded-3xl bg-white p-6 shadow-sm space-y-6">
           <h3 className="text-lg font-semibold">
-            {t('settings.appSettings.featureFlags.title')}
+            {t(SETTINGS.APP_SETTINGS.FEATURE_FLAGS_TITLE)}
           </h3>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
             <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="flex items-center justify-between rounded-xl bg-surface-container p-4 border border-outline-variant/30">
               <span className="text-xs font-semibold">
-                {t('settings.appSettings.featureFlags.ai')}
+                {t(SETTINGS.APP_SETTINGS.AI)}
               </span>
               <div className="h-4 w-4 rounded-full bg-secondary" />
             </UiDiv>
             <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="flex items-center justify-between rounded-xl bg-surface-container p-4 border border-outline-variant/30">
               <span className="text-xs font-semibold">
-                {t('settings.appSettings.featureFlags.analytics')}
+                {t(SETTINGS.APP_SETTINGS.ANALYTICS)}
               </span>
               <div className="h-4 w-4 rounded-full bg-outline" />
             </UiDiv>
             <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="flex items-center justify-between rounded-xl bg-surface-container p-4 border border-outline-variant/30">
               <span className="text-xs font-semibold">
-                {t('settings.appSettings.featureFlags.pdf')}
+                {t(SETTINGS.APP_SETTINGS.PDF)}
               </span>
               <div className="h-4 w-4 rounded-full bg-secondary" />
             </UiDiv>
@@ -110,17 +111,17 @@ export default function SettingsPage() {
         <div className="flex items-center gap-3 px-2">
           <Globe className="h-6 w-6 text-primary" />
           <h2 className="text-xl font-semibold text-on-surface">
-            {t('settings.languageRegion.title')}
+            {t(SETTINGS.LANGUAGE_REGION.TITLE)}
           </h2>
         </div>
         <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="rounded-3xl bg-white p-6 shadow-sm space-y-8">
           <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
             <div className="space-y-1">
               <h3 className="text-lg font-semibold">
-                {t('settings.languageRegion.language.title')}
+                {t(SETTINGS.LANGUAGE_REGION.LANGUAGE_TITLE)}
               </h3>
               <p className="text-sm text-on-surface-variant">
-                {t('settings.languageRegion.language.description')}
+                {t(SETTINGS.LANGUAGE_REGION.LANGUAGE_DESCRIPTION)}
               </p>
             </div>
             <div className="flex w-fit gap-1 rounded-full bg-surface-container p-1">
@@ -145,7 +146,7 @@ export default function SettingsPage() {
           <div className="grid grid-cols-1 gap-6 border-t border-outline-variant/20 pt-4 md:grid-cols-2">
             <div className="space-y-3">
               <h4 className="text-xs font-semibold text-outline">
-                {t('settings.languageRegion.directionPreview')}
+                {t(SETTINGS.LANGUAGE_REGION.DIRECTION_PREVIEW)}
               </h4>
               <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="flex items-center gap-4 rounded-xl bg-surface-container-low p-4">
                 <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
@@ -158,12 +159,12 @@ export default function SettingsPage() {
             </div>
             <div className="space-y-3">
               <h4 className="text-xs font-semibold text-outline">
-                {t('settings.languageRegion.timezone')}
+                {t(SETTINGS.LANGUAGE_REGION.TIMEZONE)}
               </h4>
               <select className="h-12 w-full rounded-xl bg-surface-container-low border-none px-4 text-sm focus:ring-2 focus:ring-primary">
-                <option>{t('settings.languageRegion.timezones.cairo')}</option>
-                <option>{t('settings.languageRegion.timezones.mecca')}</option>
-                <option>{t('settings.languageRegion.timezones.dubai')}</option>
+                <option>{t(SETTINGS.LANGUAGE_REGION.CAIRO)}</option>
+                <option>{t(SETTINGS.LANGUAGE_REGION.MECCA)}</option>
+                <option>{t(SETTINGS.LANGUAGE_REGION.DUBAI)}</option>
               </select>
             </div>
           </div>
@@ -175,14 +176,14 @@ export default function SettingsPage() {
         <div className="flex items-center gap-3 px-2">
           <Palette className="h-6 w-6 text-primary" />
           <h2 className="text-xl font-semibold text-on-surface">
-            {t('settings.appearance.title')}
+            {t(SETTINGS.APPEARANCE.TITLE)}
           </h2>
         </div>
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
           <div className="lg:col-span-2 space-y-6">
             <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="rounded-3xl bg-white p-6 shadow-sm space-y-6">
               <h3 className="text-lg font-semibold">
-                {t('settings.appearance.theme.title')}
+                {t(SETTINGS.APPEARANCE.THEME_TITLE)}
               </h3>
               <div className="grid grid-cols-3 gap-4">
                 <UiButton
@@ -193,7 +194,7 @@ export default function SettingsPage() {
                 >
                   <Palette className="h-8 w-8" />
                   <span className="text-xs font-semibold">
-                    {t('settings.appearance.theme.light')}
+                    {t(SETTINGS.APPEARANCE.LIGHT)}
                   </span>
                 </UiButton>
                 <UiButton
@@ -204,7 +205,7 @@ export default function SettingsPage() {
                 >
                   <Palette className="h-8 w-8" />
                   <span className="text-xs font-semibold">
-                    {t('settings.appearance.theme.dark')}
+                    {t(SETTINGS.APPEARANCE.DARK)}
                   </span>
                 </UiButton>
                 <UiButton
@@ -215,7 +216,7 @@ export default function SettingsPage() {
                 >
                   <Palette className="h-8 w-8" />
                   <span className="text-xs font-semibold">
-                    {t('settings.appearance.theme.system')}
+                    {t(SETTINGS.APPEARANCE.SYSTEM)}
                   </span>
                 </UiButton>
               </div>
@@ -224,7 +225,7 @@ export default function SettingsPage() {
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <h3 className="text-lg font-semibold">
-                    {t('settings.appearance.fontSize.title')}
+                    {t(SETTINGS.APPEARANCE.FONT_SIZE_TITLE)}
                   </h3>
                   <span className="rounded-lg bg-surface-container px-3 py-1 text-xs font-semibold">
                     {fontSize}px
@@ -241,7 +242,7 @@ export default function SettingsPage() {
               </div>
               <div className="space-y-4">
                 <h3 className="text-lg font-semibold">
-                  {t('settings.appearance.density.title')}
+                  {t(SETTINGS.APPEARANCE.DENSITY_TITLE)}
                 </h3>
                 <div className="flex gap-4">
                   <UiButton
@@ -250,7 +251,7 @@ export default function SettingsPage() {
                     className="flex-1 rounded-xl px-4 py-3 text-xs font-semibold"
                     onClick={() => setDensity('compact')}
                   >
-                    {t('settings.appearance.density.compact')}
+                    {t(SETTINGS.APPEARANCE.COMPACT)}
                   </UiButton>
                   <UiButton
                     ui={COMMON_LAYOUT.WRAPPER}
@@ -258,7 +259,7 @@ export default function SettingsPage() {
                     className="flex-1 rounded-xl px-4 py-3 text-xs font-semibold"
                     onClick={() => setDensity('comfortable')}
                   >
-                    {t('settings.appearance.density.comfortable')}
+                    {t(SETTINGS.APPEARANCE.COMFORTABLE)}
                   </UiButton>
                   <UiButton
                     ui={COMMON_LAYOUT.WRAPPER}
@@ -266,7 +267,7 @@ export default function SettingsPage() {
                     className="flex-1 rounded-xl px-4 py-3 text-xs font-semibold"
                     onClick={() => setDensity('spacious')}
                   >
-                    {t('settings.appearance.density.spacious')}
+                    {t(SETTINGS.APPEARANCE.SPACIOUS)}
                   </UiButton>
                 </div>
               </div>
@@ -276,7 +277,7 @@ export default function SettingsPage() {
           <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="relative overflow-hidden rounded-3xl bg-primary p-6 text-white shadow-lg">
             <div className="relative z-10 space-y-4">
               <h3 className="text-lg font-semibold">
-                {t('settings.appearance.preview.title')}
+                {t(SETTINGS.APPEARANCE.PREVIEW_TITLE)}
               </h3>
               <div className="space-y-3 opacity-90">
                 <div className="h-4 w-3/4 rounded bg-white/20" />
@@ -289,7 +290,7 @@ export default function SettingsPage() {
                   variant="default"
                   className="w-full rounded-xl bg-white py-3 font-bold text-primary active:scale-95"
                 >
-                  {t('settings.appearance.preview.button')}
+                  {t(SETTINGS.APPEARANCE.BUTTON)}
                 </UiButton>
               </div>
             </div>
@@ -303,17 +304,17 @@ export default function SettingsPage() {
         <div className="flex items-center gap-3 px-2">
           <Accessibility className="h-6 w-6 text-primary" />
           <h2 className="text-xl font-semibold text-on-surface">
-            {t('settings.accessibility.title')}
+            {t(SETTINGS.ACCESSIBILITY.TITLE)}
           </h2>
         </div>
         <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="divide-y divide-outline-variant/20 rounded-3xl bg-white shadow-sm">
           <div className="flex items-center justify-between p-6">
             <div className="space-y-1">
               <h3 className="text-lg font-semibold">
-                {t('settings.accessibility.highContrast.title')}
+                {t(SETTINGS.ACCESSIBILITY.HIGH_CONTRAST_TITLE)}
               </h3>
               <p className="text-sm text-on-surface-variant">
-                {t('settings.accessibility.highContrast.description')}
+                {t(SETTINGS.ACCESSIBILITY.HIGH_CONTRAST_DESCRIPTION)}
               </p>
             </div>
             <UiButton
@@ -328,10 +329,10 @@ export default function SettingsPage() {
           <div className="flex items-center justify-between p-6">
             <div className="space-y-1">
               <h3 className="text-lg font-semibold">
-                {t('settings.accessibility.reducedMotion.title')}
+                {t(SETTINGS.ACCESSIBILITY.REDUCED_MOTION_TITLE)}
               </h3>
               <p className="text-sm text-on-surface-variant">
-                {t('settings.accessibility.reducedMotion.description')}
+                {t(SETTINGS.ACCESSIBILITY.REDUCED_MOTION_DESCRIPTION)}
               </p>
             </div>
             <UiButton
@@ -351,7 +352,7 @@ export default function SettingsPage() {
         <div className="flex items-center gap-3 px-2">
           <Terminal className="h-6 w-6 text-primary" />
           <h2 className="text-xl font-semibold text-on-surface">
-            {t('settings.developerTools.title')}
+            {t(SETTINGS.DEVELOPER_TOOLS.TITLE)}
           </h2>
         </div>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
@@ -362,10 +363,10 @@ export default function SettingsPage() {
               </div>
               <div>
                 <h3 className="text-lg font-semibold">
-                  {t('settings.developerTools.ssotGuard.title')}
+                  {t(SETTINGS.DEVELOPER_TOOLS.SSOT_GUARD_TITLE)}
                 </h3>
                 <p className="text-sm text-on-surface-variant">
-                  {t('settings.developerTools.ssotGuard.description')}
+                  {t(SETTINGS.DEVELOPER_TOOLS.SSOT_GUARD_DESCRIPTION)}
                 </p>
               </div>
             </div>
@@ -381,14 +382,14 @@ export default function SettingsPage() {
           <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="flex flex-col items-center justify-center gap-2 rounded-3xl border-2 border-dashed border-outline-variant bg-white p-6 text-center shadow-sm">
             <Terminal className="h-8 w-8 text-outline" />
             <span className="text-xs font-semibold text-on-surface-variant">
-              {t('settings.developerTools.diagnostics')}
+              {t(SETTINGS.DEVELOPER_TOOLS.DIAGNOSTICS)}
             </span>
             <UiButton
               ui={COMMON_LAYOUT.WRAPPER}
               variant="ghost"
               className="font-bold text-primary hover:underline"
             >
-              {t('settings.developerTools.startTest')}
+              {t(SETTINGS.DEVELOPER_TOOLS.START_TEST)}
             </UiButton>
           </UiDiv>
         </div>
@@ -399,7 +400,7 @@ export default function SettingsPage() {
         <div className="flex items-center gap-3 px-2">
           <Database className="h-6 w-6 text-primary" />
           <h2 className="text-xl font-semibold text-on-surface">
-            {t('settings.storage.title')}
+            {t(SETTINGS.STORAGE.TITLE)}
           </h2>
         </div>
         <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="rounded-3xl bg-white p-6 shadow-sm">
@@ -407,10 +408,10 @@ export default function SettingsPage() {
             <div className="flex-1 space-y-4">
               <div className="flex items-center justify-between">
                 <span className="text-sm">
-                  {t('settings.storage.localStorage')}
+                  {t(SETTINGS.STORAGE.LOCAL_STORAGE)}
                 </span>
                 <span className="text-xs font-semibold text-secondary">
-                  {t('settings.storage.usage')}
+                  {t(SETTINGS.STORAGE.USAGE)}
                 </span>
               </div>
               <div className="h-2 w-full rounded-full bg-surface-container">
@@ -421,7 +422,7 @@ export default function SettingsPage() {
               <div className="flex items-center gap-3">
                 <Database className="h-5 w-5 text-outline" />
                 <span className="text-sm">
-                  {t('settings.storage.cookies')}
+                  {t(SETTINGS.STORAGE.COOKIES)}
                 </span>
               </div>
               <UiButton
@@ -429,7 +430,7 @@ export default function SettingsPage() {
                 variant="outline"
                 className="rounded-lg px-4 py-2 text-xs font-semibold hover:bg-on-surface-variant"
               >
-                {t('settings.storage.clearAll')}
+                {t(SETTINGS.STORAGE.CLEAR_ALL)}
               </UiButton>
             </div>
           </div>
@@ -441,14 +442,14 @@ export default function SettingsPage() {
         <div className="flex items-center gap-3 px-2">
           <FileText className="h-6 w-6 text-primary" />
           <h2 className="text-xl font-semibold text-on-surface">
-            {t('settings.summary.title')}
+            {t(SETTINGS.SUMMARY.TITLE)}
           </h2>
         </div>
         <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="rounded-3xl bg-surface-container-lowest border border-outline-variant/30 p-6">
           <ul className="grid grid-cols-1 gap-x-12 gap-y-4 md:grid-cols-2">
             <li className="flex items-center justify-between border-b border-outline-variant/10 py-2">
               <span className="text-sm text-on-surface-variant">
-                {t('settings.summary.language')}
+                {t(SETTINGS.SUMMARY.LANGUAGE)}
               </span>
               <span className="text-sm font-bold text-primary">
                 {locale === 'ar' ? 'العربية' : 'English'}
@@ -456,26 +457,26 @@ export default function SettingsPage() {
             </li>
             <li className="flex items-center justify-between border-b border-outline-variant/10 py-2">
               <span className="text-sm text-on-surface-variant">
-                {t('settings.summary.theme')}
+                {t(SETTINGS.SUMMARY.THEME)}
               </span>
               <span className="text-sm font-bold text-primary">
-                {themeMode === 'light' ? t('settings.appearance.theme.light') : themeMode === 'dark' ? t('settings.appearance.theme.dark') : t('settings.appearance.theme.system')}
+                {themeMode === 'light' ? t(SETTINGS.APPEARANCE.LIGHT) : themeMode === 'dark' ? t(SETTINGS.APPEARANCE.DARK) : t(SETTINGS.APPEARANCE.SYSTEM)}
               </span>
             </li>
             <li className="flex items-center justify-between border-b border-outline-variant/10 py-2">
               <span className="text-sm text-on-surface-variant">
-                {t('settings.summary.density')}
+                {t(SETTINGS.SUMMARY.DENSITY)}
               </span>
               <span className="text-sm font-bold text-primary">
-                {density === 'compact' ? t('settings.appearance.density.compact') : density === 'comfortable' ? t('settings.appearance.density.comfortable') : t('settings.appearance.density.spacious')}
+                {density === 'compact' ? t(SETTINGS.APPEARANCE.COMPACT) : density === 'comfortable' ? t(SETTINGS.APPEARANCE.COMFORTABLE) : t(SETTINGS.APPEARANCE.SPACIOUS)}
               </span>
             </li>
             <li className="flex items-center justify-between border-b border-outline-variant/10 py-2">
               <span className="text-sm text-on-surface-variant">
-                {t('settings.summary.timezone')}
+                {t(SETTINGS.SUMMARY.TIMEZONE)}
               </span>
               <span className="text-sm font-bold text-primary">
-                {t('settings.languageRegion.timezones.cairo')}
+                {t(SETTINGS.LANGUAGE_REGION.CAIRO)}
               </span>
             </li>
           </ul>
@@ -489,21 +490,21 @@ export default function SettingsPage() {
           variant="default"
           className="w-full rounded-full px-12 py-4 font-semibold shadow-lg shadow-primary/20 active:scale-95 md:w-auto"
         >
-          {t('settings.actions.save')}
+          {t(SETTINGS.ACTIONS.SAVE)}
         </UiButton>
         <UiButton
           ui={COMMON_LAYOUT.WRAPPER}
           variant="outline"
           className="w-full rounded-full border-2 px-8 py-4 font-semibold md:w-auto"
         >
-          {t('settings.actions.resetPreferences')}
+          {t(SETTINGS.ACTIONS.RESET_PREFERENCES)}
         </UiButton>
         <UiButton
           ui={COMMON_LAYOUT.WRAPPER}
           variant="ghost"
           className="w-full rounded-full py-4 font-semibold text-error hover:bg-error/5 md:w-auto"
         >
-          {t('settings.actions.restoreDefaults')}
+          {t(SETTINGS.ACTIONS.RESTORE_DEFAULTS)}
         </UiButton>
       </footer>
     </UiDiv>

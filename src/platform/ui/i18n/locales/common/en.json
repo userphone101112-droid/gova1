@@ -84,6 +84,11 @@
     "description": "Customize your application experience according to your preferences.",
     "appSettings": {
       "title": "Application Settings",
+      "active": "Active",
+      "description": "Description",
+      "ai": "Artificial Intelligence",
+      "analytics": "Advanced Analytics",
+      "pdf": "PDF Export",
       "status": {
         "title": "System Status",
         "description": "All systems are operating at high efficiency at this time.",
@@ -102,6 +107,10 @@
     },
     "languageRegion": {
       "title": "Language & Region",
+      "description": "Description",
+      "cairo": "Cairo Time (GMT+3)",
+      "mecca": "Mecca Time (GMT+3)",
+      "dubai": "Dubai Time (GMT+4)",
       "language": {
         "title": "Language Selection",
         "description": "Choose your preferred interface language."
@@ -116,6 +125,13 @@
     },
     "appearance": {
       "title": "Appearance",
+      "light": "Light",
+      "dark": "Dark",
+      "system": "System",
+      "compact": "Compact",
+      "comfortable": "Comfortable",
+      "spacious": "Spacious",
+      "button": "Change Colors",
       "theme": {
         "title": "Visual Theme",
         "light": "Light",
@@ -138,6 +154,7 @@
     },
     "accessibility": {
       "title": "Accessibility",
+      "description": "Description",
       "highContrast": {
         "title": "High Contrast",
         "description": "Increase contrast between elements and background for better visibility."
@@ -149,6 +166,7 @@
     },
     "developerTools": {
       "title": "Developer Tools",
+      "description": "Description",
       "ssotGuard": {
         "title": "SSOT Guard",
         "description": "Enable the 'Single Source of Truth' data protection system."
