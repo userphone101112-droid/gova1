@@ -196,9 +196,12 @@ export function DevUiOverlay() {
   const refresh = useCallback(() => {
     if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
     rafRef.current = requestAnimationFrame(() => {
-      const newFrames = computeFrames(selectedComponentTypes);
+      const effectiveTypes = selectedComponentTypes.size === 0 
+        ? new Set(ALL_COMPONENT_TYPES) 
+        : selectedComponentTypes;
+      const newFrames = computeFrames(effectiveTypes);
       setFrames(newFrames);
-      setComponentCounts(getComponentCounts(selectedComponentTypes));
+      setComponentCounts(getComponentCounts(effectiveTypes));
     });
   }, [selectedComponentTypes, getComponentCounts]);
 
@@ -276,28 +279,57 @@ export function DevUiOverlay() {
     });
   }, [allInspectorData]);
 
+  // Helper to get UI element from coordinates
+  const getUiElementFromPoint = useCallback((clientX: number, clientY: number): HTMLElement | null => {
+    // Get ALL elements under the cursor (from top to bottom)
+    const elements = document.elementsFromPoint(clientX, clientY) as HTMLElement[];
+    
+    // Filter only elements that have data-ui-id or are inside an element that does
+    // Also exclude tooltip, control panel, and inspector overlay elements
+    const uiElements: HTMLElement[] = [];
+    for (const el of elements) {
+      // Skip if this is the tooltip, control panel, or inspector overlay
+      if (
+        el.closest('[data-tooltip="true"]') || 
+        el.closest('[data-control-panel="true"]') ||
+        el.closest('[data-inspector-overlay="true"]')
+      ) {
+        continue;
+      }
+      
+      // Check if this element or any ancestor has data-ui-id
+      const uiElement = el.closest('[data-ui-id]') as HTMLElement | null;
+      if (!uiElement) {
+        continue;
+      }
+      
+      // Skip decorative spacer
+      const uiId = uiElement.getAttribute('data-ui-id');
+      if (uiId === 'UI_COMMON_DECORATIVE_SPACER') {
+        continue;
+      }
+      
+      // Add only if not already in the list
+      if (!uiElements.includes(uiElement)) {
+        uiElements.push(uiElement);
+      }
+    }
+    
+    // If we have any UI elements, return the deepest one (first one in the list is topmost)
+    // elementsFromPoint is ordered from top to bottom, so the first valid uiElement is the deepest
+    return uiElements.length > 0 ? uiElements[0] : null;
+  }, []);
+
   // Hover inspection - show frame on mousemove when enabled
   useEffect(() => {
     if (!isHoverInspectionEnabled || !active) return;
 
     const handleMouseMove = (e: MouseEvent) => {
-      // Temporarily disable pointer events on inspector overlays to see the original element
-      const overlays = document.querySelectorAll('[data-inspector-overlay="true"]');
-      overlays.forEach((el) => {
-        (el as HTMLElement).style.pointerEvents = 'none';
-      });
-
-      try {
-        // Use elementFromPoint to get the element under the cursor
-        const target = document.elementFromPoint(e.clientX, e.clientY) as HTMLElement;
-        if (!target) return;
-
-        // Find the closest element with data-ui-id (could be the target itself or a parent)
-        const uiElement = target.closest('[data-ui-id]') as HTMLElement | null;
-        if (!uiElement) {
-          setHoveredFrame(null);
-          return;
-        }
+      const uiElement = getUiElementFromPoint(e.clientX, e.clientY);
+      if (!uiElement) {
+        setHoveredFrame(null);
+        return;
+      }
 
       const uiId = uiElement.getAttribute('data-ui-id');
       if (!uiId) return;
@@ -328,12 +360,6 @@ export function DevUiOverlay() {
         label,
         componentType,
       });
-      } finally {
-        // Restore pointer events on inspector overlays
-        overlays.forEach((el) => {
-          (el as HTMLElement).style.pointerEvents = 'auto';
-        });
-      }
     };
 
     // Add event listener to document
@@ -343,7 +369,61 @@ export function DevUiOverlay() {
       document.removeEventListener('mousemove', handleMouseMove);
       setHoveredFrame(null);
     };
-  }, [isHoverInspectionEnabled, active]);
+  }, [isHoverInspectionEnabled, active, getUiElementFromPoint]);
+
+  // Document click handler to open tooltip when UI Inspector is active
+  useEffect(() => {
+    if (!active) return;
+
+    const handleDocumentClick = (e: MouseEvent) => {
+      // Don't open tooltip if clicking on the tooltip itself or control panel
+      const clickedOnTooltip = (e.target as HTMLElement).closest('[data-tooltip="true"]');
+      const clickedOnControlPanel = (e.target as HTMLElement).closest('[data-control-panel="true"]');
+      if (clickedOnTooltip || clickedOnControlPanel) return;
+
+      const uiElement = getUiElementFromPoint(e.clientX, e.clientY);
+      if (!uiElement) return;
+
+      const uiId = uiElement.getAttribute('data-ui-id');
+      if (!uiId) return;
+
+      const identity = UI_ID_MAP[uiId];
+      const source = UI_SOURCE_INDEX[uiId];
+      const savedData = allInspectorData[uiId];
+
+      // Open tooltip
+      setTooltip({
+        visible: true,
+        x: e.clientX + 12,
+        y: e.clientY + 12,
+        id: uiId,
+        instanceId: `${uiId}_${Date.now()}`,
+        path: identity?.path || '—',
+        feature: identity?.feature || '—',
+        version: identity?.version || '—',
+        deprecated: identity?.deprecated ?? false,
+        sourceFile: source?.sourceFile || '—',
+        sourceComponent: source?.sourceComponent || '—',
+        sourceLine: source?.sourceLine || 0,
+        databaseEnabled: savedData?.databaseEnabled ?? false,
+        inf1: savedData?.inf1 || '',
+        inf2: savedData?.inf2 || '',
+        inf3: savedData?.inf3 || '',
+        attributesEnabled: savedData?.attributesEnabled ?? false,
+        attribute1: savedData?.attribute1 ?? false,
+        attribute2: savedData?.attribute2 ?? false,
+        attribute3: savedData?.attribute3 ?? false,
+        dataUiPath: savedData?.dataUiPath || identity?.path || '',
+        dataUiFeature: savedData?.dataUiFeature || identity?.feature || '',
+      });
+    };
+
+    document.addEventListener('click', handleDocumentClick);
+
+    return () => {
+      document.removeEventListener('click', handleDocumentClick);
+    };
+  }, [active, getUiElementFromPoint, allInspectorData]);
 
   const handleSave = async () => {
     if (!tooltip.id) return;
@@ -462,6 +542,7 @@ export function DevUiOverlay() {
       {/* Control bar - Always visible, works across all screen sizes */}
       <UiDiv
         ui={DECORATIVE.SPACER}
+        data-control-panel="true"
         style={{
           position: 'fixed',
           bottom: '72px',
@@ -669,8 +750,8 @@ export function DevUiOverlay() {
       )}
 
       {/* Frames overlay */}
-      {/* Always render all frames with pointer events for clicking */}
-      {frames.map((frame, i) => {
+      {/* Show all frames only when filter panel is open */}
+      {isFilterPanelOpen && frames.map((frame, i) => {
         const colors = COLOR_MAP[frame.color];
         const isHovered = hoveredFrame && hoveredFrame.id === frame.id;
         return (
@@ -678,7 +759,6 @@ export function DevUiOverlay() {
             key={`${frame.id}-${i}`}
             ui={DECORATIVE.SPACER}
             data-inspector-overlay="true"
-            onClick={(e) => handleFrameClick(e, frame)}
             style={{
               position: 'absolute',
               top: frame.top,
@@ -688,9 +768,8 @@ export function DevUiOverlay() {
               border: isHovered ? `2px solid ${colors.border}` : `1.5px solid ${colors.border}`,
               background: colors.bg,
               boxSizing: 'border-box',
-              pointerEvents: 'auto',
+              pointerEvents: 'none',
               zIndex: isHovered ? 99999 : 99900,
-              cursor: 'pointer',
             }}
           >
             <span
@@ -717,12 +796,56 @@ export function DevUiOverlay() {
           </UiDiv>
         );
       })}
+      
+      {/* Show only hovered frame when Hover is ON */}
+      {isHoverInspectionEnabled && hoveredFrame && (
+        <UiDiv
+          key={`hovered-${hoveredFrame.id}`}
+          ui={DECORATIVE.SPACER}
+          data-inspector-overlay="true"
+          style={{
+            position: 'absolute',
+            top: hoveredFrame.top,
+            left: hoveredFrame.left,
+            width: hoveredFrame.width,
+            height: hoveredFrame.height,
+            border: `2px solid ${COLOR_MAP[hoveredFrame.color].border}`,
+            background: COLOR_MAP[hoveredFrame.color].bg,
+            boxSizing: 'border-box',
+            pointerEvents: 'none',
+            zIndex: 99999,
+          }}
+        >
+          <span
+            style={{
+              position: 'absolute',
+              top: -1,
+              left: 0,
+              background: COLOR_MAP[hoveredFrame.color].badge,
+              color: '#fff',
+              fontSize: '9px',
+              fontFamily: 'monospace',
+              padding: '0 4px',
+              lineHeight: '16px',
+              borderRadius: '0 0 4px 0',
+              maxWidth: hoveredFrame.width - 4,
+              overflow: 'hidden',
+              whiteSpace: 'nowrap',
+              textOverflow: 'ellipsis',
+              pointerEvents: 'none',
+            }}
+          >
+            {hoveredFrame.label}
+          </span>
+        </UiDiv>
+      )}
 
       {/* Tooltip - Only closes on ✕ button click */}
       {tooltip.visible && (
         <UiDiv
           key={tooltip.instanceId}
           ui={DECORATIVE.SPACER}
+          data-tooltip="true"
           onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside
           style={{
             position: 'fixed',
