@@ -284,11 +284,9 @@ export function DevUiOverlay() {
     // Get ALL elements under the cursor (from top to bottom)
     const elements = document.elementsFromPoint(clientX, clientY) as HTMLElement[];
     
-    // Filter only elements that have data-ui-id or are inside an element that does
-    // Also exclude tooltip, control panel, and inspector overlay elements
-    const uiElements: HTMLElement[] = [];
+    // Iterate through elements one by one (top to bottom) to find the first valid UI element
     for (const el of elements) {
-      // Skip if this is the tooltip, control panel, or inspector overlay
+      // Skip if this element or any ancestor is our UI controls
       if (
         el.closest('[data-tooltip="true"]') || 
         el.closest('[data-control-panel="true"]') ||
@@ -309,15 +307,12 @@ export function DevUiOverlay() {
         continue;
       }
       
-      // Add only if not already in the list
-      if (!uiElements.includes(uiElement)) {
-        uiElements.push(uiElement);
-      }
+      // Found our first valid UI element! Return it immediately (closest to cursor)
+      return uiElement;
     }
     
-    // If we have any UI elements, return the deepest one (first one in the list is topmost)
-    // elementsFromPoint is ordered from top to bottom, so the first valid uiElement is the deepest
-    return uiElements.length > 0 ? uiElements[0] : null;
+    // No valid UI element found
+    return null;
   }, []);
 
   // Hover inspection - show frame on mousemove when enabled
