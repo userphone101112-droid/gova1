@@ -13,6 +13,150 @@ export interface UiSourceLocation {
 }
 
 export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
+  "UI_SPLASH_MAINTENANCE_CARD": {
+    "id": "UI_SPLASH_MAINTENANCE_CARD",
+    "path": "splash.maintenance.layout.card",
+    "sourceFile": "/src/platform/ui/registry/features/splash.ts",
+    "sourceComponent": "SPLASH",
+    "sourceLine": 46,
+    "feature": "splash"
+  },
+  "UI_AUTH_SHARED_PAGE": {
+    "id": "UI_AUTH_SHARED_PAGE",
+    "path": "auth.shared.layout.page",
+    "sourceFile": "/src/platform/ui/registry/features/shared-layout.ts",
+    "sourceComponent": "SHARED_LAYOUT",
+    "sourceLine": 280,
+    "feature": "auth"
+  },
+  "UI_AUTH_SHARED_FORM_CARD": {
+    "id": "UI_AUTH_SHARED_FORM_CARD",
+    "path": "auth.shared.layout.form-card",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 104,
+    "feature": "auth"
+  },
+  "UI_AUTH_SHARED_HERO": {
+    "id": "UI_AUTH_SHARED_HERO",
+    "path": "auth.shared.layout.hero",
+    "sourceFile": "/src/platform/ui/registry/features/home.ts",
+    "sourceComponent": "HOME",
+    "sourceLine": 269,
+    "feature": "auth"
+  },
+  "UI_AUTH_SHARED_BRAND_ROW": {
+    "id": "UI_AUTH_SHARED_BRAND_ROW",
+    "path": "auth.shared.display.brand-row",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 24,
+    "feature": "auth"
+  },
+  "UI_AUTH_SHARED_BRAND_ICON": {
+    "id": "UI_AUTH_SHARED_BRAND_ICON",
+    "path": "auth.shared.display.brand-icon",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 34,
+    "feature": "auth"
+  },
+  "UI_AUTH_SHARED_HERO_QUOTE": {
+    "id": "UI_AUTH_SHARED_HERO_QUOTE",
+    "path": "auth.shared.display.hero-quote-block",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 44,
+    "feature": "auth"
+  },
+  "UI_AUTH_SHARED_HERO_HIGHLIGHTS": {
+    "id": "UI_AUTH_SHARED_HERO_HIGHLIGHTS",
+    "path": "auth.shared.display.hero-highlights",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 54,
+    "feature": "auth"
+  },
+  "UI_AUTH_SHARED_HERO_DECOR": {
+    "id": "UI_AUTH_SHARED_HERO_DECOR",
+    "path": "auth.shared.layout.hero-decor",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 64,
+    "feature": "auth"
+  },
+  "UI_AUTH_SHARED_HIGHLIGHT_SECURITY": {
+    "id": "UI_AUTH_SHARED_HIGHLIGHT_SECURITY",
+    "path": "auth.shared.display.highlight-security",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 74,
+    "feature": "auth"
+  },
+  "UI_AUTH_SHARED_HIGHLIGHT_PHONE": {
+    "id": "UI_AUTH_SHARED_HIGHLIGHT_PHONE",
+    "path": "auth.shared.display.highlight-phone",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 84,
+    "feature": "auth"
+  },
+  "UI_AUTH_SHARED_HIGHLIGHT_ENCRYPTED": {
+    "id": "UI_AUTH_SHARED_HIGHLIGHT_ENCRYPTED",
+    "path": "auth.shared.display.highlight-encrypted",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 94,
+    "feature": "auth"
+  },
+  "UI_AUTH_LOGIN_HERO_QUOTE": {
+    "id": "UI_AUTH_LOGIN_HERO_QUOTE",
+    "path": "auth.login.display.hero-quote",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 44,
+    "feature": "auth"
+  },
+  "UI_AUTH_LOGIN_HERO_FOOTER": {
+    "id": "UI_AUTH_LOGIN_HERO_FOOTER",
+    "path": "auth.login.display.hero-footer",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 176,
+    "feature": "auth"
+  },
+  "UI_AUTH_REGISTRATION_BRAND_NAME": {
+    "id": "UI_AUTH_REGISTRATION_BRAND_NAME",
+    "path": "auth.registration.brand-name",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 308,
+    "feature": "auth"
+  },
+  "UI_AUTH_REGISTRATION_HEADING": {
+    "id": "UI_AUTH_REGISTRATION_HEADING",
+    "path": "auth.registration.heading",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 320,
+    "feature": "auth"
+  },
+  "UI_AUTH_REGISTRATION_DESCRIPTION": {
+    "id": "UI_AUTH_REGISTRATION_DESCRIPTION",
+    "path": "auth.registration.description",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 330,
+    "feature": "auth"
+  },
+  "UI_AUTH_SHARED_MOBILE_BRAND": {
+    "id": "UI_AUTH_SHARED_MOBILE_BRAND",
+    "path": "auth.shared.display.mobile-brand",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 114,
+    "feature": "auth"
+  },
   "UI_HOME_CATEGORIES_GRID_TOGGLE": {
     "id": "UI_HOME_CATEGORIES_GRID_TOGGLE",
     "path": "home.categories-grid.actions.toggle-button",
@@ -20,6 +164,398 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "sourceComponent": "SHARED_LAYOUT",
     "sourceLine": 246,
     "feature": "home"
+  },
+  "UI_AUTH_SHARED_PHONE_PLACEHOLDER": {
+    "id": "UI_AUTH_SHARED_PHONE_PLACEHOLDER",
+    "path": "auth.shared.phone-placeholder",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 124,
+    "feature": "auth"
+  },
+  "UI_AUTH_SHARED_PASSWORD_PLACEHOLDER": {
+    "id": "UI_AUTH_SHARED_PASSWORD_PLACEHOLDER",
+    "path": "auth.shared.password-placeholder",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 134,
+    "feature": "auth"
+  },
+  "UI_AUTH_LOGIN_HEADING": {
+    "id": "UI_AUTH_LOGIN_HEADING",
+    "path": "auth.login.display.heading",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 148,
+    "feature": "auth"
+  },
+  "UI_AUTH_LOGIN_SUBHEADING": {
+    "id": "UI_AUTH_LOGIN_SUBHEADING",
+    "path": "auth.login.display.subheading",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 156,
+    "feature": "auth"
+  },
+  "UI_AUTH_LOGIN_PHONE_INPUT": {
+    "id": "UI_AUTH_LOGIN_PHONE_INPUT",
+    "path": "auth.login.form.phone-input",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 188,
+    "feature": "auth"
+  },
+  "UI_AUTH_LOGIN_PASSWORD_INPUT": {
+    "id": "UI_AUTH_LOGIN_PASSWORD_INPUT",
+    "path": "auth.login.form.password-input",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 198,
+    "feature": "auth"
+  },
+  "UI_AUTH_LOGIN_FORGOT_PASSWORD": {
+    "id": "UI_AUTH_LOGIN_FORGOT_PASSWORD",
+    "path": "auth.login.form.forgot-password-link",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 206,
+    "feature": "auth"
+  },
+  "UI_AUTH_LOGIN_TOGGLE_PASSWORD": {
+    "id": "UI_AUTH_LOGIN_TOGGLE_PASSWORD",
+    "path": "auth.login.toggle-password-visibility",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 218,
+    "feature": "auth"
+  },
+  "UI_AUTH_LOGIN_SUBMIT": {
+    "id": "UI_AUTH_LOGIN_SUBMIT",
+    "path": "auth.login.form.submit-button",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 228,
+    "feature": "auth"
+  },
+  "UI_AUTH_LOGIN_SUBMITTING": {
+    "id": "UI_AUTH_LOGIN_SUBMITTING",
+    "path": "auth.login.submitting-button",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 238,
+    "feature": "auth"
+  },
+  "UI_AUTH_LOGIN_GUEST": {
+    "id": "UI_AUTH_LOGIN_GUEST",
+    "path": "auth.login.actions.guest-login-button",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 246,
+    "feature": "auth"
+  },
+  "UI_AUTH_LOGIN_SIGNUP_LINK": {
+    "id": "UI_AUTH_LOGIN_SIGNUP_LINK",
+    "path": "auth.login.actions.signup-link",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 256,
+    "feature": "auth"
+  },
+  "UI_AUTH_LOGIN_SIGNUP_DIVIDER": {
+    "id": "UI_AUTH_LOGIN_SIGNUP_DIVIDER",
+    "path": "auth.login.display.signup-divider",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 266,
+    "feature": "auth"
+  },
+  "UI_AUTH_LOGIN_SUCCESS_HEADING": {
+    "id": "UI_AUTH_LOGIN_SUCCESS_HEADING",
+    "path": "auth.login.display.success-heading",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 278,
+    "feature": "auth"
+  },
+  "UI_AUTH_LOGIN_SUCCESS_DESCRIPTION": {
+    "id": "UI_AUTH_LOGIN_SUCCESS_DESCRIPTION",
+    "path": "auth.login.display.success-description",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 288,
+    "feature": "auth"
+  },
+  "UI_AUTH_LOGIN_SIGNIN_AGAIN": {
+    "id": "UI_AUTH_LOGIN_SIGNIN_AGAIN",
+    "path": "auth.login.actions.signin-again-button",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 296,
+    "feature": "auth"
+  },
+  "UI_AUTH_REGISTRATION_PASSWORD_INPUT": {
+    "id": "UI_AUTH_REGISTRATION_PASSWORD_INPUT",
+    "path": "auth.registration.password-input",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 450,
+    "feature": "auth"
+  },
+  "UI_AUTH_REGISTRATION_CONFIRM_PASSWORD": {
+    "id": "UI_AUTH_REGISTRATION_CONFIRM_PASSWORD",
+    "path": "auth.registration.confirm-password-input",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 458,
+    "feature": "auth"
+  },
+  "UI_AUTH_REGISTRATION_TOGGLE_PASSWORD": {
+    "id": "UI_AUTH_REGISTRATION_TOGGLE_PASSWORD",
+    "path": "auth.registration.toggle-password-visibility",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 470,
+    "feature": "auth"
+  },
+  "UI_AUTH_REGISTRATION_PASSWORD_STRENGTH": {
+    "id": "UI_AUTH_REGISTRATION_PASSWORD_STRENGTH",
+    "path": "auth.registration.password-strength-label",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 478,
+    "feature": "auth"
+  },
+  "UI_AUTH_REGISTRATION_STRENGTH_WEAK": {
+    "id": "UI_AUTH_REGISTRATION_STRENGTH_WEAK",
+    "path": "auth.registration.strength-weak",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 488,
+    "feature": "auth"
+  },
+  "UI_AUTH_REGISTRATION_STRENGTH_FAIR": {
+    "id": "UI_AUTH_REGISTRATION_STRENGTH_FAIR",
+    "path": "auth.registration.strength-fair",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 498,
+    "feature": "auth"
+  },
+  "UI_AUTH_REGISTRATION_STRENGTH_GOOD": {
+    "id": "UI_AUTH_REGISTRATION_STRENGTH_GOOD",
+    "path": "auth.registration.strength-good",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 508,
+    "feature": "auth"
+  },
+  "UI_AUTH_REGISTRATION_STRENGTH_STRONG": {
+    "id": "UI_AUTH_REGISTRATION_STRENGTH_STRONG",
+    "path": "auth.registration.strength-strong",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 518,
+    "feature": "auth"
+  },
+  "UI_AUTH_REGISTRATION_REQ_MIN": {
+    "id": "UI_AUTH_REGISTRATION_REQ_MIN",
+    "path": "auth.registration.req-min-length",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 528,
+    "feature": "auth"
+  },
+  "UI_AUTH_REGISTRATION_REQ_UPPER": {
+    "id": "UI_AUTH_REGISTRATION_REQ_UPPER",
+    "path": "auth.registration.req-uppercase",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 538,
+    "feature": "auth"
+  },
+  "UI_AUTH_REGISTRATION_REQ_LOWER": {
+    "id": "UI_AUTH_REGISTRATION_REQ_LOWER",
+    "path": "auth.registration.req-lowercase",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 548,
+    "feature": "auth"
+  },
+  "UI_AUTH_REGISTRATION_REQ_NUMBER": {
+    "id": "UI_AUTH_REGISTRATION_REQ_NUMBER",
+    "path": "auth.registration.req-number",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 558,
+    "feature": "auth"
+  },
+  "UI_AUTH_REGISTRATION_REQ_SPECIAL": {
+    "id": "UI_AUTH_REGISTRATION_REQ_SPECIAL",
+    "path": "auth.registration.req-special",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 568,
+    "feature": "auth"
+  },
+  "UI_AUTH_REGISTRATION_PHONE_INPUT": {
+    "id": "UI_AUTH_REGISTRATION_PHONE_INPUT",
+    "path": "auth.registration.phone-input",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 360,
+    "feature": "auth"
+  },
+  "UI_AUTH_REGISTRATION_VERIFY_BUTTON": {
+    "id": "UI_AUTH_REGISTRATION_VERIFY_BUTTON",
+    "path": "auth.registration.verify-button",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 368,
+    "feature": "auth"
+  },
+  "UI_AUTH_REGISTRATION_EDIT_BUTTON": {
+    "id": "UI_AUTH_REGISTRATION_EDIT_BUTTON",
+    "path": "auth.registration.edit-button",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 378,
+    "feature": "auth"
+  },
+  "UI_AUTH_REGISTRATION_OTP_LABEL": {
+    "id": "UI_AUTH_REGISTRATION_OTP_LABEL",
+    "path": "auth.registration.otp-label",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 388,
+    "feature": "auth"
+  },
+  "UI_AUTH_REGISTRATION_OTP_DESCRIPTION": {
+    "id": "UI_AUTH_REGISTRATION_OTP_DESCRIPTION",
+    "path": "auth.registration.otp-description",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 398,
+    "feature": "auth"
+  },
+  "UI_AUTH_REGISTRATION_OTP_INPUT": {
+    "id": "UI_AUTH_REGISTRATION_OTP_INPUT",
+    "path": "auth.registration.otp-input",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 408,
+    "feature": "auth"
+  },
+  "UI_AUTH_REGISTRATION_RESEND_BUTTON": {
+    "id": "UI_AUTH_REGISTRATION_RESEND_BUTTON",
+    "path": "auth.registration.resend-button",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 418,
+    "feature": "auth"
+  },
+  "UI_AUTH_REGISTRATION_VERIFY_OTP": {
+    "id": "UI_AUTH_REGISTRATION_VERIFY_OTP",
+    "path": "auth.registration.verify-otp-button",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 428,
+    "feature": "auth"
+  },
+  "UI_AUTH_REGISTRATION_PHONE_VERIFIED": {
+    "id": "UI_AUTH_REGISTRATION_PHONE_VERIFIED",
+    "path": "auth.registration.phone-verified-message",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 438,
+    "feature": "auth"
+  },
+  "UI_AUTH_REGISTRATION_VERIFYING_OTP": {
+    "id": "UI_AUTH_REGISTRATION_VERIFYING_OTP",
+    "path": "auth.registration.verifying-otp-button",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 578,
+    "feature": "auth"
+  },
+  "UI_AUTH_REGISTRATION_TITLE": {
+    "id": "UI_AUTH_REGISTRATION_TITLE",
+    "path": "auth.registration.title",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 340,
+    "feature": "auth"
+  },
+  "UI_AUTH_REGISTRATION_CARD_DESCRIPTION": {
+    "id": "UI_AUTH_REGISTRATION_CARD_DESCRIPTION",
+    "path": "auth.registration.card-description",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 348,
+    "feature": "auth"
+  },
+  "UI_AUTH_REGISTRATION_SUBMITTING": {
+    "id": "UI_AUTH_REGISTRATION_SUBMITTING",
+    "path": "auth.registration.submitting-button",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 590,
+    "feature": "auth"
+  },
+  "UI_AUTH_REGISTRATION_PHONE_REQUIRED": {
+    "id": "UI_AUTH_REGISTRATION_PHONE_REQUIRED",
+    "path": "auth.registration.phone-required-notice",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 598,
+    "feature": "auth"
+  },
+  "UI_AUTH_REGISTRATION_SUBMIT": {
+    "id": "UI_AUTH_REGISTRATION_SUBMIT",
+    "path": "auth.registration.submit-button",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 610,
+    "feature": "auth"
+  },
+  "UI_AUTH_REGISTRATION_SIGNIN_LINK": {
+    "id": "UI_AUTH_REGISTRATION_SIGNIN_LINK",
+    "path": "auth.registration.signin-link",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 618,
+    "feature": "auth"
+  },
+  "UI_AUTH_REGISTRATION_SIGNIN_PROMPT": {
+    "id": "UI_AUTH_REGISTRATION_SIGNIN_PROMPT",
+    "path": "auth.registration.signin-prompt",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 628,
+    "feature": "auth"
+  },
+  "UI_AUTH_REGISTRATION_SUCCESS_HEADING": {
+    "id": "UI_AUTH_REGISTRATION_SUCCESS_HEADING",
+    "path": "auth.registration.success-heading",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 640,
+    "feature": "auth"
+  },
+  "UI_AUTH_REGISTRATION_SUCCESS_DESCRIPTION": {
+    "id": "UI_AUTH_REGISTRATION_SUCCESS_DESCRIPTION",
+    "path": "auth.registration.success-description",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 650,
+    "feature": "auth"
+  },
+  "UI_AUTH_REGISTRATION_CONTINUE": {
+    "id": "UI_AUTH_REGISTRATION_CONTINUE",
+    "path": "auth.registration.continue-button",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 658,
+    "feature": "auth"
   },
   "UI_HOME_CATEGORIES_GRID_ITEM": {
     "id": "UI_HOME_CATEGORIES_GRID_ITEM",
@@ -197,14 +733,6 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "sourceLine": 258,
     "feature": "home"
   },
-  "UI_SPLASH_MAINTENANCE_CARD": {
-    "id": "UI_SPLASH_MAINTENANCE_CARD",
-    "path": "splash.maintenance.layout.card",
-    "sourceFile": "/src/platform/ui/registry/features/splash.ts",
-    "sourceComponent": "SPLASH",
-    "sourceLine": 46,
-    "feature": "splash"
-  },
   "UI_HOME_HERO_SLIDER_CONTAINER": {
     "id": "UI_HOME_HERO_SLIDER_CONTAINER",
     "path": "home.hero-slider.layout.container",
@@ -314,15 +842,15 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "path": "home.promo-banner.display.description",
     "sourceFile": "/src/platform/ui/registry/features/home.ts",
     "sourceComponent": "HOME",
-    "sourceLine": 66,
+    "sourceLine": 68,
     "feature": "home"
   },
   "UI_HOME_PROMO_BANNER_LOGO": {
     "id": "UI_HOME_PROMO_BANNER_LOGO",
     "path": "home.promo-banner.display.logo",
-    "sourceFile": "/src/platform/ui/registry/features/home.ts",
-    "sourceComponent": "HOME",
-    "sourceLine": 78,
+    "sourceFile": "/src/platform/ui/registry/features/splash.ts",
+    "sourceComponent": "SPLASH",
+    "sourceLine": 3,
     "feature": "home"
   },
   "UI_HOME_PROMO_BANNER_DECORATIVE_BACKGROUND": {
@@ -332,102 +860,6 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "sourceComponent": "HOME",
     "sourceLine": 86,
     "feature": "home"
-  },
-  "UI_AUTH_LOGIN_HEADING": {
-    "id": "UI_AUTH_LOGIN_HEADING",
-    "path": "auth.login.display.heading",
-    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
-    "sourceComponent": "AUTH",
-    "sourceLine": 16,
-    "feature": "auth"
-  },
-  "UI_AUTH_LOGIN_SUBHEADING": {
-    "id": "UI_AUTH_LOGIN_SUBHEADING",
-    "path": "auth.login.display.subheading",
-    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
-    "sourceComponent": "AUTH",
-    "sourceLine": 24,
-    "feature": "auth"
-  },
-  "UI_AUTH_LOGIN_PHONE_INPUT": {
-    "id": "UI_AUTH_LOGIN_PHONE_INPUT",
-    "path": "auth.login.form.phone-input",
-    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
-    "sourceComponent": "AUTH",
-    "sourceLine": 34,
-    "feature": "auth"
-  },
-  "UI_AUTH_LOGIN_PASSWORD_INPUT": {
-    "id": "UI_AUTH_LOGIN_PASSWORD_INPUT",
-    "path": "auth.login.form.password-input",
-    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
-    "sourceComponent": "AUTH",
-    "sourceLine": 44,
-    "feature": "auth"
-  },
-  "UI_AUTH_LOGIN_TOGGLE_PASSWORD": {
-    "id": "UI_AUTH_LOGIN_TOGGLE_PASSWORD",
-    "path": "auth.login.form.toggle-password-visibility",
-    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
-    "sourceComponent": "AUTH",
-    "sourceLine": 54,
-    "feature": "auth"
-  },
-  "UI_AUTH_LOGIN_FORGOT_PASSWORD": {
-    "id": "UI_AUTH_LOGIN_FORGOT_PASSWORD",
-    "path": "auth.login.form.forgot-password-link",
-    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
-    "sourceComponent": "AUTH",
-    "sourceLine": 64,
-    "feature": "auth"
-  },
-  "UI_AUTH_LOGIN_SUBMIT": {
-    "id": "UI_AUTH_LOGIN_SUBMIT",
-    "path": "auth.login.form.submit-button",
-    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
-    "sourceComponent": "AUTH",
-    "sourceLine": 76,
-    "feature": "auth"
-  },
-  "UI_AUTH_LOGIN_GUEST": {
-    "id": "UI_AUTH_LOGIN_GUEST",
-    "path": "auth.login.actions.guest-login-button",
-    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
-    "sourceComponent": "AUTH",
-    "sourceLine": 84,
-    "feature": "auth"
-  },
-  "UI_AUTH_LOGIN_SIGNUP_LINK": {
-    "id": "UI_AUTH_LOGIN_SIGNUP_LINK",
-    "path": "auth.login.actions.signup-link",
-    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
-    "sourceComponent": "AUTH",
-    "sourceLine": 94,
-    "feature": "auth"
-  },
-  "UI_AUTH_LOGIN_ENGLISH_LANG": {
-    "id": "UI_AUTH_LOGIN_ENGLISH_LANG",
-    "path": "auth.login.footer.english-language-link",
-    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
-    "sourceComponent": "AUTH",
-    "sourceLine": 104,
-    "feature": "auth"
-  },
-  "UI_AUTH_LOGIN_DARK_MODE": {
-    "id": "UI_AUTH_LOGIN_DARK_MODE",
-    "path": "auth.login.footer.dark-mode-toggle",
-    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
-    "sourceComponent": "AUTH",
-    "sourceLine": 114,
-    "feature": "auth"
-  },
-  "UI_AUTH_LOGIN_COPYRIGHT": {
-    "id": "UI_AUTH_LOGIN_COPYRIGHT",
-    "path": "auth.login.footer.copyright",
-    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
-    "sourceComponent": "AUTH",
-    "sourceLine": 124,
-    "feature": "auth"
   },
   "UI_SHARED_HEADER_CONTAINER": {
     "id": "UI_SHARED_HEADER_CONTAINER",
@@ -549,28 +981,12 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "sourceLine": 226,
     "feature": "shared-layout"
   },
-  "UI_SHARED_SIDEBAR_LOGIN": {
-    "id": "UI_SHARED_SIDEBAR_LOGIN",
-    "path": "shared-layout.sidebar.actions.login-button",
+  "UI_SHARED_SIDEBAR_SETTINGS": {
+    "id": "UI_SHARED_SIDEBAR_SETTINGS",
+    "path": "shared-layout.sidebar.actions.settings-button",
     "sourceFile": "/src/platform/ui/registry/features/shared-layout.ts",
     "sourceComponent": "SHARED_LAYOUT",
-    "sourceLine": 238,
-    "feature": "shared-layout"
-  },
-  "UI_SHARED_SIDEBAR_LANGUAGE": {
-    "id": "UI_SHARED_SIDEBAR_LANGUAGE",
-    "path": "shared-layout.sidebar.actions.language-toggle",
-    "sourceFile": "/src/platform/ui/registry/features/shared-layout.ts",
-    "sourceComponent": "SHARED_LAYOUT",
-    "sourceLine": 246,
-    "feature": "shared-layout"
-  },
-  "UI_SHARED_SIDEBAR_THEME": {
-    "id": "UI_SHARED_SIDEBAR_THEME",
-    "path": "shared-layout.sidebar.actions.theme-toggle",
-    "sourceFile": "/src/platform/ui/registry/features/shared-layout.ts",
-    "sourceComponent": "SHARED_LAYOUT",
-    "sourceLine": 256,
+    "sourceLine": 266,
     "feature": "shared-layout"
   },
   "UI_SHARED_BOTTOM_NAV_CONTAINER": {
@@ -730,7 +1146,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "path": "splash.maintenance.form.submit-button",
     "sourceFile": "/src/platform/ui/registry/features/splash.ts",
     "sourceComponent": "SPLASH",
-    "sourceLine": 107,
+    "sourceLine": 109,
     "feature": "splash"
   },
   "UI_COMMON_CARD_CONTAINER": {
@@ -1285,12 +1701,500 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "sourceLine": 112,
     "feature": "common"
   },
-  "UI_AUTH_LOGIN_LOGO": {
-    "id": "UI_AUTH_LOGIN_LOGO",
-    "path": "auth.login.display.logo",
-    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
-    "sourceComponent": "AUTH",
-    "sourceLine": 6,
-    "feature": "auth"
+  "UI_SETTINGS_TITLE": {
+    "id": "UI_SETTINGS_TITLE",
+    "path": "settings.page.display.title",
+    "sourceFile": "/src/platform/ui/registry/features/settings.ts",
+    "sourceComponent": "SETTINGS",
+    "sourceLine": 5,
+    "feature": "settings"
+  },
+  "UI_SETTINGS_DESCRIPTION": {
+    "id": "UI_SETTINGS_DESCRIPTION",
+    "path": "settings.page.display.description",
+    "sourceFile": "/src/platform/ui/registry/features/settings.ts",
+    "sourceComponent": "SETTINGS",
+    "sourceLine": 15,
+    "feature": "settings"
+  },
+  "UI_SETTINGS_APP_SETTINGS_TITLE": {
+    "id": "UI_SETTINGS_APP_SETTINGS_TITLE",
+    "path": "settings.app-settings.display.section-title",
+    "sourceFile": "/src/platform/ui/registry/features/settings.ts",
+    "sourceComponent": "SETTINGS",
+    "sourceLine": 26,
+    "feature": "settings"
+  },
+  "UI_SETTINGS_APP_SETTINGS_ACTIVE": {
+    "id": "UI_SETTINGS_APP_SETTINGS_ACTIVE",
+    "path": "settings.app-settings.status.active",
+    "sourceFile": "/src/platform/ui/registry/features/settings.ts",
+    "sourceComponent": "SETTINGS",
+    "sourceLine": 36,
+    "feature": "settings"
+  },
+  "UI_SETTINGS_APP_SETTINGS_STATUS_TITLE": {
+    "id": "UI_SETTINGS_APP_SETTINGS_STATUS_TITLE",
+    "path": "settings.app-settings.status.status-title",
+    "sourceFile": "/src/platform/ui/registry/features/settings.ts",
+    "sourceComponent": "SETTINGS",
+    "sourceLine": 46,
+    "feature": "settings"
+  },
+  "UI_SETTINGS_APP_SETTINGS_STATUS_DESCRIPTION": {
+    "id": "UI_SETTINGS_APP_SETTINGS_STATUS_DESCRIPTION",
+    "path": "settings.app-settings.status.description",
+    "sourceFile": "/src/platform/ui/registry/features/settings.ts",
+    "sourceComponent": "SETTINGS",
+    "sourceLine": 56,
+    "feature": "settings"
+  },
+  "UI_SETTINGS_APP_SETTINGS_MAINTENANCE_TITLE": {
+    "id": "UI_SETTINGS_APP_SETTINGS_MAINTENANCE_TITLE",
+    "path": "settings.app-settings.maintenance.maintenance-title",
+    "sourceFile": "/src/platform/ui/registry/features/settings.ts",
+    "sourceComponent": "SETTINGS",
+    "sourceLine": 66,
+    "feature": "settings"
+  },
+  "UI_SETTINGS_APP_SETTINGS_MAINTENANCE_DESCRIPTION": {
+    "id": "UI_SETTINGS_APP_SETTINGS_MAINTENANCE_DESCRIPTION",
+    "path": "settings.app-settings.maintenance.maintenance-description",
+    "sourceFile": "/src/platform/ui/registry/features/settings.ts",
+    "sourceComponent": "SETTINGS",
+    "sourceLine": 76,
+    "feature": "settings"
+  },
+  "UI_SETTINGS_APP_SETTINGS_FEATURE_FLAGS_TITLE": {
+    "id": "UI_SETTINGS_APP_SETTINGS_FEATURE_FLAGS_TITLE",
+    "path": "settings.app-settings.feature-flags.feature-flags-title",
+    "sourceFile": "/src/platform/ui/registry/features/settings.ts",
+    "sourceComponent": "SETTINGS",
+    "sourceLine": 86,
+    "feature": "settings"
+  },
+  "UI_SETTINGS_APP_SETTINGS_AI": {
+    "id": "UI_SETTINGS_APP_SETTINGS_AI",
+    "path": "settings.app-settings.feature-flags.ai",
+    "sourceFile": "/src/platform/ui/registry/features/settings.ts",
+    "sourceComponent": "SETTINGS",
+    "sourceLine": 96,
+    "feature": "settings"
+  },
+  "UI_SETTINGS_APP_SETTINGS_ANALYTICS": {
+    "id": "UI_SETTINGS_APP_SETTINGS_ANALYTICS",
+    "path": "settings.app-settings.feature-flags.analytics",
+    "sourceFile": "/src/platform/ui/registry/features/settings.ts",
+    "sourceComponent": "SETTINGS",
+    "sourceLine": 106,
+    "feature": "settings"
+  },
+  "UI_SETTINGS_APP_SETTINGS_PDF": {
+    "id": "UI_SETTINGS_APP_SETTINGS_PDF",
+    "path": "settings.app-settings.feature-flags.pdf",
+    "sourceFile": "/src/platform/ui/registry/features/settings.ts",
+    "sourceComponent": "SETTINGS",
+    "sourceLine": 116,
+    "feature": "settings"
+  },
+  "UI_SETTINGS_LANGUAGE_REGION_TITLE": {
+    "id": "UI_SETTINGS_LANGUAGE_REGION_TITLE",
+    "path": "settings.language-region.display.section-title",
+    "sourceFile": "/src/platform/ui/registry/features/settings.ts",
+    "sourceComponent": "SETTINGS",
+    "sourceLine": 128,
+    "feature": "settings"
+  },
+  "UI_SETTINGS_LANGUAGE_REGION_LANGUAGE_TITLE": {
+    "id": "UI_SETTINGS_LANGUAGE_REGION_LANGUAGE_TITLE",
+    "path": "settings.language-region.language.language-title",
+    "sourceFile": "/src/platform/ui/registry/features/settings.ts",
+    "sourceComponent": "SETTINGS",
+    "sourceLine": 138,
+    "feature": "settings"
+  },
+  "UI_SETTINGS_LANGUAGE_REGION_LANGUAGE_DESCRIPTION": {
+    "id": "UI_SETTINGS_LANGUAGE_REGION_LANGUAGE_DESCRIPTION",
+    "path": "settings.language-region.language.description",
+    "sourceFile": "/src/platform/ui/registry/features/settings.ts",
+    "sourceComponent": "SETTINGS",
+    "sourceLine": 148,
+    "feature": "settings"
+  },
+  "UI_SETTINGS_LANGUAGE_REGION_ARABIC": {
+    "id": "UI_SETTINGS_LANGUAGE_REGION_ARABIC",
+    "path": "settings.language-region.language.arabic-button",
+    "sourceFile": "/src/platform/ui/registry/features/settings.ts",
+    "sourceComponent": "SETTINGS",
+    "sourceLine": 158,
+    "feature": "settings"
+  },
+  "UI_SETTINGS_LANGUAGE_REGION_ENGLISH": {
+    "id": "UI_SETTINGS_LANGUAGE_REGION_ENGLISH",
+    "path": "settings.language-region.language.english-button",
+    "sourceFile": "/src/platform/ui/registry/features/settings.ts",
+    "sourceComponent": "SETTINGS",
+    "sourceLine": 168,
+    "feature": "settings"
+  },
+  "UI_SETTINGS_LANGUAGE_REGION_DIRECTION_PREVIEW": {
+    "id": "UI_SETTINGS_LANGUAGE_REGION_DIRECTION_PREVIEW",
+    "path": "settings.language-region.direction.preview-label",
+    "sourceFile": "/src/platform/ui/registry/features/settings.ts",
+    "sourceComponent": "SETTINGS",
+    "sourceLine": 178,
+    "feature": "settings"
+  },
+  "UI_SETTINGS_LANGUAGE_REGION_DIRECTION_RTL": {
+    "id": "UI_SETTINGS_LANGUAGE_REGION_DIRECTION_RTL",
+    "path": "settings.language-region.direction.rtl-preview",
+    "sourceFile": "/src/platform/ui/registry/features/settings.ts",
+    "sourceComponent": "SETTINGS",
+    "sourceLine": 188,
+    "feature": "settings"
+  },
+  "UI_SETTINGS_LANGUAGE_REGION_DIRECTION_LTR": {
+    "id": "UI_SETTINGS_LANGUAGE_REGION_DIRECTION_LTR",
+    "path": "settings.language-region.direction.ltr-preview",
+    "sourceFile": "/src/platform/ui/registry/features/settings.ts",
+    "sourceComponent": "SETTINGS",
+    "sourceLine": 198,
+    "feature": "settings"
+  },
+  "UI_SETTINGS_LANGUAGE_REGION_TIMEZONE": {
+    "id": "UI_SETTINGS_LANGUAGE_REGION_TIMEZONE",
+    "path": "settings.language-region.timezone.timezone-label",
+    "sourceFile": "/src/platform/ui/registry/features/settings.ts",
+    "sourceComponent": "SETTINGS",
+    "sourceLine": 208,
+    "feature": "settings"
+  },
+  "UI_SETTINGS_LANGUAGE_REGION_CAIRO": {
+    "id": "UI_SETTINGS_LANGUAGE_REGION_CAIRO",
+    "path": "settings.language-region.timezone.cairo",
+    "sourceFile": "/src/platform/ui/registry/features/settings.ts",
+    "sourceComponent": "SETTINGS",
+    "sourceLine": 218,
+    "feature": "settings"
+  },
+  "UI_SETTINGS_LANGUAGE_REGION_MECCA": {
+    "id": "UI_SETTINGS_LANGUAGE_REGION_MECCA",
+    "path": "settings.language-region.timezone.mecca",
+    "sourceFile": "/src/platform/ui/registry/features/settings.ts",
+    "sourceComponent": "SETTINGS",
+    "sourceLine": 228,
+    "feature": "settings"
+  },
+  "UI_SETTINGS_LANGUAGE_REGION_DUBAI": {
+    "id": "UI_SETTINGS_LANGUAGE_REGION_DUBAI",
+    "path": "settings.language-region.timezone.dubai",
+    "sourceFile": "/src/platform/ui/registry/features/settings.ts",
+    "sourceComponent": "SETTINGS",
+    "sourceLine": 238,
+    "feature": "settings"
+  },
+  "UI_SETTINGS_APPEARANCE_TITLE": {
+    "id": "UI_SETTINGS_APPEARANCE_TITLE",
+    "path": "settings.appearance.display.section-title",
+    "sourceFile": "/src/platform/ui/registry/features/settings.ts",
+    "sourceComponent": "SETTINGS",
+    "sourceLine": 250,
+    "feature": "settings"
+  },
+  "UI_SETTINGS_APPEARANCE_THEME_TITLE": {
+    "id": "UI_SETTINGS_APPEARANCE_THEME_TITLE",
+    "path": "settings.appearance.theme.theme-title",
+    "sourceFile": "/src/platform/ui/registry/features/settings.ts",
+    "sourceComponent": "SETTINGS",
+    "sourceLine": 260,
+    "feature": "settings"
+  },
+  "UI_SETTINGS_APPEARANCE_LIGHT": {
+    "id": "UI_SETTINGS_APPEARANCE_LIGHT",
+    "path": "settings.appearance.theme.light",
+    "sourceFile": "/src/platform/ui/registry/features/settings.ts",
+    "sourceComponent": "SETTINGS",
+    "sourceLine": 270,
+    "feature": "settings"
+  },
+  "UI_SETTINGS_APPEARANCE_DARK": {
+    "id": "UI_SETTINGS_APPEARANCE_DARK",
+    "path": "settings.appearance.theme.dark",
+    "sourceFile": "/src/platform/ui/registry/features/settings.ts",
+    "sourceComponent": "SETTINGS",
+    "sourceLine": 280,
+    "feature": "settings"
+  },
+  "UI_SETTINGS_APPEARANCE_SYSTEM": {
+    "id": "UI_SETTINGS_APPEARANCE_SYSTEM",
+    "path": "settings.appearance.theme.system",
+    "sourceFile": "/src/platform/ui/registry/features/settings.ts",
+    "sourceComponent": "SETTINGS",
+    "sourceLine": 290,
+    "feature": "settings"
+  },
+  "UI_SETTINGS_APPEARANCE_FONT_SIZE_TITLE": {
+    "id": "UI_SETTINGS_APPEARANCE_FONT_SIZE_TITLE",
+    "path": "settings.appearance.font-size.font-size-title",
+    "sourceFile": "/src/platform/ui/registry/features/settings.ts",
+    "sourceComponent": "SETTINGS",
+    "sourceLine": 300,
+    "feature": "settings"
+  },
+  "UI_SETTINGS_APPEARANCE_DENSITY_TITLE": {
+    "id": "UI_SETTINGS_APPEARANCE_DENSITY_TITLE",
+    "path": "settings.appearance.density.density-title",
+    "sourceFile": "/src/platform/ui/registry/features/settings.ts",
+    "sourceComponent": "SETTINGS",
+    "sourceLine": 310,
+    "feature": "settings"
+  },
+  "UI_SETTINGS_APPEARANCE_COMPACT": {
+    "id": "UI_SETTINGS_APPEARANCE_COMPACT",
+    "path": "settings.appearance.density.compact",
+    "sourceFile": "/src/platform/ui/registry/features/settings.ts",
+    "sourceComponent": "SETTINGS",
+    "sourceLine": 320,
+    "feature": "settings"
+  },
+  "UI_SETTINGS_APPEARANCE_COMFORTABLE": {
+    "id": "UI_SETTINGS_APPEARANCE_COMFORTABLE",
+    "path": "settings.appearance.density.comfortable",
+    "sourceFile": "/src/platform/ui/registry/features/settings.ts",
+    "sourceComponent": "SETTINGS",
+    "sourceLine": 330,
+    "feature": "settings"
+  },
+  "UI_SETTINGS_APPEARANCE_SPACIOUS": {
+    "id": "UI_SETTINGS_APPEARANCE_SPACIOUS",
+    "path": "settings.appearance.density.spacious",
+    "sourceFile": "/src/platform/ui/registry/features/settings.ts",
+    "sourceComponent": "SETTINGS",
+    "sourceLine": 340,
+    "feature": "settings"
+  },
+  "UI_SETTINGS_APPEARANCE_PREVIEW_TITLE": {
+    "id": "UI_SETTINGS_APPEARANCE_PREVIEW_TITLE",
+    "path": "settings.appearance.preview.preview-title",
+    "sourceFile": "/src/platform/ui/registry/features/settings.ts",
+    "sourceComponent": "SETTINGS",
+    "sourceLine": 350,
+    "feature": "settings"
+  },
+  "UI_SETTINGS_APPEARANCE_BUTTON": {
+    "id": "UI_SETTINGS_APPEARANCE_BUTTON",
+    "path": "settings.appearance.preview.button",
+    "sourceFile": "/src/platform/ui/registry/features/settings.ts",
+    "sourceComponent": "SETTINGS",
+    "sourceLine": 360,
+    "feature": "settings"
+  },
+  "UI_SETTINGS_ACCESSIBILITY_TITLE": {
+    "id": "UI_SETTINGS_ACCESSIBILITY_TITLE",
+    "path": "settings.accessibility.display.section-title",
+    "sourceFile": "/src/platform/ui/registry/features/settings.ts",
+    "sourceComponent": "SETTINGS",
+    "sourceLine": 372,
+    "feature": "settings"
+  },
+  "UI_SETTINGS_ACCESSIBILITY_HIGH_CONTRAST_TITLE": {
+    "id": "UI_SETTINGS_ACCESSIBILITY_HIGH_CONTRAST_TITLE",
+    "path": "settings.accessibility.high-contrast.high-contrast-title",
+    "sourceFile": "/src/platform/ui/registry/features/settings.ts",
+    "sourceComponent": "SETTINGS",
+    "sourceLine": 382,
+    "feature": "settings"
+  },
+  "UI_SETTINGS_ACCESSIBILITY_HIGH_CONTRAST_DESCRIPTION": {
+    "id": "UI_SETTINGS_ACCESSIBILITY_HIGH_CONTRAST_DESCRIPTION",
+    "path": "settings.accessibility.high-contrast.high-contrast-description",
+    "sourceFile": "/src/platform/ui/registry/features/settings.ts",
+    "sourceComponent": "SETTINGS",
+    "sourceLine": 392,
+    "feature": "settings"
+  },
+  "UI_SETTINGS_ACCESSIBILITY_REDUCED_MOTION_TITLE": {
+    "id": "UI_SETTINGS_ACCESSIBILITY_REDUCED_MOTION_TITLE",
+    "path": "settings.accessibility.reduced-motion.reduced-motion-title",
+    "sourceFile": "/src/platform/ui/registry/features/settings.ts",
+    "sourceComponent": "SETTINGS",
+    "sourceLine": 402,
+    "feature": "settings"
+  },
+  "UI_SETTINGS_ACCESSIBILITY_REDUCED_MOTION_DESCRIPTION": {
+    "id": "UI_SETTINGS_ACCESSIBILITY_REDUCED_MOTION_DESCRIPTION",
+    "path": "settings.accessibility.reduced-motion.reduced-motion-description",
+    "sourceFile": "/src/platform/ui/registry/features/settings.ts",
+    "sourceComponent": "SETTINGS",
+    "sourceLine": 412,
+    "feature": "settings"
+  },
+  "UI_SETTINGS_DEVELOPER_TOOLS_TITLE": {
+    "id": "UI_SETTINGS_DEVELOPER_TOOLS_TITLE",
+    "path": "settings.developer-tools.display.section-title",
+    "sourceFile": "/src/platform/ui/registry/features/settings.ts",
+    "sourceComponent": "SETTINGS",
+    "sourceLine": 424,
+    "feature": "settings"
+  },
+  "UI_SETTINGS_DEVELOPER_TOOLS_SSOT_GUARD_TITLE": {
+    "id": "UI_SETTINGS_DEVELOPER_TOOLS_SSOT_GUARD_TITLE",
+    "path": "settings.developer-tools.ssot-guard.ssot-guard-title",
+    "sourceFile": "/src/platform/ui/registry/features/settings.ts",
+    "sourceComponent": "SETTINGS",
+    "sourceLine": 434,
+    "feature": "settings"
+  },
+  "UI_SETTINGS_DEVELOPER_TOOLS_SSOT_GUARD_DESCRIPTION": {
+    "id": "UI_SETTINGS_DEVELOPER_TOOLS_SSOT_GUARD_DESCRIPTION",
+    "path": "settings.developer-tools.ssot-guard.ssot-guard-description",
+    "sourceFile": "/src/platform/ui/registry/features/settings.ts",
+    "sourceComponent": "SETTINGS",
+    "sourceLine": 444,
+    "feature": "settings"
+  },
+  "UI_SETTINGS_DEVELOPER_TOOLS_DIAGNOSTICS": {
+    "id": "UI_SETTINGS_DEVELOPER_TOOLS_DIAGNOSTICS",
+    "path": "settings.developer-tools.diagnostics.diagnostics-label",
+    "sourceFile": "/src/platform/ui/registry/features/settings.ts",
+    "sourceComponent": "SETTINGS",
+    "sourceLine": 454,
+    "feature": "settings"
+  },
+  "UI_SETTINGS_DEVELOPER_TOOLS_START_TEST": {
+    "id": "UI_SETTINGS_DEVELOPER_TOOLS_START_TEST",
+    "path": "settings.developer-tools.start-test.button",
+    "sourceFile": "/src/platform/ui/registry/features/settings.ts",
+    "sourceComponent": "SETTINGS",
+    "sourceLine": 464,
+    "feature": "settings"
+  },
+  "UI_SETTINGS_STORAGE_TITLE": {
+    "id": "UI_SETTINGS_STORAGE_TITLE",
+    "path": "settings.storage.display.section-title",
+    "sourceFile": "/src/platform/ui/registry/features/settings.ts",
+    "sourceComponent": "SETTINGS",
+    "sourceLine": 476,
+    "feature": "settings"
+  },
+  "UI_SETTINGS_STORAGE_LOCAL_STORAGE": {
+    "id": "UI_SETTINGS_STORAGE_LOCAL_STORAGE",
+    "path": "settings.storage.local-storage.local-storage-label",
+    "sourceFile": "/src/platform/ui/registry/features/settings.ts",
+    "sourceComponent": "SETTINGS",
+    "sourceLine": 486,
+    "feature": "settings"
+  },
+  "UI_SETTINGS_STORAGE_USAGE": {
+    "id": "UI_SETTINGS_STORAGE_USAGE",
+    "path": "settings.storage.usage.usage-label",
+    "sourceFile": "/src/platform/ui/registry/features/settings.ts",
+    "sourceComponent": "SETTINGS",
+    "sourceLine": 496,
+    "feature": "settings"
+  },
+  "UI_SETTINGS_STORAGE_COOKIES": {
+    "id": "UI_SETTINGS_STORAGE_COOKIES",
+    "path": "settings.storage.cookies.cookies-label",
+    "sourceFile": "/src/platform/ui/registry/features/settings.ts",
+    "sourceComponent": "SETTINGS",
+    "sourceLine": 506,
+    "feature": "settings"
+  },
+  "UI_SETTINGS_STORAGE_CLEAR_ALL": {
+    "id": "UI_SETTINGS_STORAGE_CLEAR_ALL",
+    "path": "settings.storage.clear-all.button",
+    "sourceFile": "/src/platform/ui/registry/features/settings.ts",
+    "sourceComponent": "SETTINGS",
+    "sourceLine": 516,
+    "feature": "settings"
+  },
+  "UI_SETTINGS_SUMMARY_TITLE": {
+    "id": "UI_SETTINGS_SUMMARY_TITLE",
+    "path": "settings.summary.display.section-title",
+    "sourceFile": "/src/platform/ui/registry/features/settings.ts",
+    "sourceComponent": "SETTINGS",
+    "sourceLine": 528,
+    "feature": "settings"
+  },
+  "UI_SETTINGS_SUMMARY_LANGUAGE": {
+    "id": "UI_SETTINGS_SUMMARY_LANGUAGE",
+    "path": "settings.summary.language.language-label",
+    "sourceFile": "/src/platform/ui/registry/features/settings.ts",
+    "sourceComponent": "SETTINGS",
+    "sourceLine": 538,
+    "feature": "settings"
+  },
+  "UI_SETTINGS_SUMMARY_THEME": {
+    "id": "UI_SETTINGS_SUMMARY_THEME",
+    "path": "settings.summary.theme.theme-label",
+    "sourceFile": "/src/platform/ui/registry/features/settings.ts",
+    "sourceComponent": "SETTINGS",
+    "sourceLine": 548,
+    "feature": "settings"
+  },
+  "UI_SETTINGS_SUMMARY_DENSITY": {
+    "id": "UI_SETTINGS_SUMMARY_DENSITY",
+    "path": "settings.summary.density.density-label",
+    "sourceFile": "/src/platform/ui/registry/features/settings.ts",
+    "sourceComponent": "SETTINGS",
+    "sourceLine": 558,
+    "feature": "settings"
+  },
+  "UI_SETTINGS_SUMMARY_TIMEZONE": {
+    "id": "UI_SETTINGS_SUMMARY_TIMEZONE",
+    "path": "settings.summary.timezone.timezone-label",
+    "sourceFile": "/src/platform/ui/registry/features/settings.ts",
+    "sourceComponent": "SETTINGS",
+    "sourceLine": 568,
+    "feature": "settings"
+  },
+  "UI_SETTINGS_ACTIONS_SAVE": {
+    "id": "UI_SETTINGS_ACTIONS_SAVE",
+    "path": "settings.actions.save.save-button",
+    "sourceFile": "/src/platform/ui/registry/features/settings.ts",
+    "sourceComponent": "SETTINGS",
+    "sourceLine": 580,
+    "feature": "settings"
+  },
+  "UI_SETTINGS_ACTIONS_RESET_PREFERENCES": {
+    "id": "UI_SETTINGS_ACTIONS_RESET_PREFERENCES",
+    "path": "settings.actions.reset-preferences.reset-button",
+    "sourceFile": "/src/platform/ui/registry/features/settings.ts",
+    "sourceComponent": "SETTINGS",
+    "sourceLine": 590,
+    "feature": "settings"
+  },
+  "UI_SETTINGS_ACTIONS_RESTORE_DEFAULTS": {
+    "id": "UI_SETTINGS_ACTIONS_RESTORE_DEFAULTS",
+    "path": "settings.actions.restore-defaults.restore-button",
+    "sourceFile": "/src/platform/ui/registry/features/settings.ts",
+    "sourceComponent": "SETTINGS",
+    "sourceLine": 600,
+    "feature": "settings"
+  },
+  "UI_SHARED_SIDEBAR_LOGIN": {
+    "id": "UI_SHARED_SIDEBAR_LOGIN",
+    "path": "shared-layout.sidebar.actions.login-button",
+    "sourceFile": "/src/platform/ui/registry/features/shared-layout.ts",
+    "sourceComponent": "SHARED_LAYOUT",
+    "sourceLine": 236,
+    "feature": "shared-layout"
+  },
+  "UI_SHARED_SIDEBAR_LANGUAGE": {
+    "id": "UI_SHARED_SIDEBAR_LANGUAGE",
+    "path": "shared-layout.sidebar.actions.language-toggle",
+    "sourceFile": "/src/platform/ui/registry/features/shared-layout.ts",
+    "sourceComponent": "SHARED_LAYOUT",
+    "sourceLine": 246,
+    "feature": "shared-layout"
+  },
+  "UI_SHARED_SIDEBAR_THEME": {
+    "id": "UI_SHARED_SIDEBAR_THEME",
+    "path": "shared-layout.sidebar.actions.theme-toggle",
+    "sourceFile": "/src/platform/ui/registry/features/shared-layout.ts",
+    "sourceComponent": "SHARED_LAYOUT",
+    "sourceLine": 256,
+    "feature": "shared-layout"
   }
 };

@@ -1,0 +1,181 @@
+/**
+ * Design System — Visual Tokens (Phase 2)
+ * Semantic tokens for typography composites, elevation, motion, blur, opacity, layout.
+ * Imported by semantic-tokens.css — do not import directly in components.
+ */
+
+:root {
+  /* ──────────────────────────────────────────────────────────
+   * 1. Typography Composites (size + weight + line-height + tracking)
+   * ────────────────────────────────────────────────────────── */
+
+  /* Display */
+  --gova-type-display-lg-size: var(--gova-text-display-large);
+  --gova-type-display-lg-weight: var(--gova-primitive-font-weight-bold);
+  --gova-type-display-lg-line-height: var(--gova-primitive-line-height-tight);
+  --gova-type-display-lg-tracking: var(--gova-primitive-letter-spacing-tight);
+
+  --gova-type-display-md-size: var(--gova-text-display-medium);
+  --gova-type-display-md-weight: var(--gova-primitive-font-weight-bold);
+  --gova-type-display-md-line-height: var(--gova-primitive-line-height-tight);
+  --gova-type-display-md-tracking: var(--gova-primitive-letter-spacing-tight);
+
+  --gova-type-display-sm-size: var(--gova-text-display-small);
+  --gova-type-display-sm-weight: var(--gova-primitive-font-weight-bold);
+  --gova-type-display-sm-line-height: var(--gova-primitive-line-height-snug);
+  --gova-type-display-sm-tracking: var(--gova-primitive-letter-spacing-normal);
+
+  /* Headline */
+  --gova-type-headline-lg-size: var(--gova-text-headline-large);
+  --gova-type-headline-lg-weight: var(--gova-primitive-font-weight-semibold);
+  --gova-type-headline-lg-line-height: var(--gova-primitive-line-height-snug);
+  --gova-type-headline-lg-tracking: var(--gova-primitive-letter-spacing-normal);
+
+  --gova-type-headline-md-size: var(--gova-text-headline-medium);
+  --gova-type-headline-md-weight: var(--gova-primitive-font-weight-semibold);
+  --gova-type-headline-md-line-height: var(--gova-primitive-line-height-snug);
+  --gova-type-headline-md-tracking: var(--gova-primitive-letter-spacing-normal);
+
+  --gova-type-headline-sm-size: var(--gova-text-headline-small);
+  --gova-type-headline-sm-weight: var(--gova-primitive-font-weight-semibold);
+  --gova-type-headline-sm-line-height: var(--gova-primitive-line-height-normal);
+  --gova-type-headline-sm-tracking: var(--gova-primitive-letter-spacing-normal);
+
+  /* Title */
+  --gova-type-title-lg-size: var(--gova-text-title-large);
+  --gova-type-title-lg-weight: var(--gova-primitive-font-weight-medium);
+  --gova-type-title-lg-line-height: var(--gova-primitive-line-height-normal);
+  --gova-type-title-lg-tracking: var(--gova-primitive-letter-spacing-normal);
+
+  --gova-type-title-md-size: var(--gova-text-title-medium);
+  --gova-type-title-md-weight: var(--gova-primitive-font-weight-medium);
+  --gova-type-title-md-line-height: var(--gova-primitive-line-height-normal);
+  --gova-type-title-md-tracking: var(--gova-primitive-letter-spacing-wide);
+
+  --gova-type-title-sm-size: var(--gova-text-title-small);
+  --gova-type-title-sm-weight: var(--gova-primitive-font-weight-medium);
+  --gova-type-title-sm-line-height: var(--gova-primitive-line-height-normal);
+  --gova-type-title-sm-tracking: var(--gova-primitive-letter-spacing-wide);
+
+  /* Body */
+  --gova-type-body-lg-size: var(--gova-text-body-large);
+  --gova-type-body-lg-weight: var(--gova-primitive-font-weight-normal);
+  --gova-type-body-lg-line-height: var(--gova-primitive-line-height-relaxed);
+  --gova-type-body-lg-tracking: var(--gova-primitive-letter-spacing-normal);
+
+  --gova-type-body-md-size: var(--gova-text-body-medium);
+  --gova-type-body-md-weight: var(--gova-primitive-font-weight-normal);
+  --gova-type-body-md-line-height: var(--gova-primitive-line-height-normal);
+  --gova-type-body-md-tracking: var(--gova-primitive-letter-spacing-normal);
+
+  --gova-type-body-sm-size: var(--gova-text-body-small);
+  --gova-type-body-sm-weight: var(--gova-primitive-font-weight-normal);
+  --gova-type-body-sm-line-height: var(--gova-primitive-line-height-normal);
+  --gova-type-body-sm-tracking: var(--gova-primitive-letter-spacing-normal);
+
+  /* Label */
+  --gova-type-label-lg-size: var(--gova-text-label-large);
+  --gova-type-label-lg-weight: var(--gova-primitive-font-weight-medium);
+  --gova-type-label-lg-line-height: var(--gova-primitive-line-height-normal);
+  --gova-type-label-lg-tracking: var(--gova-primitive-letter-spacing-wide);
+
+  --gova-type-label-md-size: var(--gova-text-label-medium);
+  --gova-type-label-md-weight: var(--gova-primitive-font-weight-medium);
+  --gova-type-label-md-line-height: var(--gova-primitive-line-height-normal);
+  --gova-type-label-md-tracking: var(--gova-primitive-letter-spacing-wide);
+
+  --gova-type-label-sm-size: var(--gova-text-label-small);
+  --gova-type-label-sm-weight: var(--gova-primitive-font-weight-medium);
+  --gova-type-label-sm-line-height: var(--gova-primitive-line-height-normal);
+  --gova-type-label-sm-tracking: var(--gova-primitive-letter-spacing-wider);
+
+  /* Caption */
+  --gova-type-caption-size: var(--gova-primitive-font-size-2xs);
+  --gova-type-caption-weight: var(--gova-primitive-font-weight-normal);
+  --gova-type-caption-line-height: var(--gova-primitive-line-height-normal);
+  --gova-type-caption-tracking: var(--gova-primitive-letter-spacing-normal);
+
+  /* ──────────────────────────────────────────────────────────
+   * 2. Elevation (surface depth)
+   * ────────────────────────────────────────────────────────── */
+  --gova-elevation-0: none;
+  --gova-elevation-1: var(--gova-primitive-shadow-xs);
+  --gova-elevation-2: var(--gova-primitive-shadow-sm);
+  --gova-elevation-3: var(--gova-primitive-shadow-md);
+  --gova-elevation-4: var(--gova-primitive-shadow-lg);
+  --gova-elevation-5: var(--gova-primitive-shadow-xl);
+  --gova-elevation-6: var(--gova-primitive-shadow-2xl);
+
+  /* ──────────────────────────────────────────────────────────
+   * 3. Opacity Scale
+   * ────────────────────────────────────────────────────────── */
+  --gova-opacity-disabled: 0.5;
+  --gova-opacity-muted: 0.7;
+  --gova-opacity-subtle: 0.4;
+  --gova-opacity-faint: 0.2;
+  --gova-opacity-overlay-light: 0.4;
+  --gova-opacity-overlay-medium: 0.5;
+  --gova-opacity-overlay-heavy: 0.6;
+  --gova-opacity-decorative: 0.9;
+
+  /* ──────────────────────────────────────────────────────────
+   * 4. Blur Scale
+   * ────────────────────────────────────────────────────────── */
+  --gova-blur-none: 0;
+  --gova-blur-sm: 4px;
+  --gova-blur-md: 8px;
+  --gova-blur-lg: 12px;
+  --gova-blur-xl: 24px;
+  --gova-blur-2xl: 40px;
+  --gova-blur-3xl: 64px;
+
+  /* ──────────────────────────────────────────────────────────
+   * 5. Motion Semantics
+   * ────────────────────────────────────────────────────────── */
+  --gova-motion-duration-instant: var(--gova-primitive-duration-75);
+  --gova-motion-duration-fast: var(--gova-primitive-duration-150);
+  --gova-motion-duration-normal: var(--gova-primitive-duration-200);
+  --gova-motion-duration-moderate: var(--gova-primitive-duration-300);
+  --gova-motion-duration-slow: var(--gova-primitive-duration-500);
+  --gova-motion-duration-reveal: var(--gova-primitive-duration-700);
+  --gova-motion-duration-shimmer: var(--gova-primitive-duration-1000);
+  --gova-motion-duration-accessibility: 1ms;
+
+  --gova-motion-ease-default: var(--gova-primitive-ease-in-out);
+  --gova-motion-ease-enter: var(--gova-primitive-ease-out);
+  --gova-motion-ease-exit: var(--gova-primitive-ease-in);
+  --gova-motion-ease-linear: var(--gova-primitive-ease-linear);
+
+  --gova-motion-transition-colors: color var(--gova-motion-duration-normal) var(--gova-motion-ease-default),
+    background-color var(--gova-motion-duration-normal) var(--gova-motion-ease-default),
+    border-color var(--gova-motion-duration-normal) var(--gova-motion-ease-default);
+  --gova-motion-transition-transform: transform var(--gova-motion-duration-moderate) var(--gova-motion-ease-enter);
+  --gova-motion-transition-opacity: opacity var(--gova-motion-duration-normal) var(--gova-motion-ease-default);
+  --gova-motion-transition-reveal: opacity var(--gova-motion-duration-reveal) var(--gova-motion-ease-enter),
+    transform var(--gova-motion-duration-reveal) var(--gova-motion-ease-enter);
+  --gova-motion-transition-focus: box-shadow var(--gova-motion-duration-fast) var(--gova-motion-ease-default);
+  --gova-motion-transition-hover: background-color var(--gova-motion-duration-fast) var(--gova-motion-ease-default);
+
+  /* ──────────────────────────────────────────────────────────
+   * 6. Layout Dimensions
+   * ────────────────────────────────────────────────────────── */
+  --gova-layout-container-sm: 640px;
+  --gova-layout-container-md: 768px;
+  --gova-layout-container-lg: 1024px;
+  --gova-layout-container-xl: 1280px;
+  --gova-layout-container-2xl: 1536px;
+  --gova-layout-content-max: var(--gova-spacing-container-max);
+  --gova-layout-sidebar-width: 280px;
+  --gova-layout-header-height: 64px;
+  --gova-layout-bottom-nav-height: 72px;
+  --gova-layout-error-min-height: 400px;
+  --gova-layout-textarea-min-height: 60px;
+
+  /* ──────────────────────────────────────────────────────────
+   * 7. Extended Z-Index Semantics
+   * ────────────────────────────────────────────────────────── */
+  --gova-z-index-scrim: 60;
+  --gova-z-index-drawer: 70;
+  --gova-z-index-header: 50;
+  --gova-z-index-bottom-nav: 50;
+}

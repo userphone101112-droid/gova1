@@ -64,8 +64,8 @@ export default function SplashScreen() {
             className="mb-2 relative group"
           >
             <UiDiv ui={DECORATIVE.BACKGROUND} className="absolute inset-0 bg-primary/20 blur-3xl rounded-full"></UiDiv>
-            <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="w-20 h-20 bg-primary text-on-primary rounded-2xl flex items-center justify-center shadow-2xl relative border-2 border-white/20">
-              <Store className="w-12 h-12 text-white" />
+            <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="w-20 h-20 bg-primary text-on-primary rounded-2xl flex items-center justify-center shadow-2xl relative border-2 border-on-primary/20">
+              <Store className="w-12 h-12 text-on-primary" />
             </UiDiv>
           </UiDiv>
           <UiHeader
@@ -99,7 +99,7 @@ export default function SplashScreen() {
           <UiButton
             ui={SPLASH.MAINTENANCE.FORM.SUBMIT_BUTTON}
             onClick={handleVerify}
-            className="w-full py-3 bg-primary text-white font-semibold rounded-xl active:scale-95 transition-transform shadow-lg cursor-pointer"
+            className="w-full py-3 bg-primary text-on-primary font-semibold rounded-xl active:scale-95 transition-transform shadow-lg cursor-pointer"
           >
             {t(SPLASH.MAINTENANCE.FORM.SUBMIT_BUTTON)}
           </UiButton>
@@ -115,8 +115,8 @@ export default function SplashScreen() {
       <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="flex-1 flex flex-col items-center justify-center z-10 w-full max-w-sm">
         <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="mb-6 relative group">
           <UiDiv ui={DECORATIVE.BACKGROUND} className="absolute inset-0 bg-primary/20 blur-3xl rounded-full"></UiDiv>
-          <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="w-24 h-24 bg-primary text-on-primary rounded-2xl flex items-center justify-center shadow-2xl relative border-2 border-white/20">
-            <Store className="w-14 h-14 text-white" />
+          <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="w-24 h-24 bg-primary text-on-primary rounded-2xl flex items-center justify-center shadow-2xl relative border-2 border-on-primary/20">
+            <Store className="w-14 h-14 text-on-primary" />
           </UiDiv>
         </UiDiv>
         <UiHeader

@@ -55,13 +55,13 @@ export function FeaturedMarquee() {
         <UiDiv ui={COMMON_LAYOUT.WRAPPER}
           className="flex items-center gap-2 px-4 py-2 rounded-full border shadow-sm"
           style={{
-            background: 'rgba(251,188,5,0.10)',
-            borderColor: 'rgba(251,188,5,0.40)',
+            background: 'var(--gova-warning-container)',
+            borderColor: 'var(--gova-warning)',
           }}
         >
           <Sparkles
             className="animate-pulse-gova"
-            style={{ color: 'var(--gova-google-yellow)', width: '20px', height: '20px' }}
+            style={{ color: 'var(--gova-warning)', width: '20px', height: '20px' }}
           />
           <UiHeader ui={COMMON_LAYOUT.HEADER}
             level={3}
@@ -83,7 +83,7 @@ export function FeaturedMarquee() {
         className="relative flex overflow-hidden py-4 border-y"
         style={{
           background: 'var(--gova-surface-container-low)',
-          borderColor: 'rgba(195,198,213,0.30)',
+          borderColor: 'var(--gova-outline-variant)',
         }}
       >
         <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="flex gap-4 animate-marquee-cards whitespace-nowrap pr-4">
@@ -94,7 +94,7 @@ export function FeaturedMarquee() {
               className="flex-none w-40 rounded-xl p-2 shadow-sm border"
               style={{
                 background: 'var(--gova-surface-container-lowest)',
-                borderColor: 'rgba(195,198,213,0.30)',
+                borderColor: 'var(--gova-outline-variant)',
               }}
             >
               <UiImage
@@ -115,7 +115,7 @@ export function FeaturedMarquee() {
               <UiP
                 ui={COMMON_LAYOUT.CONTAINER}
                 className="font-bold"
-                style={{ fontSize: '12px', fontWeight: '700', color: 'var(--gova-google-blue)' }}
+                style={{ fontSize: '12px', fontWeight: '700', color: 'var(--gova-primary)' }}
               >
                 {item.price}
               </UiP>

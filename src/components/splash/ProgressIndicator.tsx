@@ -40,7 +40,7 @@ export default function ProgressIndicator({ progress, status }: ProgressIndicato
 
       <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="w-full mt-4 bg-surface-container-highest h-1 rounded-full overflow-hidden relative shadow-inner">
         <UiDiv ui={COMMON_LAYOUT.CONTAINER}
-          className="h-full bg-primary transition-all duration-300 ease-out shadow-[0_0_8px_rgba(0,50,125,0.5)]"
+          className="h-full bg-primary transition-all duration-300 ease-out shadow-lg"
           style={{ width: `${progress}%` }}
         />
       </UiDiv>

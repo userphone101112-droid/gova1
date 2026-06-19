@@ -19,7 +19,7 @@ export default function SplashLogo() {
       <UiHeader
         ui={SPLASH.LOGO.HEADING}
         level={1}
-        className="text-3xl font-bold text-white text-center"
+        className="text-3xl font-bold text-on-primary text-center"
       >
         {t(SPLASH.LOGO.HEADING)}
       </UiHeader>

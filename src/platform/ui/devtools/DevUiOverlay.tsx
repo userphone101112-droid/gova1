@@ -103,9 +103,9 @@ function computeFrames(selectedTypes: Set<ComponentType>): OverlayFrame[] {
 }
 
 const COLOR_MAP = {
-  blue: { border: '#3b82f6', bg: 'rgba(59,130,246,0.06)', badge: '#2563eb' },
-  amber: { border: '#f59e0b', bg: 'rgba(245,158,11,0.06)', badge: '#d97706' },
-  red: { border: '#ef4444', bg: 'rgba(239,68,68,0.08)', badge: '#dc2626' },
+  blue: { border: 'var(--gova-component-dev-ui-blue-border)', bg: 'var(--gova-component-dev-ui-blue-bg)', badge: 'var(--gova-component-dev-ui-blue-badge)' },
+  amber: { border: 'var(--gova-component-dev-ui-amber-border)', bg: 'var(--gova-component-dev-ui-amber-bg)', badge: 'var(--gova-component-dev-ui-amber-badge)' },
+  red: { border: 'var(--gova-component-dev-ui-red-border)', bg: 'var(--gova-component-dev-ui-red-bg)', badge: 'var(--gova-component-dev-ui-red-badge)' },
 };
 
 export function DevUiOverlay() {
@@ -531,9 +531,9 @@ export function DevUiOverlay() {
           bottom: '72px',
           right: '12px',
           zIndex: 99990,
-          background: '#1e293b',
-          color: '#94a3b8',
-          border: '1px solid #334155',
+          background: 'var(--gova-component-dev-ui-bg-darker)',
+          color: 'var(--gova-component-dev-ui-text-secondary)',
+          border: '1px solid var(--gova-component-dev-ui-border-color)',
           borderRadius: '8px',
           padding: '6px 10px',
           fontSize: '11px',
@@ -561,17 +561,17 @@ export function DevUiOverlay() {
           display: 'flex',
           gap: '6px',
           alignItems: 'center',
-          background: '#0f172a',
-          border: '1px solid #334155',
+          background: 'var(--gova-component-dev-ui-bg-dark)',
+          border: '1px solid var(--gova-component-dev-ui-border-color)',
           borderRadius: '10px',
           padding: '6px 10px',
-          boxShadow: '0 4px 20px rgba(0,0,0,0.4)',
+          boxShadow: 'var(--gova-component-dev-ui-shadow-1)',
           fontSize: '11px',
           fontFamily: 'monospace',
-          color: '#94a3b8',
+          color: 'var(--gova-component-dev-ui-text-secondary)',
         }}
       >
-        <span style={{ color: '#3b82f6', fontWeight: 700 }}>UI Inspector</span>
+        <span style={{ color: 'var(--gova-component-dev-ui-primary)', fontWeight: 700 }}>UI Inspector</span>
         <span>|</span>
         <UiButton
           ui={DECORATIVE.SPACER}
@@ -583,8 +583,8 @@ export function DevUiOverlay() {
             cursor: 'pointer',
             fontSize: '10px',
             fontWeight: 600,
-            background: isHoverInspectionEnabled ? '#22c55e' : '#475569',
-            color: '#fff',
+            background: isHoverInspectionEnabled ? 'var(--gova-component-dev-ui-success)' : 'var(--gova-component-dev-ui-secondary)',
+            color: 'var(--gova-on-primary)',
             fontFamily: 'monospace',
           }}
         >
@@ -593,9 +593,9 @@ export function DevUiOverlay() {
         <span>|</span>
         {isFilterPanelOpen && (
           <>
-            <span style={{ color: '#22c55e' }}>{frames.filter(f => f.color === 'blue').length} ok</span>
-            <span style={{ color: '#f59e0b' }}>{frames.filter(f => f.color === 'amber').length} dep</span>
-            <span style={{ color: '#ef4444' }}>{frames.filter(f => f.color === 'red').length} err</span>
+            <span style={{ color: 'var(--gova-component-dev-ui-success)' }}>{frames.filter(f => f.color === 'blue').length} ok</span>
+            <span style={{ color: 'var(--gova-component-dev-ui-amber)' }}>{frames.filter(f => f.color === 'amber').length} dep</span>
+            <span style={{ color: 'var(--gova-component-dev-ui-error)' }}>{frames.filter(f => f.color === 'red').length} err</span>
             <span>|</span>
           </>
         )}
@@ -610,8 +610,8 @@ export function DevUiOverlay() {
                   cursor: 'pointer',
                   fontSize: '10px',
                   fontWeight: 600,
-                  background: isFilterPanelOpen ? '#22c55e' : '#475569',
-                  color: '#fff',
+                  background: isFilterPanelOpen ? 'var(--gova-component-dev-ui-success)' : 'var(--gova-component-dev-ui-secondary)',
+                  color: 'var(--gova-on-primary)',
                   fontFamily: 'monospace',
                 }}
               >
@@ -629,8 +629,8 @@ export function DevUiOverlay() {
             cursor: 'pointer',
             fontSize: '10px',
             fontWeight: 600,
-            background: isMaolEnabled ? '#22c55e' : '#475569',
-            color: '#fff',
+            background: isMaolEnabled ? 'var(--gova-component-dev-ui-success)' : 'var(--gova-component-dev-ui-secondary)',
+            color: 'var(--gova-on-primary)',
             fontFamily: 'monospace',
           }}
         >
@@ -647,7 +647,7 @@ export function DevUiOverlay() {
           style={{
             background: 'transparent',
             border: 'none',
-            color: '#64748b',
+            color: 'var(--gova-component-dev-ui-text-muted)',
             cursor: 'pointer',
             fontSize: '12px',
             padding: '0 2px',
@@ -668,11 +668,11 @@ export function DevUiOverlay() {
             bottom: '110px',
             right: '12px',
             zIndex: 99998,
-            background: '#0f172a',
-            border: '1px solid #334155',
+            background: 'var(--gova-component-dev-ui-bg-dark)',
+            border: '1px solid var(--gova-component-dev-ui-border-color)',
             borderRadius: '10px',
             padding: '12px',
-            boxShadow: '0 8px 24px rgba(0,0,0,0.5)',
+            boxShadow: 'var(--gova-component-dev-ui-shadow-2)',
             fontSize: '11px',
             fontFamily: 'monospace',
             minWidth: '200px',
@@ -683,18 +683,18 @@ export function DevUiOverlay() {
           <div style={{ 
             position: 'sticky',
             top: 0,
-            background: '#0f172a',
+            background: 'var(--gova-component-dev-ui-bg-dark)',
             zIndex: 1,
             paddingBottom: '8px',
             display: 'flex', 
             justifyContent: 'space-between', 
             alignItems: 'center', 
             marginBottom: '4px',
-            borderBottom: '1px solid #334155'
+            borderBottom: '1px solid var(--gova-component-dev-ui-border-color)'
           }}>
-            <span style={{ color: '#60a5fa', fontWeight: 700, fontSize: '12px' }}>أنواع المكونات</span>
+            <span style={{ color: 'var(--gova-component-dev-ui-primary-light)', fontWeight: 700, fontSize: '12px' }}>أنواع المكونات</span>
             <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
-              <label style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer', color: '#e2e8f0', fontSize: '11px' }}>
+              <label style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer', color: 'var(--gova-component-dev-ui-text-primary)', fontSize: '11px' }}>
                 <input
                   type="checkbox"
                   checked={selectedComponentTypes.size === ALL_COMPONENT_TYPES.length}
@@ -703,7 +703,7 @@ export function DevUiOverlay() {
                 />
                 اختيار الكل
               </label>
-              <label style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer', color: '#e2e8f0', fontSize: '11px' }}>
+              <label style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer', color: 'var(--gova-component-dev-ui-text-primary)', fontSize: '11px' }}>
                 <input
                   type="checkbox"
                   checked={selectedComponentTypes.size === 0}
@@ -724,15 +724,15 @@ export function DevUiOverlay() {
                   alignItems: 'center',
                   padding: '6px 8px',
                   borderRadius: '6px',
-                  background: selectedComponentTypes.has(type) ? 'rgba(34,197,94,0.1)' : 'transparent',
+                  background: selectedComponentTypes.has(type) ? 'var(--gova-component-dev-ui-success)' : 'transparent',
                 }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <span style={{ color: '#e2e8f0' }}>{type}</span>
+                  <span style={{ color: 'var(--gova-component-dev-ui-text-primary)' }}>{type}</span>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                   {isFilterPanelOpen && (
-                    <span style={{ color: '#94a3b8', fontSize: '10px' }}>
+                    <span style={{ color: 'var(--gova-component-dev-ui-text-secondary)', fontSize: '10px' }}>
                       {(componentCounts[type] || 0) > 99 ? '99+' : (componentCounts[type] || 0)}
                     </span>
                   )}
@@ -745,8 +745,8 @@ export function DevUiOverlay() {
                       cursor: 'pointer',
                       fontSize: '10px',
                       fontWeight: 600,
-                      background: selectedComponentTypes.has(type) ? '#22c55e' : '#475569',
-                      color: '#fff',
+                      background: selectedComponentTypes.has(type) ? 'var(--gova-component-dev-ui-success)' : 'var(--gova-component-dev-ui-secondary)',
+                      color: 'var(--gova-on-primary)',
                       fontFamily: 'monospace',
                     }}
                   >
@@ -788,7 +788,7 @@ export function DevUiOverlay() {
                 top: -1,
                 left: 0,
                 background: colors.badge,
-                color: '#fff',
+                color: 'var(--gova-on-primary)',
                 fontSize: '9px',
                 fontFamily: 'monospace',
                 padding: '0 4px',
@@ -832,7 +832,7 @@ export function DevUiOverlay() {
               top: -1,
               left: 0,
               background: COLOR_MAP[hoveredFrame.color].badge,
-              color: '#fff',
+              color: 'var(--gova-on-primary)',
               fontSize: '9px',
               fontFamily: 'monospace',
               padding: '0 4px',
@@ -862,14 +862,14 @@ export function DevUiOverlay() {
             top: Math.min(tooltip.y, 20),
             left: Math.min(tooltip.x, (typeof window !== 'undefined' ? window.innerWidth : 1000) - 380),
             zIndex: 100000,
-            background: '#0f172a',
-            border: '1px solid #1e40af',
+            background: 'var(--gova-component-dev-ui-bg-dark)',
+            border: '1px solid var(--gova-component-dev-ui-border-light)',
             borderRadius: '10px',
             padding: '14px 16px',
-            boxShadow: '0 8px 32px rgba(0,0,0,0.6)',
+            boxShadow: 'var(--gova-component-dev-ui-shadow-3)',
             fontSize: '11px',
             fontFamily: 'monospace',
-            color: '#e2e8f0',
+            color: 'var(--gova-component-dev-ui-text-primary)',
             minWidth: '340px',
             maxWidth: '380px',
             maxHeight: '80vh',
@@ -879,7 +879,7 @@ export function DevUiOverlay() {
           }}
         >
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
-            <div style={{ color: '#60a5fa', fontWeight: 700, fontSize: '13px' }}>
+            <div style={{ color: 'var(--gova-component-dev-ui-primary-light)', fontWeight: 700, fontSize: '13px' }}>
               UI Identity Inspector
             </div>
             <button
@@ -890,7 +890,7 @@ export function DevUiOverlay() {
               style={{
                 background: 'transparent',
                 border: 'none',
-                color: '#64748b',
+                color: 'var(--gova-component-dev-ui-text-muted)',
                 cursor: 'pointer',
                 fontSize: '14px',
                 padding: 0,
@@ -901,28 +901,28 @@ export function DevUiOverlay() {
           </div>
           
           <div style={{ marginBottom: '12px' }}>
-            <Row label="Stable ID" value={tooltip.id} color="#a78bfa" />
-            <Row label="Path" value={tooltip.path} color="#6ee7b7" />
-            <Row label="Feature" value={tooltip.feature} color="#fbbf24" />
-            <Row label="Version" value={tooltip.version} color="#94a3b8" />
+            <Row label="Stable ID" value={tooltip.id} color="var(--gova-component-dev-ui-accent-purple)" />
+            <Row label="Path" value={tooltip.path} color="var(--gova-component-dev-ui-accent-green)" />
+            <Row label="Feature" value={tooltip.feature} color="var(--gova-component-dev-ui-accent-amber)" />
+            <Row label="Version" value={tooltip.version} color="var(--gova-component-dev-ui-text-secondary)" />
             {tooltip.deprecated && (
-              <div style={{ color: '#f87171', marginTop: '4px', fontWeight: 600 }}>⚠ DEPRECATED</div>
+              <div style={{ color: 'var(--gova-component-dev-ui-error)', marginTop: '4px', fontWeight: 600 }}>⚠ DEPRECATED</div>
             )}
           </div>
 
-          <div style={{ borderTop: '1px solid #1e293b', marginTop: '8px', paddingTop: '8px' }}>
-            <Row label="Component" value={tooltip.sourceComponent} color="#f472b6" />
-            <Row label="File" value={tooltip.sourceFile} color="#94a3b8" />
-            {tooltip.sourceLine > 0 && <Row label="Line" value={String(tooltip.sourceLine)} color="#94a3b8" />}
+          <div style={{ borderTop: '1px solid var(--gova-component-dev-ui-border-color)', marginTop: '8px', paddingTop: '8px' }}>
+            <Row label="Component" value={tooltip.sourceComponent} color="var(--gova-component-dev-ui-accent-pink)" />
+            <Row label="File" value={tooltip.sourceFile} color="var(--gova-component-dev-ui-text-secondary)" />
+            {tooltip.sourceLine > 0 && <Row label="Line" value={String(tooltip.sourceLine)} color="var(--gova-component-dev-ui-text-secondary)" />}
           </div>
 
           {/* Children Section */}
-          <div style={{ borderTop: '1px solid #1e293b', marginTop: '12px', paddingTop: '12px' }}>
+          <div style={{ borderTop: '1px solid var(--gova-component-dev-ui-border-color)', marginTop: '12px', paddingTop: '12px' }}>
             <div style={{ marginBottom: '8px' }}>
-              <span style={{ color: '#a78bfa', fontWeight: 600, fontSize: '12px' }}>العناصر الأبن</span>
+              <span style={{ color: 'var(--gova-component-dev-ui-accent-purple)', fontWeight: 600, fontSize: '12px' }}>العناصر الأبن</span>
             </div>
             {currentChildren.length === 0 ? (
-              <div style={{ color: '#64748b', fontSize: '10px', fontStyle: 'italic', padding: '8px 0' }}>
+              <div style={{ color: 'var(--gova-component-dev-ui-text-muted)', fontSize: '10px', fontStyle: 'italic', padding: '8px 0' }}>
                 لا يوجد عناصر أبن
               </div>
             ) : (
@@ -931,8 +931,8 @@ export function DevUiOverlay() {
                   <div 
                     key={`${child.id}_${index}`}
                     style={{
-                      background: '#1e293b',
-                      border: '1px solid #334155',
+                      background: 'var(--gova-component-dev-ui-bg-darker)',
+                      border: '1px solid var(--gova-component-dev-ui-border-color)',
                       borderRadius: '6px',
                       padding: '6px 8px',
                       cursor: 'pointer',
@@ -998,10 +998,10 @@ export function DevUiOverlay() {
                       });
                     }}
                   >
-                    <div style={{ color: '#e2e8f0', fontSize: '11px', fontWeight: 500 }}>
+                    <div style={{ color: 'var(--gova-component-dev-ui-text-primary)', fontSize: '11px', fontWeight: 500 }}>
                       {child.id}
                     </div>
-                    <div style={{ color: '#64748b', fontSize: '10px', marginTop: '2px' }}>
+                    <div style={{ color: 'var(--gova-component-dev-ui-text-muted)', fontSize: '10px', marginTop: '2px' }}>
                       {child.componentType}
                     </div>
                   </div>
@@ -1011,9 +1011,9 @@ export function DevUiOverlay() {
           </div>
 
           {/* Database Section */}
-          <div style={{ borderTop: '1px solid #1e293b', marginTop: '12px', paddingTop: '12px' }}>
+          <div style={{ borderTop: '1px solid var(--gova-component-dev-ui-border-color)', marginTop: '12px', paddingTop: '12px' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
-              <span style={{ color: '#60a5fa', fontWeight: 600, fontSize: '12px' }}>Database</span>
+              <span style={{ color: 'var(--gova-component-dev-ui-primary-light)', fontWeight: 600, fontSize: '12px' }}>Database</span>
               <button
                 onClick={() => setTooltip(t => ({ ...t, databaseEnabled: !t.databaseEnabled }))}
                 style={{
@@ -1023,8 +1023,8 @@ export function DevUiOverlay() {
                   cursor: 'pointer',
                   fontSize: '10px',
                   fontWeight: 600,
-                  background: tooltip.databaseEnabled ? '#22c55e' : '#475569',
-                  color: '#fff',
+                  background: tooltip.databaseEnabled ? 'var(--gova-component-dev-ui-success)' : 'var(--gova-component-dev-ui-secondary)',
+                  color: 'var(--gova-on-primary)',
                   fontFamily: 'monospace',
                 }}
               >
@@ -1036,18 +1036,18 @@ export function DevUiOverlay() {
             {tooltip.databaseEnabled && (
               <div style={{ marginBottom: '16px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <span style={{ color: '#94a3b8', fontSize: '11px', minWidth: '40px' }}>inf1</span>
+                  <span style={{ color: 'var(--gova-component-dev-ui-text-secondary)', fontSize: '11px', minWidth: '40px' }}>inf1</span>
                   <input
                     type="text"
                     value={tooltip.inf1}
                     onChange={(e) => setTooltip(t => ({ ...t, inf1: e.target.value }))}
                     style={{
                       flex: 1,
-                      background: '#1e293b',
-                      border: '1px solid #334155',
+                      background: 'var(--gova-component-dev-ui-bg-darker)',
+                      border: '1px solid var(--gova-component-dev-ui-border-color)',
                       borderRadius: '6px',
                       padding: '8px',
-                      color: '#e2e8f0',
+                      color: 'var(--gova-component-dev-ui-text-primary)',
                       fontSize: '11px',
                       fontFamily: 'monospace',
                       boxSizing: 'border-box',
@@ -1055,18 +1055,18 @@ export function DevUiOverlay() {
                   />
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <span style={{ color: '#94a3b8', fontSize: '11px', minWidth: '40px' }}>inf2</span>
+                  <span style={{ color: 'var(--gova-component-dev-ui-text-secondary)', fontSize: '11px', minWidth: '40px' }}>inf2</span>
                   <input
                     type="text"
                     value={tooltip.inf2}
                     onChange={(e) => setTooltip(t => ({ ...t, inf2: e.target.value }))}
                     style={{
                       flex: 1,
-                      background: '#1e293b',
-                      border: '1px solid #334155',
+                      background: 'var(--gova-component-dev-ui-bg-darker)',
+                      border: '1px solid var(--gova-component-dev-ui-border-color)',
                       borderRadius: '6px',
                       padding: '8px',
-                      color: '#e2e8f0',
+                      color: 'var(--gova-component-dev-ui-text-primary)',
                       fontSize: '11px',
                       fontFamily: 'monospace',
                       boxSizing: 'border-box',
@@ -1074,18 +1074,18 @@ export function DevUiOverlay() {
                   />
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <span style={{ color: '#94a3b8', fontSize: '11px', minWidth: '40px' }}>inf3</span>
+                  <span style={{ color: 'var(--gova-component-dev-ui-text-secondary)', fontSize: '11px', minWidth: '40px' }}>inf3</span>
                   <input
                     type="text"
                     value={tooltip.inf3}
                     onChange={(e) => setTooltip(t => ({ ...t, inf3: e.target.value }))}
                     style={{
                       flex: 1,
-                      background: '#1e293b',
-                      border: '1px solid #334155',
+                      background: 'var(--gova-component-dev-ui-bg-darker)',
+                      border: '1px solid var(--gova-component-dev-ui-border-color)',
                       borderRadius: '6px',
                       padding: '8px',
-                      color: '#e2e8f0',
+                      color: 'var(--gova-component-dev-ui-text-primary)',
                       fontSize: '11px',
                       fontFamily: 'monospace',
                       boxSizing: 'border-box',
@@ -1097,9 +1097,9 @@ export function DevUiOverlay() {
           </div>
 
           {/* Attributes Section */}
-          <div style={{ borderTop: '1px solid #1e293b', marginTop: '12px', paddingTop: '12px' }}>
+          <div style={{ borderTop: '1px solid var(--gova-component-dev-ui-border-color)', marginTop: '12px', paddingTop: '12px' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
-              <span style={{ color: '#f472b6', fontWeight: 600, fontSize: '12px' }}>Attributes</span>
+              <span style={{ color: 'var(--gova-component-dev-ui-accent-pink)', fontWeight: 600, fontSize: '12px' }}>Attributes</span>
               <button
                 onClick={() => setTooltip(t => ({ ...t, attributesEnabled: !t.attributesEnabled }))}
                 style={{
@@ -1109,8 +1109,8 @@ export function DevUiOverlay() {
                   cursor: 'pointer',
                   fontSize: '10px',
                   fontWeight: 600,
-                  background: tooltip.attributesEnabled ? '#22c55e' : '#475569',
-                  color: '#fff',
+                  background: tooltip.attributesEnabled ? 'var(--gova-component-dev-ui-success)' : 'var(--gova-component-dev-ui-secondary)',
+                  color: 'var(--gova-on-primary)',
                   fontFamily: 'monospace',
                 }}
               >
@@ -1128,7 +1128,7 @@ export function DevUiOverlay() {
                     onChange={(e) => setTooltip(t => ({ ...t, attribute1: e.target.checked }))}
                     style={{ cursor: 'pointer' }}
                   />
-                  <span style={{ color: '#94a3b8', fontSize: '11px' }}>Attribute 1</span>
+                  <span style={{ color: 'var(--gova-component-dev-ui-text-secondary)', fontSize: '11px' }}>Attribute 1</span>
                 </label>
                 <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
                   <input
@@ -1137,7 +1137,7 @@ export function DevUiOverlay() {
                     onChange={(e) => setTooltip(t => ({ ...t, attribute2: e.target.checked }))}
                     style={{ cursor: 'pointer' }}
                   />
-                  <span style={{ color: '#94a3b8', fontSize: '11px' }}>Attribute 2</span>
+                  <span style={{ color: 'var(--gova-component-dev-ui-text-secondary)', fontSize: '11px' }}>Attribute 2</span>
                 </label>
                 <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
                   <input
@@ -1146,7 +1146,7 @@ export function DevUiOverlay() {
                     onChange={(e) => setTooltip(t => ({ ...t, attribute3: e.target.checked }))}
                     style={{ cursor: 'pointer' }}
                   />
-                  <span style={{ color: '#94a3b8', fontSize: '11px' }}>Attribute 3</span>
+                  <span style={{ color: 'var(--gova-component-dev-ui-text-secondary)', fontSize: '11px' }}>Attribute 3</span>
                 </label>
               </div>
             )}
@@ -1167,11 +1167,11 @@ export function DevUiOverlay() {
                 fontWeight: 600,
                 cursor: isSaving ? 'not-allowed' : 'pointer',
                 background: saveStatus === 'saved' 
-                  ? '#22c55e' 
+                  ? 'var(--gova-component-dev-ui-success)' 
                   : saveStatus === 'error' 
-                  ? '#ef4444' 
-                  : '#2563eb',
-                color: '#fff',
+                  ? 'var(--gova-component-dev-ui-error)' 
+                  : 'var(--gova-component-dev-ui-primary)',
+                color: 'var(--gova-on-primary)',
                 transition: 'all 0.2s',
                 fontFamily: 'monospace',
               }}
@@ -1194,7 +1194,7 @@ export function DevUiOverlay() {
 function Row({ label, value, color }: { label: string; value: string; color: string }) {
   return (
     <div style={{ display: 'flex', gap: '6px', marginBottom: '2px' }}>
-      <span style={{ color: '#475569', minWidth: '70px' }}>{label}:</span>
+      <span style={{ color: 'var(--gova-component-dev-ui-secondary)', minWidth: '70px' }}>{label}:</span>
       <span style={{ color, wordBreak: 'break-all' }}>{value}</span>
     </div>
   );

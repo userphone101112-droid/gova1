@@ -12,12 +12,11 @@ export function PromoBanner() {
     <UiSection
       ui={HOME.PROMO_BANNER.CONTAINER}
       id="industrial-promo-banner"
-      className="rounded-xl p-6 text-white relative overflow-hidden reveal active"
-      style={{ background: 'var(--gova-primary)' }}
+      className="rounded-xl p-6 text-on-primary relative overflow-hidden reveal active bg-primary"
     >
       <UiDiv
         ui={HOME.PROMO_BANNER.CONTENT_WRAPPER}
-        className="relative z-10 max-w-full md:max-w-[70%] lg:max-w-[60%]"
+        className="relative z-10 max-w-full md:max-w-2/3 lg:max-w-3/5"
       >
         <UiImage
           ui={HOME.PROMO_BANNER.LOGO}
@@ -32,8 +31,7 @@ export function PromoBanner() {
           ui={HOME.PROMO_BANNER.TITLE}
           id="promo-banner-title"
           level={3}
-          className="text-2xl font-bold"
-          style={{ fontFamily: 'Inter, sans-serif' }}
+          className="text-2xl font-bold font-sans"
         >
           {t(HOME.PROMO_BANNER.TITLE)}
         </UiHeader>
@@ -47,8 +45,7 @@ export function PromoBanner() {
         <UiButton
           ui={HOME.PROMO_BANNER.ACTION_BUTTON}
           id="promo-banner-cta"
-          className="mt-4 px-4 py-2 rounded-lg font-bold text-sm transition-transform active:scale-95"
-          style={{ background: 'var(--gova-google-yellow)', color: 'var(--gova-on-surface)' }}
+          className="mt-4 px-4 py-2 rounded-lg font-bold text-sm transition-transform active:scale-95 bg-brand-yellow text-on-surface"
         >
           {t(HOME.PROMO_BANNER.ACTION_BUTTON)}
         </UiButton>
@@ -57,7 +54,7 @@ export function PromoBanner() {
       <UiDiv
         ui={HOME.PROMO_BANNER.DECORATIVE_BACKGROUND}
         id="promo-banner-icon-bg"
-        className="absolute end-0 top-0 h-full w-1/3 opacity-20 flex items-center justify-center pointer-events-none text-white"
+        className="absolute end-0 top-0 h-full w-1/3 opacity-20 flex items-center justify-center pointer-events-none text-on-primary"
       >
         <Building2 className="w-32 h-32 -rotate-12 scale-150" />
       </UiDiv>

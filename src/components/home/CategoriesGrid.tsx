@@ -28,13 +28,13 @@ export function CategoriesGrid() {
     <UiSection ui={COMMON_LAYOUT.SECTION} id="categories-section" className="reveal active">
       <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="flex justify-between items-end mb-4">
         <UiDiv ui={COMMON_LAYOUT.WRAPPER}
-          className="flex items-center gap-2 px-4 py-2 rounded-full border shadow-sm bg-blue-50/10 border-blue-200/30"
+          className="flex items-center gap-2 px-4 py-2 rounded-full border shadow-sm bg-primary-container/10 border-primary/30"
         >
-          <Store className="w-5 h-5 text-blue-600" />
+          <Store className="w-5 h-5 text-primary" />
           <UiHeader
             ui={HOME.CATEGORIES_GRID.SECTION_TITLE}
             level={3}
-            className="font-semibold text-blue-600 text-xl font-semibold"
+            className="font-semibold text-primary text-xl font-semibold"
           >
             {t(HOME.CATEGORIES_GRID.SECTION_TITLE)}
           </UiHeader>
@@ -63,7 +63,7 @@ export function CategoriesGrid() {
             aria-label={t(cat.nameKey)}
           >
             <UiDiv ui={COMMON_LAYOUT.WRAPPER}
-              className="rounded-full overflow-hidden border-2 border-transparent group-active:border-googleBlue transition-all w-full aspect-square relative bg-surface-container"
+              className="rounded-full overflow-hidden border-2 border-transparent group-active:border-primary transition-all w-full aspect-square relative bg-surface-container"
             >
               <UiImage
                 ui={HOME.CATEGORIES_GRID.CATEGORY_IMAGE}

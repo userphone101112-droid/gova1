@@ -29,16 +29,16 @@ function ErrorFallback({
   const { t } = useTranslation();
 
   return (
-    <UiMain ui={COMMON_LAYOUT.MAIN} className="flex min-h-[400px] items-center justify-center p-4">
+    <UiMain ui={COMMON_LAYOUT.MAIN} className="flex min-h-error items-center justify-center p-4">
       <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="max-w-md text-center">
         <UiHeader
           ui={ERROR_BOUNDARY.TITLE}
           level={2}
-          className="mb-4 text-2xl font-bold text-gray-900 dark:text-gray-100"
+          className="mb-4 text-2xl font-bold text-on-surface"
         >
           {t(ERROR_BOUNDARY.TITLE)}
         </UiHeader>
-        <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="mb-6 text-gray-600 dark:text-gray-400">
+        <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="mb-6 text-on-surface-variant">
           {error?.message || t(ERROR_BOUNDARY.DEFAULT_MESSAGE)}
         </UiDiv>
         <UiButton ui={ERROR_BOUNDARY.RELOAD_BUTTON} onClick={onReload}>

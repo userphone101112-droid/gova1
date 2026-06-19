@@ -45,12 +45,12 @@ export function AppSidebar({ isOpen, onClose }: AppSidebarProps) {
   return (
     <UiDiv
       ui={SHARED_LAYOUT.SIDEBAR.CONTAINER}
-      className={`fixed inset-0 z-60 ${isOpen ? '' : 'pointer-events-none'}`}
+      className={`fixed inset-0 z-scrim ${isOpen ? '' : 'pointer-events-none'}`}
       aria-hidden={!isOpen}
     >
       <UiDiv
         ui={SHARED_LAYOUT.SIDEBAR.OVERLAY}
-        className={`absolute inset-0 bg-black/40 transition-opacity duration-300 z-60 ${
+        className={`absolute inset-0 bg-overlay/40 transition-opacity duration-300 z-scrim ${
           isOpen ? 'opacity-100' : 'opacity-0'
         }`}
       />
@@ -62,7 +62,7 @@ export function AppSidebar({ isOpen, onClose }: AppSidebarProps) {
         aria-modal={isOpen}
         aria-label={t(SHARED_LAYOUT.HEADER.MENU.MENU_BUTTON)}
         className={[
-          'fixed top-0 z-70 flex h-dvh w-72 flex-col bg-background transition-transform duration-300 ease-out',
+          'fixed top-0 z-drawer flex h-dvh w-72 flex-col bg-background transition-transform duration-300 ease-out motion-transform',
           isArabic
             ? 'inset-inline-end-0 border-s border-border'
             : 'inset-inline-start-0 border-e border-border',

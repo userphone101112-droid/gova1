@@ -87,7 +87,7 @@ export function CuratedOffers() {
           ui={HOME.CURATED_OFFERS.PROMO_TAG}
           id="promo-tag-badge"
           className="px-2 py-1 rounded-lg text-xs font-semibold"
-          style={{ background: 'var(--gova-google-yellow)', color: '#000' }}
+          style={{ background: 'var(--gova-warning)', color: 'var(--gova-on-warning)' }}
         >
           {t(HOME.CURATED_OFFERS.PROMO_TAG)}
         </UiLabel>
@@ -124,9 +124,9 @@ export function CuratedOffers() {
               <UiButton
                 ui={HOME.CURATED_OFFERS.ADD_TO_FAVORITES}
                 id={p.favId}
-                className="absolute top-2 start-2 w-8 h-8 rounded-full bg-white/90 backdrop-blur flex items-center justify-center shadow-sm transition-transform active:scale-90"
+                className="absolute top-2 start-2 w-8 h-8 rounded-full bg-surface-container-lowest/90 backdrop-blur flex items-center justify-center shadow-sm transition-transform active:scale-90"
                 aria-label={t(HOME.CURATED_OFFERS.ADD_TO_FAVORITES)}
-                style={{ color: p.favFilled ? 'var(--gova-google-red)' : 'var(--gova-on-surface-variant)' }}
+                style={{ color: p.favFilled ? 'var(--gova-error)' : 'var(--gova-on-surface-variant)' }}
               >
                 <Heart
                   size={18}
@@ -142,7 +142,7 @@ export function CuratedOffers() {
               <UiLabel
                 ui={HOME.CURATED_OFFERS.CATEGORY_LABEL}
                 className="text-xs font-semibold"
-                style={{ color: 'var(--gova-google-green)' }}
+                style={{ color: 'var(--gova-success)' }}
               >
                 {t(p.categoryKey)}
               </UiLabel>
@@ -160,7 +160,7 @@ export function CuratedOffers() {
                 <UiLabel
                   ui={HOME.CURATED_OFFERS.PRICE_LABEL}
                   className="text-base font-bold"
-                  style={{ color: 'var(--gova-google-blue)' }}
+                  style={{ color: 'var(--gova-primary)' }}
                 >
                   {t(p.priceKey)}
                 </UiLabel>
@@ -168,7 +168,7 @@ export function CuratedOffers() {
                   ui={HOME.CURATED_OFFERS.ADD_TO_CART}
                   id={p.addId}
                   className="w-8 h-8 rounded-lg flex items-center justify-center transition-transform active:scale-90"
-                  style={{ background: 'var(--gova-google-blue)', color: '#fff' }}
+                  style={{ background: 'var(--gova-primary)', color: 'var(--gova-on-primary)' }}
                   aria-label={t(HOME.CURATED_OFFERS.ADD_TO_CART)}
                 >
                   <ShoppingCart size={18} />
@@ -190,8 +190,8 @@ export function CuratedOffers() {
           className="px-6 py-2 rounded-full font-bold text-sm border transition-transform active:scale-95"
           style={{
             background: 'var(--gova-surface-container-low)',
-            borderColor: 'rgba(195,198,213,0.30)',
-            color: 'var(--gova-google-blue)',
+            borderColor: 'var(--gova-outline-variant)',
+            color: 'var(--gova-primary)',
           }}
         >
           {t(HOME.CURATED_OFFERS.SHOW_MORE)}

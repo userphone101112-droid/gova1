@@ -18,7 +18,7 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>(
     return (
       <div
         className={cn(
-          'fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4',
+          'fixed inset-0 z-50 flex items-center justify-center bg-overlay/50 p-4 motion-opacity',
           overlayClassName
         )}
         role="presentation"
@@ -30,7 +30,7 @@ const Modal = React.forwardRef<HTMLDivElement, ModalProps>(
           role="dialog"
           aria-modal="true"
           className={cn(
-            'relative w-full max-w-lg rounded-lg border bg-background p-6 shadow-lg',
+            'relative w-full max-w-lg rounded-lg border bg-background p-6 elevation-4 motion-transform',
             className
           )}
           onClick={(e) => e.stopPropagation()}

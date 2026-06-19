@@ -239,11 +239,11 @@ export default function ${capitalized}Page() {
   ]));
 
   return (
-    <div className="min-h-screen bg-white flex flex-col items-center justify-center gap-8">
-      <h1 className="text-4xl font-bold text-gray-900">
+    <div className="min-h-screen bg-background flex flex-col items-center justify-center gap-8">
+      <h1 className="text-4xl font-bold text-on-surface">
         {t('${featureName}.page.title')}
       </h1>
-      <p className="text-xl text-gray-600">
+      <p className="text-xl text-on-surface-variant">
         {t('${featureName}.page.description')}
       </p>
       <div className="flex gap-4">

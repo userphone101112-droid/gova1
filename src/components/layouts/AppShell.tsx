@@ -9,8 +9,8 @@ interface AppShellProps {
 }
 
 /**
- * AppShell wraps all non-splash pages with the shared fixed Header and BottomNavBar.
- * Usage: place in any route layout except the splash (root) route.
+ * AppShell wraps in-app routes with AppHeader, AppSidebar (drawer), and BottomNavBar.
+ * Applied globally via `src/app/(shell)/layout.tsx` — add new pages under `(shell)/`.
  */
 export function AppShell({ children }: AppShellProps) {
   return (

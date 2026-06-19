@@ -115,6 +115,32 @@
   --gova-primitive-color-login-surface-dim: #d3d9ea;
   --gova-primitive-color-login-text: #151c27;
 
+  /* Brand Accent Colors (decorative / marketing) */
+  --gova-primitive-color-brand-red: #ea4335;
+  --gova-primitive-color-brand-blue: #4285f4;
+  --gova-primitive-color-brand-yellow: #fbbc04;
+  --gova-primitive-color-brand-green: #34a853;
+
+  /* Overlay & Scrim */
+  --gova-primitive-color-overlay: #000000;
+  --gova-primitive-color-overlay-light: rgba(0, 0, 0, 0.4);
+  --gova-primitive-color-overlay-medium: rgba(0, 0, 0, 0.5);
+  --gova-primitive-color-overlay-heavy: rgba(0, 0, 0, 0.6);
+
+  /* Glass & Shimmer */
+  --gova-primitive-color-glass-light: rgba(255, 255, 255, 0.75);
+  --gova-primitive-color-glass-dark: rgba(15, 23, 42, 0.75);
+  --gova-primitive-color-shimmer-1: #f0f0f0;
+  --gova-primitive-color-shimmer-2: #e0e0e0;
+  --gova-primitive-color-shimmer-dark-1: #1e293b;
+  --gova-primitive-color-shimmer-dark-2: #334155;
+
+  /* High Contrast */
+  --gova-primitive-color-hc-outline-light: #000000;
+  --gova-primitive-color-hc-outline-variant-light: #1a1a1a;
+  --gova-primitive-color-hc-outline-dark: #ffffff;
+  --gova-primitive-color-hc-outline-variant-dark: #e5e5e5;
+
   /* White & Black */
   --gova-primitive-color-white: #ffffff;
   --gova-primitive-color-black: #000000;
@@ -260,6 +286,8 @@
   --gova-primitive-z-index-modal: 40;
   --gova-primitive-z-index-toast: 50;
   --gova-primitive-z-index-tooltip: 60;
+  --gova-primitive-z-index-scrim: 60;
+  --gova-primitive-z-index-drawer: 70;
 
   /* ──────────────────────────────────────────────────────────
    * 8. Breakpoints Primitives

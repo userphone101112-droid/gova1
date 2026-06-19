@@ -112,46 +112,155 @@
   /* ──────────────────────────────────────────────────────────
    * 6. Special Effects Tokens (glass, skeleton, etc.)
    * ────────────────────────────────────────────────────────── */
-  --gova-component-glass-bg: rgba(255, 255, 255, 0.75);
-  --gova-component-glass-blur: 12px;
-  --gova-component-reveal-offset: 20px;
-  --gova-component-shimmer-color-1: #f0f0f0;
-  --gova-component-shimmer-color-2: #e0e0e0;
-  --gova-component-shimmer-size: 1000px;
-  --gova-component-marquee-gap: 8px;
+  --gova-component-glass-bg: var(--gova-primitive-color-glass-light);
+  --gova-component-glass-blur: var(--gova-blur-lg);
+  --gova-component-reveal-offset: var(--gova-primitive-spacing-5);
+  --gova-component-shimmer-color-1: var(--gova-primitive-color-shimmer-1);
+  --gova-component-shimmer-color-2: var(--gova-primitive-color-shimmer-2);
+  --gova-component-shimmer-size: var(--gova-primitive-spacing-96);
+  --gova-component-marquee-gap: var(--gova-primitive-spacing-2);
   --gova-component-marquee-speed: 30s;
   --gova-component-pulse-speed: 2s;
   --gova-component-trending-speed: 20s;
 
   /* ──────────────────────────────────────────────────────────
-   * 7. Dev UI Overlay Tokens
+   * 6b. Switch Component Tokens
    * ────────────────────────────────────────────────────────── */
-  --gova-component-dev-ui-blue-border: #3b82f6;
-  --gova-component-dev-ui-blue-bg: rgba(59, 130, 246, 0.06);
-  --gova-component-dev-ui-blue-badge: #2563eb;
-  --gova-component-dev-ui-amber-border: #f59e0b;
-  --gova-component-dev-ui-amber-bg: rgba(245, 158, 11, 0.06);
-  --gova-component-dev-ui-amber-badge: #d97706;
-  --gova-component-dev-ui-red-border: #ef4444;
-  --gova-component-dev-ui-red-bg: rgba(239, 68, 68, 0.08);
-  --gova-component-dev-ui-red-badge: #dc2626;
-  --gova-component-dev-ui-bg-dark: #0f172a;
-  --gova-component-dev-ui-bg-darker: #1e293b;
-  --gova-component-dev-ui-border-color: #334155;
-  --gova-component-dev-ui-border-light: #1e40af;
-  --gova-component-dev-ui-text-primary: #e2e8f0;
-  --gova-component-dev-ui-text-secondary: #94a3b8;
-  --gova-component-dev-ui-text-muted: #64748b;
-  --gova-component-dev-ui-primary: #3b82f6;
-  --gova-component-dev-ui-primary-light: #60a5fa;
-  --gova-component-dev-ui-success: #22c55e;
-  --gova-component-dev-ui-amber: #f59e0b;
-  --gova-component-dev-ui-error: #ef4444;
-  --gova-component-dev-ui-secondary: #475569;
-  --gova-component-dev-ui-accent-purple: #a78bfa;
-  --gova-component-dev-ui-accent-green: #6ee7b7;
-  --gova-component-dev-ui-accent-amber: #fbbf24;
-  --gova-component-dev-ui-accent-pink: #f472b6;
+  --gova-component-switch-track-bg: var(--gova-surface-container-high);
+  --gova-component-switch-track-checked-bg: var(--gova-primary);
+  --gova-component-switch-thumb-bg: var(--gova-surface-container-lowest);
+  --gova-component-switch-thumb-border: var(--gova-outline-variant);
+  --gova-component-switch-focus-ring: var(--gova-focus-ring);
+  --gova-component-switch-radius: var(--gova-radius-full);
+
+  /* ──────────────────────────────────────────────────────────
+   * 6c. Dialog / Modal Component Tokens
+   * ────────────────────────────────────────────────────────── */
+  --gova-component-dialog-overlay-bg: var(--gova-overlay-scrim);
+  --gova-component-dialog-bg: var(--gova-surface-container);
+  --gova-component-dialog-border: var(--gova-outline-variant);
+  --gova-component-dialog-shadow: var(--gova-shadow-lg);
+  --gova-component-dialog-radius: var(--gova-radius-lg);
+
+  /* ──────────────────────────────────────────────────────────
+   * 6d. Navigation Component Tokens
+   * ────────────────────────────────────────────────────────── */
+  --gova-component-nav-bg: var(--gova-surface-container-lowest);
+  --gova-component-nav-border: var(--gova-outline-variant);
+  --gova-component-nav-active-bg: var(--gova-primary-container);
+  --gova-component-nav-active-color: var(--gova-on-primary-container);
+  --gova-component-nav-inactive-color: var(--gova-on-surface-variant);
+  --gova-component-nav-badge-bg: var(--gova-error);
+  --gova-component-nav-badge-border: var(--gova-surface-container-lowest);
+
+  /* ──────────────────────────────────────────────────────────
+   * 6e. Settings Screen Component Tokens
+   * ────────────────────────────────────────────────────────── */
+  --gova-component-settings-card-bg: var(--gova-surface-container);
+  --gova-component-settings-card-shadow: var(--gova-elevation-2);
+  --gova-component-settings-card-radius: var(--gova-radius-3xl);
+  --gova-component-settings-card-padding: var(--gova-spacing-lg);
+  --gova-component-settings-section-title-size: var(--gova-type-title-lg-size);
+  --gova-component-settings-section-title-weight: var(--gova-type-title-lg-weight);
+  --gova-component-settings-group-gap: var(--gova-spacing-md);
+  --gova-component-settings-row-padding-y: var(--gova-spacing-md);
+  --gova-component-settings-row-padding-x: var(--gova-spacing-lg);
+  --gova-component-settings-preview-bg: var(--gova-primary);
+  --gova-component-settings-preview-fg: var(--gova-on-primary);
+  --gova-component-settings-preview-accent: var(--gova-on-primary);
+  --gova-component-settings-toggle-width: var(--gova-primitive-spacing-14);
+  --gova-component-settings-toggle-height: var(--gova-primitive-spacing-8);
+
+  /* ──────────────────────────────────────────────────────────
+   * 6f. Authentication Screen Component Tokens
+   * ────────────────────────────────────────────────────────── */
+  --gova-component-auth-bg: var(--gova-background);
+  --gova-component-auth-on-bg: var(--gova-on-background);
+  --gova-component-auth-surface: var(--gova-surface);
+  --gova-component-auth-primary: var(--gova-primary);
+  --gova-component-auth-on-primary: var(--gova-on-primary);
+  --gova-component-auth-card-bg: var(--gova-surface-container);
+  --gova-component-auth-card-border: var(--gova-outline-variant);
+  --gova-component-auth-card-radius: var(--gova-radius-2xl);
+  --gova-component-auth-card-shadow: var(--gova-elevation-4);
+  --gova-component-auth-card-padding: var(--gova-spacing-xl);
+  --gova-component-auth-hero-bg: var(--gova-primary);
+  --gova-component-auth-hero-fg: var(--gova-on-primary);
+  --gova-component-auth-hero-padding: var(--gova-spacing-2xl);
+  --gova-component-auth-input-bg: var(--gova-surface-container-lowest);
+  --gova-component-auth-input-border: var(--gova-outline);
+  --gova-component-auth-input-focus-border: var(--gova-primary);
+  --gova-component-auth-input-radius: var(--gova-radius-lg);
+  --gova-component-auth-input-padding: var(--gova-spacing-md);
+  --gova-component-auth-cta-bg: var(--gova-primary);
+  --gova-component-auth-cta-color: var(--gova-on-primary);
+  --gova-component-auth-cta-radius: var(--gova-radius-lg);
+  --gova-component-auth-cta-padding-y: var(--gova-spacing-sm);
+  --gova-component-auth-cta-padding-x: var(--gova-spacing-lg);
+  --gova-component-auth-cta-weight: var(--gova-primitive-font-weight-semibold);
+  --gova-component-auth-otp-cell-size: var(--gova-primitive-spacing-12);
+  --gova-component-auth-otp-cell-radius: var(--gova-radius-md);
+  --gova-component-auth-error: var(--gova-error);
+  --gova-component-auth-error-container: var(--gova-error-container);
+  --gova-component-auth-success: var(--gova-success);
+  --gova-component-auth-link-color: var(--gova-primary);
+  --gova-component-auth-divider: var(--gova-outline-variant);
+
+  /* ──────────────────────────────────────────────────────────
+   * 6g. Select / Checkbox / Radio / Tabs / Table / Alert / Tooltip
+   * ────────────────────────────────────────────────────────── */
+  --gova-component-select-bg: var(--gova-surface-container-lowest);
+  --gova-component-select-border: var(--gova-outline);
+  --gova-component-select-focus-border: var(--gova-primary);
+  --gova-component-checkbox-checked-bg: var(--gova-primary);
+  --gova-component-checkbox-checked-border: var(--gova-primary);
+  --gova-component-radio-checked-bg: var(--gova-primary);
+  --gova-component-tabs-active-bg: var(--gova-surface-container);
+  --gova-component-tabs-active-color: var(--gova-primary);
+  --gova-component-tabs-inactive-color: var(--gova-on-surface-variant);
+  --gova-component-table-header-bg: var(--gova-surface-container-low);
+  --gova-component-table-row-hover: var(--gova-surface-container);
+  --gova-component-table-border: var(--gova-outline-variant);
+  --gova-component-alert-success-bg: var(--gova-success-container);
+  --gova-component-alert-success-color: var(--gova-on-success-container);
+  --gova-component-alert-warning-bg: var(--gova-warning-container);
+  --gova-component-alert-warning-color: var(--gova-on-warning-container);
+  --gova-component-alert-error-bg: var(--gova-error-container);
+  --gova-component-alert-error-color: var(--gova-on-error-container);
+  --gova-component-alert-info-bg: var(--gova-info-container);
+  --gova-component-alert-info-color: var(--gova-on-info-container);
+  --gova-component-tooltip-bg: var(--gova-inverse-surface);
+  --gova-component-tooltip-color: var(--gova-inverse-on-surface);
+
+  /* ──────────────────────────────────────────────────────────
+   * 7. Dev UI Overlay Tokens (dev-only, references primitives)
+   * ────────────────────────────────────────────────────────── */
+  --gova-component-dev-ui-blue-border: var(--gova-primitive-color-primary-500);
+  --gova-component-dev-ui-blue-bg: color-mix(in srgb, var(--gova-primitive-color-primary-500) 6%, transparent);
+  --gova-component-dev-ui-blue-badge: var(--gova-primitive-color-primary-600);
+  --gova-component-dev-ui-amber-border: var(--gova-primitive-color-warning-500);
+  --gova-component-dev-ui-amber-bg: color-mix(in srgb, var(--gova-primitive-color-warning-500) 6%, transparent);
+  --gova-component-dev-ui-amber-badge: var(--gova-primitive-color-warning-600);
+  --gova-component-dev-ui-red-border: var(--gova-primitive-color-error-500);
+  --gova-component-dev-ui-red-bg: color-mix(in srgb, var(--gova-primitive-color-error-500) 8%, transparent);
+  --gova-component-dev-ui-red-badge: var(--gova-primitive-color-error-600);
+  --gova-component-dev-ui-bg-dark: var(--gova-primitive-color-neutral-900);
+  --gova-component-dev-ui-bg-darker: var(--gova-primitive-color-neutral-800);
+  --gova-component-dev-ui-border-color: var(--gova-primitive-color-neutral-700);
+  --gova-component-dev-ui-border-light: var(--gova-primitive-color-primary-800);
+  --gova-component-dev-ui-text-primary: var(--gova-primitive-color-neutral-200);
+  --gova-component-dev-ui-text-secondary: var(--gova-primitive-color-neutral-400);
+  --gova-component-dev-ui-text-muted: var(--gova-primitive-color-neutral-500);
+  --gova-component-dev-ui-primary: var(--gova-primitive-color-primary-500);
+  --gova-component-dev-ui-primary-light: var(--gova-primitive-color-primary-400);
+  --gova-component-dev-ui-success: var(--gova-primitive-color-success-500);
+  --gova-component-dev-ui-amber: var(--gova-primitive-color-warning-500);
+  --gova-component-dev-ui-error: var(--gova-primitive-color-error-500);
+  --gova-component-dev-ui-secondary: var(--gova-primitive-color-neutral-600);
+  --gova-component-dev-ui-accent-purple: var(--gova-primitive-color-secondary-400);
+  --gova-component-dev-ui-accent-green: var(--gova-primitive-color-accent-300);
+  --gova-component-dev-ui-accent-amber: var(--gova-primitive-color-warning-400);
+  --gova-component-dev-ui-accent-pink: var(--gova-primitive-color-error-400);
   --gova-component-dev-ui-spacing-xs: 2px;
   --gova-component-dev-ui-spacing-sm: 4px;
   --gova-component-dev-ui-spacing-md: 6px;
@@ -173,9 +282,9 @@
   --gova-component-dev-ui-position-offset: 12px;
   --gova-component-dev-ui-position-bottom-1: 72px;
   --gova-component-dev-ui-position-bottom-2: 110px;
-  --gova-component-dev-ui-shadow-1: 0 4px 20px rgba(0, 0, 0, 0.4);
-  --gova-component-dev-ui-shadow-2: 0 8px 24px rgba(0, 0, 0, 0.5);
-  --gova-component-dev-ui-shadow-3: 0 8px 32px rgba(0, 0, 0, 0.6);
+  --gova-component-dev-ui-shadow-1: 0 4px 20px color-mix(in srgb, var(--gova-primitive-color-black) 40%, transparent);
+  --gova-component-dev-ui-shadow-2: 0 8px 24px color-mix(in srgb, var(--gova-primitive-color-black) 50%, transparent);
+  --gova-component-dev-ui-shadow-3: 0 8px 32px color-mix(in srgb, var(--gova-primitive-color-black) 60%, transparent);
   --gova-component-dev-ui-min-width: 200px;
   --gova-component-dev-ui-max-height-1: 300px;
   --gova-component-dev-ui-min-width-tooltip: 340px;

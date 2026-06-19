@@ -133,7 +133,7 @@ function persistCookies(state: Pick<UnifiedStoreState, 'language' | 'themeMode' 
     highContrast: state.highContrast,
     reducedMotion: state.reducedMotion,
   });
-  document.cookie = `gova-unified-store=${encodeURIComponent(payload)}; path=/; max-age=31536000`;
+  document.cookie = `gova-global-ssot=${encodeURIComponent(payload)}; path=/; max-age=31536000`;
   document.cookie = `locale=${state.language}; path=/; max-age=31536000`;
 }
 

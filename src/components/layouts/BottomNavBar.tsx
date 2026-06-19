@@ -27,10 +27,10 @@ export function BottomNavBar() {
       id="bottom-navigation-bar"
       className="fixed bottom-0 start-0 w-full z-50 flex justify-around items-center pt-2 pb-4 border-t rounded-t-2xl shadow-lg"
       style={{
-        background: 'rgba(250,248,255,0.90)',
-        backdropFilter: 'blur(12px)',
-        WebkitBackdropFilter: 'blur(12px)',
-        borderColor: 'rgba(195,198,213,0.40)',
+        background: 'var(--gova-component-glass-bg)',
+        backdropFilter: 'var(--gova-component-glass-blur)',
+        WebkitBackdropFilter: 'var(--gova-component-glass-blur)',
+        borderColor: 'var(--gova-outline-variant)',
       }}
     >
       {NAV_ITEMS.map(({ key, icon: Icon, ui, id, href }) => {
@@ -56,8 +56,8 @@ export function BottomNavBar() {
             {isNotif && (
               <UiDiv ui={COMMON_LAYOUT.CONTAINER}
                 id="nav-notif-badge"
-                className="absolute top-0 end-1/2 translate-x-3 w-2.5 h-2.5 rounded-full border-2 border-white animate-pulse-gova"
-                style={{ background: 'var(--gova-google-red)' }}
+                className="absolute top-0 end-1/2 translate-x-3 w-2.5 h-2.5 rounded-full border-2 border-surface-container-lowest animate-pulse-gova"
+                style={{ background: 'var(--gova-error)' }}
               />
             )}
             <span className="text-xs leading-4 font-semibold mt-0.5">{t(ui)}</span>

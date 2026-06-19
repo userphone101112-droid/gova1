@@ -5,6 +5,7 @@ import { I18nProvider } from "@/platform/ui";
 import { getAppDictionaryCached } from "@/platform/ui/server";
 import { getLocale, getDirection, getThemeMode, getEffectiveTheme, getSSOTPreferences } from "@/platform/ui/server";
 import { SSOTProvider } from "@/providers/SSOTProvider";
+import { ThemePreferencesSync } from "@/providers/ThemePreferencesSync";
 import { SSOTGuard } from "@/components/shared/SSOTGuard";
 import { LocaleProvider } from "@/platform/ui";
 
@@ -101,6 +102,7 @@ export default async function RootLayout({
             initialLocale={locale}
             initialDictionary={dictionary}
           >
+            <ThemePreferencesSync />
             {children}
             {DevUiOverlay && <DevUiOverlay />}
           </I18nProvider>

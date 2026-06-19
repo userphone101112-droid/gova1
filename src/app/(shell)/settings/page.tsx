@@ -8,7 +8,7 @@ import { useUnifiedStore } from '@/store/unified.store';
 
 export default function SettingsPage() {
   const { t, locale, setLocale } = useTranslation();
-  const { themeMode, setThemeMode, fontSize, setFontSize, density, setDensity, highContrast, setHighContrast, reducedMotion, setReducedMotion, ssotGuardEnabled, setSSOTGuardEnabled } = useUnifiedStore();
+  const { themeMode, setThemeMode, fontSize, setFontSize, density, setDensity, highContrast, setHighContrast, reducedMotion, setReducedMotion, ssotGuardEnabled, setSSOTGuardEnabled, resetPreferences, reset, syncDOM } = useUnifiedStore();
 
   return (
     <UiDiv
@@ -17,10 +17,10 @@ export default function SettingsPage() {
     >
       {/* Header */}
       <header className="mb-12 text-center space-y-2">
-        <h1 className="text-4xl font-bold text-primary tracking-tight sm:text-5xl">
+        <h1 className="type-display-md text-primary">
           {t(SETTINGS.TITLE)}
         </h1>
-        <p className="text-base text-on-surface-variant sm:text-lg">
+        <p className="type-body-lg text-on-surface-variant">
           {t(SETTINGS.DESCRIPTION)}
         </p>
       </header>
@@ -35,7 +35,7 @@ export default function SettingsPage() {
         </div>
         <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {/* Status Card */}
-          <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="rounded-3xl bg-white p-6 shadow-sm">
+          <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="settings-card">
             <div className="flex flex-col justify-between space-y-4">
               <div className="flex justify-between items-start">
                 <div className="rounded-xl bg-secondary/10 p-2 text-secondary">
@@ -57,7 +57,7 @@ export default function SettingsPage() {
           </UiDiv>
 
           {/* Maintenance Mode */}
-          <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="rounded-3xl bg-white p-6 shadow-sm">
+          <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="settings-card">
             <div className="flex items-center justify-between">
               <div className="space-y-1">
                 <h3 className="text-lg font-semibold">
@@ -79,7 +79,7 @@ export default function SettingsPage() {
         </UiDiv>
 
         {/* Feature Flags */}
-        <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="rounded-3xl bg-white p-6 shadow-sm space-y-6">
+        <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="settings-card space-y-6">
           <h3 className="text-lg font-semibold">
             {t(SETTINGS.APP_SETTINGS.FEATURE_FLAGS_TITLE)}
           </h3>
@@ -114,7 +114,7 @@ export default function SettingsPage() {
             {t(SETTINGS.LANGUAGE_REGION.TITLE)}
           </h2>
         </div>
-        <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="rounded-3xl bg-white p-6 shadow-sm space-y-8">
+        <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="settings-card space-y-8">
           <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
             <div className="space-y-1">
               <h3 className="text-lg font-semibold">
@@ -183,7 +183,7 @@ export default function SettingsPage() {
         </div>
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
           <div className="lg:col-span-2 space-y-6">
-            <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="rounded-3xl bg-white p-6 shadow-sm space-y-6">
+            <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="settings-card space-y-6">
               <h3 className="text-lg font-semibold">
                 {t(SETTINGS.APPEARANCE.THEME_TITLE)}
               </h3>
@@ -223,7 +223,7 @@ export default function SettingsPage() {
                 </UiButton>
               </div>
             </UiDiv>
-            <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="rounded-3xl bg-white p-6 shadow-sm space-y-8">
+            <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="settings-card space-y-8">
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <h3 className="text-lg font-semibold">
@@ -276,27 +276,27 @@ export default function SettingsPage() {
             </UiDiv>
           </div>
           {/* Live Preview */}
-          <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="relative overflow-hidden rounded-3xl bg-primary p-6 text-white shadow-lg">
+          <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="relative overflow-hidden settings-preview">
             <div className="relative z-10 space-y-4">
               <h3 className="text-lg font-semibold">
                 {t(SETTINGS.APPEARANCE.PREVIEW_TITLE)}
               </h3>
               <div className="space-y-3 opacity-90">
-                <div className="h-4 w-3/4 rounded bg-white/20" />
-                <div className="h-4 w-full rounded bg-white/20" />
-                <div className="h-4 w-1/2 rounded bg-white/20" />
+                <div className="h-4 w-3/4 rounded bg-on-primary/20" />
+                <div className="h-4 w-full rounded bg-on-primary/20" />
+                <div className="h-4 w-1/2 rounded bg-on-primary/20" />
               </div>
               <div className="pt-4">
                 <UiButton
                   ui={COMMON_LAYOUT.WRAPPER}
                   variant="default"
-                  className="w-full rounded-xl bg-white py-3 font-bold text-primary active:scale-95"
+                  className="w-full rounded-xl bg-surface-container-lowest py-3 font-bold text-primary active:scale-95"
                 >
                   {t(SETTINGS.APPEARANCE.BUTTON)}
                 </UiButton>
               </div>
             </div>
-            <div className="absolute -bottom-10 -right-10 h-40 w-40 rounded-full bg-white/10 blur-2xl" />
+            <div className="absolute -bottom-10 -right-10 h-40 w-40 rounded-full bg-on-primary/10 blur-2xl" />
           </UiDiv>
         </div>
       </UiSection>
@@ -309,7 +309,7 @@ export default function SettingsPage() {
             {t(SETTINGS.ACCESSIBILITY.TITLE)}
           </h2>
         </div>
-        <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="divide-y divide-outline-variant/20 rounded-3xl bg-white shadow-sm">
+        <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="divide-y divide-outline-variant/20 settings-card !shadow-none">
           <div className="flex items-center justify-between p-6">
             <div className="space-y-1">
               <h3 className="text-lg font-semibold">
@@ -358,7 +358,7 @@ export default function SettingsPage() {
           </h2>
         </div>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-          <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="md:col-span-2 flex items-center justify-between rounded-3xl bg-white p-6 shadow-sm">
+          <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="md:col-span-2 flex items-center justify-between settings-card">
             <div className="flex items-center gap-4">
               <div className="rounded-xl bg-error/10 p-3 text-error">
                 <Terminal className="h-6 w-6" />
@@ -381,7 +381,7 @@ export default function SettingsPage() {
               <div className={`h-full w-full rounded-full transition-colors ${ssotGuardEnabled ? 'bg-secondary' : 'bg-surface-container'}`} />
             </UiButton>
           </UiDiv>
-          <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="flex flex-col items-center justify-center gap-2 rounded-3xl border-2 border-dashed border-outline-variant bg-white p-6 text-center shadow-sm">
+          <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="flex flex-col items-center justify-center gap-2 rounded-3xl border-2 border-dashed border-outline-variant bg-card p-6 text-center shadow-sm">
             <Terminal className="h-8 w-8 text-outline" />
             <span className="text-xs font-semibold text-on-surface-variant">
               {t(SETTINGS.DEVELOPER_TOOLS.DIAGNOSTICS)}
@@ -405,7 +405,7 @@ export default function SettingsPage() {
             {t(SETTINGS.STORAGE.TITLE)}
           </h2>
         </div>
-        <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="rounded-3xl bg-white p-6 shadow-sm">
+        <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="settings-card">
           <div className="flex flex-col gap-6 md:flex-row">
             <div className="flex-1 space-y-4">
               <div className="flex items-center justify-between">
@@ -417,7 +417,7 @@ export default function SettingsPage() {
                 </span>
               </div>
               <div className="h-2 w-full rounded-full bg-surface-container">
-                <div className="h-2 w-[45%] rounded-full bg-primary" />
+                <div className="h-2 w-2/5 rounded-full bg-primary" />
               </div>
             </div>
             <div className="flex-1 flex items-center justify-between rounded-xl bg-surface-container-low p-4">
@@ -493,6 +493,7 @@ export default function SettingsPage() {
           ui={COMMON_LAYOUT.WRAPPER}
           variant="default"
           className="w-full rounded-full px-12 py-4 font-semibold shadow-lg shadow-primary/20 active:scale-95 md:w-auto"
+          onClick={() => syncDOM()}
         >
           {t(SETTINGS.ACTIONS.SAVE)}
         </UiButton>
@@ -500,6 +501,7 @@ export default function SettingsPage() {
           ui={COMMON_LAYOUT.WRAPPER}
           variant="outline"
           className="w-full rounded-full border-2 px-8 py-4 font-semibold md:w-auto"
+          onClick={() => resetPreferences()}
         >
           {t(SETTINGS.ACTIONS.RESET_PREFERENCES)}
         </UiButton>
@@ -507,6 +509,7 @@ export default function SettingsPage() {
           ui={COMMON_LAYOUT.WRAPPER}
           variant="ghost"
           className="w-full rounded-full py-4 font-semibold text-error hover:bg-error/5 md:w-auto"
+          onClick={() => reset()}
         >
           {t(SETTINGS.ACTIONS.RESTORE_DEFAULTS)}
         </UiButton>

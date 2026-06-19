@@ -1,0 +1,214 @@
+/**
+ * Design System — Component Pattern Classes (Phase 2)
+ * Reusable visual patterns for Settings, Auth, and shared UI surfaces.
+ * All values reference component/semantic tokens — no hardcoded visuals.
+ */
+
+/* ── Typography composites ── */
+.type-display-lg {
+  font-size: var(--gova-type-display-lg-size);
+  font-weight: var(--gova-type-display-lg-weight);
+  line-height: var(--gova-type-display-lg-line-height);
+  letter-spacing: var(--gova-type-display-lg-tracking);
+}
+.type-display-md {
+  font-size: var(--gova-type-display-md-size);
+  font-weight: var(--gova-type-display-md-weight);
+  line-height: var(--gova-type-display-md-line-height);
+  letter-spacing: var(--gova-type-display-md-tracking);
+}
+.type-display-sm {
+  font-size: var(--gova-type-display-sm-size);
+  font-weight: var(--gova-type-display-sm-weight);
+  line-height: var(--gova-type-display-sm-line-height);
+  letter-spacing: var(--gova-type-display-sm-tracking);
+}
+.type-headline-lg {
+  font-size: var(--gova-type-headline-lg-size);
+  font-weight: var(--gova-type-headline-lg-weight);
+  line-height: var(--gova-type-headline-lg-line-height);
+  letter-spacing: var(--gova-type-headline-lg-tracking);
+}
+.type-headline-md {
+  font-size: var(--gova-type-headline-md-size);
+  font-weight: var(--gova-type-headline-md-weight);
+  line-height: var(--gova-type-headline-md-line-height);
+  letter-spacing: var(--gova-type-headline-md-tracking);
+}
+.type-headline-sm {
+  font-size: var(--gova-type-headline-sm-size);
+  font-weight: var(--gova-type-headline-sm-weight);
+  line-height: var(--gova-type-headline-sm-line-height);
+  letter-spacing: var(--gova-type-headline-sm-tracking);
+}
+.type-title-lg {
+  font-size: var(--gova-type-title-lg-size);
+  font-weight: var(--gova-type-title-lg-weight);
+  line-height: var(--gova-type-title-lg-line-height);
+  letter-spacing: var(--gova-type-title-lg-tracking);
+}
+.type-title-md {
+  font-size: var(--gova-type-title-md-size);
+  font-weight: var(--gova-type-title-md-weight);
+  line-height: var(--gova-type-title-md-line-height);
+  letter-spacing: var(--gova-type-title-md-tracking);
+}
+.type-title-sm {
+  font-size: var(--gova-type-title-sm-size);
+  font-weight: var(--gova-type-title-sm-weight);
+  line-height: var(--gova-type-title-sm-line-height);
+  letter-spacing: var(--gova-type-title-sm-tracking);
+}
+.type-body-lg {
+  font-size: var(--gova-type-body-lg-size);
+  font-weight: var(--gova-type-body-lg-weight);
+  line-height: var(--gova-type-body-lg-line-height);
+  letter-spacing: var(--gova-type-body-lg-tracking);
+}
+.type-body-md {
+  font-size: var(--gova-type-body-md-size);
+  font-weight: var(--gova-type-body-md-weight);
+  line-height: var(--gova-type-body-md-line-height);
+  letter-spacing: var(--gova-type-body-md-tracking);
+}
+.type-body-sm {
+  font-size: var(--gova-type-body-sm-size);
+  font-weight: var(--gova-type-body-sm-weight);
+  line-height: var(--gova-type-body-sm-line-height);
+  letter-spacing: var(--gova-type-body-sm-tracking);
+}
+.type-label-lg {
+  font-size: var(--gova-type-label-lg-size);
+  font-weight: var(--gova-type-label-lg-weight);
+  line-height: var(--gova-type-label-lg-line-height);
+  letter-spacing: var(--gova-type-label-lg-tracking);
+}
+.type-label-md {
+  font-size: var(--gova-type-label-md-size);
+  font-weight: var(--gova-type-label-md-weight);
+  line-height: var(--gova-type-label-md-line-height);
+  letter-spacing: var(--gova-type-label-md-tracking);
+}
+.type-label-sm {
+  font-size: var(--gova-type-label-sm-size);
+  font-weight: var(--gova-type-label-sm-weight);
+  line-height: var(--gova-type-label-sm-line-height);
+  letter-spacing: var(--gova-type-label-sm-tracking);
+}
+.type-caption {
+  font-size: var(--gova-type-caption-size);
+  font-weight: var(--gova-type-caption-weight);
+  line-height: var(--gova-type-caption-line-height);
+  letter-spacing: var(--gova-type-caption-tracking);
+}
+
+/* ── Elevation utilities ── */
+.elevation-0 { box-shadow: var(--gova-elevation-0); }
+.elevation-1 { box-shadow: var(--gova-elevation-1); }
+.elevation-2 { box-shadow: var(--gova-elevation-2); }
+.elevation-3 { box-shadow: var(--gova-elevation-3); }
+.elevation-4 { box-shadow: var(--gova-elevation-4); }
+.elevation-5 { box-shadow: var(--gova-elevation-5); }
+.elevation-6 { box-shadow: var(--gova-elevation-6); }
+
+/* ── Motion utilities ── */
+.motion-colors { transition: var(--gova-motion-transition-colors); }
+.motion-transform { transition: var(--gova-motion-transition-transform); }
+.motion-opacity { transition: var(--gova-motion-transition-opacity); }
+.motion-reveal { transition: var(--gova-motion-transition-reveal); }
+.motion-focus { transition: var(--gova-motion-transition-focus); }
+.motion-hover { transition: var(--gova-motion-transition-hover); }
+
+/* ── Settings patterns ── */
+.settings-card {
+  border-radius: var(--gova-component-settings-card-radius);
+  background: var(--gova-component-settings-card-bg);
+  box-shadow: var(--gova-component-settings-card-shadow);
+  padding: var(--gova-component-settings-card-padding);
+}
+.settings-section-title {
+  font-size: var(--gova-component-settings-section-title-size);
+  font-weight: var(--gova-component-settings-section-title-weight);
+  color: var(--gova-on-surface);
+}
+.settings-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gova-component-settings-group-gap);
+}
+.settings-preview {
+  border-radius: var(--gova-component-settings-card-radius);
+  background: var(--gova-component-settings-preview-bg);
+  color: var(--gova-component-settings-preview-fg);
+  box-shadow: var(--gova-elevation-4);
+  padding: var(--gova-component-settings-card-padding);
+}
+.settings-action-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--gova-component-settings-row-padding-y) var(--gova-component-settings-row-padding-x);
+}
+
+/* ── Auth patterns ── */
+.auth-page {
+  min-height: 100dvh;
+  background: var(--gova-component-auth-bg);
+  color: var(--gova-component-auth-on-bg);
+}
+.auth-card {
+  border-radius: var(--gova-component-auth-card-radius);
+  background: var(--gova-component-auth-card-bg);
+  box-shadow: var(--gova-component-auth-card-shadow);
+  padding: var(--gova-component-auth-card-padding);
+  border: 1px solid var(--gova-component-auth-card-border);
+}
+.auth-hero {
+  background: var(--gova-component-auth-hero-bg);
+  color: var(--gova-component-auth-hero-fg);
+  padding: var(--gova-component-auth-hero-padding);
+}
+.auth-input {
+  border-radius: var(--gova-component-auth-input-radius);
+  background: var(--gova-component-auth-input-bg);
+  border: var(--gova-component-input-border-width) solid var(--gova-component-auth-input-border);
+  padding: var(--gova-component-auth-input-padding);
+  color: var(--gova-on-surface);
+  transition: var(--gova-motion-transition-colors);
+}
+.auth-input:focus {
+  border-color: var(--gova-component-auth-input-focus-border);
+  outline: none;
+  box-shadow: var(--gova-motion-transition-focus);
+}
+.auth-cta {
+  border-radius: var(--gova-component-auth-cta-radius);
+  background: var(--gova-component-auth-cta-bg);
+  color: var(--gova-component-auth-cta-color);
+  padding: var(--gova-component-auth-cta-padding-y) var(--gova-component-auth-cta-padding-x);
+  font-weight: var(--gova-component-auth-cta-weight);
+  box-shadow: var(--gova-elevation-2);
+  transition: var(--gova-motion-transition-hover);
+}
+.auth-otp-cell {
+  width: var(--gova-component-auth-otp-cell-size);
+  height: var(--gova-component-auth-otp-cell-size);
+  border-radius: var(--gova-component-auth-otp-cell-radius);
+  border: 1px solid var(--gova-component-auth-input-border);
+  background: var(--gova-component-auth-input-bg);
+  text-align: center;
+  font-size: var(--gova-type-title-lg-size);
+  font-weight: var(--gova-type-title-lg-weight);
+}
+
+/* ── Layout utilities ── */
+.min-h-error { min-height: var(--gova-layout-error-min-height); }
+.min-h-textarea { min-height: var(--gova-layout-textarea-min-height); }
+.max-w-content { max-width: var(--gova-layout-content-max); }
+.z-scrim { z-index: var(--gova-z-index-scrim); }
+.z-drawer { z-index: var(--gova-z-index-drawer); }
+.opacity-disabled { opacity: var(--gova-opacity-disabled); }
+.opacity-muted { opacity: var(--gova-opacity-muted); }
+.opacity-subtle { opacity: var(--gova-opacity-subtle); }
+.opacity-faint { opacity: var(--gova-opacity-faint); }
+.opacity-decorative { opacity: var(--gova-opacity-decorative); }

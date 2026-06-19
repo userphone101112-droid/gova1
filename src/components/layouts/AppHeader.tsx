@@ -25,10 +25,10 @@ export function AppHeader() {
         id="header-main-nav"
         className="fixed top-0 w-full z-50 shadow-sm border-b"
         style={{
-          background: 'rgba(250,248,255,0.80)',
-          backdropFilter: 'blur(12px)',
-          WebkitBackdropFilter: 'blur(12px)',
-          borderColor: 'rgba(195,198,213,0.30)',
+          background: 'var(--gova-component-glass-bg)',
+          backdropFilter: 'var(--gova-component-glass-blur)',
+          WebkitBackdropFilter: 'var(--gova-component-glass-blur)',
+          borderColor: 'var(--gova-outline-variant)',
         }}
       >
         <UiDiv
@@ -47,7 +47,7 @@ export function AppHeader() {
               size="icon"
               className="w-10 h-10 flex items-center justify-center rounded-full transition-colors active:bg-surface-container"
               aria-label={t(SHARED_LAYOUT.HEADER.MENU.MENU_BUTTON)}
-              style={{ color: 'var(--gova-google-blue)' }}
+              style={{ color: 'var(--gova-primary)' }}
               onPointerDown={toggleSidebar}
             >
               <Menu className="w-5 h-5" />
@@ -108,8 +108,8 @@ export function AppHeader() {
               <ShoppingCart className="w-5 h-5" />
               <UiDiv ui={COMMON_LAYOUT.CONTAINER}
                 id="header-cart-badge"
-                className="absolute top-2 end-2 w-2 h-2 rounded-full border border-white animate-pulse-gova"
-                style={{ background: 'var(--gova-google-red)' }}
+                className="absolute top-2 end-2 w-2 h-2 rounded-full border border-surface-container-lowest animate-pulse-gova"
+                style={{ background: 'var(--gova-error)' }}
               />
             </UiButton>
           </UiDiv>

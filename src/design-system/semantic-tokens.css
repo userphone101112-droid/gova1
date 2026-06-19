@@ -5,6 +5,7 @@
  */
 
 @import "./primitive-tokens.css";
+@import "./visual-tokens.css";
 
 :root {
   /* ──────────────────────────────────────────────────────────
@@ -73,6 +74,31 @@
   --gova-on-info: var(--gova-primitive-color-white);
   --gova-info-container: var(--gova-primitive-color-info-100);
   --gova-on-info-container: var(--gova-primitive-color-info-900);
+
+  /* Accent, State & Interactive Semantics */
+  --gova-accent: var(--gova-primitive-color-accent-600);
+  --gova-on-accent: var(--gova-primitive-color-white);
+  --gova-accent-container: var(--gova-primitive-color-accent-100);
+  --gova-on-accent-container: var(--gova-primitive-color-accent-900);
+
+  --gova-disabled: var(--gova-primitive-color-neutral-300);
+  --gova-on-disabled: var(--gova-primitive-color-neutral-500);
+  --gova-disabled-container: var(--gova-primitive-color-neutral-100);
+  --gova-on-disabled-container: var(--gova-primitive-color-neutral-400);
+
+  --gova-focus: var(--gova-primary);
+  --gova-focus-ring: var(--gova-primary-container);
+  --gova-selection: var(--gova-primary-fixed);
+  --gova-selection-foreground: var(--gova-on-primary);
+
+  --gova-overlay: var(--gova-primitive-color-overlay);
+  --gova-overlay-scrim: var(--gova-primitive-color-overlay-medium);
+
+  /* Brand accent aliases (marketing / decorative) */
+  --gova-brand-red: var(--gova-primitive-color-brand-red);
+  --gova-brand-blue: var(--gova-primitive-color-brand-blue);
+  --gova-brand-yellow: var(--gova-primitive-color-brand-yellow);
+  --gova-brand-green: var(--gova-primitive-color-brand-green);
 
   /* ──────────────────────────────────────────────────────────
    * 2. Typography Semantics
@@ -153,6 +179,8 @@
   --gova-z-index-modal: var(--gova-primitive-z-index-modal);
   --gova-z-index-toast: var(--gova-primitive-z-index-toast);
   --gova-z-index-tooltip: var(--gova-primitive-z-index-tooltip);
+  --gova-z-index-scrim: var(--gova-primitive-z-index-scrim);
+  --gova-z-index-drawer: var(--gova-primitive-z-index-drawer);
 
   /* ──────────────────────────────────────────────────────────
    * 8. Breakpoints Semantics (for Tailwind compatibility)
@@ -228,6 +256,22 @@
     --gova-info: var(--gova-primitive-color-info-400);
     --gova-info-container: var(--gova-primitive-color-info-900);
     --gova-on-info-container: var(--gova-primitive-color-info-100);
+
+    --gova-accent: var(--gova-primitive-color-accent-400);
+    --gova-accent-container: var(--gova-primitive-color-accent-900);
+    --gova-on-accent-container: var(--gova-primitive-color-accent-100);
+
+    --gova-disabled: var(--gova-primitive-color-neutral-700);
+    --gova-on-disabled: var(--gova-primitive-color-neutral-500);
+    --gova-disabled-container: var(--gova-primitive-color-neutral-800);
+    --gova-on-disabled-container: var(--gova-primitive-color-neutral-600);
+
+    --gova-focus: var(--gova-primary);
+    --gova-focus-ring: var(--gova-primary-container);
+    --gova-selection: var(--gova-primary-container);
+    --gova-selection-foreground: var(--gova-on-primary-container);
+
+    --gova-overlay-scrim: var(--gova-primitive-color-overlay-heavy);
   }
 }
 
@@ -292,6 +336,22 @@ html.dark {
   --gova-info: var(--gova-primitive-color-info-400);
   --gova-info-container: var(--gova-primitive-color-info-900);
   --gova-on-info-container: var(--gova-primitive-color-info-100);
+
+  --gova-accent: var(--gova-primitive-color-accent-400);
+  --gova-accent-container: var(--gova-primitive-color-accent-900);
+  --gova-on-accent-container: var(--gova-primitive-color-accent-100);
+
+  --gova-disabled: var(--gova-primitive-color-neutral-700);
+  --gova-on-disabled: var(--gova-primitive-color-neutral-500);
+  --gova-disabled-container: var(--gova-primitive-color-neutral-800);
+  --gova-on-disabled-container: var(--gova-primitive-color-neutral-600);
+
+  --gova-focus: var(--gova-primary);
+  --gova-focus-ring: var(--gova-primary-container);
+  --gova-selection: var(--gova-primary-container);
+  --gova-selection-foreground: var(--gova-on-primary-container);
+
+  --gova-overlay-scrim: var(--gova-primitive-color-overlay-heavy);
 }
 
 /* Manual light mode override */
@@ -359,4 +419,21 @@ html.light {
   --gova-on-info: var(--gova-primitive-color-white);
   --gova-info-container: var(--gova-primitive-color-info-100);
   --gova-on-info-container: var(--gova-primitive-color-info-900);
+
+  --gova-accent: var(--gova-primitive-color-accent-600);
+  --gova-on-accent: var(--gova-primitive-color-white);
+  --gova-accent-container: var(--gova-primitive-color-accent-100);
+  --gova-on-accent-container: var(--gova-primitive-color-accent-900);
+
+  --gova-disabled: var(--gova-primitive-color-neutral-300);
+  --gova-on-disabled: var(--gova-primitive-color-neutral-500);
+  --gova-disabled-container: var(--gova-primitive-color-neutral-100);
+  --gova-on-disabled-container: var(--gova-primitive-color-neutral-400);
+
+  --gova-focus: var(--gova-primary);
+  --gova-focus-ring: var(--gova-primary-container);
+  --gova-selection: var(--gova-primary-fixed);
+  --gova-selection-foreground: var(--gova-on-primary);
+
+  --gova-overlay-scrim: var(--gova-primitive-color-overlay-medium);
 }

@@ -34,7 +34,10 @@ function parseSSOTCookie(raw: string | undefined): Partial<SSOTPreferences & { l
 
 async function readSSOTCookie() {
   const cookieStore = await cookies();
-  return cookieStore.get('gova-global-ssot')?.value;
+  return (
+    cookieStore.get('gova-global-ssot')?.value ??
+    cookieStore.get('gova-unified-store')?.value
+  );
 }
 
 /** Server-only: read locale from SSOT cookie (single source of truth) */
@@ -74,7 +77,7 @@ export async function getSSOTPreferences(): Promise<SSOTPreferences> {
 
   return {
     fontSize:
-      typeof state.fontSize === 'number' && state.fontSize >= 12 && state.fontSize <= 22
+      typeof state.fontSize === 'number' && state.fontSize >= 12 && state.fontSize <= 24
         ? state.fontSize
         : DEFAULT_SSOT_PREFERENCES.fontSize,
     density:

@@ -4,6 +4,7 @@
 @import "../design-system/primitive-tokens.css";
 @import "../design-system/semantic-tokens.css";
 @import "../design-system/component-tokens.css";
+@import "../design-system/component-patterns.css";
 
 /* Configure Tailwind CSS 4 to use our Design System Tokens */
 @theme inline {
@@ -67,7 +68,63 @@
   --color-primary-foreground: var(--gova-on-primary);
   --color-secondary-foreground: var(--gova-on-secondary);
 
-  /* Spacing */
+  --color-success: var(--gova-success);
+  --color-on-success: var(--gova-on-success);
+  --color-success-container: var(--gova-success-container);
+  --color-on-success-container: var(--gova-on-success-container);
+
+  --color-warning: var(--gova-warning);
+  --color-on-warning: var(--gova-on-warning);
+  --color-warning-container: var(--gova-warning-container);
+  --color-on-warning-container: var(--gova-on-warning-container);
+
+  --color-info: var(--gova-info);
+  --color-on-info: var(--gova-on-info);
+  --color-info-container: var(--gova-info-container);
+  --color-on-info-container: var(--gova-on-info-container);
+
+  --color-accent-brand: var(--gova-accent);
+  --color-on-accent: var(--gova-on-accent);
+  --color-accent-container: var(--gova-accent-container);
+  --color-on-accent-container: var(--gova-on-accent-container);
+
+  --color-disabled: var(--gova-disabled);
+  --color-on-disabled: var(--gova-on-disabled);
+  --color-focus: var(--gova-focus);
+  --color-focus-ring: var(--gova-focus-ring);
+  --color-selection: var(--gova-selection);
+  --color-selection-foreground: var(--gova-selection-foreground);
+  --color-overlay: var(--gova-overlay);
+  --color-overlay-scrim: var(--gova-overlay-scrim);
+
+  --color-brand-red: var(--gova-brand-red);
+  --color-brand-blue: var(--gova-brand-blue);
+  --color-brand-yellow: var(--gova-brand-yellow);
+  --color-brand-green: var(--gova-brand-green);
+
+  /* Spacing — remap Tailwind numeric scale to primitive tokens */
+  --spacing-0: var(--gova-primitive-spacing-0);
+  --spacing-px: 1px;
+  --spacing-0-5: var(--gova-primitive-spacing-0-5);
+  --spacing-1: var(--gova-primitive-spacing-1);
+  --spacing-1-5: var(--gova-primitive-spacing-1-5);
+  --spacing-2: var(--gova-primitive-spacing-2);
+  --spacing-2-5: var(--gova-primitive-spacing-2-5);
+  --spacing-3: var(--gova-primitive-spacing-3);
+  --spacing-3-5: var(--gova-primitive-spacing-3-5);
+  --spacing-4: var(--gova-primitive-spacing-4);
+  --spacing-5: var(--gova-primitive-spacing-5);
+  --spacing-6: var(--gova-primitive-spacing-6);
+  --spacing-7: var(--gova-primitive-spacing-7);
+  --spacing-8: var(--gova-primitive-spacing-8);
+  --spacing-9: var(--gova-primitive-spacing-9);
+  --spacing-10: var(--gova-primitive-spacing-10);
+  --spacing-12: var(--gova-primitive-spacing-12);
+  --spacing-14: var(--gova-primitive-spacing-14);
+  --spacing-16: var(--gova-primitive-spacing-16);
+  --spacing-20: var(--gova-primitive-spacing-20);
+  --spacing-24: var(--gova-primitive-spacing-24);
+  --spacing-32: var(--gova-primitive-spacing-32);
   --spacing-xs: var(--gova-spacing-xs);
   --spacing-sm: var(--gova-spacing-sm);
   --spacing-md: var(--gova-spacing-md);
@@ -85,6 +142,8 @@
   --spacing-base: var(--gova-spacing-base);
   
   /* Border Radius */
+  --radius-none: var(--gova-primitive-radius-none);
+  --radius-xs: var(--gova-primitive-radius-xs);
   --radius-sm: var(--gova-radius-sm);
   --radius-md: var(--gova-radius-md);
   --radius-lg: var(--gova-radius-lg);
@@ -93,21 +152,89 @@
   --radius-3xl: var(--gova-radius-3xl);
   --radius-full: var(--gova-radius-full);
   
-  /* Typography */
+  /* Typography — remap Tailwind text scale to MD3 tokens */
   --font-sans: var(--gova-font-family-sans);
   --font-arabic: var(--gova-font-family-arabic);
   --font-mono: var(--gova-font-family-mono);
+
+  --text-xs: var(--gova-type-label-sm-size);
+  --text-xs--line-height: var(--gova-type-label-sm-line-height);
+  --text-sm: var(--gova-type-body-md-size);
+  --text-sm--line-height: var(--gova-type-body-md-line-height);
+  --text-base: var(--gova-type-body-lg-size);
+  --text-base--line-height: var(--gova-type-body-lg-line-height);
+  --text-lg: var(--gova-type-headline-sm-size);
+  --text-lg--line-height: var(--gova-type-headline-sm-line-height);
+  --text-xl: var(--gova-type-headline-md-size);
+  --text-xl--line-height: var(--gova-type-headline-md-line-height);
+  --text-2xl: var(--gova-type-headline-lg-size);
+  --text-2xl--line-height: var(--gova-type-headline-lg-line-height);
+  --text-3xl: var(--gova-type-display-sm-size);
+  --text-3xl--line-height: var(--gova-type-display-sm-line-height);
+  --text-4xl: var(--gova-type-display-md-size);
+  --text-4xl--line-height: var(--gova-type-display-md-line-height);
+  --text-5xl: var(--gova-type-display-lg-size);
+  --text-5xl--line-height: var(--gova-type-display-lg-line-height);
+
+  --font-weight-normal: var(--gova-primitive-font-weight-normal);
+  --font-weight-medium: var(--gova-primitive-font-weight-medium);
+  --font-weight-semibold: var(--gova-primitive-font-weight-semibold);
+  --font-weight-bold: var(--gova-primitive-font-weight-bold);
   
-  /* Shadows */
+  /* Shadows & Elevation */
+  --shadow-xs: var(--gova-primitive-shadow-xs);
   --shadow-sm: var(--gova-shadow-sm);
   --shadow-md: var(--gova-shadow-md);
   --shadow-lg: var(--gova-shadow-lg);
   --shadow-xl: var(--gova-shadow-xl);
+  --shadow-2xl: var(--gova-primitive-shadow-2xl);
+  --shadow-inner: var(--gova-primitive-shadow-inner);
+  --shadow-none: var(--gova-primitive-shadow-none);
   
-  /* Transitions */
+  /* Motion / Duration */
   --transition-fast: var(--gova-transition-fast);
   --transition-normal: var(--gova-transition-normal);
   --transition-slow: var(--gova-transition-slow);
+  --duration-75: var(--gova-motion-duration-instant);
+  --duration-150: var(--gova-motion-duration-fast);
+  --duration-200: var(--gova-motion-duration-normal);
+  --duration-300: var(--gova-motion-duration-moderate);
+  --duration-500: var(--gova-motion-duration-slow);
+  --duration-700: var(--gova-motion-duration-reveal);
+  --ease-in-out: var(--gova-motion-ease-default);
+  --ease-out: var(--gova-motion-ease-enter);
+  --ease-in: var(--gova-motion-ease-exit);
+
+  /* Z-Index */
+  --z-index-0: var(--gova-primitive-z-index-base);
+  --z-index-10: var(--gova-z-index-dropdown);
+  --z-index-20: var(--gova-z-index-sticky);
+  --z-index-30: var(--gova-z-index-overlay);
+  --z-index-40: var(--gova-z-index-modal);
+  --z-index-50: var(--gova-z-index-toast);
+  --z-index-60: var(--gova-z-index-scrim);
+  --z-index-70: var(--gova-z-index-drawer);
+
+  /* Opacity */
+  --opacity-disabled: var(--gova-opacity-disabled);
+  --opacity-muted: var(--gova-opacity-muted);
+  --opacity-subtle: var(--gova-opacity-subtle);
+  --opacity-faint: var(--gova-opacity-faint);
+
+  /* Blur */
+  --blur-sm: var(--gova-blur-sm);
+  --blur-md: var(--gova-blur-md);
+  --blur-lg: var(--gova-blur-lg);
+  --blur-xl: var(--gova-blur-xl);
+  --blur-2xl: var(--gova-blur-2xl);
+  --blur-3xl: var(--gova-blur-3xl);
+
+  /* Layout breakpoints */
+  --breakpoint-sm: var(--gova-breakpoint-sm);
+  --breakpoint-md: var(--gova-breakpoint-md);
+  --breakpoint-lg: var(--gova-breakpoint-lg);
+  --breakpoint-xl: var(--gova-breakpoint-xl);
+  --breakpoint-2xl: var(--gova-breakpoint-2xl);
 }
 
 /* Global Styles (using design tokens) */
@@ -156,7 +283,7 @@ body {
 .reveal {
   opacity: 0;
   transform: translateY(var(--gova-component-reveal-offset));
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transition: var(--gova-motion-transition-reveal);
 }
 .reveal.active {
   opacity: 1;
@@ -171,7 +298,7 @@ body {
 .skeleton {
   background: linear-gradient(90deg, var(--gova-component-shimmer-color-1) 25%, var(--gova-component-shimmer-color-2) 50%, var(--gova-component-shimmer-color-1) 75%);
   background-size: var(--gova-component-shimmer-size) 100%;
-  animation: shimmer 2s infinite linear;
+  animation: shimmer var(--gova-motion-duration-shimmer) infinite linear;
 }
 
 /* ── Pulse for badges ── */
@@ -265,45 +392,59 @@ html[data-density="spacious"] #main-content-container {
 }
 
 html.high-contrast {
-  --gova-outline: #000000;
-  --gova-outline-variant: #1a1a1a;
+  --gova-outline: var(--gova-primitive-color-hc-outline-light);
+  --gova-outline-variant: var(--gova-primitive-color-hc-outline-variant-light);
 }
 
 html.high-contrast.dark,
 html.high-contrast[data-theme="dark"] {
-  --gova-outline: #ffffff;
-  --gova-outline-variant: #e5e5e5;
-  --gova-on-surface: #ffffff;
-  --gova-on-background: #ffffff;
+  --gova-outline: var(--gova-primitive-color-hc-outline-dark);
+  --gova-outline-variant: var(--gova-primitive-color-hc-outline-variant-dark);
+  --gova-on-surface: var(--gova-primitive-color-white);
+  --gova-on-background: var(--gova-primitive-color-white);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) {
+    --gova-component-glass-bg: var(--gova-primitive-color-glass-dark);
+    --gova-component-shimmer-color-1: var(--gova-primitive-color-shimmer-dark-1);
+    --gova-component-shimmer-color-2: var(--gova-primitive-color-shimmer-dark-2);
+  }
+}
+
+html.dark {
+  --gova-component-glass-bg: var(--gova-primitive-color-glass-dark);
+  --gova-component-shimmer-color-1: var(--gova-primitive-color-shimmer-dark-1);
+  --gova-component-shimmer-color-2: var(--gova-primitive-color-shimmer-dark-2);
 }
 
 html.reduce-motion *,
 html.reduce-motion *::before,
 html.reduce-motion *::after {
-  animation-duration: 0.01ms !important;
+  animation-duration: var(--gova-motion-duration-accessibility) !important;
   animation-iteration-count: 1 !important;
-  transition-duration: 0.01ms !important;
+  transition-duration: var(--gova-motion-duration-accessibility) !important;
   scroll-behavior: auto !important;
 }
 
 /* Settings page slider */
 .settings-slider::-webkit-slider-thumb {
   appearance: none;
-  height: 1.125rem;
-  width: 1.125rem;
-  border-radius: 9999px;
+  height: var(--gova-primitive-spacing-3-5);
+  width: var(--gova-primitive-spacing-3-5);
+  border-radius: var(--gova-radius-full);
   background: var(--gova-primary);
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--gova-elevation-1);
   cursor: pointer;
 }
 
 .settings-slider::-moz-range-thumb {
-  height: 1.125rem;
-  width: 1.125rem;
+  height: var(--gova-primitive-spacing-3-5);
+  width: var(--gova-primitive-spacing-3-5);
   border: none;
-  border-radius: 9999px;
+  border-radius: var(--gova-radius-full);
   background: var(--gova-primary);
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--gova-elevation-1);
   cursor: pointer;
 }
 
