@@ -3,19 +3,40 @@
 
 // auth feature translations
 export type authTranslationKey =
-  | 'auth.login.passwordInput'
-  | 'auth.login.submitButton'
-  | 'auth.login.logo'
-  | 'auth.login.heading'
-  | 'auth.login.subheading'
-  | 'auth.login.phoneInput'
-  | 'auth.login.signupLink'
-  | 'auth.login.togglePasswordVisibility'
-  | 'auth.login.forgotPasswordLink'
-  | 'auth.login.guestLoginButton'
-  | 'auth.login.englishLanguageLink'
-  | 'auth.login.darkModeToggle'
-  | 'auth.login.copyright'
+  | 'auth.registration.brandLogo'
+  | 'auth.registration.brandName'
+  | 'auth.registration.image'
+  | 'auth.registration.heading'
+  | 'auth.registration.description'
+  | 'auth.registration.highlightsVerifiedTitle'
+  | 'auth.registration.highlightsVerifiedDescription'
+  | 'auth.registration.highlightsSecurityTitle'
+  | 'auth.registration.highlightsSecurityDescription'
+  | 'auth.registration.highlightsFastTitle'
+  | 'auth.registration.highlightsFastDescription'
+  | 'auth.registration.title'
+  | 'auth.registration.cardDescription'
+  | 'auth.registration.phoneLabel'
+  | 'auth.registration.phoneInput'
+  | 'auth.registration.phoneDescription'
+  | 'auth.registration.verifyButton'
+  | 'auth.registration.editButton'
+  | 'auth.registration.otpLabel'
+  | 'auth.registration.otpDescription'
+  | 'auth.registration.otpInput'
+  | 'auth.registration.resendButton'
+  | 'auth.registration.passwordLabel'
+  | 'auth.registration.passwordInput'
+  | 'auth.registration.confirmPasswordLabel'
+  | 'auth.registration.confirmPasswordInput'
+  | 'auth.registration.togglePasswordVisibility'
+  | 'auth.registration.submitButton'
+  | 'auth.registration.termsLink'
+  | 'auth.registration.privacyLink'
+  | 'auth.registration.signinLink'
+  | 'auth.registration.successHeading'
+  | 'auth.registration.successDescription'
+  | 'auth.registration.backButton'
 ;
 
 // common feature translations
@@ -337,35 +358,6 @@ export type sharedLayoutTranslationKey =
   | 'shared-layout.sidebar.settingsButton'
 ;
 
-// signup feature translations
-export type signupTranslationKey =
-  | 'signup.register.logo'
-  | 'signup.register.heading'
-  | 'signup.register.subheading'
-  | 'signup.register.phoneInput'
-  | 'signup.register.phoneCountryCode'
-  | 'signup.register.verifyPhoneButton'
-  | 'signup.register.phoneVerifiedBadge'
-  | 'signup.register.changePhoneButton'
-  | 'signup.register.otpInput'
-  | 'signup.register.resendOtpButton'
-  | 'signup.register.otpCountdown'
-  | 'signup.register.passwordInput'
-  | 'signup.register.togglePasswordVisibility'
-  | 'signup.register.passwordStrengthLabel'
-  | 'signup.register.strengthWeak'
-  | 'signup.register.strengthMedium'
-  | 'signup.register.strengthStrong'
-  | 'signup.register.confirmPasswordInput'
-  | 'signup.register.toggleConfirmPasswordVisibility'
-  | 'signup.register.passwordMismatchError'
-  | 'signup.register.submitButton'
-  | 'signup.register.loginLink'
-  | 'signup.register.englishLanguageLink'
-  | 'signup.register.darkModeToggle'
-  | 'signup.register.copyright'
-;
-
 // splash feature translations
 export type splashTranslationKey =
   | 'splash.loading'
@@ -403,7 +395,6 @@ export type AllTranslationKeys =
   | homeTranslationKey
   | settingsTranslationKey
   | sharedLayoutTranslationKey
-  | signupTranslationKey
   | splashTranslationKey
 
 export type TranslationKey = AllTranslationKeys;

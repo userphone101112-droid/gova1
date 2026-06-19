@@ -12,8 +12,7 @@ export interface I18nRouteEntry {
 export const I18N_ROUTE_MANIFEST: readonly I18nRouteEntry[] = [
   { prefix: '/settings', feature: 'settings' },
   { prefix: '/home', feature: 'home' },
-  { prefix: '/login', feature: 'auth' },
-  { prefix: '/signup', feature: 'signup' },
+  { prefix: '/registration', feature: 'auth' },
   { prefix: '/', feature: 'splash' },
 ] as const;
 

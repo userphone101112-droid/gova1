@@ -11,7 +11,6 @@ export { ERROR_BOUNDARY } from './features/error-boundary';
 export { SHARED_LAYOUT } from './features/shared-layout';
 export { AUTH } from './features/auth';
 export { SETTINGS } from './features/settings';
-export { SIGNUP } from './features/signup';
 
 import { HOME } from './features/home';
 import { SPLASH } from './features/splash';
@@ -19,7 +18,6 @@ import { ERROR_BOUNDARY } from './features/error-boundary';
 import { SHARED_LAYOUT } from './features/shared-layout';
 import { AUTH } from './features/auth';
 import { SETTINGS } from './features/settings';
-import { SIGNUP } from './features/signup';
 
 // ============================================================================
 // REGISTRY VALIDATION
@@ -32,7 +30,6 @@ export const UI_REGISTRY = {
   SHARED_LAYOUT,
   AUTH,
   SETTINGS,
-  SIGNUP,
 } as const;
 
 function flattenObject(obj: any): any[] {
@@ -57,7 +54,6 @@ export const ALL_UI_IDENTITIES = [
   ...flattenObject(SHARED_LAYOUT),
   ...flattenObject(AUTH),
   ...flattenObject(SETTINGS),
-  ...flattenObject(SIGNUP),
   ...ALL_CATEGORY_IDENTITIES,
 ] as readonly UiIdentity[];
 

@@ -33,6 +33,70 @@
         "severity": "low",
         "timestamp": 1781831931312,
         "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"splash.marquee.topFashion\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/",
+        "severity": "high",
+        "timestamp": 1781865303520,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"splash.marquee.topAutomotive\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/",
+        "severity": "high",
+        "timestamp": 1781865303521,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"splash.marquee.topRealEstate\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/",
+        "severity": "high",
+        "timestamp": 1781865303522,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"splash.marquee.topMedical\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/",
+        "severity": "high",
+        "timestamp": 1781865303523,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"splash.loading\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/",
+        "severity": "high",
+        "timestamp": 1781865303550,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"splash.marquee.bottomElectronics\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/",
+        "severity": "high",
+        "timestamp": 1781865303552,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"splash.marquee.bottomIndustrial\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/",
+        "severity": "high",
+        "timestamp": 1781865303553,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"splash.marquee.bottomSupplies\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/",
+        "severity": "high",
+        "timestamp": 1781865303554,
+        "env": "dev"
       }
     ]
   },

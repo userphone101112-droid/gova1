@@ -1,19 +1,40 @@
 {
   "auth": {
-    "login": {
-      "passwordInput": "أدخل كلمة المرور",
-      "submitButton": "تسجيل الدخول",
-      "logo": "الشعار",
-      "heading": "تسجيل الدخول",
-      "subheading": "مرحباً بعودتك",
+    "registration": {
+      "brandLogo": "شعار",
+      "brandName": "سوق السويس",
+      "image": "صورة التطبيق",
+      "heading": "التمويل يتحرك بسرعة مصر.",
+      "description": "انضم لآلاف الذين يديرون أموالهم ويرسلونها وينمونها بحساب آمن واحد.",
+      "highlightsVerifiedTitle": "موثق عبر SMS",
+      "highlightsVerifiedDescription": "كل حساب مؤمن بالتحقق من الهاتف.",
+      "highlightsSecurityTitle": "أمان بنكي",
+      "highlightsSecurityDescription": "بياناتك مشفرة من طرف إلى طرف، دائماً.",
+      "highlightsFastTitle": "إعداد في ثوانٍ",
+      "highlightsFastDescription": "تسجيل سريع ومبني للجوال.",
+      "title": "أنشئ حسابك",
+      "cardDescription": "أدخل رقم هاتفك المصري واضبط كلمة مرور للبدء.",
+      "phoneLabel": "رقم الهاتف",
       "phoneInput": "رقم الهاتف",
-      "signupLink": "إنشاء حساب",
+      "phoneDescription": "الأرقام المصرية فقط — تبدأ بـ 010، 011، 012 أو 015.",
+      "verifyButton": "تحقق",
+      "editButton": "تعديل",
+      "otpLabel": "أدخل رمز التحقق",
+      "otpDescription": "أرسل إلى",
+      "otpInput": "رمز التحقق",
+      "resendButton": "إعادة الإرسال",
+      "passwordLabel": "كلمة المرور",
+      "passwordInput": "كلمة المرور",
+      "confirmPasswordLabel": "تأكيد كلمة المرور",
+      "confirmPasswordInput": "تأكيد كلمة المرور",
       "togglePasswordVisibility": "إظهار كلمة المرور",
-      "forgotPasswordLink": "نسيت كلمة المرور؟",
-      "guestLoginButton": "المتابعة كزائر",
-      "englishLanguageLink": "الإنجليزية",
-      "darkModeToggle": "الوضع الداكن",
-      "copyright": "© 2024 سوق السويس. جميع الحقوق محفوظة."
+      "submitButton": "إنشاء الحساب الآن",
+      "termsLink": "شروط الخدمة",
+      "privacyLink": "سياسة الخصوصية",
+      "signinLink": "تسجيل الدخول",
+      "successHeading": "أنت جاهز!",
+      "successDescription": "تم إنشاء حسابك وتم التحقق من رقم هاتفك.",
+      "backButton": "العودة للبداية"
     }
   }
 }

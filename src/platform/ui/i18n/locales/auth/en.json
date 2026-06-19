@@ -1,19 +1,40 @@
 {
   "auth": {
-    "login": {
-      "passwordInput": "Enter password",
-      "submitButton": "Login",
-      "logo": "Logo",
-      "heading": "Login",
-      "subheading": "Welcome back",
-      "phoneInput": "Phone Number",
-      "signupLink": "Create account",
+    "registration": {
+      "brandLogo": "Logo",
+      "brandName": "Suez Marketplace",
+      "image": "App image",
+      "heading": "Finance that moves at the speed of Egypt.",
+      "description": "Join thousands who manage, send, and grow their money with a single secure account.",
+      "highlightsVerifiedTitle": "Verified by SMS",
+      "highlightsVerifiedDescription": "Every account is secured with phone verification.",
+      "highlightsSecurityTitle": "Bank-grade security",
+      "highlightsSecurityDescription": "Your data is encrypted end to end, always.",
+      "highlightsFastTitle": "Set up in seconds",
+      "highlightsFastDescription": "A fast, friendly onboarding built for mobile.",
+      "title": "Create your account",
+      "cardDescription": "Enter your Egyptian mobile number and set a password to get started.",
+      "phoneLabel": "Mobile number",
+      "phoneInput": "Mobile number",
+      "phoneDescription": "Egyptian numbers only — starting with 010, 011, 012 or 015.",
+      "verifyButton": "Verify",
+      "editButton": "Edit",
+      "otpLabel": "Enter verification code",
+      "otpDescription": "Sent to",
+      "otpInput": "Verification code",
+      "resendButton": "Resend code",
+      "passwordLabel": "Password",
+      "passwordInput": "Password",
+      "confirmPasswordLabel": "Confirm password",
+      "confirmPasswordInput": "Confirm password",
       "togglePasswordVisibility": "Show Password",
-      "forgotPasswordLink": "Forgot password?",
-      "guestLoginButton": "Continue as Guest",
-      "englishLanguageLink": "English",
-      "darkModeToggle": "Dark Mode",
-      "copyright": "© 2024 Suez Marketplace. All rights reserved."
+      "submitButton": "Create Account Now",
+      "termsLink": "Terms of Service",
+      "privacyLink": "Privacy Policy",
+      "signinLink": "Sign in",
+      "successHeading": "You're all set!",
+      "successDescription": "Your account has been created and your phone number is verified.",
+      "backButton": "Back to start"
     }
   }
 }
