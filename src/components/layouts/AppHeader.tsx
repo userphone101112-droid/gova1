@@ -12,6 +12,12 @@ export function AppHeader() {
   const { t } = useTranslation();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
+  const toggleSidebar = (e: React.PointerEvent) => {
+    e.stopPropagation();
+    e.preventDefault();
+    setIsSidebarOpen(prev => !prev);
+  };
+
   return (
     <>
       <UiHeader
@@ -42,7 +48,7 @@ export function AppHeader() {
               className="w-10 h-10 flex items-center justify-center rounded-full transition-colors active:bg-surface-container"
               aria-label={t(SHARED_LAYOUT.HEADER.MENU.MENU_BUTTON)}
               style={{ color: 'var(--gova-google-blue)' }}
-              onClick={() => setIsSidebarOpen(true)}
+              onPointerDown={toggleSidebar}
             >
               <Menu className="w-5 h-5" />
             </UiButton>

@@ -10,11 +10,11 @@ import { Home, Bell, Heart, Receipt, User } from 'lucide-react';
 type NavItem = 'home' | 'notifications' | 'favorites' | 'orders' | 'profile';
 
 const NAV_ITEMS = [
-  { key: 'home' as const, icon: Home, ui: SHARED_LAYOUT.BOTTOM_NAV.ITEMS.HOME_LINK, id: 'nav-item-home' },
-  { key: 'notifications' as const, icon: Bell, ui: SHARED_LAYOUT.BOTTOM_NAV.ITEMS.NOTIFICATIONS_LINK, id: 'nav-item-notifications' },
-  { key: 'favorites' as const, icon: Heart, ui: SHARED_LAYOUT.BOTTOM_NAV.ITEMS.FAVORITES_LINK, id: 'nav-item-favorites' },
-  { key: 'orders' as const, icon: Receipt, ui: SHARED_LAYOUT.BOTTOM_NAV.ITEMS.ORDERS_LINK, id: 'nav-item-orders' },
-  { key: 'profile' as const, icon: User, ui: SHARED_LAYOUT.BOTTOM_NAV.ITEMS.PROFILE_LINK, id: 'nav-item-profile' },
+  { key: 'home' as const, icon: Home, ui: SHARED_LAYOUT.BOTTOM_NAV.ITEMS.HOME_LINK, id: 'nav-item-home', href: '/home' },
+  { key: 'notifications' as const, icon: Bell, ui: SHARED_LAYOUT.BOTTOM_NAV.ITEMS.NOTIFICATIONS_LINK, id: 'nav-item-notifications', href: '/notifications' },
+  { key: 'favorites' as const, icon: Heart, ui: SHARED_LAYOUT.BOTTOM_NAV.ITEMS.FAVORITES_LINK, id: 'nav-item-favorites', href: '/favorites' },
+  { key: 'orders' as const, icon: Receipt, ui: SHARED_LAYOUT.BOTTOM_NAV.ITEMS.ORDERS_LINK, id: 'nav-item-orders', href: '/orders' },
+  { key: 'profile' as const, icon: User, ui: SHARED_LAYOUT.BOTTOM_NAV.ITEMS.PROFILE_LINK, id: 'nav-item-profile', href: '/profile' },
 ];
 
 export function BottomNavBar() {
@@ -33,7 +33,7 @@ export function BottomNavBar() {
         borderColor: 'rgba(195,198,213,0.40)',
       }}
     >
-      {NAV_ITEMS.map(({ key, icon: Icon, ui, id }) => {
+      {NAV_ITEMS.map(({ key, icon: Icon, ui, id, href }) => {
         const isActive = active === key;
         const isNotif = key === 'notifications';
         return (
@@ -41,15 +41,14 @@ export function BottomNavBar() {
             key={key}
             ui={ui}
             id={id}
-            href="#"
+            href={href}
             className="flex flex-col items-center justify-center relative py-1 px-3 transition-transform active:scale-90"
             style={{
               color: isActive ? 'var(--gova-primary)' : 'var(--gova-on-surface-variant)',
               fontWeight: isActive ? '700' : '400',
               textDecoration: 'none',
             }}
-            onClick={(e) => {
-              e.preventDefault();
+            onClick={() => {
               setActive(key);
             }}
           >

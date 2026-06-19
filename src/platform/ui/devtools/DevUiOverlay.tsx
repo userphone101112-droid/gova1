@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef, useState, useCallback } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 import { UI_ID_MAP } from '@/platform/ui/registry/registry';
 import { UI_SOURCE_INDEX } from '@/platform/ui/registry/source-index';
 import { useMaolStore } from '@/store/index';
@@ -244,41 +244,6 @@ export function DevUiOverlay() {
   const dismissTooltip = useCallback(() => {
     setTooltip((t) => ({ ...t, visible: false }));
   }, []);
-
-  const handleFrameClick = useCallback((e: React.MouseEvent, frame: OverlayFrame) => {
-    e.stopPropagation();
-    const identity = UI_ID_MAP[frame.id];
-    const source = UI_SOURCE_INDEX[frame.id];
-
-    // Load saved data from our API data first, fallback to defaults
-    const savedData = allInspectorData[frame.id];
-
-    // Single atomic update with new instanceId to force remount
-    setTooltip({
-      visible: true,
-      x: e.clientX + 12,
-      y: e.clientY + 12,
-      id: frame.id,
-      instanceId: `${frame.id}_${Date.now()}`,
-      path: identity?.path || '—',
-      feature: identity?.feature || '—',
-      version: identity?.version || '—',
-      deprecated: identity?.deprecated ?? false,
-      sourceFile: source?.sourceFile || '—',
-      sourceComponent: source?.sourceComponent || '—',
-      sourceLine: source?.sourceLine || 0,
-      databaseEnabled: savedData?.databaseEnabled ?? false,
-      inf1: savedData?.inf1 || '',
-      inf2: savedData?.inf2 || '',
-      inf3: savedData?.inf3 || '',
-      attributesEnabled: savedData?.attributesEnabled ?? false,
-      attribute1: savedData?.attribute1 ?? false,
-      attribute2: savedData?.attribute2 ?? false,
-      attribute3: savedData?.attribute3 ?? false,
-      dataUiPath: savedData?.dataUiPath || identity?.path || '',
-      dataUiFeature: savedData?.dataUiFeature || identity?.feature || '',
-    });
-  }, [allInspectorData]);
 
   // Helper to get UI element from coordinates
   const getUiElementFromPoint = useCallback((clientX: number, clientY: number): HTMLElement | null => {
@@ -973,7 +938,7 @@ export function DevUiOverlay() {
                       cursor: 'pointer',
                       transition: 'all 0.2s',
                     }}
-                    onMouseEnter={(e) => {
+                    onMouseEnter={() => {
                       // Show hover frame on child
                       const el = document.querySelector(`[data-ui-id="${child.id}"]`) as HTMLElement | null;
                       if (!el) return;

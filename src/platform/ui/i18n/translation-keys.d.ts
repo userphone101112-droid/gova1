@@ -16,6 +16,26 @@ export type authTranslationKey =
   | 'auth.login.englishLanguageLink'
   | 'auth.login.darkModeToggle'
   | 'auth.login.copyright'
+  | 'auth.signup.heading'
+  | 'auth.signup.subheading'
+  | 'auth.signup.phoneLabel'
+  | 'auth.signup.phoneInput'
+  | 'auth.signup.verifyButton'
+  | 'auth.signup.verifyInfo'
+  | 'auth.signup.passwordLabel'
+  | 'auth.signup.passwordInput'
+  | 'auth.signup.togglePasswordVisibility'
+  | 'auth.signup.passwordStrengthLabel'
+  | 'auth.signup.passwordStrengthVeryWeak'
+  | 'auth.signup.confirmPasswordLabel'
+  | 'auth.signup.confirmPasswordInput'
+  | 'auth.signup.confirmPasswordToggleVisibility'
+  | 'auth.signup.termsText'
+  | 'auth.signup.termsLink'
+  | 'auth.signup.privacyLink'
+  | 'auth.signup.submitButton'
+  | 'auth.signup.footerText'
+  | 'auth.signup.loginLink'
 ;
 
 // common feature translations
@@ -335,6 +355,7 @@ export type sharedLayoutTranslationKey =
   | 'shared-layout.sidebar.languageToggle'
   | 'shared-layout.sidebar.themeToggle'
   | 'shared-layout.sidebar.settingsButton'
+  | 'shared-layout.sidebar.signupButton'
 ;
 
 // splash feature translations
