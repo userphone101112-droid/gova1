@@ -87,11 +87,11 @@ export function RegistrationPageContent() {
 
   return (
     <UiDiv ui={AUTH.SHARED.PAGE} className="auth-page motion-colors">
-      <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="min-h-[calc(100dvh-10rem)] md:min-h-[calc(100dvh-5.5rem)] grid lg:grid-cols-2">
+      <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="min-h-[calc(100dvh-10rem)] md:min-h-[calc(100dvh-5.5rem)] grid lg:grid-cols-[1fr_2fr]">
         <AuthHero variant="registration" />
 
-        <UiDiv ui={AUTH.SHARED.FORM_CARD} className="flex items-center justify-center p-4 sm:p-8 lg:p-12">
-          <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="w-full max-w-md space-y-8">
+        <UiDiv ui={AUTH.SHARED.FORM_CARD} className="flex items-center justify-center p-4 sm:p-6 md:p-8 lg:p-12 w-full">
+          <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="w-full max-w-full sm:max-w-xl md:max-w-2xl lg:max-w-3xl xl:max-w-4xl 2xl:max-w-6xl space-y-6 sm:space-y-8">
             <AuthMobileBrand />
 
             <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="space-y-2 text-center lg:text-start">

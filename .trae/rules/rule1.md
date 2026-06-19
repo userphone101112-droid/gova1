@@ -1,5 +1,5 @@
 ---
-alwaysApply: true
+alwaysApply: false
 scene: git_message
 ---
 ## تقنيات المشروع

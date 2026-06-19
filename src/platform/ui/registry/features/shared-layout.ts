@@ -243,6 +243,16 @@ export const SHARED_LAYOUT = {
       createdAt: '2026-06-16',
       updatedAt: '2026-06-16',
     } as const,
+    SIGNUP_BUTTON: {
+      id: 'UI_SHARED_SIDEBAR_SIGNUP',
+      path: 'shared-layout.sidebar.actions.signup-button',
+      description: 'Signup button in sidebar',
+      category: 'action',
+      feature: 'shared-layout',
+      version: '1.0.0',
+      createdAt: '2026-06-19',
+      updatedAt: '2026-06-19',
+    } as const,
     LANGUAGE_TOGGLE: {
       id: 'UI_SHARED_SIDEBAR_LANGUAGE',
       path: 'shared-layout.sidebar.actions.language-toggle',

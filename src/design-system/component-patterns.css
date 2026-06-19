@@ -169,6 +169,7 @@
   padding: var(--gova-component-auth-hero-padding);
 }
 .auth-input {
+  width: 100%;
   border-radius: var(--gova-component-auth-input-radius);
   background: var(--gova-component-auth-input-bg);
   border: var(--gova-component-input-border-width) solid var(--gova-component-auth-input-border);

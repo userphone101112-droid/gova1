@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { Settings, X } from 'lucide-react';
+import { Settings, X, LogIn, UserPlus } from 'lucide-react';
 import { UiDiv, UiButton } from '@/platform/ui';
 import { SHARED_LAYOUT } from '@/platform/ui';
 import { useTranslation } from '@/platform/ui';
@@ -95,6 +95,32 @@ export function AppSidebar({ isOpen, onClose }: AppSidebarProps) {
           className="flex flex-1 flex-col gap-1 overflow-y-auto p-3 pt-1"
         >
           <UiDiv ui={SHARED_LAYOUT.SIDEBAR.ACTIONS_SECTION} className="flex flex-col gap-1">
+            <Link href="/login">
+              <UiButton
+                ui={SHARED_LAYOUT.SIDEBAR.LOGIN_BUTTON}
+                id="sidebar-login-button"
+                variant="ghost"
+                size="lg"
+                className="w-full flex items-center justify-start gap-3 text-left"
+                onClick={onClose}
+              >
+                <LogIn className="w-5 h-5" />
+                {t(SHARED_LAYOUT.SIDEBAR.LOGIN_BUTTON)}
+              </UiButton>
+            </Link>
+            <Link href="/registration">
+              <UiButton
+                ui={SHARED_LAYOUT.SIDEBAR.SIGNUP_BUTTON}
+                id="sidebar-signup-button"
+                variant="ghost"
+                size="lg"
+                className="w-full flex items-center justify-start gap-3 text-left"
+                onClick={onClose}
+              >
+                <UserPlus className="w-5 h-5" />
+                {t(SHARED_LAYOUT.SIDEBAR.SIGNUP_BUTTON)}
+              </UiButton>
+            </Link>
             <Link href="/settings">
               <UiButton
                 ui={SHARED_LAYOUT.SIDEBAR.SETTINGS_BUTTON}

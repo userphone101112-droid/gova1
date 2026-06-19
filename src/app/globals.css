@@ -230,11 +230,11 @@
   --blur-3xl: var(--gova-blur-3xl);
 
   /* Layout breakpoints */
-  --breakpoint-sm: var(--gova-breakpoint-sm);
-  --breakpoint-md: var(--gova-breakpoint-md);
-  --breakpoint-lg: var(--gova-breakpoint-lg);
-  --breakpoint-xl: var(--gova-breakpoint-xl);
-  --breakpoint-2xl: var(--gova-breakpoint-2xl);
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
 }
 
 /* Global Styles (using design tokens) */

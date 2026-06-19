@@ -63,5 +63,44 @@
     "dataUiPath": "shared-layout.bottom-nav.items.notifications-link",
     "dataUiFeature": "shared-layout",
     "updatedAt": "2026-06-18T19:42:36.019Z"
+  },
+  "UI_COMMON_LAYOUT_CONTAINER": {
+    "databaseEnabled": true,
+    "inf1": "1",
+    "inf2": "",
+    "inf3": "",
+    "attributesEnabled": false,
+    "attribute1": false,
+    "attribute2": false,
+    "attribute3": false,
+    "dataUiPath": "common.layout.container",
+    "dataUiFeature": "common",
+    "updatedAt": "2026-06-19T16:29:30.679Z"
+  },
+  "UI_SHARED_BOTTOM_NAV_CONTAINER": {
+    "databaseEnabled": true,
+    "inf1": "121",
+    "inf2": "",
+    "inf3": "",
+    "attributesEnabled": false,
+    "attribute1": false,
+    "attribute2": false,
+    "attribute3": false,
+    "dataUiPath": "shared-layout.bottom-nav.layout.container",
+    "dataUiFeature": "shared-layout",
+    "updatedAt": "2026-06-19T16:29:45.888Z"
+  },
+  "UI_COMMON_LAYOUT_WRAPPER": {
+    "databaseEnabled": true,
+    "inf1": "1",
+    "inf2": "",
+    "inf3": "",
+    "attributesEnabled": false,
+    "attribute1": false,
+    "attribute2": false,
+    "attribute3": false,
+    "dataUiPath": "common.layout.wrapper",
+    "dataUiFeature": "common",
+    "updatedAt": "2026-06-19T16:30:08.804Z"
   }
 }

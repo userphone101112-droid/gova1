@@ -105,7 +105,7 @@ export function PhoneVerification() {
                   disabled={phoneVerified}
                   placeholder={t(AUTH.SHARED.PHONE_PLACEHOLDER)}
                   className={cn(
-                    'auth-input ps-12 motion-colors',
+                    'auth-input ps-12 motion-colors w-full',
                     phoneVerified && 'bg-surface-container pe-10',
                     fieldState.error && 'border-error focus-visible:ring-error'
                   )}

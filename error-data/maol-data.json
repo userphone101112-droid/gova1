@@ -97,6 +97,278 @@
         "severity": "high",
         "timestamp": 1781865303554,
         "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.heroSlider.slide1Title\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/home",
+        "severity": "high",
+        "timestamp": 1781877796880,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.heroSlider.slide1Badge\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/home",
+        "severity": "high",
+        "timestamp": 1781877796881,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.heroSlider.slide2Title\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/home",
+        "severity": "high",
+        "timestamp": 1781877796883,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.heroSlider.slide2Badge\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/home",
+        "severity": "high",
+        "timestamp": 1781877796884,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.categories.fashion\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/home",
+        "severity": "high",
+        "timestamp": 1781877796892,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.categories.automotive\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/home",
+        "severity": "high",
+        "timestamp": 1781877796894,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.categories.realestate\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/home",
+        "severity": "high",
+        "timestamp": 1781877796897,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.categories.medical\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/home",
+        "severity": "high",
+        "timestamp": 1781877796899,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.categories.pharmacy\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/home",
+        "severity": "high",
+        "timestamp": 1781877796901,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.categories.education\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/home",
+        "severity": "high",
+        "timestamp": 1781877796902,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.categories.electronics\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/home",
+        "severity": "high",
+        "timestamp": 1781877796904,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.categories.food\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/home",
+        "severity": "high",
+        "timestamp": 1781877796906,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.featured.title\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/home",
+        "severity": "high",
+        "timestamp": 1781877796937,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.featured.item1Title\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/home",
+        "severity": "high",
+        "timestamp": 1781877796937,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.featured.item2Title\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/home",
+        "severity": "high",
+        "timestamp": 1781877796939,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.featured.item3Title\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/home",
+        "severity": "high",
+        "timestamp": 1781877796940,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.featured.item4Title\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/home",
+        "severity": "high",
+        "timestamp": 1781877796941,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.trending.label\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/home",
+        "severity": "high",
+        "timestamp": 1781877796981,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.trending.item1\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/home",
+        "severity": "high",
+        "timestamp": 1781877796982,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.trending.item2\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/home",
+        "severity": "high",
+        "timestamp": 1781877796982,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.trending.item3\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/home",
+        "severity": "high",
+        "timestamp": 1781877796983,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.trending.item4\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/home",
+        "severity": "high",
+        "timestamp": 1781877796984,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.curated.product1Title\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/home",
+        "severity": "high",
+        "timestamp": 1781877796994,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.curated.product1Category\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/home",
+        "severity": "high",
+        "timestamp": 1781877796995,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.curated.product1Price\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/home",
+        "severity": "high",
+        "timestamp": 1781877796997,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.curated.product2Title\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/home",
+        "severity": "high",
+        "timestamp": 1781877796998,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.curated.product2Category\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/home",
+        "severity": "high",
+        "timestamp": 1781877796999,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.curated.product2Price\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/home",
+        "severity": "high",
+        "timestamp": 1781877797000,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.curated.product3Title\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/home",
+        "severity": "high",
+        "timestamp": 1781877797001,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.curated.product3Category\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/home",
+        "severity": "high",
+        "timestamp": 1781877797001,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.curated.product3Price\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/home",
+        "severity": "high",
+        "timestamp": 1781877797003,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.curated.product4Title\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/home",
+        "severity": "high",
+        "timestamp": 1781877797003,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.curated.product4Category\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/home",
+        "severity": "high",
+        "timestamp": 1781877797004,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.curated.product4Price\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/home",
+        "severity": "high",
+        "timestamp": 1781877797005,
+        "env": "dev"
       }
     ]
   },
@@ -1234,6 +1506,691 @@
         "route": "/home",
         "severity": "high",
         "timestamp": 1781814868697,
+        "env": "dev"
+      }
+    ]
+  },
+  "maol_71vE0otdyL": {
+    "errors": [],
+    "warnings": [
+      {
+        "type": "warning",
+        "message": "%s Feature dictionary not found for feature: signup, locale: en",
+        "route": "/login",
+        "severity": "low",
+        "timestamp": 1781878570288,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "%s Feature dictionary not found for feature: signup, locale: en",
+        "route": "/registration",
+        "severity": "low",
+        "timestamp": 1781878757329,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.heroSlider.slide1Title\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/login",
+        "severity": "high",
+        "timestamp": 1781879239726,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.heroSlider.slide2Badge\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/login",
+        "severity": "high",
+        "timestamp": 1781879239732,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.heroSlider.slide1Badge\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/login",
+        "severity": "high",
+        "timestamp": 1781879239723,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.heroSlider.slide2Title\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/login",
+        "severity": "high",
+        "timestamp": 1781879239735,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.categories.fashion\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/login",
+        "severity": "high",
+        "timestamp": 1781879239776,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.categories.automotive\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/login",
+        "severity": "high",
+        "timestamp": 1781879239784,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.categories.realestate\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/login",
+        "severity": "high",
+        "timestamp": 1781879239791,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.categories.medical\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/login",
+        "severity": "high",
+        "timestamp": 1781879239799,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.categories.pharmacy\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/login",
+        "severity": "high",
+        "timestamp": 1781879239807,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.categories.education\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/login",
+        "severity": "high",
+        "timestamp": 1781879239813,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.categories.electronics\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/login",
+        "severity": "high",
+        "timestamp": 1781879239820,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.categories.food\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/login",
+        "severity": "high",
+        "timestamp": 1781879239828,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.featured.title\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/login",
+        "severity": "high",
+        "timestamp": 1781879239932,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.featured.item1Title\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/login",
+        "severity": "high",
+        "timestamp": 1781879239935,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.featured.item2Title\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/login",
+        "severity": "high",
+        "timestamp": 1781879239940,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.featured.item3Title\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/login",
+        "severity": "high",
+        "timestamp": 1781879239946,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.featured.item4Title\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/login",
+        "severity": "high",
+        "timestamp": 1781879239950,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.trending.label\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/login",
+        "severity": "high",
+        "timestamp": 1781879240091,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.trending.item1\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/login",
+        "severity": "high",
+        "timestamp": 1781879240093,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.trending.item2\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/login",
+        "severity": "high",
+        "timestamp": 1781879240107,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.trending.item3\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/login",
+        "severity": "high",
+        "timestamp": 1781879240111,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.trending.item4\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/login",
+        "severity": "high",
+        "timestamp": 1781879240115,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.curated.product1Title\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/login",
+        "severity": "high",
+        "timestamp": 1781879240157,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.curated.product1Category\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/login",
+        "severity": "high",
+        "timestamp": 1781879240162,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.curated.product1Price\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/login",
+        "severity": "high",
+        "timestamp": 1781879240166,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.curated.product2Title\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/login",
+        "severity": "high",
+        "timestamp": 1781879240169,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.curated.product2Category\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/login",
+        "severity": "high",
+        "timestamp": 1781879240171,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.curated.product2Price\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/login",
+        "severity": "high",
+        "timestamp": 1781879240175,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.curated.product3Title\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/login",
+        "severity": "high",
+        "timestamp": 1781879240178,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.curated.product4Category\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/login",
+        "severity": "high",
+        "timestamp": 1781879240190,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.curated.product4Title\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/login",
+        "severity": "high",
+        "timestamp": 1781879240186,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.curated.product3Price\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/login",
+        "severity": "high",
+        "timestamp": 1781879240184,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.curated.product3Category\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/login",
+        "severity": "high",
+        "timestamp": 1781879240180,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.curated.product4Price\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/login",
+        "severity": "high",
+        "timestamp": 1781879240194,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "Image with src \"/images/logos/logo-full.webp\" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: \"auto\"' or 'height: \"auto\"' to maintain the aspect ratio.",
+        "route": "/home",
+        "severity": "low",
+        "timestamp": 1781879242350,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "Image with src \"https://lh3.googleusercontent.com/aida-public/AB6AXuBwR_P7enT0h2VqWj6l-V8_vxJHuPQxZxOIoPfgnE9vwBTfeP1eT8Fi0xt8vQ7KtxHtjYek4zO5ErSA_Rq3GTnMrGwE0V25RZpXpKqQcI9a19_MO0uz0bVF_b04WXiy9oS_-5tZT9SjM5SGXp81RkCy6sIY0B5q659xqkgDbrTFiZcwmz0GxHGLHcBDFLVxhwK5dN1ivPCBTmQUZr_HGIE2w1knK9qE2W0JFT-Z7xHKrRxPZDO_T6NRYoGxQ9ZvTqI_pvAEfPsUug\" has \"fill\" but is missing \"sizes\" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes",
+        "route": "/home",
+        "severity": "low",
+        "timestamp": 1781879243082,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "Image with src \"https://lh3.googleusercontent.com/aida-public/AB6AXuBwR_P7enT0h2VqWj6l-V8_vxJHuPQxZxOIoPfgnE9vwBTfeP1eT8Fi0xt8vQ7KtxHtjYek4zO5ErSA_Rq3GTnMrGwE0V25RZpXpKqQcI9a19_MO0uz0bVF_b04WXiy9oS_-5tZT9SjM5SGXp81RkCy6sIY0B5q659xqkgDbrTFiZcwmz0GxHGLHcBDFLVxhwK5dN1ivPCBTmQUZr_HGIE2w1knK9qE2W0JFT-Z7xHKrRxPZDO_T6NRYoGxQ9ZvTqI_pvAEfPsUug\" has \"fill\" and a height value of 0. This is likely because the parent element of the image has not been styled to have a set height.",
+        "route": "/home",
+        "severity": "low",
+        "timestamp": 1781879243084,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "Image with src \"https://lh3.googleusercontent.com/aida-public/AB6AXuDeGdzeUkW8JQecWz-M2fqfhozSTiIdxZqjKdim7MjQiEMyala2DBZ76WYV_BnhAwdglxkstKQBdZW4TV3I5qtkbDYC5_ReU4DvlBeq5zdL2orQ4nd_HrP7oxDpUsWrFmAWMMiuIxynKfEzcXyQBN2Xw9P--hl5Xk7TVTYKY0BxSqkHYg7A50chXWVVzu355P4CUTDF_OaeRU6j24oev1hQ_uF59ZF8QGHnAeI5tN8Kt5t8d4KKjC_s82TWkT4lEkfKoJTd8Nnm9g\" has \"fill\" but is missing \"sizes\" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes",
+        "route": "/home",
+        "severity": "low",
+        "timestamp": 1781879243468,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "Image with src \"https://lh3.googleusercontent.com/aida-public/AB6AXuDeGdzeUkW8JQecWz-M2fqfhozSTiIdxZqjKdim7MjQiEMyala2DBZ76WYV_BnhAwdglxkstKQBdZW4TV3I5qtkbDYC5_ReU4DvlBeq5zdL2orQ4nd_HrP7oxDpUsWrFmAWMMiuIxynKfEzcXyQBN2Xw9P--hl5Xk7TVTYKY0BxSqkHYg7A50chXWVVzu355P4CUTDF_OaeRU6j24oev1hQ_uF59ZF8QGHnAeI5tN8Kt5t8d4KKjC_s82TWkT4lEkfKoJTd8Nnm9g\" has \"fill\" and a height value of 0. This is likely because the parent element of the image has not been styled to have a set height.",
+        "route": "/home",
+        "severity": "low",
+        "timestamp": 1781879243470,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "Image with src \"https://lh3.googleusercontent.com/aida-public/AB6AXuCo-uZJ3G_TOs_xEN_x7AFlRAbn748BtDQ7B7NZnFvlElLXyePimeSnmYAAwF_3V67GbgKV9ntlPetPaYWBRckRohk6On9zpwjFognTvPkW4nvfqf5JJ21annvYIF8XhzOPL8k53g0TMHFLcF3SzPj_iku_i-YDhmckPDJfUbXHXGggvojKKEBviDpry1_A_CmRSEdQ5i6EBztnfSS8Th7BKO_R-2LsEy3zqVH1RkOhGNpV8VmSJ4a70HK2KBwoVm88T4ye_HnT-Q\" has \"fill\" but is missing \"sizes\" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes",
+        "route": "/home",
+        "severity": "low",
+        "timestamp": 1781879244546,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "Image with src \"https://lh3.googleusercontent.com/aida-public/AB6AXuBrrlu99AXxpnySoT0CXYw9jmKXJlE8qHqsMW1lJVDxmYSToTATqZXQvuXCOhwTya7swIst2AXOqUCCMfgK_qFI4pxUxDFj4qM_S5hznXyZU8MdEBJKZC1edrKvH_yyEIgLclSkn5PiAqJMWRWKC4VXMJtSkmsoKp9M1Jo9B8Jsv5CS9lZyYodd0ot0N1F_0l4GqESjaQQsBVYw7I1gfb3prR6qC3fk7-rdhL3SBDvmvwsoEAXx4DvTfiphjTbv1R0GZ3AxnAkyAA\" has \"fill\" but is missing \"sizes\" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes",
+        "route": "/home",
+        "severity": "low",
+        "timestamp": 1781879244584,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "Image with src \"https://lh3.googleusercontent.com/aida-public/AB6AXuAXcxTngdeDHTcnk7mMopO-xWV3IvOcAfFG0Py2XhJ7AYRia7zyigcenoBKEihcZgDXkb9S3U8s_zeFWxLopaojs5YWIynYhj7gyngsEZiJPTFiOw3MJH6btokE-xAaZ41MNsN1RUFBlBj8fWkZU12cos-zBWpZ9HhYjE27hu5veBnmKRmiYNiZFUkBz_r6tF1nDslLSSd2Wk_zyK9la2XGTIMsXEvTjUUVEYJGtrhIM00gOkbjSMjo-cKR45KtrcP1zQzH1uvz6A\" has \"fill\" but is missing \"sizes\" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes",
+        "route": "/home",
+        "severity": "low",
+        "timestamp": 1781879244592,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "Image with src \"https://lh3.googleusercontent.com/aida-public/AB6AXuAXcxTngdeDHTcnk7mMopO-xWV3IvOcAfFG0Py2XhJ7AYRia7zyigcenoBKEihcZgDXkb9S3U8s_zeFWxLopaojs5YWIynYhj7gyngsEZiJPTFiOw3MJH6btokE-xAaZ41MNsN1RUFBlBj8fWkZU12cos-zBWpZ9HhYjE27hu5veBnmKRmiYNiZFUkBz_r6tF1nDslLSSd2Wk_zyK9la2XGTIMsXEvTjUUVEYJGtrhIM00gOkbjSMjo-cKR45KtrcP1zQzH1uvz6A\" has \"fill\" and a height value of 0. This is likely because the parent element of the image has not been styled to have a set height.",
+        "route": "/home",
+        "severity": "low",
+        "timestamp": 1781879244594,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "Image with src \"https://lh3.googleusercontent.com/aida-public/AB6AXuDgB3Ru4a-PuZX04N9ND714YTfyjcUMEcPmb5FW2tXf_RHEV2CZtWP0M0mvHAFx6xReMqaCD3lJh9OVbHQQAm2s2s6yDah_mVqwOMh5IEtUtUCAVsZY1jL-yw5Bh6lUooj3dHkPlzsq-OAUPDsttgGALzSPbAm1v55CvVUhZcbiSUhlftmaGQr6bgoYFsFCfJD_hJRwlyrfOWbCBrb_R6piuurxECLkm5I5j1auBdh7QMam-E-fxZKvahaFZv1g_COu0OCBpSuzqg\" has \"fill\" but is missing \"sizes\" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes",
+        "route": "/home",
+        "severity": "low",
+        "timestamp": 1781879244599,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "Image with src \"https://lh3.googleusercontent.com/aida-public/AB6AXuA3TBP9OU-QGRFRmOtRCgH3QdTHznS6H8wly6vvsdal9hOWO_JehYnsOoF9F7GdKsCGBDs-CbucOw22KgU0MDec0DFz5I9nQ9nJi5immslfnhvvEfgAPtMmd2XeD4HN-HCkFN3v0T6S1gclHHFsLVTBhTByDjTByLEkqylRaiscsUJJNBU8b_Gmb-E2Mv1p5vg0lIIaMoUTXzB8NQQZq2Nybrb8_OFQqTvS-ZePZEI4mMOFjVpwY_eXoxcsv3WG8U8jEd8ZyNxYpw\" has \"fill\" but is missing \"sizes\" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes",
+        "route": "/home",
+        "severity": "low",
+        "timestamp": 1781879244867,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.heroSlider.slide1Title\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/home",
+        "severity": "high",
+        "timestamp": 1781879245362,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.heroSlider.slide2Title\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/home",
+        "severity": "high",
+        "timestamp": 1781879245365,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.heroSlider.slide1Badge\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/home",
+        "severity": "high",
+        "timestamp": 1781879245360,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.heroSlider.slide2Badge\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/home",
+        "severity": "high",
+        "timestamp": 1781879245367,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.heroSlider.slide1Title\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781879762038,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.heroSlider.slide1Badge\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781879762040,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.heroSlider.slide2Title\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781879762046,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.heroSlider.slide2Badge\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781879762048,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.categories.automotive\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781879762100,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.categories.fashion\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781879762094,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.categories.realestate\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781879762104,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.categories.medical\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781879762111,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.categories.pharmacy\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781879762148,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.categories.education\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781879762155,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.categories.electronics\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781879762165,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.categories.food\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781879762169,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.featured.title\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781879762272,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.featured.item1Title\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781879762276,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.featured.item2Title\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781879762280,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.featured.item3Title\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781879762284,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.featured.item4Title\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781879762288,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.trending.label\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781879762436,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.trending.item1\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781879762438,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.trending.item2\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781879762442,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.trending.item3\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781879762444,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.trending.item4\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781879762446,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.curated.product1Title\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781879762492,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.curated.product1Category\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781879762494,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.curated.product1Price\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781879762499,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.curated.product2Title\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781879762502,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.curated.product2Category\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781879762504,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.curated.product2Price\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781879762509,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.curated.product3Title\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781879762512,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.curated.product3Category\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781879762514,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.curated.product3Price\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781879762518,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.curated.product4Title\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781879762520,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.curated.product4Category\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781879762522,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[UI Registry Deprecation] Legacy string-based UI identity \"home.curated.product4Price\" is deprecated. Please use the registered registry object constant instead.",
+        "route": "/settings",
+        "severity": "high",
+        "timestamp": 1781879762527,
         "env": "dev"
       }
     ]

@@ -25,9 +25,7 @@ export function AppHeader() {
         id="header-main-nav"
         className="fixed top-0 w-full z-50 shadow-sm border-b"
         style={{
-          background: 'var(--gova-component-glass-bg)',
-          backdropFilter: 'var(--gova-component-glass-blur)',
-          WebkitBackdropFilter: 'var(--gova-component-glass-blur)',
+          background: 'var(--gova-surface)',
           borderColor: 'var(--gova-outline-variant)',
         }}
       >

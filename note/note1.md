@@ -13,6 +13,10 @@ Simple Browser: Show
 http://localhost:3001
 لعرض احداث المتصفح في IDE
 @id:chat.sendElementsToChat.enabled,chat.sendElementsToChat.attachCSS,chat.sendElementsToChat.attachImages بحث في الاعداادت
+
+# تشغيل غريب
+netstat -ano | findstr ":3001"
+
 # لمسح الترمينال
 
 Ctrl + Shift + P

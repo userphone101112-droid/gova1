@@ -45,7 +45,7 @@ export function PasswordInput({
               type={show ? 'text' : 'password'}
               placeholder={t(placeholderIdentity)}
               className={cn(
-                'auth-input pe-10 motion-colors',
+                'auth-input pe-10 motion-colors w-full',
                 fieldState.error && 'border-error focus-visible:ring-error'
               )}
             />
