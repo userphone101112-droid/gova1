@@ -267,7 +267,7 @@ export const SHARED_LAYOUT = {
       id: 'UI_SHARED_SIDEBAR_SETTINGS',
       path: 'shared-layout.sidebar.actions.settings-button',
       description: 'Navigate to settings page',
-      category: 'action',
+      category: 'action' as const,
       feature: 'shared-layout',
       version: '1.0.0',
       createdAt: '2026-06-17',

@@ -16,26 +16,6 @@ export type authTranslationKey =
   | 'auth.login.englishLanguageLink'
   | 'auth.login.darkModeToggle'
   | 'auth.login.copyright'
-  | 'auth.signup.heading'
-  | 'auth.signup.subheading'
-  | 'auth.signup.phoneLabel'
-  | 'auth.signup.phoneInput'
-  | 'auth.signup.verifyButton'
-  | 'auth.signup.verifyInfo'
-  | 'auth.signup.passwordLabel'
-  | 'auth.signup.passwordInput'
-  | 'auth.signup.togglePasswordVisibility'
-  | 'auth.signup.passwordStrengthLabel'
-  | 'auth.signup.passwordStrengthVeryWeak'
-  | 'auth.signup.confirmPasswordLabel'
-  | 'auth.signup.confirmPasswordInput'
-  | 'auth.signup.confirmPasswordToggleVisibility'
-  | 'auth.signup.termsText'
-  | 'auth.signup.termsLink'
-  | 'auth.signup.privacyLink'
-  | 'auth.signup.submitButton'
-  | 'auth.signup.footerText'
-  | 'auth.signup.loginLink'
 ;
 
 // common feature translations
@@ -355,7 +335,35 @@ export type sharedLayoutTranslationKey =
   | 'shared-layout.sidebar.languageToggle'
   | 'shared-layout.sidebar.themeToggle'
   | 'shared-layout.sidebar.settingsButton'
-  | 'shared-layout.sidebar.signupButton'
+;
+
+// signup feature translations
+export type signupTranslationKey =
+  | 'signup.register.logo'
+  | 'signup.register.heading'
+  | 'signup.register.subheading'
+  | 'signup.register.phoneInput'
+  | 'signup.register.phoneCountryCode'
+  | 'signup.register.verifyPhoneButton'
+  | 'signup.register.phoneVerifiedBadge'
+  | 'signup.register.changePhoneButton'
+  | 'signup.register.otpInput'
+  | 'signup.register.resendOtpButton'
+  | 'signup.register.otpCountdown'
+  | 'signup.register.passwordInput'
+  | 'signup.register.togglePasswordVisibility'
+  | 'signup.register.passwordStrengthLabel'
+  | 'signup.register.strengthWeak'
+  | 'signup.register.strengthMedium'
+  | 'signup.register.strengthStrong'
+  | 'signup.register.confirmPasswordInput'
+  | 'signup.register.toggleConfirmPasswordVisibility'
+  | 'signup.register.passwordMismatchError'
+  | 'signup.register.submitButton'
+  | 'signup.register.loginLink'
+  | 'signup.register.englishLanguageLink'
+  | 'signup.register.darkModeToggle'
+  | 'signup.register.copyright'
 ;
 
 // splash feature translations
@@ -395,6 +403,7 @@ export type AllTranslationKeys =
   | homeTranslationKey
   | settingsTranslationKey
   | sharedLayoutTranslationKey
+  | signupTranslationKey
   | splashTranslationKey
 
 export type TranslationKey = AllTranslationKeys;

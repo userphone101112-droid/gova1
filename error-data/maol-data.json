@@ -25,6 +25,14 @@
         "severity": "high",
         "timestamp": 1781801723781,
         "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[i18n] No translation key for source:",
+        "route": "/signup",
+        "severity": "low",
+        "timestamp": 1781831931312,
+        "env": "dev"
       }
     ]
   },

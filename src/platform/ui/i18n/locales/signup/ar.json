@@ -1,0 +1,31 @@
+{
+  "signup": {
+    "register": {
+      "logo": "شعار التسجيل",
+      "heading": "إنشاء حساب جديد",
+      "subheading": "انضم إلى مجتمعنا التجاري",
+      "phoneInput": "رقم الهاتف المحمول",
+      "phoneCountryCode": "+20",
+      "verifyPhoneButton": "تحقق",
+      "phoneVerifiedBadge": "تم التحقق",
+      "changePhoneButton": "تغيير الرقم",
+      "otpInput": "رمز التحقق",
+      "resendOtpButton": "إعادة الإرسال",
+      "otpCountdown": "إعادة الإرسال خلال {seconds} ثانية",
+      "passwordInput": "كلمة المرور",
+      "togglePasswordVisibility": "إظهار/إخفاء كلمة المرور",
+      "passwordStrengthLabel": "قوة كلمة المرور",
+      "strengthWeak": "ضعيفة",
+      "strengthMedium": "متوسطة",
+      "strengthStrong": "قوية",
+      "confirmPasswordInput": "تأكيد كلمة المرور",
+      "toggleConfirmPasswordVisibility": "إظهار/إخفاء كلمة المرور",
+      "passwordMismatchError": "كلمات المرور غير متطابقة",
+      "submitButton": "إنشاء الحساب الآن",
+      "loginLink": "لديك حساب بالفعل؟ تسجيل الدخول",
+      "englishLanguageLink": "English",
+      "darkModeToggle": "الوضع الليلي",
+      "copyright": "© 2026 جميع الحقوق محفوظة"
+    }
+  }
+}
