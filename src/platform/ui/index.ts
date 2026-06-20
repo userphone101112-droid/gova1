@@ -65,6 +65,3 @@ export { warnOnTranslationMismatch } from './i18n/binding/translation-validator'
 // Telemetry & testing
 export * from './telemetry/ui-telemetry';
 export * from './telemetry/test-helpers';
-
-// DevTools
-export { DevUiOverlay } from './devtools/DevUiOverlay';

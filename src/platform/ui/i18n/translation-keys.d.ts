@@ -228,6 +228,51 @@ export type commonTranslationKey =
   | 'settings.actions.restoreDefaults'
 ;
 
+// devtools feature translations
+export type devtoolsTranslationKey =
+  | 'devtools.inspector.title'
+  | 'devtools.inspector.label'
+  | 'devtools.inspector.select'
+  | 'devtools.inspector.option'
+  | 'devtools.inspector.button'
+  | 'devtools.inspector.input'
+  | 'devtools.inspector.checkbox'
+  | 'devtools.inspector.item'
+  | 'devtools.inspector.count'
+  | 'devtools.inspector.value'
+  | 'devtools.inspector.featureLabel'
+  | 'devtools.inspector.featureValue'
+  | 'devtools.inspector.lifecycleLabel'
+  | 'devtools.inspector.lifecycleValue'
+  | 'devtools.inspector.tagLabel'
+  | 'devtools.inspector.tagValue'
+  | 'devtools.inspector.fileLabel'
+  | 'devtools.inspector.fileValue'
+  | 'devtools.inspector.componentLabel'
+  | 'devtools.inspector.componentValue'
+  | 'devtools.inspector.lineLabel'
+  | 'devtools.inspector.lineValue'
+  | 'devtools.inspector.uuidButton'
+  | 'devtools.inspector.pathButton'
+  | 'devtools.inspector.sourceButton'
+  | 'devtools.inspector.highlight'
+  | 'devtools.inspector.scroll'
+  | 'devtools.inspector.empty'
+  | 'devtools.inspector.resizer'
+  | 'devtools.inspector.toggle'
+  | 'devtools.inspector.database'
+  | 'devtools.inspector.attributes'
+  | 'devtools.inspector.attribute1'
+  | 'devtools.inspector.attribute2'
+  | 'devtools.inspector.attribute3'
+  | 'devtools.inspector.save'
+  | 'devtools.inspector.zoomOut'
+  | 'devtools.inspector.zoomIn'
+  | 'devtools.inspector.zoom'
+  | 'devtools.inspector.width'
+  | 'devtools.inspector.height'
+;
+
 // error-boundary feature translations
 export type errorBoundaryTranslationKey =
   | 'error-boundary.main.title'
@@ -772,6 +817,7 @@ export type splashTranslationKey =
 export type AllTranslationKeys =
   | authTranslationKey
   | commonTranslationKey
+  | devtoolsTranslationKey
   | errorBoundaryTranslationKey
   | homeTranslationKey
   | merchantTranslationKey

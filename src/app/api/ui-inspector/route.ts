@@ -4,6 +4,7 @@ import path from 'path';
 import { NextResponse } from 'next/server';
 
 import { getUiIdentityUuid, getUiIdentityByUuid } from '@/platform/ui';
+import { isUiInspectorEnabled } from '@/platform/ui/devtools/inspector-access';
 
 // Define the type for our inspector data
 interface InspectorData {
@@ -28,6 +29,10 @@ interface InspectorData {
 // Path to our JSON file
 const DATA_FILE_PATH = path.join(process.cwd(), 'data', 'ui-inspector-data.json');
 
+function uiInspectorNotFoundResponse(): NextResponse {
+  return NextResponse.json({ error: 'Not found' }, { status: 404 });
+}
+
 // Helper function to read data
 async function readData(): Promise<InspectorData> {
   try {
@@ -46,6 +51,10 @@ async function writeData(data: InspectorData): Promise<void> {
 
 // GET: Fetch all inspector data
 export async function GET() {
+  if (!isUiInspectorEnabled()) {
+    return uiInspectorNotFoundResponse();
+  }
+
   try {
     const data = await readData();
     return NextResponse.json(data);
@@ -60,6 +69,10 @@ export async function GET() {
 
 // POST: Save or update inspector data for a specific UI element
 export async function POST(request: Request) {
+  if (!isUiInspectorEnabled()) {
+    return uiInspectorNotFoundResponse();
+  }
+
   try {
     const body = await request.json();
     const { 

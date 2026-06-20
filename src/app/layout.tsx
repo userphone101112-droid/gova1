@@ -3,7 +3,7 @@ import { Inter, Noto_Sans_Arabic } from "next/font/google";
 
 import { SSOTGuard } from "@/components/shared/SSOTGuard";
 import { I18nProvider, LocaleProvider } from '@/platform/ui';
-import { DevUiOverlayLoader } from "@/platform/ui/devtools/DevUiOverlayLoader";
+import { InspectCollectorLoader } from "@/platform/ui/devtools/InspectCollectorLoader";
 import { SHARED_LAYOUT } from '@/platform/ui/registry/features/shared-layout';
 import "./globals.css";
 import { getAppDictionaryCached, getDirection, getEffectiveTheme, getLocale, getSSOTPreferences, getThemeMode } from "@/platform/ui/server";
@@ -101,7 +101,7 @@ export default async function RootLayout({
           >
             <ThemePreferencesSync />
             {children}
-            <DevUiOverlayLoader />
+            <InspectCollectorLoader />
           </I18nProvider>
         </SSOTProvider>
         {process.env.NEXT_PUBLIC_MAOL_ENABLED === 'true' && <MaolProvider />}

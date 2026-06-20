@@ -1,0 +1,354 @@
+
+Gemini
+New chat
+Search chats
+Images
+New
+Library
+New notebook
+إنشاء ملف JSON لهياكل قواعد البيانات
+Cursor Pro Plan Usage Summary
+Google Material 3 CSS Theme
+حل مشكلة استهلاك قراءات Firestore
+مساءلة الإدارة قانونياً وإدارياً
+توليد SVG لحذاء بلغة جافا سكريبت
+دمج صورتين دون تغيير الشكل
+Project Ideas for Development & Systems
+ادمج
+البحث عن صورة للخدمات التعليمية
+صور دراجة عادية ودراجة بخارية
+انشئ لوجو من حرفين GV بشكل والوان شبية لشكل والوان شعارات جوجل
+إجازة عيد الفطر في مصر
+استخراج نصوص خطاب رسمي من مستند
+ترتيب وتنسيق بيانات التواريخ تصاعدياً
+Obfuscated JavaScript API Analysis
+جداول صيانة وتشغيل المعدات الصناعية
+تحليل تقرير نظام الصيانة والتقييم
+تحليل تقرير الصيانة والكفاءة الفنية
+طلب تحليل ملفات والرد
+Antigravity VSCode OSS Environment Details
+Bazaar Android Documentation Translation
+Bazaar Android Project Documentation
+إعادة تعيين الفرع الرئيسي بالقوة
+مقارنة ملفات تحديث تقني
+Gemini Pro و Flash: مقارنة شاملة
+تفاصيل نوافذ مراحل الطلب التقنية
+تفاصيل نوافذ مراحل الطلب
+Antigravity IDE: Hypothetical or Real?
+حل مشكلة اختفاء أيقونات Font Awesome
+قراءة مجلد وعرض الملفات مع التجاهل
+لماذا لا تظهر الملفات الموجوده في مجلد اجهزة الكمبيوتر بجوجل دريف ؟ في ملفاتي مجلدداخل جوجل درايف.
+إعادة تنسيق بيانات التصنيفات بدون أيقونات
+رفع صوت المايكروفون في ويندوز
+JavaScript Error: Null Event Listener Fix
+تنظيم جدول تدفق الإشعارات
+تخمين كلمة عربية غير واضحة
+طلب صورة PNG بحجم 512 × 512
+R2 Bucket Not Found Error
+ربط مشروع GitHub مع Deno
+Conversation with Gemini
+انشئ ملف جسون به اسماء 3 قواعد بيانات كل قاعدة لها اسم عربي واسم انجليزي وكل قاعدة بها ثلالث جداول كل جدول له اسم عربي واسم انجليزي وكل جدول لكل قاعدة به ثلالث اعمدة كل عمود لع اسم عربي واسماء انجليزي جميع الاسماء الانجليزية لا تحتوي علي ارقام او مسافات استبدل المسافات ب _
+
+لقد قمت بإنشاء ملف JSON يحتوي على الهيكلية المطلوبة تماماً (3 قواعد بيانات، وكل قاعدة تحتوي على 3 جداول، وكل جدول يحتوي على 3 أعمدة بالأسماء العربية والإنجليزية مع استبدال المسافات بشرطة سفلية _ وخلو الأسماء الإنجليزية من الأرقام).
+
+ملف الـ JSON جاهز للتحميل:
+JSON icon
+databases_structure
+ JSON 
+Open
+
+محتوى الملف للمعاينة السريعة:
+
+JSON
+{
+    "databases": [
+        {
+            "name_ar": "نظام إدارة الموارد البشرية",
+            "name_en": "human_resource_management_system",
+            "tables": [
+                {
+                    "name_ar": "الموظفين",
+                    "name_en": "employees",
+                    "columns": [
+                        {"name_ar": "معرف الموظف", "name_en": "employee_id"},
+                        {"name_ar": "الاسم الأول", "name_en": "first_name"},
+                        {"name_ar": "تاريخ التعيين", "name_en": "hire_date"}
+                    ]
+                },
+                {
+                    "name_ar": "الرواتب",
+                    "name_en": "salaries",
+                    "columns": [
+                        {"name_ar": "معرف الراتب", "name_en": "salary_id"},
+                        {"name_ar": "الراتب الأساسي", "name_en": "basic_salary"},
+                        {"name_ar": "المكافآت", "name_en": "bonuses"}
+                    ]
+                },
+                {
+                    "name_ar": "الأقسام",
+                    "name_en": "departments",
+                    "columns": [
+                        {"name_ar": "معرف القسم", "name_en": "department_id"},
+                        {"name_ar": "اسم القسم", "name_en": "department_name"},
+                        {"name_ar": "مدير القسم", "name_en": "department_manager"}
+                    ]
+                }
+            ]
+        },
+        {
+            "name_ar": "نظام المتجر الإلكتروني",
+            "name_en": "ecommerce_system",
+            "tables": [
+                {
+                    "name_ar": "المنتجات",
+                    "name_en": "products",
+                    "columns": [
+                        {"name_ar": "معرف المنتج", "name_en": "product_id"},
+                        {"name_ar": "اسم المنتج", "name_en": "product_name"},
+                        {"name_ar": "السعر", "name_en": "price"}
+                    ]
+                },
+                {
+                    "name_ar": "العملاء",
+                    "name_en": "customers",
+                    "columns": [
+                        {"name_ar": "معرف العميل", "name_en": "customer_id"},
+                        {"name_ar": "البريد الإلكتروني", "name_en": "email_address"},
+                        {"name_ar": "رقم الهاتف", "name_en": "phone_number"}
+                    ]
+                },
+                {
+                    "name_ar": "الطلبات",
+                    "name_en": "orders",
+                    "columns": [
+                        {"name_ar": "معرف الطلب", "name_en": "order_id"},
+                        {"name_ar": "تاريخ الطلب", "name_en": "order_date"},
+                        {"name_ar": "إجمالي المبلغ", "name_en": "total_amount"}
+                    ]
+                }
+            ]
+        },
+        {
+            "name_ar": "نظام إدارة المدارس",
+            "name_en": "school_management_system",
+            "tables": [
+                {
+                    "name_ar": "الطلاب",
+                    "name_en": "students",
+                    "columns": [
+                        {"name_ar": "معرف الطالب", "name_en": "student_id"},
+                        {"name_ar": "اسم الطالب", "name_en": "student_name"},
+                        {"name_ar": "تاريخ الميلاد", "name_en": "date_of_birth"}
+                    ]
+                },
+                {
+                    "name_ar": "المعلمين",
+                    "name_en": "teachers",
+                    "columns": [
+                        {"name_ar": "معرف المعلم", "name_en": "teacher_id"},
+                        {"name_ar": "التخصص", "name_en": "specialization"},
+                        {"name_ar": "الراتب", "name_en": "teacher_salary"}
+                    ]
+                },
+                {
+                    "name_ar": "المواد الدراسية",
+                    "name_en": "courses",
+                    "columns": [
+                        {"name_ar": "معرف المادة", "name_en": "course_id"},
+                        {"name_ar": "اسم المادة", "name_en": "course_name"},
+                        {"name_ar": "عدد الساعات", "name_en": "credit_hours"}
+                    ]
+                }
+            ]
+        }
+    ]
+}
+
+
+
+Gemini is AI and can make mistakes.
+
+{
+    "databases": [
+        {
+            "name_ar": "نظام إدارة الموارد البشرية",
+            "name_en": "human_resource_management_system",
+            "tables": [
+                {
+                    "name_ar": "الموظفين",
+                    "name_en": "employees",
+                    "columns": [
+                        {
+                            "name_ar": "معرف الموظف",
+                            "name_en": "employee_id"
+                        },
+                        {
+                            "name_ar": "الاسم الأول",
+                            "name_en": "first_name"
+                        },
+                        {
+                            "name_ar": "تاريخ التعيين",
+                            "name_en": "hire_date"
+                        }
+                    ]
+                },
+                {
+                    "name_ar": "الرواتب",
+                    "name_en": "salaries",
+                    "columns": [
+                        {
+                            "name_ar": "معرف الراتب",
+                            "name_en": "salary_id"
+                        },
+                        {
+                            "name_ar": "الراتب الأساسي",
+                            "name_en": "basic_salary"
+                        },
+                        {
+                            "name_ar": "المكافآت",
+                            "name_en": "bonuses"
+                        }
+                    ]
+                },
+                {
+                    "name_ar": "الأقسام",
+                    "name_en": "departments",
+                    "columns": [
+                        {
+                            "name_ar": "معرف القسم",
+                            "name_en": "department_id"
+                        },
+                        {
+                            "name_ar": "اسم القسم",
+                            "name_en": "department_name"
+                        },
+                        {
+                            "name_ar": "مدير القسم",
+                            "name_en": "department_manager"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name_ar": "نظام المتجر الإلكتروني",
+            "name_en": "ecommerce_system",
+            "tables": [
+                {
+                    "name_ar": "المنتجات",
+                    "name_en": "products",
+                    "columns": [
+                        {
+                            "name_ar": "معرف المنتج",
+                            "name_en": "product_id"
+                        },
+                        {
+                            "name_ar": "اسم المنتج",
+                            "name_en": "product_name"
+                        },
+                        {
+                            "name_ar": "السعر",
+                            "name_en": "price"
+                        }
+                    ]
+                },
+                {
+                    "name_ar": "العملاء",
+                    "name_en": "customers",
+                    "columns": [
+                        {
+                            "name_ar": "معرف العميل",
+                            "name_en": "customer_id"
+                        },
+                        {
+                            "name_ar": "البريد الإلكتروني",
+                            "name_en": "email_address"
+                        },
+                        {
+                            "name_ar": "رقم الهاتف",
+                            "name_en": "phone_number"
+                        }
+                    ]
+                },
+                {
+                    "name_ar": "الطلبات",
+                    "name_en": "orders",
+                    "columns": [
+                        {
+                            "name_ar": "معرف الطلب",
+                            "name_en": "order_id"
+                        },
+                        {
+                            "name_ar": "تاريخ الطلب",
+                            "name_en": "order_date"
+                        },
+                        {
+                            "name_ar": "إجمالي المبلغ",
+                            "name_en": "total_amount"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name_ar": "نظام إدارة المدارس",
+            "name_en": "school_management_system",
+            "tables": [
+                {
+                    "name_ar": "الطلاب",
+                    "name_en": "students",
+                    "columns": [
+                        {
+                            "name_ar": "معرف الطالب",
+                            "name_en": "student_id"
+                        },
+                        {
+                            "name_ar": "اسم الطالب",
+                            "name_en": "student_name"
+                        },
+                        {
+                            "name_ar": "تاريخ الميلاد",
+                            "name_en": "date_of_birth"
+                        }
+                    ]
+                },
+                {
+                    "name_ar": "المعلمين",
+                    "name_en": "teachers",
+                    "columns": [
+                        {
+                            "name_ar": "معرف المعلم",
+                            "name_en": "teacher_id"
+                        },
+                        {
+                            "name_ar": "التخصص",
+                            "name_en": "specialization"
+                        },
+                        {
+                            "name_ar": "الراتب",
+                            "name_en": "teacher_salary"
+                        }
+                    ]
+                },
+                {
+                    "name_ar": "المواد الدراسية",
+                    "name_en": "courses",
+                    "columns": [
+                        {
+                            "name_ar": "معرف المادة",
+                            "name_en": "course_id"
+                        },
+                        {
+                            "name_ar": "اسم المادة",
+                            "name_en": "course_name"
+                        },
+                        {
+                            "name_ar": "عدد الساعات",
+                            "name_en": "credit_hours"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

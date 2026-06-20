@@ -1,15 +1,18 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 
 import { runInitialization } from '@/lib/initialization/initialization';
+import { isInspectMode } from '@/platform/ui/devtools/inspector-routes';
 import { useUnifiedStore } from '@/store/unified.store';
 
 import ProgressIndicator from './ProgressIndicator';
 
 export default function SplashInitializer() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const inspectMode = isInspectMode(`?${searchParams.toString()}`);
   const [progress, setProgress] = useState(0);
   const [status, setStatus] = useState('');
   const isCompleteRef = useRef(false);
@@ -36,13 +39,13 @@ export default function SplashInitializer() {
     initialize();
   }, [activeMaint]);
 
-  // Redirect after 100% is rendered
+  // Redirect after 100% is rendered (skip in inspect mode for UI Inspector preview)
   useEffect(() => {
-    if (activeMaint) return;
+    if (activeMaint || inspectMode) return;
     if (isCompleteRef.current && progress === 100) {
       router.replace('/home');
     }
-  }, [progress, router, activeMaint]);
+  }, [progress, router, activeMaint, inspectMode]);
 
   return <ProgressIndicator progress={progress} status={status} />;
 }

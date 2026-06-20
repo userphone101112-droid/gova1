@@ -1,7 +1,7 @@
 'use client';
 
 import { Store } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 
 import { runInitialization } from '@/lib/initialization/initialization';
 import { useTranslation, SPLASH } from '@/platform/ui';
@@ -100,7 +100,9 @@ export default function SplashScreen() {
         </div>
 
         <div data-ui-uuid={SPLASH.SHELL.LOGO_HEADING_WRAPPER_L103.uuid} className="mt-8 w-full flex flex-col items-center">
-          <SplashInitializer />
+          <Suspense fallback={null}>
+            <SplashInitializer />
+          </Suspense>
         </div>
       </div>
 
