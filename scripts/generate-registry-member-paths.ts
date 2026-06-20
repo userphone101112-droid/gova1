@@ -2,7 +2,7 @@
 /**
  * Generate registry-member-paths.json for strict ESLint validation.
  */
-import { writeFileSync } from 'fs';
+import { readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';
 
 import {
@@ -70,18 +70,38 @@ function collectPaths(obj: unknown, prefix: string[], out: Set<string>) {
   }
 }
 
-const paths = new Set<string>();
-for (const [root, tree] of Object.entries(ROOTS)) {
-  if (tree) collectPaths(tree, [root], paths);
-}
-void ALL_CATEGORY_IDENTITIES;
+function buildOutput() {
+  const paths = new Set<string>();
+  for (const [root, tree] of Object.entries(ROOTS)) {
+    if (tree) collectPaths(tree, [root], paths);
+  }
+  void ALL_CATEGORY_IDENTITIES;
 
-const output = {
-  version: 1,
-  roots: Object.keys(ROOTS),
-  paths: [...paths].sort(),
-};
+  return {
+    version: 1,
+    roots: Object.keys(ROOTS),
+    paths: [...paths].sort(),
+  };
+}
 
 const outPath = join(process.cwd(), 'src/platform/ui/registry/registry-member-paths.json');
-writeFileSync(outPath, `${JSON.stringify(output, null, 2)}\n`, 'utf-8');
-console.log(`✅ Generated ${paths.size} registry member paths → ${outPath}`);
+const output = buildOutput();
+const checkOnly = process.argv.includes('--check');
+
+if (checkOnly) {
+  const onDisk = JSON.parse(readFileSync(outPath, 'utf-8'));
+  const expectedJson = JSON.stringify(output);
+  const onDiskJson = JSON.stringify({
+    version: onDisk.version,
+    roots: onDisk.roots,
+    paths: onDisk.paths,
+  });
+  if (expectedJson !== onDiskJson) {
+    console.error('❌ registry-member-paths.json is stale. Run: npm run registry:generate');
+    process.exit(1);
+  }
+  console.log(`✅ registry-member-paths.json is up to date (${output.paths.length} paths)`);
+} else {
+  writeFileSync(outPath, `${JSON.stringify(output, null, 2)}\n`, 'utf-8');
+  console.log(`✅ Generated ${output.paths.length} registry member paths → ${outPath}`);
+}

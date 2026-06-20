@@ -15,6 +15,86 @@ export interface UiSourceLocation {
 }
 
 export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
+  "52ddeb0b-f59b-58c6-91e5-879992cf13dc": {
+    "uuid": "52ddeb0b-f59b-58c6-91e5-879992cf13dc",
+    "id": "UI_ERROR_BOUNDARY_APP_ERROR_CONTAINER",
+    "path": "error-boundary.app-error.layout.container",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/error-boundary.ts",
+    "sourceComponent": "ERROR_BOUNDARY",
+    "sourceLine": 81,
+    "feature": "error-boundary"
+  },
+  "eeaabcd2-94e5-5e0b-89e7-877cd072a4a5": {
+    "uuid": "eeaabcd2-94e5-5e0b-89e7-877cd072a4a5",
+    "id": "UI_ERROR_BOUNDARY_APP_ERROR_TITLE",
+    "path": "error-boundary.app-error.display.title",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/error-boundary.ts",
+    "sourceComponent": "ERROR_BOUNDARY",
+    "sourceLine": 93,
+    "feature": "error-boundary"
+  },
+  "d608d7a3-638b-5372-bc04-73d1632f95e0": {
+    "uuid": "d608d7a3-638b-5372-bc04-73d1632f95e0",
+    "id": "UI_ERROR_BOUNDARY_APP_ERROR_MESSAGE",
+    "path": "error-boundary.app-error.display.message",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/error-boundary.ts",
+    "sourceComponent": "ERROR_BOUNDARY",
+    "sourceLine": 105,
+    "feature": "error-boundary"
+  },
+  "b86d26ce-0199-5d03-97d6-e53854b13e55": {
+    "uuid": "b86d26ce-0199-5d03-97d6-e53854b13e55",
+    "id": "UI_ERROR_BOUNDARY_APP_ERROR_RETRY",
+    "path": "error-boundary.app-error.actions.retry-button",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/error-boundary.ts",
+    "sourceComponent": "ERROR_BOUNDARY",
+    "sourceLine": 114,
+    "feature": "error-boundary"
+  },
+  "f210e1d6-0b2f-5135-b1bb-9074e64fbe23": {
+    "uuid": "f210e1d6-0b2f-5135-b1bb-9074e64fbe23",
+    "id": "UI_SHARED_FAVORITES_PAGE_CONTAINER",
+    "path": "shared-layout.favorites-page.layout.container",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/shared-layout.ts",
+    "sourceComponent": "SHARED_LAYOUT",
+    "sourceLine": 606,
+    "feature": "shared-layout"
+  },
+  "06aa721b-52d6-57c0-9d00-4d7dcabaf4aa": {
+    "uuid": "06aa721b-52d6-57c0-9d00-4d7dcabaf4aa",
+    "id": "UI_SHARED_FAVORITES_PAGE_TITLE",
+    "path": "shared-layout.favorites-page.display.title",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/shared-layout.ts",
+    "sourceComponent": "SHARED_LAYOUT",
+    "sourceLine": 618,
+    "feature": "shared-layout"
+  },
+  "3ae5ab42-95e0-5135-8791-256830328a2b": {
+    "uuid": "3ae5ab42-95e0-5135-8791-256830328a2b",
+    "id": "UI_SHARED_FAVORITES_PAGE_MESSAGE",
+    "path": "shared-layout.favorites-page.display.message",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/shared-layout.ts",
+    "sourceComponent": "SHARED_LAYOUT",
+    "sourceLine": 630,
+    "feature": "shared-layout"
+  },
+  "eba0702b-76d4-517a-9b39-5d01f15c59e8": {
+    "uuid": "eba0702b-76d4-517a-9b39-5d01f15c59e8",
+    "id": "UI_AUTH_SHARED_PAGE",
+    "path": "auth.shared.layout.page",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/shared-layout.ts",
+    "sourceComponent": "SHARED_LAYOUT",
+    "sourceLine": 564,
+    "feature": "auth"
+  },
   "7dad3c32-2a07-52e1-9d2c-d01c6357148b": {
     "uuid": "7dad3c32-2a07-52e1-9d2c-d01c6357148b",
     "id": "UI_HOME_STRUCTURE_HOME_L14",
@@ -25,6 +105,136 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "sourceLine": 534,
     "feature": "home"
   },
+  "a75013fb-1803-5e86-8c22-947942ceee1c": {
+    "uuid": "a75013fb-1803-5e86-8c22-947942ceee1c",
+    "id": "UI_ERROR_BOUNDARY_APP_NOT_FOUND_CONTAINER",
+    "path": "error-boundary.app-not-found.layout.container",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/error-boundary.ts",
+    "sourceComponent": "ERROR_BOUNDARY",
+    "sourceLine": 131,
+    "feature": "error-boundary"
+  },
+  "997eba42-5b13-5dcb-a8b0-acdce0937ce5": {
+    "uuid": "997eba42-5b13-5dcb-a8b0-acdce0937ce5",
+    "id": "UI_ERROR_BOUNDARY_APP_NOT_FOUND_TITLE",
+    "path": "error-boundary.app-not-found.display.title",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/error-boundary.ts",
+    "sourceComponent": "ERROR_BOUNDARY",
+    "sourceLine": 143,
+    "feature": "error-boundary"
+  },
+  "6fbbac53-0df9-5d32-88b1-ed3196200a20": {
+    "uuid": "6fbbac53-0df9-5d32-88b1-ed3196200a20",
+    "id": "UI_ERROR_BOUNDARY_APP_NOT_FOUND_MESSAGE",
+    "path": "error-boundary.app-not-found.display.message",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/error-boundary.ts",
+    "sourceComponent": "ERROR_BOUNDARY",
+    "sourceLine": 155,
+    "feature": "error-boundary"
+  },
+  "3d5ec3f3-2ff0-55e8-af1e-7655321406fa": {
+    "uuid": "3d5ec3f3-2ff0-55e8-af1e-7655321406fa",
+    "id": "UI_ERROR_BOUNDARY_APP_NOT_FOUND_HOME",
+    "path": "error-boundary.app-not-found.actions.home-link",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/error-boundary.ts",
+    "sourceComponent": "ERROR_BOUNDARY",
+    "sourceLine": 167,
+    "feature": "error-boundary"
+  },
+  "a3538c15-0f03-58e2-8fd1-6eb3770d99a8": {
+    "uuid": "a3538c15-0f03-58e2-8fd1-6eb3770d99a8",
+    "id": "UI_SHARED_NOTIFICATIONS_PAGE_CONTAINER",
+    "path": "shared-layout.notifications-page.layout.container",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/shared-layout.ts",
+    "sourceComponent": "SHARED_LAYOUT",
+    "sourceLine": 568,
+    "feature": "shared-layout"
+  },
+  "7f3f4620-fb4a-5a7f-be41-283a6f195d79": {
+    "uuid": "7f3f4620-fb4a-5a7f-be41-283a6f195d79",
+    "id": "UI_SHARED_NOTIFICATIONS_PAGE_TITLE",
+    "path": "shared-layout.notifications-page.display.title",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/shared-layout.ts",
+    "sourceComponent": "SHARED_LAYOUT",
+    "sourceLine": 580,
+    "feature": "shared-layout"
+  },
+  "bc6c6015-1478-5416-8d79-c0bb6b26ea94": {
+    "uuid": "bc6c6015-1478-5416-8d79-c0bb6b26ea94",
+    "id": "UI_SHARED_NOTIFICATIONS_PAGE_MESSAGE",
+    "path": "shared-layout.notifications-page.display.message",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/shared-layout.ts",
+    "sourceComponent": "SHARED_LAYOUT",
+    "sourceLine": 592,
+    "feature": "shared-layout"
+  },
+  "9ee5c2dc-661a-5129-9c3e-3dda68a70fb7": {
+    "uuid": "9ee5c2dc-661a-5129-9c3e-3dda68a70fb7",
+    "id": "UI_SHARED_ORDERS_PAGE_CONTAINER",
+    "path": "shared-layout.orders-page.layout.container",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/shared-layout.ts",
+    "sourceComponent": "SHARED_LAYOUT",
+    "sourceLine": 644,
+    "feature": "shared-layout"
+  },
+  "6aec63a5-4177-588c-af27-cc37d8a2eda6": {
+    "uuid": "6aec63a5-4177-588c-af27-cc37d8a2eda6",
+    "id": "UI_SHARED_ORDERS_PAGE_TITLE",
+    "path": "shared-layout.orders-page.display.title",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/shared-layout.ts",
+    "sourceComponent": "SHARED_LAYOUT",
+    "sourceLine": 656,
+    "feature": "shared-layout"
+  },
+  "4224ece0-7581-5b21-a01b-92beab060387": {
+    "uuid": "4224ece0-7581-5b21-a01b-92beab060387",
+    "id": "UI_SHARED_ORDERS_PAGE_MESSAGE",
+    "path": "shared-layout.orders-page.display.message",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/shared-layout.ts",
+    "sourceComponent": "SHARED_LAYOUT",
+    "sourceLine": 668,
+    "feature": "shared-layout"
+  },
+  "1473978a-daef-5c7d-bbf2-b968b0968e4b": {
+    "uuid": "1473978a-daef-5c7d-bbf2-b968b0968e4b",
+    "id": "UI_SHARED_PROFILE_PAGE_CONTAINER",
+    "path": "shared-layout.profile-page.layout.container",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/shared-layout.ts",
+    "sourceComponent": "SHARED_LAYOUT",
+    "sourceLine": 682,
+    "feature": "shared-layout"
+  },
+  "fa83d2a7-f743-5548-82a0-f93954174b12": {
+    "uuid": "fa83d2a7-f743-5548-82a0-f93954174b12",
+    "id": "UI_SHARED_PROFILE_PAGE_TITLE",
+    "path": "shared-layout.profile-page.display.title",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/shared-layout.ts",
+    "sourceComponent": "SHARED_LAYOUT",
+    "sourceLine": 694,
+    "feature": "shared-layout"
+  },
+  "159ce22e-674f-592d-9ac4-145409ac25e3": {
+    "uuid": "159ce22e-674f-592d-9ac4-145409ac25e3",
+    "id": "UI_SHARED_PROFILE_PAGE_MESSAGE",
+    "path": "shared-layout.profile-page.display.message",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/shared-layout.ts",
+    "sourceComponent": "SHARED_LAYOUT",
+    "sourceLine": 706,
+    "feature": "shared-layout"
+  },
   "14c91eff-9944-5b24-988f-b5e5d8b9ed5a": {
     "uuid": "14c91eff-9944-5b24-988f-b5e5d8b9ed5a",
     "id": "UI_SPLASH_MAINTENANCE_CARD",
@@ -34,16 +244,6 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "sourceComponent": "SPLASH",
     "sourceLine": 54,
     "feature": "splash"
-  },
-  "eba0702b-76d4-517a-9b39-5d01f15c59e8": {
-    "uuid": "eba0702b-76d4-517a-9b39-5d01f15c59e8",
-    "id": "UI_AUTH_SHARED_PAGE",
-    "path": "auth.shared.layout.page",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/shared-layout.ts",
-    "sourceComponent": "SHARED_LAYOUT",
-    "sourceLine": 566,
-    "feature": "auth"
   },
   "91dd78ed-2152-5cca-85d9-fdcbcc6684f0": {
     "uuid": "91dd78ed-2152-5cca-85d9-fdcbcc6684f0",
@@ -3882,7 +4082,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/shared-layout.ts",
     "sourceComponent": "SHARED_LAYOUT",
-    "sourceLine": 173,
+    "sourceLine": 176,
     "feature": "shared-layout"
   },
   "9ed7a7bd-5519-56ae-a113-876739713870": {
@@ -12248,6 +12448,86 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
 };
 
 export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
+  "UI_ERROR_BOUNDARY_APP_ERROR_CONTAINER": {
+    "uuid": "52ddeb0b-f59b-58c6-91e5-879992cf13dc",
+    "id": "UI_ERROR_BOUNDARY_APP_ERROR_CONTAINER",
+    "path": "error-boundary.app-error.layout.container",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/error-boundary.ts",
+    "sourceComponent": "ERROR_BOUNDARY",
+    "sourceLine": 81,
+    "feature": "error-boundary"
+  },
+  "UI_ERROR_BOUNDARY_APP_ERROR_TITLE": {
+    "uuid": "eeaabcd2-94e5-5e0b-89e7-877cd072a4a5",
+    "id": "UI_ERROR_BOUNDARY_APP_ERROR_TITLE",
+    "path": "error-boundary.app-error.display.title",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/error-boundary.ts",
+    "sourceComponent": "ERROR_BOUNDARY",
+    "sourceLine": 93,
+    "feature": "error-boundary"
+  },
+  "UI_ERROR_BOUNDARY_APP_ERROR_MESSAGE": {
+    "uuid": "d608d7a3-638b-5372-bc04-73d1632f95e0",
+    "id": "UI_ERROR_BOUNDARY_APP_ERROR_MESSAGE",
+    "path": "error-boundary.app-error.display.message",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/error-boundary.ts",
+    "sourceComponent": "ERROR_BOUNDARY",
+    "sourceLine": 105,
+    "feature": "error-boundary"
+  },
+  "UI_ERROR_BOUNDARY_APP_ERROR_RETRY": {
+    "uuid": "b86d26ce-0199-5d03-97d6-e53854b13e55",
+    "id": "UI_ERROR_BOUNDARY_APP_ERROR_RETRY",
+    "path": "error-boundary.app-error.actions.retry-button",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/error-boundary.ts",
+    "sourceComponent": "ERROR_BOUNDARY",
+    "sourceLine": 114,
+    "feature": "error-boundary"
+  },
+  "UI_SHARED_FAVORITES_PAGE_CONTAINER": {
+    "uuid": "f210e1d6-0b2f-5135-b1bb-9074e64fbe23",
+    "id": "UI_SHARED_FAVORITES_PAGE_CONTAINER",
+    "path": "shared-layout.favorites-page.layout.container",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/shared-layout.ts",
+    "sourceComponent": "SHARED_LAYOUT",
+    "sourceLine": 606,
+    "feature": "shared-layout"
+  },
+  "UI_SHARED_FAVORITES_PAGE_TITLE": {
+    "uuid": "06aa721b-52d6-57c0-9d00-4d7dcabaf4aa",
+    "id": "UI_SHARED_FAVORITES_PAGE_TITLE",
+    "path": "shared-layout.favorites-page.display.title",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/shared-layout.ts",
+    "sourceComponent": "SHARED_LAYOUT",
+    "sourceLine": 618,
+    "feature": "shared-layout"
+  },
+  "UI_SHARED_FAVORITES_PAGE_MESSAGE": {
+    "uuid": "3ae5ab42-95e0-5135-8791-256830328a2b",
+    "id": "UI_SHARED_FAVORITES_PAGE_MESSAGE",
+    "path": "shared-layout.favorites-page.display.message",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/shared-layout.ts",
+    "sourceComponent": "SHARED_LAYOUT",
+    "sourceLine": 630,
+    "feature": "shared-layout"
+  },
+  "UI_AUTH_SHARED_PAGE": {
+    "uuid": "eba0702b-76d4-517a-9b39-5d01f15c59e8",
+    "id": "UI_AUTH_SHARED_PAGE",
+    "path": "auth.shared.layout.page",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/shared-layout.ts",
+    "sourceComponent": "SHARED_LAYOUT",
+    "sourceLine": 564,
+    "feature": "auth"
+  },
   "UI_HOME_STRUCTURE_HOME_L14": {
     "uuid": "7dad3c32-2a07-52e1-9d2c-d01c6357148b",
     "id": "UI_HOME_STRUCTURE_HOME_L14",
@@ -12258,6 +12538,136 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "sourceLine": 534,
     "feature": "home"
   },
+  "UI_ERROR_BOUNDARY_APP_NOT_FOUND_CONTAINER": {
+    "uuid": "a75013fb-1803-5e86-8c22-947942ceee1c",
+    "id": "UI_ERROR_BOUNDARY_APP_NOT_FOUND_CONTAINER",
+    "path": "error-boundary.app-not-found.layout.container",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/error-boundary.ts",
+    "sourceComponent": "ERROR_BOUNDARY",
+    "sourceLine": 131,
+    "feature": "error-boundary"
+  },
+  "UI_ERROR_BOUNDARY_APP_NOT_FOUND_TITLE": {
+    "uuid": "997eba42-5b13-5dcb-a8b0-acdce0937ce5",
+    "id": "UI_ERROR_BOUNDARY_APP_NOT_FOUND_TITLE",
+    "path": "error-boundary.app-not-found.display.title",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/error-boundary.ts",
+    "sourceComponent": "ERROR_BOUNDARY",
+    "sourceLine": 143,
+    "feature": "error-boundary"
+  },
+  "UI_ERROR_BOUNDARY_APP_NOT_FOUND_MESSAGE": {
+    "uuid": "6fbbac53-0df9-5d32-88b1-ed3196200a20",
+    "id": "UI_ERROR_BOUNDARY_APP_NOT_FOUND_MESSAGE",
+    "path": "error-boundary.app-not-found.display.message",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/error-boundary.ts",
+    "sourceComponent": "ERROR_BOUNDARY",
+    "sourceLine": 155,
+    "feature": "error-boundary"
+  },
+  "UI_ERROR_BOUNDARY_APP_NOT_FOUND_HOME": {
+    "uuid": "3d5ec3f3-2ff0-55e8-af1e-7655321406fa",
+    "id": "UI_ERROR_BOUNDARY_APP_NOT_FOUND_HOME",
+    "path": "error-boundary.app-not-found.actions.home-link",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/error-boundary.ts",
+    "sourceComponent": "ERROR_BOUNDARY",
+    "sourceLine": 167,
+    "feature": "error-boundary"
+  },
+  "UI_SHARED_NOTIFICATIONS_PAGE_CONTAINER": {
+    "uuid": "a3538c15-0f03-58e2-8fd1-6eb3770d99a8",
+    "id": "UI_SHARED_NOTIFICATIONS_PAGE_CONTAINER",
+    "path": "shared-layout.notifications-page.layout.container",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/shared-layout.ts",
+    "sourceComponent": "SHARED_LAYOUT",
+    "sourceLine": 568,
+    "feature": "shared-layout"
+  },
+  "UI_SHARED_NOTIFICATIONS_PAGE_TITLE": {
+    "uuid": "7f3f4620-fb4a-5a7f-be41-283a6f195d79",
+    "id": "UI_SHARED_NOTIFICATIONS_PAGE_TITLE",
+    "path": "shared-layout.notifications-page.display.title",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/shared-layout.ts",
+    "sourceComponent": "SHARED_LAYOUT",
+    "sourceLine": 580,
+    "feature": "shared-layout"
+  },
+  "UI_SHARED_NOTIFICATIONS_PAGE_MESSAGE": {
+    "uuid": "bc6c6015-1478-5416-8d79-c0bb6b26ea94",
+    "id": "UI_SHARED_NOTIFICATIONS_PAGE_MESSAGE",
+    "path": "shared-layout.notifications-page.display.message",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/shared-layout.ts",
+    "sourceComponent": "SHARED_LAYOUT",
+    "sourceLine": 592,
+    "feature": "shared-layout"
+  },
+  "UI_SHARED_ORDERS_PAGE_CONTAINER": {
+    "uuid": "9ee5c2dc-661a-5129-9c3e-3dda68a70fb7",
+    "id": "UI_SHARED_ORDERS_PAGE_CONTAINER",
+    "path": "shared-layout.orders-page.layout.container",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/shared-layout.ts",
+    "sourceComponent": "SHARED_LAYOUT",
+    "sourceLine": 644,
+    "feature": "shared-layout"
+  },
+  "UI_SHARED_ORDERS_PAGE_TITLE": {
+    "uuid": "6aec63a5-4177-588c-af27-cc37d8a2eda6",
+    "id": "UI_SHARED_ORDERS_PAGE_TITLE",
+    "path": "shared-layout.orders-page.display.title",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/shared-layout.ts",
+    "sourceComponent": "SHARED_LAYOUT",
+    "sourceLine": 656,
+    "feature": "shared-layout"
+  },
+  "UI_SHARED_ORDERS_PAGE_MESSAGE": {
+    "uuid": "4224ece0-7581-5b21-a01b-92beab060387",
+    "id": "UI_SHARED_ORDERS_PAGE_MESSAGE",
+    "path": "shared-layout.orders-page.display.message",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/shared-layout.ts",
+    "sourceComponent": "SHARED_LAYOUT",
+    "sourceLine": 668,
+    "feature": "shared-layout"
+  },
+  "UI_SHARED_PROFILE_PAGE_CONTAINER": {
+    "uuid": "1473978a-daef-5c7d-bbf2-b968b0968e4b",
+    "id": "UI_SHARED_PROFILE_PAGE_CONTAINER",
+    "path": "shared-layout.profile-page.layout.container",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/shared-layout.ts",
+    "sourceComponent": "SHARED_LAYOUT",
+    "sourceLine": 682,
+    "feature": "shared-layout"
+  },
+  "UI_SHARED_PROFILE_PAGE_TITLE": {
+    "uuid": "fa83d2a7-f743-5548-82a0-f93954174b12",
+    "id": "UI_SHARED_PROFILE_PAGE_TITLE",
+    "path": "shared-layout.profile-page.display.title",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/shared-layout.ts",
+    "sourceComponent": "SHARED_LAYOUT",
+    "sourceLine": 694,
+    "feature": "shared-layout"
+  },
+  "UI_SHARED_PROFILE_PAGE_MESSAGE": {
+    "uuid": "159ce22e-674f-592d-9ac4-145409ac25e3",
+    "id": "UI_SHARED_PROFILE_PAGE_MESSAGE",
+    "path": "shared-layout.profile-page.display.message",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/shared-layout.ts",
+    "sourceComponent": "SHARED_LAYOUT",
+    "sourceLine": 706,
+    "feature": "shared-layout"
+  },
   "UI_SPLASH_MAINTENANCE_CARD": {
     "uuid": "14c91eff-9944-5b24-988f-b5e5d8b9ed5a",
     "id": "UI_SPLASH_MAINTENANCE_CARD",
@@ -12267,16 +12677,6 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "sourceComponent": "SPLASH",
     "sourceLine": 54,
     "feature": "splash"
-  },
-  "UI_AUTH_SHARED_PAGE": {
-    "uuid": "eba0702b-76d4-517a-9b39-5d01f15c59e8",
-    "id": "UI_AUTH_SHARED_PAGE",
-    "path": "auth.shared.layout.page",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/shared-layout.ts",
-    "sourceComponent": "SHARED_LAYOUT",
-    "sourceLine": 566,
-    "feature": "auth"
   },
   "UI_AUTH_SHARED_FORM_CARD": {
     "uuid": "91dd78ed-2152-5cca-85d9-fdcbcc6684f0",
@@ -16115,7 +16515,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/shared-layout.ts",
     "sourceComponent": "SHARED_LAYOUT",
-    "sourceLine": 173,
+    "sourceLine": 176,
     "feature": "shared-layout"
   },
   "UI_SHARED_BOTTOM_NAV_NOTIFICATIONS": {

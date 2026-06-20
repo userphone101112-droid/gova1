@@ -87,6 +87,7 @@ function normalizeManifestIdentity(identity: ManifestIdentity): ManifestIdentity
     previousIds: identity.previousIds ?? [],
     previousPaths: identity.previousPaths ?? [],
     aliases: identity.aliases ?? [],
+    ...(identity.repeatable === true ? { repeatable: true } : {}),
   };
 }
 
@@ -199,24 +200,10 @@ function materializeIdentityBlock(
   return `{\n${nextBody}\n${indent.slice(0, -2)}} as const`;
 }
 
-function materializeFile(filePath: string, manifest: Manifest | null): ManifestIdentity[] {
-  const originalContent = readFileSync(filePath, 'utf-8');
-  let content = originalContent;
-  const identities: ManifestIdentity[] = [];
-
-  content = content.replace(
-    /{\r?\n(\s*)([^{}]*?\bid:\s*'[^']+'[^{}]*?\bpath:\s*'[^']+'[^{}]*?)\r?\n\s*}\s+as const/g,
-    (fullMatch, indent: string, body: string) =>
-      materializeIdentityBlock(fullMatch, indent, body, manifest, identities)
-  );
-
-  if (content !== originalContent) {
-    writeFileSync(filePath, content, 'utf-8');
-  }
-  return identities;
-}
-
-function writeManifest(identities: ManifestIdentity[], previousManifest: Manifest | null) {
+function buildManifest(
+  identities: ManifestIdentity[],
+  previousManifest: Manifest | null
+): Manifest {
   const unique = [
     ...new Map(identities.map((identity) => [identity.uuid, identity])).values(),
   ].sort((a, b) => a.id.localeCompare(b.id));
@@ -232,23 +219,80 @@ function writeManifest(identities: ManifestIdentity[], previousManifest: Manifes
       .map((identity) => [identity.uuid, identity])
   );
 
-  const manifest: Manifest = {
+  return {
     version: 1,
     namespace: UI_UUID_NAMESPACE,
     generatedAt: new Date().toISOString(),
     identities: Object.fromEntries(unique.map((identity) => [identity.uuid, identity])),
     removedIdentities,
   };
+}
+
+function normalizeManifestForCompare(manifest: Manifest) {
+  return {
+    version: manifest.version,
+    namespace: manifest.namespace,
+    identities: manifest.identities,
+    removedIdentities: manifest.removedIdentities,
+  };
+}
+
+function materializeFile(
+  filePath: string,
+  manifest: Manifest | null,
+  checkOnly: boolean
+): ManifestIdentity[] {
+  const originalContent = readFileSync(filePath, 'utf-8');
+  let content = originalContent;
+  const identities: ManifestIdentity[] = [];
+
+  content = content.replace(
+    /{\r?\n(\s*)([^{}]*?\bid:\s*'[^']+'[^{}]*?\bpath:\s*'[^']+'[^{}]*?)\r?\n\s*}\s+as const/g,
+    (fullMatch, indent: string, body: string) =>
+      materializeIdentityBlock(fullMatch, indent, body, manifest, identities)
+  );
+
+  if (content !== originalContent) {
+    if (checkOnly) {
+      throw new Error(
+        `Registry source stale: ${filePath} is missing materialized UUIDs. Run: npm run registry:materialize-uuids`
+      );
+    }
+    writeFileSync(filePath, content, 'utf-8');
+  }
+  return identities;
+}
+
+function writeManifest(identities: ManifestIdentity[], previousManifest: Manifest | null) {
+  const manifest = buildManifest(identities, previousManifest);
 
   mkdirSync(dirname(MANIFEST_PATH), { recursive: true });
   writeFileSync(MANIFEST_PATH, `${JSON.stringify(manifest, null, 2)}\n`, 'utf-8');
 }
 
 function main() {
+  const checkOnly = process.argv.includes('--check');
   const previousManifest = readManifest();
   const allIdentities = REGISTRY_DIRS.flatMap((dir) => listTsFiles(dir)).flatMap((file) =>
-    materializeFile(file, previousManifest)
+    materializeFile(file, previousManifest, checkOnly)
   );
+
+  if (checkOnly) {
+    const expected = buildManifest(allIdentities, previousManifest);
+    const onDisk = readManifest();
+    if (!onDisk) {
+      console.error('❌ uuid-manifest.json is missing. Run: npm run registry:materialize-uuids');
+      process.exit(1);
+    }
+    const expectedJson = JSON.stringify(normalizeManifestForCompare(expected));
+    const onDiskJson = JSON.stringify(normalizeManifestForCompare(onDisk));
+    if (expectedJson !== onDiskJson) {
+      console.error('❌ uuid-manifest.json is stale. Run: npm run registry:materialize-uuids');
+      process.exit(1);
+    }
+    console.log(`✅ uuid-manifest.json is up to date (${allIdentities.length} identities)`);
+    return;
+  }
 
   writeManifest(allIdentities, previousManifest);
   console.log(`Materialized ${allIdentities.length} UI UUIDs.`);

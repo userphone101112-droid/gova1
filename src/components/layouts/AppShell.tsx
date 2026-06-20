@@ -11,7 +11,7 @@ interface AppShellProps {
 
 /**
  * AppShell wraps in-app routes with AppHeader, AppSidebar (drawer), and BottomNavBar.
- * Applied globally via `src/app/(shell)/layout.tsx` — add new pages under `(shell)/`.
+ * Applied via `src/app/(app)/layout.tsx` — add new pages under `(app)/`.
  */
 export function AppShell({ children }: AppShellProps) {
   return (

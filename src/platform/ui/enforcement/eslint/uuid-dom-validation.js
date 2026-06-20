@@ -134,13 +134,6 @@ function validateOpeningElement(node, registryPaths, filename = '') {
   return { valid: true, path: result.path };
 }
 
-function extractRegistryPathFromOpeningElement(node, registryPaths) {
-  const uuidAttr = getAttribute(node, 'data-ui-uuid');
-  if (!uuidAttr?.value || uuidAttr.value.type !== 'JSXExpressionContainer') return null;
-  const result = validateRegistryUuidExpression(uuidAttr.value.expression, registryPaths, filename);
-  return result.valid ? result.path : null;
-}
-
 module.exports = {
   UUID_REGEX,
   loadRegistryMemberPaths,
@@ -152,5 +145,4 @@ module.exports = {
   isBannedRegistryPath,
   validateRegistryUuidExpression,
   validateOpeningElement,
-  extractRegistryPathFromOpeningElement,
 };

@@ -48,6 +48,22 @@
       "languageToggle": "اللغة",
       "themeToggle": "المظهر",
       "settingsButton": "الإعدادات"
+    },
+    "notifications-page": {
+      "title": "الإشعارات",
+      "message": "هذا القسم قريباً."
+    },
+    "favorites-page": {
+      "title": "المفضلة",
+      "message": "هذا القسم قريباً."
+    },
+    "orders-page": {
+      "title": "الطلبات",
+      "message": "هذا القسم قريباً."
+    },
+    "profile-page": {
+      "title": "الملف الشخصي",
+      "message": "هذا القسم قريباً."
     }
   }
 }

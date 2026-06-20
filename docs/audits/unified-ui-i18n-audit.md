@@ -1,6 +1,6 @@
 # Unified UI + i18n Audit Report
 
-Generated: 2026-06-20T03:44:19.928Z
+Generated: 2026-06-20T04:10:33.033Z
 
 ## Executive Summary
 
@@ -9,17 +9,17 @@ Generated: 2026-06-20T03:44:19.928Z
 
 ## Phase 1: UI Registry Scan
 
-- Total UI Identifiers: 1223
+- Total UI Identifiers: 1243
 - Features: home, error-boundary, splash, shared-layout, auth, settings, merchant, onboarding, devtools, common
 
 ## Phase 2: Translation Scan
 
-- Total Translation Keys: 763
+- Total Translation Keys: 777
 - Features: auth, common, error-boundary, home, merchant, onboarding, settings, shared-layout, splash
 
 ## Phase 3: Component Usage
 
-- Used UI Identifiers: 1223
+- Used UI Identifiers: 1243
 - Used Translation Keys: 39
 - Hardcoded Text Instances: 6
 
@@ -28,9 +28,9 @@ Generated: 2026-06-20T03:44:19.928Z
 | Feature | UI Elements | Translation Keys | Bindings | Orphans UI | Orphans Translation |
 |----------|-------------|------------------|----------|------------|-------------------|
 | home | 66 | 75 | 66 | 0 | 0 |
-| error-boundary | 6 | 3 | 6 | 0 | 0 |
+| error-boundary | 14 | 9 | 14 | 0 | 0 |
 | splash | 39 | 24 | 39 | 0 | 0 |
-| shared-layout | 45 | 43 | 45 | 0 | 0 |
+| shared-layout | 57 | 51 | 57 | 0 | 0 |
 | auth | 137 | 90 | 137 | 0 | 0 |
 | settings | 174 | 62 | 174 | 0 | 0 |
 | merchant | 305 | 150 | 305 | 0 | 0 |
@@ -41,7 +41,7 @@ Generated: 2026-06-20T03:44:19.928Z
 ## Phase 5: Orphan Detection
 
 - Orphan UI Identifiers: 0
-- Orphan Translations: 627
+- Orphan Translations: 641
 - Missing Bindings: 0
 - Cross-Feature Violations: 0
 
@@ -51,5 +51,5 @@ None
 
 ## Warnings
 
-- Orphan translations: 627 found (features pending UI identity migration)
+- Orphan translations: 641 found (features pending UI identity migration)
 - Hardcoded text: 6 instance(s) found — review if intentional

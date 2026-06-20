@@ -36,8 +36,7 @@ const PATTERNS: Array<{ label: string; re: RegExp }> = [
   { label: 'data-ui-id=', re: /data-ui-id\s*=/ },
   { label: 'data-ui-path=', re: /data-ui-path\s*=/ },
   { label: 'data-ui-feature=', re: /data-ui-feature\s*=/ },
-  { label: 'uiUuid(', re: /\{\s*\.\.\.\s*uiUuid\s*\(/ },
-  { label: 'uiUuid spread', re: /\.\.\.\s*uiUuid\s*\(/ },
+  { label: 'registry/ui-uuid import', re: /from\s+['"][^'"]*registry\/ui-uuid['"]|require\s*\(\s*['"][^'"]*registry\/ui-uuid['"]\s*\)/ },
 ];
 
 function shouldScanFile(absPath: string): boolean {

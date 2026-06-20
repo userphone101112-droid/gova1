@@ -1,5 +1,6 @@
 import SplashScreen from '@/components/splash/SplashScreen';
 
-export default function Home() {
+/** Splash-only route — outside `(app)` so AppShell never wraps `/`. */
+export default function SplashRoute() {
   return <SplashScreen />;
 }

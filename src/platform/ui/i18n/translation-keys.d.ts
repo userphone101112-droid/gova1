@@ -233,6 +233,12 @@ export type errorBoundaryTranslationKey =
   | 'error-boundary.main.title'
   | 'error-boundary.main.defaultMessage'
   | 'error-boundary.main.reloadButton'
+  | 'error-boundary.app-error.title'
+  | 'error-boundary.app-error.message'
+  | 'error-boundary.app-error.retryButton'
+  | 'error-boundary.app-not-found.title'
+  | 'error-boundary.app-not-found.message'
+  | 'error-boundary.app-not-found.homeLink'
 ;
 
 // home feature translations
@@ -726,6 +732,14 @@ export type sharedLayoutTranslationKey =
   | 'shared-layout.sidebar.languageToggle'
   | 'shared-layout.sidebar.themeToggle'
   | 'shared-layout.sidebar.settingsButton'
+  | 'shared-layout.notifications-page.title'
+  | 'shared-layout.notifications-page.message'
+  | 'shared-layout.favorites-page.title'
+  | 'shared-layout.favorites-page.message'
+  | 'shared-layout.orders-page.title'
+  | 'shared-layout.orders-page.message'
+  | 'shared-layout.profile-page.title'
+  | 'shared-layout.profile-page.message'
 ;
 
 // splash feature translations

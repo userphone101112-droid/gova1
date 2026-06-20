@@ -18,7 +18,7 @@ const noLegacyUiImports = {
       legacyUiImport:
         'Legacy Ui* component "{{name}}" is removed. Use native HTML with data-ui-uuid={REGISTRY.IDENTITY.uuid}.',
       legacyFactory:
-        'Legacy factory "{{name}}" is removed. Use native HTML with data-ui-uuid or uiUuid().',
+        'Legacy factory "{{name}}" is removed. Use native HTML with data-ui-uuid={REGISTRY.IDENTITY.uuid}.',
       legacyRuntimePath:
         'Import from "@/platform/ui/runtime" is forbidden. The runtime layer has been removed.',
     },

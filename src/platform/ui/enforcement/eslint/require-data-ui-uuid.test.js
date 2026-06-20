@@ -25,7 +25,7 @@ ruleTester.run('require-data-ui-uuid', requireDataUiUuid, {
     },
     {
       code: '<option data-ui-uuid={SETTINGS.LANGUAGE_REGION.CAIRO_OPTION.uuid} />',
-      filename: 'src/app/(shell)/settings/page.tsx',
+      filename: 'src/app/(app)/settings/page.tsx',
     },
     {
       code: 'const Icon = () => (<svg data-ui-uuid={HOME.CURATED_OFFERS.CONTAINER.uuid}><path data-ui-uuid={HOME.CURATED_OFFERS.HEADER.uuid} d="M0 0" /></svg>);',
@@ -45,7 +45,7 @@ ruleTester.run('require-data-ui-uuid', requireDataUiUuid, {
     },
     {
       code: '<div data-ui-uuid={HOME.CURATED_OFFERS.CONTAINER.uuid}><option>x</option></div>',
-      filename: 'src/app/(shell)/settings/page.tsx',
+      filename: 'src/app/(app)/settings/page.tsx',
       errors: [{ messageId: 'missingUuid' }],
     },
     {
@@ -64,7 +64,7 @@ ruleTester.run('require-data-ui-uuid', requireDataUiUuid, {
       errors: [{ messageId: 'bannedGeneric' }],
     },
     {
-      code: '<section {...uiUuid(HOME.PROMO_BANNER.CONTAINER)} />',
+      code: '<section {...props} />',
       filename: 'src/app/page.tsx',
       errors: [{ messageId: 'forbiddenSpread' }],
     },

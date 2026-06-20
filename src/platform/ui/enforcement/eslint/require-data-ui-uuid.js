@@ -29,7 +29,7 @@ const requireDataUiUuid = {
       missingUuid:
         'Intrinsic <{{tag}}> requires data-ui-uuid={REGISTRY.IDENTITY.uuid}. No inherited UUID from parent.',
       invalidUuid:
-        'data-ui-uuid must be data-ui-uuid={REGISTRY.PATH.uuid}. No variables, spreads, uiUuid(), or literals.',
+        'data-ui-uuid must be data-ui-uuid={REGISTRY.PATH.uuid}. No variables, spreads, or literals.',
       unknownPath: 'Unknown registry path "{{path}}". Register via registry:add.',
       bannedGeneric:
         'Banned generic identity "{{path}}". Use a dedicated element identity (not COMMON_*, DECORATIVE.*, STRUCTURE.*).',

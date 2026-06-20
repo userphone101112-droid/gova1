@@ -42,7 +42,6 @@ export * from './registry/categories';
 export { UI_REGISTRY_CONFIG } from './registry/config';
 export * from './registry/generator';
 export { UI_SOURCE_INDEX_BY_UUID } from './registry/source-index';
-// uiUuid() removed — use data-ui-uuid={IDENTITY.uuid} only
 // i18n (client)
 export { I18nProvider, useI18nContext } from './i18n/core/provider';
 export { useTranslation } from './i18n/core/useTranslation';

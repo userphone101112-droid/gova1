@@ -556,22 +556,13 @@ function scanFile(filePath: string, state: ComponentUsageResult): void {
       }
     });
 
-    // Index source locations from data-ui-uuid={REF.uuid} and uiUuid(REF)
+    // Index source locations from data-ui-uuid={REF.uuid}
     const uuidRefRegex = /data-ui-uuid=\{([A-Z_][A-Z0-9_.]*)\.uuid\}/g;
     let uuidRefMatch;
     while ((uuidRefMatch = uuidRefRegex.exec(content)) !== null) {
       const identity = REGISTRY_PATH_TO_IDENTITY.get(uuidRefMatch[1]);
       if (identity) {
         indexIdentityUsage(identity, filePath, content, uuidRefMatch.index, state);
-      }
-    }
-
-    const uiUuidSpreadRegex = /uiUuid\(([A-Z_][A-Z0-9_.]*)\)/g;
-    let uiUuidMatch;
-    while ((uiUuidMatch = uiUuidSpreadRegex.exec(content)) !== null) {
-      const identity = REGISTRY_PATH_TO_IDENTITY.get(uiUuidMatch[1]);
-      if (identity) {
-        indexIdentityUsage(identity, filePath, content, uiUuidMatch.index, state);
       }
     }
   } catch (error) {
@@ -816,6 +807,56 @@ function calculateOverallResult(
 }
 
 // ============================================================================
+// SOURCE INDEX CHECK (CI check-only — no writes)
+// ============================================================================
+
+export function buildSourceIndexByUuidForCheck(): Record<string, unknown> {
+  for (const key of Object.keys(sourceMappings)) delete sourceMappings[key];
+  for (const key of Object.keys(sourceMappingsByUuid)) delete sourceMappingsByUuid[key];
+  scanComponentUsage();
+  return { ...sourceMappingsByUuid };
+}
+
+function extractJsonExport(content: string, exportName: string): Record<string, unknown> {
+  const marker = `export const ${exportName}`;
+  const start = content.indexOf(marker);
+  if (start === -1) {
+    throw new Error(`Missing export ${exportName} in source-index.ts`);
+  }
+  const eq = content.indexOf('=', start);
+  const open = content.indexOf('{', eq);
+  if (open === -1) {
+    throw new Error(`Malformed export ${exportName}`);
+  }
+
+  let depth = 0;
+  for (let i = open; i < content.length; i++) {
+    if (content[i] === '{') depth += 1;
+    else if (content[i] === '}') {
+      depth -= 1;
+      if (depth === 0) {
+        return JSON.parse(content.slice(open, i + 1));
+      }
+    }
+  }
+  throw new Error(`Unterminated JSON for ${exportName}`);
+}
+
+function checkSourceIndexOnly(): void {
+  const sourceIndexPath = join(process.cwd(), 'src', 'platform', 'ui', 'registry', 'source-index.ts');
+  const onDisk = readFileSync(sourceIndexPath, 'utf-8');
+  const onDiskByUuid = extractJsonExport(onDisk, 'UI_SOURCE_INDEX_BY_UUID');
+  const freshByUuid = buildSourceIndexByUuidForCheck();
+
+  if (JSON.stringify(onDiskByUuid) !== JSON.stringify(freshByUuid)) {
+    console.error('❌ source-index.ts is stale. Run: npm run audit:unified-ui-i18n');
+    process.exit(1);
+  }
+
+  console.log(`✅ source-index.ts is up to date (${Object.keys(freshByUuid).length} entries)`);
+}
+
+// ============================================================================
 // MAIN AUDIT FUNCTION
 // ============================================================================
 
@@ -1019,7 +1060,11 @@ ${result.overall.warnings.length > 0 ? result.overall.warnings.map(w => `- ${w}`
 }
 
 if (require.main === module) {
-  main();
+  if (process.argv.includes('--check-source-index')) {
+    checkSourceIndexOnly();
+  } else {
+    main();
+  }
 }
 
 export { main as auditUnifiedUiI18n };

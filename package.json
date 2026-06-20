@@ -17,7 +17,7 @@
     "lint:fix": "eslint src --fix",
     "typecheck": "tsc --noEmit",
     "test": "jest",
-    "test:eslint-ui": "node src/platform/ui/enforcement/eslint/require-data-ui-uuid.test.js",
+    "test:eslint-ui": "node src/platform/ui/enforcement/eslint/require-data-ui-uuid.test.js && node src/platform/ui/enforcement/eslint/ui-uuid-ban.test.js",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "db:export": "tsx scripts/export-to-json.ts",

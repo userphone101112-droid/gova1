@@ -48,6 +48,22 @@
       "languageToggle": "Language",
       "themeToggle": "Theme",
       "settingsButton": "Settings"
+    },
+    "notifications-page": {
+      "title": "Notifications",
+      "message": "This section is coming soon."
+    },
+    "favorites-page": {
+      "title": "Favorites",
+      "message": "This section is coming soon."
+    },
+    "orders-page": {
+      "title": "Orders",
+      "message": "This section is coming soon."
+    },
+    "profile-page": {
+      "title": "Profile",
+      "message": "This section is coming soon."
     }
   }
 }
