@@ -1,10 +1,11 @@
 /**
  * UI Identity Generator - Professional Helper Functions
- * 
+ *
  * Generates UI Identities automatically based on hierarchy and context.
  * Provides 100% deterministic results with scalability and extensibility.
  */
 
+import { createDeterministicUiUuid } from './identity-uuid';
 import type { UiIdentity } from './types';
 
 export interface UiIdentityContext {
@@ -65,10 +66,13 @@ export function generateUiIdentity(
   category: 'action' | 'input' | 'navigation' | 'display' | 'container'
 ): UiIdentity {
   const now = new Date().toISOString();
+  const id = generateUiId(context);
 
   return {
-    id: generateUiId(context),
+    uuid: createDeterministicUiUuid(id),
+    id,
     path: generateUiPath(context),
+    lifecycle: 'active',
     description,
     category,
     feature: context.feature,
@@ -180,7 +184,7 @@ export function validateUiIdentityContext(context: UiIdentityContext): boolean {
  */
 export function parseUiPath(path: string): UiIdentityContext {
   const parts = path.split('.');
-  
+
   return {
     feature: parts[0] || '',
     section: parts[1],

@@ -9,7 +9,7 @@ export * from './registry/categories';
 export type { UiIdentity } from './registry/types';
 export { UI_REGISTRY_CONFIG } from './registry/config';
 export * from './registry/generator';
-export { UI_SOURCE_INDEX } from './registry/source-index';
+export { UI_SOURCE_INDEX, UI_SOURCE_INDEX_BY_UUID } from './registry/source-index';
 export type { UiSourceLocation } from './registry/source-index';
 
 // i18n (client)

@@ -1,7 +1,9 @@
-import { NextResponse } from 'next/server';
 import fs from 'fs/promises';
 import path from 'path';
-import { UI_ID_MAP } from '@/platform/ui';
+
+import { NextResponse } from 'next/server';
+
+import { getUiIdentityUuid, UI_ID_MAP, UI_UUID_MAP } from '@/platform/ui';
 
 // Define the type for our inspector data
 interface InspectorData {
@@ -16,6 +18,9 @@ interface InspectorData {
     attribute3: boolean;
     dataUiPath: string;
     dataUiFeature: string;
+    dataUiUuid: string;
+    dataUiInstanceId: string;
+    dataUiIdentityKey: string;
     updatedAt: string;
   };
 }
@@ -28,7 +33,7 @@ async function readData(): Promise<InspectorData> {
   try {
     const data = await fs.readFile(DATA_FILE_PATH, 'utf8');
     return JSON.parse(data) as InspectorData;
-  } catch (error) {
+  } catch {
     // If file doesn't exist, return empty object
     return {};
   }
@@ -58,7 +63,9 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
     const { 
-      uiId, 
+      uiId,
+      uiUuid,
+      uiInstanceId,
       databaseEnabled, 
       inf1, 
       inf2, 
@@ -69,18 +76,23 @@ export async function POST(request: Request) {
       attribute3 
     } = body;
 
-    if (!uiId) {
+    if (!uiId && !uiUuid) {
       return NextResponse.json(
-        { error: 'Missing uiId parameter' },
+        { error: 'Missing uiId or uiUuid parameter' },
         { status: 400 }
       );
     }
 
     const data = await readData();
-    const identity = UI_ID_MAP[uiId];
+    const identity = uiUuid ? UI_UUID_MAP[uiUuid] : UI_ID_MAP[uiId];
+    const resolvedUuid = identity ? getUiIdentityUuid(identity) : uiUuid || '';
+    const resolvedInstanceId = uiInstanceId === undefined || uiInstanceId === null ? '' : String(uiInstanceId);
+    const storageKey = resolvedUuid && resolvedInstanceId
+      ? `${resolvedUuid}:${resolvedInstanceId}`
+      : resolvedUuid || uiId;
     
     // Update the data
-    data[uiId] = {
+    data[storageKey] = {
       databaseEnabled: databaseEnabled ?? false,
       inf1: inf1 || '',
       inf2: inf2 || '',
@@ -91,12 +103,15 @@ export async function POST(request: Request) {
       attribute3: attribute3 ?? false,
       dataUiPath: identity?.path || '',
       dataUiFeature: identity?.feature || '',
+      dataUiUuid: resolvedUuid,
+      dataUiInstanceId: resolvedInstanceId,
+      dataUiIdentityKey: storageKey,
       updatedAt: new Date().toISOString(),
     };
 
     await writeData(data);
 
-    return NextResponse.json({ success: true, uiId });
+    return NextResponse.json({ success: true, uiId: identity?.id || uiId, uiUuid: storageKey });
   } catch (error) {
     console.error('Error saving inspector data:', error);
     return NextResponse.json(

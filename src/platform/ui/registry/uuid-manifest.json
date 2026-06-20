@@ -1,0 +1,4988 @@
+{
+  "version": 1,
+  "namespace": "gova.ui-registry",
+  "generatedAt": "2026-06-20T02:00:22.055Z",
+  "identities": {
+    "8771d585-21d5-51cc-bb1b-910f1ae955f6": {
+      "uuid": "8771d585-21d5-51cc-bb1b-910f1ae955f6",
+      "id": "UI_AUTH_LOGIN_FORGOT_PASSWORD",
+      "path": "auth.login.form.forgot-password-link",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "11c1d460-3543-51e1-81a8-73f65fbfa30f": {
+      "uuid": "11c1d460-3543-51e1-81a8-73f65fbfa30f",
+      "id": "UI_AUTH_LOGIN_GUEST",
+      "path": "auth.login.actions.guest-login-button",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "c54deede-f606-5c7b-b214-9f3c733474c1": {
+      "uuid": "c54deede-f606-5c7b-b214-9f3c733474c1",
+      "id": "UI_AUTH_LOGIN_HEADING",
+      "path": "auth.login.display.heading",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "8437fd7a-76db-5bd7-a29a-ce645906a1b1": {
+      "uuid": "8437fd7a-76db-5bd7-a29a-ce645906a1b1",
+      "id": "UI_AUTH_LOGIN_HERO_FOOTER",
+      "path": "auth.login.display.hero-footer",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "1ad2037f-db43-57f8-9748-9f713cf0352a": {
+      "uuid": "1ad2037f-db43-57f8-9748-9f713cf0352a",
+      "id": "UI_AUTH_LOGIN_HERO_QUOTE",
+      "path": "auth.login.display.hero-quote",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "93d1b686-6299-5719-94b5-bbe4c13f9197": {
+      "uuid": "93d1b686-6299-5719-94b5-bbe4c13f9197",
+      "id": "UI_AUTH_LOGIN_PASSWORD_INPUT",
+      "path": "auth.login.form.password-input",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "dc25839f-b4f2-5f9a-bb4b-fc15b69586e8": {
+      "uuid": "dc25839f-b4f2-5f9a-bb4b-fc15b69586e8",
+      "id": "UI_AUTH_LOGIN_PHONE_INPUT",
+      "path": "auth.login.form.phone-input",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "2b915385-0009-5b76-a965-be63639a33c4": {
+      "uuid": "2b915385-0009-5b76-a965-be63639a33c4",
+      "id": "UI_AUTH_LOGIN_SIGNIN_AGAIN",
+      "path": "auth.login.actions.signin-again-button",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "1157333a-96f5-5559-b177-52ec1295ab3b": {
+      "uuid": "1157333a-96f5-5559-b177-52ec1295ab3b",
+      "id": "UI_AUTH_LOGIN_SIGNUP_DIVIDER",
+      "path": "auth.login.display.signup-divider",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "6a903f45-fd9e-56a8-86c3-61234587bbf6": {
+      "uuid": "6a903f45-fd9e-56a8-86c3-61234587bbf6",
+      "id": "UI_AUTH_LOGIN_SIGNUP_LINK",
+      "path": "auth.login.actions.signup-link",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "60c7edec-65c6-56b7-a181-27aef7180451": {
+      "uuid": "60c7edec-65c6-56b7-a181-27aef7180451",
+      "id": "UI_AUTH_LOGIN_SUBHEADING",
+      "path": "auth.login.display.subheading",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "daaef5f8-7bd6-5be7-b540-defa4ad196b1": {
+      "uuid": "daaef5f8-7bd6-5be7-b540-defa4ad196b1",
+      "id": "UI_AUTH_LOGIN_SUBMIT",
+      "path": "auth.login.form.submit-button",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "1679e034-605c-5f77-a5a1-1db657580559": {
+      "uuid": "1679e034-605c-5f77-a5a1-1db657580559",
+      "id": "UI_AUTH_LOGIN_SUBMITTING",
+      "path": "auth.login.submitting-button",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "9383019e-718f-56ab-9d3f-0920d2a10a5d": {
+      "uuid": "9383019e-718f-56ab-9d3f-0920d2a10a5d",
+      "id": "UI_AUTH_LOGIN_SUCCESS_DESCRIPTION",
+      "path": "auth.login.display.success-description",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "e1b13cea-7b58-5a63-9490-ea10db7a5dd1": {
+      "uuid": "e1b13cea-7b58-5a63-9490-ea10db7a5dd1",
+      "id": "UI_AUTH_LOGIN_SUCCESS_HEADING",
+      "path": "auth.login.display.success-heading",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "4cea7814-285f-59e5-b886-88860889399f": {
+      "uuid": "4cea7814-285f-59e5-b886-88860889399f",
+      "id": "UI_AUTH_LOGIN_TOGGLE_PASSWORD",
+      "path": "auth.login.toggle-password-visibility",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "4ecf8039-11c1-5808-b0d8-c48fb4f66c9e": {
+      "uuid": "4ecf8039-11c1-5808-b0d8-c48fb4f66c9e",
+      "id": "UI_AUTH_REGISTRATION_BRAND_NAME",
+      "path": "auth.registration.brand-name",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "325e1cd3-ecfd-5572-a498-8fcd6eb9a2cc": {
+      "uuid": "325e1cd3-ecfd-5572-a498-8fcd6eb9a2cc",
+      "id": "UI_AUTH_REGISTRATION_CARD_DESCRIPTION",
+      "path": "auth.registration.card-description",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "c8277664-0566-5611-b32a-97825b994e47": {
+      "uuid": "c8277664-0566-5611-b32a-97825b994e47",
+      "id": "UI_AUTH_REGISTRATION_CONFIRM_PASSWORD",
+      "path": "auth.registration.confirm-password-input",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "a964dbc5-4234-55bc-816d-c2077331e58e": {
+      "uuid": "a964dbc5-4234-55bc-816d-c2077331e58e",
+      "id": "UI_AUTH_REGISTRATION_CONTINUE",
+      "path": "auth.registration.continue-button",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "a2e038ce-c60a-56b1-8c42-afd07192831b": {
+      "uuid": "a2e038ce-c60a-56b1-8c42-afd07192831b",
+      "id": "UI_AUTH_REGISTRATION_DESCRIPTION",
+      "path": "auth.registration.description",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "c7dc86f9-88e1-5e1a-b9ce-22e7e93e69e8": {
+      "uuid": "c7dc86f9-88e1-5e1a-b9ce-22e7e93e69e8",
+      "id": "UI_AUTH_REGISTRATION_EDIT_BUTTON",
+      "path": "auth.registration.edit-button",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "2b72275a-5d33-5b4d-bb6f-bd80fd4d5293": {
+      "uuid": "2b72275a-5d33-5b4d-bb6f-bd80fd4d5293",
+      "id": "UI_AUTH_REGISTRATION_HEADING",
+      "path": "auth.registration.heading",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "3f273638-fcbf-588b-99e9-625a0c5888bd": {
+      "uuid": "3f273638-fcbf-588b-99e9-625a0c5888bd",
+      "id": "UI_AUTH_REGISTRATION_OTP_DESCRIPTION",
+      "path": "auth.registration.otp-description",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "911d441a-5b04-5445-929d-4af406c29e2f": {
+      "uuid": "911d441a-5b04-5445-929d-4af406c29e2f",
+      "id": "UI_AUTH_REGISTRATION_OTP_INPUT",
+      "path": "auth.registration.otp-input",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "55dc966c-7955-5b5f-84e2-782eabe8ae41": {
+      "uuid": "55dc966c-7955-5b5f-84e2-782eabe8ae41",
+      "id": "UI_AUTH_REGISTRATION_OTP_LABEL",
+      "path": "auth.registration.otp-label",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "44b2b3d2-8d19-5133-8732-c708bb730df1": {
+      "uuid": "44b2b3d2-8d19-5133-8732-c708bb730df1",
+      "id": "UI_AUTH_REGISTRATION_PASSWORD_INPUT",
+      "path": "auth.registration.password-input",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "cd056997-595b-5918-91d9-c04df6798496": {
+      "uuid": "cd056997-595b-5918-91d9-c04df6798496",
+      "id": "UI_AUTH_REGISTRATION_PASSWORD_STRENGTH",
+      "path": "auth.registration.password-strength-label",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "a1fed973-0ee2-517c-8c71-b511dc3a4a02": {
+      "uuid": "a1fed973-0ee2-517c-8c71-b511dc3a4a02",
+      "id": "UI_AUTH_REGISTRATION_PHONE_INPUT",
+      "path": "auth.registration.phone-input",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "94739038-3c4f-5c81-b19e-4eaebc2358d7": {
+      "uuid": "94739038-3c4f-5c81-b19e-4eaebc2358d7",
+      "id": "UI_AUTH_REGISTRATION_PHONE_REQUIRED",
+      "path": "auth.registration.phone-required-notice",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "9afd2ced-6741-533c-8b5e-18af5206418e": {
+      "uuid": "9afd2ced-6741-533c-8b5e-18af5206418e",
+      "id": "UI_AUTH_REGISTRATION_PHONE_VERIFIED",
+      "path": "auth.registration.phone-verified-message",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "aea145a6-37e5-5029-961b-2ee8e1f1595b": {
+      "uuid": "aea145a6-37e5-5029-961b-2ee8e1f1595b",
+      "id": "UI_AUTH_REGISTRATION_REQ_LOWER",
+      "path": "auth.registration.req-lowercase",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "9d7afff3-a2d9-5e40-b2cb-509d4aeb07a2": {
+      "uuid": "9d7afff3-a2d9-5e40-b2cb-509d4aeb07a2",
+      "id": "UI_AUTH_REGISTRATION_REQ_MIN",
+      "path": "auth.registration.req-min-length",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "13d0a784-7c3f-573d-8318-160ac157d603": {
+      "uuid": "13d0a784-7c3f-573d-8318-160ac157d603",
+      "id": "UI_AUTH_REGISTRATION_REQ_NUMBER",
+      "path": "auth.registration.req-number",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "79396ddc-0990-592f-86f9-1f12ba280d65": {
+      "uuid": "79396ddc-0990-592f-86f9-1f12ba280d65",
+      "id": "UI_AUTH_REGISTRATION_REQ_SPECIAL",
+      "path": "auth.registration.req-special",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "839e43f3-70bf-53b0-a341-db3db484167a": {
+      "uuid": "839e43f3-70bf-53b0-a341-db3db484167a",
+      "id": "UI_AUTH_REGISTRATION_REQ_UPPER",
+      "path": "auth.registration.req-uppercase",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "bb4df5a4-f94c-51c3-9111-ff3efb834165": {
+      "uuid": "bb4df5a4-f94c-51c3-9111-ff3efb834165",
+      "id": "UI_AUTH_REGISTRATION_RESEND_BUTTON",
+      "path": "auth.registration.resend-button",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "89f7b3b7-4e1f-5a54-b585-3c997944e5de": {
+      "uuid": "89f7b3b7-4e1f-5a54-b585-3c997944e5de",
+      "id": "UI_AUTH_REGISTRATION_SIGNIN_LINK",
+      "path": "auth.registration.signin-link",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "e7342b91-ba9f-5612-91db-82ebfc351e8c": {
+      "uuid": "e7342b91-ba9f-5612-91db-82ebfc351e8c",
+      "id": "UI_AUTH_REGISTRATION_SIGNIN_PROMPT",
+      "path": "auth.registration.signin-prompt",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "6fa54f24-ff7e-5c83-a8a5-1a9e8977b74d": {
+      "uuid": "6fa54f24-ff7e-5c83-a8a5-1a9e8977b74d",
+      "id": "UI_AUTH_REGISTRATION_STRENGTH_FAIR",
+      "path": "auth.registration.strength-fair",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "59ada5af-8b08-55c8-b351-93dd9ac2f816": {
+      "uuid": "59ada5af-8b08-55c8-b351-93dd9ac2f816",
+      "id": "UI_AUTH_REGISTRATION_STRENGTH_GOOD",
+      "path": "auth.registration.strength-good",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "681b4e19-d725-530a-a16e-a38f1459bc10": {
+      "uuid": "681b4e19-d725-530a-a16e-a38f1459bc10",
+      "id": "UI_AUTH_REGISTRATION_STRENGTH_STRONG",
+      "path": "auth.registration.strength-strong",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "61cc3696-71ec-5759-9b97-24a01e5eaa73": {
+      "uuid": "61cc3696-71ec-5759-9b97-24a01e5eaa73",
+      "id": "UI_AUTH_REGISTRATION_STRENGTH_WEAK",
+      "path": "auth.registration.strength-weak",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "d9ad77f4-fa94-5b1d-9c1e-921e2a94949f": {
+      "uuid": "d9ad77f4-fa94-5b1d-9c1e-921e2a94949f",
+      "id": "UI_AUTH_REGISTRATION_SUBMIT",
+      "path": "auth.registration.submit-button",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "0674e208-4ab7-5bcd-a071-4ef250f59f2f": {
+      "uuid": "0674e208-4ab7-5bcd-a071-4ef250f59f2f",
+      "id": "UI_AUTH_REGISTRATION_SUBMITTING",
+      "path": "auth.registration.submitting-button",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "ecb64d3a-8163-5609-bb32-d374b3fbeec3": {
+      "uuid": "ecb64d3a-8163-5609-bb32-d374b3fbeec3",
+      "id": "UI_AUTH_REGISTRATION_SUCCESS_DESCRIPTION",
+      "path": "auth.registration.success-description",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "dab3ef8e-1b17-5f75-b73c-bf2c566325ab": {
+      "uuid": "dab3ef8e-1b17-5f75-b73c-bf2c566325ab",
+      "id": "UI_AUTH_REGISTRATION_SUCCESS_HEADING",
+      "path": "auth.registration.success-heading",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "864c7832-f232-5f91-9240-6f288dca5b3f": {
+      "uuid": "864c7832-f232-5f91-9240-6f288dca5b3f",
+      "id": "UI_AUTH_REGISTRATION_TITLE",
+      "path": "auth.registration.title",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "68273140-e384-5b9b-9241-946ab3302f4d": {
+      "uuid": "68273140-e384-5b9b-9241-946ab3302f4d",
+      "id": "UI_AUTH_REGISTRATION_TOGGLE_PASSWORD",
+      "path": "auth.registration.toggle-password-visibility",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "7598a99a-b039-526d-bd4e-f504b16dfe2f": {
+      "uuid": "7598a99a-b039-526d-bd4e-f504b16dfe2f",
+      "id": "UI_AUTH_REGISTRATION_VERIFY_BUTTON",
+      "path": "auth.registration.verify-button",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "3b0a97fb-b5b8-52f6-b7c7-0371a4ba7214": {
+      "uuid": "3b0a97fb-b5b8-52f6-b7c7-0371a4ba7214",
+      "id": "UI_AUTH_REGISTRATION_VERIFY_OTP",
+      "path": "auth.registration.verify-otp-button",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "54c78009-400c-5916-9ea4-998b723cb518": {
+      "uuid": "54c78009-400c-5916-9ea4-998b723cb518",
+      "id": "UI_AUTH_REGISTRATION_VERIFYING_OTP",
+      "path": "auth.registration.verifying-otp-button",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "abfa06b3-fc34-5116-b436-6749fd78257c": {
+      "uuid": "abfa06b3-fc34-5116-b436-6749fd78257c",
+      "id": "UI_AUTH_SHARED_BRAND_ICON",
+      "path": "auth.shared.display.brand-icon",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "87e3affa-e857-53e5-ab74-417cde48182f": {
+      "uuid": "87e3affa-e857-53e5-ab74-417cde48182f",
+      "id": "UI_AUTH_SHARED_BRAND_ROW",
+      "path": "auth.shared.display.brand-row",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "91dd78ed-2152-5cca-85d9-fdcbcc6684f0": {
+      "uuid": "91dd78ed-2152-5cca-85d9-fdcbcc6684f0",
+      "id": "UI_AUTH_SHARED_FORM_CARD",
+      "path": "auth.shared.layout.form-card",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "3b53d840-850a-583d-828f-1b2a11fb1eaf": {
+      "uuid": "3b53d840-850a-583d-828f-1b2a11fb1eaf",
+      "id": "UI_AUTH_SHARED_HERO",
+      "path": "auth.shared.layout.hero",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "d99974ba-acf6-5a73-bd80-479ceb58b015": {
+      "uuid": "d99974ba-acf6-5a73-bd80-479ceb58b015",
+      "id": "UI_AUTH_SHARED_HERO_DECOR",
+      "path": "auth.shared.layout.hero-decor",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "98b01224-b44d-500b-a266-261ada75d809": {
+      "uuid": "98b01224-b44d-500b-a266-261ada75d809",
+      "id": "UI_AUTH_SHARED_HERO_HIGHLIGHTS",
+      "path": "auth.shared.display.hero-highlights",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "3bfca0df-c5b6-5e8a-b661-0219f1115c44": {
+      "uuid": "3bfca0df-c5b6-5e8a-b661-0219f1115c44",
+      "id": "UI_AUTH_SHARED_HERO_QUOTE",
+      "path": "auth.shared.display.hero-quote-block",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "b5badb5b-63bf-5074-9afb-9b9112ec494a": {
+      "uuid": "b5badb5b-63bf-5074-9afb-9b9112ec494a",
+      "id": "UI_AUTH_SHARED_HIGHLIGHT_ENCRYPTED",
+      "path": "auth.shared.display.highlight-encrypted",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "45bf5147-6dca-5e80-a573-bc690491d692": {
+      "uuid": "45bf5147-6dca-5e80-a573-bc690491d692",
+      "id": "UI_AUTH_SHARED_HIGHLIGHT_PHONE",
+      "path": "auth.shared.display.highlight-phone",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "962b50b3-69e1-5882-b8a3-835d2180bf1c": {
+      "uuid": "962b50b3-69e1-5882-b8a3-835d2180bf1c",
+      "id": "UI_AUTH_SHARED_HIGHLIGHT_SECURITY",
+      "path": "auth.shared.display.highlight-security",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "fb517f18-f5d8-5db1-aba2-a3c2d6d03b23": {
+      "uuid": "fb517f18-f5d8-5db1-aba2-a3c2d6d03b23",
+      "id": "UI_AUTH_SHARED_MOBILE_BRAND",
+      "path": "auth.shared.display.mobile-brand",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "eba0702b-76d4-517a-9b39-5d01f15c59e8": {
+      "uuid": "eba0702b-76d4-517a-9b39-5d01f15c59e8",
+      "id": "UI_AUTH_SHARED_PAGE",
+      "path": "auth.shared.layout.page",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "20ca7187-6cdb-500e-9a3e-c5dd0435a9dc": {
+      "uuid": "20ca7187-6cdb-500e-9a3e-c5dd0435a9dc",
+      "id": "UI_AUTH_SHARED_PASSWORD_PLACEHOLDER",
+      "path": "auth.shared.password-placeholder",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "74c75fb6-6f83-5ad1-a0dd-09043ee5462f": {
+      "uuid": "74c75fb6-6f83-5ad1-a0dd-09043ee5462f",
+      "id": "UI_AUTH_SHARED_PHONE_PLACEHOLDER",
+      "path": "auth.shared.phone-placeholder",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "cfe55c9f-d150-5bfe-adac-3c85f063b6d4": {
+      "uuid": "cfe55c9f-d150-5bfe-adac-3c85f063b6d4",
+      "id": "UI_COMMON_BADGE_LABEL",
+      "path": "common.components.badge.label",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "5efd4cdd-b439-5daa-98ba-905fa6e3620c": {
+      "uuid": "5efd4cdd-b439-5daa-98ba-905fa6e3620c",
+      "id": "UI_COMMON_CARD_CONTAINER",
+      "path": "common.components.card.container",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "4069ec28-7fae-5947-9a60-9c0e060bc155": {
+      "uuid": "4069ec28-7fae-5947-9a60-9c0e060bc155",
+      "id": "UI_COMMON_CARD_TITLE",
+      "path": "common.components.card.title",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "ac3041f2-3c5b-537b-ade4-a5684f020321": {
+      "uuid": "ac3041f2-3c5b-537b-ade4-a5684f020321",
+      "id": "UI_COMMON_DECORATIVE_BACKGROUND",
+      "path": "common.decorative.background",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "d12f33e7-3854-5c44-90e5-5d8562d3f06a": {
+      "uuid": "d12f33e7-3854-5c44-90e5-5d8562d3f06a",
+      "id": "UI_COMMON_DECORATIVE_DIVIDER",
+      "path": "common.decorative.divider",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "012b2322-e2b9-5a3d-aeac-dce4bea4c2f7": {
+      "uuid": "012b2322-e2b9-5a3d-aeac-dce4bea4c2f7",
+      "id": "UI_COMMON_DECORATIVE_OVERLAY",
+      "path": "common.decorative.overlay",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "fe02463a-95dd-5833-88e3-8a30479e2609": {
+      "uuid": "fe02463a-95dd-5833-88e3-8a30479e2609",
+      "id": "UI_COMMON_DECORATIVE_SPACER",
+      "path": "common.decorative.spacer",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "785fd913-7cd8-5ec0-8f6c-41e5fc3d8812": {
+      "uuid": "785fd913-7cd8-5ec0-8f6c-41e5fc3d8812",
+      "id": "UI_COMMON_FORMS_BUTTON",
+      "path": "common.forms.button",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "a915233a-d350-50c5-8f38-1dd42ac713a7": {
+      "uuid": "a915233a-d350-50c5-8f38-1dd42ac713a7",
+      "id": "UI_COMMON_FORMS_CHECKBOX",
+      "path": "common.forms.checkbox",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "5a145113-80c1-5978-b1d2-a2691c6da286": {
+      "uuid": "5a145113-80c1-5978-b1d2-a2691c6da286",
+      "id": "UI_COMMON_FORMS_FIELDSET",
+      "path": "common.forms.fieldset",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "003d3a19-c309-5882-aed4-a6db59574f7c": {
+      "uuid": "003d3a19-c309-5882-aed4-a6db59574f7c",
+      "id": "UI_COMMON_FORMS_FORM",
+      "path": "common.forms.form",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "a917d159-1778-5988-8603-9447c3d37dde": {
+      "uuid": "a917d159-1778-5988-8603-9447c3d37dde",
+      "id": "UI_COMMON_FORMS_INPUT",
+      "path": "common.forms.input",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "4b71e663-3372-5022-a039-3299f6a1e210": {
+      "uuid": "4b71e663-3372-5022-a039-3299f6a1e210",
+      "id": "UI_COMMON_FORMS_LABEL",
+      "path": "common.forms.label",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "3e1476ea-f056-5745-a78b-9b00a3fe1833": {
+      "uuid": "3e1476ea-f056-5745-a78b-9b00a3fe1833",
+      "id": "UI_COMMON_FORMS_LEGEND",
+      "path": "common.forms.legend",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "c1a78826-e688-5ccd-ab0a-56e0d848cb3f": {
+      "uuid": "c1a78826-e688-5ccd-ab0a-56e0d848cb3f",
+      "id": "UI_COMMON_FORMS_OPTION",
+      "path": "common.forms.option",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "2791702e-fd08-5a9f-9e54-75289bac3fa9": {
+      "uuid": "2791702e-fd08-5a9f-9e54-75289bac3fa9",
+      "id": "UI_COMMON_FORMS_RADIO",
+      "path": "common.forms.radio",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "f8ac646b-e643-59dc-9ea5-48296ec80892": {
+      "uuid": "f8ac646b-e643-59dc-9ea5-48296ec80892",
+      "id": "UI_COMMON_FORMS_SELECT",
+      "path": "common.forms.select",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "8d86d2fb-4f47-5570-ba2d-62dd529d2c32": {
+      "uuid": "8d86d2fb-4f47-5570-ba2d-62dd529d2c32",
+      "id": "UI_COMMON_FORMS_SWITCH",
+      "path": "common.forms.switch",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "1e79490d-9f33-55fe-ac39-62c701f2a958": {
+      "uuid": "1e79490d-9f33-55fe-ac39-62c701f2a958",
+      "id": "UI_COMMON_FORMS_TEXTAREA",
+      "path": "common.forms.textarea",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "ea84d05d-11ba-542c-9d70-dd1f6e506b7e": {
+      "uuid": "ea84d05d-11ba-542c-9d70-dd1f6e506b7e",
+      "id": "UI_COMMON_INTERACTIVE_A",
+      "path": "common.interactive.a",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "ae8afc14-191e-5ae5-87f1-5f325c76146b": {
+      "uuid": "ae8afc14-191e-5ae5-87f1-5f325c76146b",
+      "id": "UI_COMMON_INTERACTIVE_DETAILS",
+      "path": "common.interactive.details",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "45d2dbbe-bfcc-5059-98b5-8194dc60c087": {
+      "uuid": "45d2dbbe-bfcc-5059-98b5-8194dc60c087",
+      "id": "UI_COMMON_INTERACTIVE_DIALOG",
+      "path": "common.interactive.dialog",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "260ad1aa-24a3-5f93-8679-e5ac9589ff05": {
+      "uuid": "260ad1aa-24a3-5f93-8679-e5ac9589ff05",
+      "id": "UI_COMMON_INTERACTIVE_SUMMARY",
+      "path": "common.interactive.summary",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "77d84a28-531b-56af-9dee-66b2cc4265d9": {
+      "uuid": "77d84a28-531b-56af-9dee-66b2cc4265d9",
+      "id": "UI_COMMON_LAYOUT_ARTICLE",
+      "path": "common.layout.article",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "305889c2-8d52-5879-a637-9a6018b10147": {
+      "uuid": "305889c2-8d52-5879-a637-9a6018b10147",
+      "id": "UI_COMMON_LAYOUT_ASIDE",
+      "path": "common.layout.aside",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "fb7203d1-60a8-549a-878b-654fd801dab8": {
+      "uuid": "fb7203d1-60a8-549a-878b-654fd801dab8",
+      "id": "UI_COMMON_LAYOUT_CONTAINER",
+      "path": "common.layout.container",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "f4396685-73d8-53bc-99e0-cb0bde9a4d12": {
+      "uuid": "f4396685-73d8-53bc-99e0-cb0bde9a4d12",
+      "id": "UI_COMMON_LAYOUT_FOOTER",
+      "path": "common.layout.footer",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "6c41e42b-ec26-5a16-b68d-b5dd93cfeb00": {
+      "uuid": "6c41e42b-ec26-5a16-b68d-b5dd93cfeb00",
+      "id": "UI_COMMON_LAYOUT_HEADER",
+      "path": "common.layout.header",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "add5563b-ed81-52ce-8c1d-7d755a21d1a8": {
+      "uuid": "add5563b-ed81-52ce-8c1d-7d755a21d1a8",
+      "id": "UI_COMMON_LAYOUT_MAIN",
+      "path": "common.layout.main",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "bf95bc7b-07c5-5790-a0a2-e17d09761f72": {
+      "uuid": "bf95bc7b-07c5-5790-a0a2-e17d09761f72",
+      "id": "UI_COMMON_LAYOUT_NAV",
+      "path": "common.layout.nav",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "9d6110ed-7062-5dda-b247-d6cfc5172dcc": {
+      "uuid": "9d6110ed-7062-5dda-b247-d6cfc5172dcc",
+      "id": "UI_COMMON_LAYOUT_SECTION",
+      "path": "common.layout.section",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "8c6247f2-d52a-598b-9783-7aa85f8439e1": {
+      "uuid": "8c6247f2-d52a-598b-9783-7aa85f8439e1",
+      "id": "UI_COMMON_LAYOUT_SPAN",
+      "path": "common.layout.span",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "46c4da25-f600-57e6-a22c-61a3f996e984": {
+      "uuid": "46c4da25-f600-57e6-a22c-61a3f996e984",
+      "id": "UI_COMMON_LAYOUT_WRAPPER",
+      "path": "common.layout.wrapper",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "9d16d646-873d-5c55-9bfc-b21c5d6f87db": {
+      "uuid": "9d16d646-873d-5c55-9bfc-b21c5d6f87db",
+      "id": "UI_COMMON_LISTS_LI",
+      "path": "common.lists.li",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "c0194bf6-643b-56a5-b6f5-57584277ac1f": {
+      "uuid": "c0194bf6-643b-56a5-b6f5-57584277ac1f",
+      "id": "UI_COMMON_LISTS_OL",
+      "path": "common.lists.ol",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "bc285034-6053-553f-bb0d-628a465e1a85": {
+      "uuid": "bc285034-6053-553f-bb0d-628a465e1a85",
+      "id": "UI_COMMON_LISTS_UL",
+      "path": "common.lists.ul",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "5737acf8-2dd5-55d9-81ba-4216ea8a7f0f": {
+      "uuid": "5737acf8-2dd5-55d9-81ba-4216ea8a7f0f",
+      "id": "UI_COMMON_MEDIA_AUDIO",
+      "path": "common.media.audio",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "e011e4b2-18d0-59d1-aa56-36e86d2b294f": {
+      "uuid": "e011e4b2-18d0-59d1-aa56-36e86d2b294f",
+      "id": "UI_COMMON_MEDIA_CANVAS",
+      "path": "common.media.canvas",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "7ba370ae-39d9-57b5-812a-2b3037bb2f6f": {
+      "uuid": "7ba370ae-39d9-57b5-812a-2b3037bb2f6f",
+      "id": "UI_COMMON_MEDIA_FIGCAPTION",
+      "path": "common.media.figcaption",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "4eb4c66a-2e7c-50a9-a5e3-aafc815fbcb3": {
+      "uuid": "4eb4c66a-2e7c-50a9-a5e3-aafc815fbcb3",
+      "id": "UI_COMMON_MEDIA_FIGURE",
+      "path": "common.media.figure",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "8b5e87c6-187c-5401-aa85-7364e0fe866f": {
+      "uuid": "8b5e87c6-187c-5401-aa85-7364e0fe866f",
+      "id": "UI_COMMON_MEDIA_IFRAME",
+      "path": "common.media.iframe",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "30a7bc4d-4383-5244-9fb8-012343a9ee4a": {
+      "uuid": "30a7bc4d-4383-5244-9fb8-012343a9ee4a",
+      "id": "UI_COMMON_MEDIA_IMG",
+      "path": "common.media.img",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "6342acf4-b93c-5489-9cc8-ba9e52a36b3b": {
+      "uuid": "6342acf4-b93c-5489-9cc8-ba9e52a36b3b",
+      "id": "UI_COMMON_MEDIA_PICTURE",
+      "path": "common.media.picture",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "9c8c742c-a369-52e1-8f69-f912e114994f": {
+      "uuid": "9c8c742c-a369-52e1-8f69-f912e114994f",
+      "id": "UI_COMMON_MEDIA_SVG",
+      "path": "common.media.svg",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "0b5fbc0d-f6aa-536c-ac95-9e1781e616fe": {
+      "uuid": "0b5fbc0d-f6aa-536c-ac95-9e1781e616fe",
+      "id": "UI_COMMON_MEDIA_VIDEO",
+      "path": "common.media.video",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "044ab13f-66e9-523a-87ba-9b61796b0ac4": {
+      "uuid": "044ab13f-66e9-523a-87ba-9b61796b0ac4",
+      "id": "UI_COMMON_MODAL_CLOSE",
+      "path": "common.components.modal.close-button",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "adf16d54-65e6-55fd-92ad-9cb6512361c7": {
+      "uuid": "adf16d54-65e6-55fd-92ad-9cb6512361c7",
+      "id": "UI_COMMON_MODAL_CONTAINER",
+      "path": "common.components.modal.container",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "04f136dd-d3d0-56c8-930e-a97bee4975f6": {
+      "uuid": "04f136dd-d3d0-56c8-930e-a97bee4975f6",
+      "id": "UI_COMMON_MODAL_TITLE",
+      "path": "common.components.modal.title",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "0edaaf85-15ca-59aa-8592-187bc2e48c20": {
+      "uuid": "0edaaf85-15ca-59aa-8592-187bc2e48c20",
+      "id": "UI_COMMON_SPACING_BR",
+      "path": "common.spacing.br",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "0ee9ba0f-0de2-51f8-8583-0df1caf3a342": {
+      "uuid": "0ee9ba0f-0de2-51f8-8583-0df1caf3a342",
+      "id": "UI_COMMON_SPACING_HR",
+      "path": "common.spacing.hr",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "85802ae9-ab46-512e-9afd-227316e824e8": {
+      "uuid": "85802ae9-ab46-512e-9afd-227316e824e8",
+      "id": "UI_COMMON_TABLES_TABLE",
+      "path": "common.tables.table",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "22bcb049-a6b4-50ae-81ad-2c2f4f9d992c": {
+      "uuid": "22bcb049-a6b4-50ae-81ad-2c2f4f9d992c",
+      "id": "UI_COMMON_TABLES_TBODY",
+      "path": "common.tables.tbody",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "98a88387-e84a-5fea-8040-2ec90e1633ac": {
+      "uuid": "98a88387-e84a-5fea-8040-2ec90e1633ac",
+      "id": "UI_COMMON_TABLES_TD",
+      "path": "common.tables.td",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "8ca870a3-dc4a-5d06-8c40-41ad121639f8": {
+      "uuid": "8ca870a3-dc4a-5d06-8c40-41ad121639f8",
+      "id": "UI_COMMON_TABLES_TH",
+      "path": "common.tables.th",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "098f6517-1901-5204-95f9-3d2d1b4c9c42": {
+      "uuid": "098f6517-1901-5204-95f9-3d2d1b4c9c42",
+      "id": "UI_COMMON_TABLES_THEAD",
+      "path": "common.tables.thead",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "86a86731-f24a-5fa8-b240-18bf1c1649b6": {
+      "uuid": "86a86731-f24a-5fa8-b240-18bf1c1649b6",
+      "id": "UI_COMMON_TABLES_TR",
+      "path": "common.tables.tr",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "d73f3d1e-51b1-5d5f-9a70-f81822669659": {
+      "uuid": "d73f3d1e-51b1-5d5f-9a70-f81822669659",
+      "id": "UI_COMMON_TEMPLATE_SLOT",
+      "path": "common.template.slot",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "7d733c9c-e2ba-5d61-81d2-ad8ed16aced3": {
+      "uuid": "7d733c9c-e2ba-5d61-81d2-ad8ed16aced3",
+      "id": "UI_COMMON_TEMPLATE_TEMPLATE",
+      "path": "common.template.template",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "78334282-569d-5547-9a8f-f818324552dd": {
+      "uuid": "78334282-569d-5547-9a8f-f818324552dd",
+      "id": "UI_COMMON_TYPOGRAPHY_CODE",
+      "path": "common.typography.code",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "3d587eb5-ac4b-5330-ae85-a1232c21e5de": {
+      "uuid": "3d587eb5-ac4b-5330-ae85-a1232c21e5de",
+      "id": "UI_COMMON_TYPOGRAPHY_EM",
+      "path": "common.typography.em",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "0d3defa8-fc2b-5d75-8692-92decc00fb13": {
+      "uuid": "0d3defa8-fc2b-5d75-8692-92decc00fb13",
+      "id": "UI_COMMON_TYPOGRAPHY_H1",
+      "path": "common.typography.h1",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "103df461-f92b-58bc-8592-914bcd00fca6": {
+      "uuid": "103df461-f92b-58bc-8592-914bcd00fca6",
+      "id": "UI_COMMON_TYPOGRAPHY_H2",
+      "path": "common.typography.h2",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "0f3df2ce-fa2b-5a4f-8492-8fb8ce00fe39": {
+      "uuid": "0f3df2ce-fa2b-5a4f-8492-8fb8ce00fe39",
+      "id": "UI_COMMON_TYPOGRAPHY_H3",
+      "path": "common.typography.h3",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "123df787-f72b-5596-8b92-9abdcf00ffcc": {
+      "uuid": "123df787-f72b-5596-8b92-9abdcf00ffcc",
+      "id": "UI_COMMON_TYPOGRAPHY_H4",
+      "path": "common.typography.h4",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "113df5f4-f82b-5729-8a92-992ad001015f": {
+      "uuid": "113df5f4-f82b-5729-8a92-992ad001015f",
+      "id": "UI_COMMON_TYPOGRAPHY_H5",
+      "path": "common.typography.h5",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "143dfaad-f52b-5270-8992-9797d10102f2": {
+      "uuid": "143dfaad-f52b-5270-8992-9797d10102f2",
+      "id": "UI_COMMON_TYPOGRAPHY_H6",
+      "path": "common.typography.h6",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "4288adf1-2a83-5fae-8709-be93addd0418": {
+      "uuid": "4288adf1-2a83-5fae-8709-be93addd0418",
+      "id": "UI_COMMON_TYPOGRAPHY_P",
+      "path": "common.typography.p",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "3d154f54-5e80-5663-ae68-d72265459ce1": {
+      "uuid": "3d154f54-5e80-5663-ae68-d72265459ce1",
+      "id": "UI_COMMON_TYPOGRAPHY_PRE",
+      "path": "common.typography.pre",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "8e590d94-9496-555d-8fec-577641251c4f": {
+      "uuid": "8e590d94-9496-555d-8fec-577641251c4f",
+      "id": "UI_COMMON_TYPOGRAPHY_STRONG",
+      "path": "common.typography.strong",
+      "feature": "common",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "9c463ca8-f99d-50e1-8b0d-7a7e0478e717": {
+      "uuid": "9c463ca8-f99d-50e1-8b0d-7a7e0478e717",
+      "id": "UI_ERROR_BOUNDARY_DEFAULT_MESSAGE",
+      "path": "error-boundary.main.display.default-message",
+      "feature": "error-boundary",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "7427686a-2242-5091-989c-11f0b84f5b17": {
+      "uuid": "7427686a-2242-5091-989c-11f0b84f5b17",
+      "id": "UI_ERROR_BOUNDARY_RELOAD",
+      "path": "error-boundary.main.actions.reload-button",
+      "feature": "error-boundary",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "fc051833-7c82-5c4a-9829-84e5d7e8a9d4": {
+      "uuid": "fc051833-7c82-5c4a-9829-84e5d7e8a9d4",
+      "id": "UI_ERROR_BOUNDARY_TITLE",
+      "path": "error-boundary.main.display.title",
+      "feature": "error-boundary",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "a4172aa1-94fe-5262-bfc6-e39b098ec46c": {
+      "uuid": "a4172aa1-94fe-5262-bfc6-e39b098ec46c",
+      "id": "UI_HOME_CATEGORIES_GRID_CATEGORY_IMAGE",
+      "path": "home.categories-grid.display.category-image",
+      "feature": "home",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "62a7ee4f-6607-519e-9970-39152b9de294": {
+      "uuid": "62a7ee4f-6607-519e-9970-39152b9de294",
+      "id": "UI_HOME_CATEGORIES_GRID_CATEGORY_NAME",
+      "path": "home.categories-grid.display.category-name",
+      "feature": "home",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "ddc65ba8-04b2-5a47-bc76-ddaa6685edb1": {
+      "uuid": "ddc65ba8-04b2-5a47-bc76-ddaa6685edb1",
+      "id": "UI_HOME_CATEGORIES_GRID_ITEM",
+      "path": "home.categories-grid.actions.category-button",
+      "feature": "home",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "b6226727-2816-5e66-9fe6-735128d31df8": {
+      "uuid": "b6226727-2816-5e66-9fe6-735128d31df8",
+      "id": "UI_HOME_CATEGORIES_GRID_SECTION_TITLE",
+      "path": "home.categories-grid.display.section-title",
+      "feature": "home",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "4d96c903-4026-5d64-b003-27114c48b5f2": {
+      "uuid": "4d96c903-4026-5d64-b003-27114c48b5f2",
+      "id": "UI_HOME_CATEGORIES_GRID_TOGGLE",
+      "path": "home.categories-grid.actions.toggle-button",
+      "feature": "home",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "1bbf218e-0417-5e51-9e53-8dcc82c2933f": {
+      "uuid": "1bbf218e-0417-5e51-9e53-8dcc82c2933f",
+      "id": "UI_HOME_CURATED_OFFERS_ADD_TO_CART",
+      "path": "home.curated-offers.actions.add-to-cart-button",
+      "feature": "home",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "b87fa2cf-77b1-5e9a-a2dd-92f52e8678b8": {
+      "uuid": "b87fa2cf-77b1-5e9a-a2dd-92f52e8678b8",
+      "id": "UI_HOME_CURATED_OFFERS_CATEGORY_LABEL",
+      "path": "home.curated-offers.display.category-label",
+      "feature": "home",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "485db1a9-bbdf-5192-9d5d-57df2f586640": {
+      "uuid": "485db1a9-bbdf-5192-9d5d-57df2f586640",
+      "id": "UI_HOME_CURATED_OFFERS_CONTAINER",
+      "path": "home.curated-offers.layout.container",
+      "feature": "home",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "0e3c1ff6-0a95-5e47-b502-fdf4b9740105": {
+      "uuid": "0e3c1ff6-0a95-5e47-b502-fdf4b9740105",
+      "id": "UI_HOME_CURATED_OFFERS_FAVORITE",
+      "path": "home.curated-offers.actions.add-to-favorites-button",
+      "feature": "home",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "032ab0e3-27e1-594e-a5c1-b2ed1e2dfc48": {
+      "uuid": "032ab0e3-27e1-594e-a5c1-b2ed1e2dfc48",
+      "id": "UI_HOME_CURATED_OFFERS_HEADER",
+      "path": "home.curated-offers.layout.header",
+      "feature": "home",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "d1105943-783f-57d2-99bf-ff1984020cf8": {
+      "uuid": "d1105943-783f-57d2-99bf-ff1984020cf8",
+      "id": "UI_HOME_CURATED_OFFERS_MORE",
+      "path": "home.curated-offers.actions.show-more-button",
+      "feature": "home",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "7528dada-9a54-5415-8b65-9dd44f13de5f": {
+      "uuid": "7528dada-9a54-5415-8b65-9dd44f13de5f",
+      "id": "UI_HOME_CURATED_OFFERS_PRICE_LABEL",
+      "path": "home.curated-offers.display.price-label",
+      "feature": "home",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "c2f6b2a8-0a1c-5263-9981-19b29325be35": {
+      "uuid": "c2f6b2a8-0a1c-5263-9981-19b29325be35",
+      "id": "UI_HOME_CURATED_OFFERS_PRICE_ROW",
+      "path": "home.curated-offers.layout.price-row",
+      "feature": "home",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "5cc8c348-8b2f-535d-8e19-a6b6d1f75323": {
+      "uuid": "5cc8c348-8b2f-535d-8e19-a6b6d1f75323",
+      "id": "UI_HOME_CURATED_OFFERS_PRODUCT_CARD",
+      "path": "home.curated-offers.layout.product-card",
+      "feature": "home",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "58d14d2a-fb74-50af-844d-62f80b8ffa3d": {
+      "uuid": "58d14d2a-fb74-50af-844d-62f80b8ffa3d",
+      "id": "UI_HOME_CURATED_OFFERS_PRODUCT_GRID",
+      "path": "home.curated-offers.layout.product-grid",
+      "feature": "home",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "e905f1d7-551a-5b30-8d73-a705c3e1b696": {
+      "uuid": "e905f1d7-551a-5b30-8d73-a705c3e1b696",
+      "id": "UI_HOME_CURATED_OFFERS_PRODUCT_IMAGE",
+      "path": "home.curated-offers.display.product-image",
+      "feature": "home",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "f36e272f-44e1-5fa0-9343-94bdb05a0e46": {
+      "uuid": "f36e272f-44e1-5fa0-9343-94bdb05a0e46",
+      "id": "UI_HOME_CURATED_OFFERS_PRODUCT_IMAGE_CONTAINER",
+      "path": "home.curated-offers.layout.product-image-container",
+      "feature": "home",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "6cc3be8a-7e2a-5d6f-a876-a4e403417639": {
+      "uuid": "6cc3be8a-7e2a-5d6f-a876-a4e403417639",
+      "id": "UI_HOME_CURATED_OFFERS_PRODUCT_INFO",
+      "path": "home.curated-offers.layout.product-info",
+      "feature": "home",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "f180a614-775a-5f4b-8b10-727ea582c0cd": {
+      "uuid": "f180a614-775a-5f4b-8b10-727ea582c0cd",
+      "id": "UI_HOME_CURATED_OFFERS_PRODUCT_TITLE",
+      "path": "home.curated-offers.display.product-title",
+      "feature": "home",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "6c8e3d42-7222-5f9d-801c-3cd035255013": {
+      "uuid": "6c8e3d42-7222-5f9d-801c-3cd035255013",
+      "id": "UI_HOME_CURATED_OFFERS_PROMO_TAG",
+      "path": "home.curated-offers.display.promo-tag",
+      "feature": "home",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "95c0c3f8-7d73-5d6f-8631-3a56c9d829ed": {
+      "uuid": "95c0c3f8-7d73-5d6f-8631-3a56c9d829ed",
+      "id": "UI_HOME_CURATED_OFFERS_SECTION_TITLE",
+      "path": "home.curated-offers.display.section-title",
+      "feature": "home",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "e67b3c09-b619-588a-8f79-fcdba724f124": {
+      "uuid": "e67b3c09-b619-588a-8f79-fcdba724f124",
+      "id": "UI_HOME_CURATED_OFFERS_SHOW_MORE_CONTAINER",
+      "path": "home.curated-offers.layout.show-more-container",
+      "feature": "home",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "35087503-4f0c-50d2-aa1b-e421dab95950": {
+      "uuid": "35087503-4f0c-50d2-aa1b-e421dab95950",
+      "id": "UI_HOME_HERO_SLIDER_CONTAINER",
+      "path": "home.hero-slider.layout.container",
+      "feature": "home",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "29e2ed12-ca0e-5d35-b197-fbac5f598a7f": {
+      "uuid": "29e2ed12-ca0e-5d35-b197-fbac5f598a7f",
+      "id": "UI_HOME_HERO_SLIDER_INDICATORS",
+      "path": "home.hero-slider.layout.indicators",
+      "feature": "home",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "bef0f761-bec9-50d8-9a93-967756b86a7e": {
+      "uuid": "bef0f761-bec9-50d8-9a93-967756b86a7e",
+      "id": "UI_HOME_HERO_SLIDER_SLIDE",
+      "path": "home.hero-slider.layout.slide",
+      "feature": "home",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "da8a3951-b71d-5158-8501-6f43d4c815c2": {
+      "uuid": "da8a3951-b71d-5158-8501-6f43d4c815c2",
+      "id": "UI_HOME_HERO_SLIDER_SLIDE_BADGE",
+      "path": "home.hero-slider.display.slide-badge",
+      "feature": "home",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "428dd9d3-9c8b-5e62-9d0f-4f1dc2374994": {
+      "uuid": "428dd9d3-9c8b-5e62-9d0f-4f1dc2374994",
+      "id": "UI_HOME_HERO_SLIDER_SLIDE_CONTENT",
+      "path": "home.hero-slider.layout.slide-content",
+      "feature": "home",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "cb7f2aaf-8c20-5b1a-9a48-f44587bd0e28": {
+      "uuid": "cb7f2aaf-8c20-5b1a-9a48-f44587bd0e28",
+      "id": "UI_HOME_HERO_SLIDER_SLIDE_IMAGE",
+      "path": "home.hero-slider.display.slide-image",
+      "feature": "home",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "16bcf24c-528d-58a9-876c-39beec170463": {
+      "uuid": "16bcf24c-528d-58a9-876c-39beec170463",
+      "id": "UI_HOME_HERO_SLIDER_SLIDE_TITLE",
+      "path": "home.hero-slider.display.slide-title",
+      "feature": "home",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "5113b031-ec30-5612-872c-bda7b47118d8": {
+      "uuid": "5113b031-ec30-5612-872c-bda7b47118d8",
+      "id": "UI_HOME_HERO_SLIDER_SLIDER_TRACK",
+      "path": "home.hero-slider.layout.slider-track",
+      "feature": "home",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "8d25ea72-53a4-59a7-870e-8c741ca321e9": {
+      "uuid": "8d25ea72-53a4-59a7-870e-8c741ca321e9",
+      "id": "UI_HOME_LANG_ARABIC",
+      "path": "home.language-switcher.buttons.arabic-button",
+      "feature": "home",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "38a914ca-716f-55bd-b177-54f00e0b2f1b": {
+      "uuid": "38a914ca-716f-55bd-b177-54f00e0b2f1b",
+      "id": "UI_HOME_LANG_ENGLISH",
+      "path": "home.language-switcher.buttons.english-button",
+      "feature": "home",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "0540ae86-babc-564b-a885-2620eb5d04ed": {
+      "uuid": "0540ae86-babc-564b-a885-2620eb5d04ed",
+      "id": "UI_HOME_PROMO_BANNER_ACTION",
+      "path": "home.promo-banner.actions.banner-button",
+      "feature": "home",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "107a634b-839d-5cbc-9702-72b14753f3a2": {
+      "uuid": "107a634b-839d-5cbc-9702-72b14753f3a2",
+      "id": "UI_HOME_PROMO_BANNER_CONTAINER",
+      "path": "home.promo-banner.layout.container",
+      "feature": "home",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "7a56ab4d-31c4-5a72-a955-d97ff8a0a71c": {
+      "uuid": "7a56ab4d-31c4-5a72-a955-d97ff8a0a71c",
+      "id": "UI_HOME_PROMO_BANNER_CONTENT_WRAPPER",
+      "path": "home.promo-banner.layout.content-wrapper",
+      "feature": "home",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "1a84444b-f465-576c-9ea4-3bbd33dd877e": {
+      "uuid": "1a84444b-f465-576c-9ea4-3bbd33dd877e",
+      "id": "UI_HOME_PROMO_BANNER_DECORATIVE_BACKGROUND",
+      "path": "home.promo-banner.decorative.background",
+      "feature": "home",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "9dd0782e-d811-5ddd-885c-9364f6283a1b": {
+      "uuid": "9dd0782e-d811-5ddd-885c-9364f6283a1b",
+      "id": "UI_HOME_PROMO_BANNER_DESCRIPTION",
+      "path": "home.promo-banner.display.description",
+      "feature": "home",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "afb9f7fb-5e44-520e-8985-bc551f347208": {
+      "uuid": "afb9f7fb-5e44-520e-8985-bc551f347208",
+      "id": "UI_HOME_PROMO_BANNER_LOGO",
+      "path": "home.promo-banner.display.logo",
+      "feature": "home",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "c537d012-980e-5205-8dc7-dfd4b4118a3f": {
+      "uuid": "c537d012-980e-5205-8dc7-dfd4b4118a3f",
+      "id": "UI_HOME_PROMO_BANNER_TITLE",
+      "path": "home.promo-banner.display.title",
+      "feature": "home",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "6ec6bbb3-7085-52aa-b755-553d21b2255c": {
+      "uuid": "6ec6bbb3-7085-52aa-b755-553d21b2255c",
+      "id": "UI_MERCHANT_COMMON_VIEW_ALL",
+      "path": "merchant.common.view-all",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "28364e9e-c6c6-56b3-987f-decc3d8b3cb9": {
+      "uuid": "28364e9e-c6c6-56b3-987f-decc3d8b3cb9",
+      "id": "UI_MERCHANT_PROFILE_BEST_SELLERS_CARD",
+      "path": "merchant.best-sellers.display.card",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "2755b4c7-c603-5554-9250-b5cd353d057a": {
+      "uuid": "2755b4c7-c603-5554-9250-b5cd353d057a",
+      "id": "UI_MERCHANT_PROFILE_BEST_SELLERS_CONTAINER",
+      "path": "merchant.best-sellers.display.container",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "16d830e7-e9d4-5870-a076-b7bd34142716": {
+      "uuid": "16d830e7-e9d4-5870-a076-b7bd34142716",
+      "id": "UI_MERCHANT_PROFILE_BEST_SELLERS_PERCENT_OFF",
+      "path": "merchant.best-sellers.display.percent-off",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "45b4e13a-3005-5553-ac52-53f8682a8a99": {
+      "uuid": "45b4e13a-3005-5553-ac52-53f8682a8a99",
+      "id": "UI_MERCHANT_PROFILE_BEST_SELLERS_SOLD",
+      "path": "merchant.best-sellers.display.sold",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "f4ac98f6-e472-5edd-b902-45d824b7a3d7": {
+      "uuid": "f4ac98f6-e472-5edd-b902-45d824b7a3d7",
+      "id": "UI_MERCHANT_PROFILE_BEST_SELLERS_TITLE",
+      "path": "merchant.best-sellers.display.title",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "24c1ba11-36e7-57d0-9648-66b37e6e0eda": {
+      "uuid": "24c1ba11-36e7-57d0-9648-66b37e6e0eda",
+      "id": "UI_MERCHANT_PROFILE_BEST_SELLERS_VIEW_ALL",
+      "path": "merchant.best-sellers.display.view-all",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "0fad23f2-b5f5-57f1-a6ac-a9841dae2a23": {
+      "uuid": "0fad23f2-b5f5-57f1-a6ac-a9841dae2a23",
+      "id": "UI_MERCHANT_PROFILE_COLLECTIONS_CARD",
+      "path": "merchant.collections.display.card",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "6504d413-c393-5ae2-a6a1-26156cb71fc4": {
+      "uuid": "6504d413-c393-5ae2-a6a1-26156cb71fc4",
+      "id": "UI_MERCHANT_PROFILE_COLLECTIONS_CONTAINER",
+      "path": "merchant.collections.display.container",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "9db97800-dbca-5899-83ba-db52c831194b": {
+      "uuid": "9db97800-dbca-5899-83ba-db52c831194b",
+      "id": "UI_MERCHANT_PROFILE_COLLECTIONS_ITEMS",
+      "path": "merchant.collections.display.items",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "1e0fb61a-e35b-5c7f-8f87-4020d65735cd": {
+      "uuid": "1e0fb61a-e35b-5c7f-8f87-4020d65735cd",
+      "id": "UI_MERCHANT_PROFILE_COLLECTIONS_TITLE",
+      "path": "merchant.collections.display.title",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "3659295d-a4a1-5892-8779-60ab2bc0ec00": {
+      "uuid": "3659295d-a4a1-5892-8779-60ab2bc0ec00",
+      "id": "UI_MERCHANT_PROFILE_COLLECTIONS_VIEW_ALL",
+      "path": "merchant.collections.display.view-all",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "a84223c6-bb25-54bf-a9d8-b5dcda6beec5": {
+      "uuid": "a84223c6-bb25-54bf-a9d8-b5dcda6beec5",
+      "id": "UI_MERCHANT_PROFILE_HERO_AVATAR",
+      "path": "merchant.hero.display.avatar",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "1ff85999-dff4-576c-8c93-f967346eeb22": {
+      "uuid": "1ff85999-dff4-576c-8c93-f967346eeb22",
+      "id": "UI_MERCHANT_PROFILE_HERO_BANNER",
+      "path": "merchant.hero.display.banner",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "e81a0d1f-3047-582c-a1d6-c1c5030f153a": {
+      "uuid": "e81a0d1f-3047-582c-a1d6-c1c5030f153a",
+      "id": "UI_MERCHANT_PROFILE_HERO_BANNER_ALT_SUFFIX",
+      "path": "merchant.hero.display.banner-alt-suffix",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "422c491a-06cd-55fd-b7f8-632046559e73": {
+      "uuid": "422c491a-06cd-55fd-b7f8-632046559e73",
+      "id": "UI_MERCHANT_PROFILE_HERO_CONTAINER",
+      "path": "merchant.hero.display.container",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "b1d25722-365e-535b-a2bf-95a8479b6eb9": {
+      "uuid": "b1d25722-365e-535b-a2bf-95a8479b6eb9",
+      "id": "UI_MERCHANT_PROFILE_HERO_FOLLOW",
+      "path": "merchant.hero.display.follow-button",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "82115972-da26-52f1-be55-e9240307ea53": {
+      "uuid": "82115972-da26-52f1-be55-e9240307ea53",
+      "id": "UI_MERCHANT_PROFILE_HERO_FOLLOWERS",
+      "path": "merchant.hero.display.followers",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "7065e4de-7249-5d1d-bfca-2e804b3fd147": {
+      "uuid": "7065e4de-7249-5d1d-bfca-2e804b3fd147",
+      "id": "UI_MERCHANT_PROFILE_HERO_FOLLOWING",
+      "path": "merchant.hero.display.following",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "fde7cdfe-9849-5e2b-9975-34084b1569ad": {
+      "uuid": "fde7cdfe-9849-5e2b-9975-34084b1569ad",
+      "id": "UI_MERCHANT_PROFILE_HERO_JOINED",
+      "path": "merchant.hero.display.joined",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "befd67fe-7d9a-56ad-8c05-37bc99e4297b": {
+      "uuid": "befd67fe-7d9a-56ad-8c05-37bc99e4297b",
+      "id": "UI_MERCHANT_PROFILE_HERO_MESSAGE",
+      "path": "merchant.hero.display.message-button",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "f1ee4e9c-95cb-540d-9a1d-c57efcff57b7": {
+      "uuid": "f1ee4e9c-95cb-540d-9a1d-c57efcff57b7",
+      "id": "UI_MERCHANT_PROFILE_HERO_NAME",
+      "path": "merchant.hero.display.name",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "beb9c238-baca-5d25-8c73-a2d6a356b093": {
+      "uuid": "beb9c238-baca-5d25-8c73-a2d6a356b093",
+      "id": "UI_MERCHANT_PROFILE_HERO_STATUS_LABEL",
+      "path": "merchant.hero.display.status-label",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "fab7dea3-272d-593e-a2bc-825d9fccd318": {
+      "uuid": "fab7dea3-272d-593e-a2bc-825d9fccd318",
+      "id": "UI_MERCHANT_PROFILE_HERO_VERIFIED",
+      "path": "merchant.hero.display.verified-badge",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "ec6e6c78-6cf9-5f6d-b3a2-59fa9e251f9f": {
+      "uuid": "ec6e6c78-6cf9-5f6d-b3a2-59fa9e251f9f",
+      "id": "UI_MERCHANT_PROFILE_OVERVIEW_CARD",
+      "path": "merchant.overview.display.card",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "46672967-afe6-574c-881f-9d058b048dea": {
+      "uuid": "46672967-afe6-574c-881f-9d058b048dea",
+      "id": "UI_MERCHANT_PROFILE_OVERVIEW_COMPLETION_RATE",
+      "path": "merchant.overview.display.completion-rate",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "e3da8de1-2452-5a16-89c9-59eb98fb12d8": {
+      "uuid": "e3da8de1-2452-5a16-89c9-59eb98fb12d8",
+      "id": "UI_MERCHANT_PROFILE_OVERVIEW_CONTAINER",
+      "path": "merchant.overview.display.container",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "fea3e7c3-bc00-5ba4-8080-c125f92c793e": {
+      "uuid": "fea3e7c3-bc00-5ba4-8080-c125f92c793e",
+      "id": "UI_MERCHANT_PROFILE_OVERVIEW_CUSTOMERS",
+      "path": "merchant.overview.display.customers",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "b896b60b-323e-5c2a-b5a1-23bdec2e9eac": {
+      "uuid": "b896b60b-323e-5c2a-b5a1-23bdec2e9eac",
+      "id": "UI_MERCHANT_PROFILE_OVERVIEW_ORDERS",
+      "path": "merchant.overview.display.orders",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "a1632076-fa5d-5633-8321-fd388fbaab8d": {
+      "uuid": "a1632076-fa5d-5633-8321-fd388fbaab8d",
+      "id": "UI_MERCHANT_PROFILE_OVERVIEW_PRODUCTS",
+      "path": "merchant.overview.display.products",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "a4d28e2b-3f49-5772-a716-a081ac591810": {
+      "uuid": "a4d28e2b-3f49-5772-a716-a081ac591810",
+      "id": "UI_MERCHANT_PROFILE_OVERVIEW_RATING",
+      "path": "merchant.overview.display.rating",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "7615813c-509e-5477-a78c-cc26958fcbd9": {
+      "uuid": "7615813c-509e-5477-a78c-cc26958fcbd9",
+      "id": "UI_MERCHANT_PROFILE_OVERVIEW_RESPONSE_RATE",
+      "path": "merchant.overview.display.response-rate",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "6d9362ea-4ac7-5399-a440-b39cb0dfbfbb": {
+      "uuid": "6d9362ea-4ac7-5399-a440-b39cb0dfbfbb",
+      "id": "UI_MERCHANT_PROFILE_OVERVIEW_REVENUE",
+      "path": "merchant.overview.display.revenue",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "fadc8ba2-ea29-5f0f-bf27-a3605b705c3d": {
+      "uuid": "fadc8ba2-ea29-5f0f-bf27-a3605b705c3d",
+      "id": "UI_MERCHANT_PROFILE_PERFORMANCE_AVG_ORDER_VALUE",
+      "path": "merchant.performance.display.avg-order-value",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "02b6a98b-1277-5194-91fb-59c14336f152": {
+      "uuid": "02b6a98b-1277-5194-91fb-59c14336f152",
+      "id": "UI_MERCHANT_PROFILE_PERFORMANCE_AVG_ORDER_VALUE_SUBTITLE",
+      "path": "merchant.performance.display.avg-order-value-subtitle",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "79735e61-f01f-57ac-867a-95bb06fa286e": {
+      "uuid": "79735e61-f01f-57ac-867a-95bb06fa286e",
+      "id": "UI_MERCHANT_PROFILE_PERFORMANCE_BEST_SELLING_CATEGORY",
+      "path": "merchant.performance.display.best-selling-category",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "22c6692e-ba18-5c95-ab9a-1c98ef4676cf": {
+      "uuid": "22c6692e-ba18-5c95-ab9a-1c98ef4676cf",
+      "id": "UI_MERCHANT_PROFILE_PERFORMANCE_BEST_SELLING_CATEGORY_SUBTITLE",
+      "path": "merchant.performance.display.best-selling-category-subtitle",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "d32c35bc-19f7-5a21-b6c1-67c663510c4b": {
+      "uuid": "d32c35bc-19f7-5a21-b6c1-67c663510c4b",
+      "id": "UI_MERCHANT_PROFILE_PERFORMANCE_CONTAINER",
+      "path": "merchant.performance.display.container",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "14679420-b33b-551d-844d-1b8e5148534b": {
+      "uuid": "14679420-b33b-551d-844d-1b8e5148534b",
+      "id": "UI_MERCHANT_PROFILE_PERFORMANCE_CONVERSION_RATE",
+      "path": "merchant.performance.display.conversion-rate",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "bfbfa581-ede0-5672-81f4-4a2feac288e8": {
+      "uuid": "bfbfa581-ede0-5672-81f4-4a2feac288e8",
+      "id": "UI_MERCHANT_PROFILE_PERFORMANCE_CONVERSION_RATE_SUBTITLE",
+      "path": "merchant.performance.display.conversion-rate-subtitle",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "ecd34eba-e64e-542d-8043-548c881ab557": {
+      "uuid": "ecd34eba-e64e-542d-8043-548c881ab557",
+      "id": "UI_MERCHANT_PROFILE_PERFORMANCE_INVENTORY_HEALTH",
+      "path": "merchant.performance.display.inventory-health",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "ea185185-38d2-5d62-abcd-f92baf5cf2d0": {
+      "uuid": "ea185185-38d2-5d62-abcd-f92baf5cf2d0",
+      "id": "UI_MERCHANT_PROFILE_PERFORMANCE_ORDERS_MONTH",
+      "path": "merchant.performance.display.orders-month",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "91f4193a-85d2-5e4b-8399-388815207e71": {
+      "uuid": "91f4193a-85d2-5e4b-8399-388815207e71",
+      "id": "UI_MERCHANT_PROFILE_PERFORMANCE_ORDERS_MONTH_SUBTITLE",
+      "path": "merchant.performance.display.orders-month-subtitle",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "2962ad3e-847f-5c2d-b2fa-8a086329bf27": {
+      "uuid": "2962ad3e-847f-5c2d-b2fa-8a086329bf27",
+      "id": "UI_MERCHANT_PROFILE_PERFORMANCE_ORDERS_TODAY",
+      "path": "merchant.performance.display.orders-today",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "02c23edf-35dc-5d02-a33b-57e969cbf32c": {
+      "uuid": "02c23edf-35dc-5d02-a33b-57e969cbf32c",
+      "id": "UI_MERCHANT_PROFILE_PERFORMANCE_ORDERS_TODAY_SUBTITLE",
+      "path": "merchant.performance.display.orders-today-subtitle",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "9fc5c9d6-216f-597b-8d21-fc94d21cd1d1": {
+      "uuid": "9fc5c9d6-216f-597b-8d21-fc94d21cd1d1",
+      "id": "UI_MERCHANT_PROFILE_PERFORMANCE_REVENUE_MONTH",
+      "path": "merchant.performance.display.revenue-month",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "a155b477-17da-5158-a8ad-efdd24efcc9e": {
+      "uuid": "a155b477-17da-5158-a8ad-efdd24efcc9e",
+      "id": "UI_MERCHANT_PROFILE_PERFORMANCE_REVENUE_MONTH_SUBTITLE",
+      "path": "merchant.performance.display.revenue-month-subtitle",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "043e53a9-4312-5678-a8e6-b8b3483769f2": {
+      "uuid": "043e53a9-4312-5678-a8e6-b8b3483769f2",
+      "id": "UI_MERCHANT_PROFILE_PERFORMANCE_REVENUE_TODAY",
+      "path": "merchant.performance.display.revenue-today",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "e91d92f6-a469-5959-bbd3-3a1094d9e39b": {
+      "uuid": "e91d92f6-a469-5959-bbd3-3a1094d9e39b",
+      "id": "UI_MERCHANT_PROFILE_PERFORMANCE_REVENUE_TODAY_SUBTITLE",
+      "path": "merchant.performance.display.revenue-today-subtitle",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "e1f58b05-00f3-55c4-8f19-8d0bf705e912": {
+      "uuid": "e1f58b05-00f3-55c4-8f19-8d0bf705e912",
+      "id": "UI_MERCHANT_PROFILE_PERFORMANCE_TITLE",
+      "path": "merchant.performance.display.title",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "40c6a83d-6410-5fa4-98f8-fff7872bf526": {
+      "uuid": "40c6a83d-6410-5fa4-98f8-fff7872bf526",
+      "id": "UI_MERCHANT_PROFILE_QUICK_ACTION_BUTTON",
+      "path": "merchant.quick-actions.display.button",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "484cb035-271f-50b4-9b41-d0fb0031006a": {
+      "uuid": "484cb035-271f-50b4-9b41-d0fb0031006a",
+      "id": "UI_MERCHANT_PROFILE_QUICK_ACTIONS_CONTAINER",
+      "path": "merchant.quick-actions.display.container",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "02c846c0-a187-5abd-8c1e-a742ad229e07": {
+      "uuid": "02c846c0-a187-5abd-8c1e-a742ad229e07",
+      "id": "UI_MERCHANT_PROFILE_QUICK_ACTIONS_TITLE",
+      "path": "merchant.quick-actions.display.title",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "c2a8784b-89d2-52b6-92ce-952db8097a18": {
+      "uuid": "c2a8784b-89d2-52b6-92ce-952db8097a18",
+      "id": "UI_MERCHANT_PROFILE_RECENT_ORDERS_CONTAINER",
+      "path": "merchant.recent-orders.display.container",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "1996d2db-8560-591c-a834-a9bd5d0c3066": {
+      "uuid": "1996d2db-8560-591c-a834-a9bd5d0c3066",
+      "id": "UI_MERCHANT_PROFILE_RECENT_ORDERS_ITEM",
+      "path": "merchant.recent-orders.display.item",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "d06d6c18-462a-575d-b8e7-81aaaf2fe36f": {
+      "uuid": "d06d6c18-462a-575d-b8e7-81aaaf2fe36f",
+      "id": "UI_MERCHANT_PROFILE_RECENT_ORDERS_ITEMS",
+      "path": "merchant.recent-orders.display.items",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "bc7e9512-d0ac-5f7b-b0ae-55b8ef12b429": {
+      "uuid": "bc7e9512-d0ac-5f7b-b0ae-55b8ef12b429",
+      "id": "UI_MERCHANT_PROFILE_RECENT_ORDERS_TITLE",
+      "path": "merchant.recent-orders.display.title",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "f571b605-6898-59d6-b85c-ce5364a67204": {
+      "uuid": "f571b605-6898-59d6-b85c-ce5364a67204",
+      "id": "UI_MERCHANT_PROFILE_RECENT_ORDERS_VIEW_ALL",
+      "path": "merchant.recent-orders.display.view-all",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "79312799-c35d-5e22-abc0-53e73dee2e18": {
+      "uuid": "79312799-c35d-5e22-abc0-53e73dee2e18",
+      "id": "UI_MERCHANT_PROFILE_REVIEWS_BASED_ON",
+      "path": "merchant.reviews.display.based-on",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "61f6fdeb-063f-5b0a-a9fe-3a6d18695cac": {
+      "uuid": "61f6fdeb-063f-5b0a-a9fe-3a6d18695cac",
+      "id": "UI_MERCHANT_PROFILE_REVIEWS_CONTAINER",
+      "path": "merchant.reviews.display.container",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "2384467a-d161-5df7-8fd9-0d545e8ab9b1": {
+      "uuid": "2384467a-d161-5df7-8fd9-0d545e8ab9b1",
+      "id": "UI_MERCHANT_PROFILE_REVIEWS_HELPFUL",
+      "path": "merchant.reviews.display.helpful",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "24beb6a1-2cc6-5ffc-9c29-64f3d064f3d6": {
+      "uuid": "24beb6a1-2cc6-5ffc-9c29-64f3d064f3d6",
+      "id": "UI_MERCHANT_PROFILE_REVIEWS_PURCHASED",
+      "path": "merchant.reviews.display.purchased",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "a6e04331-9cff-528c-91ca-b6bf84dd9582": {
+      "uuid": "a6e04331-9cff-528c-91ca-b6bf84dd9582",
+      "id": "UI_MERCHANT_PROFILE_REVIEWS_REVIEWS",
+      "path": "merchant.reviews.display.reviews",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "2060df0c-9a26-58b3-b59f-d70ee304b76d": {
+      "uuid": "2060df0c-9a26-58b3-b59f-d70ee304b76d",
+      "id": "UI_MERCHANT_PROFILE_REVIEWS_STAR",
+      "path": "merchant.reviews.display.star",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "577fa28d-8a2b-58a0-87a0-07679e6c769a": {
+      "uuid": "577fa28d-8a2b-58a0-87a0-07679e6c769a",
+      "id": "UI_MERCHANT_PROFILE_REVIEWS_STARS",
+      "path": "merchant.reviews.display.stars",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "2abb3cb2-62ad-5e27-bff4-6af8425a2875": {
+      "uuid": "2abb3cb2-62ad-5e27-bff4-6af8425a2875",
+      "id": "UI_MERCHANT_PROFILE_REVIEWS_TITLE",
+      "path": "merchant.reviews.display.title",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "a8f82d65-31ab-562a-9479-ae93965c8118": {
+      "uuid": "a8f82d65-31ab-562a-9479-ae93965c8118",
+      "id": "UI_MERCHANT_PROFILE_REVIEWS_VIEW_ALL",
+      "path": "merchant.reviews.display.view-all",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "1edc6b66-179b-5cb1-b060-426412fcf707": {
+      "uuid": "1edc6b66-179b-5cb1-b060-426412fcf707",
+      "id": "UI_MERCHANT_PROFILE_STORE_INFO_ABOUT",
+      "path": "merchant.store-info.display.about",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "3c493475-38a6-59a0-9128-724b4003fb0e": {
+      "uuid": "3c493475-38a6-59a0-9128-724b4003fb0e",
+      "id": "UI_MERCHANT_PROFILE_STORE_INFO_CATEGORIES",
+      "path": "merchant.store-info.display.categories",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "39dc65b0-2aee-5973-9e10-ece21c1aca7d": {
+      "uuid": "39dc65b0-2aee-5973-9e10-ece21c1aca7d",
+      "id": "UI_MERCHANT_PROFILE_STORE_INFO_CONTAINER",
+      "path": "merchant.store-info.display.container",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "f5896da8-c344-53a5-9133-2ea24fd21a4f": {
+      "uuid": "f5896da8-c344-53a5-9133-2ea24fd21a4f",
+      "id": "UI_MERCHANT_PROFILE_STORE_INFO_MORE",
+      "path": "merchant.store-info.display.more",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "f11c8562-7035-5459-b9c4-0e10923158af": {
+      "uuid": "f11c8562-7035-5459-b9c4-0e10923158af",
+      "id": "UI_MERCHANT_PROFILE_STORE_INFO_RETURN_POLICY",
+      "path": "merchant.store-info.display.return-policy",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "4ee1e6de-fa1f-56f5-9067-27d8020afa07": {
+      "uuid": "4ee1e6de-fa1f-56f5-9067-27d8020afa07",
+      "id": "UI_MERCHANT_PROFILE_STORE_INFO_SHIPPING_COVERAGE",
+      "path": "merchant.store-info.display.shipping-coverage",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "3bbce5a4-b766-5e07-832c-9e826e1393fd": {
+      "uuid": "3bbce5a4-b766-5e07-832c-9e826e1393fd",
+      "id": "UI_MERCHANT_PROFILE_STORE_INFO_SHOW_LESS",
+      "path": "merchant.store-info.display.show-less",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "e667d674-bfd3-547f-a881-307aa8230fed": {
+      "uuid": "e667d674-bfd3-547f-a881-307aa8230fed",
+      "id": "UI_MERCHANT_PROFILE_STORE_INFO_SHOW_MORE",
+      "path": "merchant.store-info.display.show-more",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "680b7e0d-4c9f-58b6-bca8-60ff243d5058": {
+      "uuid": "680b7e0d-4c9f-58b6-bca8-60ff243d5058",
+      "id": "UI_MERCHANT_PROFILE_STORE_INFO_STORE_SPECIALTIES",
+      "path": "merchant.store-info.display.store-specialties",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "42922561-3bd5-53fa-8582-7e7fb3938348": {
+      "uuid": "42922561-3bd5-53fa-8582-7e7fb3938348",
+      "id": "UI_MERCHANT_PROFILE_STORE_INFO_TITLE",
+      "path": "merchant.store-info.display.title",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "faa679a1-839d-5d86-a1d0-3ecb32b55400": {
+      "uuid": "faa679a1-839d-5d86-a1d0-3ecb32b55400",
+      "id": "UI_MERCHANT_PROFILE_TRUST_ACHIEVEMENTS",
+      "path": "merchant.trust.display.achievements",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "15afd448-9f66-5579-9e66-1afaf61d330b": {
+      "uuid": "15afd448-9f66-5579-9e66-1afaf61d330b",
+      "id": "UI_MERCHANT_PROFILE_TRUST_CONTAINER",
+      "path": "merchant.trust.display.container",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "dd149a3b-adb4-5654-b9b8-a899bb855c82": {
+      "uuid": "dd149a3b-adb4-5654-b9b8-a899bb855c82",
+      "id": "UI_MERCHANT_PROFILE_TRUST_NO_BADGES_EARNED",
+      "path": "merchant.trust.display.no-badges-earned",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "ea3f5deb-6ebf-5b6a-ba20-a5c9e1fbb338": {
+      "uuid": "ea3f5deb-6ebf-5b6a-ba20-a5c9e1fbb338",
+      "id": "UI_MERCHANT_PROFILE_TRUST_SELLER_BADGES",
+      "path": "merchant.trust.display.seller-badges",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "ff46f319-f98c-5ddc-9992-6157750584d2": {
+      "uuid": "ff46f319-f98c-5ddc-9992-6157750584d2",
+      "id": "UI_MERCHANT_PROFILE_TRUST_TITLE",
+      "path": "merchant.trust.display.title",
+      "feature": "merchant",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "ad7d66c5-567f-54b6-8bff-1fa793c9c970": {
+      "uuid": "ad7d66c5-567f-54b6-8bff-1fa793c9c970",
+      "id": "UI_ONBOARDING_BRANDING_DESCRIPTION",
+      "path": "onboarding.branding.display.description",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "00ca19f6-9e89-5903-98dd-66d4df119b51": {
+      "uuid": "00ca19f6-9e89-5903-98dd-66d4df119b51",
+      "id": "UI_ONBOARDING_BRANDING_LOGO",
+      "path": "onboarding.branding.form.logo",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "8855efd7-583a-5de0-b584-6a1d346b111e": {
+      "uuid": "8855efd7-583a-5de0-b584-6a1d346b111e",
+      "id": "UI_ONBOARDING_BRANDING_LOGO_SUBTITLE",
+      "path": "onboarding.branding.form.logo-subtitle",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "65950dd1-f90d-5fce-a57e-2e0b5b91dae0": {
+      "uuid": "65950dd1-f90d-5fce-a57e-2e0b5b91dae0",
+      "id": "UI_ONBOARDING_BRANDING_PRIMARY_COLOR",
+      "path": "onboarding.branding.form.primary-color",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "2d10c09e-f691-546f-8a8a-c2a8106e0841": {
+      "uuid": "2d10c09e-f691-546f-8a8a-c2a8106e0841",
+      "id": "UI_ONBOARDING_BRANDING_PRIMARY_COLOR_SUBTITLE",
+      "path": "onboarding.branding.form.primary-color-subtitle",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "b685eed7-a918-500c-8047-322dcc85087a": {
+      "uuid": "b685eed7-a918-500c-8047-322dcc85087a",
+      "id": "UI_ONBOARDING_BRANDING_STORE_TAGLINE",
+      "path": "onboarding.branding.form.store-tagline",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "1d2d07fd-9ac5-5726-af27-714361776de4": {
+      "uuid": "1d2d07fd-9ac5-5726-af27-714361776de4",
+      "id": "UI_ONBOARDING_BRANDING_STORE_TAGLINE_PLACEHOLDER",
+      "path": "onboarding.branding.form.store-tagline-placeholder",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "e1df822d-5de4-5d5a-8230-c3638318c148": {
+      "uuid": "e1df822d-5de4-5d5a-8230-c3638318c148",
+      "id": "UI_ONBOARDING_BRANDING_TITLE",
+      "path": "onboarding.branding.display.title",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "142b2148-2c16-5efd-840a-b14676aad003": {
+      "uuid": "142b2148-2c16-5efd-840a-b14676aad003",
+      "id": "UI_ONBOARDING_BRANDING_UPLOAD",
+      "path": "onboarding.branding.actions.upload",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "c2ebb2a3-7f45-5c3c-bf94-908da9a94f5e": {
+      "uuid": "c2ebb2a3-7f45-5c3c-bf94-908da9a94f5e",
+      "id": "UI_ONBOARDING_BUSINESS_DETAILS_BUSINESS_NAME",
+      "path": "onboarding.business-details.form.business-name",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "58ec8401-febf-59b6-85b8-c0a3111d1250": {
+      "uuid": "58ec8401-febf-59b6-85b8-c0a3111d1250",
+      "id": "UI_ONBOARDING_BUSINESS_DETAILS_BUSINESS_NAME_PLACEHOLDER",
+      "path": "onboarding.business-details.form.business-name-placeholder",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "bb4ea648-0994-5207-9042-04ce27aaa5f5": {
+      "uuid": "bb4ea648-0994-5207-9042-04ce27aaa5f5",
+      "id": "UI_ONBOARDING_BUSINESS_DETAILS_BUSINESS_TYPE",
+      "path": "onboarding.business-details.form.business-type",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "97d04d0a-bc13-5b8d-8ffb-30e02538a63b": {
+      "uuid": "97d04d0a-bc13-5b8d-8ffb-30e02538a63b",
+      "id": "UI_ONBOARDING_BUSINESS_DETAILS_BUSINESS_TYPE_PLACEHOLDER",
+      "path": "onboarding.business-details.form.business-type-placeholder",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "1be51cf5-e82c-539a-b2a0-abe753a953dc": {
+      "uuid": "1be51cf5-e82c-539a-b2a0-abe753a953dc",
+      "id": "UI_ONBOARDING_BUSINESS_DETAILS_DESCRIPTION",
+      "path": "onboarding.business-details.display.description",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "88824435-2233-51fc-834a-d8fb79114d7a": {
+      "uuid": "88824435-2233-51fc-834a-d8fb79114d7a",
+      "id": "UI_ONBOARDING_BUSINESS_DETAILS_EMPLOYEE_COUNT",
+      "path": "onboarding.business-details.form.employee-count",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "74eb617b-2910-5d76-9a85-f8098280a2e4": {
+      "uuid": "74eb617b-2910-5d76-9a85-f8098280a2e4",
+      "id": "UI_ONBOARDING_BUSINESS_DETAILS_EMPLOYEE_COUNT_PLACEHOLDER",
+      "path": "onboarding.business-details.form.employee-count-placeholder",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "fd83ca5c-e2e0-5687-96a9-fb42db0af1a5": {
+      "uuid": "fd83ca5c-e2e0-5687-96a9-fb42db0af1a5",
+      "id": "UI_ONBOARDING_BUSINESS_DETAILS_REGISTRATION_NUMBER",
+      "path": "onboarding.business-details.form.registration-number",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "438d9656-8b98-580d-b3c4-65fc4c9e440b": {
+      "uuid": "438d9656-8b98-580d-b3c4-65fc4c9e440b",
+      "id": "UI_ONBOARDING_BUSINESS_DETAILS_REGISTRATION_NUMBER_PLACEHOLDER",
+      "path": "onboarding.business-details.form.registration-number-placeholder",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "f6c267dd-1bba-5926-b22f-a6a3f7fbf38c": {
+      "uuid": "f6c267dd-1bba-5926-b22f-a6a3f7fbf38c",
+      "id": "UI_ONBOARDING_BUSINESS_DETAILS_TITLE",
+      "path": "onboarding.business-details.display.title",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "e96da820-1809-5c49-ac36-d3e2a602f35b": {
+      "uuid": "e96da820-1809-5c49-ac36-d3e2a602f35b",
+      "id": "UI_ONBOARDING_BUSINESS_DETAILS_TYPE_CORPORATION",
+      "path": "onboarding.business-details.form.type-corporation",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "9a026393-878b-58f2-a79b-bb75353faa74": {
+      "uuid": "9a026393-878b-58f2-a79b-bb75353faa74",
+      "id": "UI_ONBOARDING_BUSINESS_DETAILS_TYPE_LLC",
+      "path": "onboarding.business-details.form.type-llc",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "9e259cd0-4962-5e35-9114-5b0ee3fb6f9b": {
+      "uuid": "9e259cd0-4962-5e35-9114-5b0ee3fb6f9b",
+      "id": "UI_ONBOARDING_BUSINESS_DETAILS_TYPE_OTHER",
+      "path": "onboarding.business-details.form.type-other",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "915e8a66-d98e-5bb3-98a8-d8bcb7481919": {
+      "uuid": "915e8a66-d98e-5bb3-98a8-d8bcb7481919",
+      "id": "UI_ONBOARDING_BUSINESS_DETAILS_TYPE_PARTNERSHIP",
+      "path": "onboarding.business-details.form.type-partnership",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "a64f817a-be3e-512f-98e9-ebacd18f69c9": {
+      "uuid": "a64f817a-be3e-512f-98e9-ebacd18f69c9",
+      "id": "UI_ONBOARDING_BUSINESS_DETAILS_TYPE_SOLE_PROPRIETORSHIP",
+      "path": "onboarding.business-details.form.type-sole-proprietorship",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "9f75fa76-ff4f-53df-9c44-e1644c7fa92d": {
+      "uuid": "9f75fa76-ff4f-53df-9c44-e1644c7fa92d",
+      "id": "UI_ONBOARDING_BUSINESS_DETAILS_YEAR_FOUNDED",
+      "path": "onboarding.business-details.form.year-founded",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "b4e9cdf8-3ec2-5af5-ac6f-956e4e063843": {
+      "uuid": "b4e9cdf8-3ec2-5af5-ac6f-956e4e063843",
+      "id": "UI_ONBOARDING_BUSINESS_DETAILS_YEAR_FOUNDED_PLACEHOLDER",
+      "path": "onboarding.business-details.form.year-founded-placeholder",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "31a0a970-51b0-5c05-84d1-09ca4da68e4f": {
+      "uuid": "31a0a970-51b0-5c05-84d1-09ca4da68e4f",
+      "id": "UI_ONBOARDING_COMMON_FINISH",
+      "path": "onboarding.common.actions.finish",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "a5db3656-1b5c-5617-9277-a8c07a360e51": {
+      "uuid": "a5db3656-1b5c-5617-9277-a8c07a360e51",
+      "id": "UI_ONBOARDING_COMMON_NEXT",
+      "path": "onboarding.common.actions.next",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "e0096b9a-4952-560f-80c2-6f00158fd2a5": {
+      "uuid": "e0096b9a-4952-560f-80c2-6f00158fd2a5",
+      "id": "UI_ONBOARDING_COMMON_PREVIOUS",
+      "path": "onboarding.common.actions.previous",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "2b0bda3d-576e-5586-af34-2e33cfe6659c": {
+      "uuid": "2b0bda3d-576e-5586-af34-2e33cfe6659c",
+      "id": "UI_ONBOARDING_COMPLETION",
+      "path": "onboarding.onboarding-page.display.completion",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "b72588b8-4cd7-5dbf-85b8-4aee7f829acd": {
+      "uuid": "b72588b8-4cd7-5dbf-85b8-4aee7f829acd",
+      "id": "UI_ONBOARDING_COMPLETION_DESCRIPTION",
+      "path": "onboarding.completion.display.description",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "97fc3063-cc4a-5d74-8ddc-c8b11dacbee2": {
+      "uuid": "97fc3063-cc4a-5d74-8ddc-c8b11dacbee2",
+      "id": "UI_ONBOARDING_COMPLETION_GO_TO_DASHBOARD",
+      "path": "onboarding.completion.actions.go-to-dashboard",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "10c544d0-9831-54db-beec-04d261f54f75": {
+      "uuid": "10c544d0-9831-54db-beec-04d261f54f75",
+      "id": "UI_ONBOARDING_COMPLETION_TITLE",
+      "path": "onboarding.completion.display.title",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "d6b7547e-ac71-580f-b9f0-44bc889302ad": {
+      "uuid": "d6b7547e-ac71-580f-b9f0-44bc889302ad",
+      "id": "UI_ONBOARDING_CONTAINER",
+      "path": "onboarding.onboarding-page.display.container",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "e17cce01-cabe-529e-a01e-c5f3fd424348": {
+      "uuid": "e17cce01-cabe-529e-a01e-c5f3fd424348",
+      "id": "UI_ONBOARDING_FORM",
+      "path": "onboarding.onboarding-page.form.form",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "6cfb0492-8ea3-5c4b-afc0-3458b8eab139": {
+      "uuid": "6cfb0492-8ea3-5c4b-afc0-3458b8eab139",
+      "id": "UI_ONBOARDING_IDENTITY_VERIFICATION_CHOOSE_FILE",
+      "path": "onboarding.identity-verification.actions.choose-file",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "23e994b8-f2a2-597d-9b31-d286a1f51b2b": {
+      "uuid": "23e994b8-f2a2-597d-9b31-d286a1f51b2b",
+      "id": "UI_ONBOARDING_IDENTITY_VERIFICATION_DATE_OF_BIRTH",
+      "path": "onboarding.identity-verification.form.date-of-birth",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "898aa574-8d2b-5269-97b1-f31e09a21e3b": {
+      "uuid": "898aa574-8d2b-5269-97b1-f31e09a21e3b",
+      "id": "UI_ONBOARDING_IDENTITY_VERIFICATION_DESCRIPTION",
+      "path": "onboarding.identity-verification.display.description",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "655df5ee-dbb3-5147-84a1-600c547035e5": {
+      "uuid": "655df5ee-dbb3-5147-84a1-600c547035e5",
+      "id": "UI_ONBOARDING_IDENTITY_VERIFICATION_EMAIL",
+      "path": "onboarding.identity-verification.form.email",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "f8964d76-d57c-55c1-a5f2-bfac37b58cff": {
+      "uuid": "f8964d76-d57c-55c1-a5f2-bfac37b58cff",
+      "id": "UI_ONBOARDING_IDENTITY_VERIFICATION_FIRST_NAME",
+      "path": "onboarding.identity-verification.form.first-name",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "b1431a81-3ff5-5248-af6b-167f6242d9de": {
+      "uuid": "b1431a81-3ff5-5248-af6b-167f6242d9de",
+      "id": "UI_ONBOARDING_IDENTITY_VERIFICATION_ID_NUMBER",
+      "path": "onboarding.identity-verification.form.id-number",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "ea08d878-3a33-5905-bc0f-a36228cf1667": {
+      "uuid": "ea08d878-3a33-5905-bc0f-a36228cf1667",
+      "id": "UI_ONBOARDING_IDENTITY_VERIFICATION_ID_TYPE",
+      "path": "onboarding.identity-verification.form.id-type",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "ea152d03-a94d-57dc-9351-be094e11ddda": {
+      "uuid": "ea152d03-a94d-57dc-9351-be094e11ddda",
+      "id": "UI_ONBOARDING_IDENTITY_VERIFICATION_ID_TYPE_DRIVER_LICENSE",
+      "path": "onboarding.identity-verification.form.id-type-driver-license",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "2cd408e5-e9d9-5f40-a95d-3e0b02be5e9e": {
+      "uuid": "2cd408e5-e9d9-5f40-a95d-3e0b02be5e9e",
+      "id": "UI_ONBOARDING_IDENTITY_VERIFICATION_ID_TYPE_NATIONAL_ID",
+      "path": "onboarding.identity-verification.form.id-type-national-id",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "27d04003-1cab-5048-9bdc-89e59431f6e2": {
+      "uuid": "27d04003-1cab-5048-9bdc-89e59431f6e2",
+      "id": "UI_ONBOARDING_IDENTITY_VERIFICATION_ID_TYPE_PASSPORT",
+      "path": "onboarding.identity-verification.form.id-type-passport",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "88166d5a-2e23-536b-8303-cd9cfd000f6d": {
+      "uuid": "88166d5a-2e23-536b-8303-cd9cfd000f6d",
+      "id": "UI_ONBOARDING_IDENTITY_VERIFICATION_ID_TYPE_PLACEHOLDER",
+      "path": "onboarding.identity-verification.form.id-type-placeholder",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "cdbd8bb0-aab4-5d59-a469-772a93946eab": {
+      "uuid": "cdbd8bb0-aab4-5d59-a469-772a93946eab",
+      "id": "UI_ONBOARDING_IDENTITY_VERIFICATION_LAST_NAME",
+      "path": "onboarding.identity-verification.form.last-name",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "a56ec842-1bfa-512f-bb66-4db08a5850f5": {
+      "uuid": "a56ec842-1bfa-512f-bb66-4db08a5850f5",
+      "id": "UI_ONBOARDING_IDENTITY_VERIFICATION_PHONE",
+      "path": "onboarding.identity-verification.form.phone",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "46b41724-bd53-5189-b5e3-44c26253fadf": {
+      "uuid": "46b41724-bd53-5189-b5e3-44c26253fadf",
+      "id": "UI_ONBOARDING_IDENTITY_VERIFICATION_TITLE",
+      "path": "onboarding.identity-verification.display.title",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "99758225-0e2e-599c-b9e5-7a83cfc3a312": {
+      "uuid": "99758225-0e2e-599c-b9e5-7a83cfc3a312",
+      "id": "UI_ONBOARDING_IDENTITY_VERIFICATION_UPLOAD_ID",
+      "path": "onboarding.identity-verification.form.upload-id",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "4564ae1a-1ce5-5dc5-b9fb-da60915ef57b": {
+      "uuid": "4564ae1a-1ce5-5dc5-b9fb-da60915ef57b",
+      "id": "UI_ONBOARDING_IDENTITY_VERIFICATION_UPLOAD_ID_SUBTITLE",
+      "path": "onboarding.identity-verification.form.upload-id-subtitle",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "e57bc81c-0232-5079-a573-68dea687cd7b": {
+      "uuid": "e57bc81c-0232-5079-a573-68dea687cd7b",
+      "id": "UI_ONBOARDING_MARKETING_DESCRIPTION",
+      "path": "onboarding.marketing.display.description",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "0a1a52d9-a82a-5b48-be18-f7430de74522": {
+      "uuid": "0a1a52d9-a82a-5b48-be18-f7430de74522",
+      "id": "UI_ONBOARDING_MARKETING_EMAIL_MARKETING",
+      "path": "onboarding.marketing.form.email-marketing",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "e8c63c66-4a75-5229-8767-da20cd04be0b": {
+      "uuid": "e8c63c66-4a75-5229-8767-da20cd04be0b",
+      "id": "UI_ONBOARDING_MARKETING_EMAIL_MARKETING_SUBTITLE",
+      "path": "onboarding.marketing.form.email-marketing-subtitle",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "821e92bb-2a4c-5a22-a8ef-626903899510": {
+      "uuid": "821e92bb-2a4c-5a22-a8ef-626903899510",
+      "id": "UI_ONBOARDING_MARKETING_PRODUCT_REVIEWS",
+      "path": "onboarding.marketing.form.product-reviews",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "ae034398-6540-5d0b-8298-68b66e6de7b1": {
+      "uuid": "ae034398-6540-5d0b-8298-68b66e6de7b1",
+      "id": "UI_ONBOARDING_MARKETING_PRODUCT_REVIEWS_SUBTITLE",
+      "path": "onboarding.marketing.form.product-reviews-subtitle",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "caaeb4f2-cd02-5509-81cb-0af4789089db": {
+      "uuid": "caaeb4f2-cd02-5509-81cb-0af4789089db",
+      "id": "UI_ONBOARDING_MARKETING_SOCIAL_SHARING",
+      "path": "onboarding.marketing.form.social-sharing",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "fc56149b-9ec7-5796-8a31-337de8b71478": {
+      "uuid": "fc56149b-9ec7-5796-8a31-337de8b71478",
+      "id": "UI_ONBOARDING_MARKETING_SOCIAL_SHARING_SUBTITLE",
+      "path": "onboarding.marketing.form.social-sharing-subtitle",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "604717cc-1629-5759-b399-ab82e4d2d31f": {
+      "uuid": "604717cc-1629-5759-b399-ab82e4d2d31f",
+      "id": "UI_ONBOARDING_MARKETING_TITLE",
+      "path": "onboarding.marketing.display.title",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "7b7da5ff-b5e5-512a-a70a-9b85146175a0": {
+      "uuid": "7b7da5ff-b5e5-512a-a70a-9b85146175a0",
+      "id": "UI_ONBOARDING_NEXT_BUTTON",
+      "path": "onboarding.onboarding-page.actions.next-button",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "a9a539f2-39cf-5b3b-9c30-2b044f301f2d": {
+      "uuid": "a9a539f2-39cf-5b3b-9c30-2b044f301f2d",
+      "id": "UI_ONBOARDING_PAYMENTS_CURRENCY",
+      "path": "onboarding.payments.form.currency",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "49251b43-b9cb-57c6-bfc0-f9d1cd2b364c": {
+      "uuid": "49251b43-b9cb-57c6-bfc0-f9d1cd2b364c",
+      "id": "UI_ONBOARDING_PAYMENTS_CURRENCY_AUD",
+      "path": "onboarding.payments.form.currency-aud",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "51e9b979-afc9-5510-855d-99b346522b6a": {
+      "uuid": "51e9b979-afc9-5510-855d-99b346522b6a",
+      "id": "UI_ONBOARDING_PAYMENTS_CURRENCY_CAD",
+      "path": "onboarding.payments.form.currency-cad",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "d1eab2f1-21cf-5ff8-bc0a-a92b2eb70232": {
+      "uuid": "d1eab2f1-21cf-5ff8-bc0a-a92b2eb70232",
+      "id": "UI_ONBOARDING_PAYMENTS_CURRENCY_EUR",
+      "path": "onboarding.payments.form.currency-eur",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "f18dbed2-bb74-549b-81b3-b04091f2c259": {
+      "uuid": "f18dbed2-bb74-549b-81b3-b04091f2c259",
+      "id": "UI_ONBOARDING_PAYMENTS_CURRENCY_GBP",
+      "path": "onboarding.payments.form.currency-gbp",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "fb110471-01dd-5534-9c35-853bbf34064e": {
+      "uuid": "fb110471-01dd-5534-9c35-853bbf34064e",
+      "id": "UI_ONBOARDING_PAYMENTS_CURRENCY_USD",
+      "path": "onboarding.payments.form.currency-usd",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "d32f408d-6854-5fda-8fcb-c8c3599c4888": {
+      "uuid": "d32f408d-6854-5fda-8fcb-c8c3599c4888",
+      "id": "UI_ONBOARDING_PAYMENTS_DESCRIPTION",
+      "path": "onboarding.payments.display.description",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "fc7cb50c-4d6f-5755-8096-0276211b1fcf": {
+      "uuid": "fc7cb50c-4d6f-5755-8096-0276211b1fcf",
+      "id": "UI_ONBOARDING_PAYMENTS_PAYMENT_METHOD_BANK_TRANSFER",
+      "path": "onboarding.payments.form.payment-method-bank-transfer",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "787c89e8-b362-5a5d-856c-902afa95c8af": {
+      "uuid": "787c89e8-b362-5a5d-856c-902afa95c8af",
+      "id": "UI_ONBOARDING_PAYMENTS_PAYMENT_METHOD_CREDIT_CARD",
+      "path": "onboarding.payments.form.payment-method-credit-card",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "d5a88c01-891f-529e-ac75-7cbbe2c1f3e8": {
+      "uuid": "d5a88c01-891f-529e-ac75-7cbbe2c1f3e8",
+      "id": "UI_ONBOARDING_PAYMENTS_PAYMENT_METHOD_DEBIT_CARD",
+      "path": "onboarding.payments.form.payment-method-debit-card",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "7165ef7b-3065-57a8-b387-e7b5ce78b95a": {
+      "uuid": "7165ef7b-3065-57a8-b387-e7b5ce78b95a",
+      "id": "UI_ONBOARDING_PAYMENTS_PAYMENT_METHOD_PAYPAL",
+      "path": "onboarding.payments.form.payment-method-paypal",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "90d2d1f8-3014-5e83-a62f-21528b692df5": {
+      "uuid": "90d2d1f8-3014-5e83-a62f-21528b692df5",
+      "id": "UI_ONBOARDING_PAYMENTS_PAYMENT_METHODS",
+      "path": "onboarding.payments.form.payment-methods",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "58000435-804c-5966-87d2-ba8739e65ca0": {
+      "uuid": "58000435-804c-5966-87d2-ba8739e65ca0",
+      "id": "UI_ONBOARDING_PAYMENTS_TITLE",
+      "path": "onboarding.payments.display.title",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "eb2a3834-c69d-5dfb-840b-3a1e3ca0d3f5": {
+      "uuid": "eb2a3834-c69d-5dfb-840b-3a1e3ca0d3f5",
+      "id": "UI_ONBOARDING_POLICIES_DESCRIPTION",
+      "path": "onboarding.policies.display.description",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "884c2151-074e-5c8c-8ceb-242b8fb4e27e": {
+      "uuid": "884c2151-074e-5c8c-8ceb-242b8fb4e27e",
+      "id": "UI_ONBOARDING_POLICIES_PRIVACY_POLICY",
+      "path": "onboarding.policies.form.privacy-policy",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "6829767f-498c-5ba6-94b9-5599fd4017f0": {
+      "uuid": "6829767f-498c-5ba6-94b9-5599fd4017f0",
+      "id": "UI_ONBOARDING_POLICIES_PRIVACY_POLICY_PLACEHOLDER",
+      "path": "onboarding.policies.form.privacy-policy-placeholder",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "4f28d3ef-3f00-52d8-81dd-5455cebdaa8e": {
+      "uuid": "4f28d3ef-3f00-52d8-81dd-5455cebdaa8e",
+      "id": "UI_ONBOARDING_POLICIES_REFUND_POLICY",
+      "path": "onboarding.policies.form.refund-policy",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "0c9f31e5-9bb0-5aba-94d9-f51b63d7b1a0": {
+      "uuid": "0c9f31e5-9bb0-5aba-94d9-f51b63d7b1a0",
+      "id": "UI_ONBOARDING_POLICIES_REFUND_POLICY_PLACEHOLDER",
+      "path": "onboarding.policies.form.refund-policy-placeholder",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "cf35f363-403d-55b0-9521-aa21ab61b7f6": {
+      "uuid": "cf35f363-403d-55b0-9521-aa21ab61b7f6",
+      "id": "UI_ONBOARDING_POLICIES_RETURN_POLICY",
+      "path": "onboarding.policies.form.return-policy",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "2362c7c1-5a14-53a2-ac06-95ef41f11378": {
+      "uuid": "2362c7c1-5a14-53a2-ac06-95ef41f11378",
+      "id": "UI_ONBOARDING_POLICIES_RETURN_POLICY_PLACEHOLDER",
+      "path": "onboarding.policies.form.return-policy-placeholder",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "208c242f-730a-548a-8538-5a99bff40474": {
+      "uuid": "208c242f-730a-548a-8538-5a99bff40474",
+      "id": "UI_ONBOARDING_POLICIES_TERMS_OF_SERVICE",
+      "path": "onboarding.policies.form.terms-of-service",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "aa401425-913d-57d4-9094-c2b7ac1f0b9e": {
+      "uuid": "aa401425-913d-57d4-9094-c2b7ac1f0b9e",
+      "id": "UI_ONBOARDING_POLICIES_TERMS_OF_SERVICE_PLACEHOLDER",
+      "path": "onboarding.policies.form.terms-of-service-placeholder",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "762f16e4-1138-579f-9f8e-83c27fdf96dd": {
+      "uuid": "762f16e4-1138-579f-9f8e-83c27fdf96dd",
+      "id": "UI_ONBOARDING_POLICIES_TITLE",
+      "path": "onboarding.policies.display.title",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "afb09eca-3732-5b5b-bef6-17948aab1c85": {
+      "uuid": "afb09eca-3732-5b5b-bef6-17948aab1c85",
+      "id": "UI_ONBOARDING_PREFERENCES_DESCRIPTION",
+      "path": "onboarding.preferences.display.description",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "58d86aa0-71a2-539f-86c6-d51e3dcac6fd": {
+      "uuid": "58d86aa0-71a2-539f-86c6-d51e3dcac6fd",
+      "id": "UI_ONBOARDING_PREFERENCES_NOTIFICATION_MARKETING",
+      "path": "onboarding.preferences.form.notification-marketing",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "7cb64318-d3a2-55c7-81fc-1412d3820e61": {
+      "uuid": "7cb64318-d3a2-55c7-81fc-1412d3820e61",
+      "id": "UI_ONBOARDING_PREFERENCES_NOTIFICATION_ORDER",
+      "path": "onboarding.preferences.form.notification-order",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "7cd02fa1-0b3a-560c-a92e-a2234ef39d6e": {
+      "uuid": "7cd02fa1-0b3a-560c-a92e-a2234ef39d6e",
+      "id": "UI_ONBOARDING_PREFERENCES_NOTIFICATION_SYSTEM",
+      "path": "onboarding.preferences.form.notification-system",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "77e1c3be-e5ca-5f0d-a42d-e53c82563d2b": {
+      "uuid": "77e1c3be-e5ca-5f0d-a42d-e53c82563d2b",
+      "id": "UI_ONBOARDING_PREFERENCES_NOTIFICATION_WEEKLY_REPORT",
+      "path": "onboarding.preferences.form.notification-weekly-report",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "e6dbca44-3828-5201-bf3b-2ad6e82747db": {
+      "uuid": "e6dbca44-3828-5201-bf3b-2ad6e82747db",
+      "id": "UI_ONBOARDING_PREFERENCES_NOTIFICATIONS",
+      "path": "onboarding.preferences.form.notifications",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "3f134193-e62f-5fa8-b84f-f9c98de95bce": {
+      "uuid": "3f134193-e62f-5fa8-b84f-f9c98de95bce",
+      "id": "UI_ONBOARDING_PREFERENCES_TIMEZONE",
+      "path": "onboarding.preferences.form.timezone",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "897c399c-dc67-5ee3-b2ef-60a2db3e1a91": {
+      "uuid": "897c399c-dc67-5ee3-b2ef-60a2db3e1a91",
+      "id": "UI_ONBOARDING_PREFERENCES_TIMEZONE_CET",
+      "path": "onboarding.preferences.form.timezone-cet",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "b5946be3-7b41-56c2-8a52-72a58204b13c": {
+      "uuid": "b5946be3-7b41-56c2-8a52-72a58204b13c",
+      "id": "UI_ONBOARDING_PREFERENCES_TIMEZONE_CT",
+      "path": "onboarding.preferences.form.timezone-ct",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "b98567a5-7732-55ec-8661-76e3c61293d2": {
+      "uuid": "b98567a5-7732-55ec-8661-76e3c61293d2",
+      "id": "UI_ONBOARDING_PREFERENCES_TIMEZONE_ET",
+      "path": "onboarding.preferences.form.timezone-et",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "e4a32f78-e78f-59cf-a525-dd467d741945": {
+      "uuid": "e4a32f78-e78f-59cf-a525-dd467d741945",
+      "id": "UI_ONBOARDING_PREFERENCES_TIMEZONE_GMT",
+      "path": "onboarding.preferences.form.timezone-gmt",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "8998a3cd-4745-5214-9675-17cb962762fa": {
+      "uuid": "8998a3cd-4745-5214-9675-17cb962762fa",
+      "id": "UI_ONBOARDING_PREFERENCES_TIMEZONE_MT",
+      "path": "onboarding.preferences.form.timezone-mt",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "83b470d8-4d16-5d51-887b-bd86d432fd87": {
+      "uuid": "83b470d8-4d16-5d51-887b-bd86d432fd87",
+      "id": "UI_ONBOARDING_PREFERENCES_TIMEZONE_PT",
+      "path": "onboarding.preferences.form.timezone-pt",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "10301ad6-8429-5b7f-bd86-6044620871ed": {
+      "uuid": "10301ad6-8429-5b7f-bd86-6044620871ed",
+      "id": "UI_ONBOARDING_PREFERENCES_TITLE",
+      "path": "onboarding.preferences.display.title",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "0f7d89fb-cbf5-551e-aded-98e5ee76c500": {
+      "uuid": "0f7d89fb-cbf5-551e-aded-98e5ee76c500",
+      "id": "UI_ONBOARDING_PREV_BUTTON",
+      "path": "onboarding.onboarding-page.actions.prev-button",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "45f0124d-6d01-5d00-8d8a-6dd795dc0fea": {
+      "uuid": "45f0124d-6d01-5d00-8d8a-6dd795dc0fea",
+      "id": "UI_ONBOARDING_PRODUCTS_ADD_PRODUCTS_LATER",
+      "path": "onboarding.products.actions.add-products-later",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "a06bc006-ed94-53cd-8e91-feec325512db": {
+      "uuid": "a06bc006-ed94-53cd-8e91-feec325512db",
+      "id": "UI_ONBOARDING_PRODUCTS_DESCRIPTION",
+      "path": "onboarding.products.display.description",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "e8d2f469-1261-592c-b6af-96c7ff42e82a": {
+      "uuid": "e8d2f469-1261-592c-b6af-96c7ff42e82a",
+      "id": "UI_ONBOARDING_PRODUCTS_DIGITAL_PRODUCTS",
+      "path": "onboarding.products.form.digital-products",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "e51bfeb6-b087-5915-b636-888c506e7533": {
+      "uuid": "e51bfeb6-b087-5915-b636-888c506e7533",
+      "id": "UI_ONBOARDING_PRODUCTS_DIGITAL_PRODUCTS_SUBTITLE",
+      "path": "onboarding.products.form.digital-products-subtitle",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "396c7966-f3b1-5331-8f14-f5dc6fb2dccf": {
+      "uuid": "396c7966-f3b1-5331-8f14-f5dc6fb2dccf",
+      "id": "UI_ONBOARDING_PRODUCTS_PHYSICAL_PRODUCTS",
+      "path": "onboarding.products.form.physical-products",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "bcbe7a87-aea2-5bbe-b975-f8057c0cb154": {
+      "uuid": "bcbe7a87-aea2-5bbe-b975-f8057c0cb154",
+      "id": "UI_ONBOARDING_PRODUCTS_PHYSICAL_PRODUCTS_SUBTITLE",
+      "path": "onboarding.products.form.physical-products-subtitle",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "19f1c42b-f289-5328-9b93-44b12de3d496": {
+      "uuid": "19f1c42b-f289-5328-9b93-44b12de3d496",
+      "id": "UI_ONBOARDING_PRODUCTS_PRODUCT_CATALOG",
+      "path": "onboarding.products.form.product-catalog",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "32ccb4aa-2bf1-5075-950d-da5c2cfc7eff": {
+      "uuid": "32ccb4aa-2bf1-5075-950d-da5c2cfc7eff",
+      "id": "UI_ONBOARDING_PRODUCTS_TITLE",
+      "path": "onboarding.products.display.title",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "2466fcae-a0a4-566d-a174-8a487c364e17": {
+      "uuid": "2466fcae-a0a4-566d-a174-8a487c364e17",
+      "id": "UI_ONBOARDING_SHIPPING_ADDRESS",
+      "path": "onboarding.shipping.form.address",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "2d69b1c0-b344-5c83-a8d0-f10a514b7d3d": {
+      "uuid": "2d69b1c0-b344-5c83-a8d0-f10a514b7d3d",
+      "id": "UI_ONBOARDING_SHIPPING_ADDRESS_PLACEHOLDER",
+      "path": "onboarding.shipping.form.address-placeholder",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "d725be01-ab31-5be0-899f-d0e7fe185cde": {
+      "uuid": "d725be01-ab31-5be0-899f-d0e7fe185cde",
+      "id": "UI_ONBOARDING_SHIPPING_CITY",
+      "path": "onboarding.shipping.form.city",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "c942e7cf-f404-5772-948b-c1edb246a7d0": {
+      "uuid": "c942e7cf-f404-5772-948b-c1edb246a7d0",
+      "id": "UI_ONBOARDING_SHIPPING_CITY_PLACEHOLDER",
+      "path": "onboarding.shipping.form.city-placeholder",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "15be52d4-3982-528f-ae23-7ed2975fd50d": {
+      "uuid": "15be52d4-3982-528f-ae23-7ed2975fd50d",
+      "id": "UI_ONBOARDING_SHIPPING_COUNTRY",
+      "path": "onboarding.shipping.form.country",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "cadc60fe-faa5-5d85-acf5-0c2cb798dd23": {
+      "uuid": "cadc60fe-faa5-5d85-acf5-0c2cb798dd23",
+      "id": "UI_ONBOARDING_SHIPPING_COUNTRY_PLACEHOLDER",
+      "path": "onboarding.shipping.form.country-placeholder",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "02f562b8-7824-5203-8a2b-27d24c1b449d": {
+      "uuid": "02f562b8-7824-5203-8a2b-27d24c1b449d",
+      "id": "UI_ONBOARDING_SHIPPING_DESCRIPTION",
+      "path": "onboarding.shipping.display.description",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "33092ff6-1fa7-5381-8808-314021034a33": {
+      "uuid": "33092ff6-1fa7-5381-8808-314021034a33",
+      "id": "UI_ONBOARDING_SHIPPING_OFFER_FREE_SHIPPING",
+      "path": "onboarding.shipping.form.offer-free-shipping",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "11e5a253-8cd1-5248-a2af-eb75d94ed6b2": {
+      "uuid": "11e5a253-8cd1-5248-a2af-eb75d94ed6b2",
+      "id": "UI_ONBOARDING_SHIPPING_POSTAL_CODE",
+      "path": "onboarding.shipping.form.postal-code",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "eaca5411-ed13-590a-81a2-f3bb0788770c": {
+      "uuid": "eaca5411-ed13-590a-81a2-f3bb0788770c",
+      "id": "UI_ONBOARDING_SHIPPING_POSTAL_CODE_PLACEHOLDER",
+      "path": "onboarding.shipping.form.postal-code-placeholder",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "6d2e6ed0-585b-58c7-be66-d57e550b97c5": {
+      "uuid": "6d2e6ed0-585b-58c7-be66-d57e550b97c5",
+      "id": "UI_ONBOARDING_SHIPPING_TITLE",
+      "path": "onboarding.shipping.display.title",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "b38d19cd-0d3c-549c-a0d3-eeb3761c9cf2": {
+      "uuid": "b38d19cd-0d3c-549c-a0d3-eeb3761c9cf2",
+      "id": "UI_ONBOARDING_SIDEBAR",
+      "path": "onboarding.onboarding-page.display.sidebar",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "47613d21-3758-51b8-a749-261b06170c82": {
+      "uuid": "47613d21-3758-51b8-a749-261b06170c82",
+      "id": "UI_ONBOARDING_STEP_ITEM",
+      "path": "onboarding.onboarding-page.display.step-item",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "69ab0b07-3351-530c-80aa-b96d9b40dd0a": {
+      "uuid": "69ab0b07-3351-530c-80aa-b96d9b40dd0a",
+      "id": "UI_ONBOARDING_STORE_INFO_CATEGORY_BEAUTY",
+      "path": "onboarding.store-info.form.category-beauty",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "04135952-69ae-56cf-b0a7-0f689cba1fdd": {
+      "uuid": "04135952-69ae-56cf-b0a7-0f689cba1fdd",
+      "id": "UI_ONBOARDING_STORE_INFO_CATEGORY_ELECTRONICS",
+      "path": "onboarding.store-info.form.category-electronics",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "92ec859d-05ea-5e10-8122-ea1336334236": {
+      "uuid": "92ec859d-05ea-5e10-8122-ea1336334236",
+      "id": "UI_ONBOARDING_STORE_INFO_CATEGORY_FASHION",
+      "path": "onboarding.store-info.form.category-fashion",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "3251ee2c-30d7-5d13-895e-22fafe548d01": {
+      "uuid": "3251ee2c-30d7-5d13-895e-22fafe548d01",
+      "id": "UI_ONBOARDING_STORE_INFO_CATEGORY_HOME",
+      "path": "onboarding.store-info.form.category-home",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "9f7717b3-9d2b-5536-a798-9319f3fe4c4c": {
+      "uuid": "9f7717b3-9d2b-5536-a798-9319f3fe4c4c",
+      "id": "UI_ONBOARDING_STORE_INFO_CATEGORY_OTHER",
+      "path": "onboarding.store-info.form.category-other",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "0e845bec-7113-538f-9166-196e4f7b7fe9": {
+      "uuid": "0e845bec-7113-538f-9166-196e4f7b7fe9",
+      "id": "UI_ONBOARDING_STORE_INFO_CATEGORY_SPORTS",
+      "path": "onboarding.store-info.form.category-sports",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "ffdfccec-a5c3-5ba3-8dd8-cddefe22e03d": {
+      "uuid": "ffdfccec-a5c3-5ba3-8dd8-cddefe22e03d",
+      "id": "UI_ONBOARDING_STORE_INFO_DESCRIPTION",
+      "path": "onboarding.store-info.display.description",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "07617834-f66e-59a1-aa8f-f5e67cace15b": {
+      "uuid": "07617834-f66e-59a1-aa8f-f5e67cace15b",
+      "id": "UI_ONBOARDING_STORE_INFO_STORE_CATEGORY",
+      "path": "onboarding.store-info.form.store-category",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "1753ba5e-b58b-5d6f-b7bc-0388b606fae9": {
+      "uuid": "1753ba5e-b58b-5d6f-b7bc-0388b606fae9",
+      "id": "UI_ONBOARDING_STORE_INFO_STORE_CATEGORY_PLACEHOLDER",
+      "path": "onboarding.store-info.form.store-category-placeholder",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "a0c29276-83b7-5639-8a60-85f01b6c4ccb": {
+      "uuid": "a0c29276-83b7-5639-8a60-85f01b6c4ccb",
+      "id": "UI_ONBOARDING_STORE_INFO_STORE_DESCRIPTION",
+      "path": "onboarding.store-info.form.store-description",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "9712e5f8-fbbb-5dd7-bc07-0de210bc4739": {
+      "uuid": "9712e5f8-fbbb-5dd7-bc07-0de210bc4739",
+      "id": "UI_ONBOARDING_STORE_INFO_STORE_DESCRIPTION_PLACEHOLDER",
+      "path": "onboarding.store-info.form.store-description-placeholder",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "26754a17-e06f-5436-8c22-2d0d4888f304": {
+      "uuid": "26754a17-e06f-5436-8c22-2d0d4888f304",
+      "id": "UI_ONBOARDING_STORE_INFO_STORE_NAME",
+      "path": "onboarding.store-info.form.store-name",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "4599b93d-aa32-56b8-b74b-b52324cf660e": {
+      "uuid": "4599b93d-aa32-56b8-b74b-b52324cf660e",
+      "id": "UI_ONBOARDING_STORE_INFO_STORE_NAME_PLACEHOLDER",
+      "path": "onboarding.store-info.form.store-name-placeholder",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "897d6b55-8220-5d2e-ab13-acdfe61792c0": {
+      "uuid": "897d6b55-8220-5d2e-ab13-acdfe61792c0",
+      "id": "UI_ONBOARDING_STORE_INFO_STORE_URL",
+      "path": "onboarding.store-info.form.store-url",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "288e5c1b-4520-5a40-ac29-43f531e85fd2": {
+      "uuid": "288e5c1b-4520-5a40-ac29-43f531e85fd2",
+      "id": "UI_ONBOARDING_STORE_INFO_STORE_URL_PLACEHOLDER",
+      "path": "onboarding.store-info.form.store-url-placeholder",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "3129985c-b767-5667-adc5-788206ac1ee5": {
+      "uuid": "3129985c-b767-5667-adc5-788206ac1ee5",
+      "id": "UI_ONBOARDING_STORE_INFO_TITLE",
+      "path": "onboarding.store-info.display.title",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "ac72aefc-a125-5777-8289-c462599baa1d": {
+      "uuid": "ac72aefc-a125-5777-8289-c462599baa1d",
+      "id": "UI_ONBOARDING_TAX_INFO_DESCRIPTION",
+      "path": "onboarding.tax-info.display.description",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "4369ee71-2e52-524c-b51b-37439a95e39e": {
+      "uuid": "4369ee71-2e52-524c-b51b-37439a95e39e",
+      "id": "UI_ONBOARDING_TAX_INFO_TAX_ID",
+      "path": "onboarding.tax-info.form.tax-id",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "4eaaeb1f-b3e8-5c66-acec-caa1599bef90": {
+      "uuid": "4eaaeb1f-b3e8-5c66-acec-caa1599bef90",
+      "id": "UI_ONBOARDING_TAX_INFO_TAX_ID_PLACEHOLDER",
+      "path": "onboarding.tax-info.form.tax-id-placeholder",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "f40e4a2c-ee02-5ef3-83b0-be0edc778945": {
+      "uuid": "f40e4a2c-ee02-5ef3-83b0-be0edc778945",
+      "id": "UI_ONBOARDING_TAX_INFO_TITLE",
+      "path": "onboarding.tax-info.display.title",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "3b90fdfc-ebfb-5dbd-a89d-b0ea0ef66423": {
+      "uuid": "3b90fdfc-ebfb-5dbd-a89d-b0ea0ef66423",
+      "id": "UI_ONBOARDING_WELCOME_DESCRIPTION",
+      "path": "onboarding.welcome.display.description",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "1f909260-c21d-5311-b7e5-a23a7713e20b": {
+      "uuid": "1f909260-c21d-5311-b7e5-a23a7713e20b",
+      "id": "UI_ONBOARDING_WELCOME_GET_STARTED",
+      "path": "onboarding.welcome.actions.get-started",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "72b8d12c-c34b-5865-a2cc-6b7641bfe2e7": {
+      "uuid": "72b8d12c-c34b-5865-a2cc-6b7641bfe2e7",
+      "id": "UI_ONBOARDING_WELCOME_TITLE",
+      "path": "onboarding.welcome.display.title",
+      "feature": "onboarding",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "2613883c-bc32-592d-b876-b166558e986f": {
+      "uuid": "2613883c-bc32-592d-b876-b166558e986f",
+      "id": "UI_SETTINGS_ACCESSIBILITY_HIGH_CONTRAST_DESCRIPTION",
+      "path": "settings.accessibility.high-contrast.high-contrast-description",
+      "feature": "settings",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "d1ea066c-8965-5755-bd5e-618a7534340b": {
+      "uuid": "d1ea066c-8965-5755-bd5e-618a7534340b",
+      "id": "UI_SETTINGS_ACCESSIBILITY_HIGH_CONTRAST_TITLE",
+      "path": "settings.accessibility.high-contrast.high-contrast-title",
+      "feature": "settings",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "14e2465e-3970-5051-860e-37d0e2a6702b": {
+      "uuid": "14e2465e-3970-5051-860e-37d0e2a6702b",
+      "id": "UI_SETTINGS_ACCESSIBILITY_REDUCED_MOTION_DESCRIPTION",
+      "path": "settings.accessibility.reduced-motion.reduced-motion-description",
+      "feature": "settings",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "f835d502-b3f4-52b1-a11a-372868a938cf": {
+      "uuid": "f835d502-b3f4-52b1-a11a-372868a938cf",
+      "id": "UI_SETTINGS_ACCESSIBILITY_REDUCED_MOTION_TITLE",
+      "path": "settings.accessibility.reduced-motion.reduced-motion-title",
+      "feature": "settings",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "977dac7c-d3d9-5ed1-90e3-976a31713507": {
+      "uuid": "977dac7c-d3d9-5ed1-90e3-976a31713507",
+      "id": "UI_SETTINGS_ACCESSIBILITY_TITLE",
+      "path": "settings.accessibility.display.section-title",
+      "feature": "settings",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "f9233fa7-d1a5-5c1e-abc7-4d1dba7e3424": {
+      "uuid": "f9233fa7-d1a5-5c1e-abc7-4d1dba7e3424",
+      "id": "UI_SETTINGS_ACTIONS_RESET_PREFERENCES",
+      "path": "settings.actions.reset-preferences.reset-button",
+      "feature": "settings",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "db0db21a-c17e-5f4d-b2db-e0e48858c467": {
+      "uuid": "db0db21a-c17e-5f4d-b2db-e0e48858c467",
+      "id": "UI_SETTINGS_ACTIONS_RESTORE_DEFAULTS",
+      "path": "settings.actions.restore-defaults.restore-button",
+      "feature": "settings",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "8f71bdd2-ea60-5419-8264-b9104ed2a92f": {
+      "uuid": "8f71bdd2-ea60-5419-8264-b9104ed2a92f",
+      "id": "UI_SETTINGS_ACTIONS_SAVE",
+      "path": "settings.actions.save.save-button",
+      "feature": "settings",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "7db74799-cfdc-50ac-9a0e-da77085b9c5a": {
+      "uuid": "7db74799-cfdc-50ac-9a0e-da77085b9c5a",
+      "id": "UI_SETTINGS_APP_SETTINGS_ACTIVE",
+      "path": "settings.app-settings.status.active",
+      "feature": "settings",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "b1d78ce1-8962-5958-8c39-9de7a165c97e": {
+      "uuid": "b1d78ce1-8962-5958-8c39-9de7a165c97e",
+      "id": "UI_SETTINGS_APP_SETTINGS_AI",
+      "path": "settings.app-settings.feature-flags.ai",
+      "feature": "settings",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "4cc5e9b5-7746-5432-868f-0b93a4318328": {
+      "uuid": "4cc5e9b5-7746-5432-868f-0b93a4318328",
+      "id": "UI_SETTINGS_APP_SETTINGS_ANALYTICS",
+      "path": "settings.app-settings.feature-flags.analytics",
+      "feature": "settings",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "b2263eb6-af5d-5451-b71d-2c8400bca847": {
+      "uuid": "b2263eb6-af5d-5451-b71d-2c8400bca847",
+      "id": "UI_SETTINGS_APP_SETTINGS_FEATURE_FLAGS_TITLE",
+      "path": "settings.app-settings.feature-flags.feature-flags-title",
+      "feature": "settings",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "511a19f7-d024-5bd8-8852-6889db386a92": {
+      "uuid": "511a19f7-d024-5bd8-8852-6889db386a92",
+      "id": "UI_SETTINGS_APP_SETTINGS_MAINTENANCE_DESCRIPTION",
+      "path": "settings.app-settings.maintenance.maintenance-description",
+      "feature": "settings",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "ecb32573-fb8f-5af0-af34-9ea9abf26b3e": {
+      "uuid": "ecb32573-fb8f-5af0-af34-9ea9abf26b3e",
+      "id": "UI_SETTINGS_APP_SETTINGS_MAINTENANCE_TITLE",
+      "path": "settings.app-settings.maintenance.maintenance-title",
+      "feature": "settings",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "d9c149bf-08b1-5658-8cd1-4a1daea53dbe": {
+      "uuid": "d9c149bf-08b1-5658-8cd1-4a1daea53dbe",
+      "id": "UI_SETTINGS_APP_SETTINGS_PDF",
+      "path": "settings.app-settings.feature-flags.pdf",
+      "feature": "settings",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "cc966e8c-b512-5d85-bada-e5226f3b281b": {
+      "uuid": "cc966e8c-b512-5d85-bada-e5226f3b281b",
+      "id": "UI_SETTINGS_APP_SETTINGS_STATUS_DESCRIPTION",
+      "path": "settings.app-settings.status.description",
+      "feature": "settings",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "77a685fc-14ef-5aed-805e-b8ceeca3683f": {
+      "uuid": "77a685fc-14ef-5aed-805e-b8ceeca3683f",
+      "id": "UI_SETTINGS_APP_SETTINGS_STATUS_TITLE",
+      "path": "settings.app-settings.status.status-title",
+      "feature": "settings",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "01cd132f-8ffb-5b8c-99db-7fb1da61c586": {
+      "uuid": "01cd132f-8ffb-5b8c-99db-7fb1da61c586",
+      "id": "UI_SETTINGS_APP_SETTINGS_TITLE",
+      "path": "settings.app-settings.display.section-title",
+      "feature": "settings",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "7bacaa7e-da5b-52e7-9b42-3420aa953121": {
+      "uuid": "7bacaa7e-da5b-52e7-9b42-3420aa953121",
+      "id": "UI_SETTINGS_APPEARANCE_BUTTON",
+      "path": "settings.appearance.preview.button",
+      "feature": "settings",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "c53616ce-9240-5445-a0e4-33c0361fdb7f": {
+      "uuid": "c53616ce-9240-5445-a0e4-33c0361fdb7f",
+      "id": "UI_SETTINGS_APPEARANCE_COMFORTABLE",
+      "path": "settings.appearance.density.comfortable",
+      "feature": "settings",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "7c812f63-a18e-59f0-b510-50f92123c436": {
+      "uuid": "7c812f63-a18e-59f0-b510-50f92123c436",
+      "id": "UI_SETTINGS_APPEARANCE_COMPACT",
+      "path": "settings.appearance.density.compact",
+      "feature": "settings",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "3b7e7da2-0a8d-536f-bdd6-4048dc9652f5": {
+      "uuid": "3b7e7da2-0a8d-536f-bdd6-4048dc9652f5",
+      "id": "UI_SETTINGS_APPEARANCE_DARK",
+      "path": "settings.appearance.theme.dark",
+      "feature": "settings",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "5f52fff7-875a-5124-9587-e8e5802c493a": {
+      "uuid": "5f52fff7-875a-5124-9587-e8e5802c493a",
+      "id": "UI_SETTINGS_APPEARANCE_DENSITY_TITLE",
+      "path": "settings.appearance.density.density-title",
+      "feature": "settings",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "6c53bebc-d8de-5e3f-9f3e-f592f9ef87ad": {
+      "uuid": "6c53bebc-d8de-5e3f-9f3e-f592f9ef87ad",
+      "id": "UI_SETTINGS_APPEARANCE_FONT_SIZE_TITLE",
+      "path": "settings.appearance.font-size.font-size-title",
+      "feature": "settings",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "9c318c82-4ab6-58b1-a9c4-96c86be6745f": {
+      "uuid": "9c318c82-4ab6-58b1-a9c4-96c86be6745f",
+      "id": "UI_SETTINGS_APPEARANCE_LIGHT",
+      "path": "settings.appearance.theme.light",
+      "feature": "settings",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "9a21bb3f-e52c-582c-8f00-fe815954300e": {
+      "uuid": "9a21bb3f-e52c-582c-8f00-fe815954300e",
+      "id": "UI_SETTINGS_APPEARANCE_PREVIEW_TITLE",
+      "path": "settings.appearance.preview.preview-title",
+      "feature": "settings",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "b3402ac5-aa22-55bc-abf5-1b1b135b24da": {
+      "uuid": "b3402ac5-aa22-55bc-abf5-1b1b135b24da",
+      "id": "UI_SETTINGS_APPEARANCE_SPACIOUS",
+      "path": "settings.appearance.density.spacious",
+      "feature": "settings",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "ef4e385f-f233-5336-a000-989d0ecc19ac": {
+      "uuid": "ef4e385f-f233-5336-a000-989d0ecc19ac",
+      "id": "UI_SETTINGS_APPEARANCE_SYSTEM",
+      "path": "settings.appearance.theme.system",
+      "feature": "settings",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "2bcebbae-d2a7-5749-835d-19fc2cf25def": {
+      "uuid": "2bcebbae-d2a7-5749-835d-19fc2cf25def",
+      "id": "UI_SETTINGS_APPEARANCE_THEME_TITLE",
+      "path": "settings.appearance.theme.theme-title",
+      "feature": "settings",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "94d67338-143a-5e7f-8398-8d5297d27399": {
+      "uuid": "94d67338-143a-5e7f-8398-8d5297d27399",
+      "id": "UI_SETTINGS_APPEARANCE_TITLE",
+      "path": "settings.appearance.display.section-title",
+      "feature": "settings",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "23f4f6b3-513e-5b6a-ac7c-9585009fde64": {
+      "uuid": "23f4f6b3-513e-5b6a-ac7c-9585009fde64",
+      "id": "UI_SETTINGS_DESCRIPTION",
+      "path": "settings.page.display.description",
+      "feature": "settings",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "cb1b5e20-4e42-59b1-8aef-b82e9ac8b26f": {
+      "uuid": "cb1b5e20-4e42-59b1-8aef-b82e9ac8b26f",
+      "id": "UI_SETTINGS_DEVELOPER_TOOLS_DIAGNOSTICS",
+      "path": "settings.developer-tools.diagnostics.diagnostics-label",
+      "feature": "settings",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "5b59ffce-1022-504d-8455-e5204a73fc47": {
+      "uuid": "5b59ffce-1022-504d-8455-e5204a73fc47",
+      "id": "UI_SETTINGS_DEVELOPER_TOOLS_SSOT_GUARD_DESCRIPTION",
+      "path": "settings.developer-tools.ssot-guard.ssot-guard-description",
+      "feature": "settings",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "f23c3732-c4dc-50f5-a445-83f828501083": {
+      "uuid": "f23c3732-c4dc-50f5-a445-83f828501083",
+      "id": "UI_SETTINGS_DEVELOPER_TOOLS_SSOT_GUARD_TITLE",
+      "path": "settings.developer-tools.ssot-guard.ssot-guard-title",
+      "feature": "settings",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "95f32dad-61f4-54f2-ae76-f44f4148a7fc": {
+      "uuid": "95f32dad-61f4-54f2-ae76-f44f4148a7fc",
+      "id": "UI_SETTINGS_DEVELOPER_TOOLS_START_TEST",
+      "path": "settings.developer-tools.start-test.button",
+      "feature": "settings",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "4584582a-aceb-53fb-9399-b1f0f1d65641": {
+      "uuid": "4584582a-aceb-53fb-9399-b1f0f1d65641",
+      "id": "UI_SETTINGS_DEVELOPER_TOOLS_TITLE",
+      "path": "settings.developer-tools.display.section-title",
+      "feature": "settings",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "464673bb-7cb0-547c-a033-ed6d3659d8c6": {
+      "uuid": "464673bb-7cb0-547c-a033-ed6d3659d8c6",
+      "id": "UI_SETTINGS_LANGUAGE_REGION_ARABIC",
+      "path": "settings.language-region.language.arabic-button",
+      "feature": "settings",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "4896e209-e471-5c8c-a2d9-19af309e8af2": {
+      "uuid": "4896e209-e471-5c8c-a2d9-19af309e8af2",
+      "id": "UI_SETTINGS_LANGUAGE_REGION_CAIRO",
+      "path": "settings.language-region.timezone.cairo",
+      "feature": "settings",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "49214e01-e739-5028-aa1f-d89b9f21f272": {
+      "uuid": "49214e01-e739-5028-aa1f-d89b9f21f272",
+      "id": "UI_SETTINGS_LANGUAGE_REGION_DIRECTION_LTR",
+      "path": "settings.language-region.direction.ltr-preview",
+      "feature": "settings",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "3da4810b-c3b0-5f2e-9263-96d54db7e030": {
+      "uuid": "3da4810b-c3b0-5f2e-9263-96d54db7e030",
+      "id": "UI_SETTINGS_LANGUAGE_REGION_DIRECTION_PREVIEW",
+      "path": "settings.language-region.direction.preview-label",
+      "feature": "settings",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "47778881-2e7f-5190-8f8c-badb0c9afc7a": {
+      "uuid": "47778881-2e7f-5190-8f8c-badb0c9afc7a",
+      "id": "UI_SETTINGS_LANGUAGE_REGION_DIRECTION_RTL",
+      "path": "settings.language-region.direction.rtl-preview",
+      "feature": "settings",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "90ca3cec-f101-582d-a883-1b7a47f2e073": {
+      "uuid": "90ca3cec-f101-582d-a883-1b7a47f2e073",
+      "id": "UI_SETTINGS_LANGUAGE_REGION_DUBAI",
+      "path": "settings.language-region.timezone.dubai",
+      "feature": "settings",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "a4dbfad9-ea6a-5778-96df-85f7b145f406": {
+      "uuid": "a4dbfad9-ea6a-5778-96df-85f7b145f406",
+      "id": "UI_SETTINGS_LANGUAGE_REGION_ENGLISH",
+      "path": "settings.language-region.language.english-button",
+      "feature": "settings",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "b181dc48-baad-521b-9b97-5dea8c6b598d": {
+      "uuid": "b181dc48-baad-521b-9b97-5dea8c6b598d",
+      "id": "UI_SETTINGS_LANGUAGE_REGION_LANGUAGE_DESCRIPTION",
+      "path": "settings.language-region.language.description",
+      "feature": "settings",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "59a52560-193e-523f-9890-c07631ad2535": {
+      "uuid": "59a52560-193e-523f-9890-c07631ad2535",
+      "id": "UI_SETTINGS_LANGUAGE_REGION_LANGUAGE_TITLE",
+      "path": "settings.language-region.language.language-title",
+      "feature": "settings",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "a779a9a6-d59d-5a87-b0d9-2240bdeb9729": {
+      "uuid": "a779a9a6-d59d-5a87-b0d9-2240bdeb9729",
+      "id": "UI_SETTINGS_LANGUAGE_REGION_MECCA",
+      "path": "settings.language-region.timezone.mecca",
+      "feature": "settings",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "e4f823ec-bdfa-5f2b-9104-cb26dae36e75": {
+      "uuid": "e4f823ec-bdfa-5f2b-9104-cb26dae36e75",
+      "id": "UI_SETTINGS_LANGUAGE_REGION_TIMEZONE",
+      "path": "settings.language-region.timezone.timezone-label",
+      "feature": "settings",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "b98718db-ace4-5f6e-9b92-67457f9065f8": {
+      "uuid": "b98718db-ace4-5f6e-9b92-67457f9065f8",
+      "id": "UI_SETTINGS_LANGUAGE_REGION_TITLE",
+      "path": "settings.language-region.display.section-title",
+      "feature": "settings",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "1a68af9e-ad96-57ef-9870-f93cc33edf5d": {
+      "uuid": "1a68af9e-ad96-57ef-9870-f93cc33edf5d",
+      "id": "UI_SETTINGS_STORAGE_CLEAR_ALL",
+      "path": "settings.storage.clear-all.button",
+      "feature": "settings",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "6048f170-44a2-52a1-bbeb-a2f6d324c3d7": {
+      "uuid": "6048f170-44a2-52a1-bbeb-a2f6d324c3d7",
+      "id": "UI_SETTINGS_STORAGE_COOKIES",
+      "path": "settings.storage.cookies.cookies-label",
+      "feature": "settings",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "650b020a-329b-5c8f-8103-84d07a269bdd": {
+      "uuid": "650b020a-329b-5c8f-8103-84d07a269bdd",
+      "id": "UI_SETTINGS_STORAGE_LOCAL_STORAGE",
+      "path": "settings.storage.local-storage.local-storage-label",
+      "feature": "settings",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "e57bfc9d-d727-52cc-b5cb-24879e482c7e": {
+      "uuid": "e57bfc9d-d727-52cc-b5cb-24879e482c7e",
+      "id": "UI_SETTINGS_STORAGE_TITLE",
+      "path": "settings.storage.display.section-title",
+      "feature": "settings",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "bdf85094-f626-5a65-92e5-1a5e623a4f0f": {
+      "uuid": "bdf85094-f626-5a65-92e5-1a5e623a4f0f",
+      "id": "UI_SETTINGS_STORAGE_USAGE",
+      "path": "settings.storage.usage.usage-label",
+      "feature": "settings",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "69f9fbf6-97af-567b-96a3-7ec01b242e7d": {
+      "uuid": "69f9fbf6-97af-567b-96a3-7ec01b242e7d",
+      "id": "UI_SETTINGS_SUMMARY_DENSITY",
+      "path": "settings.summary.density.density-label",
+      "feature": "settings",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "11380600-32db-5cbb-be07-692af11817a5": {
+      "uuid": "11380600-32db-5cbb-be07-692af11817a5",
+      "id": "UI_SETTINGS_SUMMARY_LANGUAGE",
+      "path": "settings.summary.language.language-label",
+      "feature": "settings",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "7f8b9c03-203a-5492-b4fa-e7a58d0141ac": {
+      "uuid": "7f8b9c03-203a-5492-b4fa-e7a58d0141ac",
+      "id": "UI_SETTINGS_SUMMARY_THEME",
+      "path": "settings.summary.theme.theme-label",
+      "feature": "settings",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "22e5c339-49d9-5aa2-ae4c-a893b68aab14": {
+      "uuid": "22e5c339-49d9-5aa2-ae4c-a893b68aab14",
+      "id": "UI_SETTINGS_SUMMARY_TIMEZONE",
+      "path": "settings.summary.timezone.timezone-label",
+      "feature": "settings",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "123900d4-f0aa-51e9-b0d4-efd6ee390383": {
+      "uuid": "123900d4-f0aa-51e9-b0d4-efd6ee390383",
+      "id": "UI_SETTINGS_SUMMARY_TITLE",
+      "path": "settings.summary.display.section-title",
+      "feature": "settings",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "5d8daa37-b1ed-59f6-9a0d-f2edb59642d4": {
+      "uuid": "5d8daa37-b1ed-59f6-9a0d-f2edb59642d4",
+      "id": "UI_SETTINGS_TITLE",
+      "path": "settings.page.display.title",
+      "feature": "settings",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "195b80ee-1393-5309-aac8-c6a003f7bff3": {
+      "uuid": "195b80ee-1393-5309-aac8-c6a003f7bff3",
+      "id": "UI_SHARED_BOTTOM_NAV_CONTAINER",
+      "path": "shared-layout.bottom-nav.layout.container",
+      "feature": "shared-layout",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "e54d7248-d3aa-549f-a615-1e42b6a4cc19": {
+      "uuid": "e54d7248-d3aa-549f-a615-1e42b6a4cc19",
+      "id": "UI_SHARED_BOTTOM_NAV_FAVORITES",
+      "path": "shared-layout.bottom-nav.items.favorites-link",
+      "feature": "shared-layout",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "caee8b90-1afb-54c5-a9d8-a71687fe918b": {
+      "uuid": "caee8b90-1afb-54c5-a9d8-a71687fe918b",
+      "id": "UI_SHARED_BOTTOM_NAV_HOME",
+      "path": "shared-layout.bottom-nav.items.home-link",
+      "feature": "shared-layout",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "9ed7a7bd-5519-56ae-a113-876739713870": {
+      "uuid": "9ed7a7bd-5519-56ae-a113-876739713870",
+      "id": "UI_SHARED_BOTTOM_NAV_NOTIFICATIONS",
+      "path": "shared-layout.bottom-nav.items.notifications-link",
+      "feature": "shared-layout",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "604db842-f8f6-5293-a1a4-c4d4d94f7065": {
+      "uuid": "604db842-f8f6-5293-a1a4-c4d4d94f7065",
+      "id": "UI_SHARED_BOTTOM_NAV_ORDERS",
+      "path": "shared-layout.bottom-nav.items.orders-link",
+      "feature": "shared-layout",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "67c4704c-591b-56f7-ae64-e486d90f79c9": {
+      "uuid": "67c4704c-591b-56f7-ae64-e486d90f79c9",
+      "id": "UI_SHARED_BOTTOM_NAV_PROFILE",
+      "path": "shared-layout.bottom-nav.items.profile-link",
+      "feature": "shared-layout",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "5380873a-0408-5e81-8762-32181cb85da7": {
+      "uuid": "5380873a-0408-5e81-8762-32181cb85da7",
+      "id": "UI_SHARED_HEADER_ACTIONS_SECTION",
+      "path": "shared-layout.header.layout.actions-section",
+      "feature": "shared-layout",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "09cb3da1-edd3-5b44-8fe7-b66756b79eca": {
+      "uuid": "09cb3da1-edd3-5b44-8fe7-b66756b79eca",
+      "id": "UI_SHARED_HEADER_BRAND_LINK",
+      "path": "shared-layout.header.brand.brand-link",
+      "feature": "shared-layout",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "ed0f43e4-3eb7-59f3-bd32-aa36a0550f0d": {
+      "uuid": "ed0f43e4-3eb7-59f3-bd32-aa36a0550f0d",
+      "id": "UI_SHARED_HEADER_BRAND_SECTION",
+      "path": "shared-layout.header.layout.brand-section",
+      "feature": "shared-layout",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "fe0b2022-5670-5add-8777-ea5c8cec9e7f": {
+      "uuid": "fe0b2022-5670-5add-8777-ea5c8cec9e7f",
+      "id": "UI_SHARED_HEADER_CART_BUTTON",
+      "path": "shared-layout.header.actions.cart-button",
+      "feature": "shared-layout",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "815a8f02-23b6-519d-a770-0ac0521d798b": {
+      "uuid": "815a8f02-23b6-519d-a770-0ac0521d798b",
+      "id": "UI_SHARED_HEADER_CONTAINER",
+      "path": "shared-layout.header.layout.container",
+      "feature": "shared-layout",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "d72c4e3d-1f1a-54a2-b10e-3ddb93f98038": {
+      "uuid": "d72c4e3d-1f1a-54a2-b10e-3ddb93f98038",
+      "id": "UI_SHARED_HEADER_INNER_WRAPPER",
+      "path": "shared-layout.header.layout.inner-wrapper",
+      "feature": "shared-layout",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "536ba9a8-895a-58c1-acd6-7f52977bcefb": {
+      "uuid": "536ba9a8-895a-58c1-acd6-7f52977bcefb",
+      "id": "UI_SHARED_HEADER_MENU",
+      "path": "shared-layout.header.menu.menu-button",
+      "feature": "shared-layout",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "766cecec-2455-56bb-924c-26b24f8c4431": {
+      "uuid": "766cecec-2455-56bb-924c-26b24f8c4431",
+      "id": "UI_SHARED_HEADER_SEARCH_BUTTON",
+      "path": "shared-layout.header.actions.search-button",
+      "feature": "shared-layout",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "dad73dcc-c4a2-5571-93c7-a3beb2c5f6db": {
+      "uuid": "dad73dcc-c4a2-5571-93c7-a3beb2c5f6db",
+      "id": "UI_SHARED_HEADER_SEARCH_INPUT",
+      "path": "shared-layout.header.actions.search-input",
+      "feature": "shared-layout",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "243a8eb9-9f40-52e4-a8a0-8533784daaa6": {
+      "uuid": "243a8eb9-9f40-52e4-a8a0-8533784daaa6",
+      "id": "UI_SHARED_SIDEBAR_ACTIONS_SECTION",
+      "path": "shared-layout.sidebar.layout.actions-section",
+      "feature": "shared-layout",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "380ab222-fdc6-581f-8f61-b76c696f7da1": {
+      "uuid": "380ab222-fdc6-581f-8f61-b76c696f7da1",
+      "id": "UI_SHARED_SIDEBAR_CLOSE",
+      "path": "shared-layout.sidebar.actions.close-button",
+      "feature": "shared-layout",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "8db5e0c5-b70f-53b4-a48d-3eafda68c9f6": {
+      "uuid": "8db5e0c5-b70f-53b4-a48d-3eafda68c9f6",
+      "id": "UI_SHARED_SIDEBAR_CONTAINER",
+      "path": "shared-layout.sidebar.layout.container",
+      "feature": "shared-layout",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "553236c7-a66b-5ed6-85f7-5afddbc2edbc": {
+      "uuid": "553236c7-a66b-5ed6-85f7-5afddbc2edbc",
+      "id": "UI_SHARED_SIDEBAR_CONTENT",
+      "path": "shared-layout.sidebar.layout.content",
+      "feature": "shared-layout",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "914c9d47-7732-5734-961f-c17dfa821a5a": {
+      "uuid": "914c9d47-7732-5734-961f-c17dfa821a5a",
+      "id": "UI_SHARED_SIDEBAR_HEADER",
+      "path": "shared-layout.sidebar.layout.header",
+      "feature": "shared-layout",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "21434ca4-fe79-5027-8aab-49822c50730d": {
+      "uuid": "21434ca4-fe79-5027-8aab-49822c50730d",
+      "id": "UI_SHARED_SIDEBAR_LANGUAGE",
+      "path": "shared-layout.sidebar.actions.language-toggle",
+      "feature": "shared-layout",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "187a60e3-7a36-53a6-afc3-e4d5e6e2e678": {
+      "uuid": "187a60e3-7a36-53a6-afc3-e4d5e6e2e678",
+      "id": "UI_SHARED_SIDEBAR_LOGIN",
+      "path": "shared-layout.sidebar.actions.login-button",
+      "feature": "shared-layout",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "9e01a84e-3c8f-5127-a96f-73c848e8fb59": {
+      "uuid": "9e01a84e-3c8f-5127-a96f-73c848e8fb59",
+      "id": "UI_SHARED_SIDEBAR_OVERLAY",
+      "path": "shared-layout.sidebar.layout.overlay",
+      "feature": "shared-layout",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "740e34d4-646d-5081-8785-6c36596133b3": {
+      "uuid": "740e34d4-646d-5081-8785-6c36596133b3",
+      "id": "UI_SHARED_SIDEBAR_PANEL",
+      "path": "shared-layout.sidebar.layout.panel",
+      "feature": "shared-layout",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "7e758033-4114-567c-a015-96650ab43b26": {
+      "uuid": "7e758033-4114-567c-a015-96650ab43b26",
+      "id": "UI_SHARED_SIDEBAR_SETTINGS",
+      "path": "shared-layout.sidebar.actions.settings-button",
+      "feature": "shared-layout",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "04a422a6-b024-552d-826a-bc2c3e3189bb": {
+      "uuid": "04a422a6-b024-552d-826a-bc2c3e3189bb",
+      "id": "UI_SHARED_SIDEBAR_SIGNUP",
+      "path": "shared-layout.sidebar.actions.signup-button",
+      "feature": "shared-layout",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "afe4ef7f-609c-5ba6-8970-e2eddca07ac4": {
+      "uuid": "afe4ef7f-609c-5ba6-8970-e2eddca07ac4",
+      "id": "UI_SHARED_SIDEBAR_THEME",
+      "path": "shared-layout.sidebar.actions.theme-toggle",
+      "feature": "shared-layout",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "53c5d423-bb93-5198-8dea-5cc597eeabea": {
+      "uuid": "53c5d423-bb93-5198-8dea-5cc597eeabea",
+      "id": "UI_SPLASH_LOGO_HEADING",
+      "path": "splash.logo.display.heading",
+      "feature": "splash",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "15a4525c-1cd3-52eb-9495-7e6ae3aae621": {
+      "uuid": "15a4525c-1cd3-52eb-9495-7e6ae3aae621",
+      "id": "UI_SPLASH_LOGO_IMAGE",
+      "path": "splash.logo.display.logo-image",
+      "feature": "splash",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "bd84eebf-a9bc-529c-a90a-14691780243e": {
+      "uuid": "bd84eebf-a9bc-529c-a90a-14691780243e",
+      "id": "UI_SPLASH_LOGO_TAGLINE",
+      "path": "splash.logo.display.tagline",
+      "feature": "splash",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "ff1c9368-f143-5fd5-a597-4872abab0707": {
+      "uuid": "ff1c9368-f143-5fd5-a597-4872abab0707",
+      "id": "UI_SPLASH_MAINT_PIN",
+      "path": "splash.maintenance.form.pin-input",
+      "feature": "splash",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "65d3a501-473f-5a8e-83d2-166badfe1980": {
+      "uuid": "65d3a501-473f-5a8e-83d2-166badfe1980",
+      "id": "UI_SPLASH_MAINT_SUBMIT",
+      "path": "splash.maintenance.form.submit-button",
+      "feature": "splash",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "14c91eff-9944-5b24-988f-b5e5d8b9ed5a": {
+      "uuid": "14c91eff-9944-5b24-988f-b5e5d8b9ed5a",
+      "id": "UI_SPLASH_MAINTENANCE_CARD",
+      "path": "splash.maintenance.layout.card",
+      "feature": "splash",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "a235a578-904e-54f5-9041-2cbeb7eff38b": {
+      "uuid": "a235a578-904e-54f5-9041-2cbeb7eff38b",
+      "id": "UI_SPLASH_MAINTENANCE_CONTAINER",
+      "path": "splash.maintenance.layout.container",
+      "feature": "splash",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "a2dc337a-d336-530b-bb13-20d832217539": {
+      "uuid": "a2dc337a-d336-530b-bb13-20d832217539",
+      "id": "UI_SPLASH_MAINTENANCE_DEFAULT_MESSAGE",
+      "path": "splash.maintenance.display.default-message",
+      "feature": "splash",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "fb260840-b067-55bb-bab9-64428f565add": {
+      "uuid": "fb260840-b067-55bb-bab9-64428f565add",
+      "id": "UI_SPLASH_MAINTENANCE_ICON_CONTAINER",
+      "path": "splash.maintenance.layout.icon-container",
+      "feature": "splash",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "e59899fc-53e8-54c3-b61f-2a66fa2e656d": {
+      "uuid": "e59899fc-53e8-54c3-b61f-2a66fa2e656d",
+      "id": "UI_SPLASH_MAINTENANCE_INVALID_CODE",
+      "path": "splash.maintenance.display.invalid-code",
+      "feature": "splash",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "1112ba89-0bbc-5780-b18c-de439b753d52": {
+      "uuid": "1112ba89-0bbc-5780-b18c-de439b753d52",
+      "id": "UI_SPLASH_MAINTENANCE_TITLE",
+      "path": "splash.maintenance.display.title",
+      "feature": "splash",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    }
+  },
+  "removedIdentities": {}
+}

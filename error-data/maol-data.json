@@ -2261,6 +2261,30 @@
         "severity": "low",
         "timestamp": 1781914766692,
         "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "%s Feature dictionary not found for feature: signup, locale: ar",
+        "route": "/onboarding",
+        "severity": "low",
+        "timestamp": 1781916500042,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[Fast Refresh] performing full reload Fast Refresh will perform a full reload when you edit a file that's imported by modules outside of the React rendering tree.\nYou might have a file which exports a React component but also exports a value that is imported by a non-React component file.\nConsider migrating the non-React component export to a separate file and importing it into both files. It is also possible the parent component of the component you edited is a class component, which disables F",
+        "route": "/onboarding",
+        "severity": "low",
+        "timestamp": 1781916499909,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "Feature dictionary not found for feature: signup, locale: en",
+        "route": "/onboarding",
+        "severity": "low",
+        "timestamp": 1781916509237,
+        "env": "dev"
       }
     ]
   },
@@ -2273,6 +2297,30 @@
         "route": "/settings",
         "severity": "low",
         "timestamp": 1781915192430,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[Fast Refresh] performing full reload Fast Refresh will perform a full reload when you edit a file that's imported by modules outside of the React rendering tree.\nYou might have a file which exports a React component but also exports a value that is imported by a non-React component file.\nConsider migrating the non-React component export to a separate file and importing it into both files. It is also possible the parent component of the component you edited is a class component, which disables F",
+        "route": "/onboarding",
+        "severity": "low",
+        "timestamp": 1781916500208,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "Feature dictionary not found for feature: signup, locale: en",
+        "route": "/onboarding",
+        "severity": "low",
+        "timestamp": 1781916508956,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "%s Feature dictionary not found for feature: signup, locale: ar",
+        "route": "/onboarding",
+        "severity": "low",
+        "timestamp": 1781916536574,
         "env": "dev"
       }
     ]

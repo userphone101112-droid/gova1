@@ -1,6 +1,6 @@
 /**
  * UI Registry Categories - Main Export
- * 
+ *
  * Exports all category-based UI identities.
  */
 

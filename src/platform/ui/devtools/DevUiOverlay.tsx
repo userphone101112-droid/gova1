@@ -1,16 +1,20 @@
 'use client';
 
 import { useEffect, useRef, useState, useCallback } from 'react';
-import { UI_ID_MAP } from '@/platform/ui/registry/registry';
-import { UI_SOURCE_INDEX } from '@/platform/ui/registry/source-index';
-import { useMaolStore } from '@/store/index';
+
 import { UiButton, UiDiv } from '@/platform/ui';
 import { DECORATIVE } from '@/platform/ui/registry/categories';
+import { getUiIdentityLifecycle, getUiIdentityUuid, UI_ID_MAP } from '@/platform/ui/registry/registry';
+import { UI_SOURCE_INDEX, UI_SOURCE_INDEX_BY_UUID } from '@/platform/ui/registry/source-index';
+import { useMaolStore } from '@/store/index';
 
 interface TooltipState {
   visible: boolean;
   x: number;
   y: number;
+  uuid: string;
+  uiInstanceId: string;
+  identityKey: string;
   id: string;
   instanceId: string;
   path: string;
@@ -30,6 +34,9 @@ interface TooltipState {
   attribute3: boolean;
   dataUiPath: string;
   dataUiFeature: string;
+  dataUiUuid: string;
+  dataUiInstanceId: string;
+  dataUiIdentityKey: string;
 }
 
 interface OverlayFrame {
@@ -66,6 +73,16 @@ const ALL_COMPONENT_TYPES = [
 
 type ComponentType = typeof ALL_COMPONENT_TYPES[number];
 
+function getInspectorData(
+  data: Record<string, any>,
+  uiId: string,
+  identityKey: string,
+  identity: (typeof UI_ID_MAP)[string] | undefined
+) {
+  const uuid = identity ? getUiIdentityUuid(identity) : '';
+  return data[identityKey] || (uuid && data[uuid]) || data[uiId];
+}
+
 function computeFrames(selectedTypes: Set<ComponentType>): OverlayFrame[] {
   if (typeof window === 'undefined') return [];
   
@@ -83,7 +100,7 @@ function computeFrames(selectedTypes: Set<ComponentType>): OverlayFrame[] {
     let label = id || '?';
 
     if (identity) {
-      color = identity.deprecated ? 'amber' : 'blue';
+      color = getUiIdentityLifecycle(identity) === 'deprecated' ? 'amber' : 'blue';
       label = identity.id;
     }
 
@@ -156,7 +173,7 @@ export function DevUiOverlay() {
   const [tooltip, setTooltip] = useState<TooltipState>({
     visible: false,
     x: 0, y: 0,
-    id: '', instanceId: '', path: '', feature: '', version: '',
+    uuid: '', uiInstanceId: '', identityKey: '', id: '', instanceId: '', path: '', feature: '', version: '',
     deprecated: false,
     sourceFile: '', sourceComponent: '', sourceLine: 0,
     databaseEnabled: false,
@@ -169,12 +186,15 @@ export function DevUiOverlay() {
     attribute3: false,
     dataUiPath: '',
     dataUiFeature: '',
+    dataUiUuid: '',
+    dataUiInstanceId: '',
+    dataUiIdentityKey: '',
   });
 
   const [allInspectorData, setAllInspectorData] = useState<Record<string, any>>({});
   const [isSaving, setIsSaving] = useState(false);
   const [saveStatus, setSaveStatus] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
-  const [currentChildren, setCurrentChildren] = useState<Array<{ id: string; componentType: string }>>([]);
+  const [currentChildren, setCurrentChildren] = useState<Array<{ id: string; identityKey: string; componentType: string }>>([]);
 
   const rafRef = useRef<number | null>(null);
 
@@ -282,13 +302,13 @@ export function DevUiOverlay() {
   }, []);
 
   // Helper to get child UI elements from a given UI id
-  const getChildUiElements = useCallback((uiId: string): Array<{ id: string; componentType: string }> => {
+  const getChildUiElements = useCallback((uiId: string): Array<{ id: string; identityKey: string; componentType: string }> => {
     // Find the element by its data-ui-id
     const parentElement = document.querySelector(`[data-ui-id="${uiId}"]`) as HTMLElement | null;
     if (!parentElement) return [];
     
     // Get all descendant elements that have data-ui-id, but are not nested inside another UI element
-    const children: Array<{ id: string; componentType: string }> = [];
+    const children: Array<{ id: string; identityKey: string; componentType: string }> = [];
     
     // Iterate through all descendants
     const allDescendants = parentElement.querySelectorAll('[data-ui-id]');
@@ -310,9 +330,11 @@ export function DevUiOverlay() {
         current = current.parentElement;
       }
       
-      if (isDirectChild && !children.find(c => c.id === descId)) {
+      const identityKey = descendant.getAttribute('data-ui-identity-key') || descId;
+      if (isDirectChild && !children.find(c => c.identityKey === identityKey)) {
         children.push({
           id: descId,
+          identityKey,
           componentType: descendant.getAttribute('data-ui-component') || 'Unknown'
         });
       }
@@ -356,7 +378,7 @@ export function DevUiOverlay() {
       let label = uiId || '?';
 
       if (identity) {
-        color = identity.deprecated ? 'amber' : 'blue';
+        color = getUiIdentityLifecycle(identity) === 'deprecated' ? 'amber' : 'blue';
         label = identity.id;
       }
 
@@ -398,20 +420,26 @@ export function DevUiOverlay() {
       if (!uiId) return;
 
       const identity = UI_ID_MAP[uiId];
-      const source = UI_SOURCE_INDEX[uiId];
-      const savedData = allInspectorData[uiId];
+      const uiUuid = identity ? getUiIdentityUuid(identity) : uiElement.getAttribute('data-ui-uuid') || '';
+      const source = UI_SOURCE_INDEX_BY_UUID[uiUuid] ?? UI_SOURCE_INDEX[uiId];
+      const uiInstanceId = uiElement.getAttribute('data-ui-instance-id') || '';
+      const identityKey = uiElement.getAttribute('data-ui-identity-key') || uiUuid;
+      const savedData = getInspectorData(allInspectorData, uiId, identityKey, identity);
 
       // Open tooltip
       setTooltip({
         visible: true,
         x: e.clientX + 12,
         y: e.clientY + 12,
+        uuid: uiUuid,
+        uiInstanceId,
+        identityKey,
         id: uiId,
         instanceId: `${uiId}_${Date.now()}`,
         path: identity?.path || '—',
         feature: identity?.feature || '—',
         version: identity?.version || '—',
-        deprecated: identity?.deprecated ?? false,
+        deprecated: identity ? getUiIdentityLifecycle(identity) === 'deprecated' : false,
         sourceFile: source?.sourceFile || '—',
         sourceComponent: source?.sourceComponent || '—',
         sourceLine: source?.sourceLine || 0,
@@ -425,6 +453,9 @@ export function DevUiOverlay() {
         attribute3: savedData?.attribute3 ?? false,
         dataUiPath: savedData?.dataUiPath || identity?.path || '',
         dataUiFeature: savedData?.dataUiFeature || identity?.feature || '',
+        dataUiUuid: savedData?.dataUiUuid || uiUuid,
+        dataUiInstanceId: savedData?.dataUiInstanceId || uiInstanceId,
+        dataUiIdentityKey: savedData?.dataUiIdentityKey || identityKey,
       });
     };
 
@@ -449,6 +480,8 @@ export function DevUiOverlay() {
         },
         body: JSON.stringify({
           uiId: tooltip.id,
+          uiUuid: tooltip.uuid,
+          uiInstanceId: tooltip.uiInstanceId,
           databaseEnabled: tooltip.databaseEnabled,
           inf1: tooltip.inf1,
           inf2: tooltip.inf2,
@@ -465,7 +498,7 @@ export function DevUiOverlay() {
         // Update our local data
         setAllInspectorData(prev => ({
           ...prev,
-          [tooltip.id]: {
+          [tooltip.identityKey || tooltip.uuid || tooltip.id]: {
             databaseEnabled: tooltip.databaseEnabled,
             inf1: tooltip.inf1,
             inf2: tooltip.inf2,
@@ -474,6 +507,11 @@ export function DevUiOverlay() {
             attribute1: tooltip.attribute1,
             attribute2: tooltip.attribute2,
             attribute3: tooltip.attribute3,
+            dataUiPath: tooltip.path,
+            dataUiFeature: tooltip.feature,
+            dataUiUuid: tooltip.uuid,
+            dataUiInstanceId: tooltip.uiInstanceId,
+            dataUiIdentityKey: tooltip.identityKey,
           }
         }));
         // Reset status after 2 seconds
@@ -902,6 +940,13 @@ export function DevUiOverlay() {
           
           <div style={{ marginBottom: '12px' }}>
             <Row label="Stable ID" value={tooltip.id} color="var(--gova-component-dev-ui-accent-purple)" />
+            <Row label="UUID" value={tooltip.uuid} color="var(--gova-component-dev-ui-text-secondary)" />
+            {tooltip.uiInstanceId && <Row label="Instance" value={tooltip.uiInstanceId} color="var(--gova-component-dev-ui-text-secondary)" />}
+            <Row label="Identity Key" value={tooltip.identityKey} color="var(--gova-component-dev-ui-text-secondary)" />
+            <div style={{ display: 'flex', gap: '6px', marginTop: '6px', marginBottom: '6px' }}>
+              <CopyButton value={tooltip.uuid} label="Copy UUID" />
+              <CopyButton value={tooltip.identityKey} label="Copy Key" />
+            </div>
             <Row label="Path" value={tooltip.path} color="var(--gova-component-dev-ui-accent-green)" />
             <Row label="Feature" value={tooltip.feature} color="var(--gova-component-dev-ui-accent-amber)" />
             <Row label="Version" value={tooltip.version} color="var(--gova-component-dev-ui-text-secondary)" />
@@ -929,7 +974,7 @@ export function DevUiOverlay() {
               <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', maxHeight: '150px', overflowY: 'auto' }}>
                 {currentChildren.map((child, index) => (
                   <div 
-                    key={`${child.id}_${index}`}
+                    key={`${child.identityKey}_${index}`}
                     style={{
                       background: 'var(--gova-component-dev-ui-bg-darker)',
                       border: '1px solid var(--gova-component-dev-ui-border-color)',
@@ -940,13 +985,13 @@ export function DevUiOverlay() {
                     }}
                     onMouseEnter={() => {
                       // Show hover frame on child
-                      const el = document.querySelector(`[data-ui-id="${child.id}"]`) as HTMLElement | null;
+                      const el = document.querySelector(`[data-ui-identity-key="${child.identityKey}"]`) as HTMLElement | null;
                       if (!el) return;
                       const rect = el.getBoundingClientRect();
                       const identity = UI_ID_MAP[child.id];
                       let color: 'blue' | 'amber' | 'red' = 'red';
                       if (identity) {
-                        color = identity.deprecated ? 'amber' : 'blue';
+                        color = getUiIdentityLifecycle(identity) === 'deprecated' ? 'amber' : 'blue';
                       }
                       setHoveredFrame({
                         id: child.id,
@@ -965,23 +1010,29 @@ export function DevUiOverlay() {
                     onClick={(e) => {
                       // Select this child element
                       e.stopPropagation();
-                      const el = document.querySelector(`[data-ui-id="${child.id}"]`) as HTMLElement | null;
+                      const el = document.querySelector(`[data-ui-identity-key="${child.identityKey}"]`) as HTMLElement | null;
                       if (!el) return;
                       const identity = UI_ID_MAP[child.id];
-                      const source = UI_SOURCE_INDEX[child.id];
-                      const savedData = allInspectorData[child.id];
+                      const childUuid = identity ? getUiIdentityUuid(identity) : el.getAttribute('data-ui-uuid') || '';
+                      const source = UI_SOURCE_INDEX_BY_UUID[childUuid] ?? UI_SOURCE_INDEX[child.id];
+                      const childInstanceId = el.getAttribute('data-ui-instance-id') || '';
+                      const childIdentityKey = el.getAttribute('data-ui-identity-key') || childUuid;
+                      const savedData = getInspectorData(allInspectorData, child.id, childIdentityKey, identity);
                       const rect = el.getBoundingClientRect();
 
                       setTooltip({
                         visible: true,
                         x: rect.left + rect.width + 12,
                         y: rect.top,
+                        uuid: childUuid,
+                        uiInstanceId: childInstanceId,
+                        identityKey: childIdentityKey,
                         id: child.id,
                         instanceId: `${child.id}_${Date.now()}`,
                         path: identity?.path || '—',
                         feature: identity?.feature || '—',
                         version: identity?.version || '—',
-                        deprecated: identity?.deprecated ?? false,
+                        deprecated: identity ? getUiIdentityLifecycle(identity) === 'deprecated' : false,
                         sourceFile: source?.sourceFile || '—',
                         sourceComponent: source?.sourceComponent || '—',
                         sourceLine: source?.sourceLine || 0,
@@ -995,6 +1046,9 @@ export function DevUiOverlay() {
                         attribute3: savedData?.attribute3 ?? false,
                         dataUiPath: savedData?.dataUiPath || identity?.path || '',
                         dataUiFeature: savedData?.dataUiFeature || identity?.feature || '',
+                        dataUiUuid: savedData?.dataUiUuid || childUuid,
+                        dataUiInstanceId: savedData?.dataUiInstanceId || childInstanceId,
+                        dataUiIdentityKey: savedData?.dataUiIdentityKey || childIdentityKey,
                       });
                     }}
                   >
@@ -1197,5 +1251,32 @@ function Row({ label, value, color }: { label: string; value: string; color: str
       <span style={{ color: 'var(--gova-component-dev-ui-secondary)', minWidth: '70px' }}>{label}:</span>
       <span style={{ color, wordBreak: 'break-all' }}>{value}</span>
     </div>
+  );
+}
+
+function CopyButton({ value, label }: { value: string; label: string }) {
+  return (
+    <button
+      type="button"
+      onClick={(event) => {
+        event.stopPropagation();
+        if (value) {
+          void navigator.clipboard?.writeText(value);
+        }
+      }}
+      style={{
+        background: 'var(--gova-component-dev-ui-bg-darker)',
+        border: '1px solid var(--gova-component-dev-ui-border-color)',
+        borderRadius: '4px',
+        color: 'var(--gova-component-dev-ui-text-secondary)',
+        cursor: 'pointer',
+        fontSize: '10px',
+        lineHeight: 1,
+        padding: '5px 7px',
+      }}
+      title={label}
+    >
+      {label}
+    </button>
   );
 }

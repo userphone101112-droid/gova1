@@ -16,6 +16,40 @@
  */
 
 /**
+ * Locate a DOM element by its immutable UI UUID.
+ * 
+ * @param page Playwright Page object (typed as any to prevent build dependencies)
+ * @param uuid Immutable UI UUID
+ * @returns Playwright Locator
+ */
+export function getByUiUuid(page: any, uuid: string): any {
+  if (!page || typeof page.locator !== 'function') {
+    throw new Error('[UI Test Helpers] Invalid Page object passed to getByUiUuid.');
+  }
+  return page.locator(`[data-ui-uuid="${uuid}"]`);
+}
+
+/**
+ * Locate a specific dynamic UI instance by immutable registry UUID and runtime instance ID.
+ */
+export function getByUiInstance(page: any, uuid: string, instanceId: string | number): any {
+  if (!page || typeof page.locator !== 'function') {
+    throw new Error('[UI Test Helpers] Invalid Page object passed to getByUiInstance.');
+  }
+  return page.locator(`[data-ui-identity-key="${uuid}:${String(instanceId)}"]`);
+}
+
+/**
+ * Locate a DOM element by the precomputed UI identity key.
+ */
+export function getByUiIdentityKey(page: any, identityKey: string): any {
+  if (!page || typeof page.locator !== 'function') {
+    throw new Error('[UI Test Helpers] Invalid Page object passed to getByUiIdentityKey.');
+  }
+  return page.locator(`[data-ui-identity-key="${identityKey}"]`);
+}
+
+/**
  * Locate a DOM element by its stable UI Identity ID.
  * 
  * @param page Playwright Page object (typed as any to prevent build dependencies)

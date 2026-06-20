@@ -25,6 +25,7 @@ const REGISTRY_SOURCES = {
 };
 
 const sourceMappings: Record<string, any> = {};
+const sourceMappingsByUuid: Record<string, any> = {};
 
 function getComponentName(content: string, filePath: string): string {
   const exportFuncMatch = content.match(/export\s+function\s+([A-Za-z0-9_]+)/);
@@ -388,14 +389,18 @@ function scanFile(filePath: string, state: ComponentUsageResult): void {
             }
           }
 
-          sourceMappings[identity.id] = {
+          const sourceLocation = {
+            uuid: identity.uuid,
             id: identity.id,
             path: identity.path,
+            lifecycle: identity.lifecycle ?? (identity.deprecated ? 'deprecated' : 'active'),
             sourceFile: relativePath,
             sourceComponent: componentName,
             sourceLine,
             feature: identity.feature
           };
+          sourceMappings[identity.id] = sourceLocation;
+          sourceMappingsByUuid[identity.uuid] = sourceLocation;
         }
       }
     });
@@ -615,17 +620,21 @@ function detectOrphans(
       
       for (const translation of translationKeys) {
         const translationFeature = findFeatureOfTranslationKey(translation, translationResult.byFeature);
+
+        if (!translationFeature) {
+          continue;
+        }
         
         // Allow cross-feature usage if both features are in the allowed shared list
         const isAllowedShared = allowedSharedFeatures.includes(uiFeature) && 
-                                allowedSharedFeatures.includes(translationFeature || '');
+                                allowedSharedFeatures.includes(translationFeature);
         
         if (uiFeature !== translationFeature && translationFeature !== 'common' && !isAllowedShared) {
           crossFeatureViolations.push({
             ui,
             translation,
             uiFeature,
-            translationFeature: translationFeature || 'unknown',
+            translationFeature,
           });
         }
       }
@@ -756,13 +765,17 @@ function main() {
  */
 
 export interface UiSourceLocation {
+  uuid: string;
   id: string;
   path: string;
+  lifecycle: 'active' | 'deprecated' | 'removed';
   sourceFile: string;
   sourceComponent: string;
   sourceLine: number;
   feature: string;
 }
+
+export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = ${JSON.stringify(sourceMappingsByUuid, null, 2)};
 
 export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = ${JSON.stringify(sourceMappings, null, 2)};
 `;
@@ -838,9 +851,9 @@ ${identityErrors.length > 0 ? identityErrors.map(e => `- 🔴 ${e}`).join('\n') 
 ${identityWarnings.length > 0 ? identityWarnings.map(w => `- 🟡 ${w}`).join('\n') : '- No identity warnings found.'}
 
 ## Mapped Source Registry
-| Stable ID | Path | Feature | Source File | Component | Line |
-|-----------|------|---------|-------------|-----------|------|
-${Object.values(sourceMappings).map((m: any) => `| \`${m.id}\` | \`${m.path}\` | \`${m.feature}\` | [${m.sourceFile}](file:///${join(process.cwd(), m.sourceFile).replace(/\\/g, '/')}) | \`${m.sourceComponent}\` | \`${m.sourceLine}\` |`).join('\n')}
+| UUID | Stable ID | Path | Lifecycle | Feature | Source File | Component | Line |
+|------|-----------|------|-----------|---------|-------------|-----------|------|
+${Object.values(sourceMappingsByUuid).map((m: any) => `| \`${m.uuid}\` | \`${m.id}\` | \`${m.path}\` | \`${m.lifecycle}\` | \`${m.feature}\` | [${m.sourceFile}](file:///${join(process.cwd(), m.sourceFile).replace(/\\/g, '/')}) | \`${m.sourceComponent}\` | \`${m.sourceLine}\` |`).join('\n')}
 `;
 
     const identityReportPath = join(process.cwd(), 'docs', 'audits', 'identity-audit.md');

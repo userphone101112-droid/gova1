@@ -6,11 +6,13 @@
  */
 
 import React from 'react';
-import { type UiParam, resolveUiParam, validateRuntimeIdentity } from '@/platform/ui/registry/registry';
+
 import { UI_REGISTRY_CONFIG } from '@/platform/ui/registry/config';
+import { getUiIdentityUuid, type UiParam, resolveUiParam, validateRuntimeIdentity } from '@/platform/ui/registry/registry';
 
 export interface UiComponentProps extends React.HTMLAttributes<HTMLElement> {
   ui: UiParam;
+  uiInstanceId?: string | number;
   children?: React.ReactNode;
 }
 
@@ -25,8 +27,10 @@ export function createUiComponent(
   componentName: string
 ) {
   const Component = React.forwardRef<HTMLElement, UiComponentProps>(
-    ({ ui, children, className = '', ...props }, ref) => {
+    ({ ui, uiInstanceId, children, className = '', ...props }, ref) => {
       const identity = resolveUiParam(ui);
+      const uuid = identity ? getUiIdentityUuid(identity) : undefined;
+      const instanceId = uiInstanceId === undefined ? undefined : String(uiInstanceId);
       
       // Only validate in development mode
       if (UI_REGISTRY_CONFIG.enableValidation) {
@@ -37,6 +41,9 @@ export function createUiComponent(
         tagName,
         {
           ref,
+          'data-ui-uuid': uuid,
+          'data-ui-instance-id': instanceId,
+          'data-ui-identity-key': uuid && instanceId ? `${uuid}:${instanceId}` : uuid,
           'data-ui-id': identity?.id,
           'data-ui-path': identity?.path,
           'data-ui-feature': identity?.feature,

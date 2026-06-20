@@ -1,9 +1,20 @@
-import { UI_SOURCE_INDEX, type UiSourceLocation } from './source-index';
 import { ALL_CATEGORY_IDENTITIES } from './categories';
+import { AUTH } from './features/auth';
+import { ERROR_BOUNDARY } from './features/error-boundary';
+import { HOME } from './features/home';
+import { MERCHANT } from './features/merchant';
+import { ONBOARDING } from './features/onboarding';
+import { SETTINGS } from './features/settings';
+import { SHARED_LAYOUT } from './features/shared-layout';
+import { SPLASH } from './features/splash';
+import { getUiIdentityUuid, isValidUiUuid } from './identity-uuid';
+import { UI_SOURCE_INDEX, UI_SOURCE_INDEX_BY_UUID, type UiSourceLocation } from './source-index';
 import type { UiIdentity } from './types';
+import UUID_MANIFEST from './uuid-manifest.json';
 
 export type { UiSourceLocation } from './source-index';
 export type { UiIdentity } from './types';
+export { createDeterministicUiUuid, getUiIdentityUuid, isValidUiUuid } from './identity-uuid';
 
 export { HOME } from './features/home';
 export { SPLASH } from './features/splash';
@@ -13,15 +24,6 @@ export { AUTH } from './features/auth';
 export { SETTINGS } from './features/settings';
 export { MERCHANT } from './features/merchant';
 export { ONBOARDING } from './features/onboarding';
-
-import { HOME } from './features/home';
-import { SPLASH } from './features/splash';
-import { ERROR_BOUNDARY } from './features/error-boundary';
-import { SHARED_LAYOUT } from './features/shared-layout';
-import { AUTH } from './features/auth';
-import { SETTINGS } from './features/settings';
-import { MERCHANT } from './features/merchant';
-import { ONBOARDING } from './features/onboarding';
 
 // ============================================================================
 // REGISTRY VALIDATION
@@ -70,7 +72,7 @@ export const ALL_UI_IDENTIFIERS = ALL_UI_IDENTITIES.map((id) => id.path) as read
 /**
  * Type for all valid UI identifiers (backward compatibility)
  */
-export type UiIdentifier = typeof ALL_UI_IDENTIFIERS[number];
+export type UiIdentifier = (typeof ALL_UI_IDENTIFIERS)[number];
 
 /**
  * Type for UI identifier parameter (backward compatibility)
@@ -92,9 +94,7 @@ export const NO_TRANSLATION_REQUIRED: readonly string[] = [
  */
 export function isTranslationRequiredForUiIdentity(ui: string | UiIdentity): boolean {
   const identity =
-    typeof ui === 'string'
-      ? ALL_UI_IDENTITIES.find((candidate) => candidate.path === ui)
-      : ui;
+    typeof ui === 'string' ? ALL_UI_IDENTITIES.find((candidate) => candidate.path === ui) : ui;
 
   if (!identity) {
     return true;
@@ -111,23 +111,57 @@ export function isTranslationRequiredForUiIdentity(ui: string | UiIdentity): boo
 // CENTRAL LOOKUP MAPS & HELPERS (PHASE 2)
 // ============================================================================
 
-export const UI_ID_MAP: Record<string, UiIdentity> = ALL_UI_IDENTITIES.reduce((acc, identity) => {
-  acc[identity.id] = identity;
-  return acc;
-}, {} as Record<string, UiIdentity>);
+export const UI_ID_MAP: Record<string, UiIdentity> = ALL_UI_IDENTITIES.reduce(
+  (acc, identity) => {
+    acc[identity.id] = identity;
+    return acc;
+  },
+  {} as Record<string, UiIdentity>
+);
 
-export const UI_PATH_MAP: Record<string, UiIdentity> = ALL_UI_IDENTITIES.reduce((acc, identity) => {
-  acc[identity.path] = identity;
-  return acc;
-}, {} as Record<string, UiIdentity>);
+export const UI_PATH_MAP: Record<string, UiIdentity> = ALL_UI_IDENTITIES.reduce(
+  (acc, identity) => {
+    acc[identity.path] = identity;
+    return acc;
+  },
+  {} as Record<string, UiIdentity>
+);
 
-export const FEATURE_MAP: Record<string, UiIdentity[]> = ALL_UI_IDENTITIES.reduce((acc, identity) => {
-  if (!acc[identity.feature]) {
-    acc[identity.feature] = [];
-  }
-  acc[identity.feature].push(identity);
-  return acc;
-}, {} as Record<string, UiIdentity[]>);
+export const UI_UUID_MAP: Record<string, UiIdentity> = ALL_UI_IDENTITIES.reduce(
+  (acc, identity) => {
+    acc[getUiIdentityUuid(identity)] = identity;
+    return acc;
+  },
+  {} as Record<string, UiIdentity>
+);
+
+export const UI_ALIAS_MAP: Record<string, UiIdentity> = ALL_UI_IDENTITIES.reduce(
+  (acc, identity) => {
+    const aliases = [
+      ...(identity.previousIds ?? []),
+      ...(identity.previousPaths ?? []),
+      ...(identity.aliases ?? []),
+    ];
+
+    aliases.forEach((alias) => {
+      acc[alias] = identity;
+    });
+
+    return acc;
+  },
+  {} as Record<string, UiIdentity>
+);
+
+export const FEATURE_MAP: Record<string, UiIdentity[]> = ALL_UI_IDENTITIES.reduce(
+  (acc, identity) => {
+    if (!acc[identity.feature]) {
+      acc[identity.feature] = [];
+    }
+    acc[identity.feature].push(identity);
+    return acc;
+  },
+  {} as Record<string, UiIdentity[]>
+);
 
 export function getUiIdentityById(id: string): UiIdentity | undefined {
   return UI_ID_MAP[id];
@@ -137,8 +171,24 @@ export function getUiIdentityByPath(path: string): UiIdentity | undefined {
   return UI_PATH_MAP[path];
 }
 
+export function getUiIdentityByUuid(uuid: string): UiIdentity | undefined {
+  return UI_UUID_MAP[uuid];
+}
+
+export function getUiIdentityByAlias(alias: string): UiIdentity | undefined {
+  return UI_ALIAS_MAP[alias];
+}
+
 export function isUiIdentity(obj: any): obj is UiIdentity {
   return obj && typeof obj === 'object' && 'id' in obj && 'path' in obj;
+}
+
+export function getUiIdentityLifecycle(identity: UiIdentity): UiIdentity['lifecycle'] {
+  return identity.lifecycle ?? (identity.deprecated ? 'deprecated' : 'active');
+}
+
+export function isUiIdentityDeprecated(identity: UiIdentity): boolean {
+  return getUiIdentityLifecycle(identity) === 'deprecated' || identity.deprecated === true;
 }
 
 export function resolveUiParam(param: UiParam): UiIdentity | undefined {
@@ -146,17 +196,17 @@ export function resolveUiParam(param: UiParam): UiIdentity | undefined {
     if (process.env.NODE_ENV === 'development') {
       console.warn(
         `[UI Registry Deprecation] Legacy string-based UI identity "${param}" is deprecated. ` +
-        `Please use the registered registry object constant instead.`
+          `Please use the registered registry object constant instead.`
       );
     }
     const resolved = getUiIdentityByPath(param);
-    if (resolved && resolved.deprecated && process.env.NODE_ENV === 'development') {
+    if (resolved && isUiIdentityDeprecated(resolved) && process.env.NODE_ENV === 'development') {
       console.warn(`[UI Registry Deprecation] UI Identity "${resolved.id}" is deprecated.`);
     }
     return resolved;
   }
-  
-  if (param && param.deprecated && process.env.NODE_ENV === 'development') {
+
+  if (param && isUiIdentityDeprecated(param) && process.env.NODE_ENV === 'development') {
     console.warn(`[UI Registry Deprecation] UI Identity "${param.id}" is deprecated.`);
   }
   return param;
@@ -164,10 +214,15 @@ export function resolveUiParam(param: UiParam): UiIdentity | undefined {
 
 export function getUiIdentity(param: UiParam): UiIdentity | undefined {
   if (typeof param === 'string') {
-    return getUiIdentityByPath(param) || getUiIdentityById(param);
+    return (
+      getUiIdentityByUuid(param) ||
+      getUiIdentityById(param) ||
+      getUiIdentityByPath(param) ||
+      getUiIdentityByAlias(param)
+    );
   }
   if (isUiIdentity(param)) {
-    return getUiIdentityById(param.id);
+    return getUiIdentityByUuid(param.uuid) || getUiIdentityById(param.id);
   }
   return undefined;
 }
@@ -179,7 +234,7 @@ export function getUiIdentityByFeature(feature: string): UiIdentity[] {
 export function resolveSourceFromIdentity(param: UiParam): UiSourceLocation | undefined {
   const identity = getUiIdentity(param);
   if (!identity) return undefined;
-  return UI_SOURCE_INDEX[identity.id];
+  return UI_SOURCE_INDEX_BY_UUID[identity.uuid] ?? UI_SOURCE_INDEX[identity.id];
 }
 
 /**
@@ -209,14 +264,14 @@ export function isRegisteredUiIdentifier(identifier: string): boolean {
 export function getDuplicateIdentifiers(): string[] {
   const seen = new Set<string>();
   const duplicates: string[] = [];
-  
+
   ALL_UI_IDENTIFIERS.forEach((identifier) => {
     if (seen.has(identifier)) {
       duplicates.push(identifier);
     }
     seen.add(identifier);
   });
-  
+
   return duplicates;
 }
 
@@ -226,14 +281,52 @@ export function getDuplicateIdentifiers(): string[] {
 export function getDuplicateStableIds(): string[] {
   const seen = new Set<string>();
   const duplicates: string[] = [];
-  
+
   ALL_UI_IDENTITIES.forEach((identity) => {
     if (seen.has(identity.id)) {
       duplicates.push(identity.id);
     }
     seen.add(identity.id);
   });
-  
+
+  return duplicates;
+}
+
+/**
+ * Get all duplicate UI UUIDs (should always return empty array)
+ */
+export function getDuplicateUiUuids(): string[] {
+  const seen = new Set<string>();
+  const duplicates: string[] = [];
+
+  ALL_UI_IDENTITIES.forEach((identity) => {
+    const uuid = getUiIdentityUuid(identity);
+    if (seen.has(uuid)) {
+      duplicates.push(uuid);
+    }
+    seen.add(uuid);
+  });
+
+  return duplicates;
+}
+
+export function getDuplicateUiAliases(): string[] {
+  const seen = new Set<string>();
+  const duplicates: string[] = [];
+
+  ALL_UI_IDENTITIES.forEach((identity) => {
+    [
+      ...(identity.previousIds ?? []),
+      ...(identity.previousPaths ?? []),
+      ...(identity.aliases ?? []),
+    ].forEach((alias) => {
+      if (seen.has(alias) || UI_ID_MAP[alias] || UI_PATH_MAP[alias] || UI_UUID_MAP[alias]) {
+        duplicates.push(alias);
+      }
+      seen.add(alias);
+    });
+  });
+
   return duplicates;
 }
 
@@ -254,9 +347,9 @@ export function validateRuntimeIdentity(
   if (!resolvedIdentity) {
     console.error(
       `[UI Registry Error] Unknown UI Identity.\n` +
-      ` - Component: ${componentName}\n` +
-      ` - Provided: ${JSON.stringify(ui)}\n` +
-      ` - Fix: Register this UI Identity in 'src/platform/ui/registry/registry.ts' before using it.`
+        ` - Component: ${componentName}\n` +
+        ` - Provided: ${JSON.stringify(ui)}\n` +
+        ` - Fix: Register this UI Identity in 'src/platform/ui/registry/registry.ts' before using it.`
     );
     return;
   }
@@ -266,16 +359,16 @@ export function validateRuntimeIdentity(
   if (expectedId && resolvedIdentity.id !== expectedId) {
     console.error(
       `[UI Registry Error] Broken UI Identity Mapping.\n` +
-      ` - Component: ${componentName}\n` +
-      ` - Path: "${resolvedIdentity.path}"\n` +
-      ` - Expected ID: "${resolvedIdentity.id}"\n` +
-      ` - Provided ID: "${expectedId}"\n` +
-      ` - Fix: Use the registered registry object constant instead of creating ad-hoc objects.`
+        ` - Component: ${componentName}\n` +
+        ` - Path: "${resolvedIdentity.path}"\n` +
+        ` - Expected ID: "${resolvedIdentity.id}"\n` +
+        ` - Provided ID: "${expectedId}"\n` +
+        ` - Fix: Use the registered registry object constant instead of creating ad-hoc objects.`
     );
   }
 
   // 3. Warn about deprecated identity
-  if (resolvedIdentity.deprecated) {
+  if (isUiIdentityDeprecated(resolvedIdentity)) {
     console.warn(
       `[UI Registry Deprecation] UI Identity "${resolvedIdentity.id}" (path: "${resolvedIdentity.path}") is deprecated.`
     );
@@ -289,22 +382,132 @@ export function validateRuntimeIdentity(
 export function validateRegistry(): void {
   const duplicates = getDuplicateIdentifiers();
   if (duplicates.length > 0) {
-    throw new Error(
-      `Duplicate UI paths found in registry: ${duplicates.join(', ')}`
-    );
+    throw new Error(`Duplicate UI paths found in registry: ${duplicates.join(', ')}`);
   }
 
   const duplicateIds = getDuplicateStableIds();
   if (duplicateIds.length > 0) {
+    throw new Error(`Duplicate UI Stable IDs found in registry: ${duplicateIds.join(', ')}`);
+  }
+
+  const duplicateUuids = getDuplicateUiUuids();
+  if (duplicateUuids.length > 0) {
+    throw new Error(`Duplicate UI UUIDs found in registry: ${duplicateUuids.join(', ')}`);
+  }
+
+  const missingUuids = ALL_UI_IDENTITIES.filter((identity) => !identity.uuid).map(
+    (identity) => identity.id
+  );
+
+  if (missingUuids.length > 0) {
+    throw new Error(`Missing UI UUIDs found in registry: ${missingUuids.join(', ')}`);
+  }
+
+  const invalidUuids = ALL_UI_IDENTITIES.filter((identity) => !isValidUiUuid(identity.uuid)).map(
+    (identity) => `${identity.id}: ${identity.uuid}`
+  );
+
+  if (invalidUuids.length > 0) {
+    throw new Error(`Invalid explicit UI UUIDs found in registry: ${invalidUuids.join(', ')}`);
+  }
+
+  const duplicateAliases = getDuplicateUiAliases();
+  if (duplicateAliases.length > 0) {
     throw new Error(
-      `Duplicate UI Stable IDs found in registry: ${duplicateIds.join(', ')}`
+      `Duplicate or conflicting UI aliases found in registry: ${duplicateAliases.join(', ')}`
     );
   }
-  
+
+  const manifestIdentities = UUID_MANIFEST.identities as Record<
+    string,
+    {
+      id: string;
+      path: string;
+      feature: string;
+      lifecycle?: UiIdentity['lifecycle'];
+      previousIds?: string[];
+      previousPaths?: string[];
+      aliases?: string[];
+    }
+  >;
+  const removedManifestIdentities = UUID_MANIFEST.removedIdentities as
+    | Record<
+        string,
+        {
+          id: string;
+          path: string;
+          feature: string;
+          lifecycle?: 'removed';
+        }
+      >
+    | undefined;
+
+  const missingManifestEntries = ALL_UI_IDENTITIES.filter(
+    (identity) => !manifestIdentities[identity.uuid]
+  ).map((identity) => `${identity.id}: ${identity.uuid}`);
+
+  if (missingManifestEntries.length > 0) {
+    throw new Error(
+      `UI UUIDs missing from uuid-manifest.json: ${missingManifestEntries.join(', ')}`
+    );
+  }
+
+  const manifestMismatches = ALL_UI_IDENTITIES.flatMap((identity) => {
+    const manifestEntry = manifestIdentities[identity.uuid];
+    if (!manifestEntry) return [];
+
+    const errors: string[] = [];
+    if (manifestEntry.id !== identity.id) {
+      errors.push(`${identity.uuid} id: manifest="${manifestEntry.id}" registry="${identity.id}"`);
+    }
+    if (manifestEntry.path !== identity.path) {
+      errors.push(
+        `${identity.uuid} path: manifest="${manifestEntry.path}" registry="${identity.path}"`
+      );
+    }
+    if (manifestEntry.feature !== identity.feature) {
+      errors.push(
+        `${identity.uuid} feature: manifest="${manifestEntry.feature}" registry="${identity.feature}"`
+      );
+    }
+    const manifestLifecycle = manifestEntry.lifecycle ?? 'active';
+    const registryLifecycle = getUiIdentityLifecycle(identity);
+    if (manifestLifecycle !== registryLifecycle) {
+      errors.push(
+        `${identity.uuid} lifecycle: manifest="${manifestLifecycle}" registry="${registryLifecycle}"`
+      );
+    }
+    return errors;
+  });
+
+  if (manifestMismatches.length > 0) {
+    throw new Error(
+      `UI UUID manifest mismatch found. Preserve UUID and update history through registry tooling: ${manifestMismatches.join('; ')}`
+    );
+  }
+
+  const reusedRemovedUuids = ALL_UI_IDENTITIES.filter(
+    (identity) => removedManifestIdentities?.[identity.uuid]
+  ).map((identity) => `${identity.id}: ${identity.uuid}`);
+
+  if (reusedRemovedUuids.length > 0) {
+    throw new Error(
+      `Removed UI UUIDs cannot be reused in active registry files: ${reusedRemovedUuids.join(', ')}`
+    );
+  }
+
+  const invalidLifecycle = ALL_UI_IDENTITIES.filter(
+    (identity) => !['active', 'deprecated', 'removed'].includes(getUiIdentityLifecycle(identity))
+  ).map((identity) => `${identity.id}: ${String(identity.lifecycle)}`);
+
+  if (invalidLifecycle.length > 0) {
+    throw new Error(`Invalid UI lifecycle values found: ${invalidLifecycle.join(', ')}`);
+  }
+
   const invalidIdentifiers = ALL_UI_IDENTIFIERS.filter(
     (identifier) => !isValidUiIdentifier(identifier)
   );
-  
+
   if (invalidIdentifiers.length > 0) {
     throw new Error(
       `Invalid UI paths found (must match pattern page.section.component.element): ${invalidIdentifiers.join(', ')}`

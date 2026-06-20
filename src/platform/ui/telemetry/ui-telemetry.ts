@@ -5,10 +5,20 @@
  * reverse lookup capabilities for inspector tools and developer diagnostics.
  */
 
-import { getUiIdentityById, getUiIdentity, type UiIdentity, type UiParam } from '../registry/registry';
-import { UI_SOURCE_INDEX } from '../registry/source-index';
+import {
+  getUiIdentityById,
+  getUiIdentityByUuid,
+  getUiIdentity,
+  getUiIdentityUuid,
+  type UiIdentity,
+  type UiParam,
+} from '../registry/registry';
+import { UI_SOURCE_INDEX, UI_SOURCE_INDEX_BY_UUID } from '../registry/source-index';
 
 export interface UiTelemetryData {
+  uuid: string;
+  instanceId?: string | undefined;
+  identityKey: string;
   id: string;
   path: string;
   feature: string;
@@ -32,6 +42,12 @@ export interface InspectorLocationInfo extends UiIdentity {
 export function resolveTelemetryIdentity(target: HTMLElement | UiParam | null): UiIdentity | null {
   if (!target) return null;
   if (typeof target === 'object' && 'getAttribute' in target && typeof target.getAttribute === 'function') {
+    const uuid = target.getAttribute('data-ui-uuid');
+    if (uuid) {
+      const id = target.getAttribute('data-ui-id');
+      return getUiIdentityByUuid(uuid) || (id ? getUiIdentityById(id) || null : null);
+    }
+
     const id = target.getAttribute('data-ui-id');
     if (!id) return null;
     return getUiIdentityById(id) || null;
@@ -51,7 +67,7 @@ export function resolveElementIdentity(target: HTMLElement | UiParam | null): In
   if (!identity) return null;
 
   // Get source code mapping
-  const sourceLocation = UI_SOURCE_INDEX[identity.id];
+  const sourceLocation = UI_SOURCE_INDEX_BY_UUID[identity.uuid] ?? UI_SOURCE_INDEX[identity.id];
 
   return {
     ...identity,
@@ -73,6 +89,13 @@ export function trackUiInteraction(target: HTMLElement | UiParam | null): UiTele
   if (!identity) return null;
 
   const telemetryData: UiTelemetryData = {
+    uuid: getUiIdentityUuid(identity),
+    instanceId: target && typeof target === 'object' && 'getAttribute' in target
+      ? target.getAttribute('data-ui-instance-id') || undefined
+      : undefined,
+    identityKey: target && typeof target === 'object' && 'getAttribute' in target
+      ? target.getAttribute('data-ui-identity-key') || getUiIdentityUuid(identity)
+      : getUiIdentityUuid(identity),
     id: identity.id,
     path: identity.path,
     feature: identity.feature,
@@ -83,6 +106,10 @@ export function trackUiInteraction(target: HTMLElement | UiParam | null): UiTele
   if (process.env.NODE_ENV === 'development') {
     console.groupCollapsed(`[UI Telemetry] Interaction on "${identity.id}"`);
     console.log(`- Path: ${identity.path}`);
+    console.log(`- UUID: ${getUiIdentityUuid(identity)}`);
+    if (telemetryData.instanceId) {
+      console.log(`- Instance: ${telemetryData.instanceId}`);
+    }
     console.log(`- Feature: ${identity.feature}`);
     if (target && typeof target === 'object' && 'getAttribute' in target) {
       console.log(`- Element:`, target);
@@ -108,6 +135,13 @@ export function trackUiView(target: HTMLElement | UiParam | null): UiTelemetryDa
   if (!identity) return null;
 
   const telemetryData: UiTelemetryData = {
+    uuid: getUiIdentityUuid(identity),
+    instanceId: target && typeof target === 'object' && 'getAttribute' in target
+      ? target.getAttribute('data-ui-instance-id') || undefined
+      : undefined,
+    identityKey: target && typeof target === 'object' && 'getAttribute' in target
+      ? target.getAttribute('data-ui-identity-key') || getUiIdentityUuid(identity)
+      : getUiIdentityUuid(identity),
     id: identity.id,
     path: identity.path,
     feature: identity.feature,
@@ -118,6 +152,10 @@ export function trackUiView(target: HTMLElement | UiParam | null): UiTelemetryDa
   if (process.env.NODE_ENV === 'development') {
     console.groupCollapsed(`[UI Telemetry] View on "${identity.id}"`);
     console.log(`- Path: ${identity.path}`);
+    console.log(`- UUID: ${getUiIdentityUuid(identity)}`);
+    if (telemetryData.instanceId) {
+      console.log(`- Instance: ${telemetryData.instanceId}`);
+    }
     console.log(`- Feature: ${identity.feature}`);
     console.groupEnd();
   }
@@ -137,6 +175,13 @@ export function trackUiError(target: HTMLElement | UiParam | null, error: Error)
   if (!identity) return null;
 
   const telemetryData: UiErrorTelemetryData = {
+    uuid: getUiIdentityUuid(identity),
+    instanceId: target && typeof target === 'object' && 'getAttribute' in target
+      ? target.getAttribute('data-ui-instance-id') || undefined
+      : undefined,
+    identityKey: target && typeof target === 'object' && 'getAttribute' in target
+      ? target.getAttribute('data-ui-identity-key') || getUiIdentityUuid(identity)
+      : getUiIdentityUuid(identity),
     id: identity.id,
     path: identity.path,
     feature: identity.feature,
@@ -149,6 +194,10 @@ export function trackUiError(target: HTMLElement | UiParam | null, error: Error)
   if (process.env.NODE_ENV === 'development') {
     console.groupCollapsed(`[UI Telemetry] ERROR on "${identity.id}"`);
     console.log(`- Path: ${identity.path}`);
+    console.log(`- UUID: ${getUiIdentityUuid(identity)}`);
+    if (telemetryData.instanceId) {
+      console.log(`- Instance: ${telemetryData.instanceId}`);
+    }
     console.log(`- Feature: ${identity.feature}`);
     console.error(`- Error: ${error.message}`, error);
     console.groupEnd();

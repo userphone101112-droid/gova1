@@ -1,34 +1,33 @@
 /**
  * UI Identity Diff Tracking Engine
  *
- * Detects changes between a previous snapshot and the current registry state.
- * Logs diffs (Stable ID changes, path changes, component moves, feature reassignments,
- * deprecated additions) to: logs/ui-identity-changes.log
- *
- * Usage:
- *   npx tsx scripts/track-ui-identity-diff.ts
- *
- * The script also writes a fresh snapshot to logs/ui-identity-snapshot.json
- * so the next invocation can detect future changes.
+ * UUID is the primary key. Moving a component or renaming id/path is tracked as
+ * metadata movement while the immutable UUID remains the durable identity.
  */
 
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs';
 import { join } from 'path';
-import { ALL_UI_IDENTITIES } from '../../registry/registry';
-import { UI_SOURCE_INDEX } from '../../registry/source-index';
 
-// ---------------------------------------------------------------------------
-// Types
-// ---------------------------------------------------------------------------
+import {
+  ALL_UI_IDENTITIES,
+  getUiIdentityLifecycle,
+  getUiIdentityUuid,
+  isValidUiUuid,
+} from '../../registry/registry';
+import { UI_SOURCE_INDEX, UI_SOURCE_INDEX_BY_UUID } from '../../registry/source-index';
 
 interface SnapshotEntry {
+  uuid: string;
   id: string;
   path: string;
+  previousIds: readonly string[];
+  previousPaths: readonly string[];
+  aliases: readonly string[];
   feature: string;
   version: string;
   createdAt: string;
   updatedAt: string;
-  deprecated: boolean;
+  lifecycle: 'active' | 'deprecated' | 'removed';
   sourceFile: string;
   sourceComponent: string;
   sourceLine: number;
@@ -39,21 +38,19 @@ interface DiffEntry {
   type:
     | 'ADDED'
     | 'REMOVED'
+    | 'ID_CHANGED'
     | 'PATH_CHANGED'
     | 'FEATURE_REASSIGNED'
     | 'COMPONENT_MOVED'
     | 'DEPRECATED'
     | 'RESTORED'
     | 'VERSION_BUMPED';
+  uuid: string;
   id: string;
   before?: Partial<SnapshotEntry>;
   after?: Partial<SnapshotEntry>;
   description: string;
 }
-
-// ---------------------------------------------------------------------------
-// Paths
-// ---------------------------------------------------------------------------
 
 const ROOT = join(__dirname, '..');
 const LOGS_DIR = join(ROOT, 'logs');
@@ -66,33 +63,32 @@ function ensureLogsDir() {
   }
 }
 
-// ---------------------------------------------------------------------------
-// Build current snapshot from registry + source index
-// ---------------------------------------------------------------------------
-
 function buildCurrentSnapshot(): Record<string, SnapshotEntry> {
   const snapshot: Record<string, SnapshotEntry> = {};
+
   for (const identity of ALL_UI_IDENTITIES) {
-    const source = UI_SOURCE_INDEX[identity.id];
-    snapshot[identity.id] = {
+    const uuid = getUiIdentityUuid(identity);
+    const source = UI_SOURCE_INDEX_BY_UUID[uuid] ?? UI_SOURCE_INDEX[identity.id];
+    snapshot[uuid] = {
+      uuid,
       id: identity.id,
       path: identity.path,
+      previousIds: identity.previousIds ?? [],
+      previousPaths: identity.previousPaths ?? [],
+      aliases: identity.aliases ?? [],
       feature: identity.feature,
       version: identity.version,
       createdAt: identity.createdAt,
       updatedAt: identity.updatedAt,
-      deprecated: identity.deprecated ?? false,
+      lifecycle: getUiIdentityLifecycle(identity),
       sourceFile: source?.sourceFile ?? 'unknown',
       sourceComponent: source?.sourceComponent ?? 'unknown',
       sourceLine: source?.sourceLine ?? 0,
     };
   }
+
   return snapshot;
 }
-
-// ---------------------------------------------------------------------------
-// Load previous snapshot
-// ---------------------------------------------------------------------------
 
 function loadPreviousSnapshot(): Record<string, SnapshotEntry> | null {
   if (!existsSync(SNAPSHOT_FILE)) return null;
@@ -103,30 +99,26 @@ function loadPreviousSnapshot(): Record<string, SnapshotEntry> | null {
   }
 }
 
-// ---------------------------------------------------------------------------
-// Compute diffs
-// ---------------------------------------------------------------------------
-
 function computeDiffs(
   prev: Record<string, SnapshotEntry>,
   curr: Record<string, SnapshotEntry>
 ): DiffEntry[] {
   const diffs: DiffEntry[] = [];
   const now = new Date().toISOString();
+  const allUuids = new Set([...Object.keys(prev), ...Object.keys(curr)]);
 
-  const allIds = new Set([...Object.keys(prev), ...Object.keys(curr)]);
-
-  for (const id of allIds) {
-    const before = prev[id];
-    const after = curr[id];
+  for (const uuid of allUuids) {
+    const before = prev[uuid];
+    const after = curr[uuid];
 
     if (!before && after) {
       diffs.push({
         timestamp: now,
         type: 'ADDED',
-        id,
+        uuid,
+        id: after.id,
         after,
-        description: `New UI identity registered: ${id} → "${after.path}" (${after.feature})`,
+        description: `New UI identity registered: ${after.id} (${uuid}) -> "${after.path}" (${after.feature})`,
       });
       continue;
     }
@@ -135,23 +127,37 @@ function computeDiffs(
       diffs.push({
         timestamp: now,
         type: 'REMOVED',
-        id,
+        uuid,
+        id: before.id,
         before,
-        description: `UI identity removed: ${id} was "${before.path}" (${before.feature})`,
+        description: `UI identity removed: ${before.id} (${uuid}) was "${before.path}" (${before.feature})`,
       });
       continue;
     }
 
     if (!before || !after) continue;
 
+    if (before.id !== after.id) {
+      diffs.push({
+        timestamp: now,
+        type: 'ID_CHANGED',
+        uuid,
+        id: after.id,
+        before: { id: before.id },
+        after: { id: after.id },
+        description: `Stable ID changed for ${uuid}: "${before.id}" -> "${after.id}"`,
+      });
+    }
+
     if (before.path !== after.path) {
       diffs.push({
         timestamp: now,
         type: 'PATH_CHANGED',
-        id,
+        uuid,
+        id: after.id,
         before: { path: before.path },
         after: { path: after.path },
-        description: `Path changed for ${id}: "${before.path}" → "${after.path}"`,
+        description: `Path changed for ${after.id} (${uuid}): "${before.path}" -> "${after.path}"`,
       });
     }
 
@@ -159,10 +165,11 @@ function computeDiffs(
       diffs.push({
         timestamp: now,
         type: 'FEATURE_REASSIGNED',
-        id,
+        uuid,
+        id: after.id,
         before: { feature: before.feature },
         after: { feature: after.feature },
-        description: `Feature reassigned for ${id}: "${before.feature}" → "${after.feature}"`,
+        description: `Feature reassigned for ${after.id} (${uuid}): "${before.feature}" -> "${after.feature}"`,
       });
     }
 
@@ -173,7 +180,8 @@ function computeDiffs(
       diffs.push({
         timestamp: now,
         type: 'COMPONENT_MOVED',
-        id,
+        uuid,
+        id: after.id,
         before: {
           sourceFile: before.sourceFile,
           sourceComponent: before.sourceComponent,
@@ -185,31 +193,33 @@ function computeDiffs(
           sourceLine: after.sourceLine,
         },
         description:
-          `Component moved for ${id}: ` +
-          `${before.sourceComponent}@${before.sourceFile}:${before.sourceLine} → ` +
+          `Component moved for ${after.id} (${uuid}): ` +
+          `${before.sourceComponent}@${before.sourceFile}:${before.sourceLine} -> ` +
           `${after.sourceComponent}@${after.sourceFile}:${after.sourceLine}`,
       });
     }
 
-    if (!before.deprecated && after.deprecated) {
+    if (before.lifecycle !== 'deprecated' && after.lifecycle === 'deprecated') {
       diffs.push({
         timestamp: now,
         type: 'DEPRECATED',
-        id,
-        before: { deprecated: false },
-        after: { deprecated: true },
-        description: `UI identity marked deprecated: ${id}`,
+        uuid,
+        id: after.id,
+        before: { lifecycle: before.lifecycle },
+        after: { lifecycle: after.lifecycle },
+        description: `UI identity marked deprecated: ${after.id} (${uuid})`,
       });
     }
 
-    if (before.deprecated && !after.deprecated) {
+    if (before.lifecycle === 'deprecated' && after.lifecycle !== 'deprecated') {
       diffs.push({
         timestamp: now,
         type: 'RESTORED',
-        id,
-        before: { deprecated: true },
-        after: { deprecated: false },
-        description: `UI identity restored from deprecated: ${id}`,
+        uuid,
+        id: after.id,
+        before: { lifecycle: before.lifecycle },
+        after: { lifecycle: after.lifecycle },
+        description: `UI identity restored from deprecated: ${after.id} (${uuid})`,
       });
     }
 
@@ -217,20 +227,17 @@ function computeDiffs(
       diffs.push({
         timestamp: now,
         type: 'VERSION_BUMPED',
-        id,
+        uuid,
+        id: after.id,
         before: { version: before.version },
         after: { version: after.version },
-        description: `Version bumped for ${id}: ${before.version} → ${after.version}`,
+        description: `Version bumped for ${after.id} (${uuid}): ${before.version} -> ${after.version}`,
       });
     }
   }
 
   return diffs;
 }
-
-// ---------------------------------------------------------------------------
-// Append diffs to changelog
-// ---------------------------------------------------------------------------
 
 function appendToChangelog(diffs: DiffEntry[]) {
   if (diffs.length === 0) return;
@@ -261,27 +268,24 @@ function appendToChangelog(diffs: DiffEntry[]) {
   console.log(`[Diff Tracker] Appended ${diffs.length} diff(s) to ${CHANGELOG_FILE}`);
 }
 
-// ---------------------------------------------------------------------------
-// Save current snapshot
-// ---------------------------------------------------------------------------
-
 function saveSnapshot(snapshot: Record<string, SnapshotEntry>) {
   writeFileSync(SNAPSHOT_FILE, JSON.stringify(snapshot, null, 2), 'utf-8');
   console.log(`[Diff Tracker] Snapshot saved: ${SNAPSHOT_FILE}`);
 }
 
-// ---------------------------------------------------------------------------
-// Main
-// ---------------------------------------------------------------------------
-
 function main() {
   ensureLogsDir();
 
   const current = buildCurrentSnapshot();
+  const invalidUuids = Object.keys(current).filter((uuid) => !isValidUiUuid(uuid));
+  if (invalidUuids.length > 0) {
+    throw new Error(`Invalid UI UUIDs in snapshot: ${invalidUuids.join(', ')}`);
+  }
+
   const previous = loadPreviousSnapshot();
 
   if (!previous) {
-    console.log('[Diff Tracker] No previous snapshot found. Creating initial snapshot...');
+    console.log('[Diff Tracker] No previous snapshot found. Creating initial UUID snapshot...');
     saveSnapshot(current);
     console.log(`[Diff Tracker] Initial snapshot written with ${Object.keys(current).length} identities.`);
     return;
@@ -293,11 +297,10 @@ function main() {
     console.log('[Diff Tracker] No changes detected since last snapshot.');
   } else {
     console.log(`[Diff Tracker] ${diffs.length} change(s) detected:`);
-    diffs.forEach((d) => console.log(`  [${d.type}] ${d.description}`));
+    diffs.forEach((diff) => console.log(`  [${diff.type}] ${diff.description}`));
     appendToChangelog(diffs);
   }
 
-  // Always update snapshot to current state
   saveSnapshot(current);
 }
 
