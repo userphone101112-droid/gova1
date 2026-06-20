@@ -222,6 +222,8 @@ export const APP_DICTIONARY_FEATURES: readonly Feature[] = [
   'shared-layout',
   'error-boundary',
   'settings',
+  'merchant',
+  'onboarding',
   'signup',
 ] as const;
 

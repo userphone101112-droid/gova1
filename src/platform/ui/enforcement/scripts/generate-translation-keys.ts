@@ -1,8 +1,21 @@
 import { readdirSync, readFileSync, writeFileSync, existsSync } from 'fs';
 import { join } from 'path';
+import {
+  ALL_UI_IDENTITIES,
+  isTranslationRequiredForUiIdentity,
+} from '../../registry/registry';
+import { generateTranslationKeyFromUi } from '../../i18n/binding/registry-binding';
 
 interface TranslationStructure {
   [key: string]: string | TranslationStructure;
+}
+
+function getNonTextTranslationKeys(): Set<string> {
+  return new Set(
+    ALL_UI_IDENTITIES
+      .filter((identity) => !isTranslationRequiredForUiIdentity(identity))
+      .map((identity) => generateTranslationKeyFromUi(identity.path))
+  );
 }
 
 /**
@@ -10,7 +23,8 @@ interface TranslationStructure {
  */
 function generateTypeFromStructure(
   obj: TranslationStructure,
-  prefix = ''
+  prefix = '',
+  ignoredKeys = new Set<string>()
 ): string {
   let typeDefinition = '';
   
@@ -20,8 +34,11 @@ function generateTypeFromStructure(
     
     if (typeof value === 'object' && value !== null) {
       // Nested object - generate nested type
-      typeDefinition += generateTypeFromStructure(value, fullKey);
+      typeDefinition += generateTypeFromStructure(value, fullKey, ignoredKeys);
     } else {
+      if (ignoredKeys.has(fullKey)) {
+        continue;
+      }
       // Leaf node - add as literal type
       typeDefinition += `  | '${fullKey}'\n`;
     }
@@ -34,7 +51,7 @@ function generateTypeFromStructure(
  * Generate type for a specific feature
  */
 function generateFeatureType(feature: string, enTranslations: TranslationStructure): string {
-  const keys = generateTypeFromStructure(enTranslations);
+  const keys = generateTypeFromStructure(enTranslations, '', getNonTextTranslationKeys());
   const safeFeatureName = feature.replace(/-([a-z])/g, (_, c) => c.toUpperCase());
   
   return `// ${feature} feature translations

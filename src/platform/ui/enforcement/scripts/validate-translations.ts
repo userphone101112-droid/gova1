@@ -31,6 +31,21 @@ function getObjectKeys(obj: TranslationStructure, prefix = ''): string[] {
   return keys;
 }
 
+function getLeafName(key: string): string {
+  return key.split('.').pop() ?? key;
+}
+
+function validateLeafNaming(keys: Set<string>, feature: string, errors: string[]): void {
+  for (const key of keys) {
+    const leaf = getLeafName(key);
+    if (leaf.includes('-')) {
+      errors.push(
+        `Invalid leaf key in ${feature}: ${key}. Use camelCase for leaf text keys; section names may remain kebab-case.`
+      );
+    }
+  }
+}
+
 /**
  * Compare two translation structures and return differences
  */
@@ -43,6 +58,9 @@ function compareTranslations(
   
   const enKeys = new Set(getObjectKeys(en));
   const arKeys = new Set(getObjectKeys(ar));
+
+  validateLeafNaming(enKeys, feature, errors);
+  validateLeafNaming(arKeys, feature, errors);
   
   // Check for missing keys in Arabic
   for (const key of enKeys) {

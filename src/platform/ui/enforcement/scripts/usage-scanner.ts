@@ -7,12 +7,22 @@ import {
   SPLASH,
   SHARED_LAYOUT,
   AUTH,
+  MERCHANT,
+  ONBOARDING,
   ALL_UI_IDENTIFIERS,
   ALL_UI_IDENTITIES,
-  NO_TRANSLATION_REQUIRED,
+  isTranslationRequiredForUiIdentity,
 } from '../../registry/registry';
 
-const REGISTRY_SOURCES = { HOME, ERROR_BOUNDARY, SPLASH, SHARED_LAYOUT, AUTH };
+const REGISTRY_SOURCES = {
+  HOME,
+  ERROR_BOUNDARY,
+  SPLASH,
+  SHARED_LAYOUT,
+  AUTH,
+  MERCHANT,
+  ONBOARDING,
+};
 
 function isIdentity(obj: unknown): obj is { id: string; path: string } {
   return !!obj && typeof obj === 'object' && 'id' in obj && 'path' in obj;
@@ -73,10 +83,7 @@ export function scanSourceUsage(rootPath = join(process.cwd(), 'src')): UsageSca
   scanDirectory(rootPath, usedUiIdentifiers, usedTranslationKeys);
 
   for (const identity of ALL_UI_IDENTITIES) {
-    if (NO_TRANSLATION_REQUIRED.includes(identity.path as (typeof NO_TRANSLATION_REQUIRED)[number])) {
-      continue;
-    }
-    if (!isCategoryUiPath(identity.path)) {
+    if (!isCategoryUiPath(identity.path) && isTranslationRequiredForUiIdentity(identity)) {
       usedTranslationKeys.add(generateTranslationKeyFromUi(identity.path));
     }
   }
@@ -132,7 +139,7 @@ function scanFile(
   }
 
   const literalKeyRegex =
-    /['"`]((?:auth|home|splash|common|shared-layout|error-boundary|settings|dashboard|contact|signup)\.[a-zA-Z0-9.-]+)['"`]/g;
+    /['"`]((?:auth|home|splash|common|shared-layout|error-boundary|settings|merchant|onboarding|dashboard|contact|signup)\.[a-zA-Z0-9.-]+)['"`]/g;
   while ((match = literalKeyRegex.exec(content)) !== null) {
     usedTranslationKeys.add(match[1]);
   }

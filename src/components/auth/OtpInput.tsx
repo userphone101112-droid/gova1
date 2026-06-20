@@ -3,7 +3,7 @@
 import * as React from 'react';
 
 import { cn } from '@/lib/utils';
-import { UiDiv, UiInput } from '@/platform/ui';
+import { AUTH, UiDiv, UiInput, useTranslation } from '@/platform/ui';
 import { COMMON_LAYOUT } from '@/platform/ui/registry/categories';
 import type { UiIdentity } from '@/platform/ui/registry/types';
 
@@ -26,6 +26,7 @@ export function OtpInput({
   length = 6,
   hasError = false,
 }: OtpInputProps) {
+  const { t } = useTranslation();
   const inputsRef = React.useRef<Array<HTMLInputElement | null>>([]);
 
   const digits = value.padEnd(length, ' ').slice(0, length).split('');
@@ -72,7 +73,7 @@ export function OtpInput({
           maxLength={1}
           disabled={disabled}
           value={digits[index]?.trim() ?? ''}
-          aria-label={`Digit ${index + 1}`}
+          aria-label={`${t(AUTH.REGISTRATION.OTP_INPUT)} ${index + 1}`}
           className={cn(
             'auth-otp-cell type-title-lg motion-colors focus:outline-none focus:ring-2 focus:ring-focus-ring',
             hasError && 'border-error focus:ring-error'

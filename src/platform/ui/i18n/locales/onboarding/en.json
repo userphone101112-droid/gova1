@@ -1,0 +1,176 @@
+{
+  "onboarding": {
+    "onboarding-page": {
+      "container": "Onboarding page container",
+      "sidebar": "Onboarding sidebar navigation",
+      "stepItem": "Onboarding step list item",
+      "completion": "Onboarding completion screen",
+      "form": "Onboarding form container",
+      "nextButton": "Next step button",
+      "prevButton": "Previous step button"
+    },
+    "welcome": {
+      "title": "Welcome to Gova! 🎉",
+      "description": "Let's set up your merchant account in just a few easy steps",
+      "getStarted": "Get Started"
+    },
+    "store-info": {
+      "title": "Store Information",
+      "description": "Tell us about your store",
+      "storeName": "Store Name",
+      "storeNamePlaceholder": "Enter your store name",
+      "storeUrl": "Store URL",
+      "storeUrlPlaceholder": "e.g., my-awesome-store",
+      "storeCategory": "Store Category",
+      "storeCategoryPlaceholder": "Select a category",
+      "categoryFashion": "Fashion & Apparel",
+      "categoryElectronics": "Electronics",
+      "categoryHome": "Home & Garden",
+      "categoryBeauty": "Beauty & Personal Care",
+      "categorySports": "Sports & Outdoors",
+      "categoryOther": "Other",
+      "storeDescription": "Store Description",
+      "storeDescriptionPlaceholder": "Tell your customers about your store..."
+    },
+    "business-details": {
+      "title": "Business Details",
+      "description": "Tell us about your business",
+      "businessName": "Business Name",
+      "businessNamePlaceholder": "Enter your business name",
+      "businessType": "Business Type",
+      "businessTypePlaceholder": "Select business type",
+      "typeSoleProprietorship": "Sole Proprietorship",
+      "typeLlc": "LLC",
+      "typeCorporation": "Corporation",
+      "typePartnership": "Partnership",
+      "typeOther": "Other",
+      "registrationNumber": "Registration Number",
+      "registrationNumberPlaceholder": "EIN, Registration ID",
+      "yearFounded": "Year Founded",
+      "yearFoundedPlaceholder": "2024",
+      "employeeCount": "Number of Employees",
+      "employeeCountPlaceholder": "Select range"
+    },
+    "identity-verification": {
+      "title": "Identity Verification",
+      "description": "We need to verify your identity",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "dateOfBirth": "Date of Birth",
+      "email": "Email",
+      "phone": "Phone",
+      "idType": "ID Type",
+      "idTypePlaceholder": "Select ID Type",
+      "idTypePassport": "Passport",
+      "idTypeDriverLicense": "Driver's License",
+      "idTypeNationalId": "National ID",
+      "idNumber": "ID Number",
+      "uploadId": "Upload Government ID",
+      "uploadIdSubtitle": "PNG, JPG, PDF up to 10MB",
+      "chooseFile": "Choose File"
+    },
+    "products": {
+      "title": "Products",
+      "description": "What products do you sell?",
+      "digitalProducts": "Are you selling digital products?",
+      "digitalProductsSubtitle": "Software, downloads, subscriptions, etc.",
+      "physicalProducts": "Are you selling physical products?",
+      "physicalProductsSubtitle": "Tangible goods that require shipping",
+      "productCatalog": "Product catalog setup",
+      "addProductsLater": "Add Products Later"
+    },
+    "shipping": {
+      "title": "Shipping",
+      "description": "Set up your shipping preferences",
+      "country": "Country",
+      "countryPlaceholder": "Country",
+      "city": "City",
+      "cityPlaceholder": "City",
+      "postalCode": "Postal/ZIP Code",
+      "postalCodePlaceholder": "Postal Code",
+      "address": "Address",
+      "addressPlaceholder": "Shipping address",
+      "offerFreeShipping": "Offer free shipping"
+    },
+    "payments": {
+      "title": "Payments",
+      "description": "Set up how you receive payments",
+      "paymentMethods": "Payment Methods",
+      "paymentMethodCreditCard": "Credit Card",
+      "paymentMethodDebitCard": "Debit Card",
+      "paymentMethodPaypal": "PayPal",
+      "paymentMethodBankTransfer": "Bank Transfer",
+      "currency": "Currency",
+      "currencyUsd": "USD ($)",
+      "currencyEur": "EUR (€)",
+      "currencyGbp": "GBP (£)",
+      "currencyCad": "CAD ($)",
+      "currencyAud": "AUD ($)"
+    },
+    "policies": {
+      "title": "Policies",
+      "description": "Set up your store policies",
+      "returnPolicy": "Return Policy",
+      "returnPolicyPlaceholder": "Describe your return policy...",
+      "refundPolicy": "Refund Policy",
+      "refundPolicyPlaceholder": "Describe your refund policy...",
+      "privacyPolicy": "Privacy Policy",
+      "privacyPolicyPlaceholder": "Describe your privacy policy...",
+      "termsOfService": "Terms of Service",
+      "termsOfServicePlaceholder": "Describe your terms of service..."
+    },
+    "branding": {
+      "title": "Branding",
+      "description": "Customize your store's look and feel",
+      "storeTagline": "Store Tagline",
+      "storeTaglinePlaceholder": "A short, catchy tagline",
+      "logo": "Logo",
+      "logoSubtitle": "Upload your store logo",
+      "primaryColor": "Primary Color",
+      "primaryColorSubtitle": "Choose your store's main color",
+      "upload": "Upload"
+    },
+    "preferences": {
+      "title": "Preferences",
+      "description": "Customize your account preferences",
+      "timezone": "Timezone",
+      "notifications": "Notifications",
+      "notificationOrder": "Order notifications",
+      "notificationMarketing": "Marketing emails",
+      "notificationSystem": "System updates",
+      "notificationWeeklyReport": "Weekly performance report",
+      "timezoneEt": "Eastern Time (ET)",
+      "timezoneCt": "Central Time (CT)",
+      "timezoneMt": "Mountain Time (MT)",
+      "timezonePt": "Pacific Time (PT)",
+      "timezoneGmt": "London (GMT)",
+      "timezoneCet": "Paris (CET)"
+    },
+    "tax-info": {
+      "title": "Tax Information",
+      "description": "Tax details for your store",
+      "taxId": "Tax ID/VAT Number",
+      "taxIdPlaceholder": "Tax identification number"
+    },
+    "marketing": {
+      "title": "Marketing",
+      "description": "Set up marketing tools for your store",
+      "emailMarketing": "Email Marketing",
+      "emailMarketingSubtitle": "Send newsletters and promotions to customers",
+      "socialSharing": "Social Sharing",
+      "socialSharingSubtitle": "Add social share buttons to products",
+      "productReviews": "Product Reviews",
+      "productReviewsSubtitle": "Allow customers to leave reviews"
+    },
+    "completion": {
+      "title": "You're All Set! 🎉",
+      "description": "Your store is ready to go. Start adding products and selling!",
+      "goToDashboard": "Go to Dashboard"
+    },
+    "common": {
+      "previous": "Previous",
+      "next": "Next",
+      "finish": "Finish"
+    }
+  }
+}

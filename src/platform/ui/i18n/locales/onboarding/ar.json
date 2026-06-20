@@ -1,0 +1,176 @@
+{
+  "onboarding": {
+    "onboarding-page": {
+      "container": "حاوية صفحة التسجيل",
+      "sidebar": "شريط التنقل الجانبي للتسجيل",
+      "stepItem": "عنصر قائمة خطوة التسجيل",
+      "completion": "شاشة إكمال التسجيل",
+      "form": "حاوية نموذج التسجيل",
+      "nextButton": "زر الخطوة التالية",
+      "prevButton": "زر الخطوة السابقة"
+    },
+    "welcome": {
+      "title": "مرحباً بك في جوفا! 🎉",
+      "description": "لنقم بإعداد حساب التاجر الخاص بك في بضع خطوات سهلة",
+      "getStarted": "ابدأ الآن"
+    },
+    "store-info": {
+      "title": "معلومات المتجر",
+      "description": "أخبرنا عن متجرك",
+      "storeName": "اسم المتجر",
+      "storeNamePlaceholder": "أدخل اسم متجرك",
+      "storeUrl": "رابط المتجر",
+      "storeUrlPlaceholder": "مثال: my-awesome-store",
+      "storeCategory": "فئة المتجر",
+      "storeCategoryPlaceholder": "اختر فئة",
+      "categoryFashion": "الأزياء والمستلزمات",
+      "categoryElectronics": "الإلكترونيات",
+      "categoryHome": "المنزل والحديقة",
+      "categoryBeauty": "الجمال والعناية الشخصية",
+      "categorySports": "الرياضة والأنشطة الخارجية",
+      "categoryOther": "أخرى",
+      "storeDescription": "وصف المتجر",
+      "storeDescriptionPlaceholder": "أخبر عملاءك عن متجرك..."
+    },
+    "business-details": {
+      "title": "تفاصيل العمل",
+      "description": "أخبرنا عن عملك",
+      "businessName": "اسم العمل",
+      "businessNamePlaceholder": "أدخل اسم عملك",
+      "businessType": "نوع العمل",
+      "businessTypePlaceholder": "اختر نوع العمل",
+      "typeSoleProprietorship": "ملكية فردية",
+      "typeLlc": "شركة ذات مسؤولية محدودة",
+      "typeCorporation": "شركة",
+      "typePartnership": "شراكة",
+      "typeOther": "أخرى",
+      "registrationNumber": "رقم التسجيل",
+      "registrationNumberPlaceholder": "الرقم الضريبي، رقم التسجيل",
+      "yearFounded": "سنة التأسيس",
+      "yearFoundedPlaceholder": "2024",
+      "employeeCount": "عدد الموظفين",
+      "employeeCountPlaceholder": "اختر النطاق"
+    },
+    "identity-verification": {
+      "title": "التحقق من الهوية",
+      "description": "نحتاج إلى التحقق من هويتك",
+      "firstName": "الاسم الأول",
+      "lastName": "اسم العائلة",
+      "dateOfBirth": "تاريخ الميلاد",
+      "email": "البريد الإلكتروني",
+      "phone": "رقم الهاتف",
+      "idType": "نوع الهوية",
+      "idTypePlaceholder": "اختر نوع الهوية",
+      "idTypePassport": "جواز السفر",
+      "idTypeDriverLicense": "رخصة القيادة",
+      "idTypeNationalId": "الهوية الوطنية",
+      "idNumber": "رقم الهوية",
+      "uploadId": "تحميل الهوية الحكومية",
+      "uploadIdSubtitle": "PNG، JPG، PDF حتى 10 ميجابايت",
+      "chooseFile": "اختر ملف"
+    },
+    "products": {
+      "title": "المنتجات",
+      "description": "ما هي المنتجات التي تبيعها؟",
+      "digitalProducts": "هل تبيع منتجات رقمية؟",
+      "digitalProductsSubtitle": "البرمجيات، التحميلات، الاشتراكات، إلخ",
+      "physicalProducts": "هل تبيع منتجات مادية؟",
+      "physicalProductsSubtitle": "السلع الملموسة التي تتطلب شحن",
+      "productCatalog": "إعداد كتالوج المنتجات",
+      "addProductsLater": "إضافة المنتجات لاحقاً"
+    },
+    "shipping": {
+      "title": "الشحن",
+      "description": "إعداد خيارات الشحن الخاصة بك",
+      "country": "البلد",
+      "countryPlaceholder": "البلد",
+      "city": "المدينة",
+      "cityPlaceholder": "المدينة",
+      "postalCode": "الرمز البريدي",
+      "postalCodePlaceholder": "الرمز البريدي",
+      "address": "العنوان",
+      "addressPlaceholder": "عنوان الشحن",
+      "offerFreeShipping": "تقديم شحن مجاني"
+    },
+    "payments": {
+      "title": "المدفوعات",
+      "description": "إعداد كيفية استلام المدفوعات",
+      "paymentMethods": "طرق الدفع",
+      "paymentMethodCreditCard": "بطاقة ائتمان",
+      "paymentMethodDebitCard": "بطاقة خصم",
+      "paymentMethodPaypal": "PayPal",
+      "paymentMethodBankTransfer": "تحويل بنكي",
+      "currency": "العملة",
+      "currencyUsd": "دولار أمريكي ($)",
+      "currencyEur": "يورو (€)",
+      "currencyGbp": "جنيه إسترليني (£)",
+      "currencyCad": "دولار كندي ($)",
+      "currencyAud": "دولار أسترالي ($)"
+    },
+    "policies": {
+      "title": "السياسات",
+      "description": "إضافة سياسات متجرك",
+      "returnPolicy": "سياسة الإرجاع",
+      "returnPolicyPlaceholder": "صف سياسة الإرجاع الخاصة بك...",
+      "refundPolicy": "سياسة الاسترداد",
+      "refundPolicyPlaceholder": "صف سياسة الاسترداد الخاصة بك...",
+      "privacyPolicy": "سياسة الخصوصية",
+      "privacyPolicyPlaceholder": "صف سياسة الخصوصية الخاصة بك...",
+      "termsOfService": "شروط الخدمة",
+      "termsOfServicePlaceholder": "صف شروط الخدمة الخاصة بك..."
+    },
+    "branding": {
+      "title": "العلامة التجارية",
+      "description": "تخصيص مظهر متجرك",
+      "storeTagline": "شعار المتجر",
+      "storeTaglinePlaceholder": "شعار قصير وجذاب",
+      "logo": "الشعار",
+      "logoSubtitle": "تحميل شعار متجرك",
+      "primaryColor": "اللون الأساسي",
+      "primaryColorSubtitle": "اختر اللون الأساسي لمتجرك",
+      "upload": "تحميل"
+    },
+    "preferences": {
+      "title": "التفضيلات",
+      "description": "تخصيص تفضيلات حسابك",
+      "timezone": "المنطقة الزمنية",
+      "notifications": "الإشعارات",
+      "notificationOrder": "إشعارات الطلبات",
+      "notificationMarketing": "رسائل التسويق",
+      "notificationSystem": "تحديثات النظام",
+      "notificationWeeklyReport": "تقرير الأداء الأسبوعي",
+      "timezoneEt": "التوقيت الشرقي (ET)",
+      "timezoneCt": "التوقيت المركزي (CT)",
+      "timezoneMt": "توقيت الجبال (MT)",
+      "timezonePt": "التوقيت الهادئ (PT)",
+      "timezoneGmt": "لندن (GMT)",
+      "timezoneCet": "باريس (CET)"
+    },
+    "tax-info": {
+      "title": "معلومات الضرائب",
+      "description": "تفاصيل الضرائب لمتجرك",
+      "taxId": "الرقم الضريبي/رقم الضريبة المضافة",
+      "taxIdPlaceholder": "رقم التعريف الضريبي"
+    },
+    "marketing": {
+      "title": "التسويق",
+      "description": "إعداد أدوات التسويق لمتجرك",
+      "emailMarketing": "التسويق عبر البريد الإلكتروني",
+      "emailMarketingSubtitle": "إرسال النشرات والعروض الترويجية للعملاء",
+      "socialSharing": "المشاركة الاجتماعية",
+      "socialSharingSubtitle": "إضافة أزرار المشاركة الاجتماعية للمنتجات",
+      "productReviews": "مراجعات المنتجات",
+      "productReviewsSubtitle": "السماح للعملاء بترك مراجعات"
+    },
+    "completion": {
+      "title": "أنت جاهز! 🎉",
+      "description": "متجرك جاهز للعمل. ابدأ بإضافة المنتجات والبيع!",
+      "goToDashboard": "الذهاب إلى لوحة التحكم"
+    },
+    "common": {
+      "previous": "السابق",
+      "next": "التالي",
+      "finish": "إنهاء"
+    }
+  }
+}

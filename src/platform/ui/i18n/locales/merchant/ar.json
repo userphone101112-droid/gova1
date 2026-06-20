@@ -1,0 +1,108 @@
+{
+  "merchant": {
+    "hero": {
+      "container": "حاوية واجهة التاجر",
+      "banner": "غلاف التاجر",
+      "avatar": "صورة التاجر",
+      "name": "اسم التاجر",
+      "verifiedBadge": "موثق",
+      "followers": "متابعون",
+      "following": "يتابع",
+      "followButton": "متابعة",
+      "messageButton": "رسالة",
+      "joined": "انضم في",
+      "bannerAltSuffix": "الغلاف",
+      "statusLabel": "الحالة:"
+    },
+    "overview": {
+      "container": "حاوية نظرة عامة على التاجر",
+      "card": "بطاقة النظرة العامة",
+      "products": "منتجات",
+      "orders": "طلبات",
+      "customers": "عملاء",
+      "rating": "تقييم",
+      "revenue": "إيرادات",
+      "completionRate": "معدل الإكمال",
+      "responseRate": "معدل الاستجابة"
+    },
+    "quick-actions": {
+      "container": "حاوية الإجراءات السريعة",
+      "button": "زر إجراء سريع",
+      "title": "إجراءات سريعة"
+    },
+    "performance": {
+      "container": "حاوية لوحة الأداء",
+      "title": "لوحة الأداء",
+      "revenueToday": "إيرادات اليوم",
+      "revenueTodaySubtitle": "إجمالي مبيعات اليوم",
+      "revenueMonth": "إيرادات هذا الشهر",
+      "revenueMonthSubtitle": "الأداء الشهري",
+      "ordersToday": "طلبات اليوم",
+      "ordersTodaySubtitle": "طلبات جديدة",
+      "ordersMonth": "طلبات هذا الشهر",
+      "ordersMonthSubtitle": "الطلبات الشهرية",
+      "conversionRate": "معدل التحويل",
+      "conversionRateSubtitle": "الزوار إلى مشترين",
+      "avgOrderValue": "متوسط قيمة الطلب",
+      "avgOrderValueSubtitle": "لكل معاملة",
+      "bestSellingCategory": "الأكثر مبيعاً",
+      "bestSellingCategorySubtitle": "الأفضل أداءً هذا الشهر",
+      "inventoryHealth": "صحة المخزون"
+    },
+    "collections": {
+      "container": "حاوية المجموعات",
+      "card": "بطاقة مجموعة",
+      "title": "المجموعات المميزة",
+      "viewAll": "عرض الكل",
+      "items": "عناصر"
+    },
+    "best-sellers": {
+      "container": "حاوية الأكثر مبيعاً",
+      "card": "بطاقة منتج",
+      "title": "المنتجات الأكثر مبيعاً",
+      "viewAll": "عرض الكل",
+      "percentOff": "% خصم",
+      "sold": "تم بيعه"
+    },
+    "recent-orders": {
+      "container": "حاوية الطلبات الأخيرة",
+      "title": "الطلبات الأخيرة",
+      "viewAll": "عرض الكل",
+      "item": "منتج",
+      "items": "منتجات"
+    },
+    "reviews": {
+      "container": "حاوية التقييمات",
+      "title": "تقييمات العملاء",
+      "viewAll": "عرض الكل",
+      "basedOn": "بناءً على",
+      "reviews": "تقييم",
+      "star": "نجمة",
+      "stars": "نجوم",
+      "purchased": "تم الشراء",
+      "helpful": "مفيد"
+    },
+    "store-info": {
+      "container": "حاوية معلومات المتجر",
+      "title": "معلومات المتجر",
+      "about": "عن المتجر",
+      "showLess": "عرض أقل",
+      "showMore": "عرض المزيد",
+      "categories": "الفئات",
+      "shippingCoverage": "تغطية الشحن",
+      "more": "المزيد",
+      "returnPolicy": "سياسة الإرجاع",
+      "storeSpecialties": "تخصصات المتجر"
+    },
+    "trust": {
+      "container": "حاوية الثقة والمصداقية",
+      "title": "الثقة والمصداقية",
+      "achievements": "الإنجازات",
+      "sellerBadges": "شارات البائع",
+      "noBadgesEarned": "لم يتم كسب أي شارات بعد"
+    },
+    "common": {
+      "viewAll": "عرض الكل"
+    }
+  }
+}

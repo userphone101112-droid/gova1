@@ -1,0 +1,108 @@
+{
+  "merchant": {
+    "hero": {
+      "container": "Merchant hero container",
+      "banner": "Merchant banner",
+      "avatar": "Merchant avatar",
+      "name": "Merchant name",
+      "verifiedBadge": "Verified",
+      "followers": "followers",
+      "following": "following",
+      "followButton": "Follow",
+      "messageButton": "Message",
+      "joined": "Joined",
+      "bannerAltSuffix": "banner",
+      "statusLabel": "Status:"
+    },
+    "overview": {
+      "container": "Merchant overview container",
+      "card": "Overview card",
+      "products": "Products",
+      "orders": "Orders",
+      "customers": "Customers",
+      "rating": "Rating",
+      "revenue": "Revenue",
+      "completionRate": "Completion Rate",
+      "responseRate": "Response Rate"
+    },
+    "quick-actions": {
+      "container": "Quick actions container",
+      "button": "Quick action button",
+      "title": "Quick Actions"
+    },
+    "performance": {
+      "container": "Performance dashboard container",
+      "title": "Performance Dashboard",
+      "revenueToday": "Revenue Today",
+      "revenueTodaySubtitle": "Total sales today",
+      "revenueMonth": "Revenue This Month",
+      "revenueMonthSubtitle": "Monthly performance",
+      "ordersToday": "Orders Today",
+      "ordersTodaySubtitle": "New orders",
+      "ordersMonth": "Orders This Month",
+      "ordersMonthSubtitle": "Monthly orders",
+      "conversionRate": "Conversion Rate",
+      "conversionRateSubtitle": "Visitors to buyers",
+      "avgOrderValue": "Average Order Value",
+      "avgOrderValueSubtitle": "Per transaction",
+      "bestSellingCategory": "Best Selling Category",
+      "bestSellingCategorySubtitle": "Top performer this month",
+      "inventoryHealth": "Inventory Health"
+    },
+    "collections": {
+      "container": "Collections container",
+      "card": "Collection card",
+      "title": "Featured Collections",
+      "viewAll": "View All",
+      "items": "items"
+    },
+    "best-sellers": {
+      "container": "Best sellers container",
+      "card": "Product card",
+      "title": "Best Selling Products",
+      "viewAll": "View All",
+      "percentOff": "% OFF",
+      "sold": "sold"
+    },
+    "recent-orders": {
+      "container": "Recent orders container",
+      "title": "Recent Orders",
+      "viewAll": "View All",
+      "item": "item",
+      "items": "items"
+    },
+    "reviews": {
+      "container": "Reviews container",
+      "title": "Customer Reviews",
+      "viewAll": "View All",
+      "basedOn": "Based on",
+      "reviews": "reviews",
+      "star": "star",
+      "stars": "stars",
+      "purchased": "Purchased",
+      "helpful": "Helpful"
+    },
+    "store-info": {
+      "container": "Store information container",
+      "title": "Store Information",
+      "about": "About",
+      "showLess": "Show less",
+      "showMore": "Show more",
+      "categories": "Categories",
+      "shippingCoverage": "Shipping Coverage",
+      "more": "more",
+      "returnPolicy": "Return Policy",
+      "storeSpecialties": "Store Specialties"
+    },
+    "trust": {
+      "container": "Trust section container",
+      "title": "Trust & Credibility",
+      "achievements": "Achievements",
+      "sellerBadges": "Seller Badges",
+      "noBadgesEarned": "No badges earned yet"
+    },
+    "common": {
+      "viewAll": "View All"
+    }
+  }
+}

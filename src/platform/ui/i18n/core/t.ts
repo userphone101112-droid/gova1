@@ -23,7 +23,7 @@ export function t(
         if (!missingKeys.has(key)) {
           missingKeys.add(key);
           console.error(
-            `[i18n] Missing translation key: "${key}". Run npm run i18n:validate and add the key to locales.`
+            `[i18n] Missing translation key: "${key}". Run npm run i18n:sync, then npm run i18n:validate. If this came from a UI identity, check the generated key shape: feature.section.camelCaseElement.`
           );
         }
         return fallback ?? `[missing:${key}]`;

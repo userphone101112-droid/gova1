@@ -51,7 +51,7 @@
       "modal": {
         "container": "Dialog",
         "title": "Dialog Title",
-        "close-button": "Close"
+        "closeButton": "Close"
       },
       "badge": {
         "label": "Badge"

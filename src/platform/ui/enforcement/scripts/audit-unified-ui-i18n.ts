@@ -11,9 +11,9 @@ import {
   SPLASH,
   SHARED_LAYOUT,
   ALL_UI_IDENTIFIERS,
-  NO_TRANSLATION_REQUIRED,
   ALL_UI_IDENTITIES,
   AUTH,
+  isTranslationRequiredForUiIdentity,
 } from '../../registry/registry';
 
 const REGISTRY_SOURCES = {
@@ -514,7 +514,7 @@ function buildBindingMatrix(
     let mismatches = 0;
     
     for (const ui of uiIdentifiers) {
-      if (NO_TRANSLATION_REQUIRED.includes(ui as any) || isCategoryUiPath(ui)) {
+      if (!isTranslationRequiredForUiIdentity(ui) || isCategoryUiPath(ui)) {
         bindings++;
         continue;
       }
@@ -528,7 +528,7 @@ function buildBindingMatrix(
     
     for (const key of translationKeys) {
       const hasMatchingUi = uiIdentifiers.some(ui => {
-        if (NO_TRANSLATION_REQUIRED.includes(ui as any) || isCategoryUiPath(ui)) {
+        if (!isTranslationRequiredForUiIdentity(ui) || isCategoryUiPath(ui)) {
           return false;
         }
         const expectedKey = generateTranslationKeyFromUi(ui);
@@ -593,7 +593,7 @@ function detectOrphans(
   
   // Find missing bindings (UI without corresponding translation)
   for (const ui of registryResult.uiIdentifiers) {
-    if (NO_TRANSLATION_REQUIRED.includes(ui as any) || isCategoryUiPath(ui)) {
+    if (!isTranslationRequiredForUiIdentity(ui) || isCategoryUiPath(ui)) {
       continue;
     }
     const expectedKey = generateTranslationKeyFromUi(ui);

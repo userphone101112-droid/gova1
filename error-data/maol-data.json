@@ -369,6 +369,22 @@
         "severity": "high",
         "timestamp": 1781877797005,
         "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "{}",
+        "route": "/onboarding",
+        "severity": "low",
+        "timestamp": 1781908292014,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "{}",
+        "route": "/merchant",
+        "severity": "low",
+        "timestamp": 1781908703674,
+        "env": "dev"
       }
     ]
   },
@@ -989,6 +1005,14 @@
         "route": "/home",
         "severity": "high",
         "timestamp": 1781822965667,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "{}",
+        "route": "/onboarding",
+        "severity": "low",
+        "timestamp": 1781908332048,
         "env": "dev"
       }
     ]
@@ -2191,6 +2215,64 @@
         "route": "/settings",
         "severity": "high",
         "timestamp": 1781879762527,
+        "env": "dev"
+      }
+    ]
+  },
+  "maol_WXG0KxDfU4": {
+    "errors": [],
+    "warnings": [
+      {
+        "type": "warning",
+        "message": "%s Feature dictionary not found for feature: signup, locale: en",
+        "route": "/onboarding",
+        "severity": "low",
+        "timestamp": 1781913877696,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "Feature dictionary not found for feature: signup, locale: ar",
+        "route": "/settings",
+        "severity": "low",
+        "timestamp": 1781914547944,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "%s Feature dictionary not found for feature: signup, locale: ar",
+        "route": "/settings",
+        "severity": "low",
+        "timestamp": 1781914731546,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[Fast Refresh] performing full reload Fast Refresh will perform a full reload when you edit a file that's imported by modules outside of the React rendering tree.\nYou might have a file which exports a React component but also exports a value that is imported by a non-React component file.\nConsider migrating the non-React component export to a separate file and importing it into both files. It is also possible the parent component of the component you edited is a class component, which disables F",
+        "route": "/settings",
+        "severity": "low",
+        "timestamp": 1781914761415,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "Feature dictionary not found for feature: signup, locale: en",
+        "route": "/settings",
+        "severity": "low",
+        "timestamp": 1781914766692,
+        "env": "dev"
+      }
+    ]
+  },
+  "maol_XAMa0Zj5sF": {
+    "errors": [],
+    "warnings": [
+      {
+        "type": "warning",
+        "message": "Feature dictionary not found for feature: signup, locale: ar",
+        "route": "/settings",
+        "severity": "low",
+        "timestamp": 1781915192430,
         "env": "dev"
       }
     ]

@@ -51,7 +51,7 @@
       "modal": {
         "container": "نافذة",
         "title": "عنوان النافذة",
-        "close-button": "إغلاق"
+        "closeButton": "إغلاق"
       },
       "badge": {
         "label": "شارة"

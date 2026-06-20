@@ -1,6 +1,9 @@
 import { readFileSync, readdirSync, existsSync } from 'fs';
 import { join } from 'path';
-import { ALL_UI_IDENTIFIERS, NO_TRANSLATION_REQUIRED } from '../../registry/registry';
+import {
+  ALL_UI_IDENTIFIERS,
+  isTranslationRequiredForUiIdentity,
+} from '../../registry/registry';
 import {
   generateTranslationKeyFromUi,
   isCategoryUiPath,
@@ -51,10 +54,7 @@ export function getRequiredRegistryBindingKeys(): Set<string> {
   const required = new Set<string>();
 
   for (const ui of ALL_UI_IDENTIFIERS) {
-    if (NO_TRANSLATION_REQUIRED.includes(ui as (typeof NO_TRANSLATION_REQUIRED)[number])) {
-      continue;
-    }
-    if (isCategoryUiPath(ui)) {
+    if (isCategoryUiPath(ui) || !isTranslationRequiredForUiIdentity(ui)) {
       continue;
     }
 
@@ -72,10 +72,7 @@ export function validateRegistryBindings(): {
   const missing: Array<{ ui: string; expectedKey: string }> = [];
 
   for (const ui of ALL_UI_IDENTIFIERS) {
-    if (NO_TRANSLATION_REQUIRED.includes(ui as (typeof NO_TRANSLATION_REQUIRED)[number])) {
-      continue;
-    }
-    if (isCategoryUiPath(ui)) {
+    if (isCategoryUiPath(ui) || !isTranslationRequiredForUiIdentity(ui)) {
       continue;
     }
 

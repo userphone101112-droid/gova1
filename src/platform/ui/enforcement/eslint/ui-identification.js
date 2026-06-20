@@ -263,25 +263,46 @@ const validateRegistryUniqueness = {
           return;
         }
         
-        // Extract all string literals that look like UI identifiers
+        // Extract registry path string literals only. Version strings such as
+        // "1.0.0" also contain dots, so token-level scanning is too broad.
         const identifiers = [];
-        const sourceCode = context.sourceCode || context.getSourceCode();
-        
-        sourceCode.ast.tokens.forEach(token => {
-          if (token.type === 'String' && token.value.includes('.')) {
-            const value = token.value.replace(/'/g, '').replace(/"/g, '');
-            if (/^[a-z0-9-]+(\.[a-z0-9-]+){2,3}$/.test(value)) {
-              identifiers.push({ value, token });
+
+        function collectPathProperties(current) {
+          if (!current || typeof current !== 'object') {
+            return;
+          }
+
+          if (
+            current.type === 'Property' &&
+            current.key?.type === 'Identifier' &&
+            current.key.name === 'path' &&
+            current.value?.type === 'Literal' &&
+            typeof current.value.value === 'string' &&
+            /^[a-z0-9-]+(\.[a-z0-9-]+){2,3}$/.test(current.value.value)
+          ) {
+            identifiers.push({ value: current.value.value, node: current.value });
+          }
+
+          for (const [childKey, value] of Object.entries(current)) {
+            if (childKey === 'parent') {
+              continue;
+            }
+            if (Array.isArray(value)) {
+              value.forEach(collectPathProperties);
+            } else if (value && typeof value === 'object') {
+              collectPathProperties(value);
             }
           }
-        });
+        }
+
+        collectPathProperties(node);
         
         // Check for duplicates
         const seen = new Set();
-        identifiers.forEach(({ value, token }) => {
+        identifiers.forEach(({ value, node }) => {
           if (seen.has(value)) {
             context.report({
-              loc: token.loc.start,
+              node,
               messageId: 'duplicateIdentifier',
               data: {
                 identifier: value,

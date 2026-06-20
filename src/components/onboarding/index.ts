@@ -1,0 +1,14 @@
+export { OnboardingPage } from './onboarding-page';
+export { WelcomeStep } from './steps/welcome-step';
+export { StoreInfoStep } from './steps/store-info-step';
+export { BusinessDetailsStep } from './steps/business-details-step';
+export { IdentityVerificationStep } from './steps/identity-verification-step';
+export { ProductsStep } from './steps/products-step';
+export { ShippingStep } from './steps/shipping-step';
+export { PaymentsStep } from './steps/payments-step';
+export { PoliciesStep } from './steps/policies-step';
+export { BrandingStep } from './steps/branding-step';
+export { PreferencesStep } from './steps/preferences-step';
+export { TaxInfoStep } from './steps/tax-info-step';
+export { MarketingStep } from './steps/marketing-step';
+export { CompletionStep } from './steps/completion-step';

@@ -13,6 +13,8 @@ export const FEATURE_SCOPES: Record<string, readonly Feature[]> = {
   'error-boundary': ['common', 'error-boundary'],
   dashboard: ['common', 'dashboard'],
   settings: ['common', 'settings'],
+  merchant: ['common', 'shared-layout', 'merchant'],
+  onboarding: ['common', 'shared-layout', 'onboarding'],
   signup: ['common', 'signup'],
   contact: ['common', 'contact'],
 };

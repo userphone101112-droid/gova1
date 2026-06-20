@@ -1,5 +1,8 @@
 import type { UiIdentifier, UiParam } from '../../registry/registry';
-import { resolveUiParam } from '../../registry/registry';
+import {
+  isTranslationRequiredForUiIdentity,
+  resolveUiParam,
+} from '../../registry/registry';
 import {
   generateTranslationKeyFromUi,
   isCategoryUiPath,
@@ -22,7 +25,7 @@ function isUiIdentityObject(
  */
 export function resolveTranslationKey(source: TranslationSource): TranslationKey | null {
   if (isUiIdentityObject(source)) {
-    if (isCategoryUiPath(source.path)) {
+    if (isCategoryUiPath(source.path) || !isTranslationRequiredForUiIdentity(source)) {
       return null;
     }
     return generateTranslationKeyFromUi(source.path) as TranslationKey;
@@ -30,7 +33,7 @@ export function resolveTranslationKey(source: TranslationSource): TranslationKey
 
   const identity = resolveUiParam(source);
   if (identity) {
-    if (isCategoryUiPath(identity.path)) {
+    if (isCategoryUiPath(identity.path) || !isTranslationRequiredForUiIdentity(identity)) {
       return null;
     }
     return generateTranslationKeyFromUi(identity.path) as TranslationKey;

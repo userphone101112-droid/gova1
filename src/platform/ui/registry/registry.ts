@@ -11,6 +11,8 @@ export { ERROR_BOUNDARY } from './features/error-boundary';
 export { SHARED_LAYOUT } from './features/shared-layout';
 export { AUTH } from './features/auth';
 export { SETTINGS } from './features/settings';
+export { MERCHANT } from './features/merchant';
+export { ONBOARDING } from './features/onboarding';
 
 import { HOME } from './features/home';
 import { SPLASH } from './features/splash';
@@ -18,6 +20,8 @@ import { ERROR_BOUNDARY } from './features/error-boundary';
 import { SHARED_LAYOUT } from './features/shared-layout';
 import { AUTH } from './features/auth';
 import { SETTINGS } from './features/settings';
+import { MERCHANT } from './features/merchant';
+import { ONBOARDING } from './features/onboarding';
 
 // ============================================================================
 // REGISTRY VALIDATION
@@ -30,6 +34,8 @@ export const UI_REGISTRY = {
   SHARED_LAYOUT,
   AUTH,
   SETTINGS,
+  MERCHANT,
+  ONBOARDING,
 } as const;
 
 function flattenObject(obj: any): any[] {
@@ -54,6 +60,8 @@ export const ALL_UI_IDENTITIES = [
   ...flattenObject(SHARED_LAYOUT),
   ...flattenObject(AUTH),
   ...flattenObject(SETTINGS),
+  ...flattenObject(MERCHANT),
+  ...flattenObject(ONBOARDING),
   ...ALL_CATEGORY_IDENTITIES,
 ] as readonly UiIdentity[];
 
@@ -72,7 +80,32 @@ export type UiParam = UiIdentifier | UiIdentity;
 /**
  * UI identifiers that do not require explicit bound translations (e.g., dynamic-only content).
  */
-export const NO_TRANSLATION_REQUIRED: readonly UiIdentifier[] = [] as const;
+export const NO_TRANSLATION_REQUIRED: readonly string[] = [
+  'merchant.hero.display.banner',
+  'merchant.hero.display.avatar',
+  'merchant.hero.display.name',
+] as const;
+
+/**
+ * Structural UI identities are kept in the registry for inspection, telemetry,
+ * and MAOL mapping, but they do not represent user-visible copy.
+ */
+export function isTranslationRequiredForUiIdentity(ui: string | UiIdentity): boolean {
+  const identity =
+    typeof ui === 'string'
+      ? ALL_UI_IDENTITIES.find((candidate) => candidate.path === ui)
+      : ui;
+
+  if (!identity) {
+    return true;
+  }
+
+  if (NO_TRANSLATION_REQUIRED.includes(identity.path)) {
+    return false;
+  }
+
+  return identity.category !== 'container';
+}
 
 // ============================================================================
 // CENTRAL LOOKUP MAPS & HELPERS (PHASE 2)

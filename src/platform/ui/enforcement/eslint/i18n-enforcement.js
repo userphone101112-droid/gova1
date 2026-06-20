@@ -119,6 +119,7 @@ function containsUserFacingLetters(text) {
 function isAllowedLiteralText(text) {
   const trimmed = text.trim();
   if (!trimmed) return true;
+  if (/^(px|s|ms|rem|em|vh|vw|%|fr)$/.test(trimmed)) return true;
   if (/^[\d\s%$€£.,:;!?•·\-+()/…]+$/.test(trimmed)) return true;
   return !containsUserFacingLetters(trimmed);
 }
@@ -134,7 +135,7 @@ const noHardcodedText = {
     schema: [],
     messages: {
       hardcodedText: 'Hardcoded text "{{text}}" found. Use t(TRANSLATION_KEY) or t(UI_IDENTITY) from useTranslation().',
-      hardcodedAttribute: 'Hardcoded {{attr}}="{{text}}". Use t() for all user-visible strings including placeholder, alt, title, and aria-label.',
+      hardcodedAttribute: 'Hardcoded {{attr}}="{{text}}". Use t() for all user-visible strings including placeholder, alt, title, aria-label, label, and description.',
     },
   },
   create(context) {
@@ -145,7 +146,140 @@ const noHardcodedText = {
     }
 
     const severity = MIGRATION_MODE ? 'warn' : 'error';
-    const USER_FACING_ATTRS = new Set(['placeholder', 'alt', 'title', 'aria-label', 'aria-labelledby', 'aria-describedby']);
+    const shouldCheckObjectText =
+      filename.includes('/src/components/') || filename.includes('/src/app/');
+    const USER_FACING_ATTRS = new Set([
+      'placeholder',
+      'alt',
+      'title',
+      'aria-label',
+      'aria-labelledby',
+      'aria-describedby',
+      'label',
+      'description',
+      'subtitle',
+      'helperText',
+      'errorText',
+      'emptyText',
+      'loadingText',
+    ]);
+    const USER_FACING_OBJECT_KEYS = new Set([
+      'label',
+      'title',
+      'description',
+      'subtitle',
+      'text',
+      'message',
+      'placeholder',
+      'alt',
+      'ariaLabel',
+      'emptyText',
+      'loadingText',
+      'errorText',
+      'helperText',
+    ]);
+
+    function getAttrName(name) {
+      if (!name) {
+        return null;
+      }
+      if (name.type === 'JSXIdentifier') {
+        return name.name;
+      }
+      return null;
+    }
+
+    function getTemplateLiteralText(node) {
+      return node.quasis.map((quasi) => quasi.value.cooked || quasi.value.raw || '').join(' ');
+    }
+
+    function reportHardcodedText(node, text) {
+      if (isAllowedLiteralText(text)) {
+        return;
+      }
+
+      context.report({
+        node,
+        messageId: 'hardcodedText',
+        data: {
+          text: text.substring(0, 50) + (text.length > 50 ? '...' : ''),
+        },
+        severity,
+      });
+    }
+
+    function reportHardcodedAttribute(node, attrName, text) {
+      if (isAllowedLiteralText(text)) {
+        return;
+      }
+
+      context.report({
+        node,
+        messageId: 'hardcodedAttribute',
+        data: {
+          attr: attrName,
+          text: text.substring(0, 50) + (text.length > 50 ? '...' : ''),
+        },
+        severity,
+      });
+    }
+
+    function checkExpressionText(node) {
+      if (!node) {
+        return;
+      }
+
+      if (node.type === 'Literal' && typeof node.value === 'string') {
+        reportHardcodedText(node, node.value);
+        return;
+      }
+
+      if (node.type === 'TemplateLiteral') {
+        reportHardcodedText(node, getTemplateLiteralText(node));
+        return;
+      }
+
+      if (node.type === 'ConditionalExpression') {
+        checkExpressionText(node.consequent);
+        checkExpressionText(node.alternate);
+      }
+    }
+
+    function checkAttributeExpression(node, attrName) {
+      if (!node) {
+        return;
+      }
+
+      if (node.type === 'Literal' && typeof node.value === 'string') {
+        reportHardcodedAttribute(node, attrName, node.value.trim());
+        return;
+      }
+
+      if (node.type === 'TemplateLiteral') {
+        reportHardcodedAttribute(node, attrName, getTemplateLiteralText(node).trim());
+        return;
+      }
+
+      if (node.type === 'ConditionalExpression') {
+        checkAttributeExpression(node.consequent, attrName);
+        checkAttributeExpression(node.alternate, attrName);
+      }
+    }
+
+    function isInsideNextMetadataExport(node) {
+      let current = node;
+      while (current) {
+        if (
+          current.type === 'VariableDeclarator' &&
+          current.id?.type === 'Identifier' &&
+          current.id.name === 'metadata'
+        ) {
+          return true;
+        }
+        current = current.parent;
+      }
+      return false;
+    }
 
     return {
       JSXText(node) {
@@ -154,41 +288,30 @@ const noHardcodedText = {
           return;
         }
 
-        context.report({
-          node,
-          messageId: 'hardcodedText',
-          data: {
-            text: text.substring(0, 50) + (text.length > 50 ? '...' : ''),
-          },
-          severity,
-        });
+        reportHardcodedText(node, text);
       },
 
       JSXAttribute(node) {
-        if (!node.value || node.value.type !== 'Literal' || typeof node.value.value !== 'string') {
+        const attrName = getAttrName(node.name);
+        if (!attrName || !USER_FACING_ATTRS.has(attrName) || !node.value) {
           return;
         }
 
-        const attrName = node.name.name;
-        const value = node.value.value.trim();
-
-        if (!USER_FACING_ATTRS.has(attrName) || isAllowedLiteralText(value)) {
+        if (node.value.type === 'Literal') {
+          checkAttributeExpression(node.value, attrName);
           return;
         }
 
-        context.report({
-          node: node.value,
-          messageId: 'hardcodedAttribute',
-          data: {
-            attr: attrName,
-            text: value.substring(0, 50) + (value.length > 50 ? '...' : ''),
-          },
-          severity,
-        });
+        if (node.value.type === 'JSXExpressionContainer') {
+          checkAttributeExpression(node.value.expression, attrName);
+        }
       },
 
       Literal(node) {
         if (node.parent?.type !== 'JSXExpressionContainer') {
+          return;
+        }
+        if (node.parent.parent?.type === 'JSXAttribute') {
           return;
         }
         if (typeof node.value !== 'string' || isAllowedLiteralText(node.value)) {
@@ -198,14 +321,36 @@ const noHardcodedText = {
           return;
         }
 
-        context.report({
-          node,
-          messageId: 'hardcodedText',
-          data: {
-            text: node.value.substring(0, 50) + (node.value.length > 50 ? '...' : ''),
-          },
-          severity,
-        });
+        reportHardcodedText(node, node.value);
+      },
+
+      JSXExpressionContainer(node) {
+        if (node.parent?.type === 'JSXAttribute') {
+          return;
+        }
+        checkExpressionText(node.expression);
+      },
+
+      Property(node) {
+        if (!shouldCheckObjectText) {
+          return;
+        }
+        if (isInsideNextMetadataExport(node)) {
+          return;
+        }
+
+        const keyName =
+          node.key?.type === 'Identifier'
+            ? node.key.name
+            : node.key?.type === 'Literal'
+              ? node.key.value
+              : null;
+
+        if (typeof keyName !== 'string' || !USER_FACING_OBJECT_KEYS.has(keyName)) {
+          return;
+        }
+
+        checkExpressionText(node.value);
       },
     };
   },
@@ -261,7 +406,7 @@ const validateUiI18nAlignment = {
       return parts.length > 0 ? parts[0] : null;
     }
     
-    let uiIdentifierValues = new Map(); // Store UI identifier values by JSX element
+    const uiIdentifierValues = new Map(); // Store UI identifier values by JSX element
     
     return {
       JSXOpeningElement(node) {
@@ -457,9 +602,7 @@ const noOrphanTranslations = {
       orphanTranslation: 'Translation key "{{key}}" is defined but never used. Remove it from your i18n files or use it in a component.',
     },
   },
-  create(context) {
-    const filename = (context.filename || context.getFilename()).replace(/\\/g, '/');
-    
+  create() {
     // Skip this rule for now - it requires full project scan
     // This should be run as a separate audit script
     return {};
