@@ -2,11 +2,13 @@
 
 import { DEVTOOLS } from '@/platform/ui/registry/features/devtools';
 
-import { INSPECTOR_ROUTES, buildAbsoluteInspectUrl, type InspectorRoutePath } from '../../inspector-routes';
+import { buildAbsoluteInspectUrl } from '../../inspector-routes';
+import { usePageRegistry } from '../hooks/usePageRegistry';
 import { useInspectorContext } from '../state/InspectorProvider';
 
 export function TargetPageSection() {
   const { state, handleRouteChange, handleRefresh } = useInspectorContext();
+  const { pages, refreshPages } = usePageRegistry();
 
   const openTargetInNewTab = () => {
     const absoluteUrl = buildAbsoluteInspectUrl(state.routePath, window.location.origin);
@@ -18,10 +20,10 @@ export function TargetPageSection() {
       <select
         data-ui-uuid={DEVTOOLS.UI_INSPECTOR.HEADER.ROUTE_SELECT.uuid}
         value={state.routePath}
-        onChange={(e) => handleRouteChange(e.target.value as InspectorRoutePath)}
+        onChange={(e) => handleRouteChange(e.target.value)}
         className="mx-3 mb-2 w-[calc(100%-1.5rem)] rounded border border-outline-variant bg-surface px-2 py-1.5 text-sm"
       >
-        {INSPECTOR_ROUTES.map((route) => (
+        {pages.map((route) => (
           <option
             key={route.path}
             data-ui-uuid={DEVTOOLS.UI_INSPECTOR.HEADER.ROUTE_OPTION.uuid}
@@ -35,7 +37,10 @@ export function TargetPageSection() {
       <button
         data-ui-uuid={DEVTOOLS.UI_INSPECTOR.HEADER.REFRESH_BUTTON.uuid}
         type="button"
-        onClick={handleRefresh}
+        onClick={() => {
+          void refreshPages();
+          handleRefresh();
+        }}
         className="mx-3 mb-2 w-[calc(100%-1.5rem)] rounded bg-primary px-3 py-1.5 text-sm text-on-primary"
       >
         Refresh preview

@@ -365,6 +365,18 @@ Protected on removal: Phase 1 **container** identity unless user explicitly dele
 
 The feature namespace and route **stay**. Only Layer 3 elements change.
 
+### Inspector route list (UI Inspector dropdown)
+
+Inspector preview routes are **not** manual. They are discovered by scanning every `src/app/**/page.tsx` (including nested routes like `/merchant/analytics`).
+
+| Mechanism | When |
+|-----------|------|
+| `GET /api/devtools/app-routes` | Live scan on each inspector load / refresh (development) |
+| `npm run routes:generate` | Writes `app-route-manifest.json` fallback; runs on `npm run dev` and `registry:generate` |
+
+Excluded from picker: `/devtools/*`, `/api/*`.  
+Adding a new `page.tsx` anywhere under `src/app` is enough — no inspector wiring TASK required.
+
 ---
 
 ## 15. One-Sentence Summary

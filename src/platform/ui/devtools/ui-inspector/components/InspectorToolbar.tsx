@@ -2,7 +2,6 @@
 
 import { DEVTOOLS } from '@/platform/ui/registry/features/devtools';
 
-import type { InspectorRoutePath } from '../../inspector-routes';
 import { usePageRegistry } from '../hooks/usePageRegistry';
 import { FieldGroup, inspectorFieldSelectClass } from '../sidebar/FieldGroup';
 import { useInspectorContext } from '../state/InspectorProvider';
@@ -34,7 +33,7 @@ export function InspectorToolbar() {
         <select
           data-ui-uuid={DEVTOOLS.UI_INSPECTOR.HEADER.ROUTE_SELECT.uuid}
           value={state.routePath}
-          onChange={(e) => handleRouteChange(e.target.value as InspectorRoutePath)}
+          onChange={(e) => handleRouteChange(e.target.value)}
           className={`${inspectorFieldSelectClass} min-w-[120px]`}
         >
           {pages.map((page) => (

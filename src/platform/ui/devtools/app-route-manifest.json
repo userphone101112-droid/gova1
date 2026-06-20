@@ -1,0 +1,53 @@
+{
+  "generatedAt": "2026-06-20T20:05:00.569Z",
+  "routes": [
+    {
+      "path": "/",
+      "label": "Splash"
+    },
+    {
+      "path": "/favorites",
+      "label": "Favorites"
+    },
+    {
+      "path": "/home",
+      "label": "Home"
+    },
+    {
+      "path": "/image-upload-form",
+      "label": "Image Upload Form"
+    },
+    {
+      "path": "/login",
+      "label": "Login"
+    },
+    {
+      "path": "/merchant",
+      "label": "Merchant"
+    },
+    {
+      "path": "/notifications",
+      "label": "Notifications"
+    },
+    {
+      "path": "/onboarding",
+      "label": "Onboarding"
+    },
+    {
+      "path": "/orders",
+      "label": "Orders"
+    },
+    {
+      "path": "/profile",
+      "label": "Profile"
+    },
+    {
+      "path": "/registration",
+      "label": "Registration"
+    },
+    {
+      "path": "/settings",
+      "label": "Settings"
+    }
+  ]
+}

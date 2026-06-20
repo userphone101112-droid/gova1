@@ -6,6 +6,7 @@ import { join } from 'path';
 const CHECK = process.argv.includes('--check');
 
 console.log('📦 Registry generate...\n');
+execSync('npx tsx scripts/generate-app-route-manifest.ts', { stdio: 'inherit' });
 execSync('npx tsx scripts/generate-registry-member-paths.ts', { stdio: 'inherit' });
 
 const sourceIndexPath = join(process.cwd(), 'src/platform/ui/registry/source-index.ts');
