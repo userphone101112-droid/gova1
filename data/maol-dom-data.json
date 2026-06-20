@@ -264,23 +264,27 @@
     },
     {
       "route": "/home",
-      "timestamp": 1781879778741,
-      "totalIdentified": 221,
+      "timestamp": 1781953574203,
+      "totalIdentified": 229,
       "tree": {
         "type": "page",
         "children": [
           {
             "name": "shared-layout",
             "uiIds": [
+              "UI_SHARED_LAYOUT_ROOT_HTML",
+              "UI_SHARED_LAYOUT_ROOT_BODY",
               "UI_SHARED_HEADER_CONTAINER",
               "UI_SHARED_HEADER_INNER_WRAPPER",
               "UI_SHARED_HEADER_BRAND_SECTION",
               "UI_SHARED_HEADER_MENU",
               "UI_SHARED_HEADER_BRAND_LINK",
               "UI_SHARED_HEADER_ACTIONS_SECTION",
+              "UI_SHARED_LAYOUT_STRUCTURE_HEADER_BRAND_BRAND_LINK_CONTAINER_L46",
               "UI_SHARED_HEADER_SEARCH_INPUT",
               "UI_SHARED_HEADER_SEARCH_BUTTON",
               "UI_SHARED_HEADER_CART_BUTTON",
+              "UI_SHARED_LAYOUT_STRUCTURE_HEADER_BRAND_BRAND_LINK_CONTAINER_L57",
               "UI_SHARED_SIDEBAR_CONTAINER",
               "UI_SHARED_SIDEBAR_OVERLAY",
               "UI_SHARED_SIDEBAR_PANEL",
@@ -291,47 +295,38 @@
               "UI_SHARED_SIDEBAR_LOGIN",
               "UI_SHARED_SIDEBAR_SIGNUP",
               "UI_SHARED_SIDEBAR_SETTINGS",
+              "UI_SHARED_LAYOUT_APP_SHELL_MAIN",
               "UI_SHARED_BOTTOM_NAV_CONTAINER",
               "UI_SHARED_BOTTOM_NAV_HOME",
+              "UI_SHARED_BOTTOM_NAV_HOME_LABEL",
+              "UI_SHARED_BOTTOM_NAV_HOME_INDICATOR",
               "UI_SHARED_BOTTOM_NAV_NOTIFICATIONS",
+              "UI_SHARED_BOTTOM_NAV_NOTIFICATIONS_BADGE",
+              "UI_SHARED_BOTTOM_NAV_NOTIFICATIONS_LABEL",
               "UI_SHARED_BOTTOM_NAV_FAVORITES",
+              "UI_SHARED_BOTTOM_NAV_FAVORITES_LABEL",
               "UI_SHARED_BOTTOM_NAV_ORDERS",
-              "UI_SHARED_BOTTOM_NAV_PROFILE"
+              "UI_SHARED_BOTTOM_NAV_ORDERS_LABEL",
+              "UI_SHARED_BOTTOM_NAV_PROFILE",
+              "UI_SHARED_BOTTOM_NAV_PROFILE_LABEL"
             ],
             "tags": [
+              "html",
+              "body",
               "h1",
               "div",
               "button",
               "a",
               "input",
-              "nav"
-            ]
-          },
-          {
-            "name": "common",
-            "uiIds": [
-              "UI_COMMON_LAYOUT_CONTAINER",
-              "UI_COMMON_LAYOUT_MAIN",
-              "UI_COMMON_LAYOUT_SECTION",
-              "UI_COMMON_LAYOUT_WRAPPER",
-              "UI_COMMON_LAYOUT_HEADER",
-              "UI_COMMON_LAYOUT_SPAN",
-              "UI_COMMON_DECORATIVE_SPACER"
-            ],
-            "tags": [
-              "div",
               "main",
-              "section",
-              "h3",
-              "img",
-              "p",
-              "span",
-              "button"
+              "nav",
+              "span"
             ]
           },
           {
             "name": "home",
             "uiIds": [
+              "UI_HOME_STRUCTURE_HOME_L14",
               "UI_HOME_HERO_SLIDER_CONTAINER",
               "UI_HOME_HERO_SLIDER_SLIDER_TRACK",
               "UI_HOME_HERO_SLIDER_SLIDE",
@@ -340,13 +335,38 @@
               "UI_HOME_HERO_SLIDER_SLIDE_BADGE",
               "UI_HOME_HERO_SLIDER_SLIDE_TITLE",
               "UI_HOME_HERO_SLIDER_INDICATORS",
+              "UI_HOME_STRUCTURE_BADGEKEY_CONTAINER_L68",
+              "UI_HOME_CATEGORIES_GRID_SECTION",
+              "UI_HOME_STRUCTURE_CATEGORIES_GRID_SECTION_TITLE_WRAPPER_L29",
+              "UI_HOME_STRUCTURE_CATEGORIES_GRID_SECTION_TITLE_WRAPPER_L30",
               "UI_HOME_CATEGORIES_GRID_SECTION_TITLE",
               "UI_HOME_CATEGORIES_GRID_TOGGLE",
+              "UI_HOME_CATEGORIES_GRID_TOGGLE_LABEL",
+              "UI_HOME_STRUCTURE_NAMEKEY_WRAPPER_L44",
               "UI_HOME_CATEGORIES_GRID_ITEM",
+              "UI_HOME_STRUCTURE_NAMEKEY_WRAPPER_L47",
               "UI_HOME_CATEGORIES_GRID_CATEGORY_IMAGE",
               "UI_HOME_CATEGORIES_GRID_CATEGORY_NAME",
+              "UI_HOME_FEATURED_MARQUEE_SECTION",
+              "UI_HOME_STRUCTURE_TITLEKEY_WRAPPER_L54",
+              "UI_HOME_STRUCTURE_TITLEKEY_WRAPPER_L55",
+              "UI_HOME_FEATURED_MARQUEE_HEADER",
+              "UI_HOME_STRUCTURE_TITLEKEY_WRAPPER_L75",
+              "UI_HOME_STRUCTURE_TITLEKEY_WRAPPER_L79",
+              "UI_HOME_STRUCTURE_TITLEKEY_CONTAINER_L81",
+              "UI_HOME_STRUCTURE_TITLEKEY_CONTAINER_L85",
+              "UI_HOME_STRUCTURE_TITLEKEY_CONTAINER_L86",
+              "UI_HOME_STRUCTURE_TITLEKEY_CONTAINER_L89",
+              "UI_HOME_STRUCTURE_KEY_WRAPPER_L22",
+              "UI_HOME_STRUCTURE_KEY_WRAPPER_L23",
+              "UI_HOME_STRUCTURE_KEY_SPAN_L25",
+              "UI_HOME_STRUCTURE_KEY_WRAPPER_L30",
+              "UI_HOME_STRUCTURE_KEY_CONTAINER_L32",
+              "UI_HOME_STRUCTURE_KEY_SPAN_L33",
+              "UI_HOME_STRUCTURE_KEY_SPAN_L36",
               "UI_HOME_CURATED_OFFERS_CONTAINER",
               "UI_HOME_CURATED_OFFERS_HEADER",
+              "UI_HOME_STRUCTURE_CURATED_OFFERS_SECTION_TITLE_WRAPPER_L67",
               "UI_HOME_CURATED_OFFERS_SECTION_TITLE",
               "UI_HOME_CURATED_OFFERS_PROMO_TAG",
               "UI_HOME_CURATED_OFFERS_PRODUCT_GRID",
@@ -371,13 +391,14 @@
               "UI_HOME_PROMO_BANNER_DECORATIVE_BACKGROUND"
             ],
             "tags": [
-              "section",
               "div",
+              "section",
               "img",
               "span",
               "h2",
               "h3",
               "button",
+              "p",
               "article"
             ]
           }
@@ -453,6 +474,113 @@
             ],
             "tags": [
               "button"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "route": "/devtools/ui-inspector",
+      "timestamp": 1781953575258,
+      "totalIdentified": 86,
+      "tree": {
+        "type": "page",
+        "children": [
+          {
+            "name": "shared-layout",
+            "uiIds": [
+              "UI_SHARED_LAYOUT_ROOT_HTML",
+              "UI_SHARED_LAYOUT_ROOT_BODY"
+            ],
+            "tags": [
+              "html",
+              "body"
+            ]
+          },
+          {
+            "name": "devtools",
+            "uiIds": [
+              "UI_DEVTOOLS_UI_INSPECTOR_PAGE_CONTAINER",
+              "UI_DEVTOOLS_UI_INSPECTOR_WORKSPACE_CONTAINER",
+              "UI_DEVTOOLS_UI_INSPECTOR_SIDEBAR_CONTAINER",
+              "UI_DEVTOOLS_UI_INSPECTOR_HEADER_CONTAINER",
+              "UI_DEVTOOLS_UI_INSPECTOR_HEADER_TITLE",
+              "UI_DEVTOOLS_UI_INSPECTOR_PICK_MODE_TOGGLE",
+              "UI_DEVTOOLS_UI_INSPECTOR_ROUTE_LABEL",
+              "UI_DEVTOOLS_UI_INSPECTOR_ROUTE_SELECT",
+              "UI_DEVTOOLS_UI_INSPECTOR_ROUTE_OPTION",
+              "UI_DEVTOOLS_UI_INSPECTOR_REFRESH_BUTTON",
+              "UI_DEVTOOLS_UI_INSPECTOR_OPEN_TAB_BUTTON",
+              "UI_DEVTOOLS_UI_INSPECTOR_SIDEBAR_DISPLAY_LABEL",
+              "UI_DEVTOOLS_UI_INSPECTOR_SELECTED_CONTAINER",
+              "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_STABLE_ID_LABEL",
+              "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_STABLE_ID_VALUE",
+              "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_PATH_LABEL",
+              "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_PATH_VALUE",
+              "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_TAG_LABEL",
+              "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_TAG_VALUE",
+              "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_UUID_LABEL",
+              "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_UUID_VALUE",
+              "UI_DEVTOOLS_UI_INSPECTOR_STATUS_CONTAINER",
+              "UI_DEVTOOLS_UI_INSPECTOR_STATUS_IFRAME_VALUE",
+              "UI_DEVTOOLS_UI_INSPECTOR_STATUS_SCAN_VALUE",
+              "UI_DEVTOOLS_UI_INSPECTOR_STATUS_COUNT_VALUE",
+              "UI_DEVTOOLS_UI_INSPECTOR_STATUS_URL_VALUE",
+              "UI_DEVTOOLS_UI_INSPECTOR_SIDEBAR_DATABASE_LABEL",
+              "UI_DEVTOOLS_UI_INSPECTOR_SIDEBAR_ATTRIBUTES_LABEL",
+              "UI_DEVTOOLS_UI_INSPECTOR_DATA_SAVE_BUTTON",
+              "UI_DEVTOOLS_UI_INSPECTOR_DBREF_CONTAINER",
+              "UI_DEVTOOLS_UI_INSPECTOR_DATA_DATABASE_LABEL",
+              "UI_DEVTOOLS_UI_INSPECTOR_DBREF_ADD_DB",
+              "UI_DEVTOOLS_UI_INSPECTOR_DBREF_ADD_TABLE",
+              "UI_DEVTOOLS_UI_INSPECTOR_DBREF_ADD_COLUMN",
+              "UI_DEVTOOLS_UI_INSPECTOR_DATA_INF1_LABEL",
+              "UI_DEVTOOLS_UI_INSPECTOR_DBREF_DB_SELECT",
+              "UI_DEVTOOLS_UI_INSPECTOR_FILTER_FEATURE_OPTION",
+              "UI_DEVTOOLS_UI_INSPECTOR_DBREF_DB_AR_INPUT",
+              "UI_DEVTOOLS_UI_INSPECTOR_DBREF_DB_EN_INPUT",
+              "UI_DEVTOOLS_UI_INSPECTOR_DBREF_DELETE_DB",
+              "UI_DEVTOOLS_UI_INSPECTOR_DATA_INF2_LABEL",
+              "UI_DEVTOOLS_UI_INSPECTOR_DBREF_TABLE_SELECT",
+              "UI_DEVTOOLS_UI_INSPECTOR_FILTER_TAG_OPTION",
+              "UI_DEVTOOLS_UI_INSPECTOR_DBREF_TABLE_AR_INPUT",
+              "UI_DEVTOOLS_UI_INSPECTOR_DBREF_TABLE_EN_INPUT",
+              "UI_DEVTOOLS_UI_INSPECTOR_DBREF_DELETE_TABLE",
+              "UI_DEVTOOLS_UI_INSPECTOR_DATA_INF3_LABEL",
+              "UI_DEVTOOLS_UI_INSPECTOR_DBREF_COLUMN_SELECT",
+              "UI_DEVTOOLS_UI_INSPECTOR_FILTER_LIFECYCLE_OPTION",
+              "UI_DEVTOOLS_UI_INSPECTOR_DBREF_COLUMN_AR_INPUT",
+              "UI_DEVTOOLS_UI_INSPECTOR_DBREF_COLUMN_EN_INPUT",
+              "UI_DEVTOOLS_UI_INSPECTOR_DBREF_DELETE_COLUMN",
+              "UI_DEVTOOLS_UI_INSPECTOR_DBREF_SAVE_BUTTON",
+              "UI_DEVTOOLS_UI_INSPECTOR_SEARCH_LABEL",
+              "UI_DEVTOOLS_UI_INSPECTOR_ELEMENT_COUNT",
+              "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_CONTAINER",
+              "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_TITLE",
+              "UI_DEVTOOLS_UI_INSPECTOR_LAYOUT_RESIZER",
+              "UI_DEVTOOLS_UI_INSPECTOR_PREVIEW_CONTAINER",
+              "UI_DEVTOOLS_UI_INSPECTOR_PREVIEW_CONTROLS",
+              "UI_DEVTOOLS_UI_INSPECTOR_PREVIEW_ZOOM_OUT",
+              "UI_DEVTOOLS_UI_INSPECTOR_PREVIEW_ZOOM_VALUE",
+              "UI_DEVTOOLS_UI_INSPECTOR_PREVIEW_ZOOM_IN",
+              "UI_DEVTOOLS_UI_INSPECTOR_PREVIEW_WIDTH_INPUT",
+              "UI_DEVTOOLS_UI_INSPECTOR_PREVIEW_HEIGHT_INPUT",
+              "UI_DEVTOOLS_UI_INSPECTOR_PREVIEW_SCROLL",
+              "UI_DEVTOOLS_UI_INSPECTOR_PREVIEW_FRAME",
+              "UI_DEVTOOLS_UI_INSPECTOR_PREVIEW_IFRAME"
+            ],
+            "tags": [
+              "div",
+              "aside",
+              "section",
+              "h1",
+              "button",
+              "select",
+              "option",
+              "span",
+              "code",
+              "input",
+              "iframe"
             ]
           }
         ]

@@ -2216,6 +2216,46 @@
         "severity": "high",
         "timestamp": 1781879762527,
         "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "%s Feature dictionary not found for feature: signup, locale: en",
+        "route": "/home",
+        "severity": "low",
+        "timestamp": 1781952429844,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[Fast Refresh] performing full reload Fast Refresh will perform a full reload when you edit a file that's imported by modules outside of the React rendering tree.\nYou might have a file which exports a React component but also exports a value that is imported by a non-React component file.\nConsider migrating the non-React component export to a separate file and importing it into both files. It is also possible the parent component of the component you edited is a class component, which disables F",
+        "route": "/devtools/ui-inspector",
+        "severity": "low",
+        "timestamp": 1781952429923,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "%s Feature dictionary not found for feature: signup, locale: en",
+        "route": "/devtools/ui-inspector",
+        "severity": "low",
+        "timestamp": 1781952430015,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "Image with src \"https://lh3.googleusercontent.com/aida-public/AB6AXuB5BKAM75HnyHLdSANV4UMPvSgTfcM9isT6xav32tg3Gvhoo2VHZS2bjvuAmMZ-WMizUytLM-OSXNJGlwlpSSHUzeUCPhSlf-13GvVtmlFYRo8KBxJHUd6C7-TfCGGAm31WcQmrU3uAhVycmQoa7cbdByUtAph_Lnc9fP7QJRlCAh2IAm_pBfGGn-_wmPqP3YSDPVN7R81BJObut_pcxju-opt0cQMpN0kLCsQLQnttGb-QWeNyipOCwPx-GmOSicTzoq5QKsdZTA\" was detected as the Largest Contentful Paint (LCP). Please add the `loading=\"eager\"` property if this image is above the fold.\nRead more: https://nextjs.org/docs/",
+        "route": "/home",
+        "severity": "low",
+        "timestamp": 1781952654084,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "{}",
+        "route": "/devtools/ui-inspector",
+        "severity": "low",
+        "timestamp": 1781952669925,
+        "env": "dev"
       }
     ]
   },

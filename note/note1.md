@@ -12,13 +12,15 @@ Simple Browser: Show
 أدخل الرابط:
 http://localhost:3001
 
-/devtools/ui-inspector
+http://localhost:3001/devtools/ui-inspector
 
 لعرض احداث المتصفح في IDE
 @id:chat.sendElementsToChat.enabled,chat.sendElementsToChat.attachCSS,chat.sendElementsToChat.attachImages بحث في الاعداادت
 
 # تشغيل غريب
 netstat -ano | findstr ":3001"
+npm run server:status 2>&1
+npm run server:logs
 
 # لمسح الترمينال
 

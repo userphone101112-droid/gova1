@@ -1,0 +1,18 @@
+{
+  "380ab222-fdc6-581f-8f61-b76c696f7da1": {
+    "databaseEnabled": false,
+    "inf1": "",
+    "inf2": "",
+    "inf3": "",
+    "attributesEnabled": false,
+    "attribute1": false,
+    "attribute2": false,
+    "attribute3": false,
+    "dataUiPath": "shared-layout.sidebar.actions.close-button",
+    "dataUiFeature": "shared-layout",
+    "dataUiUuid": "380ab222-fdc6-581f-8f61-b76c696f7da1",
+    "dataUiInstanceId": "",
+    "dataUiIdentityKey": "380ab222-fdc6-581f-8f61-b76c696f7da1",
+    "updatedAt": "2026-06-20T11:06:03.355Z"
+  }
+}
