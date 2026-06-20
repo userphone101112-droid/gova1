@@ -1,384 +1,442 @@
-# GoVa Agent Guide: Project Philosophy & UI Lifecycle
+# GoVa: How the Project Works — Agent Orientation Guide
 
-**Status:** Read this first.  
-**Audience:** Any AI agent working on features, pages, or UI elements in GoVa.  
-**Purpose:** One document that explains **why** the project is built this way and **which runbook** to follow for each operation.
+**Read this before anything else.**
 
-The detailed step-by-step TASK lists live in separate runbooks. This file is the **map and philosophy** — not a replacement for them.
+This document teaches **how GoVa is built**, **how work flows through it**, and **how to find your way** without getting lost.  
+It is a **map and methodology** — not a law book. Detailed step lists live in the runbooks linked at the end; use them once you know *where you are* in the system.
 
----
+After reading this, you should be able to:
 
-## 1. What GoVa Optimizes For
-
-GoVa treats UI as **registered, traceable infrastructure** — not ad-hoc JSX.
-
-| Goal | How the project enforces it |
-|------|----------------------------|
-| Every visible/interactive node is identifiable | UUID-first registry + `data-ui-uuid` on native DOM |
-| Copy is translatable and bound | `t(REGISTRY.IDENTITY)` — never loose string keys when an identity exists |
-| CI catches drift | ESLint rules + UUID DOM parity + i18n binding validation |
-| Agents fail predictably | Strict runbooks with TASK 0→N, PASS/FAIL/STOP |
-| Users speak in plain language | Agents derive technical details — **never ask the user for tables or Group/Key** |
-
-**Core principle:** There is no shortcut around the registry. If it renders in app UI, it must be registered, bound, and (when applicable) translated.
+- Explain how a page goes from an idea to working UI in this codebase
+- Know which folder to open first for any task
+- Tell what is **already done** vs **still missing** before you write code
+- Pick the right runbook without guessing
 
 ---
 
-## 2. Mental Model: Three Layers
+## 1. The Idea Behind GoVa UI
 
-Think in three layers. Each layer has a different runbook.
+GoVa does not treat UI as free-form JSX. It treats UI as **named, traceable infrastructure**:
 
 ```text
-┌─────────────────────────────────────────────────────────────┐
-│  LAYER 1 — FEATURE NAMESPACE                                │
-│  New product area: registry file + i18n + route wiring      │
-│  Example: image-upload-form, merchant                       │
-│  Runbook: AGENT_FEATURE_CREATION.md                         │
-└─────────────────────────────────────────────────────────────┘
-                            │
-                            ▼
-┌─────────────────────────────────────────────────────────────┐
-│  LAYER 2 — PAGE / ROUTE                                     │
-│  New URL inside an existing feature                         │
-│  Example: /merchant/analytics inside merchant               │
-│  Runbook: AGENT_PAGE_CREATION.md                            │
-└─────────────────────────────────────────────────────────────┘
-                            │
-                            ▼
-┌─────────────────────────────────────────────────────────────┐
-│  LAYER 3 — UI ELEMENTS                                      │
-│  Buttons, inputs, galleries, headings inside a page         │
-│  Add → AGENT_UI_ELEMENTS.md                                 │
-│  Remove → AGENT_UI_ELEMENT_REMOVAL.md                       │
-└─────────────────────────────────────────────────────────────┘
+Every meaningful DOM node  →  has an identity in the registry
+Every identity             →  has a stable UUID
+User-visible text          →  flows through t(IDENTITY), bound to locales
+CI                         →  checks that registry, DOM, and translations stay in sync
 ```
 
-### Feature vs Page
+This is not bureaucracy for its own sake. It enables:
 
-| Term | Meaning | Registry | Typical route file |
-|------|---------|----------|-------------------|
-| **Feature** | i18n + registry **namespace** (`<feature>`) | `registry/features/<feature>.ts` | First route often `/<feature>` |
-| **Page** | Additional **route** under that namespace | Same registry file; new **Group** (e.g. `ANALYTICS`) | `src/app/(app)/<route>/page.tsx` |
-| **UI element** | One intrinsic DOM node | One identity `UPPER.Group.Key` | JSX in route or `src/components/<feature>/` |
+- **Inspector / devtools** — pick any element on screen and see its registry path
+- **i18n** — Arabic and English stay aligned with UI structure
+- **Safe refactors** — UUIDs survive renames; removed identities are archived, not reused blindly
+- **Predictable agent work** — same pipeline for a button, an input, or a gallery
 
-**Rule:** One feature file holds many pages and many element groups. Pages do **not** get their own feature namespace unless you are creating a brand-new feature.
+**Mindset:** You are extending a **registry-backed UI system**, not dropping components into a blank page.
 
 ---
 
-## 3. Two-Phase Lifecycle (Scaffold → UI)
+## 2. Repository Landmarks (Learn the Terrain)
 
-Every feature and page is built in **two phases**. Phase order is fixed.
+When you arrive on a task, these folders tell you *what kind of world you are in*:
 
 ```text
-PHASE 1 — SCAFFOLD (container only)
-  • One empty container div with data-ui-uuid={….CONTAINER}
-  • Wire registry, i18n, route, CI
-  • NO buttons, inputs, titles, or business UI
+src/app/                          ← Next.js App Router (URLs live here)
+  page.tsx                        ← Splash at /
+  (app)/                          ← Routes inside AppShell (header, nav, …)
+    <route>/page.tsx              ← Thin route files — usually import components
+  devtools/                       ← UI Inspector (development only)
+  api/                            ← Backend endpoints
 
-PHASE 2 — UI ELEMENTS (everything the user described)
-  • Derive element inventory from plain language
-  • Register identities → locales → JSX
-  • Same pipeline for add; reverse pipeline for remove
+src/components/<feature>/         ← Real UI composition (preferred home for JSX)
+src/platform/ui/
+  registry/features/<feature>.ts  ← All UI identities for a feature namespace
+  registry/registry.ts            ← Aggregates features (touch only for NEW features)
+  i18n/locales/<feature>/         ← en.json + ar.json translations
+  i18n/core/i18n-route-manifest.ts  ← Route → i18n feature mapping
+  devtools/                       ← Inspector route discovery, inspect bridge
+
+scripts/                          ← Generators: feature, registry, routes, CI
 ```
 
-**Why two phases?**
+**Route groups:** `(app)` does **not** appear in the URL.  
+`src/app/(app)/home/page.tsx` → `/home`.
 
-1. Separates **infrastructure wiring** (easy to automate, must not break) from **product UI** (varies per request).
-2. Phase 1 always produces a valid, CI-clean route before any complexity is added.
-3. Phase 2 can run alone when the scaffold already exists (most common after first deploy).
-
-Phase 1 and Phase 2 may appear in **one user prompt** or as **separate prompts**. The agent chooses based on what already exists in the codebase — not by asking the user.
+**Splash vs app:** `/` is outside the shell. Everything else meaningful for users usually lives under `(app)/`.
 
 ---
 
-## 4. The Universal Element Pipeline
+## 3. Three Layers — How the Project Grows
 
-Element **type never changes the pipeline**. Only `Group`, `Key`, and `Kind` change.
+Think of the codebase growing in three layers. Each layer answers a different question:
 
-### Adding an element
+| Layer | Question it answers | What gets created | Starting file to check |
+|-------|---------------------|-------------------|------------------------|
+| **1 — Feature** | «Is there a namespace for this product area?» | Registry file, locales folder, i18n wiring, first route | `registry/features/<feature>.ts` |
+| **2 — Page** | «Is there a URL for this screen?» | New `page.tsx`, new registry **Group**, route manifest entry | `src/app/(app)/<route>/page.tsx` |
+| **3 — UI Element** | «What does the user see and interact with?» | Registry keys, locale strings, JSX nodes | `src/components/<feature>/` or route file |
 
 ```text
-User plain language
-       ↓
-Agent derives inventory (1 row = 1 DOM node)
-       ↓
-registry/features/<feature>.ts   (identity block, no manual uuid)
-       ↓
-en.json + ar.json                (if translatable)
-       ↓
-JSX with data-ui-uuid + t(IDENTITY)
-       ↓
+Feature (namespace)
+  └── Page (route + container)
+        └── Elements (inputs, buttons, galleries, …)
+```
+
+**Important:** A **page** does not get its own feature file. It extends the **same** `registry/features/<feature>.ts` with a new group (e.g. `ANALYTICS`, `FORM`, `GALLERY`).
+
+---
+
+## 4. The Two-Phase Rhythm
+
+GoVa separates **wiring** from **product UI**:
+
+### Phase 1 — Scaffold (container only)
+
+Purpose: prove the route, registry namespace, and i18n pipeline work **before** adding complexity.
+
+```tsx
+// Typical Phase 1 page — one empty container, nothing else
+<div data-ui-uuid={FEATURE.PAGE.CONTAINER.uuid} className="…" />
+```
+
+No titles, no buttons, no forms yet. CI should pass with just this shell.
+
+### Phase 2 — UI elements
+
+Purpose: implement what the user described — inputs, buttons, galleries, etc.
+
+Phase 2 can run:
+
+- In the **same prompt** as Phase 1 (create feature + UI in one go), or
+- **Later**, when the scaffold already exists (most common for edits)
+
+**How to know which phase you need:** inspect the codebase (see §8). If the route exists but only has an empty container → Phase 2. If nothing exists → Phase 1 first.
+
+---
+
+## 5. The Element Pipeline (Same for Every Widget)
+
+Whether you add a heading, a text field, or an image gallery, the **sequence is identical**. Only names change (`Group`, `Key`, `Kind`).
+
+### Adding
+
+```text
+1. Understand user intent (plain language)
+2. Derive inventory: 1 intrinsic DOM node = 1 row
+3. Add identity block in registry/features/<feature>.ts  (no manual uuid)
+4. Add EN + AR strings in locales/<feature>/
+5. Bind JSX: data-ui-uuid={UPPER.Group.Key.uuid} + t(IDENTITY) for text
+6. Run toolchain (see §10)
+```
+
+### Removing
+
+Same chain, reversed: JSX → registry block → locale keys → toolchain.
+
+**Repeatable elements** (lists, gallery thumbnails): one identity, many DOM instances via `.map()`, each with `data-ui-instance-id`.
+
+**Decomposition habit:** a labeled text field is **two** identities (label + input), not one.
+
+---
+
+## 6. How Identity Names Flow
+
+Once you know `feature`, `Group`, and `Key`, everything else follows formulas:
+
+```text
+Registry constant   MERCHANT.FORM.EMAIL_INPUT
+Stable id           UI_MERCHANT_FORM_EMAIL_INPUT
+Path                merchant.form.input.email-input
+Translation key     merchant.form.emailInput   (en.json leaf)
+JSX                 data-ui-uuid={MERCHANT.FORM.EMAIL_INPUT.uuid}
+                    placeholder={t(MERCHANT.FORM.EMAIL_INPUT)}
+```
+
+**Kind** (label, text-input, button, gallery, preview-image, …) decides path **role** (`display`, `input`, `actions`, `layout`) and whether translation is required.
+
+Full Kind table: [AGENT_UI_ELEMENTS.md §A.4](./AGENT_UI_ELEMENTS.md#a4--kind-reference-complete).
+
+---
+
+## 7. Where to Start — By User Intent
+
+Use this as your **first move** after reading the user message. No runbook yet — just orientation.
+
+| User intent (examples) | Look first | Likely missing if not found |
+|------------------------|------------|----------------------------|
+| «Create feature X» | `registry/features/x.ts` | Entire Layer 1 — run Feature runbook |
+| «Add page to merchant at /merchant/analytics» | `src/app/(app)/merchant/analytics/page.tsx` | Layer 2 — run Page runbook |
+| «Add a submit button to X» | Component/route for X + grep `data-ui-uuid` | Layer 3 only — UI Elements runbook |
+| «Remove the gallery from X» | Grep `GALLERY` in registry + JSX | Removal runbook |
+| «Page works but no Arabic» | `locales/<feature>/ar.json` + `npm run i18n` | Locale keys or pipeline not run |
+| «Inspector can't see my page» | `src/app/**/page.tsx` exists? Refresh inspector | Route file missing under `src/app` |
+| «CI uuid error» | Grep component for `<div` without `data-ui-uuid` | Extra wrapper or stale registry |
+
+**Derive `<feature>` from the prompt or path:**  
+`/image-upload-form` → feature `image-upload-form` → registry `IMAGE_UPLOAD_FORM`.
+
+Details for resolving target files: [AGENT_UI_ELEMENTS.md §A.14](./AGENT_UI_ELEMENTS.md#a14--autonomous-context-resolution-feature-or-page).
+
+---
+
+## 8. How to Discover What Is Missing (Diagnostic Playbook)
+
+Before coding, walk this checklist. Each step tells you **what layer** is incomplete.
+
+### Step A — Does the namespace exist?
+
+```text
+Check: src/platform/ui/registry/features/<feature>.ts
+Check: src/platform/ui/i18n/locales/<feature>/en.json
+```
+
+| Result | Meaning |
+|--------|---------|
+| Missing | Layer 1 not done → [AGENT_FEATURE_CREATION.md](./AGENT_FEATURE_CREATION.md) |
+| Present | Namespace OK; continue |
+
+### Step B — Does the route exist?
+
+```text
+Check: src/app/(app)/<route>/page.tsx   (or nested path for sub-pages)
+Optional: GET /api/devtools/app-routes in dev (live App Router scan)
+```
+
+| Result | Meaning |
+|--------|---------|
+| Missing | Layer 2 not done → [AGENT_PAGE_CREATION.md](./AGENT_PAGE_CREATION.md) |
+| Present | Route OK; continue |
+
+### Step C — Does Phase 1 container exist in JSX?
+
+```text
+Grep target file for data-ui-uuid={…CONTAINER…}
+```
+
+| Result | Meaning |
+|--------|---------|
+| No container | Finish Phase 1 scaffold first |
+| Container only | Ready for Phase 2 UI |
+| Container + other UI | Phase 2 partial or complete — append or edit carefully |
+
+### Step D — Are described elements registered?
+
+```text
+Grep registry file for expected Group (FORM, GALLERY, ACTIONS, …)
+Compare inventory rows to data-ui-uuid in JSX
+```
+
+| Result | Meaning |
+|--------|---------|
+| Registry row missing | Add identity before JSX |
+| JSX missing uuid | Implement or fix binding |
+| Both present | Element layer complete for that row |
+
+### Step E — Are translations wired?
+
+```text
+npm run i18n:validate-bindings   (or full npm run i18n)
+Check en.json / ar.json under feature section
+```
+
+| Result | Meaning |
+|--------|---------|
+| Missing binding | Add locale keys, run i18n:sync + i18n |
+| Valid | i18n OK |
+
+### Step F — Is generated artifacts fresh?
+
+After **any** registry edit:
+
+```text
 npm run registry:materialize-uuids
 npm run registry:generate
 npm run i18n
-npm run typecheck
-npm run ci:uuid-dom-absolute && npm run ci:uuid-dom-parity
-npm run lint
 ```
 
-### Removing an element
+Skipping this is the most common cause of «mysterious» CI failures.
 
-Same chain, **reversed**:
+---
+
+## 9. Which Runbook When (Soft Decision Tree)
+
+You do not memorize every TASK. You only need to know **which document owns your situation**:
 
 ```text
-User plain language → removal inventory
-       ↓
-Delete JSX nodes
-       ↓
-Delete registry blocks (UUID preserved in removedIdentities via materialize)
-       ↓
-Delete locale keys
-       ↓
-Same regenerate + CI commands
+registry/features/<feature>.ts missing?
+  └─ YES → AGENT_FEATURE_CREATION.md
+
+registry exists, new route/page missing?
+  └─ YES → AGENT_PAGE_CREATION.md
+
+route + container exist, user wants new widgets?
+  └─ YES → AGENT_UI_ELEMENTS.md
+
+user wants widgets removed?
+  └─ YES → AGENT_UI_ELEMENT_REMOVAL.md
 ```
 
-**Never hand-edit:** `uuid` fields, `uuid-manifest.json`, `registry-member-paths.json`, `source-index.ts`.
-
-**Phase 1 wiring files** (`registry.ts`, `index.ts`, `generate-registry-member-paths.ts`, i18n route manifest) are touched only when creating a **new feature** — not when adding/removing UI on an existing feature.
+Runbooks use numbered TASKs with PASS/FAIL/STOP. Treat them as **recipes** once you know the dish you are cooking.
 
 ---
 
-## 5. One DOM Node = One Identity
+## 10. Toolchain — How the Project Checks Itself
 
-Decomposition rule (non-negotiable):
+These commands are the project's **nervous system**. Learn what each one validates:
 
-| User sees | Inventory rows |
-|-----------|------------------|
-| One text field | `LABEL` + `INPUT` (two rows) |
-| Submit + cancel | `SUBMIT_BUTTON` + `CANCEL_BUTTON` (two rows) |
-| Gallery with picker | `CONTAINER` + `SELECT_BUTTON` + `FILE_INPUT` + `PREVIEW_IMAGE` |
-| List of cards | one repeatable identity per repeated **same** node type in `.map()` |
+| Command | What it tells you |
+|---------|-------------------|
+| `npm run routes:generate` | Scans `src/app/**/page.tsx` → inspector manifest |
+| `npm run registry:materialize-uuids` | Injects UUIDs; archives removed identities |
+| `npm run registry:generate` | Refreshes member paths + source index |
+| `npm run i18n` | Translations valid + bound to registry |
+| `npm run typecheck` | TypeScript consistency |
+| `npm run ci:uuid-dom-absolute` | Every intrinsic DOM node has uuid |
+| `npm run ci:uuid-dom-parity` | DOM uuid count matches registry usage |
+| `npm run lint` | ESLint including design tokens + i18n coupling |
 
-**Kind** (label, text-input, button, gallery, preview-image, …) picks path role and translation rules. Full Kind table: [AGENT_UI_ELEMENTS.md §A.4](./AGENT_UI_ELEMENTS.md#a4--kind-reference-complete).
-
-**Repeatable:** Same `data-ui-uuid` in a loop + unique `data-ui-instance-id` per instance.
-
----
-
-## 6. Zero-Question Policy
-
-The user provides **where + what** in one sentence. The agent derives **everything else**.
-
-| User may say | Agent derives (never ask) |
-|--------------|---------------------------|
-| «Add submit button to image-upload-form» | feature, targetFile, Group, Key, Kind, EN/AR strings |
-| «Remove gallery from image-upload-form» | removal inventory, registry paths, locale keys |
-| «Create feature X with two inputs» | Phase 1 scaffold + Phase 2 inventory |
-
-**Forbidden:** Asking for Element Inventory tables, Group/Key/Kind, file paths, or confirmation.
-
-**Allowed STOP (fixed message only, no question):**
-
-- Target feature/page does not exist → run Phase 1 runbook first
-- Prompt has no UI intent → «Include what to add/remove in plain language.»
-- No matching elements for removal → «No matching elements found.»
-
-**Ambiguity defaults** (add): one field if count omitted; full gallery pattern if «images» mentioned; numbered `FIELD1`, `FIELD2`, …  
-Details: [AGENT_UI_ELEMENTS.md §A.12–A.14](./AGENT_UI_ELEMENTS.md).
+**Healthy edit loop:** registry/locale/JSX change → materialize → generate → i18n → typecheck → uuid CI → lint.
 
 ---
 
-## 7. Which Runbook? (Decision Tree)
+## 11. Working With the User
+
+GoVa expects **plain language** from the user, **technical precision** from the agent.
+
+| User gives | You derive |
+|------------|------------|
+| «Add two inputs and a save button to settings» | Inventory rows, Group/Key, files, translations |
+| «Create feature billing at /billing» | Phase 1 + optionally Phase 2 |
+| «Remove field 2 from image-upload-form» | Removal inventory from registry + JSX |
+
+**Collaboration style:** derive and proceed. Ask only when the prompt has **zero UI intent** — not when details like Group names are unstated (those are always yours to derive).
+
+Ambiguity defaults (one field if count omitted, full gallery pattern if «images» mentioned): [AGENT_UI_ELEMENTS.md §A.12](./AGENT_UI_ELEMENTS.md).
+
+---
+
+## 12. Inspector & Devtools — Your Eyes in the Project
+
+`/devtools/ui-inspector` is a **live mirror** of the registry on real pages.
+
+| Capability | How it helps you |
+|------------|------------------|
+| Route dropdown | Auto-discovered from App Router (`page.tsx` scan) — main and nested routes |
+| Element pick | See uuid, path, feature for any node |
+| Preview iframe | Load `/<route>?inspect=1` |
+
+Route discovery:
+
+- **Live:** `GET /api/devtools/app-routes` (on inspector load / refresh)
+- **Fallback:** `src/platform/ui/devtools/app-route-manifest.json`
+
+Adding a new `page.tsx` under `src/app` is enough for inspector to see it — no manual dropdown edit.
+
+---
+
+## 13. What Usually Goes Wrong (And Why)
+
+Understanding failures prevents maze-walking:
+
+| Symptom | Typical root cause | Where to look |
+|---------|-------------------|---------------|
+| Hydration / text mismatch | Server vs client different strings | Component with `window` in render path |
+| «Missing data-ui-uuid» lint | Extra wrapper `<div>` without identity | Remove wrapper or add registry row |
+| UUID parity fail | More/fewer DOM nodes than registry expects | Count intrinsics in file |
+| i18n binding fail | Key missing or `t('string')` instead of `t(IDENTITY)` | locales + JSX |
+| Page 404 | `page.tsx` not under `src/app` correct path | App Router structure |
+| Translations blank | Feature not in route manifest / featureScope | i18n wiring (Phase 1) |
+| Inspector missing route | No `page.tsx` yet | Create route first |
+
+---
+
+## 14. Story Walkthrough — image-upload-form
+
+A concrete path through all layers:
+
+**1. User:** «Feature image-upload-form with three inputs and image gallery.»
+
+**2. Agent checks:** no `registry/features/image-upload-form.ts` → Layer 1 needed.
+
+**3. Phase 1** ([AGENT_FEATURE_CREATION.md](./AGENT_FEATURE_CREATION.md)):
+
+- Creates registry namespace, locales, `/image-upload-form` route
+- Wires `i18n-route-manifest`, `featureScope`, `getDictionary`, `registry.ts` (new features only)
+- Leaves one `PAGE.CONTAINER` in JSX
+
+**4. Phase 2** ([AGENT_UI_ELEMENTS.md](./AGENT_UI_ELEMENTS.md)):
+
+- Derives 10 inventory rows from description
+- Adds `FORM.*` and `GALLERY.*` to registry
+- Implements `src/components/image-upload-form/image-upload-form-content.tsx`
+- Runs toolchain
+
+**5. Inspector:** `/image-upload-form` appears automatically in dropdown.
+
+**6. Later — user:** «Remove gallery.»
+
+- [AGENT_UI_ELEMENT_REMOVAL.md](./AGENT_UI_ELEMENT_REMOVAL.md): delete `GALLERY.*` from registry + JSX + locales
+- Feature and route **remain**; only Layer 3 shrinks
+
+---
+
+## 15. Files You Rarely Touch (And Why)
+
+Knowing what **not** to edit prevents accidental breakage:
+
+| File | Touch when |
+|------|------------|
+| `uuid-manifest.json`, `registry-member-paths.json` | Never manually — generators only |
+| `registry.ts`, `index.ts`, `generate-registry-member-paths.ts` | **New feature** wiring only |
+| `uuid` fields in registry | Never manually — `materialize-uuids` |
+| `src/features/<feature>/` | Avoid — legacy generator output; use `src/components/` |
+
+Adding UI to an **existing** feature usually means: `registry/features/<feature>.ts`, locales, components — **not** central registry aggregation files.
+
+---
+
+## 16. Prompt Patterns (Starting Points for Users)
+
+These are examples of how users may phrase requests. Your job: map them to §7–§9.
 
 ```text
-Does registry/features/<feature>.ts exist?
-│
-├─ NO  → Creating new namespace?
-│         YES → AGENT_FEATURE_CREATION.md (TASK 0–21)
-│         NO  → STOP (invalid target)
-│
-└─ YES → What is the user asking?
-          │
-          ├─ New route under existing feature
-          │    → AGENT_PAGE_CREATION.md (TASK 0–21)
-          │
-          ├─ Add UI (buttons, inputs, …)
-          │    → AGENT_UI_ELEMENTS.md (TASK 0–17)
-          │
-          └─ Remove UI
-               → AGENT_UI_ELEMENT_REMOVAL.md (TASK 0–15)
-```
+Create feature <name> (route /<route>). UI: <description>.
+→ Phase 1 runbook, then Phase 2 if UI described.
 
-**Quick checks**
+Add page to <feature>: route /<route>. UI: <description>.
+→ Page runbook, then UI Elements if needed.
 
-| File exists | Operation |
-|-------------|-----------|
-| `registry/features/<feature>.ts` missing | Feature creation |
-| Registry exists, new `src/app/(app)/…/page.tsx` missing | Page creation |
-| Route/component exists, user describes new widgets | Add UI |
-| User describes removing widgets | Remove UI |
+Add to <feature-or-page>: <what>.
+→ UI Elements runbook.
 
-Agents detect `<feature>` by matching prompt tokens and codebase paths — see [AGENT_UI_ELEMENTS.md §A.14](./AGENT_UI_ELEMENTS.md#a14--autonomous-context-resolution-feature-or-page).
-
----
-
-## 8. Where Code Lives
-
-```text
-src/platform/ui/registry/features/<feature>.ts   ← all identities for feature
-src/platform/ui/i18n/locales/<feature>/en.json   ← English
-src/platform/ui/i18n/locales/<feature>/ar.json   ← Arabic
-src/app/(app)/<route>/page.tsx                   ← thin App Router page
-src/components/<feature>/*.tsx                   ← composed UI (preferred when >8 nodes)
-```
-
-**Thin route pattern:** `page.tsx` imports a component; heavy JSX lives under `src/components/`.
-
-**App shell:** Most routes sit under `src/app/(app)/` and inherit `AppShell`. Splash stays at `/` outside `(app)`.
-
----
-
-## 9. Agent Role: Weak Executor
-
-Agents in this project are **not designers**.
-
-| Do | Do not |
-|----|--------|
-| Follow TASK order strictly | Skip TASKs or merge steps |
-| Print Progress Report after each TASK | Mark complete early |
-| Derive inventory from user text | Invent UI beyond the description |
-| Run CI commands after registry/locale edits | Hand-edit UUIDs or generated JSON |
-| Use semantic theme tokens | Hardcode arbitrary Tailwind values |
-| Append UI to existing pages | Delete unrelated elements |
-
-Runbooks define **PASS / FAIL / STOP**. FAIL → fix and re-run the same TASK. STOP → halt with a fixed message (no questions).
-
----
-
-## 10. Operation Summary
-
-| Operation | Phase | Runbook | TASK range | Delivers |
-|-----------|-------|---------|------------|----------|
-| Create **Feature** | 1 | [AGENT_FEATURE_CREATION.md](./AGENT_FEATURE_CREATION.md) | 0–21 | Namespace + container route |
-| Create **Page** | 1 | [AGENT_PAGE_CREATION.md](./AGENT_PAGE_CREATION.md) | 0–21 | Route + container component |
-| **Add** UI | 2 | [AGENT_UI_ELEMENTS.md](./AGENT_UI_ELEMENTS.md) | 0–17 | Registry + locales + JSX |
-| **Remove** UI | — | [AGENT_UI_ELEMENT_REMOVAL.md](./AGENT_UI_ELEMENT_REMOVAL.md) | 0–15 | Clean removal + CI |
-
-Feature + UI or Page + UI in one prompt = Phase 1 TASKs first, then Phase 2 TASKs. Do not start Phase 2 until Phase 1 TASK 21 is PASS.
-
----
-
-## 11. User Prompt Patterns (Copy-Ready)
-
-### New feature + UI
-
-```text
-Create feature <feature> (route /<route>).
-UI: <plain-language description>.
-
-Phase 1 — AGENT_FEATURE_CREATION.md TASK 0–21.
-Phase 2 — AGENT_UI_ELEMENTS.md TASK 0–17.
-Print Progress Report after every TASK. Derive everything — do not ask me anything.
-```
-
-### New page + UI
-
-```text
-Add page to <feature>: route /<route>, <pageSlug> page.
-UI: <plain-language description>.
-
-Phase 1 — AGENT_PAGE_CREATION.md TASK 0–21.
-Phase 2 — AGENT_UI_ELEMENTS.md TASK 0–17.
-Print Progress Report after every TASK. Derive everything — do not ask me anything.
-```
-
-### Add to existing feature/page
-
-```text
-Add to <feature-or-page>: <what to add>.
-
-Follow AGENT_UI_ELEMENTS.md TASK 0–17.
-Print Progress Report after every TASK. Derive everything — do not ask me anything.
-```
-
-### Remove from existing feature/page
-
-```text
-Remove from <feature-or-page>: <what to remove>.
-
-Follow AGENT_UI_ELEMENT_REMOVAL.md TASK 0–15.
-Print Progress Report after every TASK. Derive everything — do not ask me anything.
+Remove from <feature-or-page>: <what>.
+→ UI Element Removal runbook.
 ```
 
 ---
 
-## 12. Non-Negotiable Forbidden Patterns
+## 17. Document Map — Go Deeper When Ready
 
-| Forbidden | Why |
-|-----------|-----|
-| Manual `uuid` edits | Breaks manifest immutability CI |
-| `t('feature.section.key')` when identity exists | Breaks registry binding enforcement |
-| `data-ui-id` / legacy `Ui*` factories | Removed architecture |
-| `src/features/<feature>/page.tsx` | Wrong folder; use App Router + components |
-| Skipping `materialize-uuids` / `registry:generate` after registry edits | Stale CI artifacts |
-| Extra wrapper `<div>` without `data-ui-uuid` | Fails UUID DOM absolute CI |
-| Arbitrary Tailwind (`min-h-[200px]`) | Fails design-token ESLint |
-| Asking user for inventory / Group / Key | Violates zero-question policy |
-
-Protected on removal: Phase 1 **container** identity unless user explicitly deletes the whole page.
+| When you need… | Read |
+|----------------|------|
+| **Orientation (this file)** | AGENT_PROJECT_PHILOSOPHY.md |
+| Exact TASKs for new feature | [AGENT_FEATURE_CREATION.md](./AGENT_FEATURE_CREATION.md) |
+| Exact TASKs for new page | [AGENT_PAGE_CREATION.md](./AGENT_PAGE_CREATION.md) |
+| Add elements | [AGENT_UI_ELEMENTS.md](./AGENT_UI_ELEMENTS.md) |
+| Remove elements | [AGENT_UI_ELEMENT_REMOVAL.md](./AGENT_UI_ELEMENT_REMOVAL.md) |
+| Registry & route conventions | [UI_CREATION_RULES.md](./UI_CREATION_RULES.md) |
+| Translation system | [i18n.md](./i18n.md) |
+| Colors, spacing, tokens | [THEME_RULES.md](./THEME_RULES.md) |
 
 ---
 
-## 13. Supporting References
+## 18. Closing Mindset
 
-| Topic | Document |
-|-------|----------|
-| **This guide (start here)** | AGENT_PROJECT_PHILOSOPHY.md |
-| Create feature | [AGENT_FEATURE_CREATION.md](./AGENT_FEATURE_CREATION.md) |
-| Create page | [AGENT_PAGE_CREATION.md](./AGENT_PAGE_CREATION.md) |
-| Add UI | [AGENT_UI_ELEMENTS.md](./AGENT_UI_ELEMENTS.md) |
-| Remove UI | [AGENT_UI_ELEMENT_REMOVAL.md](./AGENT_UI_ELEMENT_REMOVAL.md) |
-| Registry & route rules | [UI_CREATION_RULES.md](./UI_CREATION_RULES.md) |
-| Translations | [i18n.md](./i18n.md) |
-| Theme & tokens | [THEME_RULES.md](./THEME_RULES.md) |
+GoVa is **registry-first** and **phase-aware**:
 
----
+1. **Learn the terrain** — app routes, registry namespaces, components
+2. **Diagnose the layer** — what exists, what is missing (§8)
+3. **Follow the pipeline** — registry → locales → JSX → toolchain
+4. **Use runbooks as recipes** — not as punishment, but as proven paths
 
-## 14. End-to-End Example (How the Pieces Fit)
-
-**User:** «Create feature image-upload-form with three text inputs and an image gallery with file picker.»
-
-```text
-1. AGENT_FEATURE_CREATION → image-upload-form namespace, route /image-upload-form,
-   empty PAGE.CONTAINER, i18n wired, CI PASS
-
-2. AGENT_UI_ELEMENTS TASK 1 derives 10 rows (3× label+input, gallery block)
-
-3. Registry gets FORM.* and GALLERY.* groups
-
-4. Locales get form.field1Label, gallery.selectButton, …
-
-5. Component image-upload-form-content.tsx implements JSX with hooks for file picker
-
-6. materialize → generate → i18n → typecheck → uuid CI → lint → TASK 17 PASS
-```
-
-**Later user:** «Remove gallery from image-upload-form.»
-
-```text
-1. AGENT_UI_ELEMENT_REMOVAL TASK 1 matches GALLERY.* rows
-
-2. JSX gallery section deleted; registry blocks removed; locale keys deleted
-
-3. Same CI pipeline → TASK 15 PASS
-```
-
-The feature namespace and route **stay**. Only Layer 3 elements change.
-
-### Inspector route list (UI Inspector dropdown)
-
-Inspector preview routes are **not** manual. They are discovered by scanning every `src/app/**/page.tsx` (including nested routes like `/merchant/analytics`).
-
-| Mechanism | When |
-|-----------|------|
-| `GET /api/devtools/app-routes` | Live scan on each inspector load / refresh (development) |
-| `npm run routes:generate` | Writes `app-route-manifest.json` fallback; runs on `npm run dev` and `registry:generate` |
-
-Excluded from picker: `/devtools/*`, `/api/*`.  
-Adding a new `page.tsx` anywhere under `src/app` is enough — no inspector wiring TASK required.
-
----
-
-## 15. One-Sentence Summary
-
-**GoVa UI is registry-first, two-phase, and agent-executed: scaffold the container, then add or remove registered DOM nodes through a fixed pipeline — with plain-language input from the user and zero technical questions from the agent.**
+You are not memorizing rules. You are learning a **system that was designed to be extended one registered node at a time** — and once you see the pattern, every new page, form, or gallery is the same journey with different names.
