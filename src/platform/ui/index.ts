@@ -22,6 +22,7 @@ export {
   SETTINGS,
   MERCHANT,
   ONBOARDING,
+  IMAGE_UPLOAD_FORM,
   getUiIdentityByUuid,
   getUiIdentity,
   resolveUiIdentity,

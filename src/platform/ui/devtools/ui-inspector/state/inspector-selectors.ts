@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-import { buildAbsoluteInspectUrl, buildInspectUrl } from '../../inspector-routes';
+import { buildInspectUrl } from '../../inspector-routes';
 import { findDatabase, findTable } from '../data/database-ref-utils';
 import { getInspectorData } from '../data/inspector-config-storage';
 import { findStorageFolder } from '../data/storage-ref-utils';
@@ -84,18 +84,14 @@ export function selectDatabaseRefTree(state: InspectorState) {
   };
 }
 
-export function selectPreviewModel(state: InspectorState, origin?: string) {
+export function selectPreviewModel(state: InspectorState) {
   const iframeSrc = buildInspectUrl(state.routePath);
-  const targetUrl =
-    typeof window === 'undefined' || !origin
-      ? iframeSrc
-      : buildAbsoluteInspectUrl(state.routePath, origin);
   const previewFrameWidth = state.previewSize.width * state.previewSize.scale;
   const previewFrameHeight = state.previewSize.height * state.previewSize.scale;
   const previewZoomPercent = Math.round(state.previewSize.scale * 100);
   return {
     iframeSrc,
-    targetUrl,
+    targetUrl: iframeSrc,
     previewFrameWidth,
     previewFrameHeight,
     previewZoomPercent,
@@ -108,7 +104,7 @@ export function useInspectorSelectors(state: InspectorState) {
     const database = selectCurrentElementDatabaseSettings(state);
     const storage = selectCurrentElementStorageSettings(state);
     const databaseRef = selectDatabaseRefTree(state);
-    const preview = selectPreviewModel(state, typeof window !== 'undefined' ? window.location.origin : undefined);
+    const preview = selectPreviewModel(state);
     const featureOptions = selectFeatureOptions(state);
     return { ...selection, database, storage, databaseRef, preview, featureOptions };
   }, [state]);

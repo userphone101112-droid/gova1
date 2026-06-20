@@ -1,0 +1,27 @@
+{
+  "image-upload-form": {
+    "page": {
+      "title": "نموذج رفع الصور",
+      "description": "وصف نموذج رفع الصور"
+    },
+    "actions": {
+      "create": "إنشاء",
+      "save": "حفظ",
+      "createButton": "TODO(ar): Create action button",
+      "saveButton": "TODO(ar): Save action button"
+    },
+    "form": {
+      "field1Label": "الحقل 1",
+      "field1": "أدخل الحقل 1",
+      "field2Label": "الحقل 2",
+      "field2": "أدخل الحقل 2",
+      "field3Label": "الحقل 3",
+      "field3": "أدخل الحقل 3"
+    },
+    "gallery": {
+      "selectButton": "اختر الصور",
+      "fileInput": "اختر ملفات الصور",
+      "previewImage": "معاينة الصورة المحددة"
+    }
+  }
+}

@@ -359,6 +359,25 @@ export type homeTranslationKey =
   | 'home.featured-marquee.header'
 ;
 
+// image-upload-form feature translations
+export type imageUploadFormTranslationKey =
+  | 'image-upload-form.page.title'
+  | 'image-upload-form.page.description'
+  | 'image-upload-form.actions.create'
+  | 'image-upload-form.actions.save'
+  | 'image-upload-form.actions.createButton'
+  | 'image-upload-form.actions.saveButton'
+  | 'image-upload-form.form.field1Label'
+  | 'image-upload-form.form.field1'
+  | 'image-upload-form.form.field2Label'
+  | 'image-upload-form.form.field2'
+  | 'image-upload-form.form.field3Label'
+  | 'image-upload-form.form.field3'
+  | 'image-upload-form.gallery.selectButton'
+  | 'image-upload-form.gallery.fileInput'
+  | 'image-upload-form.gallery.previewImage'
+;
+
 // merchant feature translations
 export type merchantTranslationKey =
   | 'merchant.hero.verifiedBadge'
@@ -830,6 +849,7 @@ export type AllTranslationKeys =
   | devtoolsTranslationKey
   | errorBoundaryTranslationKey
   | homeTranslationKey
+  | imageUploadFormTranslationKey
   | merchantTranslationKey
   | onboardingTranslationKey
   | settingsTranslationKey

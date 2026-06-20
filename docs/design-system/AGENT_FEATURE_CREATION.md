@@ -4,6 +4,8 @@
 **Audience:** Any AI agent that creates a **brand-new feature namespace** in GoVa.  
 **Goal:** Working App Router feature — zero registry, i18n, UUID, or lint errors.
 
+> **New agent?** Read **[AGENT_PROJECT_PHILOSOPHY.md](./AGENT_PROJECT_PHILOSOPHY.md)** first for project design and runbook selection.
+
 > **Wrong runbook?** Adding a page to a feature that **already exists** → stop here. Use **[AGENT_PAGE_CREATION.md](./AGENT_PAGE_CREATION.md)** only.
 
 ---
@@ -420,78 +422,42 @@ If `<feature>` contains hyphens, quote the key:
 
 ---
 
-## TASK 15 — Create App Router Page
+## TASK 15 — Create Container-Only App Router Page
 
-**Objective:** Create `routeFile` with exact template.
+**Objective:** Create `routeFile` with **one empty container** only.  
+**All other UI** (title, inputs, buttons, images, …) is added later via **[AGENT_UI_ELEMENTS.md](./AGENT_UI_ELEMENTS.md)**.
 
 **File:** `src/app/(app)/<route-without-leading-slash>/page.tsx`
 
-**Copy this template. Replace placeholders only.**
+**Copy this template. Replace placeholders only. Do not add JSX.**
 
 ```tsx
-'use client';
-
-import { <UPPER>, useTranslation } from '@/platform/ui';
+import { <UPPER> } from '@/platform/ui';
 
 export default function <PascalPage>() {
-  const { t } = useTranslation();
-
   return (
     <div
       data-ui-uuid={<UPPER>.PAGE.CONTAINER.uuid}
-      className="flex flex-col items-center justify-center gap-8 bg-background px-4 py-8"
-    >
-      <h1
-        data-ui-uuid={<UPPER>.PAGE.TITLE.uuid}
-        className="text-4xl font-bold text-on-surface"
-      >
-        {t(<UPPER>.PAGE.TITLE)}
-      </h1>
-      <p
-        data-ui-uuid={<UPPER>.PAGE.DESCRIPTION.uuid}
-        className="text-xl text-on-surface-variant"
-      >
-        {t(<UPPER>.PAGE.DESCRIPTION)}
-      </p>
-      <div
-        data-ui-uuid={<UPPER>.ACTIONS.ROW.uuid}
-        className="flex gap-4"
-      >
-        <button
-          type="button"
-          data-ui-uuid={<UPPER>.ACTIONS.CREATE_BUTTON.uuid}
-          className="rounded-md bg-primary px-4 py-2 text-on-primary"
-        >
-          {t(<UPPER>.ACTIONS.CREATE_BUTTON)}
-        </button>
-        <button
-          type="button"
-          data-ui-uuid={<UPPER>.ACTIONS.SAVE_BUTTON.uuid}
-          className="rounded-md bg-secondary px-4 py-2 text-on-secondary"
-        >
-          {t(<UPPER>.ACTIONS.SAVE_BUTTON)}
-        </button>
-      </div>
-    </div>
+      className="min-h-[200px] bg-background px-4 py-8"
+    />
   );
 }
 ```
 
-**Verification (count intrinsics)**
+**Verification**
 
-| Element | Must have `data-ui-uuid` |
-|---------|--------------------------|
-| outer `div` | `<UPPER>.PAGE.CONTAINER.uuid` |
-| `h1` | `<UPPER>.PAGE.TITLE.uuid` |
-| `p` | `<UPPER>.PAGE.DESCRIPTION.uuid` |
-| actions `div` | `<UPPER>.ACTIONS.ROW.uuid` |
-| button ×2 | `CREATE_BUTTON`, `SAVE_BUTTON` |
+| Rule | Required |
+|------|----------|
+| Intrinsics in file | **Exactly 1** — the outer `div` |
+| `data-ui-uuid` | `<UPPER>.PAGE.CONTAINER.uuid` only |
+| `'use client'` | **Not present** (no hooks in scaffold) |
+| `useTranslation` / `t()` | **Not present** |
+| User-visible text | **None** |
+| Extra elements | **None** — no `h1`, `button`, `input`, `img`, … |
 
 - [ ] File exists at `routeFile`
-- [ ] No `t('…')` string keys
-- [ ] No hardcoded user-visible strings
 
-**Progress Report:** `TASK 15: PASS — route page created`
+**Progress Report:** `TASK 15: PASS — container-only route page created`
 
 ⛔ **Do not start TASK 16 until TASK 15 is PASS.**
 
@@ -609,11 +575,20 @@ npm run lint
 **Only when 21a and 21b pass**, report to user:
 
 ```text
-Feature <feature> created successfully at route <route>.
+Feature <feature> scaffold complete at route <route> (container-only).
 All TASKs 0–21 PASS.
+
+If the same prompt includes a UI description, continue immediately with
+docs/design-system/AGENT_UI_ELEMENTS.md TASK 0–17 (derive inventory in TASK 1).
 ```
 
-**Progress Report:** `TASK 21: PASS — COMPLETE`
+**Progress Report:** `TASK 21: PASS — SCAFFOLD COMPLETE (not final UI)`
+
+### Phase 2 — Custom UI (Separate Runbook)
+
+Do **not** add custom UI in this runbook.  
+When the user provides an element inventory → **[AGENT_UI_ELEMENTS.md](./AGENT_UI_ELEMENTS.md)** TASK 0 onward.  
+Start Phase 2 **only after** this TASK 21 is PASS.
 
 ---
 
@@ -631,14 +606,17 @@ All TASKs 0–21 PASS.
 
 ## Default Generator Identities (Reference)
 
-| Registry member | Translation? |
-|-----------------|--------------|
-| `<UPPER>.PAGE.CONTAINER` | No |
-| `<UPPER>.PAGE.TITLE` | Yes |
-| `<UPPER>.PAGE.DESCRIPTION` | Yes |
-| `<UPPER>.ACTIONS.ROW` | No |
-| `<UPPER>.ACTIONS.CREATE_BUTTON` | Yes |
-| `<UPPER>.ACTIONS.SAVE_BUTTON` | Yes |
+The generator creates identities below. **TASK 15 uses only `PAGE.CONTAINER` in JSX.**  
+Wire the rest in **[AGENT_UI_ELEMENTS.md](./AGENT_UI_ELEMENTS.md)** when the user requests them.
+
+| Registry member | Used in TASK 15? | Translation? |
+|-----------------|------------------|--------------|
+| `<UPPER>.PAGE.CONTAINER` | **Yes** | No |
+| `<UPPER>.PAGE.TITLE` | No — Phase 2 | Yes |
+| `<UPPER>.PAGE.DESCRIPTION` | No — Phase 2 | Yes |
+| `<UPPER>.ACTIONS.ROW` | No — Phase 2 | No |
+| `<UPPER>.ACTIONS.CREATE_BUTTON` | No — Phase 2 | Yes |
+| `<UPPER>.ACTIONS.SAVE_BUTTON` | No — Phase 2 | Yes |
 
 ---
 
@@ -657,16 +635,20 @@ NEXT: TASK <N+1> | HALTED — <reason>
 
 ---
 
-## User Prompt Template
+## User Prompt Template (single message — Phase 1 + Phase 2)
 
 ```text
 Create feature <feature> (route /<route>).
 
-Follow docs/design-system/AGENT_FEATURE_CREATION.md.
-Execute TASK 0 through TASK 21 in order.
-Print Progress Report after every TASK.
-Do not start the next TASK until the current TASK is PASS.
-Do not mark complete until TASK 21 is PASS.
+UI: <plain-language description of all elements>
+
+Phase 1 — Follow docs/design-system/AGENT_FEATURE_CREATION.md.
+Execute TASK 0 through TASK 21. Print Progress Report after every TASK.
+
+Phase 2 — Follow docs/design-system/AGENT_UI_ELEMENTS.md.
+Execute TASK 0 through TASK 17. Print Progress Report after every TASK.
+Derive Element Inventory in TASK 1 from the UI description — do not ask me for a table.
+Do not mark complete until Phase 2 TASK 17 is PASS.
 ```
 
 ---
@@ -683,6 +665,8 @@ npm run ci:check
 
 | Task | Document |
 |------|----------|
+| **Phase 2 — add UI elements** | [AGENT_UI_ELEMENTS.md](./AGENT_UI_ELEMENTS.md) |
+| **Remove UI elements** | [AGENT_UI_ELEMENT_REMOVAL.md](./AGENT_UI_ELEMENT_REMOVAL.md) |
 | Page inside existing feature | [AGENT_PAGE_CREATION.md](./AGENT_PAGE_CREATION.md) |
 | General UI rules | [UI_CREATION_RULES.md](./UI_CREATION_RULES.md) |
 | i18n | [i18n.md](./i18n.md) |

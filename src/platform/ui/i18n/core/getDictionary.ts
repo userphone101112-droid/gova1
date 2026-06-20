@@ -224,6 +224,7 @@ export const APP_DICTIONARY_FEATURES: readonly Feature[] = [
   'settings',
   'merchant',
   'onboarding',
+  'image-upload-form',
   'signup',
 ] as const;
 

@@ -1,0 +1,27 @@
+{
+  "image-upload-form": {
+    "page": {
+      "title": "Image-upload-form",
+      "description": "Image-upload-form description"
+    },
+    "actions": {
+      "create": "Create",
+      "save": "Save",
+      "createButton": "Create action button",
+      "saveButton": "Save action button"
+    },
+    "form": {
+      "field1Label": "Field 1",
+      "field1": "Enter field 1",
+      "field2Label": "Field 2",
+      "field2": "Enter field 2",
+      "field3Label": "Field 3",
+      "field3": "Enter field 3"
+    },
+    "gallery": {
+      "selectButton": "Select images",
+      "fileInput": "Choose image files",
+      "previewImage": "Selected image preview"
+    }
+  }
+}

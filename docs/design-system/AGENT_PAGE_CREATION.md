@@ -4,6 +4,8 @@
 **Audience:** Any AI agent that adds a **new route/page** to a feature that **already exists**.  
 **Goal:** Working App Router page — zero registry, i18n, UUID, or lint errors.
 
+> **New agent?** Read **[AGENT_PROJECT_PHILOSOPHY.md](./AGENT_PROJECT_PHILOSOPHY.md)** first for project design and runbook selection.
+
 > **Wrong runbook?** Creating a **brand-new feature namespace** → stop here. Use **[AGENT_FEATURE_CREATION.md](./AGENT_FEATURE_CREATION.md)** only. **Never mix both runbooks.**
 
 ---
@@ -156,32 +158,29 @@ If **any** exists → **STOP** — report: `Page already exists at <path>. Do no
 
 ## TASK 4 — Write Identity Plan (No Code Yet)
 
-**Objective:** Fixed plan for **exactly three identities** (minimum scaffold). Do **not** add extra identities unless the user gave an explicit element list in the original request.
+**Objective:** **Container-only** scaffold — **one identity**.  
+All other UI is added later via **[AGENT_UI_ELEMENTS.md](./AGENT_UI_ELEMENTS.md)**.
 
 ### Copy this table filled with your values
 
 | Registry key | Stable ID | Path | Category | Translation key |
 |--------------|-----------|------|----------|-----------------|
 | `CONTAINER` | `UI_<UPPER>_<PageSection>_CONTAINER` | `<feature>.<pageSlug>.layout.container` | `container` | *(none)* |
-| `TITLE` | `UI_<UPPER>_<PageSection>_TITLE` | `<feature>.<pageSlug>.display.title` | `display` | `<feature>.<pageSlug>.title` |
-| `DESCRIPTION` | `UI_<UPPER>_<PageSection>_DESCRIPTION` | `<feature>.<pageSlug>.display.description` | `display` | `<feature>.<pageSlug>.description` |
 
-### JSX member paths (for later TASKs)
+### JSX member path (for later TASKs)
 
 ```text
 <UPPER>.<PageSection>.CONTAINER
-<UPPER>.<PageSection>.TITLE
-<UPPER>.<PageSection>.DESCRIPTION
 ```
 
 **Verification**
 
-- [ ] Table filled with no empty cells
-- [ ] Each path has 3 or 4 segments only
+- [ ] Table filled
+- [ ] Path has 3 or 4 segments only
 - [ ] First segment equals `<feature>`
 - [ ] Second segment equals `<pageSlug>`
 
-**Progress Report:** `TASK 4: PASS — identity plan written`
+**Progress Report:** `TASK 4: PASS — container-only identity plan written`
 
 ⛔ **Do not start TASK 5 until TASK 4 is PASS.**
 
@@ -212,28 +211,6 @@ If **any** exists → **STOP** — report: `Page already exists at <path>. Do no
       createdAt: '<today>',
       updatedAt: '<today>',
     } as const,
-    TITLE: {
-      id: 'UI_<UPPER>_<PageSection>_TITLE',
-      path: '<feature>.<pageSlug>.display.title',
-      lifecycle: 'active',
-      description: 'Page title',
-      category: 'display',
-      feature: '<feature>',
-      version: '1.0.0',
-      createdAt: '<today>',
-      updatedAt: '<today>',
-    } as const,
-    DESCRIPTION: {
-      id: 'UI_<UPPER>_<PageSection>_DESCRIPTION',
-      path: '<feature>.<pageSlug>.display.description',
-      lifecycle: 'active',
-      description: 'Page description',
-      category: 'display',
-      feature: '<feature>',
-      version: '1.0.0',
-      createdAt: '<today>',
-      updatedAt: '<today>',
-    } as const,
   },
 ```
 
@@ -258,7 +235,7 @@ npm run registry:materialize-uuids
 **Verification**
 
 - [ ] Exit code `0`
-- [ ] Open `registryFile` — each of CONTAINER, TITLE, DESCRIPTION now has `uuid:` **injected by tool** (you did not type it)
+- [ ] Open `registryFile` — `CONTAINER` has `uuid:` **injected by tool** (you did not type it)
 
 **Progress Report:** `TASK 6: PASS — UUIDs materialized`
 
@@ -284,55 +261,31 @@ npm run registry:generate
 
 ---
 
-## TASK 8 — Update English Locale
+## TASK 8 — Locales (SKIP for Container-Only Scaffold)
 
-**File:** `src/platform/ui/i18n/locales/<feature>/en.json`
+**Objective:** Container identities do **not** need locale keys.
 
-**Action:**
-
-1. Open file.
-2. Inside the root `"<feature>"` object, add key `"<pageSlug>"` (merge — **do not delete** other keys).
-3. Use this structure:
-
-```json
-"<pageSlug>": {
-  "title": "<English title>",
-  "description": "<English description>"
-}
-```
-
-Use real English text. No `"TODO"`.
+**Action:** **Do nothing.** Do not edit `en.json` or `ar.json`.
 
 **Verification**
 
-- [ ] Valid JSON
-- [ ] Keys `title` and `description` present under `<pageSlug>`
+- [ ] Confirmed no locale edits needed for `container` category
 
-**Progress Report:** `TASK 8: PASS — en.json updated`
+**Progress Report:** `TASK 8: PASS — locales unchanged (container-only)`
 
 ⛔ **Do not start TASK 9 until TASK 8 is PASS.**
 
 ---
 
-## TASK 9 — Update Arabic Locale
+## TASK 9 — Arabic Locales (SKIP for Container-Only Scaffold)
 
-**File:** `src/platform/ui/i18n/locales/<feature>/ar.json`
-
-**Action:** Same structure as TASK 8 with Arabic strings. Keys must **match en.json exactly**.
-
-```json
-"<pageSlug>": {
-  "title": "<Arabic title>",
-  "description": "<Arabic description>"
-}
-```
+**Action:** **Do nothing.**
 
 **Verification**
 
-- [ ] Valid JSON
-- [ ] Same keys as en.json under `<pageSlug>`
+- [ ] Confirmed no locale edits needed
 
-**Progress Report:** `TASK 9: PASS — ar.json updated`
+**Progress Report:** `TASK 9: PASS — locales unchanged (container-only)`
 
 ⛔ **Do not start TASK 10 until TASK 9 is PASS.**
 
@@ -431,56 +384,40 @@ If **either** missing → **STOP** — report feature incomplete (use [AGENT_FEA
 
 ---
 
-## TASK 14 — Create Page Component
+## TASK 14 — Create Container-Only Page Component
 
 **File:** `<componentPath>`
+
+**Objective:** **One empty container** only. Custom UI → **[AGENT_UI_ELEMENTS.md](./AGENT_UI_ELEMENTS.md)**.
 
 **Copy exactly (replace placeholders only):**
 
 ```tsx
-'use client';
-
-import { <UPPER>, useTranslation } from '@/platform/ui';
+import { <UPPER> } from '@/platform/ui';
 
 export function <PascalPage>() {
-  const { t } = useTranslation();
-
   return (
     <div
       data-ui-uuid={<UPPER>.<PageSection>.CONTAINER.uuid}
-      className="flex flex-col gap-6 bg-background px-4 py-8"
-    >
-      <h1
-        data-ui-uuid={<UPPER>.<PageSection>.TITLE.uuid}
-        className="text-3xl font-bold text-on-surface"
-      >
-        {t(<UPPER>.<PageSection>.TITLE)}
-      </h1>
-      <p
-        data-ui-uuid={<UPPER>.<PageSection>.DESCRIPTION.uuid}
-        className="text-lg text-on-surface-variant"
-      >
-        {t(<UPPER>.<PageSection>.DESCRIPTION)}
-      </p>
-    </div>
+      className="min-h-[200px] bg-background px-4 py-8"
+    />
   );
 }
 ```
 
 **Verification**
 
-| Intrinsic | `data-ui-uuid` |
-|-----------|----------------|
-| outer `div` | `<UPPER>.<PageSection>.CONTAINER.uuid` |
-| `h1` | `<UPPER>.<PageSection>.TITLE.uuid` |
-| `p` | `<UPPER>.<PageSection>.DESCRIPTION.uuid` |
+| Rule | Required |
+|------|----------|
+| Intrinsics | **Exactly 1** — outer `div` |
+| `data-ui-uuid` | `<UPPER>.<PageSection>.CONTAINER.uuid` only |
+| `'use client'` | **Not present** |
+| `useTranslation` / `t()` | **Not present** |
+| Named export | `export function <PascalPage>` |
 
 - [ ] File exists
-- [ ] Named export `export function <PascalPage>`
-- [ ] No `t('…')` string keys
-- [ ] No hardcoded user-visible strings
 
-**Progress Report:** `TASK 14: PASS — component created`
+**Progress Report:** `TASK 14: PASS — container-only component created`
 
 ⛔ **Do not start TASK 15 until TASK 14 is PASS.**
 
@@ -605,8 +542,8 @@ Check **every** box:
 
 - [ ] TASK 0–20 all PASS
 - [ ] TASK 2: feature prerequisites verified (no `generate:feature`)
-- [ ] TASK 5–6: registry group added, UUIDs materialized only by tool
-- [ ] TASK 8–9: locales updated under `<pageSlug>`
+- [ ] TASK 5–6: registry group added (CONTAINER only), UUIDs materialized
+- [ ] TASK 8–9: locales unchanged (container-only scaffold)
 - [ ] TASK 11: route manifest decision documented
 - [ ] TASK 12: done if ADD; skipped if SKIP
 - [ ] `<componentPath>` exists
@@ -617,11 +554,20 @@ Check **every** box:
 **Only when all checked**, report:
 
 ```text
-Page <route> created successfully in feature <feature>.
+Page <route> scaffold complete in feature <feature> (container-only).
 All TASKs 0–21 PASS.
+
+Next: add UI elements with docs/design-system/AGENT_UI_ELEMENTS.md
+(only after user provides an element inventory).
 ```
 
-**Progress Report:** `TASK 21: PASS — COMPLETE`
+**Progress Report:** `TASK 21: PASS — SCAFFOLD COMPLETE (not final UI)`
+
+### Phase 2 — Custom UI (Separate Runbook)
+
+Do **not** add custom UI in this runbook.  
+When the user provides an element inventory → **[AGENT_UI_ELEMENTS.md](./AGENT_UI_ELEMENTS.md)** TASK 0 onward.  
+Start Phase 2 **only after** this TASK 21 is PASS.
 
 ---
 
@@ -692,6 +638,8 @@ Execute TASK 0 through TASK 21 in order.
 Print Progress Report after every TASK.
 Do not start the next TASK until the current TASK is PASS.
 Do not mark complete until TASK 21 is PASS.
+This runbook delivers container-only scaffold — not final UI.
+For UI elements, use AGENT_UI_ELEMENTS.md in a follow-up request.
 ```
 
 ### Example
@@ -726,6 +674,8 @@ npm run ci:check
 
 | Task | Document |
 |------|----------|
+| **Phase 2 — add UI elements** | [AGENT_UI_ELEMENTS.md](./AGENT_UI_ELEMENTS.md) |
+| **Remove UI elements** | [AGENT_UI_ELEMENT_REMOVAL.md](./AGENT_UI_ELEMENT_REMOVAL.md) |
 | New feature namespace | [AGENT_FEATURE_CREATION.md](./AGENT_FEATURE_CREATION.md) |
 | General UI rules | [UI_CREATION_RULES.md](./UI_CREATION_RULES.md) |
 | i18n | [i18n.md](./i18n.md) |

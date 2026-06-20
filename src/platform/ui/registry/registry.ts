@@ -3,6 +3,7 @@ import { AUTH } from './features/auth';
 import { DEVTOOLS } from './features/devtools';
 import { ERROR_BOUNDARY } from './features/error-boundary';
 import { HOME } from './features/home';
+import { IMAGE_UPLOAD_FORM } from './features/image-upload-form';
 import { MERCHANT } from './features/merchant';
 import { ONBOARDING } from './features/onboarding';
 import { SETTINGS } from './features/settings';
@@ -27,6 +28,7 @@ export { AUTH } from './features/auth';
 export { SETTINGS } from './features/settings';
 export { MERCHANT } from './features/merchant';
 export { ONBOARDING } from './features/onboarding';
+export { IMAGE_UPLOAD_FORM } from './features/image-upload-form';
 
 // ============================================================================
 // REGISTRY VALIDATION
@@ -41,6 +43,7 @@ export const UI_REGISTRY = {
   SETTINGS,
   MERCHANT,
   ONBOARDING,
+  IMAGE_UPLOAD_FORM,
   DEVTOOLS,
 } as const;
 
@@ -68,6 +71,7 @@ export const ALL_UI_IDENTITIES = [
   ...flattenObject(SETTINGS),
   ...flattenObject(MERCHANT),
   ...flattenObject(ONBOARDING),
+  ...flattenObject(IMAGE_UPLOAD_FORM),
   ...flattenObject(DEVTOOLS),
   ...ALL_CATEGORY_IDENTITIES,
 ] as readonly UiIdentity[];

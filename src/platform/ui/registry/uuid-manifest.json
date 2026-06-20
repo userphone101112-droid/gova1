@@ -1,7 +1,7 @@
 {
   "version": 1,
   "namespace": "gova.ui-registry",
-  "generatedAt": "2026-06-20T11:15:52.659Z",
+  "generatedAt": "2026-06-20T19:43:47.985Z",
   "identities": {
     "8771d585-21d5-51cc-bb1b-910f1ae955f6": {
       "uuid": "8771d585-21d5-51cc-bb1b-910f1ae955f6",
@@ -4050,6 +4050,167 @@
       "id": "UI_HOME_STRUCTURE_TITLEKEY_WRAPPER_L79",
       "path": "home.dom.featured-marquee.titlekey-wrapper-l79",
       "feature": "home",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "0b6cc731-753a-51b6-bf59-75c3efa5e2e0": {
+      "uuid": "0b6cc731-753a-51b6-bf59-75c3efa5e2e0",
+      "id": "UI_IMAGE_UPLOAD_FORM_ACTIONS_CREATE_BUTTON",
+      "path": "image-upload-form.actions.create-button",
+      "feature": "image-upload-form",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "fd2ef148-0438-5aeb-8e64-369ef9aacf29": {
+      "uuid": "fd2ef148-0438-5aeb-8e64-369ef9aacf29",
+      "id": "UI_IMAGE_UPLOAD_FORM_ACTIONS_ROW",
+      "path": "image-upload-form.actions.layout.row",
+      "feature": "image-upload-form",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "89af3dca-6269-5911-83da-7e143fc8f0fb": {
+      "uuid": "89af3dca-6269-5911-83da-7e143fc8f0fb",
+      "id": "UI_IMAGE_UPLOAD_FORM_ACTIONS_SAVE_BUTTON",
+      "path": "image-upload-form.actions.save-button",
+      "feature": "image-upload-form",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "69140c6f-08f7-5e70-a6d0-e8d16648a212": {
+      "uuid": "69140c6f-08f7-5e70-a6d0-e8d16648a212",
+      "id": "UI_IMAGE_UPLOAD_FORM_FORM_FIELD1_INPUT",
+      "path": "image-upload-form.form.input.field1",
+      "feature": "image-upload-form",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "c8ae5681-29d3-59ca-a31b-b63ba7359644": {
+      "uuid": "c8ae5681-29d3-59ca-a31b-b63ba7359644",
+      "id": "UI_IMAGE_UPLOAD_FORM_FORM_FIELD1_LABEL",
+      "path": "image-upload-form.form.display.field1-label",
+      "feature": "image-upload-form",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "ef5b9312-0a88-5d71-a55e-30d0e0011b6f": {
+      "uuid": "ef5b9312-0a88-5d71-a55e-30d0e0011b6f",
+      "id": "UI_IMAGE_UPLOAD_FORM_FORM_FIELD2_INPUT",
+      "path": "image-upload-form.form.input.field2",
+      "feature": "image-upload-form",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "30488744-1cf1-59db-8fb2-ea2a3f9b6581": {
+      "uuid": "30488744-1cf1-59db-8fb2-ea2a3f9b6581",
+      "id": "UI_IMAGE_UPLOAD_FORM_FORM_FIELD2_LABEL",
+      "path": "image-upload-form.form.display.field2-label",
+      "feature": "image-upload-form",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "b060a1b5-3958-5fde-90be-f27b3e115924": {
+      "uuid": "b060a1b5-3958-5fde-90be-f27b3e115924",
+      "id": "UI_IMAGE_UPLOAD_FORM_FORM_FIELD3_INPUT",
+      "path": "image-upload-form.form.input.field3",
+      "feature": "image-upload-form",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "6ad2cc2f-6c27-5410-8a6c-3dfd1bc5b4be": {
+      "uuid": "6ad2cc2f-6c27-5410-8a6c-3dfd1bc5b4be",
+      "id": "UI_IMAGE_UPLOAD_FORM_FORM_FIELD3_LABEL",
+      "path": "image-upload-form.form.display.field3-label",
+      "feature": "image-upload-form",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "2e800f0e-147a-5961-8d35-017c7e6786af": {
+      "uuid": "2e800f0e-147a-5961-8d35-017c7e6786af",
+      "id": "UI_IMAGE_UPLOAD_FORM_GALLERY_CONTAINER",
+      "path": "image-upload-form.gallery.layout.container",
+      "feature": "image-upload-form",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "ad2fa9da-bf8e-5857-944e-669494fe4a21": {
+      "uuid": "ad2fa9da-bf8e-5857-944e-669494fe4a21",
+      "id": "UI_IMAGE_UPLOAD_FORM_GALLERY_FILE_INPUT",
+      "path": "image-upload-form.gallery.input.file-input",
+      "feature": "image-upload-form",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "58074a33-c71b-5648-a558-16214acf881e": {
+      "uuid": "58074a33-c71b-5648-a558-16214acf881e",
+      "id": "UI_IMAGE_UPLOAD_FORM_GALLERY_PREVIEW_IMAGE",
+      "path": "image-upload-form.gallery.display.preview-image",
+      "feature": "image-upload-form",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": [],
+      "repeatable": true
+    },
+    "b78f0520-c97a-544f-b83c-66123943f4e9": {
+      "uuid": "b78f0520-c97a-544f-b83c-66123943f4e9",
+      "id": "UI_IMAGE_UPLOAD_FORM_GALLERY_SELECT_BUTTON",
+      "path": "image-upload-form.gallery.actions.select-button",
+      "feature": "image-upload-form",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "0f9ef543-6486-538a-9480-fca1962dd810": {
+      "uuid": "0f9ef543-6486-538a-9480-fca1962dd810",
+      "id": "UI_IMAGE_UPLOAD_FORM_PAGE_CONTAINER",
+      "path": "image-upload-form.page.layout.container",
+      "feature": "image-upload-form",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "e72b30a6-8870-52e3-b57b-9794149ed8a1": {
+      "uuid": "e72b30a6-8870-52e3-b57b-9794149ed8a1",
+      "id": "UI_IMAGE_UPLOAD_FORM_PAGE_DESCRIPTION",
+      "path": "image-upload-form.page.display.description",
+      "feature": "image-upload-form",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "a5e11cca-caba-5ea7-9897-e0447ca05f41": {
+      "uuid": "a5e11cca-caba-5ea7-9897-e0447ca05f41",
+      "id": "UI_IMAGE_UPLOAD_FORM_PAGE_TITLE",
+      "path": "image-upload-form.page.display.title",
+      "feature": "image-upload-form",
       "lifecycle": "active",
       "previousIds": [],
       "previousPaths": [],

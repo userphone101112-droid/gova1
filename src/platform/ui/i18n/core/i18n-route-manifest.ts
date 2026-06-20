@@ -18,6 +18,7 @@ export const I18N_ROUTE_MANIFEST: readonly I18nRouteEntry[] = [
   { prefix: '/favorites', feature: 'shared-layout' },
   { prefix: '/orders', feature: 'shared-layout' },
   { prefix: '/profile', feature: 'shared-layout' },
+  { prefix: '/image-upload-form', feature: 'image-upload-form' },
   { prefix: '/home', feature: 'home' },
   { prefix: '/registration', feature: 'auth' },
   { prefix: '/login', feature: 'auth' },

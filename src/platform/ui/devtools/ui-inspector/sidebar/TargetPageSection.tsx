@@ -2,15 +2,15 @@
 
 import { DEVTOOLS } from '@/platform/ui/registry/features/devtools';
 
-import { INSPECTOR_ROUTES, type InspectorRoutePath } from '../../inspector-routes';
+import { INSPECTOR_ROUTES, buildAbsoluteInspectUrl, type InspectorRoutePath } from '../../inspector-routes';
 import { useInspectorContext } from '../state/InspectorProvider';
 
 export function TargetPageSection() {
-  const { state, selectors, handleRouteChange, handleRefresh } = useInspectorContext();
-  const targetUrl = selectors.preview.targetUrl;
+  const { state, handleRouteChange, handleRefresh } = useInspectorContext();
 
   const openTargetInNewTab = () => {
-    window.open(targetUrl, '_blank', 'noopener,noreferrer');
+    const absoluteUrl = buildAbsoluteInspectUrl(state.routePath, window.location.origin);
+    window.open(absoluteUrl, '_blank', 'noopener,noreferrer');
   };
 
   return (
