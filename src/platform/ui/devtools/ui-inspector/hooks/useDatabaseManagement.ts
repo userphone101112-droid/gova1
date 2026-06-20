@@ -9,7 +9,6 @@ import {
   deleteColumn,
   deleteDatabase,
   deleteTable,
-  cloneDatabaseRefFile,
   getEntityDescription,
   remapElementFieldNames,
   renameColumn,
@@ -23,9 +22,9 @@ import { useInspectorContext } from '../state/InspectorProvider';
 
 export function useDatabaseManagement() {
   const { state, dispatch } = useInspectorContext();
-  const [databaseNameEn, setDatabaseNameEn] = useState('');
-  const [tableNameEn, setTableNameEn] = useState('');
-  const [columnNameEn, setColumnNameEn] = useState('');
+  const [databaseName, setDatabaseName] = useState('');
+  const [tableName, setTableName] = useState('');
+  const [columnName, setColumnName] = useState('');
   const [dbDescriptionDraft, setDbDescriptionDraft] = useState('');
   const [tableDescriptionDraft, setTableDescriptionDraft] = useState('');
   const [columnDescriptionDraft, setColumnDescriptionDraft] = useState('');
@@ -33,49 +32,49 @@ export function useDatabaseManagement() {
   const [schemaBusy, setSchemaBusy] = useState(false);
 
   const databases = state.databaseRef.databases;
-  const selectedDb = databases.find((db) => db.name_en === databaseNameEn);
+  const selectedDb = databases.find((db) => db.name === databaseName);
   const tables = selectedDb?.tables ?? [];
-  const selectedTable = tables.find((table) => table.name_en === tableNameEn);
+  const selectedTable = tables.find((table) => table.name === tableName);
   const columns = selectedTable?.columns ?? [];
-  const selectedColumn = columns.find((column) => column.name_en === columnNameEn);
+  const selectedColumn = columns.find((column) => column.name === columnName);
 
   const syncDescriptionDrafts = useCallback(
-    (dbEn: string, tableEn: string, columnEn: string) => {
-      const db = databases.find((entry) => entry.name_en === dbEn);
-      const table = db?.tables.find((entry) => entry.name_en === tableEn);
-      const column = table?.columns.find((entry) => entry.name_en === columnEn);
+    (dbName: string, table: string, column: string) => {
+      const db = databases.find((entry) => entry.name === dbName);
+      const tableEntry = db?.tables.find((entry) => entry.name === table);
+      const columnEntry = tableEntry?.columns.find((entry) => entry.name === column);
       setDbDescriptionDraft(getEntityDescription(db));
-      setTableDescriptionDraft(getEntityDescription(table));
-      setColumnDescriptionDraft(getEntityDescription(column));
+      setTableDescriptionDraft(getEntityDescription(tableEntry));
+      setColumnDescriptionDraft(getEntityDescription(columnEntry));
     },
     [databases]
   );
 
   const selectDatabase = useCallback(
-    (nameEn: string) => {
-      setDatabaseNameEn(nameEn);
-      setTableNameEn('');
-      setColumnNameEn('');
-      syncDescriptionDrafts(nameEn, '', '');
+    (name: string) => {
+      setDatabaseName(name);
+      setTableName('');
+      setColumnName('');
+      syncDescriptionDrafts(name, '', '');
     },
     [syncDescriptionDrafts]
   );
 
   const selectTable = useCallback(
-    (nameEn: string) => {
-      setTableNameEn(nameEn);
-      setColumnNameEn('');
-      syncDescriptionDrafts(databaseNameEn, nameEn, '');
+    (name: string) => {
+      setTableName(name);
+      setColumnName('');
+      syncDescriptionDrafts(databaseName, name, '');
     },
-    [databaseNameEn, syncDescriptionDrafts]
+    [databaseName, syncDescriptionDrafts]
   );
 
   const selectColumn = useCallback(
-    (nameEn: string) => {
-      setColumnNameEn(nameEn);
-      syncDescriptionDrafts(databaseNameEn, tableNameEn, nameEn);
+    (name: string) => {
+      setColumnName(name);
+      syncDescriptionDrafts(databaseName, tableName, name);
     },
-    [databaseNameEn, tableNameEn, syncDescriptionDrafts]
+    [databaseName, tableName, syncDescriptionDrafts]
   );
 
   const applyPersistedFile = useCallback(
@@ -87,14 +86,14 @@ export function useDatabaseManagement() {
           type: 'PATCH_FORM_STATE',
           patch: remapElementFieldNames(state.formState, renameMap),
         });
-        if (renameMap.database?.newNameEn) {
-          setDatabaseNameEn(renameMap.database.newNameEn);
+        if (renameMap.database?.newName) {
+          setDatabaseName(renameMap.database.newName);
         }
-        if (renameMap.table?.newNameEn) {
-          setTableNameEn(renameMap.table.newNameEn);
+        if (renameMap.table?.newName) {
+          setTableName(renameMap.table.newName);
         }
-        if (renameMap.column?.newNameEn) {
-          setColumnNameEn(renameMap.column.newNameEn);
+        if (renameMap.column?.newName) {
+          setColumnName(renameMap.column.newName);
         }
       }
     },
@@ -118,9 +117,9 @@ export function useDatabaseManagement() {
 
   const saveDescription = useCallback(
     async (level: DatabaseRefLevel) => {
-      if (!databaseNameEn) return;
-      if (level === 'table' && !tableNameEn) return;
-      if (level === 'column' && (!tableNameEn || !columnNameEn)) return;
+      if (!databaseName) return;
+      if (level === 'table' && !tableName) return;
+      if (level === 'column' && (!tableName || !columnName)) return;
       setSavingLevel(level);
       try {
         const description =
@@ -131,10 +130,10 @@ export function useDatabaseManagement() {
               : columnDescriptionDraft;
         const ids =
           level === 'database'
-            ? { databaseNameEn }
+            ? { databaseName }
             : level === 'table'
-              ? { databaseNameEn, tableNameEn }
-              : { databaseNameEn, tableNameEn, columnNameEn };
+              ? { databaseName, tableName }
+              : { databaseName, tableName, columnName };
         const next = await saveDatabaseRefDescription(state.databaseRef, level, ids, description);
         if (!next) return;
         dispatch({ type: 'SET_DATABASE_REF', data: next });
@@ -145,13 +144,13 @@ export function useDatabaseManagement() {
     },
     [
       columnDescriptionDraft,
-      columnNameEn,
-      databaseNameEn,
+      columnName,
+      databaseName,
       dbDescriptionDraft,
       dispatch,
       state.databaseRef,
       tableDescriptionDraft,
-      tableNameEn,
+      tableName,
     ]
   );
 
@@ -159,149 +158,112 @@ export function useDatabaseManagement() {
     const next = addDatabase(state.databaseRef);
     const added = next.databases[next.databases.length - 1];
     await persistRef(next, undefined, true);
-    if (added) selectDatabase(added.name_en);
+    if (added) selectDatabase(added.name);
   }, [persistRef, selectDatabase, state.databaseRef]);
 
   const handleAddTable = useCallback(async () => {
-    if (!databaseNameEn) return;
-    const result = addTable(state.databaseRef, databaseNameEn);
+    if (!databaseName) return;
+    const result = addTable(state.databaseRef, databaseName);
     if (result.error) return;
-    const table = result.file.databases.find((db) => db.name_en === databaseNameEn)?.tables.at(-1);
+    const table = result.file.databases.find((db) => db.name === databaseName)?.tables.at(-1);
     await persistRef(result.file, undefined, true);
-    if (table) selectTable(table.name_en);
-  }, [databaseNameEn, persistRef, selectTable, state.databaseRef]);
+    if (table) selectTable(table.name);
+  }, [databaseName, persistRef, selectTable, state.databaseRef]);
 
   const handleAddColumn = useCallback(async () => {
-    if (!databaseNameEn || !tableNameEn) return;
-    const result = addColumn(state.databaseRef, databaseNameEn, tableNameEn);
+    if (!databaseName || !tableName) return;
+    const result = addColumn(state.databaseRef, databaseName, tableName);
     if (result.error) return;
     const column = result.file.databases
-      .find((db) => db.name_en === databaseNameEn)
-      ?.tables.find((table) => table.name_en === tableNameEn)
+      .find((db) => db.name === databaseName)
+      ?.tables.find((table) => table.name === tableName)
       ?.columns.at(-1);
     await persistRef(result.file, undefined, true);
-    if (column) selectColumn(column.name_en);
-  }, [databaseNameEn, persistRef, selectColumn, state.databaseRef, tableNameEn]);
+    if (column) selectColumn(column.name);
+  }, [databaseName, persistRef, selectColumn, state.databaseRef, tableName]);
 
   const handleRenameDatabase = useCallback(
-    async (nextNameEn: string) => {
-      if (!databaseNameEn) return;
-      const trimmed = nextNameEn.trim();
-      if (!trimmed || trimmed === databaseNameEn) return;
-      const result = renameDatabase(state.databaseRef, databaseNameEn, trimmed);
+    async (nextName: string) => {
+      if (!databaseName) return;
+      const trimmed = nextName.trim();
+      if (!trimmed || trimmed === databaseName) return;
+      const result = renameDatabase(state.databaseRef, databaseName, trimmed);
       if (result.error) {
         window.alert(result.error);
         return;
       }
-      const oldNameEn = databaseNameEn;
-      await persistRef(result.file, { database: { oldNameEn, newNameEn: trimmed } }, true);
-      setDatabaseNameEn(trimmed);
+      const oldName = databaseName;
+      await persistRef(result.file, { database: { oldName, newName: trimmed } }, true);
+      setDatabaseName(trimmed);
     },
-    [databaseNameEn, persistRef, state.databaseRef]
+    [databaseName, persistRef, state.databaseRef]
   );
 
   const handleRenameTable = useCallback(
-    async (nextNameEn: string) => {
-      if (!databaseNameEn || !tableNameEn) return;
-      const trimmed = nextNameEn.trim();
-      if (!trimmed || trimmed === tableNameEn) return;
-      const result = renameTable(state.databaseRef, databaseNameEn, tableNameEn, trimmed);
+    async (nextName: string) => {
+      if (!databaseName || !tableName) return;
+      const trimmed = nextName.trim();
+      if (!trimmed || trimmed === tableName) return;
+      const result = renameTable(state.databaseRef, databaseName, tableName, trimmed);
       if (result.error) {
         window.alert(result.error);
         return;
       }
-      const oldNameEn = tableNameEn;
-      await persistRef(result.file, { table: { oldNameEn, newNameEn: trimmed } }, true);
-      setTableNameEn(trimmed);
+      const oldName = tableName;
+      await persistRef(result.file, { table: { oldName, newName: trimmed } }, true);
+      setTableName(trimmed);
     },
-    [databaseNameEn, persistRef, state.databaseRef, tableNameEn]
+    [databaseName, persistRef, state.databaseRef, tableName]
   );
 
   const handleRenameColumn = useCallback(
-    async (nextNameEn: string) => {
-      if (!databaseNameEn || !tableNameEn || !columnNameEn) return;
-      const trimmed = nextNameEn.trim();
-      if (!trimmed || trimmed === columnNameEn) return;
-      const result = renameColumn(state.databaseRef, databaseNameEn, tableNameEn, columnNameEn, trimmed);
+    async (nextName: string) => {
+      if (!databaseName || !tableName || !columnName) return;
+      const trimmed = nextName.trim();
+      if (!trimmed || trimmed === columnName) return;
+      const result = renameColumn(state.databaseRef, databaseName, tableName, columnName, trimmed);
       if (result.error) {
         window.alert(result.error);
         return;
       }
-      const oldNameEn = columnNameEn;
-      await persistRef(result.file, { column: { oldNameEn, newNameEn: trimmed } }, true);
-      setColumnNameEn(trimmed);
+      const oldName = columnName;
+      await persistRef(result.file, { column: { oldName, newName: trimmed } }, true);
+      setColumnName(trimmed);
     },
-    [columnNameEn, databaseNameEn, persistRef, state.databaseRef, tableNameEn]
+    [columnName, databaseName, persistRef, state.databaseRef, tableName]
   );
 
   const handleDeleteDatabase = useCallback(async () => {
-    if (!databaseNameEn || !selectedDb) return;
-    if (!window.confirm(`Delete database "${selectedDb.name_en}" and all nested tables?`)) return;
-    const next = deleteDatabase(state.databaseRef, databaseNameEn);
+    if (!databaseName || !selectedDb) return;
+    if (!window.confirm(`Delete database "${selectedDb.name}" and all nested tables?`)) return;
+    const next = deleteDatabase(state.databaseRef, databaseName);
     await persistRef(next, undefined, true);
     selectDatabase('');
-  }, [databaseNameEn, persistRef, selectDatabase, selectedDb, state.databaseRef]);
+  }, [databaseName, persistRef, selectDatabase, selectedDb, state.databaseRef]);
 
   const handleDeleteTable = useCallback(async () => {
-    if (!databaseNameEn || !tableNameEn || !selectedTable) return;
-    if (!window.confirm(`Delete table "${selectedTable.name_en}" and all columns?`)) return;
-    const next = deleteTable(state.databaseRef, databaseNameEn, tableNameEn);
+    if (!databaseName || !tableName || !selectedTable) return;
+    if (!window.confirm(`Delete table "${selectedTable.name}" and all columns?`)) return;
+    const next = deleteTable(state.databaseRef, databaseName, tableName);
     await persistRef(next, undefined, true);
     selectTable('');
-  }, [databaseNameEn, persistRef, selectTable, selectedTable, state.databaseRef, tableNameEn]);
+  }, [databaseName, persistRef, selectTable, selectedTable, state.databaseRef, tableName]);
 
   const handleDeleteColumn = useCallback(async () => {
-    if (!databaseNameEn || !tableNameEn || !columnNameEn || !selectedColumn) return;
-    if (!window.confirm(`Delete column "${selectedColumn.name_en}"?`)) return;
-    const next = deleteColumn(state.databaseRef, databaseNameEn, tableNameEn, columnNameEn);
+    if (!databaseName || !tableName || !columnName || !selectedColumn) return;
+    if (!window.confirm(`Delete column "${selectedColumn.name}"?`)) return;
+    const next = deleteColumn(state.databaseRef, databaseName, tableName, columnName);
     await persistRef(next, undefined, true);
     selectColumn('');
   }, [
-    columnNameEn,
-    databaseNameEn,
+    columnName,
+    databaseName,
     persistRef,
     selectColumn,
     selectedColumn,
     state.databaseRef,
-    tableNameEn,
+    tableName,
   ]);
-
-  const updateNameAr = useCallback(
-    async (level: DatabaseRefLevel, nameAr: string) => {
-      if (!databaseNameEn) return;
-      if (level === 'table' && !tableNameEn) return;
-      if (level === 'column' && (!tableNameEn || !columnNameEn)) return;
-
-      const next = cloneDatabaseRefFile(state.databaseRef);
-      const dbIdx = next.databases.findIndex((db) => db.name_en === databaseNameEn);
-      if (dbIdx < 0) return;
-
-      if (level === 'database') {
-        next.databases[dbIdx] = { ...next.databases[dbIdx], name_ar: nameAr };
-      } else if (level === 'table') {
-        const tableIdx = next.databases[dbIdx].tables.findIndex((table) => table.name_en === tableNameEn);
-        if (tableIdx < 0) return;
-        next.databases[dbIdx].tables[tableIdx] = {
-          ...next.databases[dbIdx].tables[tableIdx],
-          name_ar: nameAr,
-        };
-      } else {
-        const tableIdx = next.databases[dbIdx].tables.findIndex((table) => table.name_en === tableNameEn);
-        if (tableIdx < 0) return;
-        const columnIdx = next.databases[dbIdx].tables[tableIdx].columns.findIndex(
-          (column) => column.name_en === columnNameEn
-        );
-        if (columnIdx < 0) return;
-        next.databases[dbIdx].tables[tableIdx].columns[columnIdx] = {
-          ...next.databases[dbIdx].tables[tableIdx].columns[columnIdx],
-          name_ar: nameAr,
-        };
-      }
-
-      await persistRef(next, undefined, false);
-    },
-    [columnNameEn, databaseNameEn, persistRef, state.databaseRef, tableNameEn]
-  );
 
   const previewDescriptions = useMemo(
     () => ({
@@ -319,9 +281,9 @@ export function useDatabaseManagement() {
     selectedDb,
     selectedTable,
     selectedColumn,
-    databaseNameEn,
-    tableNameEn,
-    columnNameEn,
+    databaseName,
+    tableName,
+    columnName,
     dbDescriptionDraft,
     tableDescriptionDraft,
     columnDescriptionDraft,
@@ -344,6 +306,5 @@ export function useDatabaseManagement() {
     handleDeleteDatabase,
     handleDeleteTable,
     handleDeleteColumn,
-    updateNameAr,
   };
 }

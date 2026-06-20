@@ -1,10 +1,38 @@
 'use client';
 
+import type { ReactNode } from 'react';
+
 import { DEVTOOLS } from '@/platform/ui/registry/features/devtools';
 
 import { useInspectorContext } from '../state/InspectorProvider';
 import { emptyDisplayValue, formatScanTime } from '../utils/format';
 import { INSPECTOR_LABELS } from '../utils/inspector-labels';
+
+import { FieldGroup } from './FieldGroup';
+
+function ReadOnlyField({
+  label,
+  hint,
+  labelUuid,
+  valueUuid,
+  instanceId,
+  children,
+}: {
+  label: string;
+  hint: string;
+  labelUuid?: string;
+  valueUuid?: string;
+  instanceId: string;
+  children: ReactNode;
+}) {
+  return (
+    <FieldGroup label={label} hint={hint} labelUuid={labelUuid} instanceId={instanceId}>
+      <div {...(valueUuid ? { 'data-ui-uuid': valueUuid } : {})} data-ui-instance-id={`${instanceId}-value`}>
+        {children}
+      </div>
+    </FieldGroup>
+  );
+}
 
 export function DisplaySection() {
   const { state, selectors } = useInspectorContext();
@@ -24,72 +52,95 @@ export function DisplaySection() {
       ) : (
         <section
           data-ui-uuid={DEVTOOLS.UI_INSPECTOR.SELECTED.CONTAINER.uuid}
-          className="bg-surface-variant/40 px-3 py-3"
+          className="flex flex-col gap-3 bg-surface-variant/40 px-3 py-3"
         >
-          <span data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DETAILS.STABLE_ID_LABEL.uuid} className="text-xs font-medium">
-            {INSPECTOR_LABELS.stableId}
-          </span>
-          <code
-            data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DETAILS.STABLE_ID_VALUE.uuid}
-            className="mt-0.5 block break-all text-sm font-semibold"
+          <ReadOnlyField
+            label={INSPECTOR_LABELS.stableId}
+            hint="Short stable identifier used in lists and selection."
+            labelUuid={DEVTOOLS.UI_INSPECTOR.DETAILS.STABLE_ID_LABEL.uuid}
+            valueUuid={DEVTOOLS.UI_INSPECTOR.DETAILS.STABLE_ID_VALUE.uuid}
+            instanceId="display-stable-id"
           >
-            {selected.id || selected.uuid.slice(0, 8)}
-          </code>
-          <span data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DETAILS.PATH_LABEL.uuid} className="mt-2 text-xs font-medium">
-            {INSPECTOR_LABELS.identityPath}
-          </span>
-          <code
-            data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DETAILS.PATH_VALUE.uuid}
-            className="mt-0.5 block break-all text-xs text-on-surface-variant"
+            <code className="block break-all text-sm font-semibold">{selected.id || selected.uuid.slice(0, 8)}</code>
+          </ReadOnlyField>
+
+          <ReadOnlyField
+            label={INSPECTOR_LABELS.identityPath}
+            hint="Registry path for this UI identity."
+            labelUuid={DEVTOOLS.UI_INSPECTOR.DETAILS.PATH_LABEL.uuid}
+            valueUuid={DEVTOOLS.UI_INSPECTOR.DETAILS.PATH_VALUE.uuid}
+            instanceId="display-path"
           >
-            {emptyDisplayValue(selected.path)}
-          </code>
-          <span data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DETAILS.TAG_LABEL.uuid} className="mt-2 text-xs font-medium">
-            {INSPECTOR_LABELS.tag}
-          </span>
-          <code data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DETAILS.TAG_VALUE.uuid} className="mt-0.5 block text-xs">
-            {selected.tagName} | {selected.feature} | {selected.lifecycle}
-          </code>
-          <span data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DETAILS.UUID_LABEL.uuid} className="mt-2 text-xs font-medium">
-            {INSPECTOR_LABELS.uuid}
-          </span>
-          <code
-            data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DETAILS.UUID_VALUE.uuid}
-            className="mt-0.5 block break-all text-[10px] text-on-surface-variant"
+            <code className="block break-all text-xs text-on-surface-variant">
+              {emptyDisplayValue(selected.path)}
+            </code>
+          </ReadOnlyField>
+
+          <ReadOnlyField
+            label={INSPECTOR_LABELS.tag}
+            hint="HTML tag, feature module, and lifecycle stage."
+            labelUuid={DEVTOOLS.UI_INSPECTOR.DETAILS.TAG_LABEL.uuid}
+            valueUuid={DEVTOOLS.UI_INSPECTOR.DETAILS.TAG_VALUE.uuid}
+            instanceId="display-tag"
           >
-            {selected.uuid}
-          </code>
+            <code className="block text-xs">
+              {selected.tagName} | {selected.feature} | {selected.lifecycle}
+            </code>
+          </ReadOnlyField>
+
+          <ReadOnlyField
+            label={INSPECTOR_LABELS.uuid}
+            hint="Full registry UUID for this element."
+            labelUuid={DEVTOOLS.UI_INSPECTOR.DETAILS.UUID_LABEL.uuid}
+            valueUuid={DEVTOOLS.UI_INSPECTOR.DETAILS.UUID_VALUE.uuid}
+            instanceId="display-uuid"
+          >
+            <code className="block break-all text-[10px] text-on-surface-variant">{selected.uuid}</code>
+          </ReadOnlyField>
         </section>
       )}
       <section
         data-ui-uuid={DEVTOOLS.UI_INSPECTOR.STATUS.CONTAINER.uuid}
         data-ui-instance-id="status-bar"
-        className="space-y-1 border-t border-outline-variant px-3 py-2 text-[11px]"
+        className="flex flex-col gap-3 border-t border-outline-variant px-3 py-3 text-[11px]"
       >
-        <code
-          data-ui-uuid={DEVTOOLS.UI_INSPECTOR.STATUS.IFRAME_VALUE.uuid}
-          className="block break-all text-on-surface-variant"
+        <ReadOnlyField
+          label="Iframe status"
+          hint="Whether the preview iframe has finished loading."
+          valueUuid={DEVTOOLS.UI_INSPECTOR.STATUS.IFRAME_VALUE.uuid}
+          instanceId="status-iframe"
         >
-          iframe: {state.iframeReady ? 'ready' : 'loading'}
-        </code>
-        <code
-          data-ui-uuid={DEVTOOLS.UI_INSPECTOR.STATUS.SCAN_VALUE.uuid}
-          className="block break-all text-on-surface-variant"
+          <code className="block break-all text-on-surface-variant">
+            {state.iframeReady ? 'ready' : 'loading'}
+          </code>
+        </ReadOnlyField>
+
+        <ReadOnlyField
+          label="Last scan"
+          hint="Timestamp of the most recent DOM scan."
+          valueUuid={DEVTOOLS.UI_INSPECTOR.STATUS.SCAN_VALUE.uuid}
+          instanceId="status-scan"
         >
-          last scan: {formatScanTime(state.lastScanTime)}
-        </code>
-        <code
-          data-ui-uuid={DEVTOOLS.UI_INSPECTOR.STATUS.COUNT_VALUE.uuid}
-          className="block break-all text-on-surface-variant"
+          <code className="block break-all text-on-surface-variant">{formatScanTime(state.lastScanTime)}</code>
+        </ReadOnlyField>
+
+        <ReadOnlyField
+          label="Element count"
+          hint="Total elements found in the current scan."
+          valueUuid={DEVTOOLS.UI_INSPECTOR.STATUS.COUNT_VALUE.uuid}
+          instanceId="status-count"
         >
-          elements: {state.elements.length}
-        </code>
-        <code
-          data-ui-uuid={DEVTOOLS.UI_INSPECTOR.STATUS.URL_VALUE.uuid}
-          className="block break-all text-on-surface-variant"
+          <code className="block break-all text-on-surface-variant">{state.elements.length}</code>
+        </ReadOnlyField>
+
+        <ReadOnlyField
+          label="Preview URL"
+          hint="Current URL loaded in the preview iframe."
+          valueUuid={DEVTOOLS.UI_INSPECTOR.STATUS.URL_VALUE.uuid}
+          instanceId="status-url"
         >
-          url: {targetUrl}
-        </code>
+          <code className="block break-all text-on-surface-variant">{targetUrl}</code>
+        </ReadOnlyField>
       </section>
     </>
   );

@@ -17,8 +17,8 @@ import {
   renameColumn,
   renameDatabase,
   renameTable,
-  uniqueEnName,
-  validateEnName,
+  uniqueName,
+  validateName,
 } from '../data/database-ref-utils';
 
 describe('database-ref-utils', () => {
@@ -49,8 +49,8 @@ describe('database-ref-utils', () => {
     expect(getEntityDescription(findTable(db, 'users')?.columns[0])).toBe('legacy column');
   });
 
-  it('finds database and table by english name', () => {
-    const file = {
+  it('migrates legacy name_en/name_ar into name/description', () => {
+    const file = normalizeDatabaseRefFile({
       databases: [
         {
           name_ar: 'قاعدة',
@@ -64,33 +64,34 @@ describe('database-ref-utils', () => {
           ],
         },
       ],
-    };
+    });
     const db = findDatabase(file, 'main_db');
-    expect(db?.name_ar).toBe('قاعدة');
-    expect(findTable(db, 'users')?.columns[0]?.name_en).toBe('id');
+    expect(db?.name).toBe('main_db');
+    expect(getEntityDescription(db)).toBe('قاعدة');
+    expect(findTable(db, 'users')?.columns[0]?.name).toBe('id');
   });
 
-  it('generates unique english names', () => {
-    expect(uniqueEnName('new_table', ['new_table_1'])).toBe('new_table_2');
+  it('generates unique names', () => {
+    expect(uniqueName('new_table', ['new_table'])).toBe('new_table_2');
   });
 
-  it('validates empty and duplicate english names', () => {
-    expect(validateEnName('', ['a'])).toBe('English name is required.');
-    expect(validateEnName('dup', ['dup'])).toBe('English name must be unique.');
-    expect(validateEnName('dup', ['dup'], 'dup')).toBeNull();
+  it('validates empty and duplicate names', () => {
+    expect(validateName('', ['a'])).toBe('Name is required.');
+    expect(validateName('dup', ['dup'])).toBe('Name must be unique.');
+    expect(validateName('dup', ['dup'], 'dup')).toBeNull();
   });
 
   it('supports database/table/column CRUD helpers', () => {
     let file = emptyDatabaseRefFile();
     file = addDatabase(file);
-    const dbName = file.databases[0].name_en;
+    const dbName = file.databases[0].name;
     const tableResult = addTable(file, dbName);
     expect(tableResult.error).toBeUndefined();
     file = tableResult.file;
-    const tableName = file.databases[0].tables[0].name_en;
+    const tableName = file.databases[0].tables[0].name;
     const columnResult = addColumn(file, dbName, tableName);
     file = columnResult.file;
-    const columnName = file.databases[0].tables[0].columns[0].name_en;
+    const columnName = file.databases[0].tables[0].columns[0].name;
 
     const renamedDb = renameDatabase(file, dbName, 'renamed_db');
     expect(renamedDb.error).toBeUndefined();
@@ -110,17 +111,17 @@ describe('database-ref-utils', () => {
 
   it('saves descriptions on database/table/column levels', () => {
     const file = normalizeDatabaseRefFile({
-      databases: [{ name_en: 'db1', tables: [{ name_en: 't1', columns: [{ name_en: 'c1' }] }] }],
+      databases: [{ name: 'db1', tables: [{ name: 't1', columns: [{ name: 'c1' }] }] }],
     });
-    const dbDesc = applyDescriptionUpdate(file, 'database', { databaseNameEn: 'db1' }, 'db desc');
+    const dbDesc = applyDescriptionUpdate(file, 'database', { databaseName: 'db1' }, 'db desc');
     const tableDesc = applyDescriptionUpdate(dbDesc.file, 'table', {
-      databaseNameEn: 'db1',
-      tableNameEn: 't1',
+      databaseName: 'db1',
+      tableName: 't1',
     }, 'table desc');
     const columnDesc = applyDescriptionUpdate(tableDesc.file, 'column', {
-      databaseNameEn: 'db1',
-      tableNameEn: 't1',
-      columnNameEn: 'c1',
+      databaseName: 'db1',
+      tableName: 't1',
+      columnName: 'c1',
     }, 'column desc');
 
     expect(getEntityDescription(findDatabase(columnDesc.file, 'db1'))).toBe('db desc');
@@ -133,13 +134,27 @@ describe('database-ref-utils', () => {
   it('remaps element field names after schema rename', () => {
     expect(
       remapElementFieldNames(
-        { inf1: 'db_old', inf2: 'table_old', inf3: 'col_old' },
         {
-          database: { oldNameEn: 'db_old', newNameEn: 'db_new' },
-          table: { oldNameEn: 'table_old', newNameEn: 'table_new' },
-          column: { oldNameEn: 'col_old', newNameEn: 'col_new' },
+          databaseName: 'db_old',
+          tableName: 'table_old',
+          columnName: 'col_old',
+          inf1: 'db_old',
+          inf2: 'table_old',
+          inf3: 'col_old',
+        },
+        {
+          database: { oldName: 'db_old', newName: 'db_new' },
+          table: { oldName: 'table_old', newName: 'table_new' },
+          column: { oldName: 'col_old', newName: 'col_new' },
         }
       )
-    ).toEqual({ inf1: 'db_new', inf2: 'table_new', inf3: 'col_new' });
+    ).toEqual({
+      databaseName: 'db_new',
+      tableName: 'table_new',
+      columnName: 'col_new',
+      inf1: 'db_new',
+      inf2: 'table_new',
+      inf3: 'col_new',
+    });
   });
 });

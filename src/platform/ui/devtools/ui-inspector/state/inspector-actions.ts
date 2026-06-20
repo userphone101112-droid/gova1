@@ -8,6 +8,7 @@ import type {
   SidebarSection,
   ViewportSettings,
 } from '../data/inspector-config.types';
+import type { StorageRefFile } from '../data/storage-ref.types';
 import { DEFAULT_EXPANDED_SECTIONS } from '../utils/constants';
 
 export type InspectorState = {
@@ -15,6 +16,8 @@ export type InspectorState = {
   iframeKey: number;
   elements: InspectElementSnapshot[];
   selectedScanKey: string | null;
+  lastSelectedElement: InspectElementSnapshot | null;
+  selectedIdentityKey: string | null;
   search: string;
   featureFilter: string;
   tagFilter: string;
@@ -29,6 +32,7 @@ export type InspectorState = {
   refSaveStatus: SaveStatus;
   databaseRef: DatabaseRefFile;
   databaseRefDraft: DatabaseRefFile;
+  storageRef: StorageRefFile;
   databasePanelPinned: boolean;
   iframeReady: boolean;
   lastScanTime: Date | null;
@@ -39,6 +43,7 @@ export type InspectorAction =
   | { type: 'SET_ROUTE'; routePath: InspectorRoutePath }
   | { type: 'REFRESH_IFRAME' }
   | { type: 'SET_ELEMENTS'; elements: InspectElementSnapshot[]; lastScanTime: Date }
+  | { type: 'SELECT_ELEMENT'; scanKey: string; element: InspectElementSnapshot }
   | { type: 'SET_SELECTED_SCAN_KEY'; scanKey: string | null }
   | { type: 'SET_SEARCH'; search: string }
   | { type: 'SET_FEATURE_FILTER'; featureFilter: string }
@@ -57,12 +62,13 @@ export type InspectorAction =
   | { type: 'SET_REF_SAVE_STATUS'; status: SaveStatus }
   | { type: 'SET_DATABASE_REF'; data: DatabaseRefFile }
   | { type: 'SET_DATABASE_REF_DRAFT'; data: DatabaseRefFile }
+  | { type: 'SET_STORAGE_REF'; data: StorageRefFile }
   | { type: 'SET_DATABASE_PANEL_PINNED'; pinned: boolean }
   | { type: 'SET_IFRAME_READY'; ready: boolean }
   | { type: 'MARK_IFRAME_LOADING' }
   | { type: 'TOGGLE_SECTION'; section: SidebarSection }
   | { type: 'SET_EXPANDED'; expanded: Partial<Record<SidebarSection, boolean>> }
-  | { type: 'LOAD_ELEMENT_FORM'; formState: ElementFormState; expandedPatch: Partial<Record<SidebarSection, boolean>> };
+  | { type: 'LOAD_ELEMENT_FORM'; formState: ElementFormState };
 
 export function createInitialExpandedState(): Record<SidebarSection, boolean> {
   return { ...DEFAULT_EXPANDED_SECTIONS };

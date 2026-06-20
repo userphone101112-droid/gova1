@@ -7,6 +7,8 @@ import {
   formStateFromEntry,
   getInspectorData,
   getStorageKey,
+  mergeInspectorEntry,
+  normalizeInspectorDataMap,
 } from '../data/inspector-config-storage';
 
 function mockElement(overrides: Partial<InspectElementSnapshot> = {}): InspectElementSnapshot {
@@ -43,10 +45,12 @@ describe('inspector-config-storage', () => {
   it('maps saved entry into form state and back', () => {
     const element = mockElement();
     const form = {
+      ...emptyFormState(),
       databaseEnabled: true,
-      inf1: 'db_en',
-      inf2: 'table_en',
-      inf3: 'column_en',
+      databaseName: 'db_en',
+      tableName: 'table_en',
+      columnName: 'column_en',
+      inf1: 'note',
       attributesEnabled: true,
       attribute1: true,
       attribute2: false,
@@ -54,8 +58,8 @@ describe('inspector-config-storage', () => {
     };
     const entry = buildInspectorDataEntry(element, form);
     expect(entry.dataUiUuid).toBe('uuid-1');
-    expect(entry.inf1).toBe('db_en');
-    expect(formStateFromEntry(entry)).toEqual(form);
+    expect(entry.databaseName).toBe('db_en');
+    expect(formStateFromEntry(entry, { databases: [] })).toEqual(form);
   });
 
   it('resolves saved data by storage key', () => {
@@ -63,9 +67,43 @@ describe('inspector-config-storage', () => {
     const map = {
       'uuid-1:inst-1': buildInspectorDataEntry(element, {
         ...emptyFormState(),
-        inf1: 'saved-db',
+        databaseName: 'saved-db',
       }),
     };
-    expect(getInspectorData(map, element)?.inf1).toBe('saved-db');
+    expect(getInspectorData(map, element)?.databaseName).toBe('saved-db');
+  });
+
+  it('merges saved entries without duplicate keys for the same element', () => {
+    const element = mockElement({ instanceId: 'inst-1' });
+    const entry = buildInspectorDataEntry(element, {
+      ...emptyFormState(),
+      storageEnabled: true,
+      storageMainFile: 'Projects',
+    });
+    const merged = mergeInspectorEntry(
+      {
+        'uuid-1': { ...entry, inf1: 'legacy' },
+        'uuid-1:inst-1': { ...entry, inf1: 'older', updatedAt: '2020-01-01T00:00:00.000Z' },
+      },
+      'uuid-1:inst-1',
+      entry
+    );
+    expect(Object.keys(merged)).toEqual(['uuid-1:inst-1']);
+    expect(merged['uuid-1:inst-1']?.storageMainFile).toBe('Projects');
+  });
+
+  it('normalizes duplicate inspector map keys by newest updatedAt', () => {
+    const element = mockElement({ instanceId: null });
+    const older = buildInspectorDataEntry(element, { ...emptyFormState(), inf1: 'old' });
+    const newer = {
+      ...buildInspectorDataEntry(element, { ...emptyFormState(), inf1: 'new' }),
+      updatedAt: '2099-01-01T00:00:00.000Z',
+    };
+    const normalized = normalizeInspectorDataMap({
+      'uuid-1': older,
+      duplicate: { ...newer, dataUiIdentityKey: 'uuid-1' },
+    });
+    expect(Object.keys(normalized)).toHaveLength(1);
+    expect(normalized['uuid-1']?.inf1).toBe('new');
   });
 });

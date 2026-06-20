@@ -20,29 +20,36 @@ export function useDatabaseSettings() {
     });
   }, [dispatch, state.formState.databaseEnabled]);
 
-  const setDatabaseId = useCallback(
-    (databaseId: string) => {
+  const setDatabaseName = useCallback(
+    (databaseName: string) => {
       dispatch({
         type: 'PATCH_FORM_STATE',
-        patch: { inf1: databaseId, inf2: '', inf3: '' },
+        patch: { databaseName, tableName: '', columnName: '' },
       });
     },
     [dispatch]
   );
 
-  const setTableId = useCallback(
-    (tableId: string) => {
+  const setTableName = useCallback(
+    (tableName: string) => {
       dispatch({
         type: 'PATCH_FORM_STATE',
-        patch: { inf2: tableId, inf3: '' },
+        patch: { tableName, columnName: '' },
       });
     },
     [dispatch]
   );
 
-  const setFieldId = useCallback(
-    (fieldId: string) => {
-      dispatch({ type: 'PATCH_FORM_STATE', patch: { inf3: fieldId } });
+  const setColumnName = useCallback(
+    (columnName: string) => {
+      dispatch({ type: 'PATCH_FORM_STATE', patch: { columnName } });
+    },
+    [dispatch]
+  );
+
+  const setAdditionalInfo = useCallback(
+    (key: 'inf1' | 'inf2' | 'inf3', value: string) => {
+      dispatch({ type: 'PATCH_FORM_STATE', patch: { [key]: value } });
     },
     [dispatch]
   );
@@ -55,8 +62,9 @@ export function useDatabaseSettings() {
     isDatabaseSectionOpen: state.expanded.dbAttributes,
     isDatabasePanelPinned: state.databasePanelPinned,
     handleDatabaseToggle,
-    setDatabaseId,
-    setTableId,
-    setFieldId,
+    setDatabaseName,
+    setTableName,
+    setColumnName,
+    setAdditionalInfo,
   };
 }

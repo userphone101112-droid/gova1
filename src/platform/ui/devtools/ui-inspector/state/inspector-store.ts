@@ -1,8 +1,10 @@
 import type { InspectorRoutePath } from '../../inspector-routes';
 import { emptyDatabaseRefFile } from '../data/database-ref-utils';
+import { mergeInspectorEntry } from '../data/inspector-config-storage';
 import type { DatabaseRefFile } from '../data/database-ref.types';
-import { emptyFormState } from '../data/inspector-config-storage';
+import { emptyFormState, getStorageKey } from '../data/inspector-config-storage';
 import type { ViewportSettings } from '../data/inspector-config.types';
+import { emptyStorageRefFile } from '../data/storage-ref-utils';
 import {
   DEFAULT_PREVIEW_HEIGHT,
   DEFAULT_PREVIEW_SCALE,
@@ -23,6 +25,8 @@ export function createInitialInspectorState(): InspectorState {
     iframeKey: 0,
     elements: [],
     selectedScanKey: null,
+    lastSelectedElement: null,
+    selectedIdentityKey: null,
     search: '',
     featureFilter: 'all',
     tagFilter: 'all',
@@ -41,12 +45,14 @@ export function createInitialInspectorState(): InspectorState {
     refSaveStatus: 'idle',
     databaseRef: emptyDatabaseRefFile(),
     databaseRefDraft: emptyDatabaseRefFile(),
+    storageRef: emptyStorageRefFile(),
     databasePanelPinned: false,
     iframeReady: false,
     lastScanTime: null,
     expanded: {
       dbAttributes: false,
       dbManagement: false,
+      storageManagement: false,
       filters: false,
       list: false,
       details: false,
@@ -71,7 +77,10 @@ export function inspectorReducer(state: InspectorState, action: InspectorAction)
         ...state,
         routePath: action.routePath,
         selectedScanKey: null,
+        lastSelectedElement: null,
+        selectedIdentityKey: null,
         elements: [],
+        formState: emptyFormState(),
         iframeReady: false,
         lastScanTime: null,
       };
@@ -79,7 +88,6 @@ export function inspectorReducer(state: InspectorState, action: InspectorAction)
       return {
         ...state,
         elements: [],
-        selectedScanKey: null,
         iframeKey: state.iframeKey + 1,
         iframeReady: false,
         lastScanTime: null,
@@ -89,11 +97,13 @@ export function inspectorReducer(state: InspectorState, action: InspectorAction)
         ...state,
         elements: action.elements,
         lastScanTime: action.lastScanTime,
-        selectedScanKey:
-          state.selectedScanKey &&
-          action.elements.some((el) => el.scanKey === state.selectedScanKey)
-            ? state.selectedScanKey
-            : null,
+      };
+    case 'SELECT_ELEMENT':
+      return {
+        ...state,
+        selectedScanKey: action.scanKey,
+        lastSelectedElement: action.element,
+        selectedIdentityKey: getStorageKey(action.element),
       };
     case 'SET_SELECTED_SCAN_KEY':
       return { ...state, selectedScanKey: action.scanKey };
@@ -120,7 +130,7 @@ export function inspectorReducer(state: InspectorState, action: InspectorAction)
     case 'MERGE_INSPECTOR_ENTRY':
       return {
         ...state,
-        allInspectorData: { ...state.allInspectorData, [action.storageKey]: action.entry },
+        allInspectorData: mergeInspectorEntry(state.allInspectorData, action.storageKey, action.entry),
       };
     case 'SET_FORM_STATE':
       return { ...state, formState: action.formState };
@@ -134,6 +144,8 @@ export function inspectorReducer(state: InspectorState, action: InspectorAction)
       return { ...state, databaseRef: action.data };
     case 'SET_DATABASE_REF_DRAFT':
       return { ...state, databaseRefDraft: action.data };
+    case 'SET_STORAGE_REF':
+      return { ...state, storageRef: action.data };
     case 'SET_DATABASE_PANEL_PINNED':
       return { ...state, databasePanelPinned: action.pinned };
     case 'SET_IFRAME_READY':
@@ -160,7 +172,6 @@ export function inspectorReducer(state: InspectorState, action: InspectorAction)
         formState: action.formState,
         databasePanelPinned: false,
         saveStatus: 'idle',
-        expanded: { ...state.expanded, ...action.expandedPatch },
       };
     default:
       return state;

@@ -9,7 +9,7 @@ export function UiInspectorShell() {
   return (
     <div
       data-ui-uuid={DEVTOOLS.UI_INSPECTOR.PAGE.CONTAINER.uuid}
-      className="flex h-screen flex-col overflow-hidden bg-surface text-on-surface"
+      className="flex h-dvh flex-col overflow-hidden bg-surface text-on-surface"
     >
       <InspectorProvider>
         <InspectorLayout />

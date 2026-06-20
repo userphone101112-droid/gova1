@@ -1,143 +1,127 @@
 {
   "databases": [
     {
-      "name_en": "human_resource_management_system",
-      "name_ar": "",
+      "name": "human_resource_management_system",
       "tables": [
         {
-          "name_en": "employees",
-          "name_ar": "",
+          "name": "employees",
           "columns": [
             {
-              "name_en": "employee_id",
-              "name_ar": "",
+              "name": "employee_id",
               "description": "معرف الموظف"
             },
             {
-              "name_en": "first_name",
-              "name_ar": "",
+              "name": "first_name",
               "description": "الاسم الأول"
             },
             {
-              "name_en": "hire_date",
-              "name_ar": "",
+              "name": "hire_date",
               "description": "تاريخ التعيين"
             }
           ],
           "description": "الموظفين"
         },
         {
-          "name_en": "salaries",
-          "name_ar": "",
+          "name": "salaries",
           "columns": [
             {
-              "name_en": "salary_id",
-              "name_ar": "",
+              "name": "salary_id",
               "description": "معرف الراتب"
             },
             {
-              "name_en": "basic_salary",
-              "name_ar": "",
+              "name": "basic_salary",
               "description": "الراتب الأساسي"
             },
             {
-              "name_en": "bonuses",
-              "name_ar": "",
+              "name": "bonuses",
               "description": "المكافآت"
             }
           ],
           "description": "الرواتب"
         },
         {
-          "name_en": "departments",
-          "name_ar": "",
+          "name": "departments",
           "columns": [
             {
-              "name_en": "department_id",
-              "name_ar": "",
+              "name": "department_id",
               "description": "معرف القسم"
             },
             {
-              "name_en": "department_name",
-              "name_ar": "",
+              "name": "department_name",
               "description": "اسم القسم"
             },
             {
-              "name_en": "department_manager",
-              "name_ar": "",
+              "name": "department_manager",
               "description": "مدير القسم"
             }
           ],
           "description": "الأقسام"
-        }
-      ],
-      "description": "نظام إدارة الموارد البشرية"
-    },
-    {
-      "name_en": "ecommerce_system",
-      "name_ar": "",
-      "tables": [
+        },
         {
-          "name_en": "products",
-          "name_ar": "",
+          "name": "new_table1",
           "columns": [
             {
-              "name_en": "product_id",
-              "name_ar": "",
+              "name": "new_column",
+              "description": "عمود جديد"
+            }
+          ],
+          "description": "جدول جديد"
+        }
+      ],
+      "description": "نظام إدارة الموارد البشرية 1"
+    },
+    {
+      "name": "ecommerce_system",
+      "tables": [
+        {
+          "name": "products",
+          "columns": [
+            {
+              "name": "product_id",
               "description": "معرف المنتج"
             },
             {
-              "name_en": "product_name",
-              "name_ar": "",
+              "name": "product_name",
               "description": "اسم المنتج"
             },
             {
-              "name_en": "price",
-              "name_ar": "",
+              "name": "price",
               "description": "السعر"
             }
           ],
           "description": "المنتجات"
         },
         {
-          "name_en": "customers",
-          "name_ar": "",
+          "name": "customers",
           "columns": [
             {
-              "name_en": "customer_id",
-              "name_ar": "",
+              "name": "customer_id",
               "description": "معرف العميل"
             },
             {
-              "name_en": "email_address",
-              "name_ar": "",
+              "name": "email_address",
               "description": "البريد الإلكتروني"
             },
             {
-              "name_en": "phone_number",
-              "name_ar": "",
+              "name": "phone_number",
               "description": "رقم الهاتف"
             }
           ],
           "description": "العملاء"
         },
         {
-          "name_en": "orders",
-          "name_ar": "",
+          "name": "orders",
           "columns": [
             {
-              "name_en": "order_id",
-              "name_ar": "",
+              "name": "order_id",
               "description": "معرف الطلب"
             },
             {
-              "name_en": "order_date",
-              "name_ar": "",
+              "name": "order_date",
               "description": "تاريخ الطلب"
             },
             {
-              "name_en": "total_amount",
-              "name_ar": "",
+              "name": "total_amount",
               "description": "إجمالي المبلغ"
             }
           ],
@@ -147,70 +131,57 @@
       "description": "نظام المتجر الإلكتروني"
     },
     {
-      "name_en": "school_management_system",
-      "name_ar": "",
+      "name": "school_management_system",
       "tables": [
         {
-          "name_en": "students",
-          "name_ar": "",
+          "name": "students",
           "columns": [
             {
-              "name_en": "student_id",
-              "name_ar": "",
+              "name": "student_id",
               "description": "معرف الطالب"
             },
             {
-              "name_en": "student_name",
-              "name_ar": "",
+              "name": "student_name",
               "description": "اسم الطالب"
             },
             {
-              "name_en": "date_of_birth",
-              "name_ar": "",
+              "name": "date_of_birth",
               "description": "تاريخ الميلاد"
             }
           ],
           "description": "الطلاب"
         },
         {
-          "name_en": "teachers",
-          "name_ar": "",
+          "name": "teachers",
           "columns": [
             {
-              "name_en": "teacher_id",
-              "name_ar": "",
+              "name": "teacher_id",
               "description": "معرف المعلم"
             },
             {
-              "name_en": "specialization",
-              "name_ar": "",
+              "name": "specialization",
               "description": "التخصص"
             },
             {
-              "name_en": "teacher_salary",
-              "name_ar": "",
+              "name": "teacher_salary",
               "description": "الراتب"
             }
           ],
           "description": "المعلمين"
         },
         {
-          "name_en": "courses",
-          "name_ar": "",
+          "name": "courses",
           "columns": [
             {
-              "name_en": "course_id",
-              "name_ar": "",
+              "name": "course_id",
               "description": "معرف المادة"
             },
             {
-              "name_en": "course_name",
-              "name_ar": "",
+              "name": "course_name",
               "description": "اسم المادة"
             },
             {
-              "name_en": "credit_hours",
-              "name_ar": "",
+              "name": "credit_hours",
               "description": "عدد الساعات"
             }
           ],

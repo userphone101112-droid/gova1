@@ -7,7 +7,8 @@ import { DEVTOOLS } from '@/platform/ui/registry/features/devtools';
 import {
   cloneDatabaseRefFile,
   emptyDatabaseRefFile,
-  uniqueEnName,
+  getEntityDescription,
+  uniqueName,
 } from '../data/database-ref-utils';
 import type {
   DatabaseRefColumn,
@@ -16,6 +17,8 @@ import type {
   DatabaseRefTable,
 } from '../data/database-ref.types';
 
+import { FieldGroup, inspectorFieldInputClass } from './FieldGroup';
+
 type SaveStatus = 'idle' | 'saving' | 'saved' | 'error';
 
 interface DatabaseRefEditorProps {
@@ -23,6 +26,10 @@ interface DatabaseRefEditorProps {
   onChange: (next: DatabaseRefFile) => void;
   onSave: () => Promise<void>;
   saveStatus: SaveStatus;
+}
+
+function entityLabel(name: string, description: string): string {
+  return description ? `${name} — ${description}` : name;
 }
 
 export function DatabaseRefEditor({ data, onChange, onSave, saveStatus }: DatabaseRefEditorProps) {
@@ -85,15 +92,11 @@ export function DatabaseRefEditor({ data, onChange, onSave, saveStatus }: Databa
 
   const handleAddDatabase = () => {
     const next = cloneDatabaseRefFile(data.databases.length ? data : emptyDatabaseRefFile());
-    const nameEn = uniqueEnName(
+    const name = uniqueName(
       'new_database',
-      next.databases.map((db) => db.name_en)
+      next.databases.map((db) => db.name)
     );
-    next.databases.push({
-      name_ar: 'قاعدة جديدة',
-      name_en: nameEn,
-      tables: [],
-    });
+    next.databases.push({ name, tables: [] });
     onChange(next);
     setDbIndex(next.databases.length - 1);
     setTableIndex(0);
@@ -103,15 +106,11 @@ export function DatabaseRefEditor({ data, onChange, onSave, saveStatus }: Databa
   const handleAddTable = () => {
     if (!selectedDb) return;
     const next = cloneDatabaseRefFile(data);
-    const nameEn = uniqueEnName(
+    const name = uniqueName(
       'new_table',
-      next.databases[dbIndex].tables.map((table) => table.name_en)
+      next.databases[dbIndex].tables.map((table) => table.name)
     );
-    next.databases[dbIndex].tables.push({
-      name_ar: 'جدول جديد',
-      name_en: nameEn,
-      columns: [],
-    });
+    next.databases[dbIndex].tables.push({ name, columns: [] });
     onChange(next);
     setTableIndex(next.databases[dbIndex].tables.length - 1);
     setColumnIndex(0);
@@ -120,21 +119,18 @@ export function DatabaseRefEditor({ data, onChange, onSave, saveStatus }: Databa
   const handleAddColumn = () => {
     if (!selectedDb || !selectedTable) return;
     const next = cloneDatabaseRefFile(data);
-    const nameEn = uniqueEnName(
+    const name = uniqueName(
       'new_column',
-      next.databases[dbIndex].tables[tableIndex].columns.map((column) => column.name_en)
+      next.databases[dbIndex].tables[tableIndex].columns.map((column) => column.name)
     );
-    next.databases[dbIndex].tables[tableIndex].columns.push({
-      name_ar: 'عمود جديد',
-      name_en: nameEn,
-    });
+    next.databases[dbIndex].tables[tableIndex].columns.push({ name });
     onChange(next);
     setColumnIndex(next.databases[dbIndex].tables[tableIndex].columns.length - 1);
   };
 
   const handleDeleteDatabase = () => {
     if (!selectedDb) return;
-    if (!window.confirm(`Delete database "${selectedDb.name_en}" and all nested tables?`)) return;
+    if (!window.confirm(`Delete database "${selectedDb.name}" and all nested tables?`)) return;
     const next = cloneDatabaseRefFile(data);
     next.databases.splice(dbIndex, 1);
     onChange(next);
@@ -145,7 +141,7 @@ export function DatabaseRefEditor({ data, onChange, onSave, saveStatus }: Databa
 
   const handleDeleteTable = () => {
     if (!selectedDb || !selectedTable) return;
-    if (!window.confirm(`Delete table "${selectedTable.name_en}" and all columns?`)) return;
+    if (!window.confirm(`Delete table "${selectedTable.name}" and all columns?`)) return;
     const next = cloneDatabaseRefFile(data);
     next.databases[dbIndex].tables.splice(tableIndex, 1);
     onChange(next);
@@ -155,19 +151,14 @@ export function DatabaseRefEditor({ data, onChange, onSave, saveStatus }: Databa
 
   const handleDeleteColumn = () => {
     if (!selectedDb || !selectedTable || !selectedColumn) return;
-    if (!window.confirm(`Delete column "${selectedColumn.name_en}"?`)) return;
+    if (!window.confirm(`Delete column "${selectedColumn.name}"?`)) return;
     const next = cloneDatabaseRefFile(data);
     next.databases[dbIndex].tables[tableIndex].columns.splice(columnIndex, 1);
     onChange(next);
     setColumnIndex(Math.max(0, columnIndex - 1));
   };
 
-  const handleSave = () => {
-    void onSave();
-  };
-
-  const inputClass =
-    'w-full rounded border border-outline-variant bg-surface px-2 py-1 text-xs';
+  const inputClass = inspectorFieldInputClass;
   const actionClass =
     'rounded border border-outline-variant px-2 py-1 text-xs hover:bg-surface-variant';
 
@@ -211,56 +202,55 @@ export function DatabaseRefEditor({ data, onChange, onSave, saveStatus }: Databa
         + Column
       </button>
 
-      <span
-        data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DATA.INF1_LABEL.uuid}
-        className="text-[11px] text-on-surface-variant"
-      >
-        Database
-      </span>
-      <select
-        data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DBREF.DB_SELECT.uuid}
-        value={databases.length ? String(dbIndex) : ''}
-        onChange={(e) => {
-          setDbIndex(Number(e.target.value));
-          setTableIndex(0);
-          setColumnIndex(0);
-        }}
-        className={inputClass}
-      >
-        {[
-          ...(databases.length === 0 ? [{ value: '', label: 'No databases' }] : []),
-          ...databases.map((db, index) => ({
-            value: String(index),
-            label: `${db.name_en} (${db.name_ar})`,
-          })),
-        ].map((item) => (
-          <option
-            key={`refdb-${item.value || 'empty'}`}
-            data-ui-uuid={DEVTOOLS.UI_INSPECTOR.SIDEBAR.FILTER_FEATURE_OPTION.uuid}
-            data-ui-instance-id={`refdb-${item.value || 'empty'}`}
-            value={item.value}
-          >
-            {item.label}
-          </option>
-        ))}
-      </select>
+      <FieldGroup label="Database" hint="Select a database entry to edit." instanceId="ref-db-select">
+        <select
+          data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DBREF.DB_SELECT.uuid}
+          value={databases.length ? String(dbIndex) : ''}
+          onChange={(e) => {
+            setDbIndex(Number(e.target.value));
+            setTableIndex(0);
+            setColumnIndex(0);
+          }}
+          className={inputClass}
+        >
+          {[
+            ...(databases.length === 0 ? [{ value: '', label: 'No databases' }] : []),
+            ...databases.map((db, index) => ({
+              value: String(index),
+              label: entityLabel(db.name, getEntityDescription(db)),
+            })),
+          ].map((item) => (
+            <option
+              key={`refdb-${item.value || 'empty'}`}
+              data-ui-uuid={DEVTOOLS.UI_INSPECTOR.SIDEBAR.FILTER_FEATURE_OPTION.uuid}
+              data-ui-instance-id={`refdb-${item.value || 'empty'}`}
+              value={item.value}
+            >
+              {item.label}
+            </option>
+          ))}
+        </select>
+      </FieldGroup>
 
       {selectedDb && (
         <>
-          <input
-            data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DBREF.DB_AR_INPUT.uuid}
-            value={selectedDb.name_ar}
-            onChange={(e) => updateDatabase({ name_ar: e.target.value })}
-            placeholder="Database name_ar"
-            className={inputClass}
-          />
-          <input
-            data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DBREF.DB_EN_INPUT.uuid}
-            value={selectedDb.name_en}
-            onChange={(e) => updateDatabase({ name_en: e.target.value })}
-            placeholder="Database name_en"
-            className={inputClass}
-          />
+          <FieldGroup label="Database name" hint="Canonical identifier for this database." instanceId="ref-db-name">
+            <input
+              data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DBREF.DB_EN_INPUT.uuid}
+              value={selectedDb.name}
+              onChange={(e) => updateDatabase({ name: e.target.value })}
+              className={inputClass}
+            />
+          </FieldGroup>
+          <FieldGroup label="Database description" hint="Optional notes about this database." instanceId="ref-db-desc">
+            <textarea
+              data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DBMGMT.DESC_TEXTAREA.uuid}
+              value={selectedDb.description ?? ''}
+              onChange={(e) => updateDatabase({ description: e.target.value })}
+              rows={2}
+              className={inputClass}
+            />
+          </FieldGroup>
           <button
             data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DBREF.DELETE_DB.uuid}
             type="button"
@@ -274,57 +264,56 @@ export function DatabaseRefEditor({ data, onChange, onSave, saveStatus }: Databa
 
       {selectedDb && (
         <>
-          <span
-            data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DATA.INF2_LABEL.uuid}
-            className="text-[11px] text-on-surface-variant"
-          >
-            Table
-          </span>
-          <select
-            data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DBREF.TABLE_SELECT.uuid}
-            value={tables.length ? String(tableIndex) : ''}
-            onChange={(e) => {
-              setTableIndex(Number(e.target.value));
-              setColumnIndex(0);
-            }}
-            className={inputClass}
-          >
-            {[
-              ...(tables.length === 0 ? [{ value: '', label: 'No tables' }] : []),
-              ...tables.map((table, index) => ({
-                value: String(index),
-                label: `${table.name_en} (${table.name_ar})`,
-              })),
-            ].map((item) => (
-              <option
-                key={`reftb-${item.value || 'empty'}`}
-                data-ui-uuid={DEVTOOLS.UI_INSPECTOR.SIDEBAR.FILTER_TAG_OPTION.uuid}
-                data-ui-instance-id={`reftb-${item.value || 'empty'}`}
-                value={item.value}
-              >
-                {item.label}
-              </option>
-            ))}
-          </select>
+          <FieldGroup label="Table" hint="Select a table within the database." instanceId="ref-table-select">
+            <select
+              data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DBREF.TABLE_SELECT.uuid}
+              value={tables.length ? String(tableIndex) : ''}
+              onChange={(e) => {
+                setTableIndex(Number(e.target.value));
+                setColumnIndex(0);
+              }}
+              className={inputClass}
+            >
+              {[
+                ...(tables.length === 0 ? [{ value: '', label: 'No tables' }] : []),
+                ...tables.map((table, index) => ({
+                  value: String(index),
+                  label: entityLabel(table.name, getEntityDescription(table)),
+                })),
+              ].map((item) => (
+                <option
+                  key={`reftb-${item.value || 'empty'}`}
+                  data-ui-uuid={DEVTOOLS.UI_INSPECTOR.SIDEBAR.FILTER_TAG_OPTION.uuid}
+                  data-ui-instance-id={`reftb-${item.value || 'empty'}`}
+                  value={item.value}
+                >
+                  {item.label}
+                </option>
+              ))}
+            </select>
+          </FieldGroup>
         </>
       )}
 
       {selectedTable && (
         <>
-          <input
-            data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DBREF.TABLE_AR_INPUT.uuid}
-            value={selectedTable.name_ar}
-            onChange={(e) => updateTable({ name_ar: e.target.value })}
-            placeholder="Table name_ar"
-            className={inputClass}
-          />
-          <input
-            data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DBREF.TABLE_EN_INPUT.uuid}
-            value={selectedTable.name_en}
-            onChange={(e) => updateTable({ name_en: e.target.value })}
-            placeholder="Table name_en"
-            className={inputClass}
-          />
+          <FieldGroup label="Table name" hint="Canonical identifier for this table." instanceId="ref-table-name">
+            <input
+              data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DBREF.TABLE_EN_INPUT.uuid}
+              value={selectedTable.name}
+              onChange={(e) => updateTable({ name: e.target.value })}
+              className={inputClass}
+            />
+          </FieldGroup>
+          <FieldGroup label="Table description" hint="Optional notes about this table." instanceId="ref-table-desc">
+            <textarea
+              data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DBMGMT.DESC_TEXTAREA.uuid}
+              value={selectedTable.description ?? ''}
+              onChange={(e) => updateTable({ description: e.target.value })}
+              rows={2}
+              className={inputClass}
+            />
+          </FieldGroup>
           <button
             data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DBREF.DELETE_TABLE.uuid}
             type="button"
@@ -337,13 +326,7 @@ export function DatabaseRefEditor({ data, onChange, onSave, saveStatus }: Databa
       )}
 
       {selectedTable && (
-        <>
-          <span
-            data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DATA.INF3_LABEL.uuid}
-            className="text-[11px] text-on-surface-variant"
-          >
-            Column
-          </span>
+        <FieldGroup label="Column" hint="Select a column within the table." instanceId="ref-column-select">
           <select
             data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DBREF.COLUMN_SELECT.uuid}
             value={columns.length ? String(columnIndex) : ''}
@@ -354,7 +337,7 @@ export function DatabaseRefEditor({ data, onChange, onSave, saveStatus }: Databa
               ...(columns.length === 0 ? [{ value: '', label: 'No columns' }] : []),
               ...columns.map((column, index) => ({
                 value: String(index),
-                label: `${column.name_en} (${column.name_ar})`,
+                label: entityLabel(column.name, getEntityDescription(column)),
               })),
             ].map((item) => (
               <option
@@ -367,25 +350,28 @@ export function DatabaseRefEditor({ data, onChange, onSave, saveStatus }: Databa
               </option>
             ))}
           </select>
-        </>
+        </FieldGroup>
       )}
 
       {selectedColumn && (
         <>
-          <input
-            data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DBREF.COLUMN_AR_INPUT.uuid}
-            value={selectedColumn.name_ar}
-            onChange={(e) => updateColumn({ name_ar: e.target.value })}
-            placeholder="Column name_ar"
-            className={inputClass}
-          />
-          <input
-            data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DBREF.COLUMN_EN_INPUT.uuid}
-            value={selectedColumn.name_en}
-            onChange={(e) => updateColumn({ name_en: e.target.value })}
-            placeholder="Column name_en"
-            className={inputClass}
-          />
+          <FieldGroup label="Column name" hint="Canonical identifier for this column." instanceId="ref-column-name">
+            <input
+              data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DBREF.COLUMN_EN_INPUT.uuid}
+              value={selectedColumn.name}
+              onChange={(e) => updateColumn({ name: e.target.value })}
+              className={inputClass}
+            />
+          </FieldGroup>
+          <FieldGroup label="Column description" hint="Optional notes about this column." instanceId="ref-column-desc">
+            <textarea
+              data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DBMGMT.DESC_TEXTAREA.uuid}
+              value={selectedColumn.description ?? ''}
+              onChange={(e) => updateColumn({ description: e.target.value })}
+              rows={2}
+              className={inputClass}
+            />
+          </FieldGroup>
           <button
             data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DBREF.DELETE_COLUMN.uuid}
             type="button"
@@ -400,7 +386,7 @@ export function DatabaseRefEditor({ data, onChange, onSave, saveStatus }: Databa
       <button
         data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DBREF.SAVE_BUTTON.uuid}
         type="button"
-        onClick={handleSave}
+        onClick={() => void onSave()}
         disabled={saveStatus === 'saving'}
         className="rounded bg-secondary px-2 py-1.5 text-xs text-on-secondary disabled:opacity-60"
       >

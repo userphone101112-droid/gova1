@@ -3,11 +3,12 @@ import { useMemo } from 'react';
 import { buildAbsoluteInspectUrl, buildInspectUrl } from '../../inspector-routes';
 import { findDatabase, findTable } from '../data/database-ref-utils';
 import { getInspectorData } from '../data/inspector-config-storage';
+import { findStorageFolder } from '../data/storage-ref-utils';
 
 import type { InspectorState } from './inspector-actions';
 
 export function selectSelectedElement(state: InspectorState) {
-  const { elements, selectedScanKey, search, featureFilter, tagFilter, lifecycleFilter, missingSourceOnly } =
+  const { elements, selectedScanKey, lastSelectedElement, selectedIdentityKey, search, featureFilter, tagFilter, lifecycleFilter, missingSourceOnly } =
     state;
   const query = search.trim().toLowerCase();
   const filtered = elements.filter((el) => {
@@ -24,12 +25,13 @@ export function selectSelectedElement(state: InspectorState) {
     );
   });
 
-  const selected =
-    filtered.find((el) => el.scanKey === selectedScanKey) ??
-    elements.find((el) => el.scanKey === selectedScanKey) ??
-    null;
+  const liveSelected = selectedScanKey
+    ? elements.find((el) => el.scanKey === selectedScanKey)
+    : null;
+  const selected = liveSelected ?? (selectedIdentityKey ? lastSelectedElement : null);
+  const hasElementSelection = Boolean(selectedIdentityKey && lastSelectedElement);
 
-  return { selected, filteredElements: filtered };
+  return { selected, hasElementSelection, filteredElements: filtered };
 }
 
 export function selectFeatureOptions(state: InspectorState): string[] {
@@ -42,9 +44,9 @@ export function selectCurrentElementDatabaseSettings(state: InspectorState) {
   if (!selected) return null;
   const saved = getInspectorData(state.allInspectorData, selected);
   const form = state.formState;
-  const selectedDatabase = findDatabase(state.databaseRef, form.inf1);
+  const selectedDatabase = findDatabase(state.databaseRef, form.databaseName);
   const tableOptions = selectedDatabase?.tables ?? [];
-  const selectedTable = findTable(selectedDatabase, form.inf2);
+  const selectedTable = findTable(selectedDatabase, form.tableName);
   const columnOptions = selectedTable?.columns ?? [];
   return {
     selected,
@@ -56,6 +58,21 @@ export function selectCurrentElementDatabaseSettings(state: InspectorState) {
     columnOptions,
     isDatabaseSectionOpen: state.expanded.dbAttributes,
     isDatabasePanelPinned: state.databasePanelPinned,
+  };
+}
+
+export function selectCurrentElementStorageSettings(state: InspectorState) {
+  const { selected } = selectSelectedElement(state);
+  if (!selected) return null;
+  const form = state.formState;
+  const selectedFolder = findStorageFolder(state.storageRef, form.storageMainFile);
+  const subfolderOptions = selectedFolder?.subfolders ?? [];
+  return {
+    selected,
+    form,
+    folders: state.storageRef.folders,
+    selectedFolder,
+    subfolderOptions,
   };
 }
 
@@ -89,10 +106,11 @@ export function useInspectorSelectors(state: InspectorState) {
   return useMemo(() => {
     const selection = selectSelectedElement(state);
     const database = selectCurrentElementDatabaseSettings(state);
+    const storage = selectCurrentElementStorageSettings(state);
     const databaseRef = selectDatabaseRefTree(state);
     const preview = selectPreviewModel(state, typeof window !== 'undefined' ? window.location.origin : undefined);
     const featureOptions = selectFeatureOptions(state);
-    return { ...selection, database, databaseRef, preview, featureOptions };
+    return { ...selection, database, storage, databaseRef, preview, featureOptions };
   }, [state]);
 }
 

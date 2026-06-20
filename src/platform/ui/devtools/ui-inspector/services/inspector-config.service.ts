@@ -3,6 +3,8 @@ import { inspectorApiClient } from '../api/client';
 import {
   buildInspectorDataEntry,
   getStorageKey,
+  mergeInspectorEntry,
+  normalizeInspectorDataMap,
 } from '../data/inspector-config-storage';
 import type { ElementFormState, InspectorDataMap } from '../data/inspector-config.types';
 import { ELEMENT_SAVE_CONFIRM_MESSAGE } from '../utils/constants';
@@ -10,7 +12,7 @@ import { confirmAction } from '../utils/format';
 
 export async function loadInspectorConfigMap(): Promise<InspectorDataMap> {
   const data = await inspectorApiClient.fetchInspectorData();
-  return data ?? {};
+  return normalizeInspectorDataMap(data ?? {});
 }
 
 export async function saveInspectorElementConfig(
@@ -26,9 +28,15 @@ export async function saveInspectorElementConfig(
     uiUuid: selected.uuid,
     uiInstanceId: selected.instanceId ?? '',
     databaseEnabled: formState.databaseEnabled,
+    databaseName: formState.databaseName,
+    tableName: formState.tableName,
+    columnName: formState.columnName,
     inf1: formState.inf1,
     inf2: formState.inf2,
     inf3: formState.inf3,
+    storageEnabled: formState.storageEnabled,
+    storageMainFile: formState.storageMainFile,
+    storageSubFile: formState.storageSubFile,
     attributesEnabled: formState.attributesEnabled,
     attribute1: formState.attribute1,
     attribute2: formState.attribute2,
@@ -54,5 +62,5 @@ export function mergeSavedEntry(
   storageKey: string,
   entry: ReturnType<typeof buildInspectorDataEntry>
 ): InspectorDataMap {
-  return { ...current, [storageKey]: entry };
+  return mergeInspectorEntry(current, storageKey, entry);
 }

@@ -37,6 +37,7 @@ export const TAG_FILTERS = [
 export const DEFAULT_EXPANDED_SECTIONS = {
   dbAttributes: false,
   dbManagement: false,
+  storageManagement: false,
   filters: false,
   list: false,
   details: false,
@@ -47,3 +48,9 @@ export const ELEMENT_SAVE_CONFIRM_MESSAGE =
 
 export const DATABASE_REF_SAVE_CONFIRM_MESSAGE =
   'Save changes to database_ref.json? This updates the shared schema file.';
+
+export const STORAGE_REF_SAVE_CONFIRM_MESSAGE =
+  'Save changes to storage.json? This updates the shared storage catalog.';
+
+export const STORAGE_DESCRIPTION_SAVE_CONFIRM_MESSAGE =
+  'Save this storage description to storage.json?';

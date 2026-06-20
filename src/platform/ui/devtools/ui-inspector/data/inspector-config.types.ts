@@ -6,6 +6,7 @@ export type SaveStatus = 'idle' | 'saving' | 'saved' | 'error';
 export type SidebarSection =
   | 'dbAttributes'
   | 'dbManagement'
+  | 'storageManagement'
   | 'filters'
   | 'list'
   | 'details';
@@ -19,16 +20,22 @@ export type AttributeSettings = {
 
 export type ElementDatabaseSettings = {
   enabled: boolean;
-  databaseId: string;
-  tableId: string;
-  fieldId: string;
+  databaseName: string;
+  tableName: string;
+  columnName: string;
 };
 
 export type ElementFormState = {
   databaseEnabled: boolean;
+  databaseName: string;
+  tableName: string;
+  columnName: string;
   inf1: string;
   inf2: string;
   inf3: string;
+  storageEnabled: boolean;
+  storageMainFile: string;
+  storageSubFile: string;
   attributesEnabled: boolean;
   attribute1: boolean;
   attribute2: boolean;
@@ -43,9 +50,15 @@ export type ViewportSettings = {
 
 export interface InspectorDataEntry {
   databaseEnabled: boolean;
+  databaseName?: string;
+  tableName?: string;
+  columnName?: string;
   inf1: string;
   inf2: string;
   inf3: string;
+  storageEnabled?: boolean;
+  storageMainFile?: string;
+  storageSubFile?: string;
   attributesEnabled: boolean;
   attribute1: boolean;
   attribute2: boolean;

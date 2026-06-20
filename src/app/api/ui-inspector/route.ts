@@ -3,53 +3,37 @@ import path from 'path';
 
 import { NextResponse } from 'next/server';
 
+import {
+  mergeInspectorEntry,
+  normalizeInspectorDataMap,
+  resolveInspectorIdentityKey,
+} from '@/platform/ui/devtools/ui-inspector/data/inspector-config-storage';
+import type { InspectorDataEntry } from '@/platform/ui/devtools/ui-inspector/data/inspector-config.types';
 import { getUiIdentityUuid, getUiIdentityByUuid } from '@/platform/ui';
 import { isUiInspectorEnabled } from '@/platform/ui/devtools/inspector-access';
 
-// Define the type for our inspector data
-interface InspectorData {
-  [uiId: string]: {
-    databaseEnabled: boolean;
-    inf1: string;
-    inf2: string;
-    inf3: string;
-    attributesEnabled: boolean;
-    attribute1: boolean;
-    attribute2: boolean;
-    attribute3: boolean;
-    dataUiPath: string;
-    dataUiFeature: string;
-    dataUiUuid: string;
-    dataUiInstanceId: string;
-    dataUiIdentityKey: string;
-    updatedAt: string;
-  };
-}
+type InspectorData = Record<string, InspectorDataEntry>;
 
-// Path to our JSON file
 const DATA_FILE_PATH = path.join(process.cwd(), 'data', 'ui-inspector-data.json');
 
 function uiInspectorNotFoundResponse(): NextResponse {
   return NextResponse.json({ error: 'Not found' }, { status: 404 });
 }
 
-// Helper function to read data
 async function readData(): Promise<InspectorData> {
   try {
     const data = await fs.readFile(DATA_FILE_PATH, 'utf8');
-    return JSON.parse(data) as InspectorData;
+    return normalizeInspectorDataMap(JSON.parse(data) as InspectorData);
   } catch {
-    // If file doesn't exist, return empty object
     return {};
   }
 }
 
-// Helper function to write data
 async function writeData(data: InspectorData): Promise<void> {
-  await fs.writeFile(DATA_FILE_PATH, JSON.stringify(data, null, 2));
+  const normalized = normalizeInspectorDataMap(data);
+  await fs.writeFile(DATA_FILE_PATH, `${JSON.stringify(normalized, null, 2)}\n`, 'utf8');
 }
 
-// GET: Fetch all inspector data
 export async function GET() {
   if (!isUiInspectorEnabled()) {
     return uiInspectorNotFoundResponse();
@@ -67,7 +51,6 @@ export async function GET() {
   }
 }
 
-// POST: Save or update inspector data for a specific UI element
 export async function POST(request: Request) {
   if (!isUiInspectorEnabled()) {
     return uiInspectorNotFoundResponse();
@@ -75,17 +58,23 @@ export async function POST(request: Request) {
 
   try {
     const body = await request.json();
-    const { 
+    const {
       uiUuid,
       uiInstanceId,
-      databaseEnabled, 
-      inf1, 
-      inf2, 
-      inf3, 
-      attributesEnabled, 
-      attribute1, 
-      attribute2, 
-      attribute3 
+      databaseEnabled,
+      databaseName,
+      tableName,
+      columnName,
+      inf1,
+      inf2,
+      inf3,
+      storageEnabled,
+      storageMainFile,
+      storageSubFile,
+      attributesEnabled,
+      attribute1,
+      attribute2,
+      attribute3,
     } = body;
 
     if (!uiUuid) {
@@ -99,16 +88,20 @@ export async function POST(request: Request) {
     const identity = getUiIdentityByUuid(uiUuid);
     const resolvedUuid = identity ? getUiIdentityUuid(identity) : uiUuid || '';
     const resolvedInstanceId = uiInstanceId === undefined || uiInstanceId === null ? '' : String(uiInstanceId);
-    const storageKey = resolvedUuid && resolvedInstanceId
-      ? `${resolvedUuid}:${resolvedInstanceId}`
-      : resolvedUuid;
-    
-    // Update the data
-    data[storageKey] = {
+    const storageKey = resolveInspectorIdentityKey(resolvedUuid, resolvedInstanceId);
+    const storageOn = storageEnabled ?? false;
+
+    const entry: InspectorDataEntry = {
       databaseEnabled: databaseEnabled ?? false,
+      databaseName: databaseName || '',
+      tableName: tableName || '',
+      columnName: columnName || '',
       inf1: inf1 || '',
       inf2: inf2 || '',
       inf3: inf3 || '',
+      storageEnabled: storageOn,
+      storageMainFile: storageOn ? storageMainFile || '' : '',
+      storageSubFile: storageOn ? storageSubFile || '' : '',
       attributesEnabled: attributesEnabled ?? false,
       attribute1: attribute1 ?? false,
       attribute2: attribute2 ?? false,
@@ -121,7 +114,7 @@ export async function POST(request: Request) {
       updatedAt: new Date().toISOString(),
     };
 
-    await writeData(data);
+    await writeData(mergeInspectorEntry(data, storageKey, entry));
 
     return NextResponse.json({ success: true, uiUuid: storageKey, id: identity?.id });
   } catch (error) {

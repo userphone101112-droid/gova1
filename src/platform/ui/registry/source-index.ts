@@ -9775,6 +9775,16 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "sourceLine": 394,
     "feature": "devtools"
   },
+  "6ef1ab39-2641-5ba0-a65a-19dba02f794a": {
+    "uuid": "6ef1ab39-2641-5ba0-a65a-19dba02f794a",
+    "id": "UI_DEVTOOLS_UI_INSPECTOR_STATUS_CONTAINER",
+    "path": "devtools.inspector.status.container",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
+    "sourceComponent": "DEVTOOLS",
+    "sourceLine": 109,
+    "feature": "devtools"
+  },
   "aa932a35-505c-5166-b551-fed7efbc6980": {
     "uuid": "aa932a35-505c-5166-b551-fed7efbc6980",
     "id": "UI_DEVTOOLS_UI_INSPECTOR_SIDEBAR_DBATTRS_LABEL",
@@ -9795,6 +9805,16 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "sourceLine": 442,
     "feature": "devtools"
   },
+  "92e74e9c-dcb0-5aad-b89d-36a645ea7617": {
+    "uuid": "92e74e9c-dcb0-5aad-b89d-36a645ea7617",
+    "id": "UI_DEVTOOLS_UI_INSPECTOR_SIDEBAR_SCHEMA_LABEL",
+    "path": "devtools.inspector.sidebar.schema",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
+    "sourceComponent": "DEVTOOLS",
+    "sourceLine": 454,
+    "feature": "devtools"
+  },
   "3dff0d36-12e1-56bb-9e99-0a8cc70f9539": {
     "uuid": "3dff0d36-12e1-56bb-9e99-0a8cc70f9539",
     "id": "UI_DEVTOOLS_UI_INSPECTOR_SEARCH_LABEL",
@@ -9813,16 +9833,6 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
     "sourceComponent": "DEVTOOLS",
     "sourceLine": 382,
-    "feature": "devtools"
-  },
-  "16141077-f469-5674-83c9-4c91f9d24aee": {
-    "uuid": "16141077-f469-5674-83c9-4c91f9d24aee",
-    "id": "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_CONTAINER",
-    "path": "devtools.inspector.detail.container",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
-    "sourceComponent": "DEVTOOLS",
-    "sourceLine": 468,
     "feature": "devtools"
   },
   "dd0bb866-a1fb-537d-a1d9-2bb462698ff3": {
@@ -9885,16 +9895,6 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "sourceLine": 872,
     "feature": "devtools"
   },
-  "bd1ed4c8-dc5e-528b-8ce2-d71e6076b8b1": {
-    "uuid": "bd1ed4c8-dc5e-528b-8ce2-d71e6076b8b1",
-    "id": "UI_DEVTOOLS_UI_INSPECTOR_DATA_ATTRIBUTES_LABEL",
-    "path": "devtools.inspector.data.attributes",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
-    "sourceComponent": "DEVTOOLS",
-    "sourceLine": 981,
-    "feature": "devtools"
-  },
   "5ab365aa-f522-5d27-9570-6d2c316cf719": {
     "uuid": "5ab365aa-f522-5d27-9570-6d2c316cf719",
     "id": "UI_DEVTOOLS_UI_INSPECTOR_DATA_ATTRIBUTES_TOGGLE",
@@ -9903,16 +9903,6 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
     "sourceComponent": "DEVTOOLS",
     "sourceLine": 993,
-    "feature": "devtools"
-  },
-  "0e6d15c2-b07a-562d-8e92-2cc4777028bf": {
-    "uuid": "0e6d15c2-b07a-562d-8e92-2cc4777028bf",
-    "id": "UI_DEVTOOLS_UI_INSPECTOR_DATA_ATTRIBUTE1_LABEL",
-    "path": "devtools.inspector.attr1.label",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
-    "sourceComponent": "DEVTOOLS",
-    "sourceLine": 1017,
     "feature": "devtools"
   },
   "d9b12725-ff90-58a8-8219-b69b3c9cfda6": {
@@ -9925,16 +9915,6 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "sourceLine": 1005,
     "feature": "devtools"
   },
-  "5863eb33-ba6d-5fa0-a6f7-fc01bf71d9ce": {
-    "uuid": "5863eb33-ba6d-5fa0-a6f7-fc01bf71d9ce",
-    "id": "UI_DEVTOOLS_UI_INSPECTOR_DATA_ATTRIBUTE2_LABEL",
-    "path": "devtools.inspector.attr2.label",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
-    "sourceComponent": "DEVTOOLS",
-    "sourceLine": 1041,
-    "feature": "devtools"
-  },
   "3cd3d8ca-8fec-5977-a81d-700c8baa8921": {
     "uuid": "3cd3d8ca-8fec-5977-a81d-700c8baa8921",
     "id": "UI_DEVTOOLS_UI_INSPECTOR_DATA_ATTRIBUTE2_CHECKBOX",
@@ -9943,16 +9923,6 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
     "sourceComponent": "DEVTOOLS",
     "sourceLine": 1029,
-    "feature": "devtools"
-  },
-  "74a226e8-a780-59eb-8322-4b3e71cca3d1": {
-    "uuid": "74a226e8-a780-59eb-8322-4b3e71cca3d1",
-    "id": "UI_DEVTOOLS_UI_INSPECTOR_DATA_ATTRIBUTE3_LABEL",
-    "path": "devtools.inspector.attr3.label",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
-    "sourceComponent": "DEVTOOLS",
-    "sourceLine": 1065,
     "feature": "devtools"
   },
   "4d7f2acf-3fe2-5692-9f73-929123a62edc": {
@@ -10003,16 +9973,6 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
     "sourceComponent": "DEVTOOLS",
     "sourceLine": 1117,
-    "feature": "devtools"
-  },
-  "c3a49122-f077-5795-9550-270c6094fbff": {
-    "uuid": "c3a49122-f077-5795-9550-270c6094fbff",
-    "id": "UI_DEVTOOLS_UI_INSPECTOR_DBREF_DB_AR_INPUT",
-    "path": "devtools.inspector.dbar.input",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
-    "sourceComponent": "DEVTOOLS",
-    "sourceLine": 1193,
     "feature": "devtools"
   },
   "aacd7682-8d8b-5955-bcb6-2d3c7712b9c7": {
@@ -10165,26 +10125,6 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "sourceLine": 1132,
     "feature": "devtools"
   },
-  "ea93ad8b-59aa-5738-b3af-532dae9fc042": {
-    "uuid": "ea93ad8b-59aa-5738-b3af-532dae9fc042",
-    "id": "UI_DEVTOOLS_UI_INSPECTOR_DATA_INF1_LABEL",
-    "path": "devtools.inspector.inf1.label",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
-    "sourceComponent": "DEVTOOLS",
-    "sourceLine": 909,
-    "feature": "devtools"
-  },
-  "d5f833c2-b384-5af7-b698-87d815e7efe5": {
-    "uuid": "d5f833c2-b384-5af7-b698-87d815e7efe5",
-    "id": "UI_DEVTOOLS_UI_INSPECTOR_DBREF_TABLE_AR_INPUT",
-    "path": "devtools.inspector.tbar.input",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
-    "sourceComponent": "DEVTOOLS",
-    "sourceLine": 1217,
-    "feature": "devtools"
-  },
   "083ab8a2-1747-5f0f-b856-eca829bb3c45": {
     "uuid": "083ab8a2-1747-5f0f-b856-eca829bb3c45",
     "id": "UI_DEVTOOLS_UI_INSPECTOR_DBREF_TABLE_EN_INPUT",
@@ -10203,16 +10143,6 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
     "sourceComponent": "DEVTOOLS",
     "sourceLine": 1313,
-    "feature": "devtools"
-  },
-  "6e1896a6-50c5-55f5-9771-4a7067e7462f": {
-    "uuid": "6e1896a6-50c5-55f5-9771-4a7067e7462f",
-    "id": "UI_DEVTOOLS_UI_INSPECTOR_DBREF_COLUMN_AR_INPUT",
-    "path": "devtools.inspector.colar.input",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
-    "sourceComponent": "DEVTOOLS",
-    "sourceLine": 1241,
     "feature": "devtools"
   },
   "06152476-edd7-54b5-a9af-1290e4e2d1d7": {
@@ -10285,134 +10215,34 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "sourceLine": 969,
     "feature": "devtools"
   },
-  "6ef1ab39-2641-5ba0-a65a-19dba02f794a": {
-    "uuid": "6ef1ab39-2641-5ba0-a65a-19dba02f794a",
-    "id": "UI_DEVTOOLS_UI_INSPECTOR_STATUS_CONTAINER",
-    "path": "devtools.inspector.status.container",
+  "c3a49122-f077-5795-9550-270c6094fbff": {
+    "uuid": "c3a49122-f077-5795-9550-270c6094fbff",
+    "id": "UI_DEVTOOLS_UI_INSPECTOR_DBREF_DB_AR_INPUT",
+    "path": "devtools.inspector.dbar.input",
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
     "sourceComponent": "DEVTOOLS",
-    "sourceLine": 109,
+    "sourceLine": 1193,
     "feature": "devtools"
   },
-  "21192078-251a-574f-ac19-ac5280bfb2c9": {
-    "uuid": "21192078-251a-574f-ac19-ac5280bfb2c9",
-    "id": "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_STABLE_ID_LABEL",
-    "path": "devtools.inspector.stableid.label",
+  "d5f833c2-b384-5af7-b698-87d815e7efe5": {
+    "uuid": "d5f833c2-b384-5af7-b698-87d815e7efe5",
+    "id": "UI_DEVTOOLS_UI_INSPECTOR_DBREF_TABLE_AR_INPUT",
+    "path": "devtools.inspector.tbar.input",
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
     "sourceComponent": "DEVTOOLS",
-    "sourceLine": 516,
+    "sourceLine": 1217,
     "feature": "devtools"
   },
-  "e0e7b88b-e9b7-56ac-bc4a-338d8a0037ee": {
-    "uuid": "e0e7b88b-e9b7-56ac-bc4a-338d8a0037ee",
-    "id": "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_STABLE_ID_VALUE",
-    "path": "devtools.inspector.stableid.value",
+  "6e1896a6-50c5-55f5-9771-4a7067e7462f": {
+    "uuid": "6e1896a6-50c5-55f5-9771-4a7067e7462f",
+    "id": "UI_DEVTOOLS_UI_INSPECTOR_DBREF_COLUMN_AR_INPUT",
+    "path": "devtools.inspector.colar.input",
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
     "sourceComponent": "DEVTOOLS",
-    "sourceLine": 528,
-    "feature": "devtools"
-  },
-  "374af8c6-3695-5db7-a475-0550c85490a9": {
-    "uuid": "374af8c6-3695-5db7-a475-0550c85490a9",
-    "id": "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_PATH_LABEL",
-    "path": "devtools.inspector.path.label",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
-    "sourceComponent": "DEVTOOLS",
-    "sourceLine": 540,
-    "feature": "devtools"
-  },
-  "7e072109-c59e-51c4-97b2-431326926fce": {
-    "uuid": "7e072109-c59e-51c4-97b2-431326926fce",
-    "id": "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_PATH_VALUE",
-    "path": "devtools.inspector.path.value",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
-    "sourceComponent": "DEVTOOLS",
-    "sourceLine": 552,
-    "feature": "devtools"
-  },
-  "a1a82465-df44-5e36-8d62-de57ee80ef00": {
-    "uuid": "a1a82465-df44-5e36-8d62-de57ee80ef00",
-    "id": "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_TAG_LABEL",
-    "path": "devtools.inspector.meta.tag-label",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
-    "sourceComponent": "DEVTOOLS",
-    "sourceLine": 612,
-    "feature": "devtools"
-  },
-  "8ff63d62-9911-5339-864c-d3644748b483": {
-    "uuid": "8ff63d62-9911-5339-864c-d3644748b483",
-    "id": "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_TAG_VALUE",
-    "path": "devtools.inspector.meta.tag-value",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
-    "sourceComponent": "DEVTOOLS",
-    "sourceLine": 624,
-    "feature": "devtools"
-  },
-  "52ab65d2-15ad-5a83-930b-805c6f911f85": {
-    "uuid": "52ab65d2-15ad-5a83-930b-805c6f911f85",
-    "id": "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_UUID_LABEL",
-    "path": "devtools.inspector.uuid.label",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
-    "sourceComponent": "DEVTOOLS",
-    "sourceLine": 492,
-    "feature": "devtools"
-  },
-  "a2dbed0d-c3e8-5128-af57-61b7ddde6f02": {
-    "uuid": "a2dbed0d-c3e8-5128-af57-61b7ddde6f02",
-    "id": "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_UUID_VALUE",
-    "path": "devtools.inspector.uuid.value",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
-    "sourceComponent": "DEVTOOLS",
-    "sourceLine": 504,
-    "feature": "devtools"
-  },
-  "26ad9de4-6b76-509b-a44a-ce36251665cd": {
-    "uuid": "26ad9de4-6b76-509b-a44a-ce36251665cd",
-    "id": "UI_DEVTOOLS_UI_INSPECTOR_STATUS_IFRAME_VALUE",
-    "path": "devtools.inspector.status.iframe",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
-    "sourceComponent": "DEVTOOLS",
-    "sourceLine": 122,
-    "feature": "devtools"
-  },
-  "c588e7d1-86a9-5482-8d0d-7e0fffef5068": {
-    "uuid": "c588e7d1-86a9-5482-8d0d-7e0fffef5068",
-    "id": "UI_DEVTOOLS_UI_INSPECTOR_STATUS_SCAN_VALUE",
-    "path": "devtools.inspector.status.scan",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
-    "sourceComponent": "DEVTOOLS",
-    "sourceLine": 134,
-    "feature": "devtools"
-  },
-  "bc790843-3405-53a6-b812-4795f812e1e8": {
-    "uuid": "bc790843-3405-53a6-b812-4795f812e1e8",
-    "id": "UI_DEVTOOLS_UI_INSPECTOR_STATUS_COUNT_VALUE",
-    "path": "devtools.inspector.status.count",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
-    "sourceComponent": "DEVTOOLS",
-    "sourceLine": 146,
-    "feature": "devtools"
-  },
-  "d91ecc1d-6630-5248-bc44-455710a726fa": {
-    "uuid": "d91ecc1d-6630-5248-bc44-455710a726fa",
-    "id": "UI_DEVTOOLS_UI_INSPECTOR_STATUS_URL_VALUE",
-    "path": "devtools.inspector.status.url",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
-    "sourceComponent": "DEVTOOLS",
-    "sourceLine": 158,
+    "sourceLine": 1241,
     "feature": "devtools"
   },
   "543a885e-b15a-5fc3-9a75-83fc77f81579": {
@@ -10445,16 +10275,6 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "sourceLine": 210,
     "feature": "devtools"
   },
-  "0d351ad1-851d-555c-bfad-e09f1ae895f2": {
-    "uuid": "0d351ad1-851d-555c-bfad-e09f1ae895f2",
-    "id": "UI_DEVTOOLS_UI_INSPECTOR_FILTER_FEATURE_LABEL",
-    "path": "devtools.inspector.feature.label",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
-    "sourceComponent": "DEVTOOLS",
-    "sourceLine": 222,
-    "feature": "devtools"
-  },
   "de50da61-b4ad-5dae-ad6c-c0a76b41034c": {
     "uuid": "de50da61-b4ad-5dae-ad6c-c0a76b41034c",
     "id": "UI_DEVTOOLS_UI_INSPECTOR_FILTER_FEATURE_SELECT",
@@ -10463,16 +10283,6 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
     "sourceComponent": "DEVTOOLS",
     "sourceLine": 234,
-    "feature": "devtools"
-  },
-  "a471ed7f-35f8-54d2-83ce-cd413aabb0d4": {
-    "uuid": "a471ed7f-35f8-54d2-83ce-cd413aabb0d4",
-    "id": "UI_DEVTOOLS_UI_INSPECTOR_FILTER_TAG_LABEL",
-    "path": "devtools.inspector.tag.label",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
-    "sourceComponent": "DEVTOOLS",
-    "sourceLine": 259,
     "feature": "devtools"
   },
   "8f953f47-6900-52ec-bf6b-03f108791146": {
@@ -10485,16 +10295,6 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "sourceLine": 271,
     "feature": "devtools"
   },
-  "739d400b-7691-5b5e-8437-fa75d43af060": {
-    "uuid": "739d400b-7691-5b5e-8437-fa75d43af060",
-    "id": "UI_DEVTOOLS_UI_INSPECTOR_FILTER_LIFECYCLE_LABEL",
-    "path": "devtools.inspector.lifecycle.label",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
-    "sourceComponent": "DEVTOOLS",
-    "sourceLine": 296,
-    "feature": "devtools"
-  },
   "32cc8633-6ca6-5ee8-b4c7-c625149e06c2": {
     "uuid": "32cc8633-6ca6-5ee8-b4c7-c625149e06c2",
     "id": "UI_DEVTOOLS_UI_INSPECTOR_FILTER_LIFECYCLE_SELECT",
@@ -10503,16 +10303,6 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
     "sourceComponent": "DEVTOOLS",
     "sourceLine": 308,
-    "feature": "devtools"
-  },
-  "bb3996fb-b179-55a6-b1a2-e7490091f33c": {
-    "uuid": "bb3996fb-b179-55a6-b1a2-e7490091f33c",
-    "id": "UI_DEVTOOLS_UI_INSPECTOR_FILTER_MISSING_LABEL",
-    "path": "devtools.inspector.missing.label",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
-    "sourceComponent": "DEVTOOLS",
-    "sourceLine": 333,
     "feature": "devtools"
   },
   "2bee80a2-f013-5c89-8661-8f041e82ab43": {
@@ -10723,6 +10513,126 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
     "sourceComponent": "DEVTOOLS",
     "sourceLine": 804,
+    "feature": "devtools"
+  },
+  "21192078-251a-574f-ac19-ac5280bfb2c9": {
+    "uuid": "21192078-251a-574f-ac19-ac5280bfb2c9",
+    "id": "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_STABLE_ID_LABEL",
+    "path": "devtools.inspector.stableid.label",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
+    "sourceComponent": "DEVTOOLS",
+    "sourceLine": 516,
+    "feature": "devtools"
+  },
+  "e0e7b88b-e9b7-56ac-bc4a-338d8a0037ee": {
+    "uuid": "e0e7b88b-e9b7-56ac-bc4a-338d8a0037ee",
+    "id": "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_STABLE_ID_VALUE",
+    "path": "devtools.inspector.stableid.value",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
+    "sourceComponent": "DEVTOOLS",
+    "sourceLine": 528,
+    "feature": "devtools"
+  },
+  "374af8c6-3695-5db7-a475-0550c85490a9": {
+    "uuid": "374af8c6-3695-5db7-a475-0550c85490a9",
+    "id": "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_PATH_LABEL",
+    "path": "devtools.inspector.path.label",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
+    "sourceComponent": "DEVTOOLS",
+    "sourceLine": 540,
+    "feature": "devtools"
+  },
+  "7e072109-c59e-51c4-97b2-431326926fce": {
+    "uuid": "7e072109-c59e-51c4-97b2-431326926fce",
+    "id": "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_PATH_VALUE",
+    "path": "devtools.inspector.path.value",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
+    "sourceComponent": "DEVTOOLS",
+    "sourceLine": 552,
+    "feature": "devtools"
+  },
+  "a1a82465-df44-5e36-8d62-de57ee80ef00": {
+    "uuid": "a1a82465-df44-5e36-8d62-de57ee80ef00",
+    "id": "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_TAG_LABEL",
+    "path": "devtools.inspector.meta.tag-label",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
+    "sourceComponent": "DEVTOOLS",
+    "sourceLine": 612,
+    "feature": "devtools"
+  },
+  "8ff63d62-9911-5339-864c-d3644748b483": {
+    "uuid": "8ff63d62-9911-5339-864c-d3644748b483",
+    "id": "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_TAG_VALUE",
+    "path": "devtools.inspector.meta.tag-value",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
+    "sourceComponent": "DEVTOOLS",
+    "sourceLine": 624,
+    "feature": "devtools"
+  },
+  "52ab65d2-15ad-5a83-930b-805c6f911f85": {
+    "uuid": "52ab65d2-15ad-5a83-930b-805c6f911f85",
+    "id": "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_UUID_LABEL",
+    "path": "devtools.inspector.uuid.label",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
+    "sourceComponent": "DEVTOOLS",
+    "sourceLine": 492,
+    "feature": "devtools"
+  },
+  "a2dbed0d-c3e8-5128-af57-61b7ddde6f02": {
+    "uuid": "a2dbed0d-c3e8-5128-af57-61b7ddde6f02",
+    "id": "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_UUID_VALUE",
+    "path": "devtools.inspector.uuid.value",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
+    "sourceComponent": "DEVTOOLS",
+    "sourceLine": 504,
+    "feature": "devtools"
+  },
+  "26ad9de4-6b76-509b-a44a-ce36251665cd": {
+    "uuid": "26ad9de4-6b76-509b-a44a-ce36251665cd",
+    "id": "UI_DEVTOOLS_UI_INSPECTOR_STATUS_IFRAME_VALUE",
+    "path": "devtools.inspector.status.iframe",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
+    "sourceComponent": "DEVTOOLS",
+    "sourceLine": 122,
+    "feature": "devtools"
+  },
+  "c588e7d1-86a9-5482-8d0d-7e0fffef5068": {
+    "uuid": "c588e7d1-86a9-5482-8d0d-7e0fffef5068",
+    "id": "UI_DEVTOOLS_UI_INSPECTOR_STATUS_SCAN_VALUE",
+    "path": "devtools.inspector.status.scan",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
+    "sourceComponent": "DEVTOOLS",
+    "sourceLine": 134,
+    "feature": "devtools"
+  },
+  "bc790843-3405-53a6-b812-4795f812e1e8": {
+    "uuid": "bc790843-3405-53a6-b812-4795f812e1e8",
+    "id": "UI_DEVTOOLS_UI_INSPECTOR_STATUS_COUNT_VALUE",
+    "path": "devtools.inspector.status.count",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
+    "sourceComponent": "DEVTOOLS",
+    "sourceLine": 146,
+    "feature": "devtools"
+  },
+  "d91ecc1d-6630-5248-bc44-455710a726fa": {
+    "uuid": "d91ecc1d-6630-5248-bc44-455710a726fa",
+    "id": "UI_DEVTOOLS_UI_INSPECTOR_STATUS_URL_VALUE",
+    "path": "devtools.inspector.status.url",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
+    "sourceComponent": "DEVTOOLS",
+    "sourceLine": 158,
     "feature": "devtools"
   },
   "3e6bf0dc-c5cc-5aed-b003-9c529c9edd2b": {
@@ -11455,6 +11365,46 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "sourceLine": 46,
     "feature": "devtools"
   },
+  "0d351ad1-851d-555c-bfad-e09f1ae895f2": {
+    "uuid": "0d351ad1-851d-555c-bfad-e09f1ae895f2",
+    "id": "UI_DEVTOOLS_UI_INSPECTOR_FILTER_FEATURE_LABEL",
+    "path": "devtools.inspector.feature.label",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
+    "sourceComponent": "DEVTOOLS",
+    "sourceLine": 222,
+    "feature": "devtools"
+  },
+  "a471ed7f-35f8-54d2-83ce-cd413aabb0d4": {
+    "uuid": "a471ed7f-35f8-54d2-83ce-cd413aabb0d4",
+    "id": "UI_DEVTOOLS_UI_INSPECTOR_FILTER_TAG_LABEL",
+    "path": "devtools.inspector.tag.label",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
+    "sourceComponent": "DEVTOOLS",
+    "sourceLine": 259,
+    "feature": "devtools"
+  },
+  "739d400b-7691-5b5e-8437-fa75d43af060": {
+    "uuid": "739d400b-7691-5b5e-8437-fa75d43af060",
+    "id": "UI_DEVTOOLS_UI_INSPECTOR_FILTER_LIFECYCLE_LABEL",
+    "path": "devtools.inspector.lifecycle.label",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
+    "sourceComponent": "DEVTOOLS",
+    "sourceLine": 296,
+    "feature": "devtools"
+  },
+  "bb3996fb-b179-55a6-b1a2-e7490091f33c": {
+    "uuid": "bb3996fb-b179-55a6-b1a2-e7490091f33c",
+    "id": "UI_DEVTOOLS_UI_INSPECTOR_FILTER_MISSING_LABEL",
+    "path": "devtools.inspector.missing.label",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
+    "sourceComponent": "DEVTOOLS",
+    "sourceLine": 333,
+    "feature": "devtools"
+  },
   "433ba2ee-c5c8-5a4f-9506-e1f04ff70309": {
     "uuid": "433ba2ee-c5c8-5a4f-9506-e1f04ff70309",
     "id": "UI_DEVTOOLS_UI_INSPECTOR_SIDEBAR_DATABASE_LABEL",
@@ -11475,14 +11425,64 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "sourceLine": 418,
     "feature": "devtools"
   },
-  "92e74e9c-dcb0-5aad-b89d-36a645ea7617": {
-    "uuid": "92e74e9c-dcb0-5aad-b89d-36a645ea7617",
-    "id": "UI_DEVTOOLS_UI_INSPECTOR_SIDEBAR_SCHEMA_LABEL",
-    "path": "devtools.inspector.sidebar.schema",
+  "16141077-f469-5674-83c9-4c91f9d24aee": {
+    "uuid": "16141077-f469-5674-83c9-4c91f9d24aee",
+    "id": "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_CONTAINER",
+    "path": "devtools.inspector.detail.container",
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
     "sourceComponent": "DEVTOOLS",
-    "sourceLine": 454,
+    "sourceLine": 468,
+    "feature": "devtools"
+  },
+  "ea93ad8b-59aa-5738-b3af-532dae9fc042": {
+    "uuid": "ea93ad8b-59aa-5738-b3af-532dae9fc042",
+    "id": "UI_DEVTOOLS_UI_INSPECTOR_DATA_INF1_LABEL",
+    "path": "devtools.inspector.inf1.label",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
+    "sourceComponent": "DEVTOOLS",
+    "sourceLine": 909,
+    "feature": "devtools"
+  },
+  "bd1ed4c8-dc5e-528b-8ce2-d71e6076b8b1": {
+    "uuid": "bd1ed4c8-dc5e-528b-8ce2-d71e6076b8b1",
+    "id": "UI_DEVTOOLS_UI_INSPECTOR_DATA_ATTRIBUTES_LABEL",
+    "path": "devtools.inspector.data.attributes",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
+    "sourceComponent": "DEVTOOLS",
+    "sourceLine": 981,
+    "feature": "devtools"
+  },
+  "0e6d15c2-b07a-562d-8e92-2cc4777028bf": {
+    "uuid": "0e6d15c2-b07a-562d-8e92-2cc4777028bf",
+    "id": "UI_DEVTOOLS_UI_INSPECTOR_DATA_ATTRIBUTE1_LABEL",
+    "path": "devtools.inspector.attr1.label",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
+    "sourceComponent": "DEVTOOLS",
+    "sourceLine": 1017,
+    "feature": "devtools"
+  },
+  "5863eb33-ba6d-5fa0-a6f7-fc01bf71d9ce": {
+    "uuid": "5863eb33-ba6d-5fa0-a6f7-fc01bf71d9ce",
+    "id": "UI_DEVTOOLS_UI_INSPECTOR_DATA_ATTRIBUTE2_LABEL",
+    "path": "devtools.inspector.attr2.label",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
+    "sourceComponent": "DEVTOOLS",
+    "sourceLine": 1041,
+    "feature": "devtools"
+  },
+  "74a226e8-a780-59eb-8322-4b3e71cca3d1": {
+    "uuid": "74a226e8-a780-59eb-8322-4b3e71cca3d1",
+    "id": "UI_DEVTOOLS_UI_INSPECTOR_DATA_ATTRIBUTE3_LABEL",
+    "path": "devtools.inspector.attr3.label",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
+    "sourceComponent": "DEVTOOLS",
+    "sourceLine": 1065,
     "feature": "devtools"
   },
   "1ff85999-dff4-576c-8c93-f967346eeb22": {
@@ -22548,6 +22548,16 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "sourceLine": 394,
     "feature": "devtools"
   },
+  "UI_DEVTOOLS_UI_INSPECTOR_STATUS_CONTAINER": {
+    "uuid": "6ef1ab39-2641-5ba0-a65a-19dba02f794a",
+    "id": "UI_DEVTOOLS_UI_INSPECTOR_STATUS_CONTAINER",
+    "path": "devtools.inspector.status.container",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
+    "sourceComponent": "DEVTOOLS",
+    "sourceLine": 109,
+    "feature": "devtools"
+  },
   "UI_DEVTOOLS_UI_INSPECTOR_SIDEBAR_DBATTRS_LABEL": {
     "uuid": "aa932a35-505c-5166-b551-fed7efbc6980",
     "id": "UI_DEVTOOLS_UI_INSPECTOR_SIDEBAR_DBATTRS_LABEL",
@@ -22568,6 +22578,16 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "sourceLine": 442,
     "feature": "devtools"
   },
+  "UI_DEVTOOLS_UI_INSPECTOR_SIDEBAR_SCHEMA_LABEL": {
+    "uuid": "92e74e9c-dcb0-5aad-b89d-36a645ea7617",
+    "id": "UI_DEVTOOLS_UI_INSPECTOR_SIDEBAR_SCHEMA_LABEL",
+    "path": "devtools.inspector.sidebar.schema",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
+    "sourceComponent": "DEVTOOLS",
+    "sourceLine": 454,
+    "feature": "devtools"
+  },
   "UI_DEVTOOLS_UI_INSPECTOR_SEARCH_LABEL": {
     "uuid": "3dff0d36-12e1-56bb-9e99-0a8cc70f9539",
     "id": "UI_DEVTOOLS_UI_INSPECTOR_SEARCH_LABEL",
@@ -22586,16 +22606,6 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
     "sourceComponent": "DEVTOOLS",
     "sourceLine": 382,
-    "feature": "devtools"
-  },
-  "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_CONTAINER": {
-    "uuid": "16141077-f469-5674-83c9-4c91f9d24aee",
-    "id": "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_CONTAINER",
-    "path": "devtools.inspector.detail.container",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
-    "sourceComponent": "DEVTOOLS",
-    "sourceLine": 468,
     "feature": "devtools"
   },
   "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_TITLE": {
@@ -22658,16 +22668,6 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "sourceLine": 872,
     "feature": "devtools"
   },
-  "UI_DEVTOOLS_UI_INSPECTOR_DATA_ATTRIBUTES_LABEL": {
-    "uuid": "bd1ed4c8-dc5e-528b-8ce2-d71e6076b8b1",
-    "id": "UI_DEVTOOLS_UI_INSPECTOR_DATA_ATTRIBUTES_LABEL",
-    "path": "devtools.inspector.data.attributes",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
-    "sourceComponent": "DEVTOOLS",
-    "sourceLine": 981,
-    "feature": "devtools"
-  },
   "UI_DEVTOOLS_UI_INSPECTOR_DATA_ATTRIBUTES_TOGGLE": {
     "uuid": "5ab365aa-f522-5d27-9570-6d2c316cf719",
     "id": "UI_DEVTOOLS_UI_INSPECTOR_DATA_ATTRIBUTES_TOGGLE",
@@ -22676,16 +22676,6 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
     "sourceComponent": "DEVTOOLS",
     "sourceLine": 993,
-    "feature": "devtools"
-  },
-  "UI_DEVTOOLS_UI_INSPECTOR_DATA_ATTRIBUTE1_LABEL": {
-    "uuid": "0e6d15c2-b07a-562d-8e92-2cc4777028bf",
-    "id": "UI_DEVTOOLS_UI_INSPECTOR_DATA_ATTRIBUTE1_LABEL",
-    "path": "devtools.inspector.attr1.label",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
-    "sourceComponent": "DEVTOOLS",
-    "sourceLine": 1017,
     "feature": "devtools"
   },
   "UI_DEVTOOLS_UI_INSPECTOR_DATA_ATTRIBUTE1_CHECKBOX": {
@@ -22698,16 +22688,6 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "sourceLine": 1005,
     "feature": "devtools"
   },
-  "UI_DEVTOOLS_UI_INSPECTOR_DATA_ATTRIBUTE2_LABEL": {
-    "uuid": "5863eb33-ba6d-5fa0-a6f7-fc01bf71d9ce",
-    "id": "UI_DEVTOOLS_UI_INSPECTOR_DATA_ATTRIBUTE2_LABEL",
-    "path": "devtools.inspector.attr2.label",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
-    "sourceComponent": "DEVTOOLS",
-    "sourceLine": 1041,
-    "feature": "devtools"
-  },
   "UI_DEVTOOLS_UI_INSPECTOR_DATA_ATTRIBUTE2_CHECKBOX": {
     "uuid": "3cd3d8ca-8fec-5977-a81d-700c8baa8921",
     "id": "UI_DEVTOOLS_UI_INSPECTOR_DATA_ATTRIBUTE2_CHECKBOX",
@@ -22716,16 +22696,6 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
     "sourceComponent": "DEVTOOLS",
     "sourceLine": 1029,
-    "feature": "devtools"
-  },
-  "UI_DEVTOOLS_UI_INSPECTOR_DATA_ATTRIBUTE3_LABEL": {
-    "uuid": "74a226e8-a780-59eb-8322-4b3e71cca3d1",
-    "id": "UI_DEVTOOLS_UI_INSPECTOR_DATA_ATTRIBUTE3_LABEL",
-    "path": "devtools.inspector.attr3.label",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
-    "sourceComponent": "DEVTOOLS",
-    "sourceLine": 1065,
     "feature": "devtools"
   },
   "UI_DEVTOOLS_UI_INSPECTOR_DATA_ATTRIBUTE3_CHECKBOX": {
@@ -22776,16 +22746,6 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
     "sourceComponent": "DEVTOOLS",
     "sourceLine": 1117,
-    "feature": "devtools"
-  },
-  "UI_DEVTOOLS_UI_INSPECTOR_DBREF_DB_AR_INPUT": {
-    "uuid": "c3a49122-f077-5795-9550-270c6094fbff",
-    "id": "UI_DEVTOOLS_UI_INSPECTOR_DBREF_DB_AR_INPUT",
-    "path": "devtools.inspector.dbar.input",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
-    "sourceComponent": "DEVTOOLS",
-    "sourceLine": 1193,
     "feature": "devtools"
   },
   "UI_DEVTOOLS_UI_INSPECTOR_DBREF_DB_EN_INPUT": {
@@ -22938,26 +22898,6 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "sourceLine": 1132,
     "feature": "devtools"
   },
-  "UI_DEVTOOLS_UI_INSPECTOR_DATA_INF1_LABEL": {
-    "uuid": "ea93ad8b-59aa-5738-b3af-532dae9fc042",
-    "id": "UI_DEVTOOLS_UI_INSPECTOR_DATA_INF1_LABEL",
-    "path": "devtools.inspector.inf1.label",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
-    "sourceComponent": "DEVTOOLS",
-    "sourceLine": 909,
-    "feature": "devtools"
-  },
-  "UI_DEVTOOLS_UI_INSPECTOR_DBREF_TABLE_AR_INPUT": {
-    "uuid": "d5f833c2-b384-5af7-b698-87d815e7efe5",
-    "id": "UI_DEVTOOLS_UI_INSPECTOR_DBREF_TABLE_AR_INPUT",
-    "path": "devtools.inspector.tbar.input",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
-    "sourceComponent": "DEVTOOLS",
-    "sourceLine": 1217,
-    "feature": "devtools"
-  },
   "UI_DEVTOOLS_UI_INSPECTOR_DBREF_TABLE_EN_INPUT": {
     "uuid": "083ab8a2-1747-5f0f-b856-eca829bb3c45",
     "id": "UI_DEVTOOLS_UI_INSPECTOR_DBREF_TABLE_EN_INPUT",
@@ -22976,16 +22916,6 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
     "sourceComponent": "DEVTOOLS",
     "sourceLine": 1313,
-    "feature": "devtools"
-  },
-  "UI_DEVTOOLS_UI_INSPECTOR_DBREF_COLUMN_AR_INPUT": {
-    "uuid": "6e1896a6-50c5-55f5-9771-4a7067e7462f",
-    "id": "UI_DEVTOOLS_UI_INSPECTOR_DBREF_COLUMN_AR_INPUT",
-    "path": "devtools.inspector.colar.input",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
-    "sourceComponent": "DEVTOOLS",
-    "sourceLine": 1241,
     "feature": "devtools"
   },
   "UI_DEVTOOLS_UI_INSPECTOR_DBREF_COLUMN_EN_INPUT": {
@@ -23058,134 +22988,34 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "sourceLine": 969,
     "feature": "devtools"
   },
-  "UI_DEVTOOLS_UI_INSPECTOR_STATUS_CONTAINER": {
-    "uuid": "6ef1ab39-2641-5ba0-a65a-19dba02f794a",
-    "id": "UI_DEVTOOLS_UI_INSPECTOR_STATUS_CONTAINER",
-    "path": "devtools.inspector.status.container",
+  "UI_DEVTOOLS_UI_INSPECTOR_DBREF_DB_AR_INPUT": {
+    "uuid": "c3a49122-f077-5795-9550-270c6094fbff",
+    "id": "UI_DEVTOOLS_UI_INSPECTOR_DBREF_DB_AR_INPUT",
+    "path": "devtools.inspector.dbar.input",
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
     "sourceComponent": "DEVTOOLS",
-    "sourceLine": 109,
+    "sourceLine": 1193,
     "feature": "devtools"
   },
-  "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_STABLE_ID_LABEL": {
-    "uuid": "21192078-251a-574f-ac19-ac5280bfb2c9",
-    "id": "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_STABLE_ID_LABEL",
-    "path": "devtools.inspector.stableid.label",
+  "UI_DEVTOOLS_UI_INSPECTOR_DBREF_TABLE_AR_INPUT": {
+    "uuid": "d5f833c2-b384-5af7-b698-87d815e7efe5",
+    "id": "UI_DEVTOOLS_UI_INSPECTOR_DBREF_TABLE_AR_INPUT",
+    "path": "devtools.inspector.tbar.input",
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
     "sourceComponent": "DEVTOOLS",
-    "sourceLine": 516,
+    "sourceLine": 1217,
     "feature": "devtools"
   },
-  "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_STABLE_ID_VALUE": {
-    "uuid": "e0e7b88b-e9b7-56ac-bc4a-338d8a0037ee",
-    "id": "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_STABLE_ID_VALUE",
-    "path": "devtools.inspector.stableid.value",
+  "UI_DEVTOOLS_UI_INSPECTOR_DBREF_COLUMN_AR_INPUT": {
+    "uuid": "6e1896a6-50c5-55f5-9771-4a7067e7462f",
+    "id": "UI_DEVTOOLS_UI_INSPECTOR_DBREF_COLUMN_AR_INPUT",
+    "path": "devtools.inspector.colar.input",
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
     "sourceComponent": "DEVTOOLS",
-    "sourceLine": 528,
-    "feature": "devtools"
-  },
-  "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_PATH_LABEL": {
-    "uuid": "374af8c6-3695-5db7-a475-0550c85490a9",
-    "id": "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_PATH_LABEL",
-    "path": "devtools.inspector.path.label",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
-    "sourceComponent": "DEVTOOLS",
-    "sourceLine": 540,
-    "feature": "devtools"
-  },
-  "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_PATH_VALUE": {
-    "uuid": "7e072109-c59e-51c4-97b2-431326926fce",
-    "id": "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_PATH_VALUE",
-    "path": "devtools.inspector.path.value",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
-    "sourceComponent": "DEVTOOLS",
-    "sourceLine": 552,
-    "feature": "devtools"
-  },
-  "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_TAG_LABEL": {
-    "uuid": "a1a82465-df44-5e36-8d62-de57ee80ef00",
-    "id": "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_TAG_LABEL",
-    "path": "devtools.inspector.meta.tag-label",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
-    "sourceComponent": "DEVTOOLS",
-    "sourceLine": 612,
-    "feature": "devtools"
-  },
-  "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_TAG_VALUE": {
-    "uuid": "8ff63d62-9911-5339-864c-d3644748b483",
-    "id": "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_TAG_VALUE",
-    "path": "devtools.inspector.meta.tag-value",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
-    "sourceComponent": "DEVTOOLS",
-    "sourceLine": 624,
-    "feature": "devtools"
-  },
-  "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_UUID_LABEL": {
-    "uuid": "52ab65d2-15ad-5a83-930b-805c6f911f85",
-    "id": "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_UUID_LABEL",
-    "path": "devtools.inspector.uuid.label",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
-    "sourceComponent": "DEVTOOLS",
-    "sourceLine": 492,
-    "feature": "devtools"
-  },
-  "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_UUID_VALUE": {
-    "uuid": "a2dbed0d-c3e8-5128-af57-61b7ddde6f02",
-    "id": "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_UUID_VALUE",
-    "path": "devtools.inspector.uuid.value",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
-    "sourceComponent": "DEVTOOLS",
-    "sourceLine": 504,
-    "feature": "devtools"
-  },
-  "UI_DEVTOOLS_UI_INSPECTOR_STATUS_IFRAME_VALUE": {
-    "uuid": "26ad9de4-6b76-509b-a44a-ce36251665cd",
-    "id": "UI_DEVTOOLS_UI_INSPECTOR_STATUS_IFRAME_VALUE",
-    "path": "devtools.inspector.status.iframe",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
-    "sourceComponent": "DEVTOOLS",
-    "sourceLine": 122,
-    "feature": "devtools"
-  },
-  "UI_DEVTOOLS_UI_INSPECTOR_STATUS_SCAN_VALUE": {
-    "uuid": "c588e7d1-86a9-5482-8d0d-7e0fffef5068",
-    "id": "UI_DEVTOOLS_UI_INSPECTOR_STATUS_SCAN_VALUE",
-    "path": "devtools.inspector.status.scan",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
-    "sourceComponent": "DEVTOOLS",
-    "sourceLine": 134,
-    "feature": "devtools"
-  },
-  "UI_DEVTOOLS_UI_INSPECTOR_STATUS_COUNT_VALUE": {
-    "uuid": "bc790843-3405-53a6-b812-4795f812e1e8",
-    "id": "UI_DEVTOOLS_UI_INSPECTOR_STATUS_COUNT_VALUE",
-    "path": "devtools.inspector.status.count",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
-    "sourceComponent": "DEVTOOLS",
-    "sourceLine": 146,
-    "feature": "devtools"
-  },
-  "UI_DEVTOOLS_UI_INSPECTOR_STATUS_URL_VALUE": {
-    "uuid": "d91ecc1d-6630-5248-bc44-455710a726fa",
-    "id": "UI_DEVTOOLS_UI_INSPECTOR_STATUS_URL_VALUE",
-    "path": "devtools.inspector.status.url",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
-    "sourceComponent": "DEVTOOLS",
-    "sourceLine": 158,
+    "sourceLine": 1241,
     "feature": "devtools"
   },
   "UI_DEVTOOLS_UI_INSPECTOR_ELEMENT_LIST": {
@@ -23218,16 +23048,6 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "sourceLine": 210,
     "feature": "devtools"
   },
-  "UI_DEVTOOLS_UI_INSPECTOR_FILTER_FEATURE_LABEL": {
-    "uuid": "0d351ad1-851d-555c-bfad-e09f1ae895f2",
-    "id": "UI_DEVTOOLS_UI_INSPECTOR_FILTER_FEATURE_LABEL",
-    "path": "devtools.inspector.feature.label",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
-    "sourceComponent": "DEVTOOLS",
-    "sourceLine": 222,
-    "feature": "devtools"
-  },
   "UI_DEVTOOLS_UI_INSPECTOR_FILTER_FEATURE_SELECT": {
     "uuid": "de50da61-b4ad-5dae-ad6c-c0a76b41034c",
     "id": "UI_DEVTOOLS_UI_INSPECTOR_FILTER_FEATURE_SELECT",
@@ -23236,16 +23056,6 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
     "sourceComponent": "DEVTOOLS",
     "sourceLine": 234,
-    "feature": "devtools"
-  },
-  "UI_DEVTOOLS_UI_INSPECTOR_FILTER_TAG_LABEL": {
-    "uuid": "a471ed7f-35f8-54d2-83ce-cd413aabb0d4",
-    "id": "UI_DEVTOOLS_UI_INSPECTOR_FILTER_TAG_LABEL",
-    "path": "devtools.inspector.tag.label",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
-    "sourceComponent": "DEVTOOLS",
-    "sourceLine": 259,
     "feature": "devtools"
   },
   "UI_DEVTOOLS_UI_INSPECTOR_FILTER_TAG_SELECT": {
@@ -23258,16 +23068,6 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "sourceLine": 271,
     "feature": "devtools"
   },
-  "UI_DEVTOOLS_UI_INSPECTOR_FILTER_LIFECYCLE_LABEL": {
-    "uuid": "739d400b-7691-5b5e-8437-fa75d43af060",
-    "id": "UI_DEVTOOLS_UI_INSPECTOR_FILTER_LIFECYCLE_LABEL",
-    "path": "devtools.inspector.lifecycle.label",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
-    "sourceComponent": "DEVTOOLS",
-    "sourceLine": 296,
-    "feature": "devtools"
-  },
   "UI_DEVTOOLS_UI_INSPECTOR_FILTER_LIFECYCLE_SELECT": {
     "uuid": "32cc8633-6ca6-5ee8-b4c7-c625149e06c2",
     "id": "UI_DEVTOOLS_UI_INSPECTOR_FILTER_LIFECYCLE_SELECT",
@@ -23276,16 +23076,6 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
     "sourceComponent": "DEVTOOLS",
     "sourceLine": 308,
-    "feature": "devtools"
-  },
-  "UI_DEVTOOLS_UI_INSPECTOR_FILTER_MISSING_LABEL": {
-    "uuid": "bb3996fb-b179-55a6-b1a2-e7490091f33c",
-    "id": "UI_DEVTOOLS_UI_INSPECTOR_FILTER_MISSING_LABEL",
-    "path": "devtools.inspector.missing.label",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
-    "sourceComponent": "DEVTOOLS",
-    "sourceLine": 333,
     "feature": "devtools"
   },
   "UI_DEVTOOLS_UI_INSPECTOR_FILTER_MISSING_CHECKBOX": {
@@ -23496,6 +23286,126 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
     "sourceComponent": "DEVTOOLS",
     "sourceLine": 804,
+    "feature": "devtools"
+  },
+  "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_STABLE_ID_LABEL": {
+    "uuid": "21192078-251a-574f-ac19-ac5280bfb2c9",
+    "id": "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_STABLE_ID_LABEL",
+    "path": "devtools.inspector.stableid.label",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
+    "sourceComponent": "DEVTOOLS",
+    "sourceLine": 516,
+    "feature": "devtools"
+  },
+  "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_STABLE_ID_VALUE": {
+    "uuid": "e0e7b88b-e9b7-56ac-bc4a-338d8a0037ee",
+    "id": "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_STABLE_ID_VALUE",
+    "path": "devtools.inspector.stableid.value",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
+    "sourceComponent": "DEVTOOLS",
+    "sourceLine": 528,
+    "feature": "devtools"
+  },
+  "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_PATH_LABEL": {
+    "uuid": "374af8c6-3695-5db7-a475-0550c85490a9",
+    "id": "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_PATH_LABEL",
+    "path": "devtools.inspector.path.label",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
+    "sourceComponent": "DEVTOOLS",
+    "sourceLine": 540,
+    "feature": "devtools"
+  },
+  "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_PATH_VALUE": {
+    "uuid": "7e072109-c59e-51c4-97b2-431326926fce",
+    "id": "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_PATH_VALUE",
+    "path": "devtools.inspector.path.value",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
+    "sourceComponent": "DEVTOOLS",
+    "sourceLine": 552,
+    "feature": "devtools"
+  },
+  "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_TAG_LABEL": {
+    "uuid": "a1a82465-df44-5e36-8d62-de57ee80ef00",
+    "id": "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_TAG_LABEL",
+    "path": "devtools.inspector.meta.tag-label",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
+    "sourceComponent": "DEVTOOLS",
+    "sourceLine": 612,
+    "feature": "devtools"
+  },
+  "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_TAG_VALUE": {
+    "uuid": "8ff63d62-9911-5339-864c-d3644748b483",
+    "id": "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_TAG_VALUE",
+    "path": "devtools.inspector.meta.tag-value",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
+    "sourceComponent": "DEVTOOLS",
+    "sourceLine": 624,
+    "feature": "devtools"
+  },
+  "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_UUID_LABEL": {
+    "uuid": "52ab65d2-15ad-5a83-930b-805c6f911f85",
+    "id": "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_UUID_LABEL",
+    "path": "devtools.inspector.uuid.label",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
+    "sourceComponent": "DEVTOOLS",
+    "sourceLine": 492,
+    "feature": "devtools"
+  },
+  "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_UUID_VALUE": {
+    "uuid": "a2dbed0d-c3e8-5128-af57-61b7ddde6f02",
+    "id": "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_UUID_VALUE",
+    "path": "devtools.inspector.uuid.value",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
+    "sourceComponent": "DEVTOOLS",
+    "sourceLine": 504,
+    "feature": "devtools"
+  },
+  "UI_DEVTOOLS_UI_INSPECTOR_STATUS_IFRAME_VALUE": {
+    "uuid": "26ad9de4-6b76-509b-a44a-ce36251665cd",
+    "id": "UI_DEVTOOLS_UI_INSPECTOR_STATUS_IFRAME_VALUE",
+    "path": "devtools.inspector.status.iframe",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
+    "sourceComponent": "DEVTOOLS",
+    "sourceLine": 122,
+    "feature": "devtools"
+  },
+  "UI_DEVTOOLS_UI_INSPECTOR_STATUS_SCAN_VALUE": {
+    "uuid": "c588e7d1-86a9-5482-8d0d-7e0fffef5068",
+    "id": "UI_DEVTOOLS_UI_INSPECTOR_STATUS_SCAN_VALUE",
+    "path": "devtools.inspector.status.scan",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
+    "sourceComponent": "DEVTOOLS",
+    "sourceLine": 134,
+    "feature": "devtools"
+  },
+  "UI_DEVTOOLS_UI_INSPECTOR_STATUS_COUNT_VALUE": {
+    "uuid": "bc790843-3405-53a6-b812-4795f812e1e8",
+    "id": "UI_DEVTOOLS_UI_INSPECTOR_STATUS_COUNT_VALUE",
+    "path": "devtools.inspector.status.count",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
+    "sourceComponent": "DEVTOOLS",
+    "sourceLine": 146,
+    "feature": "devtools"
+  },
+  "UI_DEVTOOLS_UI_INSPECTOR_STATUS_URL_VALUE": {
+    "uuid": "d91ecc1d-6630-5248-bc44-455710a726fa",
+    "id": "UI_DEVTOOLS_UI_INSPECTOR_STATUS_URL_VALUE",
+    "path": "devtools.inspector.status.url",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
+    "sourceComponent": "DEVTOOLS",
+    "sourceLine": 158,
     "feature": "devtools"
   },
   "UI_DEVTOOLS_UI_INSPECTOR_PAGE_CONTAINER": {
@@ -24228,6 +24138,46 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "sourceLine": 46,
     "feature": "devtools"
   },
+  "UI_DEVTOOLS_UI_INSPECTOR_FILTER_FEATURE_LABEL": {
+    "uuid": "0d351ad1-851d-555c-bfad-e09f1ae895f2",
+    "id": "UI_DEVTOOLS_UI_INSPECTOR_FILTER_FEATURE_LABEL",
+    "path": "devtools.inspector.feature.label",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
+    "sourceComponent": "DEVTOOLS",
+    "sourceLine": 222,
+    "feature": "devtools"
+  },
+  "UI_DEVTOOLS_UI_INSPECTOR_FILTER_TAG_LABEL": {
+    "uuid": "a471ed7f-35f8-54d2-83ce-cd413aabb0d4",
+    "id": "UI_DEVTOOLS_UI_INSPECTOR_FILTER_TAG_LABEL",
+    "path": "devtools.inspector.tag.label",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
+    "sourceComponent": "DEVTOOLS",
+    "sourceLine": 259,
+    "feature": "devtools"
+  },
+  "UI_DEVTOOLS_UI_INSPECTOR_FILTER_LIFECYCLE_LABEL": {
+    "uuid": "739d400b-7691-5b5e-8437-fa75d43af060",
+    "id": "UI_DEVTOOLS_UI_INSPECTOR_FILTER_LIFECYCLE_LABEL",
+    "path": "devtools.inspector.lifecycle.label",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
+    "sourceComponent": "DEVTOOLS",
+    "sourceLine": 296,
+    "feature": "devtools"
+  },
+  "UI_DEVTOOLS_UI_INSPECTOR_FILTER_MISSING_LABEL": {
+    "uuid": "bb3996fb-b179-55a6-b1a2-e7490091f33c",
+    "id": "UI_DEVTOOLS_UI_INSPECTOR_FILTER_MISSING_LABEL",
+    "path": "devtools.inspector.missing.label",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
+    "sourceComponent": "DEVTOOLS",
+    "sourceLine": 333,
+    "feature": "devtools"
+  },
   "UI_DEVTOOLS_UI_INSPECTOR_SIDEBAR_DATABASE_LABEL": {
     "uuid": "433ba2ee-c5c8-5a4f-9506-e1f04ff70309",
     "id": "UI_DEVTOOLS_UI_INSPECTOR_SIDEBAR_DATABASE_LABEL",
@@ -24248,14 +24198,64 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "sourceLine": 418,
     "feature": "devtools"
   },
-  "UI_DEVTOOLS_UI_INSPECTOR_SIDEBAR_SCHEMA_LABEL": {
-    "uuid": "92e74e9c-dcb0-5aad-b89d-36a645ea7617",
-    "id": "UI_DEVTOOLS_UI_INSPECTOR_SIDEBAR_SCHEMA_LABEL",
-    "path": "devtools.inspector.sidebar.schema",
+  "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_CONTAINER": {
+    "uuid": "16141077-f469-5674-83c9-4c91f9d24aee",
+    "id": "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_CONTAINER",
+    "path": "devtools.inspector.detail.container",
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
     "sourceComponent": "DEVTOOLS",
-    "sourceLine": 454,
+    "sourceLine": 468,
+    "feature": "devtools"
+  },
+  "UI_DEVTOOLS_UI_INSPECTOR_DATA_INF1_LABEL": {
+    "uuid": "ea93ad8b-59aa-5738-b3af-532dae9fc042",
+    "id": "UI_DEVTOOLS_UI_INSPECTOR_DATA_INF1_LABEL",
+    "path": "devtools.inspector.inf1.label",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
+    "sourceComponent": "DEVTOOLS",
+    "sourceLine": 909,
+    "feature": "devtools"
+  },
+  "UI_DEVTOOLS_UI_INSPECTOR_DATA_ATTRIBUTES_LABEL": {
+    "uuid": "bd1ed4c8-dc5e-528b-8ce2-d71e6076b8b1",
+    "id": "UI_DEVTOOLS_UI_INSPECTOR_DATA_ATTRIBUTES_LABEL",
+    "path": "devtools.inspector.data.attributes",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
+    "sourceComponent": "DEVTOOLS",
+    "sourceLine": 981,
+    "feature": "devtools"
+  },
+  "UI_DEVTOOLS_UI_INSPECTOR_DATA_ATTRIBUTE1_LABEL": {
+    "uuid": "0e6d15c2-b07a-562d-8e92-2cc4777028bf",
+    "id": "UI_DEVTOOLS_UI_INSPECTOR_DATA_ATTRIBUTE1_LABEL",
+    "path": "devtools.inspector.attr1.label",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
+    "sourceComponent": "DEVTOOLS",
+    "sourceLine": 1017,
+    "feature": "devtools"
+  },
+  "UI_DEVTOOLS_UI_INSPECTOR_DATA_ATTRIBUTE2_LABEL": {
+    "uuid": "5863eb33-ba6d-5fa0-a6f7-fc01bf71d9ce",
+    "id": "UI_DEVTOOLS_UI_INSPECTOR_DATA_ATTRIBUTE2_LABEL",
+    "path": "devtools.inspector.attr2.label",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
+    "sourceComponent": "DEVTOOLS",
+    "sourceLine": 1041,
+    "feature": "devtools"
+  },
+  "UI_DEVTOOLS_UI_INSPECTOR_DATA_ATTRIBUTE3_LABEL": {
+    "uuid": "74a226e8-a780-59eb-8322-4b3e71cca3d1",
+    "id": "UI_DEVTOOLS_UI_INSPECTOR_DATA_ATTRIBUTE3_LABEL",
+    "path": "devtools.inspector.attr3.label",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/devtools.ts",
+    "sourceComponent": "DEVTOOLS",
+    "sourceLine": 1065,
     "feature": "devtools"
   },
   "UI_MERCHANT_PROFILE_HERO_BANNER": {

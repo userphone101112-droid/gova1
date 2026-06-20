@@ -22,6 +22,7 @@ import {
 import { formStateFromEntry, getInspectorData, emptyFormState } from '../data/inspector-config-storage';
 import { loadDatabaseRefFile } from '../services/database-ref.service';
 import { loadInspectorConfigMap } from '../services/inspector-config.service';
+import { loadStorageRefFile } from '../services/storage-ref.service';
 import {
   clampSidebarWidth,
   persistPickModeEnabled,
@@ -32,7 +33,7 @@ import {
 } from '../utils/layout-storage';
 
 import type { InspectorAction, InspectorState } from './inspector-actions';
-import { selectCurrentElement, useInspectorSelectors } from './inspector-selectors';
+import { useInspectorSelectors } from './inspector-selectors';
 import { createInitialInspectorState, inspectorReducer } from './inspector-store';
 
 type InspectorContextValue = {
@@ -57,6 +58,7 @@ export function InspectorProvider({ children }: { children: ReactNode }) {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const sidebarWidthRef = useRef(state.sidebarWidth);
   const draggingRef = useRef(false);
+  const loadedIdentityKeyRef = useRef<string | null>(null);
   const selectors = useInspectorSelectors(state);
 
   useEffect(() => {
@@ -73,10 +75,15 @@ export function InspectorProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     const load = async () => {
       try {
-        const [configMap, refData] = await Promise.all([loadInspectorConfigMap(), loadDatabaseRefFile()]);
+        const [configMap, refData, storageData] = await Promise.all([
+          loadInspectorConfigMap(),
+          loadDatabaseRefFile(),
+          loadStorageRefFile(),
+        ]);
         dispatch({ type: 'SET_ALL_INSPECTOR_DATA', data: configMap });
         dispatch({ type: 'SET_DATABASE_REF', data: refData });
         dispatch({ type: 'SET_DATABASE_REF_DRAFT', data: refData });
+        dispatch({ type: 'SET_STORAGE_REF', data: storageData });
       } catch {
         /* ignore load errors in devtools */
       }
@@ -116,9 +123,14 @@ export function InspectorProvider({ children }: { children: ReactNode }) {
     );
   }, []);
 
-  const selectElement = useCallback((scanKey: string) => {
-    dispatch({ type: 'SET_SELECTED_SCAN_KEY', scanKey });
-  }, []);
+  const selectElement = useCallback(
+    (scanKey: string) => {
+      const element = state.elements.find((el) => el.scanKey === scanKey);
+      if (!element) return;
+      dispatch({ type: 'SELECT_ELEMENT', scanKey, element });
+    },
+    [state.elements]
+  );
 
   useEffect(() => {
     const onMessage = (event: MessageEvent) => {
@@ -158,21 +170,29 @@ export function InspectorProvider({ children }: { children: ReactNode }) {
   }, [state.pickModeEnabled, sendPickMode, state.iframeReady]);
 
   useEffect(() => {
-    const selected = selectCurrentElement(state);
-    if (!selected) {
-      dispatch({ type: 'SET_FORM_STATE', formState: emptyFormState() });
-      dispatch({ type: 'SET_DATABASE_PANEL_PINNED', pinned: false });
+    const identityKey = state.selectedIdentityKey;
+    const selectedElement = state.lastSelectedElement;
+
+    if (!identityKey || !selectedElement) {
+      if (loadedIdentityKeyRef.current !== null) {
+        dispatch({ type: 'SET_FORM_STATE', formState: emptyFormState() });
+        dispatch({ type: 'SET_DATABASE_PANEL_PINNED', pinned: false });
+      }
+      loadedIdentityKeyRef.current = null;
       return;
     }
-    const saved = getInspectorData(state.allInspectorData, selected);
+
+    if (loadedIdentityKeyRef.current === identityKey) {
+      return;
+    }
+
+    loadedIdentityKeyRef.current = identityKey;
+    const saved = getInspectorData(state.allInspectorData, selectedElement);
     dispatch({
       type: 'LOAD_ELEMENT_FORM',
-      formState: formStateFromEntry(saved),
-      expandedPatch: {
-        dbAttributes: Boolean(saved?.databaseEnabled || saved?.attributesEnabled),
-      },
+      formState: formStateFromEntry(saved, state.databaseRef),
     });
-  }, [state.selectedScanKey, state.elements, state.allInspectorData]);
+  }, [state.selectedIdentityKey, state.lastSelectedElement, state.allInspectorData, state.databaseRef]);
 
   useEffect(() => {
     const onMouseMove = (event: MouseEvent) => {
@@ -213,6 +233,7 @@ export function InspectorProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const handleRouteChange = useCallback((routePath: InspectorRoutePath) => {
+    loadedIdentityKeyRef.current = null;
     dispatch({ type: 'SET_ROUTE', routePath });
   }, []);
 

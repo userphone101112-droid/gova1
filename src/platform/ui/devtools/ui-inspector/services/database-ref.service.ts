@@ -34,11 +34,11 @@ export async function saveDatabaseRefFile(
 export async function saveDatabaseRefDescription(
   current: DatabaseRefFile,
   level: DatabaseRefLevel,
-  ids: { databaseNameEn: string; tableNameEn?: string; columnNameEn?: string },
+  ids: { databaseName: string; tableName?: string; columnName?: string },
   description: string
 ): Promise<DatabaseRefFile | null> {
   const { file, error } = applyDescriptionUpdate(current, level, ids, description);
   if (error) return null;
-  const saved = await persistDatabaseRefFile(file, { confirm: false });
+  const saved = await persistDatabaseRefFile(file, { confirm: true });
   return saved ? file : null;
 }

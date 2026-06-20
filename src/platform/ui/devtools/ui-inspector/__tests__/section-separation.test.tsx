@@ -47,21 +47,23 @@ describe('ui-inspector section separation', () => {
     expect(source).toMatch(/database-ref\.service/);
   });
 
-  it('useSaveInspectorConfig does not import database-ref.service', () => {
+  it('useStorageManagement does not import inspector-config.service', () => {
+    const source = readModule('hooks/useStorageManagement.ts');
+    expect(source).not.toMatch(/inspector-config\.service/);
+    expect(source).toMatch(/storage-ref\.service/);
+  });
+
+  it('useSaveInspectorConfig does not import database-ref.service or storage-ref.service', () => {
     const source = readModule('hooks/useSaveInspectorConfig.ts');
     expect(source).not.toMatch(/database-ref\.service/);
+    expect(source).not.toMatch(/storage-ref\.service/);
     expect(source).toMatch(/inspector-config\.service/);
   });
 
-  it('DatabaseManagementSection does not import inspector-config.service', () => {
-    const source = readModule('sidebar/DatabaseManagementSection.tsx');
-    expect(source).not.toMatch(/inspector-config\.service/);
-  });
-
-  it('DatabaseAttributesSection uses inspector save hook only', () => {
-    const source = readModule('sidebar/DatabaseAttributesSection.tsx');
-    expect(source).toMatch(/useSaveInspectorConfig/);
-    expect(source).not.toMatch(/database-ref\.service/);
+  it('StorageSection does not write to storage.json', () => {
+    const source = readModule('sidebar/StorageSection.tsx');
+    expect(source).not.toMatch(/storage-ref\.service/);
+    expect(source).toMatch(/useStorageSettings/);
   });
 
   it('InspectorSidebar hides Database & Attributes without a selected element', () => {
@@ -72,28 +74,37 @@ describe('ui-inspector section separation', () => {
     );
     expect(screen.queryByRole('button', { name: /Database & Attributes/i })).toBeNull();
     expect(screen.getByRole('button', { name: /Database Management/i })).toBeTruthy();
+    expect(screen.getByRole('button', { name: /Storage Manager/i })).toBeTruthy();
   });
 
-  it('persists element inf1/inf2/inf3 and attributes in ui-inspector-data shape only', () => {
+  it('persists databaseName/tableName/columnName and storage fields in ui-inspector-data shape', () => {
     const element = mockElement();
     const form = {
       ...emptyFormState(),
       databaseEnabled: true,
-      inf1: 'human_resource_management_system',
-      inf2: 'employees',
-      inf3: 'employee_id',
+      databaseName: 'human_resource_management_system',
+      tableName: 'employees',
+      columnName: 'employee_id',
+      inf1: 'extra-1',
+      inf2: 'extra-2',
+      inf3: 'extra-3',
+      storageEnabled: true,
+      storageMainFile: 'Projects',
+      storageSubFile: 'Frontend',
       attributesEnabled: true,
       attribute1: true,
       attribute2: false,
       attribute3: true,
     };
     const entry = buildInspectorDataEntry(element, form);
-    expect(entry.inf1).toBe('human_resource_management_system');
-    expect(entry.inf2).toBe('employees');
-    expect(entry.inf3).toBe('employee_id');
-    expect(entry.attribute1).toBe(true);
-    expect(entry).not.toHaveProperty('description');
-    expect(formStateFromEntry(entry)).toEqual(form);
+    expect(entry.databaseName).toBe('human_resource_management_system');
+    expect(entry.tableName).toBe('employees');
+    expect(entry.columnName).toBe('employee_id');
+    expect(entry.inf1).toBe('extra-1');
+    expect(entry.storageMainFile).toBe('Projects');
+    expect(entry.storageSubFile).toBe('Frontend');
+    expect(entry.storageEnabled).toBe(true);
+    expect(formStateFromEntry(entry, { databases: [] })).toEqual(form);
   });
 
   it('uses stable storage keys so returning to the same element restores saved values', () => {
@@ -102,20 +113,29 @@ describe('ui-inspector section separation', () => {
     const saved = buildInspectorDataEntry(element, {
       ...emptyFormState(),
       databaseEnabled: true,
-      inf1: 'ecommerce_system',
-      inf2: 'products',
-      inf3: 'product_id',
+      databaseName: 'ecommerce_system',
+      tableName: 'products',
+      columnName: 'product_id',
+      storageEnabled: true,
+      storageMainFile: 'Database',
+      storageSubFile: 'Tables',
       attributesEnabled: true,
       attribute1: false,
       attribute2: true,
       attribute3: false,
     });
     const map = { [key]: saved };
-    expect(formStateFromEntry(map[key])).toEqual({
+    expect(formStateFromEntry(map[key], { databases: [] })).toEqual({
       databaseEnabled: true,
-      inf1: 'ecommerce_system',
-      inf2: 'products',
-      inf3: 'product_id',
+      databaseName: 'ecommerce_system',
+      tableName: 'products',
+      columnName: 'product_id',
+      inf1: '',
+      inf2: '',
+      inf3: '',
+      storageEnabled: true,
+      storageMainFile: 'Database',
+      storageSubFile: 'Tables',
       attributesEnabled: true,
       attribute1: false,
       attribute2: true,

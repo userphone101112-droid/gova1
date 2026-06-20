@@ -30,5 +30,26 @@
     "dataUiInstanceId": "",
     "dataUiIdentityKey": "23f4f6b3-513e-5b6a-ac7c-9585009fde64",
     "updatedAt": "2026-06-20T11:48:07.938Z"
+  },
+  "4ecf8039-11c1-5808-b0d8-c48fb4f66c9e": {
+    "databaseEnabled": true,
+    "databaseName": "human_resource_management_system",
+    "tableName": "employees",
+    "columnName": "employee_id",
+    "inf1": "1",
+    "inf2": "2",
+    "inf3": "3",
+    "storageMainFile": "Projects",
+    "storageSubFile": "Frontend",
+    "attributesEnabled": true,
+    "attribute1": true,
+    "attribute2": false,
+    "attribute3": true,
+    "dataUiPath": "auth.registration.brand-name",
+    "dataUiFeature": "auth",
+    "dataUiUuid": "4ecf8039-11c1-5808-b0d8-c48fb4f66c9e",
+    "dataUiInstanceId": "",
+    "dataUiIdentityKey": "4ecf8039-11c1-5808-b0d8-c48fb4f66c9e",
+    "updatedAt": "2026-06-20T12:25:39.502Z"
   }
 }
