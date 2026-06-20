@@ -37,7 +37,7 @@ export function Test1Content() {
   return (
     <div
       data-ui-uuid={TEST1.PAGE.CONTAINER.uuid}
-      className="mx-auto min-h-48 max-w-2xl space-y-6 bg-background px-4 py-8"
+      className="mx-auto min-h-48 max-w-5xl space-y-6 bg-background px-4 py-8"
     >
       <h1
         data-ui-uuid={TEST1.PAGE.TITLE.uuid}

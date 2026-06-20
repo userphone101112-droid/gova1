@@ -15,3 +15,4 @@ This folder contains all the problems, challenges, and solutions encountered dur
 1. [Problem: feature "test1" already existed](./01-feature-test1-already-existed.md)
 2. [Problem: test1 missing from APP_DICTIONARY_FEATURES](./02-test1-missing-from-app-dictionary-features.md)
 3. [Problem: Using hyphen in final path segment causes missing translation](./03-hyphen-in-final-path-segment-causes-missing-translation.md)
+4. [Problem: New feature/page content appears extremely narrow](./04-content-very-narrow-max-w-2xl.md)
