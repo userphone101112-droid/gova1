@@ -297,7 +297,7 @@
     },
     {
       "route": "/home",
-      "timestamp": 1781985863233,
+      "timestamp": 1781986746389,
       "totalIdentified": 229,
       "tree": {
         "type": "page",
@@ -688,7 +688,7 @@
     },
     {
       "route": "/devtools/ui-inspector",
-      "timestamp": 1781985863230,
+      "timestamp": 1781986900183,
       "totalIdentified": 58,
       "tree": {
         "type": "page",
@@ -816,7 +816,7 @@
     },
     {
       "route": "/image-upload-form",
-      "timestamp": 1781985572231,
+      "timestamp": 1781986900185,
       "totalIdentified": 47,
       "tree": {
         "type": "page",

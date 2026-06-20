@@ -1,6 +1,5 @@
 /** Routes available for UI Inspector preview — synced from App Router pages. */
 import manifest from './app-route-manifest.json';
-import { pathToInspectorLabel } from './server/discover-app-routes';
 
 export interface InspectorRoute {
   readonly path: string;
@@ -29,5 +28,3 @@ export function isInspectMode(search: string): boolean {
 export function isInspectorRoutePath(path: string, routes: readonly InspectorRoute[] = INSPECTOR_ROUTES): path is InspectorRoutePath {
   return routes.some((route) => route.path === path);
 }
-
-export { pathToInspectorLabel };
