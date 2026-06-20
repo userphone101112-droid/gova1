@@ -45,10 +45,8 @@ export function createInitialInspectorState(): InspectorState {
     iframeReady: false,
     lastScanTime: null,
     expanded: {
-      route: false,
-      display: false,
-      database: false,
-      attributes: false,
+      dbAttributes: false,
+      dbManagement: false,
       filters: false,
       list: false,
       details: false,
@@ -143,7 +141,7 @@ export function inspectorReducer(state: InspectorState, action: InspectorAction)
     case 'MARK_IFRAME_LOADING':
       return { ...state, iframeReady: false, lastScanTime: null };
     case 'TOGGLE_SECTION': {
-      if (action.section === 'database' && state.databasePanelPinned && state.expanded.database) {
+      if (action.section === 'dbAttributes' && state.databasePanelPinned && state.expanded.dbAttributes) {
         return state;
       }
       return {

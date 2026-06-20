@@ -2,6 +2,7 @@
 import { Sparkles } from 'lucide-react';
 import Image from 'next/image';
 
+import { shouldUseUnoptimizedImage } from '@/lib/images/external-image';
 import { useTranslation, type TranslationKey, HOME } from '@/platform/ui';
 
 
@@ -82,7 +83,7 @@ export function FeaturedMarquee() {
         background: 'var(--gova-surface-container-lowest)',
         borderColor: 'var(--gova-outline-variant)',
     }}>
-              <Image data-ui-uuid={HOME.SHELL.TITLEKEY_CONTAINER_L85.uuid} src={item.imgSrc} alt={t(item.titleKey)} width={160} height={160} className="w-full aspect-square object-cover rounded-lg mb-2" />
+              <Image data-ui-uuid={HOME.SHELL.TITLEKEY_CONTAINER_L85.uuid} src={item.imgSrc} alt={t(item.titleKey)} width={160} height={160} className="w-full aspect-square object-cover rounded-lg mb-2" unoptimized={shouldUseUnoptimizedImage(item.imgSrc)} />
               <p data-ui-uuid={HOME.SHELL.TITLEKEY_CONTAINER_L86.uuid} className="truncate font-bold" style={{ fontSize: '12px', fontWeight: '600', color: 'var(--gova-on-surface)' }}>
                 {t(item.titleKey)}
               </p>

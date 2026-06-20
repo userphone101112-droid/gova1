@@ -4,6 +4,8 @@ import { DEVTOOLS } from '@/platform/ui/registry/features/devtools';
 
 import { useInspectorContext } from '../state/InspectorProvider';
 
+import { InspectorToolbar } from './InspectorToolbar';
+
 export function InspectorPreview() {
   const { state, dispatch, selectors, iframeRef } = useInspectorContext();
   const {
@@ -26,6 +28,7 @@ export function InspectorPreview() {
         data-ui-uuid={DEVTOOLS.UI_INSPECTOR.PREVIEW.CONTROLS.uuid}
         className="flex shrink-0 flex-wrap items-center gap-2 border-b border-outline-variant px-2 py-2"
       >
+        <InspectorToolbar />
         <button
           data-ui-uuid={DEVTOOLS.UI_INSPECTOR.PREVIEW.ZOOM_OUT.uuid}
           type="button"

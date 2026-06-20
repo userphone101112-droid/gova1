@@ -14,5 +14,21 @@
     "dataUiInstanceId": "",
     "dataUiIdentityKey": "380ab222-fdc6-581f-8f61-b76c696f7da1",
     "updatedAt": "2026-06-20T11:06:03.355Z"
+  },
+  "23f4f6b3-513e-5b6a-ac7c-9585009fde64": {
+    "databaseEnabled": true,
+    "inf1": "human_resource_management_system",
+    "inf2": "employees",
+    "inf3": "employee_id",
+    "attributesEnabled": false,
+    "attribute1": false,
+    "attribute2": false,
+    "attribute3": false,
+    "dataUiPath": "settings.page.display.description",
+    "dataUiFeature": "settings",
+    "dataUiUuid": "23f4f6b3-513e-5b6a-ac7c-9585009fde64",
+    "dataUiInstanceId": "",
+    "dataUiIdentityKey": "23f4f6b3-513e-5b6a-ac7c-9585009fde64",
+    "updatedAt": "2026-06-20T11:48:07.938Z"
   }
 }

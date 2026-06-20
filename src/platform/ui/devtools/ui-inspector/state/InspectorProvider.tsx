@@ -169,9 +169,7 @@ export function InspectorProvider({ children }: { children: ReactNode }) {
       type: 'LOAD_ELEMENT_FORM',
       formState: formStateFromEntry(saved),
       expandedPatch: {
-        display: Boolean(saved?.updatedAt),
-        database: Boolean(saved?.databaseEnabled),
-        attributes: Boolean(saved?.attributesEnabled),
+        dbAttributes: Boolean(saved?.databaseEnabled || saved?.attributesEnabled),
       },
     });
   }, [state.selectedScanKey, state.elements, state.allInspectorData]);

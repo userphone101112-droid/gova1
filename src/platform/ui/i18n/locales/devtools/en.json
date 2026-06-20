@@ -47,7 +47,12 @@
       "scan": "Last scan timestamp status value",
       "url": "Current iframe target URL status value",
       "display": "Collapsible display section label in sidebar",
-      "action": "Delete column entry in schema editor"
+      "action": "Delete column entry in schema editor",
+      "dbattrs": "Collapsible database and attributes section label",
+      "dbmgmt": "Collapsible database management section label",
+      "schema": "Collapsible schema editor section label",
+      "desc": "Description textarea in database management",
+      "saveDesc": "Save description button in database management"
     }
   }
 }

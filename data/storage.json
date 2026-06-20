@@ -1,0 +1,58 @@
+{
+  "folders": [
+    {
+      "name": "Projects",
+      "description": "مجلد خاص بإدارة المشاريع والملفات المتعلقة بها.",
+      "subfolders": [
+        {
+          "name": "Frontend",
+          "description": "ملفات واجهات المستخدم."
+        },
+        {
+          "name": "Backend",
+          "description": "ملفات الخادم والمنطق البرمجي."
+        },
+        {
+          "name": "Documentation",
+          "description": "الوثائق والمستندات الخاصة بالمشروع."
+        }
+      ]
+    },
+    {
+      "name": "Database",
+      "description": "مجلد يحتوي على مكونات وقواعد البيانات.",
+      "subfolders": [
+        {
+          "name": "Schemas",
+          "description": "تعريفات هياكل قواعد البيانات."
+        },
+        {
+          "name": "Tables",
+          "description": "وصف وإدارة الجداول."
+        },
+        {
+          "name": "Columns",
+          "description": "تعريفات الأعمدة والحقول."
+        }
+      ]
+    },
+    {
+      "name": "Resources",
+      "description": "مجلد للملفات والموارد المشتركة.",
+      "subfolders": [
+        {
+          "name": "Images",
+          "description": "الصور المستخدمة في النظام."
+        },
+        {
+          "name": "Templates",
+          "description": "القوالب الجاهزة."
+        },
+        {
+          "name": "Scripts",
+          "description": "السكربتات والأدوات المساعدة."
+        }
+      ]
+    }
+  ]
+}

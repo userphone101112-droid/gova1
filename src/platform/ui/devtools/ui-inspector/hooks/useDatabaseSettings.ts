@@ -12,7 +12,7 @@ export function useDatabaseSettings() {
     const nextEnabled = !state.formState.databaseEnabled;
     if (nextEnabled) {
       dispatch({ type: 'SET_DATABASE_PANEL_PINNED', pinned: true });
-      dispatch({ type: 'SET_EXPANDED', expanded: { database: true } });
+      dispatch({ type: 'SET_EXPANDED', expanded: { dbAttributes: true } });
     }
     dispatch({
       type: 'PATCH_FORM_STATE',
@@ -52,7 +52,7 @@ export function useDatabaseSettings() {
     databaseRef: state.databaseRef,
     tableOptions: database?.tableOptions ?? [],
     columnOptions: database?.columnOptions ?? [],
-    isDatabaseSectionOpen: state.expanded.database,
+    isDatabaseSectionOpen: state.expanded.dbAttributes,
     isDatabasePanelPinned: state.databasePanelPinned,
     handleDatabaseToggle,
     setDatabaseId,

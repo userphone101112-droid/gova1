@@ -35,10 +35,8 @@ export const TAG_FILTERS = [
 ] as const;
 
 export const DEFAULT_EXPANDED_SECTIONS = {
-  route: false,
-  display: false,
-  database: false,
-  attributes: false,
+  dbAttributes: false,
+  dbManagement: false,
   filters: false,
   list: false,
   details: false,

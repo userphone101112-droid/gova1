@@ -1,6 +1,6 @@
 # Unified UI + i18n Audit Report
 
-Generated: 2026-06-20T10:55:07.606Z
+Generated: 2026-06-20T11:42:29.881Z
 
 ## Executive Summary
 
@@ -9,17 +9,17 @@ Generated: 2026-06-20T10:55:07.606Z
 
 ## Phase 1: UI Registry Scan
 
-- Total UI Identifiers: 1271
+- Total UI Identifiers: 1277
 - Features: home, error-boundary, splash, shared-layout, auth, settings, merchant, onboarding, devtools, common
 
 ## Phase 2: Translation Scan
 
-- Total Translation Keys: 824
+- Total Translation Keys: 829
 - Features: auth, common, devtools, error-boundary, home, merchant, onboarding, settings, shared-layout, splash
 
 ## Phase 3: Component Usage
 
-- Used UI Identifiers: 1271
+- Used UI Identifiers: 1277
 - Used Translation Keys: 42
 - Hardcoded Text Instances: 1
 
@@ -35,13 +35,13 @@ Generated: 2026-06-20T10:55:07.606Z
 | settings | 174 | 62 | 174 | 0 | 0 |
 | merchant | 305 | 150 | 305 | 0 | 0 |
 | onboarding | 298 | 190 | 298 | 0 | 0 |
-| devtools | 112 | 47 | 112 | 0 | 0 |
+| devtools | 118 | 52 | 118 | 0 | 0 |
 | common | 69 | 133 | 69 | 0 | 0 |
 
 ## Phase 5: Orphan Detection
 
 - Orphan UI Identifiers: 0
-- Orphan Translations: 688
+- Orphan Translations: 693
 - Missing Bindings: 0
 - Cross-Feature Violations: 0
 
@@ -51,5 +51,5 @@ None
 
 ## Warnings
 
-- Orphan translations: 688 found (features pending UI identity migration)
+- Orphan translations: 693 found (features pending UI identity migration)
 - Hardcoded text: 1 instance(s) found — review if intentional

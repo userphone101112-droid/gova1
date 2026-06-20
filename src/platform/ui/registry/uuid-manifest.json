@@ -1,7 +1,7 @@
 {
   "version": 1,
   "namespace": "gova.ui-registry",
-  "generatedAt": "2026-06-20T05:46:49.695Z",
+  "generatedAt": "2026-06-20T11:15:52.659Z",
   "identities": {
     "8771d585-21d5-51cc-bb1b-910f1ae955f6": {
       "uuid": "8771d585-21d5-51cc-bb1b-910f1ae955f6",
@@ -2275,6 +2275,39 @@
       "previousPaths": [],
       "aliases": []
     },
+    "ecc19778-822b-5165-9bd9-7dd20e29e3df": {
+      "uuid": "ecc19778-822b-5165-9bd9-7dd20e29e3df",
+      "id": "UI_DEVTOOLS_UI_INSPECTOR_DBMGMT_CONTAINER",
+      "path": "devtools.inspector.dbmgmt.container",
+      "feature": "devtools",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": [],
+      "repeatable": true
+    },
+    "b0eaa6f3-05cb-5762-9d7e-22c9a42e7dd0": {
+      "uuid": "b0eaa6f3-05cb-5762-9d7e-22c9a42e7dd0",
+      "id": "UI_DEVTOOLS_UI_INSPECTOR_DBMGMT_DESC_TEXTAREA",
+      "path": "devtools.inspector.dbmgmt.desc",
+      "feature": "devtools",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": [],
+      "repeatable": true
+    },
+    "9760b450-50aa-5fb5-9628-9e82c360c4cf": {
+      "uuid": "9760b450-50aa-5fb5-9628-9e82c360c4cf",
+      "id": "UI_DEVTOOLS_UI_INSPECTOR_DBMGMT_SAVE_DESC",
+      "path": "devtools.inspector.dbmgmt.save-desc",
+      "feature": "devtools",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": [],
+      "repeatable": true
+    },
     "f5610449-4ce0-5660-ad52-30ab95a5d6e2": {
       "uuid": "f5610449-4ce0-5660-ad52-30ab95a5d6e2",
       "id": "UI_DEVTOOLS_UI_INSPECTOR_DBREF_ADD_COLUMN",
@@ -3121,10 +3154,40 @@
       "previousPaths": [],
       "aliases": []
     },
+    "aa932a35-505c-5166-b551-fed7efbc6980": {
+      "uuid": "aa932a35-505c-5166-b551-fed7efbc6980",
+      "id": "UI_DEVTOOLS_UI_INSPECTOR_SIDEBAR_DBATTRS_LABEL",
+      "path": "devtools.inspector.sidebar.dbattrs",
+      "feature": "devtools",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "fbc894c8-fd69-5d3d-a207-9a726f8d14b7": {
+      "uuid": "fbc894c8-fd69-5d3d-a207-9a726f8d14b7",
+      "id": "UI_DEVTOOLS_UI_INSPECTOR_SIDEBAR_DBMGMT_LABEL",
+      "path": "devtools.inspector.sidebar.dbmgmt",
+      "feature": "devtools",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
     "a91dd08d-358e-5dce-9001-06bf6cbabfa0": {
       "uuid": "a91dd08d-358e-5dce-9001-06bf6cbabfa0",
       "id": "UI_DEVTOOLS_UI_INSPECTOR_SIDEBAR_DISPLAY_LABEL",
       "path": "devtools.inspector.sidebar.display",
+      "feature": "devtools",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "92e74e9c-dcb0-5aad-b89d-36a645ea7617": {
+      "uuid": "92e74e9c-dcb0-5aad-b89d-36a645ea7617",
+      "id": "UI_DEVTOOLS_UI_INSPECTOR_SIDEBAR_SCHEMA_LABEL",
+      "path": "devtools.inspector.sidebar.schema",
       "feature": "devtools",
       "lifecycle": "active",
       "previousIds": [],

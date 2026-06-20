@@ -2,6 +2,7 @@
 import { Heart, ShoppingCart, Tag } from 'lucide-react';
 import Image from 'next/image';
 
+import { shouldUseUnoptimizedImage } from '@/lib/images/external-image';
 import { useTranslation, type TranslationKey, HOME } from '@/platform/ui';
 
 
@@ -83,7 +84,7 @@ export function CuratedOffers() {
         borderColor: 'var(--gova-outline-variant)',
     }}>
             <div data-ui-uuid={HOME.CURATED_OFFERS.PRODUCT_IMAGE_CONTAINER.uuid} className="relative aspect-square">
-              <Image data-ui-uuid={HOME.CURATED_OFFERS.PRODUCT_IMAGE.uuid} src={p.img} alt={t(p.titleKey)} fill className="object-cover transition-transform active:scale-110" />
+              <Image data-ui-uuid={HOME.CURATED_OFFERS.PRODUCT_IMAGE.uuid} src={p.img} alt={t(p.titleKey)} fill className="object-cover transition-transform active:scale-110" unoptimized={shouldUseUnoptimizedImage(p.img)} />
               <button data-ui-uuid={HOME.CURATED_OFFERS.ADD_TO_FAVORITES.uuid} id={p.favId} className="absolute top-2 start-2 w-8 h-8 rounded-full bg-surface-container-lowest/90 backdrop-blur flex items-center justify-center shadow-sm transition-transform active:scale-90" aria-label={t(HOME.CURATED_OFFERS.ADD_TO_FAVORITES)} style={{ color: p.favFilled ? 'var(--gova-error)' : 'var(--gova-on-surface-variant)' }}>
                 <Heart
                   size={18}

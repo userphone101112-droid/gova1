@@ -54,7 +54,7 @@ export function selectCurrentElementDatabaseSettings(state: InspectorState) {
     tableOptions,
     selectedTable,
     columnOptions,
-    isDatabaseSectionOpen: state.expanded.database,
+    isDatabaseSectionOpen: state.expanded.dbAttributes,
     isDatabasePanelPinned: state.databasePanelPinned,
   };
 }
@@ -97,7 +97,7 @@ export function useInspectorSelectors(state: InspectorState) {
 }
 
 export function selectIsDatabaseSectionOpen(state: InspectorState): boolean {
-  return state.expanded.database;
+  return state.expanded.dbAttributes;
 }
 
 export function selectCurrentElement(state: InspectorState) {

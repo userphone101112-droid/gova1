@@ -12,7 +12,7 @@ export function AttributesSection() {
   const handleAttributesToggle = useCallback(() => {
     const nextEnabled = !state.formState.attributesEnabled;
     if (nextEnabled) {
-      dispatch({ type: 'SET_EXPANDED', expanded: { attributes: true } });
+      dispatch({ type: 'SET_EXPANDED', expanded: { dbAttributes: true } });
     }
     dispatch({
       type: 'PATCH_FORM_STATE',

@@ -2,6 +2,7 @@
 import { Store, ChevronLeft, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 
+import { shouldUseUnoptimizedImage } from '@/lib/images/external-image';
 import { useTranslation, type TranslationKey, HOME } from '@/platform/ui';
 
 
@@ -46,7 +47,7 @@ export function CategoriesGrid() {
         {CATEGORIES.map((cat) => (
           <button data-ui-uuid={HOME.CATEGORIES_GRID.ITEM.uuid} key={cat.id} id={`category-${cat.id}`} className="flex flex-col items-center gap-2 group" aria-label={t(cat.nameKey)}>
             <div data-ui-uuid={HOME.SHELL.NAMEKEY_WRAPPER_L47.uuid} className="rounded-full overflow-hidden border-2 border-transparent group-active:border-primary transition-all w-full aspect-square relative bg-surface-container">
-              <Image data-ui-uuid={HOME.CATEGORIES_GRID.CATEGORY_IMAGE.uuid} src={cat.imgSrc} alt={t(cat.nameKey)} fill className="object-cover" />
+              <Image data-ui-uuid={HOME.CATEGORIES_GRID.CATEGORY_IMAGE.uuid} src={cat.imgSrc} alt={t(cat.nameKey)} fill className="object-cover" unoptimized={shouldUseUnoptimizedImage(cat.imgSrc)} />
             </div>
             <span data-ui-uuid={HOME.CATEGORIES_GRID.CATEGORY_NAME.uuid} className="text-center text-xs font-semibold leading-4 text-on-surface-variant">
               {t(cat.nameKey)}

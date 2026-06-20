@@ -47,7 +47,12 @@
       "scan": "TODO(ar): Last scan timestamp status value",
       "url": "TODO(ar): Current iframe target URL status value",
       "display": "TODO(ar): Collapsible display section label in sidebar",
-      "action": "TODO(ar): Delete column entry in schema editor"
+      "action": "TODO(ar): Delete column entry in schema editor",
+      "dbattrs": "TODO(ar): Collapsible database and attributes section label",
+      "dbmgmt": "TODO(ar): Collapsible database management section label",
+      "schema": "TODO(ar): Collapsible schema editor section label",
+      "desc": "TODO(ar): Description textarea in database management",
+      "saveDesc": "TODO(ar): Save description button in database management"
     }
   }
 }

@@ -2,6 +2,7 @@
 import Image from 'next/image';
 import { useState, useEffect, useCallback } from 'react';
 
+import { shouldUseUnoptimizedImage } from '@/lib/images/external-image';
 import { useTranslation, type TranslationKey, HOME } from '@/platform/ui';
 
 
@@ -49,7 +50,7 @@ export function HeroSlider() {
       <div data-ui-uuid={HOME.HERO_SLIDER.SLIDER_TRACK.uuid} id="hero-main-slider" className="flex h-full transition-transform duration-500 ease-out" style={{ transform: `translateX(${locale === 'ar' ? current * 100 : -current * 100}%)` }}>
         {SLIDES.map(slide => (
           <div data-ui-uuid={HOME.HERO_SLIDER.SLIDE.uuid} key={slide.id} id={slide.id} className="min-w-full h-full relative" style={{ flexShrink: 0 }}>
-            <Image data-ui-uuid={HOME.HERO_SLIDER.SLIDE_IMAGE.uuid} src={slide.imgSrc} alt={t(slide.titleKey)} fill className="object-cover" />
+            <Image data-ui-uuid={HOME.HERO_SLIDER.SLIDE_IMAGE.uuid} src={slide.imgSrc} alt={t(slide.titleKey)} fill className="object-cover" unoptimized={shouldUseUnoptimizedImage(slide.imgSrc)} />
             <div data-ui-uuid={HOME.HERO_SLIDER.SLIDE_CONTENT.uuid} className="absolute inset-0 flex flex-col justify-center px-6 text-on-primary" style={{ background: 'linear-gradient(to left, var(--gova-primary), var(--gova-primary-container), transparent)' }}>
               <span data-ui-uuid={HOME.HERO_SLIDER.SLIDE_BADGE.uuid} className="text-xs font-semibold px-2 py-0.5 rounded-full w-fit mb-2" style={{ background: slide.badgeColor, color: slide.badgeTextColor }}>
                 {t(slide.badgeKey)}

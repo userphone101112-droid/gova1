@@ -4,10 +4,8 @@ import type { InspectElementSnapshot } from '../../UiInspectorFrameBridge';
 export type SaveStatus = 'idle' | 'saving' | 'saved' | 'error';
 
 export type SidebarSection =
-  | 'route'
-  | 'display'
-  | 'database'
-  | 'attributes'
+  | 'dbAttributes'
+  | 'dbManagement'
   | 'filters'
   | 'list'
   | 'details';

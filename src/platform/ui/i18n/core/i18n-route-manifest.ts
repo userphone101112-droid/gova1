@@ -10,6 +10,7 @@ export interface I18nRouteEntry {
  * Longest prefix wins.
  */
 export const I18N_ROUTE_MANIFEST: readonly I18nRouteEntry[] = [
+  { prefix: '/devtools', feature: 'devtools' },
   { prefix: '/settings', feature: 'settings' },
   { prefix: '/onboarding', feature: 'onboarding' },
   { prefix: '/merchant', feature: 'merchant' },

@@ -2,16 +2,13 @@
 
 import { DEVTOOLS } from '@/platform/ui/registry/features/devtools';
 
-import { useSaveInspectorConfig } from '../hooks/useSaveInspectorConfig';
-import { AttributesSection } from '../sidebar/AttributesSection';
-import { DatabaseRefEditorPanel } from '../sidebar/DatabaseRefEditorPanel';
-import { DatabaseSection } from '../sidebar/DatabaseSection';
+import { DatabaseAttributesSection } from '../sidebar/DatabaseAttributesSection';
+import { DatabaseManagementSection } from '../sidebar/DatabaseManagementSection';
+import { DisplaySection } from '../sidebar/DisplaySection';
 import { ElementsSection } from '../sidebar/ElementsSection';
 import { FiltersSection } from '../sidebar/FiltersSection';
 import { FullDetailsSection } from '../sidebar/FullDetailsSection';
 import { SidebarSection, sidebarSectionButtonClass } from '../sidebar/SidebarSection';
-import { TargetPageSection } from '../sidebar/TargetPageSection';
-import { ViewportSection } from '../sidebar/ViewportSection';
 import { useInspectorContext } from '../state/InspectorProvider';
 import { sectionChevron } from '../utils/format';
 
@@ -22,7 +19,6 @@ export function InspectorSidebar() {
     toggleSection,
     handlePickModeToggle,
   } = useInspectorContext();
-  const { saveLabel, saveStatus, saveElementConfig } = useSaveInspectorConfig();
   const selected = selectors.selected;
   const databaseSuffix = state.databasePanelPinned ? ' (unsaved)' : '';
 
@@ -34,6 +30,7 @@ export function InspectorSidebar() {
     >
       <section
         data-ui-uuid={DEVTOOLS.UI_INSPECTOR.HEADER.CONTAINER.uuid}
+        data-ui-instance-id="sidebar-header"
         className="flex shrink-0 items-center justify-between gap-2 border-b border-outline-variant px-3 py-2"
       >
         <h1
@@ -54,90 +51,56 @@ export function InspectorSidebar() {
         </button>
       </section>
 
-      <SidebarSection
-        open={state.expanded.route}
-        toggleButton={
-          <button
-            data-ui-uuid={DEVTOOLS.UI_INSPECTOR.HEADER.ROUTE_LABEL.uuid}
-            type="button"
-            onClick={() => toggleSection('route')}
-            className={sidebarSectionButtonClass}
-          >
-            Target page
-            {sectionChevron(state.expanded.route)}
-          </button>
-        }
+      <section
+        data-ui-uuid={DEVTOOLS.UI_INSPECTOR.SELECTED.CONTAINER.uuid}
+        data-ui-instance-id="display-panel"
+        className="border-b border-outline-variant"
       >
-        <TargetPageSection />
-      </SidebarSection>
-
-      <SidebarSection
-        open={state.expanded.display}
-        toggleButton={
-          <button
-            data-ui-uuid={DEVTOOLS.UI_INSPECTOR.SIDEBAR.DISPLAY_LABEL.uuid}
-            type="button"
-            onClick={() => toggleSection('display')}
-            className={sidebarSectionButtonClass}
-          >
-            Display
-            {sectionChevron(state.expanded.display)}
-          </button>
-        }
-      >
-        <ViewportSection />
-      </SidebarSection>
+        <span
+          data-ui-uuid={DEVTOOLS.UI_INSPECTOR.SIDEBAR.DISPLAY_LABEL.uuid}
+          className="block px-3 py-2 text-sm font-medium"
+        >
+          Display
+        </span>
+        <DisplaySection />
+      </section>
 
       {selected && (
-        <>
-          <SidebarSection
-            open={state.expanded.database}
-            toggleButton={
-              <button
-                data-ui-uuid={DEVTOOLS.UI_INSPECTOR.SIDEBAR.DATABASE_SECTION_LABEL.uuid}
-                type="button"
-                onClick={() => toggleSection('database')}
-                className={sidebarSectionButtonClass}
-              >
-                Database
-                {databaseSuffix}
-                {sectionChevron(state.expanded.database)}
-              </button>
-            }
-          >
-            <DatabaseSection />
-          </SidebarSection>
-
-          <SidebarSection
-            open={state.expanded.attributes}
-            toggleButton={
-              <button
-                data-ui-uuid={DEVTOOLS.UI_INSPECTOR.SIDEBAR.ATTRIBUTES_SECTION_LABEL.uuid}
-                type="button"
-                onClick={() => toggleSection('attributes')}
-                className={sidebarSectionButtonClass}
-              >
-                Attributes
-                {sectionChevron(state.expanded.attributes)}
-              </button>
-            }
-          >
-            <AttributesSection />
-          </SidebarSection>
-
-          <button
-            data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DATA.SAVE_BUTTON.uuid}
-            type="button"
-            onClick={() => void saveElementConfig()}
-            disabled={saveStatus === 'saving'}
-            className="mx-3 mb-3 w-[calc(100%-1.5rem)] rounded bg-primary px-2 py-1.5 text-xs text-on-primary disabled:opacity-60"
-          >
-            {saveLabel}
-          </button>
-        </>
+        <SidebarSection
+          open={state.expanded.dbAttributes}
+          toggleButton={
+            <button
+              data-ui-uuid={DEVTOOLS.UI_INSPECTOR.SIDEBAR.DB_ATTRIBUTES_LABEL.uuid}
+              type="button"
+              onClick={() => toggleSection('dbAttributes')}
+              className={sidebarSectionButtonClass}
+            >
+              Database &amp; Attributes
+              {databaseSuffix}
+              {sectionChevron(state.expanded.dbAttributes)}
+            </button>
+          }
+        >
+          <DatabaseAttributesSection />
+        </SidebarSection>
       )}
 
-      <DatabaseRefEditorPanel />
+      <SidebarSection
+        open={state.expanded.dbManagement}
+        toggleButton={
+          <button
+            data-ui-uuid={DEVTOOLS.UI_INSPECTOR.SIDEBAR.DB_MANAGEMENT_LABEL.uuid}
+            type="button"
+            onClick={() => toggleSection('dbManagement')}
+            className={sidebarSectionButtonClass}
+          >
+            Database Management
+            {sectionChevron(state.expanded.dbManagement)}
+          </button>
+        }
+      >
+        <DatabaseManagementSection />
+      </SidebarSection>
 
       <SidebarSection
         open={state.expanded.filters}
