@@ -1,0 +1,15 @@
+{
+  "test1": {
+    "page": {
+      "title": "Test1"
+    },
+    "form": {
+      "input1": "First Name",
+      "input2": "Last Name",
+      "input3": "Email"
+    },
+    "image-upload": {
+      "uploadButton": "Upload Image"
+    }
+  }
+}

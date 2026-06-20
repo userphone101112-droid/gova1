@@ -6,6 +6,7 @@ import { HOME } from './features/home';
 import { IMAGE_UPLOAD_FORM } from './features/image-upload-form';
 import { MERCHANT } from './features/merchant';
 import { ONBOARDING } from './features/onboarding';
+import { TEST1 } from './features/test1';
 import { SETTINGS } from './features/settings';
 import { SHARED_LAYOUT } from './features/shared-layout';
 import { SPLASH } from './features/splash';
@@ -28,6 +29,7 @@ export { AUTH } from './features/auth';
 export { SETTINGS } from './features/settings';
 export { MERCHANT } from './features/merchant';
 export { ONBOARDING } from './features/onboarding';
+export { TEST1 } from './features/test1';
 export { IMAGE_UPLOAD_FORM } from './features/image-upload-form';
 
 // ============================================================================
@@ -43,6 +45,7 @@ export const UI_REGISTRY = {
   SETTINGS,
   MERCHANT,
   ONBOARDING,
+  TEST1,
   IMAGE_UPLOAD_FORM,
   DEVTOOLS,
 } as const;
@@ -71,6 +74,7 @@ export const ALL_UI_IDENTITIES = [
   ...flattenObject(SETTINGS),
   ...flattenObject(MERCHANT),
   ...flattenObject(ONBOARDING),
+  ...flattenObject(TEST1),
   ...flattenObject(IMAGE_UPLOAD_FORM),
   ...flattenObject(DEVTOOLS),
   ...ALL_CATEGORY_IDENTITIES,

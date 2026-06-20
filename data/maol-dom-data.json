@@ -297,7 +297,7 @@
     },
     {
       "route": "/home",
-      "timestamp": 1781986746389,
+      "timestamp": 1781989306866,
       "totalIdentified": 229,
       "tree": {
         "type": "page",
@@ -688,8 +688,8 @@
     },
     {
       "route": "/devtools/ui-inspector",
-      "timestamp": 1781987764185,
-      "totalIdentified": 58,
+      "timestamp": 1781989864179,
+      "totalIdentified": 59,
       "tree": {
         "type": "page",
         "children": [
@@ -816,7 +816,7 @@
     },
     {
       "route": "/image-upload-form",
-      "timestamp": 1781987764187,
+      "timestamp": 1781988424187,
       "totalIdentified": 47,
       "tree": {
         "type": "page",
@@ -892,6 +892,89 @@
             "tags": [
               "div",
               "label",
+              "input",
+              "button"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "route": "/test1",
+      "timestamp": 1781989864177,
+      "totalIdentified": 45,
+      "tree": {
+        "type": "page",
+        "children": [
+          {
+            "name": "shared-layout",
+            "uiIds": [
+              "UI_SHARED_LAYOUT_ROOT_HTML",
+              "UI_SHARED_LAYOUT_ROOT_BODY",
+              "UI_SHARED_HEADER_CONTAINER",
+              "UI_SHARED_HEADER_INNER_WRAPPER",
+              "UI_SHARED_HEADER_BRAND_SECTION",
+              "UI_SHARED_HEADER_MENU",
+              "UI_SHARED_HEADER_BRAND_LINK",
+              "UI_SHARED_HEADER_ACTIONS_SECTION",
+              "UI_SHARED_LAYOUT_STRUCTURE_HEADER_BRAND_BRAND_LINK_CONTAINER_L46",
+              "UI_SHARED_HEADER_SEARCH_INPUT",
+              "UI_SHARED_HEADER_SEARCH_BUTTON",
+              "UI_SHARED_HEADER_CART_BUTTON",
+              "UI_SHARED_LAYOUT_STRUCTURE_HEADER_BRAND_BRAND_LINK_CONTAINER_L57",
+              "UI_SHARED_SIDEBAR_CONTAINER",
+              "UI_SHARED_SIDEBAR_OVERLAY",
+              "UI_SHARED_SIDEBAR_PANEL",
+              "UI_SHARED_SIDEBAR_HEADER",
+              "UI_SHARED_SIDEBAR_CLOSE",
+              "UI_SHARED_SIDEBAR_CONTENT",
+              "UI_SHARED_SIDEBAR_ACTIONS_SECTION",
+              "UI_SHARED_SIDEBAR_LOGIN",
+              "UI_SHARED_SIDEBAR_SIGNUP",
+              "UI_SHARED_SIDEBAR_SETTINGS",
+              "UI_SHARED_LAYOUT_APP_SHELL_MAIN",
+              "UI_SHARED_BOTTOM_NAV_CONTAINER",
+              "UI_SHARED_BOTTOM_NAV_HOME",
+              "UI_SHARED_BOTTOM_NAV_HOME_LABEL",
+              "UI_SHARED_BOTTOM_NAV_HOME_INDICATOR",
+              "UI_SHARED_BOTTOM_NAV_NOTIFICATIONS",
+              "UI_SHARED_BOTTOM_NAV_NOTIFICATIONS_BADGE",
+              "UI_SHARED_BOTTOM_NAV_NOTIFICATIONS_LABEL",
+              "UI_SHARED_BOTTOM_NAV_FAVORITES",
+              "UI_SHARED_BOTTOM_NAV_FAVORITES_LABEL",
+              "UI_SHARED_BOTTOM_NAV_ORDERS",
+              "UI_SHARED_BOTTOM_NAV_ORDERS_LABEL",
+              "UI_SHARED_BOTTOM_NAV_PROFILE",
+              "UI_SHARED_BOTTOM_NAV_PROFILE_LABEL"
+            ],
+            "tags": [
+              "html",
+              "body",
+              "h1",
+              "div",
+              "button",
+              "a",
+              "input",
+              "main",
+              "nav",
+              "span"
+            ]
+          },
+          {
+            "name": "test1",
+            "uiIds": [
+              "UI_TEST1_PAGE_CONTAINER",
+              "UI_TEST1_PAGE_TITLE",
+              "UI_TEST1_FORM_CONTAINER",
+              "UI_TEST1_FORM_INPUT_1",
+              "UI_TEST1_FORM_INPUT_2",
+              "UI_TEST1_FORM_INPUT_3",
+              "UI_TEST1_IMAGE_UPLOAD_CONTAINER",
+              "UI_TEST1_IMAGE_UPLOAD_UPLOAD_BUTTON"
+            ],
+            "tags": [
+              "div",
+              "h1",
               "input",
               "button"
             ]

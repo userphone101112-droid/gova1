@@ -16,6 +16,7 @@ import {
   SETTINGS,
   SHARED_LAYOUT,
   SPLASH,
+  TEST1,
 } from '../src/platform/ui/registry/registry';
 import { ALL_CATEGORY_IDENTITIES } from '../src/platform/ui/registry/categories';
 
@@ -28,6 +29,7 @@ const ROOTS = {
   SETTINGS,
   MERCHANT,
   ONBOARDING,
+  TEST1,
   IMAGE_UPLOAD_FORM,
   DEVTOOLS,
   COMMON_LAYOUT: null as unknown,

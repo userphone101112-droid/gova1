@@ -16,6 +16,7 @@ export const FEATURE_SCOPES: Record<string, readonly Feature[]> = {
   merchant: ['common', 'shared-layout', 'merchant'],
   onboarding: ['common', 'shared-layout', 'onboarding'],
   'image-upload-form': ['common', 'shared-layout', 'image-upload-form'],
+  test1: ['common', 'shared-layout', 'test1'],
   signup: ['common', 'signup'],
   contact: ['common', 'contact'],
 };
