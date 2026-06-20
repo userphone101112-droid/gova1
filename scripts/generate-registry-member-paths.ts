@@ -54,26 +54,31 @@ ROOTS.COMMON_TEMPLATE = categories.COMMON_TEMPLATE;
 ROOTS.COMMON_SPACING = categories.COMMON_SPACING;
 ROOTS.DECORATIVE = categories.DECORATIVE;
 
-function isIdentity(obj: unknown): obj is { uuid: string; id: string; path: string } {
+function isIdentity(obj: unknown): obj is { uuid: string; id: string; path: string; repeatable?: boolean } {
   return Boolean(obj && typeof obj === 'object' && 'uuid' in obj && 'path' in obj);
 }
 
-function collectPaths(obj: unknown, prefix: string[], out: Set<string>) {
+function collectPaths(obj: unknown, prefix: string[], out: Set<string>, repeatableOut: Set<string>) {
   if (isIdentity(obj)) {
-    out.add(prefix.join('.'));
+    const memberPath = prefix.join('.');
+    out.add(memberPath);
+    if (obj.repeatable === true) {
+      repeatableOut.add(memberPath);
+    }
     return;
   }
   if (obj && typeof obj === 'object') {
     for (const [key, value] of Object.entries(obj)) {
-      collectPaths(value, [...prefix, key], out);
+      collectPaths(value, [...prefix, key], out, repeatableOut);
     }
   }
 }
 
 function buildOutput() {
   const paths = new Set<string>();
+  const repeatablePaths = new Set<string>();
   for (const [root, tree] of Object.entries(ROOTS)) {
-    if (tree) collectPaths(tree, [root], paths);
+    if (tree) collectPaths(tree, [root], paths, repeatablePaths);
   }
   void ALL_CATEGORY_IDENTITIES;
 
@@ -81,6 +86,7 @@ function buildOutput() {
     version: 1,
     roots: Object.keys(ROOTS),
     paths: [...paths].sort(),
+    repeatablePaths: [...repeatablePaths].sort(),
   };
 }
 
@@ -95,6 +101,7 @@ if (checkOnly) {
     version: onDisk.version,
     roots: onDisk.roots,
     paths: onDisk.paths,
+    repeatablePaths: onDisk.repeatablePaths ?? [],
   });
   if (expectedJson !== onDiskJson) {
     console.error('❌ registry-member-paths.json is stale. Run: npm run registry:generate');

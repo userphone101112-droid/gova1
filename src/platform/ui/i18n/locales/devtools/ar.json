@@ -45,7 +45,9 @@
       "tab": "TODO(ar): Open inspected target route in a new browser tab",
       "iframe": "TODO(ar): Iframe ready or loading status value",
       "scan": "TODO(ar): Last scan timestamp status value",
-      "url": "TODO(ar): Current iframe target URL status value"
+      "url": "TODO(ar): Current iframe target URL status value",
+      "display": "TODO(ar): Collapsible display section label in sidebar",
+      "action": "TODO(ar): Delete column entry in schema editor"
     }
   }
 }

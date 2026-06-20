@@ -134,7 +134,7 @@ export function PhoneVerification() {
       />
 
       {otpSent && !phoneVerified && (
-        <div data-ui-uuid={AUTH.REGISTRATION.OTP_INPUT.uuid} className="motion-reveal space-y-4 rounded-xl border border-outline-variant bg-card p-4 elevation-2">
+        <div data-ui-uuid={AUTH.REGISTRATION.OTP_INPUT.uuid} data-ui-instance-id="verification-shell" className="motion-reveal space-y-4 rounded-xl border border-outline-variant bg-card p-4 elevation-2">
           <div data-ui-uuid={AUTH.SHELL.REGISTRATION_OTP_LABEL_WRAPPER_L139.uuid} className="space-y-1">
             <p data-ui-uuid={AUTH.REGISTRATION.OTP_LABEL.uuid} className="type-label-lg">{t(AUTH.REGISTRATION.OTP_LABEL)}</p>
             <p data-ui-uuid={AUTH.REGISTRATION.OTP_DESCRIPTION.uuid} className="type-caption text-on-surface-variant">

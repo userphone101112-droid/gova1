@@ -75,7 +75,7 @@ const requireDataUiUuid = {
         list.push({ node, tagName });
         pathNodes.set(result.path, list);
 
-        if (repeatableByPath.get(result.path)) {
+        if (repeatableByPath.get(result.path) || registryPaths.repeatablePaths.has(result.path)) {
           const instanceAttr = getAttribute(node, 'data-ui-instance-id');
           if (!instanceAttr) {
             context.report({
@@ -89,7 +89,7 @@ const requireDataUiUuid = {
 
       'Program:exit'() {
         for (const [path, nodes] of pathNodes.entries()) {
-          if (repeatableByPath.get(path)) continue;
+          if (repeatableByPath.get(path) || registryPaths.repeatablePaths.has(path)) continue;
           if (nodes.length > 1) {
             nodes.forEach(({ node }) => {
               context.report({

@@ -132,7 +132,7 @@ for (const file of collectFiles()) {
 
     pathCounts.set(result.path!, (pathCounts.get(result.path!) || 0) + 1);
 
-    if (repeatableByPath.get(result.path!)) {
+    if (repeatableByPath.get(result.path!) || registryPaths.repeatablePaths.has(result.path!)) {
       if (!getAttribute(node, 'data-ui-instance-id')) {
         violations.push(`${rel}:${node.loc.start.line}: missing data-ui-instance-id for repeatable ${result.path}`);
       }
@@ -140,7 +140,7 @@ for (const file of collectFiles()) {
   });
 
   for (const [path, count] of pathCounts.entries()) {
-    if (!repeatableByPath.get(path) && count > 1) {
+    if (!repeatableByPath.get(path) && !registryPaths.repeatablePaths.has(path) && count > 1) {
       violations.push(`${rel}: duplicate registry path ${path} used ${count} times`);
     }
   }

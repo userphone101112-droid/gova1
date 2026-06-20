@@ -14,10 +14,14 @@ const BANNED_PATH_SEGMENTS = ['.STRUCTURE.'];
 function loadRegistryMemberPaths() {
   const pathsFile = join(process.cwd(), 'src/platform/ui/registry/registry-member-paths.json');
   if (!existsSync(pathsFile)) {
-    return { paths: new Set(), pathToUuid: new Map() };
+    return { paths: new Set(), pathToUuid: new Map(), repeatablePaths: new Set() };
   }
   const data = JSON.parse(readFileSync(pathsFile, 'utf-8'));
-  return { paths: new Set(data.paths || []), pathToUuid: new Map() };
+  return {
+    paths: new Set(data.paths || []),
+    pathToUuid: new Map(),
+    repeatablePaths: new Set(data.repeatablePaths || []),
+  };
 }
 
 function loadRegistryMeta() {

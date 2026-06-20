@@ -5,6 +5,13 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from '@/platform/ui';
 import { DEVTOOLS } from '@/platform/ui/registry/features/devtools';
 
+import {
+  emptyDatabaseRefFile,
+  findDatabase,
+  findTable,
+  type DatabaseRefFile,
+} from './database-ref-types';
+import { DatabaseRefEditor } from './DatabaseRefEditor';
 import { buildAbsoluteInspectUrl, buildInspectUrl, INSPECTOR_ROUTES, type InspectorRoutePath } from './inspector-routes';
 import {
   isUiInspectorFrameMessage,
@@ -49,7 +56,7 @@ const DEFAULT_PREVIEW_SCALE = 1;
 const RESIZER_WIDTH = 6;
 const MIN_PANEL_SIZE = 1;
 
-type SidebarSection = 'route' | 'filters' | 'list' | 'details';
+type SidebarSection = 'route' | 'display' | 'database' | 'attributes' | 'filters' | 'list' | 'details';
 
 interface InspectorDataEntry {
   databaseEnabled: boolean;
@@ -235,12 +242,19 @@ export function DevToolsInspectorPage() {
   const [allInspectorData, setAllInspectorData] = useState<InspectorDataMap>({});
   const [formState, setFormState] = useState<ElementFormState>(emptyFormState);
   const [saveStatus, setSaveStatus] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
+  const [refSaveStatus, setRefSaveStatus] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
+  const [databaseRef, setDatabaseRef] = useState<DatabaseRefFile>(emptyDatabaseRefFile());
+  const [databaseRefDraft, setDatabaseRefDraft] = useState<DatabaseRefFile>(emptyDatabaseRefFile());
+  const [databasePanelPinned, setDatabasePanelPinned] = useState(false);
   const [iframeReady, setIframeReady] = useState(false);
   const [lastScanTime, setLastScanTime] = useState<Date | null>(null);
   const [expanded, setExpanded] = useState<Record<SidebarSection, boolean>>({
-    route: true,
+    route: false,
+    display: false,
+    database: false,
+    attributes: false,
     filters: false,
-    list: true,
+    list: false,
     details: false,
   });
 
@@ -270,10 +284,18 @@ export function DevToolsInspectorPage() {
   useEffect(() => {
     const loadData = async () => {
       try {
-        const response = await fetch('/api/ui-inspector');
-        if (response.ok) {
-          const data = (await response.json()) as InspectorDataMap;
+        const [inspectorResponse, refResponse] = await Promise.all([
+          fetch('/api/ui-inspector'),
+          fetch('/api/database-ref'),
+        ]);
+        if (inspectorResponse.ok) {
+          const data = (await inspectorResponse.json()) as InspectorDataMap;
           setAllInspectorData(data);
+        }
+        if (refResponse.ok) {
+          const refData = (await refResponse.json()) as DatabaseRefFile;
+          setDatabaseRef(refData);
+          setDatabaseRefDraft(refData);
         }
       } catch {
         /* ignore load errors in devtools */
@@ -313,12 +335,14 @@ export function DevToolsInspectorPage() {
   );
 
   const toggleSection = (section: SidebarSection) => {
+    if (section === 'database' && databasePanelPinned && expanded.database) {
+      return;
+    }
     setExpanded((current) => ({ ...current, [section]: !current[section] }));
   };
 
   const selectElement = useCallback((scanKey: string) => {
     setSelectedScanKey(scanKey);
-    setExpanded((current) => ({ ...current, details: true }));
   }, []);
 
   const sendPickMode = useCallback((enabled: boolean) => {
@@ -394,6 +418,7 @@ export function DevToolsInspectorPage() {
   useEffect(() => {
     if (!selected) {
       setFormState(emptyFormState());
+      setDatabasePanelPinned(false);
       return;
     }
     const saved = getInspectorData(allInspectorData, selected);
@@ -407,6 +432,13 @@ export function DevToolsInspectorPage() {
       attribute2: saved?.attribute2 ?? false,
       attribute3: saved?.attribute3 ?? false,
     });
+    setDatabasePanelPinned(false);
+    setExpanded((current) => ({
+      ...current,
+      display: Boolean(saved?.updatedAt),
+      database: Boolean(saved?.databaseEnabled),
+      attributes: Boolean(saved?.attributesEnabled),
+    }));
     setSaveStatus('idle');
   }, [selected, allInspectorData]);
 
@@ -471,8 +503,55 @@ export function DevToolsInspectorPage() {
     });
   };
 
+  const selectedDatabase = useMemo(
+    () => findDatabase(databaseRef, formState.inf1),
+    [databaseRef, formState.inf1]
+  );
+  const tableOptions = selectedDatabase?.tables ?? [];
+  const selectedTable = useMemo(
+    () => findTable(selectedDatabase, formState.inf2),
+    [selectedDatabase, formState.inf2]
+  );
+  const columnOptions = selectedTable?.columns ?? [];
+
+  const handleDatabaseToggle = () => {
+    setFormState((current) => {
+      const nextEnabled = !current.databaseEnabled;
+      if (nextEnabled) {
+        setDatabasePanelPinned(true);
+        setExpanded((expandedState) => ({ ...expandedState, database: true }));
+      }
+      return { ...current, databaseEnabled: nextEnabled };
+    });
+  };
+
+  const handleSaveDatabaseRef = async () => {
+    setRefSaveStatus('saving');
+    try {
+      const response = await fetch('/api/database-ref', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(databaseRefDraft),
+      });
+      if (!response.ok) throw new Error('schema save failed');
+      setDatabaseRef(databaseRefDraft);
+      setRefSaveStatus('saved');
+      window.setTimeout(() => setRefSaveStatus('idle'), 2000);
+    } catch {
+      setRefSaveStatus('error');
+      window.setTimeout(() => setRefSaveStatus('idle'), 2000);
+    }
+  };
+
   const handleSave = async () => {
     if (!selected) return;
+    if (
+      !window.confirm(
+        'Save inspector settings for the selected element? This writes to ui-inspector-data.json.'
+      )
+    ) {
+      return;
+    }
     setSaveStatus('saving');
     try {
       const response = await fetch('/api/ui-inspector', {
@@ -513,6 +592,7 @@ export function DevToolsInspectorPage() {
         },
       }));
       setSaveStatus('saved');
+      setDatabasePanelPinned(false);
       window.setTimeout(() => setSaveStatus('idle'), 2000);
     } catch {
       setSaveStatus('error');
@@ -586,201 +666,6 @@ export function DevToolsInspectorPage() {
             </button>
           </section>
 
-          {selected && (
-            <section
-              data-ui-uuid={DEVTOOLS.UI_INSPECTOR.SELECTED.CONTAINER.uuid}
-              className="shrink-0 border-b border-outline-variant bg-surface-variant/40 px-3 py-3"
-            >
-              <span data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DETAILS.STABLE_ID_LABEL.uuid} className="text-xs font-medium">
-                {t(DEVTOOLS.UI_INSPECTOR.DETAILS.STABLE_ID_LABEL)}
-              </span>
-              <code
-                data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DETAILS.STABLE_ID_VALUE.uuid}
-                className="mt-0.5 block break-all text-sm font-semibold"
-              >
-                {selected.id || selected.uuid.slice(0, 8)}
-              </code>
-              <span data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DETAILS.PATH_LABEL.uuid} className="mt-2 text-xs font-medium">
-                {t(DEVTOOLS.UI_INSPECTOR.DETAILS.PATH_LABEL)}
-              </span>
-              <code
-                data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DETAILS.PATH_VALUE.uuid}
-                className="mt-0.5 block break-all text-xs text-on-surface-variant"
-              >
-                {selected.path || '-'}
-              </code>
-              <span data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DETAILS.TAG_LABEL.uuid} className="mt-2 text-xs font-medium">
-                {t(DEVTOOLS.UI_INSPECTOR.DETAILS.TAG_LABEL)}
-              </span>
-              <code data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DETAILS.TAG_VALUE.uuid} className="mt-0.5 block text-xs">
-                {selected.tagName} | {selected.feature} | {selected.lifecycle}
-              </code>
-              <span data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DETAILS.UUID_LABEL.uuid} className="mt-2 text-xs font-medium">
-                {t(DEVTOOLS.UI_INSPECTOR.DETAILS.UUID_LABEL)}
-              </span>
-              <code
-                data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DETAILS.UUID_VALUE.uuid}
-                className="mt-0.5 block break-all text-[10px] text-on-surface-variant"
-              >
-                {selected.uuid}
-              </code>
-
-              <section
-                data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DATA.CONTAINER.uuid}
-                className="mt-3 grid grid-cols-[1fr_auto] gap-x-2 gap-y-2 border-t border-outline-variant pt-3"
-              >
-                <span
-                  data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DATA.DATABASE_LABEL.uuid}
-                  className="self-center text-xs font-medium"
-                >
-                  Database
-                </span>
-                <button
-                  data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DATA.DATABASE_TOGGLE.uuid}
-                  type="button"
-                  onClick={() =>
-                    setFormState((current) => ({
-                      ...current,
-                      databaseEnabled: !current.databaseEnabled,
-                    }))
-                  }
-                  className={`rounded px-2 py-0.5 text-xs ${
-                    formState.databaseEnabled ? 'bg-primary text-on-primary' : 'border border-outline-variant'
-                  }`}
-                >
-                  {formState.databaseEnabled ? 'ON' : 'OFF'}
-                </button>
-                {formState.databaseEnabled && (
-                  <>
-                    <span
-                      data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DATA.INF1_LABEL.uuid}
-                      className="col-span-2 block text-xs text-on-surface-variant"
-                    >
-                      inf1
-                    </span>
-                    <input
-                      data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DATA.INF1_INPUT.uuid}
-                      value={formState.inf1}
-                      onChange={(e) => setFormState((current) => ({ ...current, inf1: e.target.value }))}
-                      className="col-span-2 w-full rounded border border-outline-variant bg-surface px-2 py-1 text-xs"
-                    />
-                    <span
-                      data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DATA.INF2_LABEL.uuid}
-                      className="col-span-2 block text-xs text-on-surface-variant"
-                    >
-                      inf2
-                    </span>
-                    <input
-                      data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DATA.INF2_INPUT.uuid}
-                      value={formState.inf2}
-                      onChange={(e) => setFormState((current) => ({ ...current, inf2: e.target.value }))}
-                      className="col-span-2 w-full rounded border border-outline-variant bg-surface px-2 py-1 text-xs"
-                    />
-                    <span
-                      data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DATA.INF3_LABEL.uuid}
-                      className="col-span-2 block text-xs text-on-surface-variant"
-                    >
-                      inf3
-                    </span>
-                    <input
-                      data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DATA.INF3_INPUT.uuid}
-                      value={formState.inf3}
-                      onChange={(e) => setFormState((current) => ({ ...current, inf3: e.target.value }))}
-                      className="col-span-2 w-full rounded border border-outline-variant bg-surface px-2 py-1 text-xs"
-                    />
-                  </>
-                )}
-
-                <span
-                  data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DATA.ATTRIBUTES_LABEL.uuid}
-                  className="self-center text-xs font-medium"
-                >
-                  Attributes
-                </span>
-                <button
-                  data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DATA.ATTRIBUTES_TOGGLE.uuid}
-                  type="button"
-                  onClick={() =>
-                    setFormState((current) => ({
-                      ...current,
-                      attributesEnabled: !current.attributesEnabled,
-                    }))
-                  }
-                  className={`rounded px-2 py-0.5 text-xs ${
-                    formState.attributesEnabled ? 'bg-primary text-on-primary' : 'border border-outline-variant'
-                  }`}
-                >
-                  {formState.attributesEnabled ? 'ON' : 'OFF'}
-                </button>
-                {formState.attributesEnabled && (
-                  <>
-                    <button
-                      data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DATA.ATTRIBUTE1_LABEL.uuid}
-                      type="button"
-                      onClick={() =>
-                        setFormState((current) => ({ ...current, attribute1: !current.attribute1 }))
-                      }
-                      className="col-span-2 flex w-full items-center gap-2 text-start text-xs"
-                    >
-                      <input
-                        data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DATA.ATTRIBUTE1_CHECKBOX.uuid}
-                        type="checkbox"
-                        checked={formState.attribute1}
-                        readOnly
-                        className="pointer-events-none"
-                      />
-                      Attribute 1
-                    </button>
-                    <button
-                      data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DATA.ATTRIBUTE2_LABEL.uuid}
-                      type="button"
-                      onClick={() =>
-                        setFormState((current) => ({ ...current, attribute2: !current.attribute2 }))
-                      }
-                      className="col-span-2 flex w-full items-center gap-2 text-start text-xs"
-                    >
-                      <input
-                        data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DATA.ATTRIBUTE2_CHECKBOX.uuid}
-                        type="checkbox"
-                        checked={formState.attribute2}
-                        readOnly
-                        className="pointer-events-none"
-                      />
-                      Attribute 2
-                    </button>
-                    <button
-                      data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DATA.ATTRIBUTE3_LABEL.uuid}
-                      type="button"
-                      onClick={() =>
-                        setFormState((current) => ({ ...current, attribute3: !current.attribute3 }))
-                      }
-                      className="col-span-2 flex w-full items-center gap-2 text-start text-xs"
-                    >
-                      <input
-                        data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DATA.ATTRIBUTE3_CHECKBOX.uuid}
-                        type="checkbox"
-                        checked={formState.attribute3}
-                        readOnly
-                        className="pointer-events-none"
-                      />
-                      Attribute 3
-                    </button>
-                  </>
-                )}
-
-                <button
-                  data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DATA.SAVE_BUTTON.uuid}
-                  type="button"
-                  onClick={() => void handleSave()}
-                  disabled={saveStatus === 'saving'}
-                  className="col-span-2 mt-2 w-full rounded bg-primary px-2 py-1.5 text-xs text-on-primary disabled:opacity-60"
-                >
-                  {saveLabel}
-                </button>
-              </section>
-            </section>
-          )}
-
           <button
             data-ui-uuid={DEVTOOLS.UI_INSPECTOR.HEADER.ROUTE_LABEL.uuid}
             type="button"
@@ -827,35 +712,338 @@ export function DevToolsInspectorPage() {
             </>
           )}
 
-          <section
-            data-ui-uuid={DEVTOOLS.UI_INSPECTOR.STATUS.CONTAINER.uuid}
-            className="space-y-1 border-b border-outline-variant px-3 py-2 text-[11px]"
+          <button
+            data-ui-uuid={DEVTOOLS.UI_INSPECTOR.SIDEBAR.DISPLAY_LABEL.uuid}
+            type="button"
+            onClick={() => toggleSection('display')}
+            className="flex w-full shrink-0 items-center border-b border-outline-variant px-3 py-2 text-start text-sm font-medium hover:bg-surface-variant"
           >
-            <code
-              data-ui-uuid={DEVTOOLS.UI_INSPECTOR.STATUS.IFRAME_VALUE.uuid}
-              className="block break-all text-on-surface-variant"
-            >
-              iframe: {iframeReady ? 'ready' : 'loading'}
-            </code>
-            <code
-              data-ui-uuid={DEVTOOLS.UI_INSPECTOR.STATUS.SCAN_VALUE.uuid}
-              className="block break-all text-on-surface-variant"
-            >
-              last scan: {formatScanTime(lastScanTime)}
-            </code>
-            <code
-              data-ui-uuid={DEVTOOLS.UI_INSPECTOR.STATUS.COUNT_VALUE.uuid}
-              className="block break-all text-on-surface-variant"
-            >
-              elements: {elements.length}
-            </code>
-            <code
-              data-ui-uuid={DEVTOOLS.UI_INSPECTOR.STATUS.URL_VALUE.uuid}
-              className="block break-all text-on-surface-variant"
-            >
-              url: {targetUrl}
-            </code>
-          </section>
+            Display{sectionChevron(expanded.display)}
+          </button>
+          {expanded.display && (
+            <>
+              {!selected ? (
+                <code
+                  data-ui-uuid={DEVTOOLS.UI_INSPECTOR.STATUS.CONTAINER.uuid}
+                  data-ui-instance-id="display-empty"
+                  className="block border-b border-outline-variant px-3 pb-3 text-sm text-on-surface-variant"
+                >
+                  Select an element from the preview or list.
+                </code>
+              ) : (
+                <section
+                  data-ui-uuid={DEVTOOLS.UI_INSPECTOR.SELECTED.CONTAINER.uuid}
+                  className="shrink-0 border-b border-outline-variant bg-surface-variant/40 px-3 py-3"
+                >
+                  <span data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DETAILS.STABLE_ID_LABEL.uuid} className="text-xs font-medium">
+                    {t(DEVTOOLS.UI_INSPECTOR.DETAILS.STABLE_ID_LABEL)}
+                  </span>
+                  <code
+                    data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DETAILS.STABLE_ID_VALUE.uuid}
+                    className="mt-0.5 block break-all text-sm font-semibold"
+                  >
+                    {selected.id || selected.uuid.slice(0, 8)}
+                  </code>
+                  <span data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DETAILS.PATH_LABEL.uuid} className="mt-2 text-xs font-medium">
+                    {t(DEVTOOLS.UI_INSPECTOR.DETAILS.PATH_LABEL)}
+                  </span>
+                  <code
+                    data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DETAILS.PATH_VALUE.uuid}
+                    className="mt-0.5 block break-all text-xs text-on-surface-variant"
+                  >
+                    {selected.path || '-'}
+                  </code>
+                  <span data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DETAILS.TAG_LABEL.uuid} className="mt-2 text-xs font-medium">
+                    {t(DEVTOOLS.UI_INSPECTOR.DETAILS.TAG_LABEL)}
+                  </span>
+                  <code data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DETAILS.TAG_VALUE.uuid} className="mt-0.5 block text-xs">
+                    {selected.tagName} | {selected.feature} | {selected.lifecycle}
+                  </code>
+                  <span data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DETAILS.UUID_LABEL.uuid} className="mt-2 text-xs font-medium">
+                    {t(DEVTOOLS.UI_INSPECTOR.DETAILS.UUID_LABEL)}
+                  </span>
+                  <code
+                    data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DETAILS.UUID_VALUE.uuid}
+                    className="mt-0.5 block break-all text-[10px] text-on-surface-variant"
+                  >
+                    {selected.uuid}
+                  </code>
+                </section>
+              )}
+              <section
+                data-ui-uuid={DEVTOOLS.UI_INSPECTOR.STATUS.CONTAINER.uuid}
+                data-ui-instance-id="status-bar"
+                className="space-y-1 border-b border-outline-variant px-3 py-2 text-[11px]"
+              >
+                <code
+                  data-ui-uuid={DEVTOOLS.UI_INSPECTOR.STATUS.IFRAME_VALUE.uuid}
+                  className="block break-all text-on-surface-variant"
+                >
+                  iframe: {iframeReady ? 'ready' : 'loading'}
+                </code>
+                <code
+                  data-ui-uuid={DEVTOOLS.UI_INSPECTOR.STATUS.SCAN_VALUE.uuid}
+                  className="block break-all text-on-surface-variant"
+                >
+                  last scan: {formatScanTime(lastScanTime)}
+                </code>
+                <code
+                  data-ui-uuid={DEVTOOLS.UI_INSPECTOR.STATUS.COUNT_VALUE.uuid}
+                  className="block break-all text-on-surface-variant"
+                >
+                  elements: {elements.length}
+                </code>
+                <code
+                  data-ui-uuid={DEVTOOLS.UI_INSPECTOR.STATUS.URL_VALUE.uuid}
+                  className="block break-all text-on-surface-variant"
+                >
+                  url: {targetUrl}
+                </code>
+              </section>
+            </>
+          )}
+
+          {selected && (
+            <>
+              <button
+                data-ui-uuid={DEVTOOLS.UI_INSPECTOR.SIDEBAR.DATABASE_SECTION_LABEL.uuid}
+                type="button"
+                onClick={() => toggleSection('database')}
+                className="flex w-full shrink-0 items-center border-b border-outline-variant px-3 py-2 text-start text-sm font-medium hover:bg-surface-variant"
+              >
+                Database
+                {databasePanelPinned ? ' (unsaved)' : ''}
+                {sectionChevron(expanded.database)}
+              </button>
+              {expanded.database && (
+                <section
+                  data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DATA.CONTAINER.uuid}
+                  data-ui-instance-id="database-panel"
+                  className="grid grid-cols-[1fr_auto] gap-x-2 gap-y-2 border-b border-outline-variant px-3 py-3"
+                >
+                  <span
+                    data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DATA.DATABASE_LABEL.uuid}
+                    className="self-center text-xs font-medium"
+                  >
+                    Database
+                  </span>
+                  <button
+                    data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DATA.DATABASE_TOGGLE.uuid}
+                    type="button"
+                    onClick={handleDatabaseToggle}
+                    className={`rounded px-2 py-0.5 text-xs ${
+                      formState.databaseEnabled ? 'bg-primary text-on-primary' : 'border border-outline-variant'
+                    }`}
+                  >
+                    {formState.databaseEnabled ? 'ON' : 'OFF'}
+                  </button>
+                  {formState.databaseEnabled && (
+                    <>
+                      <select
+                        data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DATA.INF1_INPUT.uuid}
+                        value={formState.inf1}
+                        onChange={(e) =>
+                          setFormState((current) => ({
+                            ...current,
+                            inf1: e.target.value,
+                            inf2: '',
+                            inf3: '',
+                          }))
+                        }
+                        className="col-span-2 w-full rounded border border-outline-variant bg-surface px-2 py-1 text-xs"
+                      >
+                        {[
+                          { value: '', label: 'Select database...' },
+                          ...databaseRef.databases.map((db) => ({
+                            value: db.name_en,
+                            label: `${db.name_en} (${db.name_ar})`,
+                          })),
+                        ].map((item) => (
+                          <option
+                            key={item.value || 'empty-db'}
+                            data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DATA.INF1_LABEL.uuid}
+                            data-ui-instance-id={`element-db-${item.value || 'empty'}`}
+                            value={item.value}
+                          >
+                            {item.label}
+                          </option>
+                        ))}
+                      </select>
+                      <select
+                        data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DATA.INF2_INPUT.uuid}
+                        value={formState.inf2}
+                        disabled={!formState.inf1}
+                        onChange={(e) =>
+                          setFormState((current) => ({
+                            ...current,
+                            inf2: e.target.value,
+                            inf3: '',
+                          }))
+                        }
+                        className="col-span-2 w-full rounded border border-outline-variant bg-surface px-2 py-1 text-xs disabled:opacity-50"
+                      >
+                        {[
+                          { value: '', label: 'Select table...' },
+                          ...tableOptions.map((table) => ({
+                            value: table.name_en,
+                            label: `${table.name_en} (${table.name_ar})`,
+                          })),
+                        ].map((item) => (
+                          <option
+                            key={item.value || 'empty-table'}
+                            data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DATA.INF2_LABEL.uuid}
+                            data-ui-instance-id={`element-table-${item.value || 'empty'}`}
+                            value={item.value}
+                          >
+                            {item.label}
+                          </option>
+                        ))}
+                      </select>
+                      <select
+                        data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DATA.INF3_INPUT.uuid}
+                        value={formState.inf3}
+                        disabled={!formState.inf2}
+                        onChange={(e) =>
+                          setFormState((current) => ({ ...current, inf3: e.target.value }))
+                        }
+                        className="col-span-2 w-full rounded border border-outline-variant bg-surface px-2 py-1 text-xs disabled:opacity-50"
+                      >
+                        {[
+                          { value: '', label: 'Select column...' },
+                          ...columnOptions.map((column) => ({
+                            value: column.name_en,
+                            label: `${column.name_en} (${column.name_ar})`,
+                          })),
+                        ].map((item) => (
+                          <option
+                            key={item.value || 'empty-column'}
+                            data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DATA.INF3_LABEL.uuid}
+                            data-ui-instance-id={`element-column-${item.value || 'empty'}`}
+                            value={item.value}
+                          >
+                            {item.label}
+                          </option>
+                        ))}
+                      </select>
+                    </>
+                  )}
+                </section>
+              )}
+
+              <button
+                data-ui-uuid={DEVTOOLS.UI_INSPECTOR.SIDEBAR.ATTRIBUTES_SECTION_LABEL.uuid}
+                type="button"
+                onClick={() => toggleSection('attributes')}
+                className="flex w-full shrink-0 items-center border-b border-outline-variant px-3 py-2 text-start text-sm font-medium hover:bg-surface-variant"
+              >
+                Attributes{sectionChevron(expanded.attributes)}
+              </button>
+              {expanded.attributes && (
+                <section
+                  data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DATA.CONTAINER.uuid}
+                  data-ui-instance-id="attributes-panel"
+                  className="grid grid-cols-[1fr_auto] gap-x-2 gap-y-2 border-b border-outline-variant px-3 py-3"
+                >
+                  <span
+                    data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DATA.ATTRIBUTES_LABEL.uuid}
+                    className="self-center text-xs font-medium"
+                  >
+                    Attributes
+                  </span>
+                  <button
+                    data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DATA.ATTRIBUTES_TOGGLE.uuid}
+                    type="button"
+                    onClick={() =>
+                      setFormState((current) => {
+                        const nextEnabled = !current.attributesEnabled;
+                        if (nextEnabled) {
+                          setExpanded((state) => ({ ...state, attributes: true }));
+                        }
+                        return { ...current, attributesEnabled: nextEnabled };
+                      })
+                    }
+                    className={`rounded px-2 py-0.5 text-xs ${
+                      formState.attributesEnabled ? 'bg-primary text-on-primary' : 'border border-outline-variant'
+                    }`}
+                  >
+                    {formState.attributesEnabled ? 'ON' : 'OFF'}
+                  </button>
+                  {formState.attributesEnabled && (
+                    <>
+                      <button
+                        data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DATA.ATTRIBUTE1_LABEL.uuid}
+                        type="button"
+                        onClick={() =>
+                          setFormState((current) => ({ ...current, attribute1: !current.attribute1 }))
+                        }
+                        className="col-span-2 flex w-full items-center gap-2 text-start text-xs"
+                      >
+                        <input
+                          data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DATA.ATTRIBUTE1_CHECKBOX.uuid}
+                          type="checkbox"
+                          checked={formState.attribute1}
+                          readOnly
+                          className="pointer-events-none"
+                        />
+                        Attribute 1
+                      </button>
+                      <button
+                        data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DATA.ATTRIBUTE2_LABEL.uuid}
+                        type="button"
+                        onClick={() =>
+                          setFormState((current) => ({ ...current, attribute2: !current.attribute2 }))
+                        }
+                        className="col-span-2 flex w-full items-center gap-2 text-start text-xs"
+                      >
+                        <input
+                          data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DATA.ATTRIBUTE2_CHECKBOX.uuid}
+                          type="checkbox"
+                          checked={formState.attribute2}
+                          readOnly
+                          className="pointer-events-none"
+                        />
+                        Attribute 2
+                      </button>
+                      <button
+                        data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DATA.ATTRIBUTE3_LABEL.uuid}
+                        type="button"
+                        onClick={() =>
+                          setFormState((current) => ({ ...current, attribute3: !current.attribute3 }))
+                        }
+                        className="col-span-2 flex w-full items-center gap-2 text-start text-xs"
+                      >
+                        <input
+                          data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DATA.ATTRIBUTE3_CHECKBOX.uuid}
+                          type="checkbox"
+                          checked={formState.attribute3}
+                          readOnly
+                          className="pointer-events-none"
+                        />
+                        Attribute 3
+                      </button>
+                    </>
+                  )}
+                </section>
+              )}
+
+              <button
+                data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DATA.SAVE_BUTTON.uuid}
+                type="button"
+                onClick={() => void handleSave()}
+                disabled={saveStatus === 'saving'}
+                className="mx-3 mb-3 w-[calc(100%-1.5rem)] rounded bg-primary px-2 py-1.5 text-xs text-on-primary disabled:opacity-60"
+              >
+                {saveLabel}
+              </button>
+            </>
+          )}
+
+          <DatabaseRefEditor
+            data={databaseRefDraft}
+            onChange={setDatabaseRefDraft}
+            onSave={handleSaveDatabaseRef}
+            saveStatus={refSaveStatus}
+          />
 
           <button
             data-ui-uuid={DEVTOOLS.UI_INSPECTOR.SIDEBAR.SEARCH_LABEL.uuid}

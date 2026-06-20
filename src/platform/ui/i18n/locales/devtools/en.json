@@ -45,7 +45,9 @@
       "tab": "Open inspected target route in a new browser tab",
       "iframe": "Iframe ready or loading status value",
       "scan": "Last scan timestamp status value",
-      "url": "Current iframe target URL status value"
+      "url": "Current iframe target URL status value",
+      "display": "Collapsible display section label in sidebar",
+      "action": "Delete column entry in schema editor"
     }
   }
 }

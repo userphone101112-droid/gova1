@@ -1,7 +1,7 @@
 {
   "version": 1,
   "namespace": "gova.ui-registry",
-  "generatedAt": "2026-06-20T05:14:45.190Z",
+  "generatedAt": "2026-06-20T05:46:49.695Z",
   "identities": {
     "8771d585-21d5-51cc-bb1b-910f1ae955f6": {
       "uuid": "8771d585-21d5-51cc-bb1b-910f1ae955f6",
@@ -2182,7 +2182,8 @@
       "lifecycle": "active",
       "previousIds": [],
       "previousPaths": [],
-      "aliases": []
+      "aliases": [],
+      "repeatable": true
     },
     "a37b9dac-7be8-5903-b149-72e68b20c3e5": {
       "uuid": "a37b9dac-7be8-5903-b149-72e68b20c3e5",
@@ -2268,6 +2269,177 @@
       "uuid": "1c559c16-cb89-5abb-8b33-456ccb9d9db9",
       "id": "UI_DEVTOOLS_UI_INSPECTOR_DATA_SAVE_BUTTON",
       "path": "devtools.inspector.data.save",
+      "feature": "devtools",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "f5610449-4ce0-5660-ad52-30ab95a5d6e2": {
+      "uuid": "f5610449-4ce0-5660-ad52-30ab95a5d6e2",
+      "id": "UI_DEVTOOLS_UI_INSPECTOR_DBREF_ADD_COLUMN",
+      "path": "devtools.inspector.addcol.action",
+      "feature": "devtools",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "21d4aa85-efe1-5d20-ab9e-7a67a3a6ba42": {
+      "uuid": "21d4aa85-efe1-5d20-ab9e-7a67a3a6ba42",
+      "id": "UI_DEVTOOLS_UI_INSPECTOR_DBREF_ADD_DB",
+      "path": "devtools.inspector.adddb.action",
+      "feature": "devtools",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "f1ab9a85-bad6-5446-8645-92bbb50b211c": {
+      "uuid": "f1ab9a85-bad6-5446-8645-92bbb50b211c",
+      "id": "UI_DEVTOOLS_UI_INSPECTOR_DBREF_ADD_TABLE",
+      "path": "devtools.inspector.addtb.action",
+      "feature": "devtools",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "6e1896a6-50c5-55f5-9771-4a7067e7462f": {
+      "uuid": "6e1896a6-50c5-55f5-9771-4a7067e7462f",
+      "id": "UI_DEVTOOLS_UI_INSPECTOR_DBREF_COLUMN_AR_INPUT",
+      "path": "devtools.inspector.colar.input",
+      "feature": "devtools",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "06152476-edd7-54b5-a9af-1290e4e2d1d7": {
+      "uuid": "06152476-edd7-54b5-a9af-1290e4e2d1d7",
+      "id": "UI_DEVTOOLS_UI_INSPECTOR_DBREF_COLUMN_EN_INPUT",
+      "path": "devtools.inspector.colen.input",
+      "feature": "devtools",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "6da06882-0110-51f5-b515-39d01b8b9323": {
+      "uuid": "6da06882-0110-51f5-b515-39d01b8b9323",
+      "id": "UI_DEVTOOLS_UI_INSPECTOR_DBREF_COLUMN_SELECT",
+      "path": "devtools.inspector.refcol.select",
+      "feature": "devtools",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "cca11f36-c396-5841-951f-140859b94be3": {
+      "uuid": "cca11f36-c396-5841-951f-140859b94be3",
+      "id": "UI_DEVTOOLS_UI_INSPECTOR_DBREF_CONTAINER",
+      "path": "devtools.inspector.dbref.container",
+      "feature": "devtools",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": [],
+      "repeatable": true
+    },
+    "c3a49122-f077-5795-9550-270c6094fbff": {
+      "uuid": "c3a49122-f077-5795-9550-270c6094fbff",
+      "id": "UI_DEVTOOLS_UI_INSPECTOR_DBREF_DB_AR_INPUT",
+      "path": "devtools.inspector.dbar.input",
+      "feature": "devtools",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "aacd7682-8d8b-5955-bcb6-2d3c7712b9c7": {
+      "uuid": "aacd7682-8d8b-5955-bcb6-2d3c7712b9c7",
+      "id": "UI_DEVTOOLS_UI_INSPECTOR_DBREF_DB_EN_INPUT",
+      "path": "devtools.inspector.dben.input",
+      "feature": "devtools",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "f4171d1e-4116-5f15-a414-a51c9df93653": {
+      "uuid": "f4171d1e-4116-5f15-a414-a51c9df93653",
+      "id": "UI_DEVTOOLS_UI_INSPECTOR_DBREF_DB_SELECT",
+      "path": "devtools.inspector.refdb.select",
+      "feature": "devtools",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "c6d766f7-d825-5afc-ae69-2d2d46066a32": {
+      "uuid": "c6d766f7-d825-5afc-ae69-2d2d46066a32",
+      "id": "UI_DEVTOOLS_UI_INSPECTOR_DBREF_DELETE_COLUMN",
+      "path": "devtools.inspector.delcol.action",
+      "feature": "devtools",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "167edbf3-f4a5-5aec-9116-759929414fb2": {
+      "uuid": "167edbf3-f4a5-5aec-9116-759929414fb2",
+      "id": "UI_DEVTOOLS_UI_INSPECTOR_DBREF_DELETE_DB",
+      "path": "devtools.inspector.deldb.action",
+      "feature": "devtools",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "81e880af-e500-50ba-bef6-37b1a8979c4c": {
+      "uuid": "81e880af-e500-50ba-bef6-37b1a8979c4c",
+      "id": "UI_DEVTOOLS_UI_INSPECTOR_DBREF_DELETE_TABLE",
+      "path": "devtools.inspector.deltb.action",
+      "feature": "devtools",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "fa606793-fe53-5204-811f-5af1e74b082a": {
+      "uuid": "fa606793-fe53-5204-811f-5af1e74b082a",
+      "id": "UI_DEVTOOLS_UI_INSPECTOR_DBREF_SAVE_BUTTON",
+      "path": "devtools.inspector.dbref.save",
+      "feature": "devtools",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "d5f833c2-b384-5af7-b698-87d815e7efe5": {
+      "uuid": "d5f833c2-b384-5af7-b698-87d815e7efe5",
+      "id": "UI_DEVTOOLS_UI_INSPECTOR_DBREF_TABLE_AR_INPUT",
+      "path": "devtools.inspector.tbar.input",
+      "feature": "devtools",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "083ab8a2-1747-5f0f-b856-eca829bb3c45": {
+      "uuid": "083ab8a2-1747-5f0f-b856-eca829bb3c45",
+      "id": "UI_DEVTOOLS_UI_INSPECTOR_DBREF_TABLE_EN_INPUT",
+      "path": "devtools.inspector.tben.input",
+      "feature": "devtools",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "65313abe-6c0f-5dcb-9efc-0c585a4d7645": {
+      "uuid": "65313abe-6c0f-5dcb-9efc-0c585a4d7645",
+      "id": "UI_DEVTOOLS_UI_INSPECTOR_DBREF_TABLE_SELECT",
+      "path": "devtools.inspector.reftb.select",
       "feature": "devtools",
       "lifecycle": "active",
       "previousIds": [],
@@ -2919,10 +3091,40 @@
       "previousPaths": [],
       "aliases": []
     },
+    "566b2096-587b-5217-87aa-43cce9219765": {
+      "uuid": "566b2096-587b-5217-87aa-43cce9219765",
+      "id": "UI_DEVTOOLS_UI_INSPECTOR_SIDEBAR_ATTRIBUTES_LABEL",
+      "path": "devtools.inspector.sidebar.attributes",
+      "feature": "devtools",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
     "4b3bce01-fa7e-5a72-a504-57931cec20bc": {
       "uuid": "4b3bce01-fa7e-5a72-a504-57931cec20bc",
       "id": "UI_DEVTOOLS_UI_INSPECTOR_SIDEBAR_CONTAINER",
       "path": "devtools.inspector.sidebar.container",
+      "feature": "devtools",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "433ba2ee-c5c8-5a4f-9506-e1f04ff70309": {
+      "uuid": "433ba2ee-c5c8-5a4f-9506-e1f04ff70309",
+      "id": "UI_DEVTOOLS_UI_INSPECTOR_SIDEBAR_DATABASE_LABEL",
+      "path": "devtools.inspector.sidebar.database",
+      "feature": "devtools",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "a91dd08d-358e-5dce-9001-06bf6cbabfa0": {
+      "uuid": "a91dd08d-358e-5dce-9001-06bf6cbabfa0",
+      "id": "UI_DEVTOOLS_UI_INSPECTOR_SIDEBAR_DISPLAY_LABEL",
+      "path": "devtools.inspector.sidebar.display",
       "feature": "devtools",
       "lifecycle": "active",
       "previousIds": [],
@@ -2937,7 +3139,8 @@
       "lifecycle": "active",
       "previousIds": [],
       "previousPaths": [],
-      "aliases": []
+      "aliases": [],
+      "repeatable": true
     },
     "bc790843-3405-53a6-b812-4795f812e1e8": {
       "uuid": "bc790843-3405-53a6-b812-4795f812e1e8",

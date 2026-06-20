@@ -271,6 +271,11 @@ export type devtoolsTranslationKey =
   | 'devtools.inspector.zoom'
   | 'devtools.inspector.width'
   | 'devtools.inspector.height'
+  | 'devtools.inspector.tab'
+  | 'devtools.inspector.scan'
+  | 'devtools.inspector.url'
+  | 'devtools.inspector.display'
+  | 'devtools.inspector.action'
 ;
 
 // error-boundary feature translations
