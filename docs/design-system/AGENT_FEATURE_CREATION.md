@@ -1,176 +1,287 @@
 # Agent Runbook: Create a New Feature (Zero-Error Protocol)
 
 **Status:** Mandatory. Non-negotiable.  
-**Audience:** Any AI agent or automation that adds a GoVa feature.  
-**Goal:** Create a working App Router feature that passes all required checks with **zero** registry, i18n, UUID, or lint errors.
+**Audience:** Any AI agent that creates a **brand-new feature namespace** in GoVa.  
+**Goal:** Working App Router feature — zero registry, i18n, UUID, or lint errors.
+
+> **Wrong runbook?** Adding a page to a feature that **already exists** → stop here. Use **[AGENT_PAGE_CREATION.md](./AGENT_PAGE_CREATION.md)** only.
 
 ---
 
-## Agent Contract (Read First)
+## Execution Protocol (Read Before TASK 1)
 
-You **MUST** obey every rule below. There is **no** room for interpretation, shortcuts, or alternative designs.
+You are a **weak executor**. You do **not** design, infer, optimize, or choose alternatives. You **only** follow TASKs in order.
 
-| Rule | Requirement |
-|------|-------------|
-| **No guessing** | Do not invent file paths, registry shapes, UUIDs, translation keys, or commands not listed here. |
-| **No skipping** | Execute steps **in order**. Do not jump ahead. |
-| **No manual UUID edits** | Never type, change, copy, or delete a `uuid` field by hand in any file. |
-| **No legacy patterns** | No `Ui*` components, no `data-ui-id`, no `data-ui-path`, no string keys in `t('...')` when a registry identity exists. |
-| **No wrong route location** | Pages live in `src/app/(app)/<route>/page.tsx` only. Never create `src/features/<feature>/page.tsx`. |
-| **Stop on failure** | If any command exits non-zero, fix the cause, re-run **that** command, then continue. Do not mark the task complete. |
-| **Completion gate** | The task is **incomplete** until **Step 12** passes with exit code `0` for every command. |
+### Rules
 
-**Supporting references (read-only context, do not replace this runbook):**
+| # | Rule |
+|---|------|
+| R1 | Execute **TASK 0 → TASK 21** in order. |
+| R2 | **Never** start TASK *N+1* until TASK *N* is **PASS**. |
+| R3 | After every TASK, print the **Progress Report** block (template at bottom). |
+| R4 | On **FAIL** or **STOP**: halt immediately. Do not skip ahead. |
+| R5 | Never type or edit a `uuid` field by hand. |
+| R6 | Never use `t('string.key')` when a registry identity exists. |
+| R7 | Never create `src/features/<feature>/page.tsx` or `layout.tsx`. |
+| R8 | Never run `git commit` / `git push` unless the user explicitly asked. |
 
-- [UI_CREATION_RULES.md](./UI_CREATION_RULES.md) — UUID-first DOM rules
-- [i18n.md](./i18n.md) — translation binding details
-- [THEME_RULES.md](./THEME_RULES.md) — semantic tokens only
+### PASS / FAIL / STOP
+
+| Status | Meaning |
+|--------|---------|
+| **PASS** | Every verification item in the TASK succeeded. Proceed to next TASK. |
+| **FAIL** | A verification item failed. Fix only what the TASK allows. Re-run the **same** TASK. |
+| **STOP** | Hard blocker (invalid input, feature exists, user must decide). Do **not** continue. Report to user. |
 
 ---
 
-## Inputs (Provided by User)
+## TASK 0 — Select Runbook
 
-Replace placeholders **exactly** everywhere they appear:
+**Objective:** Confirm this is a **new feature** task.
 
-| Placeholder | Meaning | Example |
-|-------------|---------|---------|
-| `<feature>` | Lowercase feature slug | `test1`, `my-feature` |
-| `<UPPER>` | Uppercase slug, hyphens → underscores | `TEST1`, `MY_FEATURE` |
-| `<route>` | URL path segment (usually equals `<feature>`) | `test1` → `/test1` |
-| `<PascalPage>` | PascalCase page component name | `test1` → `Test1Page`, `my-feature` → `MyFeaturePage` |
+Answer these questions. **All must be YES** to continue with this file.
 
-**Feature name validation (mandatory before Step 1):**
+| # | Question | Required answer |
+|---|----------|-----------------|
+| 0.1 | Did the user ask to create a **new feature** (new namespace)? | YES |
+| 0.2 | Does `src/platform/ui/registry/features/<feature>.ts` **not** exist yet? | YES |
+| 0.3 | Is the user **not** asking to add a page to `merchant`, `auth`, `settings`, etc.? | YES |
+
+If **any** answer is NO → **STOP**. Use [AGENT_PAGE_CREATION.md](./AGENT_PAGE_CREATION.md) or ask the user.
+
+**Progress Report:** `TASK 0: PASS — correct runbook selected`
+
+⛔ **Do not start TASK 1 until TASK 0 is PASS.**
+
+---
+
+## TASK 1 — Resolve Inputs
+
+**Objective:** Fill every placeholder. No code until this TASK passes.
+
+### User must provide (or you derive exactly as shown)
+
+| Placeholder | Rule | Example |
+|-------------|------|---------|
+| `<feature>` | User value or route name | `test1` |
+| `<UPPER>` | `<feature>` → uppercase, `-` → `_` | `TEST1` |
+| `<route>` | Default: `/<feature>` unless user gave another | `/test1` |
+| `<PascalPage>` | `<feature>` → PascalCase + `Page` | `Test1Page` |
+
+### Validation commands (run mentally or with regex)
+
+| Field | Regex | On fail |
+|-------|-------|---------|
+| `<feature>` | `^[a-z][a-z0-9-]*$` | **STOP** — report invalid name |
+| `<route>` | `^/[a-z][a-z0-9/-]*$` | **STOP** |
+
+### Write down (mandatory)
 
 ```text
-^[a-z][a-z0-9-]*$
+feature=<feature>
+UPPER=<UPPER>
+route=<route>
+PascalPage=<PascalPage>
+registryFile=src/platform/ui/registry/features/<feature>.ts
+routeFile=src/app/(app)/<route-without-leading-slash>/page.tsx
+localesDir=src/platform/ui/i18n/locales/<feature>/
 ```
 
-If the name fails validation, **stop** and report the error. Do not proceed.
+**Verification**
+
+- [ ] All placeholders written in the block above
+- [ ] Regex validation passed
+
+**Progress Report:** `TASK 1: PASS — inputs resolved: feature=<feature>, route=<route>`
+
+⛔ **Do not start TASK 2 until TASK 1 is PASS.**
 
 ---
 
-## Step 0 — Pre-flight (Mandatory)
+## TASK 2 — Pre-flight: Feature Must Not Exist
 
-Run these checks from the repository root. **All must pass** before Step 1.
+**Objective:** Prove you will not overwrite existing work.
 
-```powershell
-# 0a. Feature must not already exist
-```
+### Check these paths — **none** may exist
 
-Confirm **none** of these exist:
+| # | Path |
+|---|------|
+| 2.1 | `src/platform/ui/registry/features/<feature>.ts` |
+| 2.2 | `src/platform/ui/i18n/locales/<feature>/` |
+| 2.3 | `src/app/(app)/<route-without-leading-slash>/page.tsx` |
+| 2.4 | `src/features/<feature>/` |
 
-- `src/platform/ui/registry/features/<feature>.ts`
-- `src/platform/ui/i18n/locales/<feature>/`
-- `src/app/(app)/<route>/page.tsx`
-- `src/features/<feature>/`
-
-If any exist, **stop**. Do not overwrite. Report that the feature already exists.
+### PowerShell (optional)
 
 ```powershell
-# 0b. Confirm clean enough state to proceed
-git status
+Test-Path "src/platform/ui/registry/features/<feature>.ts"
+Test-Path "src/platform/ui/i18n/locales/<feature>"
+Test-Path "src/app/(app)/<route-without-leading-slash>/page.tsx"
+Test-Path "src/features/<feature>"
 ```
 
-Note unrelated dirty files but **do not revert** user work outside this feature.
+All must return **False**.
+
+If **any** exists → **STOP** — report: `Feature <feature> already exists. Use AGENT_PAGE_CREATION.md to add a page instead.`
+
+**Progress Report:** `TASK 2: PASS — no collision paths found`
+
+⛔ **Do not start TASK 3 until TASK 2 is PASS.**
 
 ---
 
-## Step 1 — Scaffold Registry + Locales (Generator Only)
+## TASK 3 — Run Feature Generator
 
-Run **exactly** this command (flags are mandatory):
+**Objective:** Scaffold registry + locales only.
+
+### Command (copy exactly — flags mandatory)
 
 ```powershell
 npm run generate:feature -- <feature> --no-layout --no-page
 ```
 
-**What the generator creates (allowed):**
+### Allowed outputs
 
 - `src/platform/ui/registry/features/<feature>.ts`
-- Patches `src/platform/ui/registry/registry.ts` (partial — verified in Step 2)
+- Patches to `src/platform/ui/registry/registry.ts` (partial)
 - `src/platform/ui/i18n/locales/<feature>/en.json`
 - `src/platform/ui/i18n/locales/<feature>/ar.json`
-- `src/features/<feature>/bindings.ts` (legacy — deleted in Step 3)
+- `src/features/<feature>/bindings.ts` (deleted in TASK 5)
 
-**What the generator must NOT create for this runbook:**
+### Forbidden outputs
 
-- `src/features/<feature>/page.tsx` ← forbidden
-- `src/features/<feature>/layout.tsx` ← forbidden
+- `src/features/<feature>/page.tsx`
+- `src/features/<feature>/layout.tsx`
 
-If the command exits non-zero, **stop**, read the error, fix the cause (usually name collision), and retry Step 1.
+**Verification**
 
-**Forbidden after Step 1:**
+- [ ] Command exit code `0`
+- [ ] `registryFile` exists
+- [ ] `localesDir/en.json` exists
+- [ ] `localesDir/ar.json` exists
+- [ ] `page.tsx` under `src/features/<feature>/` does **not** exist
 
-- Do **not** edit any `uuid` value inside `src/platform/ui/registry/features/<feature>.ts`.
-- Do **not** add extra identities manually unless the user explicitly asked for custom UI beyond the default scaffold.
+On non-zero exit → **FAIL** — read error, fix cause (usually name collision), re-run **TASK 3**.
+
+**Progress Report:** `TASK 3: PASS — generator completed`
+
+⛔ **Do not start TASK 4 until TASK 3 is PASS.**
 
 ---
 
-## Step 2 — Verify and Complete `registry.ts` (Mandatory)
+## TASK 4 — Verify `registry.ts` Import
 
-Open `src/platform/ui/registry/registry.ts`.  
-Search for `<UPPER>`. It **must** appear in **all four** locations below.
+**Objective:** First of four mandatory `registry.ts` touchpoints.
 
-If **any** location is missing, add it **exactly** as shown (do not reorder unrelated entries):
+**File:** `src/platform/ui/registry/registry.ts`
 
-### 2a. Import block
+**Action:** Search for this exact line:
 
 ```typescript
 import { <UPPER> } from './features/<feature>';
 ```
 
-Place alphabetically among other feature imports.
+If **missing** → add it alphabetically among feature imports.
 
-### 2b. Re-export block
+**Verification**
+
+- [ ] Line exists exactly (with your `<UPPER>` and `<feature>`)
+
+**Progress Report:** `TASK 4: PASS — registry.ts import verified`
+
+⛔ **Do not start TASK 5 until TASK 4 is PASS.**
+
+---
+
+## TASK 5 — Verify `registry.ts` Re-export
+
+**File:** `src/platform/ui/registry/registry.ts`
+
+**Action:** Search for:
 
 ```typescript
 export { <UPPER> } from './features/<feature>';
 ```
 
-### 2c. `UI_REGISTRY` object
+If **missing** → add it alphabetically among feature re-exports.
 
-```typescript
-export const UI_REGISTRY = {
-  // ...existing entries...
-  <UPPER>,
-  // ...existing entries...
-} as const;
-```
+**Verification**
 
-> **Known generator gap:** The scaffold script may fail to insert into `UI_REGISTRY` when `DEVTOOLS` follows `ONBOARDING`. If `<UPPER>` is missing here, add it manually. **Do not** skip this check.
+- [ ] Line exists
 
-### 2d. `ALL_UI_IDENTITIES` array
+**Progress Report:** `TASK 5: PASS — registry.ts re-export verified`
 
-```typescript
-export const ALL_UI_IDENTITIES = [
-  // ...existing flattenObject(...) entries...
-  ...flattenObject(<UPPER>),
-  // ...existing entries...
-] as readonly UiIdentity[];
-```
-
-**Gate:** Save the file. If TypeScript cannot resolve `<UPPER>`, fix imports before continuing.
+⛔ **Do not start TASK 6 until TASK 5 is PASS.**
 
 ---
 
-## Step 3 — Delete Legacy `src/features/` Scaffold
+## TASK 6 — Verify `registry.ts` UI_REGISTRY
 
-The project uses **App Router**, not `src/features/` pages.
+**File:** `src/platform/ui/registry/registry.ts`
+
+**Action:** Search inside `export const UI_REGISTRY = {` for `<UPPER>,`
+
+If **missing** → add `<UPPER>,` inside the object (known generator gap when `DEVTOOLS` follows `ONBOARDING`).
+
+**Verification**
+
+- [ ] `<UPPER>` appears as a member of `UI_REGISTRY`
+
+**Progress Report:** `TASK 6: PASS — UI_REGISTRY contains <UPPER>`
+
+⛔ **Do not start TASK 7 until TASK 6 is PASS.**
+
+---
+
+## TASK 7 — Verify `registry.ts` ALL_UI_IDENTITIES
+
+**File:** `src/platform/ui/registry/registry.ts`
+
+**Action:** Search for:
+
+```typescript
+...flattenObject(<UPPER>),
+```
+
+inside `ALL_UI_IDENTITIES`.
+
+If **missing** → add before `...ALL_CATEGORY_IDENTITIES,`.
+
+**Verification**
+
+- [ ] `flattenObject(<UPPER>)` present
+
+**Progress Report:** `TASK 7: PASS — ALL_UI_IDENTITIES flattens <UPPER>`
+
+⛔ **Do not start TASK 8 until TASK 7 is PASS.**
+
+---
+
+## TASK 8 — Delete Legacy `src/features/` Folder
+
+**Objective:** Remove generator leftovers.
+
+### Command
 
 ```powershell
 Remove-Item -Recurse -Force "src/features/<feature>"
 ```
 
-**Gate:** Confirm `src/features/<feature>` no longer exists.
+**Verification**
+
+- [ ] `Test-Path "src/features/<feature>"` → **False**
+
+**Progress Report:** `TASK 8: PASS — src/features/<feature> removed`
+
+⛔ **Do not start TASK 9 until TASK 8 is PASS.**
 
 ---
 
-## Step 4 — Wire `generate-registry-member-paths.ts` (Mandatory)
+## TASK 9 — Wire `generate-registry-member-paths.ts` Import
 
-File: `scripts/generate-registry-member-paths.ts`
+**File:** `scripts/generate-registry-member-paths.ts`
 
-### 4a. Add import
-
-In the import block from `../src/platform/ui/registry/registry`, add `<UPPER>`:
+**Action:** In the import from `../src/platform/ui/registry/registry`, add `<UPPER>` alphabetically:
 
 ```typescript
 import {
@@ -187,9 +298,21 @@ import {
 } from '../src/platform/ui/registry/registry';
 ```
 
-Keep imports alphabetically sorted.
+**Verification**
 
-### 4b. Add to `ROOTS`
+- [ ] `<UPPER>` in import list
+
+**Progress Report:** `TASK 9: PASS — member-paths import wired`
+
+⛔ **Do not start TASK 10 until TASK 9 is PASS.**
+
+---
+
+## TASK 10 — Wire `generate-registry-member-paths.ts` ROOTS
+
+**File:** `scripts/generate-registry-member-paths.ts`
+
+**Action:** Add `<UPPER>,` to `ROOTS` (before `DEVTOOLS,`):
 
 ```typescript
 const ROOTS = {
@@ -203,95 +326,107 @@ const ROOTS = {
   ONBOARDING,
   <UPPER>,
   DEVTOOLS,
-  // ...COMMON_* and DECORATIVE entries unchanged...
+  // COMMON_* and DECORATIVE unchanged
 };
 ```
 
-**Gate:** `<UPPER>` must appear in both import and `ROOTS`.  
-**Failure to add `ROOTS` causes `unknownPath` ESLint/CI errors — this was a root cause of past agent failures.**
+**Verification**
+
+- [ ] `<UPPER>` in `ROOTS`
+
+**Progress Report:** `TASK 10: PASS — ROOTS contains <UPPER>`
+
+⛔ **Do not start TASK 11 until TASK 10 is PASS.**
 
 ---
 
-## Step 5 — Export from Client Platform Entry (Mandatory)
+## TASK 11 — Export `<UPPER>` from `index.ts`
 
-File: `src/platform/ui/index.ts`
+**File:** `src/platform/ui/index.ts`
 
-Add `<UPPER>` to the registry export list:
+**Action:** Add `<UPPER>,` to the registry export list from `./registry/registry`.
 
-```typescript
-export {
-  // ...existing exports...
-  MERCHANT,
-  ONBOARDING,
-  <UPPER>,
-  getUiIdentityByUuid,
-  // ...
-} from './registry/registry';
-```
+**Verification**
 
-**Gate:** `import { <UPPER>, useTranslation } from '@/platform/ui'` must typecheck later.
+- [ ] `export { … <UPPER>, … } from './registry/registry'`
+
+**Progress Report:** `TASK 11: PASS — index.ts exports <UPPER>`
+
+⛔ **Do not start TASK 12 until TASK 11 is PASS.**
 
 ---
 
-## Step 6 — Wire i18n Route + Scopes (Mandatory)
+## TASK 12 — Wire `i18n-route-manifest.ts`
 
-The generator **does not** do this. You **must** edit all three files.
+**File:** `src/platform/ui/i18n/core/i18n-route-manifest.ts`
 
-### 6a. Route manifest
-
-File: `src/platform/ui/i18n/core/i18n-route-manifest.ts`
-
-Add **before** shorter catch-all prefixes (e.g. before `{ prefix: '/', ... }`):
+**Action:** Add this entry (before `{ prefix: '/', …}`):
 
 ```typescript
-{ prefix: '/<route>', feature: '<feature>' },
+{ prefix: '<route>', feature: '<feature>' },
 ```
 
-Example for `test1`:
+Example: `{ prefix: '/test1', feature: 'test1' },`
 
-```typescript
-{ prefix: '/test1', feature: 'test1' },
-```
+**Verification**
 
-### 6b. Feature scope (in-app page under `(app)`)
+- [ ] Entry exists with exact `prefix` and `feature`
 
-File: `src/platform/ui/i18n/core/featureScope.ts`
+**Progress Report:** `TASK 12: PASS — route manifest wired`
 
-Add:
+⛔ **Do not start TASK 13 until TASK 12 is PASS.**
+
+---
+
+## TASK 13 — Wire `featureScope.ts`
+
+**File:** `src/platform/ui/i18n/core/featureScope.ts`
+
+**Action:** Add to `FEATURE_SCOPES`:
 
 ```typescript
 <feature>: ['common', 'shared-layout', '<feature>'],
 ```
 
-Use the literal key `<feature>` (with quotes if it contains hyphens):
+If `<feature>` contains hyphens, quote the key:
 
 ```typescript
 'my-feature': ['common', 'shared-layout', 'my-feature'],
 ```
 
-### 6c. App dictionary features
+**Verification**
 
-File: `src/platform/ui/i18n/core/getDictionary.ts`
+- [ ] Key `<feature>` exists with exactly three scope entries
 
-Add `'<feature>'` to `APP_DICTIONARY_FEATURES`:
+**Progress Report:** `TASK 13: PASS — featureScope wired`
 
-```typescript
-export const APP_DICTIONARY_FEATURES: readonly Feature[] = [
-  'common',
-  // ...existing entries...
-  '<feature>',
-] as const;
-```
-
-**Gate:** All three files saved. No typos in feature name across files.
+⛔ **Do not start TASK 14 until TASK 13 is PASS.**
 
 ---
 
-## Step 7 — Create App Router Page (Mandatory)
+## TASK 14 — Wire `getDictionary.ts`
 
-Create: `src/app/(app)/<route>/page.tsx`
+**File:** `src/platform/ui/i18n/core/getDictionary.ts`
 
-Use **this exact template**. Replace placeholders only:
+**Action:** Add `'<feature>'` to `APP_DICTIONARY_FEATURES` array.
+
+**Verification**
+
+- [ ] `'<feature>'` in `APP_DICTIONARY_FEATURES`
+
+**Progress Report:** `TASK 14: PASS — APP_DICTIONARY_FEATURES wired`
+
+⛔ **Do not start TASK 15 until TASK 14 is PASS.**
+
+---
+
+## TASK 15 — Create App Router Page
+
+**Objective:** Create `routeFile` with exact template.
+
+**File:** `src/app/(app)/<route-without-leading-slash>/page.tsx`
+
+**Copy this template. Replace placeholders only.**
 
 ```tsx
 'use client';
@@ -342,174 +477,213 @@ export default function <PascalPage>() {
 }
 ```
 
-**Mandatory DOM/i18n rules for this file:**
+**Verification (count intrinsics)**
 
-| Element | Requirement |
-|---------|-------------|
-| Every intrinsic JSX node | Must have `data-ui-uuid={<UPPER>.….uuid}` — static member access only |
-| User-visible text | Must use `{t(<UPPER>.IDENTITY)}` — **never** `t('string.key')` |
-| Styling | Semantic tokens only (`bg-background`, `text-on-surface`, `bg-primary`, …) |
-| Forbidden | Hardcoded English/Arabic strings, `#hex`, `bg-blue-500`, `Ui*` components |
+| Element | Must have `data-ui-uuid` |
+|---------|--------------------------|
+| outer `div` | `<UPPER>.PAGE.CONTAINER.uuid` |
+| `h1` | `<UPPER>.PAGE.TITLE.uuid` |
+| `p` | `<UPPER>.PAGE.DESCRIPTION.uuid` |
+| actions `div` | `<UPPER>.ACTIONS.ROW.uuid` |
+| button ×2 | `CREATE_BUTTON`, `SAVE_BUTTON` |
 
-**Gate:** Count intrinsics (`div`, `h1`, `p`, `button`) — each must have exactly one `data-ui-uuid`.
+- [ ] File exists at `routeFile`
+- [ ] No `t('…')` string keys
+- [ ] No hardcoded user-visible strings
+
+**Progress Report:** `TASK 15: PASS — route page created`
+
+⛔ **Do not start TASK 16 until TASK 15 is PASS.**
 
 ---
 
-## Step 8 — Registry Pipeline (Mandatory, Exact Order)
-
-Run from repository root:
+## TASK 16 — Materialize UUIDs
 
 ```powershell
 npm run registry:materialize-uuids
-npm run registry:generate
 ```
 
-**Do not:**
+**Verification**
 
-- Edit `uuid-manifest.json` by hand
-- Edit `registry-member-paths.json` by hand
-- Edit `source-index.ts` by hand
+- [ ] Exit code `0`
+- [ ] You did **not** hand-edit any `uuid` in `registryFile`
 
-These files are **generated outputs**.
+**Progress Report:** `TASK 16: PASS — UUIDs materialized`
 
-**Gate:** Both commands exit `0`.
+⛔ **Do not start TASK 17 until TASK 16 is PASS.**
 
 ---
 
-## Step 9 — i18n Pipeline (Mandatory)
+## TASK 17 — Generate Registry Artifacts
+
+```powershell
+npm run registry:generate
+```
+
+**Do not hand-edit:** `uuid-manifest.json`, `registry-member-paths.json`, `source-index.ts`.
+
+**Verification**
+
+- [ ] Exit code `0`
+
+**Progress Report:** `TASK 17: PASS — registry generated`
+
+⛔ **Do not start TASK 18 until TASK 17 is PASS.**
+
+---
+
+## TASK 18 — Full i18n Pipeline
 
 ```powershell
 npm run i18n
 ```
 
-This runs: UUID validation, sync, validate locales, validate bindings, generate translation key types.
+**Verification**
 
-**Gate:** Exit code `0`. If validation fails for missing `en.json`/`ar.json`, return to Step 1.
+- [ ] Exit code `0`
+
+On fail → **FAIL** — fix locales or bindings, re-run **TASK 18**.
+
+**Progress Report:** `TASK 18: PASS — i18n pipeline passed`
+
+⛔ **Do not start TASK 19 until TASK 18 is PASS.**
 
 ---
 
-## Step 10 — Typecheck (Mandatory)
+## TASK 19 — Typecheck
 
 ```powershell
 npm run typecheck
 ```
 
-**Gate:** Exit code `0`. Common fixes:
+**Verification**
 
-- Missing `<UPPER>` export in `index.ts` → Step 5
-- Missing `UI_REGISTRY` entry → Step 2c
-- Wrong identity path in page → use only identities from `registry/features/<feature>.ts`
+- [ ] Exit code `0`
+
+**Progress Report:** `TASK 19: PASS — typecheck passed`
+
+⛔ **Do not start TASK 20 until TASK 19 is PASS.**
 
 ---
 
-## Step 11 — UUID CI (Mandatory)
+## TASK 20 — UUID CI
 
 ```powershell
 npm run ci:uuid-dom-absolute
 npm run ci:uuid-dom-parity
 ```
 
-**Gate:** Both exit `0`.
+**Verification**
 
-| Failure | Fix |
-|---------|-----|
-| Missing `data-ui-uuid` | Step 7 — add to every intrinsic |
-| Invalid / unknown UUID path | Step 4 — `ROOTS` missing; re-run Step 8 |
-| Parity mismatch | Extra JSX element without UUID, or UUID on non-intrinsic |
+- [ ] Both exit code `0`
+
+**Progress Report:** `TASK 20: PASS — UUID CI passed`
+
+⛔ **Do not start TASK 21 until TASK 20 is PASS.**
 
 ---
 
-## Step 12 — Lint (Mandatory)
+## TASK 21 — Lint + Final Audit
+
+### 21a. Lint
 
 ```powershell
 npm run lint
 ```
 
-**Gate:** Exit code `0` for the feature work. Do not set `MIGRATION_MODE=true` for new features.
+- [ ] Exit code `0`
+- [ ] Did **not** set `MIGRATION_MODE=true`
+
+### 21b. Final checklist (all must be checked)
+
+- [ ] TASK 3–20 all PASS
+- [ ] `registryFile` exists
+- [ ] TASK 4–7: `<UPPER>` in all four `registry.ts` locations
+- [ ] TASK 9–10: `<UPPER>` in member-paths import + `ROOTS`
+- [ ] TASK 11: `<UPPER>` in `index.ts`
+- [ ] TASK 12–14: i18n wired (manifest, scope, dictionary)
+- [ ] `routeFile` exists
+- [ ] `src/features/<feature>/` does **not** exist
+- [ ] No manual UUID edits
+
+**Only when 21a and 21b pass**, report to user:
+
+```text
+Feature <feature> created successfully at route <route>.
+All TASKs 0–21 PASS.
+```
+
+**Progress Report:** `TASK 21: PASS — COMPLETE`
 
 ---
 
-## Step 13 — Final Self-Audit (Mandatory Checklist)
+## Forbidden Actions (Instant STOP)
 
-Before reporting success, confirm **every** item:
-
-- [ ] `src/platform/ui/registry/features/<feature>.ts` exists
-- [ ] `<UPPER>` in `registry.ts` — import, export, `UI_REGISTRY`, `ALL_UI_IDENTITIES`
-- [ ] `<UPPER>` in `scripts/generate-registry-member-paths.ts` — import + `ROOTS`
-- [ ] `<UPPER>` exported from `src/platform/ui/index.ts`
-- [ ] i18n wired in `i18n-route-manifest.ts`, `featureScope.ts`, `getDictionary.ts`
-- [ ] `src/app/(app)/<route>/page.tsx` exists
-- [ ] `src/features/<feature>/` **does not** exist
-- [ ] No manual UUID edits were made
-- [ ] Steps 8–12 all passed with exit code `0`
-
-**Only after all boxes are checked** may the agent report: **Feature `<feature>` created successfully.**
+1. Manual `uuid` edits
+2. Skip TASK 9–10 (`ROOTS` — causes `unknownPath` CI failures)
+3. Skip TASK 12–14 (i18n wiring)
+4. `src/features/<feature>/page.tsx`
+5. `t('<feature>.page.title')` instead of `t(<UPPER>.PAGE.TITLE)`
+6. Mark complete before TASK 21 PASS
+7. Use [AGENT_PAGE_CREATION.md](./AGENT_PAGE_CREATION.md) steps for a new feature
 
 ---
 
-## Forbidden Actions (Instant Failure)
+## Default Generator Identities (Reference)
 
-Do **not** do any of the following:
-
-1. Manually set or change `uuid:` in registry feature files
-2. Create identities with 5+ path segments or paths outside the generator scaffold unless using `npm run registry:add`
-3. Skip `generate-registry-member-paths.ts` `ROOTS` update
-4. Skip i18n route/scope/dictionary wiring
-5. Create `src/features/<feature>/page.tsx` or `layout.tsx`
-6. Use `t('<feature>.page.title')` instead of `t(<UPPER>.PAGE.TITLE)`
-7. Leave empty `src/platform/ui/i18n/locales/<feature>/` directory without JSON files
-8. Mark the task done before Step 12 passes
-9. Run `git commit` or `git push` unless the user explicitly asked
-10. Delete or modify unrelated features, docs, or CI config
+| Registry member | Translation? |
+|-----------------|--------------|
+| `<UPPER>.PAGE.CONTAINER` | No |
+| `<UPPER>.PAGE.TITLE` | Yes |
+| `<UPPER>.PAGE.DESCRIPTION` | Yes |
+| `<UPPER>.ACTIONS.ROW` | No |
+| `<UPPER>.ACTIONS.CREATE_BUTTON` | Yes |
+| `<UPPER>.ACTIONS.SAVE_BUTTON` | Yes |
 
 ---
 
-## Quick Reference — Default Generator Identities
+## Progress Report Template (Print After Every TASK)
 
-After Step 1, these registry members **must** exist and **must** be used in Step 7:
-
-| Registry member | Category | Translation required |
-|-----------------|----------|----------------------|
-| `<UPPER>.PAGE.CONTAINER` | container | No |
-| `<UPPER>.PAGE.TITLE` | display | Yes |
-| `<UPPER>.PAGE.DESCRIPTION` | display | Yes |
-| `<UPPER>.ACTIONS.ROW` | container | No |
-| `<UPPER>.ACTIONS.CREATE_BUTTON` | action | Yes |
-| `<UPPER>.ACTIONS.SAVE_BUTTON` | action | Yes |
-
-Matching locale structure (already created by generator):
-
-```json
-{
-  "<feature>": {
-    "page": { "title": "...", "description": "..." },
-    "actions": { "create": "...", "save": "..." }
-  }
-}
+```text
+---
+RUNBOOK: AGENT_FEATURE_CREATION
+TASK: <N> — <name>
+STATUS: PASS | FAIL | STOP
+FEATURE: <feature>
+ROUTE: <route>
+NEXT: TASK <N+1> | HALTED — <reason>
+---
 ```
 
 ---
 
-## Agent Prompt Template (Copy to User Task)
-
-When assigning work to an agent, include:
+## User Prompt Template
 
 ```text
 Create feature <feature> (route /<route>).
 
-Follow docs/design-system/AGENT_FEATURE_CREATION.md exactly.
-Execute every step in order. No shortcuts. No guessing.
-Do not mark complete until Steps 8–12 all pass.
+Follow docs/design-system/AGENT_FEATURE_CREATION.md.
+Execute TASK 0 through TASK 21 in order.
+Print Progress Report after every TASK.
+Do not start the next TASK until the current TASK is PASS.
+Do not mark complete until TASK 21 is PASS.
 ```
 
 ---
 
-## Optional — Full CI Gate
-
-If the user asks for maximum verification (beyond the default runbook gate):
+## Optional — Full CI (User Must Ask Explicitly)
 
 ```powershell
 npm run ci:check
 ```
 
-Use only when explicitly requested — it is slower and may surface unrelated repo issues.
+---
+
+## Related Runbooks
+
+| Task | Document |
+|------|----------|
+| Page inside existing feature | [AGENT_PAGE_CREATION.md](./AGENT_PAGE_CREATION.md) |
+| General UI rules | [UI_CREATION_RULES.md](./UI_CREATION_RULES.md) |
+| i18n | [i18n.md](./i18n.md) |
+| Theme | [THEME_RULES.md](./THEME_RULES.md) |
