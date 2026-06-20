@@ -4,8 +4,11 @@ import { useEffect } from 'react';
 
 import {
   bindInspectablePickHandlers,
+  clearInspectableBindingFrames,
   clearInspectableHighlight,
   highlightInspectableElement,
+  renderInspectableBindingFrames,
+  repositionInspectableBindingFrames,
   repositionInspectableHighlight,
   scanInspectableElements,
   scrollToInspectableElement,
@@ -76,6 +79,16 @@ export function InspectCollectorBridge() {
         case 'SET_PICK_MODE':
           setInspectablePickMode(event.data.enabled);
           break;
+        case 'SET_BINDING_FRAMES':
+          if (event.data.enabled) {
+            renderInspectableBindingFrames(event.data.candidates);
+          } else {
+            clearInspectableBindingFrames();
+          }
+          break;
+        case 'CLEAR_BINDING_FRAMES':
+          clearInspectableBindingFrames();
+          break;
         default:
           break;
       }
@@ -84,7 +97,10 @@ export function InspectCollectorBridge() {
     const observer = new MutationObserver(() => scheduleScanResult());
     observer.observe(document.body, { subtree: true, childList: true, attributes: true });
 
-    const onScrollOrResize = () => repositionInspectableHighlight();
+    const onScrollOrResize = () => {
+      repositionInspectableHighlight();
+      repositionInspectableBindingFrames();
+    };
     window.addEventListener('scroll', onScrollOrResize, true);
     window.addEventListener('resize', onScrollOrResize);
 
@@ -97,6 +113,7 @@ export function InspectCollectorBridge() {
       window.removeEventListener('message', onMessage);
       unbindPick();
       clearInspectableHighlight();
+      clearInspectableBindingFrames();
     };
   }, []);
 

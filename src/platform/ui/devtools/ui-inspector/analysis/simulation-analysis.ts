@@ -2,6 +2,11 @@ import type { DatabaseRefFile } from '../data/database-ref.types';
 import { resolveEntryBindings } from '../data/element-binding-utils';
 import type { ElementBinding } from '../data/element-binding.types';
 import type { InspectorDataMap } from '../data/inspector-config.types';
+import {
+  analyzeRelationshipGraph,
+  buildRelationshipsGraph,
+} from '../data/inspector-file-layout-utils';
+import type { RelationshipGraphAnalysis } from '../data/relationship-graph.types';
 import type { StorageRefFile } from '../data/storage-ref.types';
 
 export type UsageCount = { key: string; label: string; count: number };
@@ -61,6 +66,7 @@ export type SimulationInsightsReport = {
   suggestedIndexes: SuggestedIndex[];
   missingDecisions: MissingDecision[];
   architectureSuggestions: ArchitectureSuggestion[];
+  relationshipGraph: RelationshipGraphAnalysis;
 };
 
 export type SimulationAnalysisInput = {
@@ -266,6 +272,9 @@ export function runSimulationAnalysis(input: SimulationAnalysisInput): Simulatio
 
   void storageRef;
 
+  const graph = buildRelationshipsGraph(inspectorData);
+  const relationshipGraph = analyzeRelationshipGraph(graph, inspectorData);
+
   return {
     generatedAt: new Date().toISOString(),
     totalElements: savedElements,
@@ -287,5 +296,6 @@ export function runSimulationAnalysis(input: SimulationAnalysisInput): Simulatio
     suggestedIndexes: Array.from(indexCandidates.values()),
     missingDecisions,
     architectureSuggestions,
+    relationshipGraph,
   };
 }

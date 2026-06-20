@@ -39,7 +39,9 @@ export function createInitialInspectorState(): InspectorState {
       scale: DEFAULT_PREVIEW_SCALE,
     },
     pickModeEnabled: true,
+    framesModeEnabled: false,
     allInspectorData: {},
+    relationshipReverseIndex: {},
     formState: emptyFormState(),
     saveStatus: 'idle',
     refSaveStatus: 'idle',
@@ -78,10 +80,7 @@ export function inspectorReducer(state: InspectorState, action: InspectorAction)
         ...state,
         routePath: action.routePath,
         selectedScanKey: null,
-        lastSelectedElement: null,
-        selectedIdentityKey: null,
         elements: [],
-        formState: emptyFormState(),
         iframeReady: false,
         lastScanTime: null,
       };
@@ -106,6 +105,16 @@ export function inspectorReducer(state: InspectorState, action: InspectorAction)
         lastSelectedElement: action.element,
         selectedIdentityKey: getStorageKey(action.element),
       };
+    case 'CLEAR_SELECTED_ELEMENT':
+      return {
+        ...state,
+        selectedScanKey: null,
+        lastSelectedElement: null,
+        selectedIdentityKey: null,
+        formState: emptyFormState(),
+        databasePanelPinned: false,
+        saveStatus: 'idle',
+      };
     case 'SET_SELECTED_SCAN_KEY':
       return { ...state, selectedScanKey: action.scanKey };
     case 'SET_SEARCH':
@@ -126,6 +135,10 @@ export function inspectorReducer(state: InspectorState, action: InspectorAction)
       return { ...state, previewSize: nextPreviewSize(state.previewSize, action.patch) };
     case 'SET_PICK_MODE':
       return { ...state, pickModeEnabled: action.enabled };
+    case 'SET_FRAMES_MODE':
+      return { ...state, framesModeEnabled: action.enabled };
+    case 'SET_RELATIONSHIP_REVERSE_INDEX':
+      return { ...state, relationshipReverseIndex: action.reverseIndex };
     case 'SET_ALL_INSPECTOR_DATA':
       return { ...state, allInspectorData: action.data };
     case 'MERGE_INSPECTOR_ENTRY':

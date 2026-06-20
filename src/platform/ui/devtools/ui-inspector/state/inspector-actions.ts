@@ -8,6 +8,7 @@ import type {
   SidebarSection,
   ViewportSettings,
 } from '../data/inspector-config.types';
+import type { RelationshipReverseIndexFile } from '../data/relationship-graph.types';
 import type { StorageRefFile } from '../data/storage-ref.types';
 import { DEFAULT_EXPANDED_SECTIONS } from '../utils/constants';
 
@@ -26,7 +27,9 @@ export type InspectorState = {
   sidebarWidth: number;
   previewSize: ViewportSettings;
   pickModeEnabled: boolean;
+  framesModeEnabled: boolean;
   allInspectorData: InspectorDataMap;
+  relationshipReverseIndex: RelationshipReverseIndexFile;
   formState: ElementFormState;
   saveStatus: SaveStatus;
   refSaveStatus: SaveStatus;
@@ -44,6 +47,7 @@ export type InspectorAction =
   | { type: 'REFRESH_IFRAME' }
   | { type: 'SET_ELEMENTS'; elements: InspectElementSnapshot[]; lastScanTime: Date }
   | { type: 'SELECT_ELEMENT'; scanKey: string; element: InspectElementSnapshot }
+  | { type: 'CLEAR_SELECTED_ELEMENT' }
   | { type: 'SET_SELECTED_SCAN_KEY'; scanKey: string | null }
   | { type: 'SET_SEARCH'; search: string }
   | { type: 'SET_FEATURE_FILTER'; featureFilter: string }
@@ -54,6 +58,8 @@ export type InspectorAction =
   | { type: 'SET_PREVIEW_SIZE'; previewSize: ViewportSettings }
   | { type: 'PATCH_PREVIEW_SIZE'; patch: Partial<ViewportSettings> }
   | { type: 'SET_PICK_MODE'; enabled: boolean }
+  | { type: 'SET_FRAMES_MODE'; enabled: boolean }
+  | { type: 'SET_RELATIONSHIP_REVERSE_INDEX'; reverseIndex: RelationshipReverseIndexFile }
   | { type: 'SET_ALL_INSPECTOR_DATA'; data: InspectorDataMap }
   | { type: 'MERGE_INSPECTOR_ENTRY'; storageKey: string; entry: InspectorDataMap[string] }
   | { type: 'SET_FORM_STATE'; formState: ElementFormState }

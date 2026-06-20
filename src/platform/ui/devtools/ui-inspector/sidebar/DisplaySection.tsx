@@ -47,7 +47,7 @@ export function DisplaySection() {
           data-ui-instance-id="display-empty"
           className="block px-3 pb-3 text-sm text-on-surface-variant"
         >
-          Select an element from the preview or list.
+          No element selected
         </code>
       ) : (
         <section

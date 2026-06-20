@@ -2,6 +2,7 @@
 
 import { useMemo } from 'react';
 
+import { resolveEntryBindings } from '../data/element-binding-utils';
 import type { ElementBinding } from '../data/element-binding.types';
 import { useInspectorContext } from '../state/InspectorProvider';
 import { InspectorField, inspectorInputClass } from '../ui/InspectorField';
@@ -14,21 +15,29 @@ type ElementLinkBindingEditorProps = {
 
 export function ElementLinkBindingEditor({ binding, onChange }: ElementLinkBindingEditorProps) {
   const { state } = useInspectorContext();
+  const currentIdentityKey = state.selectedIdentityKey;
 
   const elementOptions = useMemo(
     () =>
-      Object.entries(state.allInspectorData).map(([key, entry]) => ({
-        value: key,
-        label: entry.dataUiPath ? `${key} — ${entry.dataUiPath}` : key,
-      })),
-    [state.allInspectorData]
+      Object.entries(state.allInspectorData)
+        .filter(([key]) => key !== currentIdentityKey)
+        .map(([key, entry]) => ({
+          value: key,
+          label: entry.dataUiPath ? `${key} — ${entry.dataUiPath}` : key,
+        })),
+    [currentIdentityKey, state.allInspectorData]
   );
 
+  const linkedEntry = binding.linkedElementKey
+    ? state.allInspectorData[binding.linkedElementKey]
+    : undefined;
+
   const linkedBindings = useMemo(() => {
-    if (!binding.linkedElementKey) return [];
-    const entry = state.allInspectorData[binding.linkedElementKey];
-    return entry?.bindings ?? [];
-  }, [binding.linkedElementKey, state.allInspectorData]);
+    if (!binding.linkedElementKey || !linkedEntry) return [];
+    return resolveEntryBindings(linkedEntry, state.databaseRef);
+  }, [binding.linkedElementKey, linkedEntry, state.databaseRef]);
+
+  const willCreateEdge = Boolean(binding.linkedElementKey && binding.enabled);
 
   return (
     <>
@@ -39,14 +48,27 @@ export function ElementLinkBindingEditor({ binding, onChange }: ElementLinkBindi
       >
         <InspectorSelect
           value={binding.linkedElementKey ?? ''}
-          onChange={(linkedElementKey) =>
-            onChange({ linkedElementKey, linkedBindingId: '' } as Partial<ElementBinding>)
-          }
+          onChange={(linkedElementKey) => {
+            if (linkedElementKey && linkedElementKey === currentIdentityKey) return;
+            onChange({ linkedElementKey, linkedBindingId: '' } as Partial<ElementBinding>);
+          }}
           placeholder="Select element..."
           instanceId="element-link-key-select"
           options={elementOptions}
         />
       </InspectorField>
+
+      {linkedEntry ? (
+        <div className="rounded border border-tertiary/25 bg-tertiary/5 px-2 py-2 text-[11px] text-on-surface-variant">
+          <div className="font-medium text-on-surface">Linked element preview</div>
+          <div>Path: {linkedEntry.dataUiPath || '—'}</div>
+          <div>Feature: {linkedEntry.dataUiFeature || '—'}</div>
+          <div>Bindings: {linkedBindings.length}</div>
+          {willCreateEdge ? (
+            <div className="mt-1 text-tertiary">This link will create an explicit relationship edge.</div>
+          ) : null}
+        </div>
+      ) : null}
 
       <InspectorField label="Link mode" instanceId="element-link-mode">
         <InspectorSelect

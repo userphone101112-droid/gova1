@@ -3,17 +3,18 @@
 import { useCallback, useState } from 'react';
 
 import { remapStorageFolderName, remapStorageSubfolderName } from '../data/inspector-config-storage';
-import {
-  addStorageFolder,
-  addStorageSubfolder,
-  deleteStorageFolder,
-  deleteStorageSubfolder,
-  findStorageFolder,
-  findStorageSubfolder,
-  replaceStorageFolder,
-  replaceStorageSubfolder,
-} from '../data/storage-ref-utils';
+import { replaceStorageFolder, replaceStorageSubfolder } from '../data/storage-ref-utils';
 import type { StorageCatalogNode, StorageFolder, StorageSubfolder } from '../data/storage-ref.types';
+import {
+  deleteStorageMainFile,
+  deleteStorageSubFile,
+  getStorageMainFile,
+  getStorageSubFile,
+  quickAddStorageMainFile,
+  quickAddStorageSubFile,
+} from '../domain/storage-domain';
+import { linkStorageSubFileToDatabaseColumn } from '../domain/schema-relationship-domain';
+import type { DatabaseColumnRef } from '../domain/domain-types';
 import { persistStorageRefFile } from '../services/storage-ref.service';
 import { useInspectorContext } from '../state/InspectorProvider';
 import {
@@ -128,7 +129,7 @@ export function useStorageCatalog() {
   );
 
   const addAndSaveMainFile = useCallback(async () => {
-    const next = addStorageFolder(file);
+    const next = quickAddStorageMainFile(file);
     const added = next.folders[next.folders.length - 1];
     if (!added) return false;
     const saved = await persistRef(next, { message: STORAGE_QUICK_ADD_CONFIRM_MESSAGE });
@@ -139,23 +140,49 @@ export function useStorageCatalog() {
   }, [applyPersistedFile, file, persistRef]);
 
   const addAndSaveSubFile = useCallback(
-    async (mainName: string) => {
-      const next = addStorageSubfolder(file, mainName);
-      const folder = next.folders.find((entry) => entry.name === mainName);
-      const added = folder?.subfolders.at(-1);
-      const saved = await persistRef(next, { message: STORAGE_QUICK_ADD_CONFIRM_MESSAGE });
-      if (!saved || !added) return false;
-      applyPersistedFile(next);
-      setSelectedNode({ level: 'sub', mainName, subName: added.name });
-      return true;
+    async (mainName: string, anchor: { linkedDatabaseColumn: DatabaseColumnRef }) => {
+      try {
+        const next = quickAddStorageSubFile(file, mainName, anchor, state.databaseRef);
+        const folder = next.folders.find((entry) => entry.name === mainName);
+        const added = folder?.subfolders.at(-1);
+        const saved = await persistRef(next, { message: STORAGE_QUICK_ADD_CONFIRM_MESSAGE });
+        if (!saved || !added) return false;
+        applyPersistedFile(next);
+        setSelectedNode({ level: 'sub', mainName, subName: added.name });
+        return true;
+      } catch (error) {
+        window.alert(error instanceof Error ? error.message : 'Storage sub file requires a database column anchor.');
+        return false;
+      }
     },
-    [applyPersistedFile, file, persistRef]
+    [applyPersistedFile, file, persistRef, state.databaseRef]
+  );
+
+  const anchorLegacySubFile = useCallback(
+    async (mainName: string, subName: string, column: DatabaseColumnRef) => {
+      try {
+        const next = linkStorageSubFileToDatabaseColumn(
+          file,
+          { storageMainFile: mainName, storageSubFile: subName },
+          column,
+          state.databaseRef
+        );
+        const saved = await persistRef(next);
+        if (!saved) return false;
+        applyPersistedFile(next);
+        return true;
+      } catch (error) {
+        window.alert(error instanceof Error ? error.message : 'Failed to anchor storage location.');
+        return false;
+      }
+    },
+    [applyPersistedFile, file, persistRef, state.databaseRef]
   );
 
   const removeMainFile = useCallback(
     async (mainName: string) => {
       if (!window.confirm(`Delete main file "${mainName}" and all sub files?`)) return false;
-      const next = deleteStorageFolder(file, mainName);
+      const next = deleteStorageMainFile(file, mainName);
       const saved = await persistRef(next);
       if (!saved) return false;
       applyPersistedFile(next);
@@ -168,7 +195,7 @@ export function useStorageCatalog() {
   const removeSubFile = useCallback(
     async (mainName: string, subName: string) => {
       if (!window.confirm(`Delete sub file "${subName}"?`)) return false;
-      const next = deleteStorageSubfolder(file, mainName, subName);
+      const next = deleteStorageSubFile(file, mainName, subName);
       const saved = await persistRef(next);
       if (!saved) return false;
       applyPersistedFile(next);
@@ -180,12 +207,12 @@ export function useStorageCatalog() {
 
   const getSelectedMainFile = (): StorageFolder | undefined => {
     if (!selectedNode) return undefined;
-    return findStorageFolder(file, selectedNode.mainName);
+    return getStorageMainFile(file, selectedNode.mainName) ?? undefined;
   };
 
   const getSelectedSubFile = (): StorageSubfolder | undefined => {
     if (!selectedNode || selectedNode.level !== 'sub') return undefined;
-    return findStorageSubfolder(findStorageFolder(file, selectedNode.mainName), selectedNode.subName);
+    return getStorageSubFile(file, selectedNode.mainName, selectedNode.subName) ?? undefined;
   };
 
   return {
@@ -198,6 +225,7 @@ export function useStorageCatalog() {
     saveSubFile,
     addAndSaveMainFile,
     addAndSaveSubFile,
+    anchorLegacySubFile,
     removeMainFile,
     removeSubFile,
     getSelectedMainFile,

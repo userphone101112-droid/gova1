@@ -22,6 +22,7 @@ export function useSaveInspectorConfig() {
       const result = await saveInspectorElementConfig(selected, state.formState, {
         confirm: true,
         databaseRef: state.databaseRef,
+        route: state.routePath,
       });
       if (!result.saved || !result.storageKey || !result.entry) {
         dispatch({ type: 'SET_SAVE_STATUS', status: 'idle' });

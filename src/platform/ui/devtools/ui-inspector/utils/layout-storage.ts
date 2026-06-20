@@ -7,6 +7,7 @@ import {
   DEFAULT_SIDEBAR_WIDTH,
   MIN_PANEL_SIZE,
   PICK_MODE_KEY,
+  FRAMES_MODE_KEY,
   PREVIEW_SIZE_KEY,
   RESIZER_WIDTH,
   SIDEBAR_WIDTH_KEY,
@@ -92,4 +93,14 @@ export function readPickModeEnabled(): boolean {
 
 export function persistPickModeEnabled(enabled: boolean): void {
   window.localStorage.setItem(PICK_MODE_KEY, String(enabled));
+}
+
+export function readFramesModeEnabled(): boolean {
+  if (typeof window === 'undefined') return false;
+  const saved = window.localStorage.getItem(FRAMES_MODE_KEY);
+  return saved === 'true';
+}
+
+export function persistFramesModeEnabled(enabled: boolean): void {
+  window.localStorage.setItem(FRAMES_MODE_KEY, String(enabled));
 }

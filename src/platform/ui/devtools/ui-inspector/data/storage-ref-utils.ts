@@ -58,6 +58,12 @@ function normalizeSubfolder(raw: unknown): StorageSubfolder {
   if (namingStrategy) sub.namingStrategy = namingStrategy;
   const notes = optionalString(source.notes);
   if (notes) sub.notes = notes;
+  const linkedDatabaseName = optionalString(source.linkedDatabaseName);
+  if (linkedDatabaseName) sub.linkedDatabaseName = linkedDatabaseName;
+  const linkedTableName = optionalString(source.linkedTableName);
+  if (linkedTableName) sub.linkedTableName = linkedTableName;
+  const linkedColumnName = optionalString(source.linkedColumnName);
+  if (linkedColumnName) sub.linkedColumnName = linkedColumnName;
   return sub;
 }
 

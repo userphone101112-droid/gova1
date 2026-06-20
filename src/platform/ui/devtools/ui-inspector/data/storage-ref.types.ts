@@ -14,6 +14,10 @@ export type StorageSubfolder = {
   retention?: RetentionPolicy;
   namingStrategy?: NamingStrategy;
   notes?: string;
+  /** Required for new subfolders — anchors storage to a database column. */
+  linkedDatabaseName?: string;
+  linkedTableName?: string;
+  linkedColumnName?: string;
 };
 
 export type StorageFolder = {

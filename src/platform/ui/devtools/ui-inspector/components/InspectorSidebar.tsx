@@ -27,6 +27,7 @@ export function InspectorSidebar() {
     selectors,
     toggleSection,
     handlePickModeToggle,
+    handleFramesModeToggle,
   } = useInspectorContext();
   const hasElementSelection = selectors.hasElementSelection;
   const bindingsSuffix = state.databasePanelPinned ? ' (unsaved)' : '';
@@ -48,16 +49,29 @@ export function InspectorSidebar() {
         >
           UI Inspector
         </h1>
-        <button
-          data-ui-uuid={DEVTOOLS.UI_INSPECTOR.PICK.MODE_TOGGLE.uuid}
-          type="button"
-          onClick={handlePickModeToggle}
-          className={`rounded px-2 py-1 text-xs font-medium ${
-            state.pickModeEnabled ? 'bg-primary text-on-primary' : 'border border-outline-variant'
-          }`}
-        >
-          Pick {state.pickModeEnabled ? 'ON' : 'OFF'}
-        </button>
+        <div className="flex items-center gap-1">
+          <button
+            data-ui-uuid={DEVTOOLS.UI_INSPECTOR.PICK.MODE_TOGGLE.uuid}
+            data-ui-instance-id="pick-mode-toggle"
+            type="button"
+            onClick={handlePickModeToggle}
+            className={`rounded px-2 py-1 text-xs font-medium ${
+              state.pickModeEnabled ? 'bg-primary text-on-primary' : 'border border-outline-variant'
+            }`}
+          >
+            Pick {state.pickModeEnabled ? 'ON' : 'OFF'}
+          </button>
+          <button
+            type="button"
+            data-ui-instance-id="frames-mode-toggle"
+            onClick={handleFramesModeToggle}
+            className={`rounded px-2 py-1 text-xs font-medium ${
+              state.framesModeEnabled ? 'bg-teal-600 text-white' : 'border border-outline-variant'
+            }`}
+          >
+            Frames {state.framesModeEnabled ? 'ON' : 'OFF'}
+          </button>
+        </div>
       </section>
 
       <section
@@ -72,6 +86,15 @@ export function InspectorSidebar() {
           Display
         </span>
         <p className="px-3 pb-1 text-[10px] text-on-surface-variant">Shows the last selected UI element.</p>
+        {state.framesModeEnabled ? (
+          <div className="mx-3 mb-2 rounded border border-outline-variant/60 bg-surface-container-low px-2 py-1.5 text-[10px] leading-relaxed text-on-surface-variant">
+            <div className="font-medium text-on-surface">Frames legend</div>
+            <div><span className="text-secondary">DB</span> = saved database binding</div>
+            <div><span className="text-warning">Storage</span> = saved storage binding</div>
+            <div><span className="text-tertiary">Link</span> = saved element relationship</div>
+            <div><span className="text-on-surface">Mixed</span> = database + storage</div>
+          </div>
+        ) : null}
         <div
           data-ui-uuid={DEVTOOLS.UI_INSPECTOR.STATUS.CONTAINER.uuid}
           data-ui-instance-id="display-content"

@@ -81,6 +81,55 @@ export function SimulationInsightsSection() {
         </ul>
       </InspectorPanel>
 
+      <InspectorPanel
+        title="Relationship Graph"
+        description="Nodes, edges, and shared binding groups."
+        tone="tertiary"
+        instanceId="sim-relationship-graph"
+      >
+        <div className="grid grid-cols-2 gap-2 text-xs">
+          <div>Nodes: {report.relationshipGraph.nodeCount}</div>
+          <div>Edges: {report.relationshipGraph.edgeCount}</div>
+        </div>
+        {report.relationshipGraph.mostConnected.length > 0 ? (
+          <MiniTable
+            headers={['Element', 'Connections']}
+            rows={report.relationshipGraph.mostConnected.map((item) => [
+              item.identityKey,
+              String(item.count),
+            ])}
+          />
+        ) : null}
+        {report.relationshipGraph.missingLinkedTargets.length > 0 ? (
+          <div className="mt-2 text-xs text-error">
+            Missing linked targets: {report.relationshipGraph.missingLinkedTargets.join(', ')}
+          </div>
+        ) : null}
+        {report.relationshipGraph.circularDependencies.length > 0 ? (
+          <div className="mt-2 text-xs text-warning">
+            Circular dependencies: {report.relationshipGraph.circularDependencies.length}
+          </div>
+        ) : null}
+        {report.relationshipGraph.sharedDatabaseGroups.length > 0 ? (
+          <MiniTable
+            headers={['Shared DB column', 'Members']}
+            rows={report.relationshipGraph.sharedDatabaseGroups.map((group) => [
+              group.key,
+              group.members.join(', '),
+            ])}
+          />
+        ) : null}
+        {report.relationshipGraph.sharedStorageGroups.length > 0 ? (
+          <MiniTable
+            headers={['Shared storage', 'Members']}
+            rows={report.relationshipGraph.sharedStorageGroups.map((group) => [
+              group.key,
+              group.members.join(', '),
+            ])}
+          />
+        ) : null}
+      </InspectorPanel>
+
       <div className="flex flex-wrap gap-2">
         <InspectorActionButton variant="secondary" onClick={() => void copy(formatSimulationReportJson(report))} instanceId="sim-copy-json">
           Copy JSON

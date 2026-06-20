@@ -19,14 +19,21 @@ import {
   UI_INSPECTOR_CHANNEL,
   type InspectElementSnapshot,
 } from '../../UiInspectorFrameBridge';
+import { selectFrameCandidates } from '../data/frame-candidates';
 import { formStateFromEntry, getInspectorData, emptyFormState } from '../data/inspector-config-storage';
+import {
+  buildRelationshipsGraph,
+  buildReverseIndex,
+} from '../data/inspector-file-layout-utils';
 import { loadDatabaseRefFile } from '../services/database-ref.service';
 import { loadInspectorConfigMap } from '../services/inspector-config.service';
 import { loadStorageRefFile } from '../services/storage-ref.service';
 import {
   clampSidebarWidth,
+  persistFramesModeEnabled,
   persistPickModeEnabled,
   persistSidebarWidth,
+  readFramesModeEnabled,
   readPickModeEnabled,
   readPreviewSize,
   readSidebarWidth,
@@ -46,6 +53,7 @@ type InspectorContextValue = {
   handleRouteChange: (route: InspectorRoutePath) => void;
   handleRefresh: () => void;
   handlePickModeToggle: () => void;
+  handleFramesModeToggle: () => void;
   handleResizeStart: () => void;
   sendHighlight: (scanKey: string) => void;
   sendScroll: (scanKey: string) => void;
@@ -59,7 +67,12 @@ export function InspectorProvider({ children }: { children: ReactNode }) {
   const sidebarWidthRef = useRef(state.sidebarWidth);
   const draggingRef = useRef(false);
   const loadedIdentityKeyRef = useRef<string | null>(null);
+  const framesModeRef = useRef(state.framesModeEnabled);
   const selectors = useInspectorSelectors(state);
+
+  useEffect(() => {
+    framesModeRef.current = state.framesModeEnabled;
+  }, [state.framesModeEnabled]);
 
   useEffect(() => {
     sidebarWidthRef.current = state.sidebarWidth;
@@ -70,6 +83,33 @@ export function InspectorProvider({ children }: { children: ReactNode }) {
     dispatch({ type: 'SET_SIDEBAR_WIDTH', width: initialSidebar });
     dispatch({ type: 'SET_PREVIEW_SIZE', previewSize: readPreviewSize() });
     dispatch({ type: 'SET_PICK_MODE', enabled: readPickModeEnabled() });
+    dispatch({ type: 'SET_FRAMES_MODE', enabled: readFramesModeEnabled() });
+  }, []);
+
+  const sendBindingFrames = useCallback(
+    (enabled: boolean, candidates = selectFrameCandidates(state)) => {
+      postToInspectorFrame(
+        iframeRef.current,
+        enabled
+          ? {
+              channel: UI_INSPECTOR_CHANNEL,
+              type: 'SET_BINDING_FRAMES',
+              enabled: true,
+              candidates,
+            }
+          : { channel: UI_INSPECTOR_CHANNEL, type: 'CLEAR_BINDING_FRAMES' },
+        window.location.origin
+      );
+    },
+    [state]
+  );
+
+  const clearBindingFrames = useCallback(() => {
+    postToInspectorFrame(
+      iframeRef.current,
+      { channel: UI_INSPECTOR_CHANNEL, type: 'CLEAR_BINDING_FRAMES' },
+      window.location.origin
+    );
   }, []);
 
   useEffect(() => {
@@ -115,6 +155,14 @@ export function InspectorProvider({ children }: { children: ReactNode }) {
     );
   }, []);
 
+  const sendClearHighlight = useCallback(() => {
+    postToInspectorFrame(
+      iframeRef.current,
+      { channel: UI_INSPECTOR_CHANNEL, type: 'CLEAR_HIGHLIGHT' },
+      window.location.origin
+    );
+  }, []);
+
   const sendScroll = useCallback((scanKey: string) => {
     postToInspectorFrame(
       iframeRef.current,
@@ -143,12 +191,28 @@ export function InspectorProvider({ children }: { children: ReactNode }) {
           elements: event.data.elements,
           lastScanTime: new Date(),
         });
+        if (framesModeRef.current) {
+          window.setTimeout(() => {
+            sendBindingFrames(
+              true,
+              selectFrameCandidates({
+                elements: event.data.elements,
+                allInspectorData: state.allInspectorData,
+                selectedIdentityKey: state.selectedIdentityKey,
+                relationshipReverseIndex: state.relationshipReverseIndex,
+              })
+            );
+          }, 0);
+        }
       }
 
       if (event.data.type === 'READY') {
         dispatch({ type: 'SET_IFRAME_READY', ready: true });
         sendPickMode(state.pickModeEnabled);
         requestScan();
+        if (framesModeRef.current) {
+          sendBindingFrames(true);
+        }
       }
 
       if (event.data.type === 'ELEMENT_PICKED') {
@@ -158,7 +222,16 @@ export function InspectorProvider({ children }: { children: ReactNode }) {
 
     window.addEventListener('message', onMessage);
     return () => window.removeEventListener('message', onMessage);
-  }, [requestScan, selectElement, sendPickMode, state.pickModeEnabled]);
+  }, [
+    requestScan,
+    selectElement,
+    sendBindingFrames,
+    sendPickMode,
+    state.allInspectorData,
+    state.pickModeEnabled,
+    state.relationshipReverseIndex,
+    state.selectedIdentityKey,
+  ]);
 
   useEffect(() => {
     if (state.selectedScanKey) sendHighlight(state.selectedScanKey);
@@ -193,6 +266,11 @@ export function InspectorProvider({ children }: { children: ReactNode }) {
       formState: formStateFromEntry(saved, state.databaseRef),
     });
   }, [state.selectedIdentityKey, state.lastSelectedElement, state.allInspectorData, state.databaseRef]);
+
+  useEffect(() => {
+    const graph = buildRelationshipsGraph(state.allInspectorData);
+    dispatch({ type: 'SET_RELATIONSHIP_REVERSE_INDEX', reverseIndex: buildReverseIndex(graph) });
+  }, [state.allInspectorData]);
 
   useEffect(() => {
     const onMouseMove = (event: MouseEvent) => {
@@ -233,7 +311,6 @@ export function InspectorProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const handleRouteChange = useCallback((routePath: InspectorRoutePath) => {
-    loadedIdentityKeyRef.current = null;
     dispatch({ type: 'SET_ROUTE', routePath });
   }, []);
 
@@ -241,10 +318,41 @@ export function InspectorProvider({ children }: { children: ReactNode }) {
     dispatch({ type: 'REFRESH_IFRAME' });
   }, []);
 
+  useEffect(() => {
+    if (!state.iframeReady || !state.framesModeEnabled) return;
+    sendBindingFrames(true, selectFrameCandidates(state));
+  }, [
+    state.elements,
+    state.allInspectorData,
+    state.selectedIdentityKey,
+    state.relationshipReverseIndex,
+    state.framesModeEnabled,
+    state.iframeReady,
+    state.iframeKey,
+    state.routePath,
+    sendBindingFrames,
+  ]);
+
+  const handleFramesModeToggle = useCallback(() => {
+    const next = !state.framesModeEnabled;
+    dispatch({ type: 'SET_FRAMES_MODE', enabled: next });
+    persistFramesModeEnabled(next);
+    if (next) {
+      sendBindingFrames(true, selectFrameCandidates(state));
+    } else {
+      clearBindingFrames();
+    }
+  }, [clearBindingFrames, sendBindingFrames, state]);
   const handlePickModeToggle = useCallback(() => {
-    dispatch({ type: 'SET_PICK_MODE', enabled: !state.pickModeEnabled });
-    persistPickModeEnabled(!state.pickModeEnabled);
-  }, [state.pickModeEnabled]);
+    const next = !state.pickModeEnabled;
+    dispatch({ type: 'SET_PICK_MODE', enabled: next });
+    persistPickModeEnabled(next);
+    if (!next) {
+      loadedIdentityKeyRef.current = null;
+      dispatch({ type: 'CLEAR_SELECTED_ELEMENT' });
+      sendClearHighlight();
+    }
+  }, [sendClearHighlight, state.pickModeEnabled]);
 
   const handleResizeStart = useCallback(() => {
     draggingRef.current = true;
@@ -263,6 +371,7 @@ export function InspectorProvider({ children }: { children: ReactNode }) {
       handleRouteChange,
       handleRefresh,
       handlePickModeToggle,
+      handleFramesModeToggle,
       handleResizeStart,
       sendHighlight,
       sendScroll,
@@ -275,6 +384,7 @@ export function InspectorProvider({ children }: { children: ReactNode }) {
       handleRouteChange,
       handleRefresh,
       handlePickModeToggle,
+      handleFramesModeToggle,
       handleResizeStart,
       sendHighlight,
       sendScroll,

@@ -35,6 +35,13 @@ export function formatSimulationReportMarkdown(report: SimulationInsightsReport)
     '',
     '## Architecture Suggestions',
     ...report.architectureSuggestions.map((s) => `- (${s.category}) ${s.message}`),
+    '',
+    '## Relationship Graph',
+    `- Nodes: ${report.relationshipGraph.nodeCount}`,
+    `- Edges: ${report.relationshipGraph.edgeCount}`,
+    ...report.relationshipGraph.mostConnected.map(
+      (item) => `- Connected: ${item.identityKey} (${item.count})`
+    ),
   ];
   return lines.join('\n');
 }

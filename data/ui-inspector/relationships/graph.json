@@ -1,0 +1,47 @@
+{
+  "nodes": [
+    {
+      "identityKey": "23f4f6b3-513e-5b6a-ac7c-9585009fde64",
+      "uuid": "23f4f6b3-513e-5b6a-ac7c-9585009fde64",
+      "path": "settings.page.display.description",
+      "feature": "settings",
+      "bindingCount": 1,
+      "kinds": [
+        "database"
+      ]
+    },
+    {
+      "identityKey": "380ab222-fdc6-581f-8f61-b76c696f7da1",
+      "uuid": "380ab222-fdc6-581f-8f61-b76c696f7da1",
+      "path": "shared-layout.sidebar.actions.close-button",
+      "feature": "shared-layout",
+      "bindingCount": 0,
+      "kinds": []
+    },
+    {
+      "identityKey": "4ecf8039-11c1-5808-b0d8-c48fb4f66c9e",
+      "uuid": "4ecf8039-11c1-5808-b0d8-c48fb4f66c9e",
+      "path": "auth.registration.brand-name",
+      "feature": "auth",
+      "bindingCount": 2,
+      "kinds": [
+        "database",
+        "storage"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "23f4f6b3-513e-5b6a-ac7c-9585009fde64::4ecf8039-11c1-5808-b0d8-c48fb4f66c9e::shares_database_table::database_dabd48c8-c60c-43d3-81a4-4ac20bfb4974",
+      "fromElementKey": "23f4f6b3-513e-5b6a-ac7c-9585009fde64",
+      "toElementKey": "4ecf8039-11c1-5808-b0d8-c48fb4f66c9e",
+      "fromBindingId": "database_dabd48c8-c60c-43d3-81a4-4ac20bfb4974",
+      "toBindingId": "database_e11e416e-ea9d-4cfb-a3a1-0ad574a1dfe3",
+      "relationKind": "shares_database_table",
+      "confidence": "high",
+      "reason": "Shared column human_resource_management_system.employees.employee_id",
+      "createdFrom": "inferred_shared_database"
+    }
+  ],
+  "updatedAt": "2026-06-20T14:22:32.041Z"
+}

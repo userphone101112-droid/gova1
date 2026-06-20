@@ -2,7 +2,9 @@
 
 import { useMemo } from 'react';
 
+import { isDatabaseColumnRefComplete } from '../../domain/governance-domain';
 import { nodeToTreeId, useStorageCatalog } from '../../hooks/useStorageCatalog';
+import { useInspectorContext } from '../../state/InspectorProvider';
 import { InspectorActionButton } from '../../ui/InspectorActionButton';
 import { InspectorTree, type InspectorTreeNode } from '../../ui/InspectorTree';
 
@@ -11,6 +13,16 @@ type StorageCatalogTreeProps = {
 };
 
 export function StorageCatalogTree({ catalog }: StorageCatalogTreeProps) {
+  const { state } = useInspectorContext();
+  const anchorFromSelection = useMemo(() => {
+    const ref = {
+      databaseName: state.formState.databaseName,
+      tableName: state.formState.tableName,
+      columnName: state.formState.columnName,
+    };
+    return isDatabaseColumnRefComplete(ref) ? ref : null;
+  }, [state.formState.columnName, state.formState.databaseName, state.formState.tableName]);
+
   const nodes: InspectorTreeNode[] = useMemo(
     () =>
       catalog.file.folders.map((folder) => ({
@@ -40,9 +52,11 @@ export function StorageCatalogTree({ catalog }: StorageCatalogTreeProps) {
         </InspectorActionButton>
         <InspectorActionButton
           variant="secondary"
-          disabled={catalog.busy || selected?.level !== 'main'}
+          disabled={catalog.busy || selected?.level !== 'main' || !anchorFromSelection}
           onClick={() => {
-            if (selected?.level === 'main') void catalog.addAndSaveSubFile(selected.mainName);
+            if (selected?.level === 'main' && anchorFromSelection) {
+              void catalog.addAndSaveSubFile(selected.mainName, { linkedDatabaseColumn: anchorFromSelection });
+            }
           }}
           instanceId="storage-catalog-add-sub"
         >

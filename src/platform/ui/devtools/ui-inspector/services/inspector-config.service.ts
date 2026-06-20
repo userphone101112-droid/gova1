@@ -19,7 +19,7 @@ export async function loadInspectorConfigMap(): Promise<InspectorDataMap> {
 export async function saveInspectorElementConfig(
   selected: InspectElementSnapshot,
   formState: ElementFormState,
-  options?: { confirm?: boolean; databaseRef?: DatabaseRefFile }
+  options?: { confirm?: boolean; databaseRef?: DatabaseRefFile; route?: string }
 ): Promise<InspectorDataEntryResult> {
   if (options?.confirm !== false && !confirmAction(ELEMENT_SAVE_CONFIRM_MESSAGE)) {
     return { saved: false };
@@ -43,6 +43,7 @@ export async function saveInspectorElementConfig(
     attribute1: formState.attribute1,
     attribute2: formState.attribute2,
     attribute3: formState.attribute3,
+    route: options?.route,
   });
 
   const storageKey = getStorageKey(selected);

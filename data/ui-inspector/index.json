@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "updatedAt": "2026-06-20T14:22:32.041Z",
+  "entries": [
+    {
+      "identityKey": "23f4f6b3-513e-5b6a-ac7c-9585009fde64",
+      "uuid": "23f4f6b3-513e-5b6a-ac7c-9585009fde64",
+      "instanceId": "",
+      "path": "settings.page.display.description",
+      "feature": "settings",
+      "updatedAt": "2026-06-20T11:48:07.938Z",
+      "hasBindings": true,
+      "bindingCount": 1,
+      "hasStorage": false,
+      "hasDatabase": true
+    },
+    {
+      "identityKey": "380ab222-fdc6-581f-8f61-b76c696f7da1",
+      "uuid": "380ab222-fdc6-581f-8f61-b76c696f7da1",
+      "instanceId": "",
+      "path": "shared-layout.sidebar.actions.close-button",
+      "feature": "shared-layout",
+      "updatedAt": "2026-06-20T11:06:03.355Z",
+      "hasBindings": false,
+      "bindingCount": 0,
+      "hasStorage": false,
+      "hasDatabase": false
+    },
+    {
+      "identityKey": "4ecf8039-11c1-5808-b0d8-c48fb4f66c9e",
+      "uuid": "4ecf8039-11c1-5808-b0d8-c48fb4f66c9e",
+      "instanceId": "",
+      "path": "auth.registration.brand-name",
+      "feature": "auth",
+      "updatedAt": "2026-06-20T12:25:39.502Z",
+      "hasBindings": true,
+      "bindingCount": 2,
+      "hasStorage": true,
+      "hasDatabase": true
+    }
+  ]
+}

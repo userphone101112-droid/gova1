@@ -1,6 +1,3 @@
-import fs from 'fs/promises';
-import path from 'path';
-
 import { NextResponse } from 'next/server';
 
 import { getUiIdentityUuid, getUiIdentityByUuid } from '@/platform/ui';
@@ -12,30 +9,16 @@ import {
 import type { ElementAttribute } from '@/platform/ui/devtools/ui-inspector/data/element-binding.types';
 import {
   mergeInspectorEntry,
-  normalizeInspectorDataMap,
   resolveInspectorIdentityKey,
 } from '@/platform/ui/devtools/ui-inspector/data/inspector-config-storage';
 import type { InspectorDataEntry } from '@/platform/ui/devtools/ui-inspector/data/inspector-config.types';
-type InspectorData = Record<string, InspectorDataEntry>;
-
-const DATA_FILE_PATH = path.join(process.cwd(), 'data', 'ui-inspector-data.json');
+import {
+  loadInspectorDataMapFromLayout,
+  saveInspectorEntryToLayout,
+} from '@/platform/ui/devtools/ui-inspector/services/inspector-persistence.service';
 
 function uiInspectorNotFoundResponse(): NextResponse {
   return NextResponse.json({ error: 'Not found' }, { status: 404 });
-}
-
-async function readData(): Promise<InspectorData> {
-  try {
-    const data = await fs.readFile(DATA_FILE_PATH, 'utf8');
-    return normalizeInspectorDataMap(JSON.parse(data) as InspectorData);
-  } catch {
-    return {};
-  }
-}
-
-async function writeData(data: InspectorData): Promise<void> {
-  const normalized = normalizeInspectorDataMap(data);
-  await fs.writeFile(DATA_FILE_PATH, `${JSON.stringify(normalized, null, 2)}\n`, 'utf8');
 }
 
 export async function GET() {
@@ -44,14 +27,11 @@ export async function GET() {
   }
 
   try {
-    const data = await readData();
+    const data = await loadInspectorDataMapFromLayout();
     return NextResponse.json(data);
   } catch (error) {
     console.error('Error reading inspector data:', error);
-    return NextResponse.json(
-      { error: 'Failed to read data' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to read data' }, { status: 500 });
   }
 }
 
@@ -81,16 +61,13 @@ export async function POST(request: Request) {
       attribute1,
       attribute2,
       attribute3,
+      route,
     } = body;
 
     if (!uiUuid) {
-      return NextResponse.json(
-        { error: 'Missing uiUuid parameter' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'Missing uiUuid parameter' }, { status: 400 });
     }
 
-    const data = await readData();
     const identity = getUiIdentityByUuid(uiUuid);
     const resolvedUuid = identity ? getUiIdentityUuid(identity) : uiUuid || '';
     const resolvedInstanceId = uiInstanceId === undefined || uiInstanceId === null ? '' : String(uiInstanceId);
@@ -131,14 +108,18 @@ export async function POST(request: Request) {
     entry.inf2 = inf2 || '';
     entry.inf3 = inf3 || '';
 
-    await writeData(mergeInspectorEntry(data, storageKey, entry));
+    const merged = await saveInspectorEntryToLayout(entry, {
+      ...(typeof route === 'string' ? { route } : {}),
+    });
 
-    return NextResponse.json({ success: true, uiUuid: storageKey, id: identity?.id });
+    return NextResponse.json({
+      success: true,
+      uiUuid: storageKey,
+      id: identity?.id,
+      data: mergeInspectorEntry(merged, storageKey, entry),
+    });
   } catch (error) {
     console.error('Error saving inspector data:', error);
-    return NextResponse.json(
-      { error: 'Failed to save data' },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'Failed to save data' }, { status: 500 });
   }
 }

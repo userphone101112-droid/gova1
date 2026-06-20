@@ -2,22 +2,7 @@
 
 import { useCallback, useState } from 'react';
 
-import {
-  addColumn,
-  addDatabase,
-  addTable,
-  deleteColumn,
-  deleteDatabase,
-  deleteTable,
-  findColumn,
-  findDatabase,
-  findTable,
-  remapElementFieldNames,
-  replaceColumn,
-  replaceDatabase,
-  replaceTable,
-  type RenameMap,
-} from '../data/database-ref-utils';
+import { replaceColumn, replaceDatabase, replaceTable } from '../data/database-ref-utils';
 import type {
   DatabaseCatalogNode,
   DatabaseRefColumn,
@@ -25,6 +10,19 @@ import type {
   DatabaseRefFile,
   DatabaseRefTable,
 } from '../data/database-ref.types';
+import {
+  deleteColumnFromRef,
+  deleteDatabaseFromRef,
+  deleteTableFromRef,
+  getColumn,
+  getDatabase,
+  getTable,
+  quickAddColumn,
+  quickAddDatabase,
+  quickAddTable,
+  remapDatabaseBindingsInForm,
+  type DatabaseBindingRenameMap,
+} from '../domain/database-domain';
 import { persistDatabaseRefFile } from '../services/database-ref.service';
 import { useInspectorContext } from '../state/InspectorProvider';
 import {
@@ -63,13 +61,13 @@ export function useDatabaseCatalog() {
   const file = state.databaseRef;
 
   const applyPersistedFile = useCallback(
-    (next: DatabaseRefFile, renameMap?: RenameMap) => {
+    (next: DatabaseRefFile, renameMap?: DatabaseBindingRenameMap) => {
       dispatch({ type: 'SET_DATABASE_REF', data: next });
       dispatch({ type: 'SET_DATABASE_REF_DRAFT', data: next });
       if (renameMap) {
         dispatch({
           type: 'PATCH_FORM_STATE',
-          patch: remapElementFieldNames(state.formState, renameMap),
+          patch: remapDatabaseBindingsInForm(state.formState, renameMap),
         });
       }
     },
@@ -77,7 +75,7 @@ export function useDatabaseCatalog() {
   );
 
   const persistRef = useCallback(
-    async (next: DatabaseRefFile, options?: { confirm?: boolean; message?: string; renameMap?: RenameMap }) => {
+    async (next: DatabaseRefFile, options?: { confirm?: boolean; message?: string; renameMap?: DatabaseBindingRenameMap }) => {
       setBusy(true);
       try {
         const saved = await persistDatabaseRefFile(next, {
@@ -101,7 +99,7 @@ export function useDatabaseCatalog() {
         window.alert(result.error);
         return false;
       }
-      const renameMap: RenameMap | undefined =
+      const renameMap: DatabaseBindingRenameMap | undefined =
         originalName !== nextDatabase.name
           ? { database: { oldName: originalName, newName: nextDatabase.name } }
           : undefined;
@@ -121,7 +119,7 @@ export function useDatabaseCatalog() {
         window.alert(result.error);
         return false;
       }
-      const renameMap: RenameMap | undefined =
+      const renameMap: DatabaseBindingRenameMap | undefined =
         originalTableName !== nextTable.name
           ? { table: { oldName: originalTableName, newName: nextTable.name } }
           : undefined;
@@ -146,7 +144,7 @@ export function useDatabaseCatalog() {
         window.alert(result.error);
         return false;
       }
-      const renameMap: RenameMap | undefined =
+      const renameMap: DatabaseBindingRenameMap | undefined =
         originalColumnName !== nextColumn.name
           ? { column: { oldName: originalColumnName, newName: nextColumn.name } }
           : undefined;
@@ -165,7 +163,7 @@ export function useDatabaseCatalog() {
   );
 
   const addAndSaveDatabase = useCallback(async () => {
-    const next = addDatabase(file);
+    const next = quickAddDatabase(file);
     const added = next.databases[next.databases.length - 1];
     if (!added) return false;
     const saved = await persistRef(next, { message: DATABASE_QUICK_ADD_CONFIRM_MESSAGE });
@@ -175,37 +173,39 @@ export function useDatabaseCatalog() {
 
   const addAndSaveTable = useCallback(
     async (databaseName: string) => {
-      const result = addTable(file, databaseName);
-      if (result.error) {
-        window.alert(result.error);
+      try {
+        const next = quickAddTable(file, databaseName);
+        const table = next.databases.find((db) => db.name === databaseName)?.tables.at(-1);
+        const saved = await persistRef(next, { message: DATABASE_QUICK_ADD_CONFIRM_MESSAGE });
+        if (saved && table) {
+          setSelectedNode({ level: 'table', databaseName, tableName: table.name });
+        }
+        return saved;
+      } catch (error) {
+        window.alert(error instanceof Error ? error.message : 'Failed to add table.');
         return false;
       }
-      const table = result.file.databases.find((db) => db.name === databaseName)?.tables.at(-1);
-      const saved = await persistRef(result.file, { message: DATABASE_QUICK_ADD_CONFIRM_MESSAGE });
-      if (saved && table) {
-        setSelectedNode({ level: 'table', databaseName, tableName: table.name });
-      }
-      return saved;
     },
     [file, persistRef]
   );
 
   const addAndSaveColumn = useCallback(
     async (databaseName: string, tableName: string) => {
-      const result = addColumn(file, databaseName, tableName);
-      if (result.error) {
-        window.alert(result.error);
+      try {
+        const next = quickAddColumn(file, databaseName, tableName);
+        const column = next.databases
+          .find((db) => db.name === databaseName)
+          ?.tables.find((table) => table.name === tableName)
+          ?.columns.at(-1);
+        const saved = await persistRef(next, { message: DATABASE_QUICK_ADD_CONFIRM_MESSAGE });
+        if (saved && column) {
+          setSelectedNode({ level: 'column', databaseName, tableName, columnName: column.name });
+        }
+        return saved;
+      } catch (error) {
+        window.alert(error instanceof Error ? error.message : 'Failed to add column.');
         return false;
       }
-      const column = result.file.databases
-        .find((db) => db.name === databaseName)
-        ?.tables.find((table) => table.name === tableName)
-        ?.columns.at(-1);
-      const saved = await persistRef(result.file, { message: DATABASE_QUICK_ADD_CONFIRM_MESSAGE });
-      if (saved && column) {
-        setSelectedNode({ level: 'column', databaseName, tableName, columnName: column.name });
-      }
-      return saved;
     },
     [file, persistRef]
   );
@@ -213,10 +213,15 @@ export function useDatabaseCatalog() {
   const removeDatabase = useCallback(
     async (databaseName: string) => {
       if (!window.confirm(`Delete database "${databaseName}" and all nested tables?`)) return false;
-      const next = deleteDatabase(file, databaseName);
-      const saved = await persistRef(next);
-      if (saved) setSelectedNode(null);
-      return saved;
+      try {
+        const next = deleteDatabaseFromRef(file, databaseName);
+        const saved = await persistRef(next);
+        if (saved) setSelectedNode(null);
+        return saved;
+      } catch (error) {
+        window.alert(error instanceof Error ? error.message : 'Failed to delete database.');
+        return false;
+      }
     },
     [file, persistRef]
   );
@@ -224,7 +229,7 @@ export function useDatabaseCatalog() {
   const removeTable = useCallback(
     async (databaseName: string, tableName: string) => {
       if (!window.confirm(`Delete table "${tableName}" and all columns?`)) return false;
-      const next = deleteTable(file, databaseName, tableName);
+      const next = deleteTableFromRef(file, databaseName, tableName);
       const saved = await persistRef(next);
       if (saved) setSelectedNode({ level: 'database', databaseName });
       return saved;
@@ -235,7 +240,7 @@ export function useDatabaseCatalog() {
   const removeColumn = useCallback(
     async (databaseName: string, tableName: string, columnName: string) => {
       if (!window.confirm(`Delete column "${columnName}"?`)) return false;
-      const next = deleteColumn(file, databaseName, tableName, columnName);
+      const next = deleteColumnFromRef(file, databaseName, tableName, columnName);
       const saved = await persistRef(next);
       if (saved) setSelectedNode({ level: 'table', databaseName, tableName });
       return saved;
@@ -245,20 +250,17 @@ export function useDatabaseCatalog() {
 
   const getSelectedDatabase = (): DatabaseRefDatabase | undefined => {
     if (!selectedNode) return undefined;
-    return findDatabase(file, selectedNode.databaseName);
+    return getDatabase(file, selectedNode.databaseName) ?? undefined;
   };
 
   const getSelectedTable = (): DatabaseRefTable | undefined => {
     if (!selectedNode || selectedNode.level === 'database') return undefined;
-    return findTable(findDatabase(file, selectedNode.databaseName), selectedNode.tableName);
+    return getTable(file, selectedNode.databaseName, selectedNode.tableName) ?? undefined;
   };
 
   const getSelectedColumn = (): DatabaseRefColumn | undefined => {
     if (!selectedNode || selectedNode.level !== 'column') return undefined;
-    return findColumn(
-      findTable(findDatabase(file, selectedNode.databaseName), selectedNode.tableName),
-      selectedNode.columnName
-    );
+    return getColumn(file, selectedNode.databaseName, selectedNode.tableName, selectedNode.columnName) ?? undefined;
   };
 
   return {

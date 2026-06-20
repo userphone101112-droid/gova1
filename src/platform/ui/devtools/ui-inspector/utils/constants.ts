@@ -1,5 +1,6 @@
 export const SIDEBAR_WIDTH_KEY = 'ui-inspector-sidebar-width';
 export const PICK_MODE_KEY = 'ui-inspector-pick-mode';
+export const FRAMES_MODE_KEY = 'ui-inspector-frames-mode';
 export const PREVIEW_SIZE_KEY = 'ui-inspector-preview-size';
 export const DEFAULT_SIDEBAR_WIDTH = 380;
 export const DEFAULT_PREVIEW_WIDTH = 390;

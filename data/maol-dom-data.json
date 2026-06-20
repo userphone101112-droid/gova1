@@ -297,7 +297,7 @@
     },
     {
       "route": "/home",
-      "timestamp": 1781964477183,
+      "timestamp": 1781968963199,
       "totalIdentified": 229,
       "tree": {
         "type": "page",
@@ -440,7 +440,7 @@
     },
     {
       "route": "/settings",
-      "timestamp": 1781956909033,
+      "timestamp": 1781966940658,
       "totalIdentified": 198,
       "tree": {
         "type": "page",
@@ -688,8 +688,8 @@
     },
     {
       "route": "/devtools/ui-inspector",
-      "timestamp": 1781964478175,
-      "totalIdentified": 70,
+      "timestamp": 1781968952814,
+      "totalIdentified": 57,
       "tree": {
         "type": "page",
         "children": [
@@ -716,21 +716,10 @@
               "UI_DEVTOOLS_UI_INSPECTOR_SELECTED_CONTAINER",
               "UI_DEVTOOLS_UI_INSPECTOR_SIDEBAR_DISPLAY_LABEL",
               "UI_DEVTOOLS_UI_INSPECTOR_STATUS_CONTAINER",
-              "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_STABLE_ID_LABEL",
-              "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_STABLE_ID_VALUE",
-              "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_PATH_LABEL",
-              "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_PATH_VALUE",
-              "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_TAG_LABEL",
-              "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_TAG_VALUE",
-              "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_UUID_LABEL",
-              "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_UUID_VALUE",
               "UI_DEVTOOLS_UI_INSPECTOR_STATUS_IFRAME_VALUE",
               "UI_DEVTOOLS_UI_INSPECTOR_STATUS_SCAN_VALUE",
               "UI_DEVTOOLS_UI_INSPECTOR_STATUS_COUNT_VALUE",
               "UI_DEVTOOLS_UI_INSPECTOR_STATUS_URL_VALUE",
-              "UI_DEVTOOLS_UI_INSPECTOR_SIDEBAR_DBATTRS_LABEL",
-              "UI_DEVTOOLS_UI_INSPECTOR_DATA_CONTAINER",
-              "UI_DEVTOOLS_UI_INSPECTOR_DATA_SAVE_BUTTON",
               "UI_DEVTOOLS_UI_INSPECTOR_SIDEBAR_DBMGMT_LABEL",
               "UI_DEVTOOLS_UI_INSPECTOR_SIDEBAR_SCHEMA_LABEL",
               "UI_DEVTOOLS_UI_INSPECTOR_SEARCH_LABEL",
@@ -759,6 +748,7 @@
               "h1",
               "button",
               "span",
+              "code",
               "select",
               "option",
               "input",
