@@ -12,7 +12,11 @@
       "messageButton": "Message",
       "joined": "Joined",
       "bannerAltSuffix": "banner",
-      "statusLabel": "Status:"
+      "statusLabel": "Status:",
+      "categoryBadge": "category badge",
+      "merchantName": "merchant name",
+      "logoImage": "logo image",
+      "bannerImage": "banner image"
     },
     "overview": {
       "container": "Merchant overview container",
@@ -23,12 +27,15 @@
       "rating": "Rating",
       "revenue": "Revenue",
       "completionRate": "Completion Rate",
-      "responseRate": "Response Rate"
+      "responseRate": "Response Rate",
+      "statLabel": "stat label"
     },
     "quick-actions": {
       "container": "Quick actions container",
       "button": "Quick action button",
-      "title": "Quick Actions"
+      "title": "Quick Actions",
+      "actionBadge": "Quick action badge",
+      "actionLabel": "Quick action label"
     },
     "performance": {
       "container": "Performance dashboard container",
@@ -47,14 +54,30 @@
       "avgOrderValueSubtitle": "Per transaction",
       "bestSellingCategory": "Best Selling Category",
       "bestSellingCategorySubtitle": "Top performer this month",
-      "inventoryHealth": "Inventory Health"
+      "inventoryHealth": "Inventory Health",
+      "metricSubtitle": "metric subtitle",
+      "metricValue": "metric value",
+      "metricTitle": "metric title",
+      "revenueTodayValue": "Revenue today value",
+      "revenueMonthValue": "Revenue this month value",
+      "ordersTodayValue": "Orders today value",
+      "ordersMonthValue": "Orders this month value",
+      "conversionRateValue": "Conversion rate value",
+      "avgOrderValueValue": "Average order value display",
+      "bestSellingCategoryValue": "Best selling category value",
+      "inventoryHealthValue": "Inventory health value"
     },
     "collections": {
       "container": "Collections container",
       "card": "Collection card",
       "title": "Featured Collections",
       "viewAll": "View All",
-      "items": "items"
+      "items": "items",
+      "itemCount": "collection item count",
+      "collectionName": "collection name",
+      "typeBadge": "collection type badge",
+      "collectionImage": "collection image",
+      "viewAllButton": "view all button"
     },
     "best-sellers": {
       "container": "Best sellers container",
@@ -62,14 +85,27 @@
       "title": "Best Selling Products",
       "viewAll": "View All",
       "percentOff": "% OFF",
-      "sold": "sold"
+      "sold": "sold",
+      "productImage": "Best selling product image",
+      "saleBadge": "Sale badge",
+      "stockBadge": "Stock badge",
+      "productName": "Product name",
+      "productRating": "Product rating",
+      "viewAllButton": "View all button"
     },
     "recent-orders": {
       "container": "Recent orders container",
       "title": "Recent Orders",
       "viewAll": "View All",
       "item": "item",
-      "items": "items"
+      "items": "items",
+      "orderValue": "order value",
+      "orderTime": "order time",
+      "orderId": "order id",
+      "itemsText": "items text",
+      "customerName": "customer name",
+      "orderAvatar": "order avatar",
+      "viewAllButton": "view all button"
     },
     "reviews": {
       "container": "Reviews container",
@@ -80,7 +116,18 @@
       "star": "star",
       "stars": "stars",
       "purchased": "Purchased",
-      "helpful": "Helpful"
+      "helpful": "Helpful",
+      "helpfulButton": "helpful button",
+      "reviewComment": "review comment",
+      "reviewProduct": "review product",
+      "reviewTime": "review time",
+      "reviewerName": "reviewer name",
+      "reviewAvatar": "review avatar",
+      "ratingPercent": "rating percent",
+      "ratingLabel": "rating label",
+      "reviewCountText": "review count text",
+      "averageRating": "average rating",
+      "viewAllButton": "view all button"
     },
     "store-info": {
       "container": "Store information container",
@@ -92,14 +139,35 @@
       "shippingCoverage": "Shipping Coverage",
       "more": "more",
       "returnPolicy": "Return Policy",
-      "storeSpecialties": "Store Specialties"
+      "storeSpecialties": "Store Specialties",
+      "specialtyBadge": "specialty badge",
+      "specialtiesHeading": "specialties heading",
+      "returnPolicyText": "return policy text",
+      "returnPolicyHeading": "return policy heading",
+      "moreCountriesBadge": "more countries badge",
+      "countryBadge": "country badge",
+      "shippingHeading": "shipping heading",
+      "categoryBadge": "category badge",
+      "categoriesHeading": "categories heading",
+      "expandButton": "expand button",
+      "aboutText": "about text",
+      "aboutHeading": "about heading"
     },
     "trust": {
       "container": "Trust section container",
       "title": "Trust & Credibility",
       "achievements": "Achievements",
       "sellerBadges": "Seller Badges",
-      "noBadgesEarned": "No badges earned yet"
+      "noBadgesEarned": "No badges earned yet",
+      "noBadgesText": "no badges text",
+      "sellerBadgeName": "seller badge name",
+      "sellerBadge": "seller badge",
+      "sellerBadgesHeading": "seller badges heading",
+      "achievementName": "achievement name",
+      "achievementBadge": "achievement badge",
+      "achievementsHeading": "achievements heading",
+      "credentialDescription": "credential description",
+      "credentialTitle": "credential title"
     },
     "common": {
       "viewAll": "View All"

@@ -20,8 +20,9 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server';
-import { isValidMaolSessionId } from '@/shared/maol/session';
+
 import { getSessionData } from '@/lib/maol-store';
+import { isValidMaolSessionId } from '@/shared/maol/session';
 
 // ---------------------------------------------------------------------------
 // Authentication helpers

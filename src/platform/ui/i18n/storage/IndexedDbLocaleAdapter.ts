@@ -1,4 +1,5 @@
 import { Locale } from '../core/types';
+
 import { LocaleStorageAdapter } from './LocaleStorageAdapter';
 
 /**

@@ -1,11 +1,10 @@
 'use client';
-
-import { useEffect, useRef } from 'react';
-import Link from 'next/link';
 import { Settings, X, LogIn, UserPlus } from 'lucide-react';
-import { UiDiv, UiButton } from '@/platform/ui';
-import { SHARED_LAYOUT } from '@/platform/ui';
-import { useTranslation } from '@/platform/ui';
+import Link from 'next/link';
+import { useEffect, useRef } from 'react';
+
+import { SHARED_LAYOUT, useTranslation } from '@/platform/ui';
+
 
 interface AppSidebarProps {
   isOpen: boolean;
@@ -43,100 +42,49 @@ export function AppSidebar({ isOpen, onClose }: AppSidebarProps) {
   }, [isOpen]);
 
   return (
-    <UiDiv
-      ui={SHARED_LAYOUT.SIDEBAR.CONTAINER}
-      className={`fixed inset-0 z-scrim ${isOpen ? '' : 'pointer-events-none'}`}
-      aria-hidden={!isOpen}
-    >
-      <UiDiv
-        ui={SHARED_LAYOUT.SIDEBAR.OVERLAY}
-        className={`absolute inset-0 bg-overlay/40 transition-opacity duration-300 z-scrim ${
-          isOpen ? 'opacity-100' : 'opacity-0'
-        }`}
-      />
+    <div data-ui-uuid={SHARED_LAYOUT.SIDEBAR.CONTAINER.uuid} className={`fixed inset-0 z-scrim ${isOpen ? '' : 'pointer-events-none'}`} aria-hidden={!isOpen}>
+      <div data-ui-uuid={SHARED_LAYOUT.SIDEBAR.OVERLAY.uuid} className={`absolute inset-0 bg-overlay/40 transition-opacity duration-300 z-scrim ${isOpen ? 'opacity-100' : 'opacity-0'}`} />
 
-      <UiDiv
-        ui={SHARED_LAYOUT.SIDEBAR.SIDEBAR_PANEL}
-        ref={sidebarRef}
-        role="dialog"
-        aria-modal={isOpen}
-        aria-label={t(SHARED_LAYOUT.HEADER.MENU.MENU_BUTTON)}
-        className={[
-          'fixed top-0 z-drawer flex h-dvh w-72 flex-col bg-background transition-transform duration-300 ease-out motion-transform',
-          isArabic
+      <div data-ui-uuid={SHARED_LAYOUT.SIDEBAR.SIDEBAR_PANEL.uuid} ref={sidebarRef} role="dialog" aria-modal={isOpen} aria-label={t(SHARED_LAYOUT.HEADER.MENU.MENU_BUTTON)} className={[
+        'fixed top-0 z-drawer flex h-dvh w-72 flex-col bg-background transition-transform duration-300 ease-out motion-transform',
+        isArabic
             ? 'inset-inline-end-0 border-s border-border'
             : 'inset-inline-start-0 border-e border-border',
-          isOpen
+        isOpen
             ? 'translate-x-0'
             : isArabic
-              ? 'translate-x-full'
-              : '-translate-x-full',
-        ].join(' ')}
-      >
-        <UiDiv
-          ui={SHARED_LAYOUT.SIDEBAR.HEADER}
-          className="flex items-center justify-between p-3"
-        >
-          <UiButton
-            ui={SHARED_LAYOUT.SIDEBAR.CLOSE_BUTTON}
-            id="sidebar-close-button"
-            variant="ghost"
-            size="icon"
-            className="w-10 h-10 flex items-center justify-center rounded-full"
-            onClick={onClose}
-            aria-label={t(SHARED_LAYOUT.SIDEBAR.CLOSE_BUTTON)}
-          >
+                ? 'translate-x-full'
+                : '-translate-x-full',
+    ].join(' ')}>
+        <div data-ui-uuid={SHARED_LAYOUT.SIDEBAR.HEADER.uuid} className="flex items-center justify-between p-3">
+          <button data-ui-uuid={SHARED_LAYOUT.SIDEBAR.CLOSE_BUTTON.uuid} id="sidebar-close-button" className="w-10 h-10 flex items-center justify-center rounded-full" onClick={onClose} aria-label={t(SHARED_LAYOUT.SIDEBAR.CLOSE_BUTTON)}>
             <X className="w-5 h-5" />
-          </UiButton>
-        </UiDiv>
+          </button>
+        </div>
 
-        <UiDiv
-          ui={SHARED_LAYOUT.SIDEBAR.CONTENT}
-          className="flex flex-1 flex-col gap-1 overflow-y-auto p-3 pt-1"
-        >
-          <UiDiv ui={SHARED_LAYOUT.SIDEBAR.ACTIONS_SECTION} className="flex flex-col gap-1">
+        <div data-ui-uuid={SHARED_LAYOUT.SIDEBAR.CONTENT.uuid} className="flex flex-1 flex-col gap-1 overflow-y-auto p-3 pt-1">
+          <div data-ui-uuid={SHARED_LAYOUT.SIDEBAR.ACTIONS_SECTION.uuid} className="flex flex-col gap-1">
             <Link href="/login">
-              <UiButton
-                ui={SHARED_LAYOUT.SIDEBAR.LOGIN_BUTTON}
-                id="sidebar-login-button"
-                variant="ghost"
-                size="lg"
-                className="w-full flex items-center justify-start gap-3 text-left"
-                onClick={onClose}
-              >
+              <button data-ui-uuid={SHARED_LAYOUT.SIDEBAR.LOGIN_BUTTON.uuid} id="sidebar-login-button" className="w-full flex items-center justify-start gap-3 text-left" onClick={onClose}>
                 <LogIn className="w-5 h-5" />
                 {t(SHARED_LAYOUT.SIDEBAR.LOGIN_BUTTON)}
-              </UiButton>
+              </button>
             </Link>
             <Link href="/registration">
-              <UiButton
-                ui={SHARED_LAYOUT.SIDEBAR.SIGNUP_BUTTON}
-                id="sidebar-signup-button"
-                variant="ghost"
-                size="lg"
-                className="w-full flex items-center justify-start gap-3 text-left"
-                onClick={onClose}
-              >
+              <button data-ui-uuid={SHARED_LAYOUT.SIDEBAR.SIGNUP_BUTTON.uuid} id="sidebar-signup-button" className="w-full flex items-center justify-start gap-3 text-left" onClick={onClose}>
                 <UserPlus className="w-5 h-5" />
                 {t(SHARED_LAYOUT.SIDEBAR.SIGNUP_BUTTON)}
-              </UiButton>
+              </button>
             </Link>
             <Link href="/settings">
-              <UiButton
-                ui={SHARED_LAYOUT.SIDEBAR.SETTINGS_BUTTON}
-                id="sidebar-settings-button"
-                variant="ghost"
-                size="lg"
-                className="w-full flex items-center justify-start gap-3 text-left"
-                onClick={onClose}
-              >
+              <button data-ui-uuid={SHARED_LAYOUT.SIDEBAR.SETTINGS_BUTTON.uuid} id="sidebar-settings-button" className="w-full flex items-center justify-start gap-3 text-left" onClick={onClose}>
                 <Settings className="w-5 h-5" />
                 {t(SHARED_LAYOUT.SIDEBAR.SETTINGS_BUTTON)}
-              </UiButton>
+              </button>
             </Link>
-          </UiDiv>
-        </UiDiv>
-      </UiDiv>
-    </UiDiv>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }

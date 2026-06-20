@@ -1,10 +1,11 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'fs';
 import { dirname, join } from 'path';
+
+import { generateTranslationKeyFromUi, isCategoryUiPath } from '../../i18n/binding/registry-binding';
 import {
   ALL_UI_IDENTITIES,
   isTranslationRequiredForUiIdentity,
 } from '../../registry/registry';
-import { generateTranslationKeyFromUi, isCategoryUiPath } from '../../i18n/binding/registry-binding';
 
 type Locale = 'en' | 'ar';
 type TranslationValue = string | TranslationTree;

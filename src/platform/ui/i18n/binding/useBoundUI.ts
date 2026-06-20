@@ -6,16 +6,17 @@
  */
 
 import type { UiIdentifier, UiParam } from '../../registry/registry';
+import type { TranslationKey } from '../keys';
+
+import {
+  boundTranslation,
+  type TranslateFn,
+} from './boundTranslation';
 import {
   generateTranslationKeyFromUi,
   validateBinding,
   type BindingValidationResult,
 } from './registry-binding';
-import {
-  boundTranslation,
-  type TranslateFn,
-} from './boundTranslation';
-import type { TranslationKey } from '../keys';
 
 export type { TranslateFn, TranslationKey };
 export { boundTranslation };

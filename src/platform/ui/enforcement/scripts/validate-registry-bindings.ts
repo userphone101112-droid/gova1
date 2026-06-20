@@ -1,13 +1,14 @@
 import { readFileSync, readdirSync, existsSync } from 'fs';
 import { join } from 'path';
-import {
-  ALL_UI_IDENTIFIERS,
-  isTranslationRequiredForUiIdentity,
-} from '../../registry/registry';
+
 import {
   generateTranslationKeyFromUi,
   isCategoryUiPath,
 } from '../../i18n/binding/registry-binding';
+import {
+  ALL_UI_IDENTIFIERS,
+  isTranslationRequiredForUiIdentity,
+} from '../../registry/registry';
 
 function flattenTranslationKeys(
   obj: Record<string, unknown>,

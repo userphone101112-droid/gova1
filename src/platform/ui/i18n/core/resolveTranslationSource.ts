@@ -1,23 +1,17 @@
-import type { UiIdentifier, UiParam } from '../../registry/registry';
-import {
-  isTranslationRequiredForUiIdentity,
-  resolveUiParam,
-} from '../../registry/registry';
+import { isTranslationRequiredForUiIdentity } from '../../registry/registry';
+import type { UiIdentity } from '../../registry/types';
 import {
   generateTranslationKeyFromUi,
   isCategoryUiPath,
-  validateUiIdentifierFormat,
 } from '../binding/registry-binding';
 import type { TranslationKey } from '../keys';
 
-export type TranslationSource = TranslationKey | UiParam;
+export type TranslationSource = TranslationKey | UiIdentity;
 
 export type TranslateFn = (source: TranslationSource, fallback?: string) => string;
 
-function isUiIdentityObject(
-  source: TranslationSource
-): source is Extract<UiParam, { path: string }> {
-  return typeof source === 'object' && source !== null && 'path' in source;
+function isUiIdentityObject(source: TranslationSource): source is UiIdentity {
+  return typeof source === 'object' && source !== null && 'uuid' in source && 'path' in source;
 }
 
 /**
@@ -29,21 +23,6 @@ export function resolveTranslationKey(source: TranslationSource): TranslationKey
       return null;
     }
     return generateTranslationKeyFromUi(source.path) as TranslationKey;
-  }
-
-  const identity = resolveUiParam(source);
-  if (identity) {
-    if (isCategoryUiPath(identity.path) || !isTranslationRequiredForUiIdentity(identity)) {
-      return null;
-    }
-    return generateTranslationKeyFromUi(identity.path) as TranslationKey;
-  }
-
-  if (typeof source === 'string' && validateUiIdentifierFormat(source as UiIdentifier)) {
-    if (isCategoryUiPath(source as UiIdentifier)) {
-      return null;
-    }
-    return generateTranslationKeyFromUi(source as UiIdentifier) as TranslationKey;
   }
 
   if (typeof source === 'string') {

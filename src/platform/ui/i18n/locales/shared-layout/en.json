@@ -17,7 +17,18 @@
       "favoritesLink": "Favorites",
       "ordersLink": "Orders",
       "profileLink": "Profile",
-      "container": "Container"
+      "container": "Container",
+      "homeLinkLabel": "Bottom nav home-link-label",
+      "notificationsLinkLabel": "Bottom nav notifications-link-label",
+      "favoritesLinkLabel": "Bottom nav favorites-link-label",
+      "ordersLinkLabel": "Bottom nav orders-link-label",
+      "profileLinkLabel": "Bottom nav profile-link-label",
+      "homeActiveIndicator": "Bottom nav home-active-indicator",
+      "notificationsActiveIndicator": "Bottom nav notifications-active-indicator",
+      "favoritesActiveIndicator": "Bottom nav favorites-active-indicator",
+      "ordersActiveIndicator": "Bottom nav orders-active-indicator",
+      "profileActiveIndicator": "Bottom nav profile-active-indicator",
+      "notificationsBadge": "Bottom nav notifications-badge"
     },
     "sidebar": {
       "english": "English",

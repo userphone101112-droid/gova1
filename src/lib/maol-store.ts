@@ -15,8 +15,9 @@
  * @see docs/SERVER_ARCHITECTURE.md for complete documentation
  */
 
-import { join } from 'path';
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'fs';
+import { join } from 'path';
+
 import { isValidMaolSessionId } from '@/shared/maol/session';
 import type {
   MaolErrorEvent,

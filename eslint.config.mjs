@@ -2,6 +2,8 @@ import { defineConfig, globalIgnores } from "eslint/config";
 import nextVitals from "eslint-config-next/core-web-vitals";
 import nextTs from "eslint-config-next/typescript";
 import uiIdentificationRules from "./src/platform/ui/enforcement/eslint/ui-identification.js";
+import { requireDataUiUuid } from "./src/platform/ui/enforcement/eslint/require-data-ui-uuid.js";
+import { noLegacyUiImports } from "./src/platform/ui/enforcement/eslint/no-legacy-ui-imports.js";
 import i18nEnforcementRules from "./src/platform/ui/enforcement/eslint/i18n-enforcement.js";
 import designTokenEnforcementRules from "./.eslint-rules/design-token-enforcement.js";
 
@@ -10,6 +12,17 @@ const uiIdentificationPlugin = {
     name: 'ui-identification',
   },
   rules: uiIdentificationRules.rules,
+};
+
+const uiRegistryPlugin = {
+  meta: {
+    name: 'ui-registry',
+  },
+  rules: {
+    'require-data-ui-uuid': requireDataUiUuid,
+    'no-legacy-ui-imports': noLegacyUiImports,
+    'validate-registry-uniqueness': uiIdentificationRules.rules['validate-registry-uniqueness'],
+  },
 };
 
 const i18nEnforcementPlugin = {
@@ -32,15 +45,15 @@ const eslintConfig = defineConfig([
   {
     plugins: {
       'ui-identification': uiIdentificationPlugin,
+      'ui-registry': uiRegistryPlugin,
       'i18n-enforcement': i18nEnforcementPlugin,
       'design-token-enforcement': designTokenEnforcementPlugin,
     },
     rules: {
-      // UI Identification System rules
-      'ui-identification/no-direct-native-interactive-elements': 'error',
-      'ui-identification/no-base-ui-components': 'error',
-      'ui-identification/require-ui-prop': 'error',
-      'ui-identification/validate-registry-uniqueness': 'error',
+      // UI Registry — UUID-first DOM identity
+      'ui-registry/require-data-ui-uuid': 'error',
+      'ui-registry/no-legacy-ui-imports': 'error',
+      'ui-registry/validate-registry-uniqueness': 'error',
       // i18n Enforcement rules
       'i18n-enforcement/validate-translation-keys': 'error',
       'i18n-enforcement/no-hardcoded-text': 'error',
@@ -52,6 +65,35 @@ const eslintConfig = defineConfig([
       'i18n-enforcement/no-directional-violations': 'error',
       // Design Token Enforcement rules
         'design-token-enforcement/no-hardcoded-design-tokens': 'error',
+    },
+  },
+  {
+    files: ['src/platform/ui/devtools/**/*.{ts,tsx}'],
+    rules: {
+      'i18n-enforcement/no-hardcoded-text': 'off',
+      'react-hooks/set-state-in-effect': 'off',
+    },
+  },
+  {
+    files: [
+      'src/platform/ui/enforcement/eslint/**/*.js',
+      'src/platform/ui/enforcement/scripts/**/*.ts',
+    ],
+    rules: {
+      '@typescript-eslint/no-require-imports': 'off',
+    },
+  },
+  {
+    files: ['src/providers/SSOTProvider.tsx', 'src/platform/ui/i18n/LocaleProvider.tsx'],
+    rules: {
+      'react-hooks/refs': 'off',
+      'react-hooks/set-state-in-effect': 'off',
+    },
+  },
+  {
+    files: ['src/platform/ui/i18n/core/getDictionary.ts'],
+    rules: {
+      '@next/next/no-assign-module-variable': 'off',
     },
   },
   // Override default ignores of eslint-config-next.

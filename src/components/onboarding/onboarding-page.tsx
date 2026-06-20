@@ -1,20 +1,21 @@
 'use client';
 
-import { UiMain, UiDiv, UiCard, UiButton, ONBOARDING, COMMON_LAYOUT, useTranslation } from '@/platform/ui';
 import { useOnboardingStore } from '@/lib/onboarding/store';
-import { WelcomeStep } from './steps/welcome-step';
-import { StoreInfoStep } from './steps/store-info-step';
+import { ONBOARDING, useTranslation } from '@/platform/ui';
+
+import { BrandingStep } from './steps/branding-step';
 import { BusinessDetailsStep } from './steps/business-details-step';
+import { CompletionStep } from './steps/completion-step';
 import { IdentityVerificationStep } from './steps/identity-verification-step';
-import { ProductsStep } from './steps/products-step';
-import { ShippingStep } from './steps/shipping-step';
+import { MarketingStep } from './steps/marketing-step';
 import { PaymentsStep } from './steps/payments-step';
 import { PoliciesStep } from './steps/policies-step';
-import { BrandingStep } from './steps/branding-step';
 import { PreferencesStep } from './steps/preferences-step';
+import { ProductsStep } from './steps/products-step';
+import { ShippingStep } from './steps/shipping-step';
+import { StoreInfoStep } from './steps/store-info-step';
 import { TaxInfoStep } from './steps/tax-info-step';
-import { MarketingStep } from './steps/marketing-step';
-import { CompletionStep } from './steps/completion-step';
+import { WelcomeStep } from './steps/welcome-step';
 
 const STEP_IDS = [
   'welcome',
@@ -60,52 +61,40 @@ export function OnboardingPage() {
   const progress = ((currentStepIndex) / (TOTAL_STEPS - 1)) * 100;
 
   return (
-    <UiMain ui={COMMON_LAYOUT.MAIN}>
-      <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="min-h-screen bg-gradient-to-br from-background to-muted/30">
-        <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="w-full px-4 sm:px-6 py-6 sm:py-8">
-          <UiCard ui={ONBOARDING.ONBOARDING_PAGE.CONTAINER} className="max-w-5xl w-full mx-auto shadow-xl overflow-hidden">
+    <main data-ui-uuid={ONBOARDING.ONBOARDING_PAGE.MAIN.uuid}>
+      <div data-ui-uuid={ONBOARDING.SHELL.COMMON_PREVIOUS_BUTTON_CONTAINER_L65.uuid} className="min-h-screen bg-gradient-to-br from-background to-muted/30">
+        <div data-ui-uuid={ONBOARDING.SHELL.COMMON_PREVIOUS_BUTTON_CONTAINER_L66.uuid} className="w-full px-4 sm:px-6 py-6 sm:py-8">
+          <div data-ui-uuid={ONBOARDING.ONBOARDING_PAGE.CONTAINER.uuid} className="max-w-5xl w-full mx-auto shadow-xl overflow-hidden">
             {/* Progress Bar */}
             {!isLastStep && (
-              <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="h-2 bg-muted">
-                <UiDiv
-                  ui={COMMON_LAYOUT.CONTAINER}
-                  className="h-full bg-primary transition-all duration-300 ease-out"
-                  style={{ width: `${progress}%` }}
-                />
-              </UiDiv>
+              <div data-ui-uuid={ONBOARDING.SHELL.ONBOARDING_PAGE_L70.uuid} className="h-2 bg-muted">
+                <div data-ui-uuid={ONBOARDING.SHELL.ONBOARDING_PAGE_L71.uuid} className="h-full bg-primary transition-all duration-300 ease-out" style={{ width: `${progress}%` }} />
+              </div>
             )}
 
-            <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="p-4 sm:p-6 md:p-10">
+            <div data-ui-uuid={ONBOARDING.SHELL.COMMON_PREVIOUS_BUTTON_CONTAINER_L75.uuid} className="p-4 sm:p-6 md:p-10">
               {CurrentStepComponent && <CurrentStepComponent />}
-            </UiDiv>
+            </div>
 
             {/* Navigation Buttons */}
             {!isLastStep && (
-              <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 sm:p-6 md:p-10 border-t border-gray-200 bg-gray-50/50">
+              <div data-ui-uuid={ONBOARDING.SHELL.COMMON_PREVIOUS_BUTTON_CONTAINER_L81.uuid} className="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 sm:p-6 md:p-10 border-t border-outline-variant bg-surface-container-low/50">
                 {!isFirstStep ? (
-                  <UiButton
-                    ui={ONBOARDING.COMMON.PREVIOUS_BUTTON}
-                    variant="ghost"
-                    onClick={goToPreviousStep}
-                  >
+                  <button data-ui-uuid={ONBOARDING.COMMON.PREVIOUS_BUTTON.uuid} onClick={goToPreviousStep}>
                     {t(ONBOARDING.COMMON.PREVIOUS_BUTTON)}
-                  </UiButton>
+                  </button>
                 ) : (
-                  <UiDiv ui={COMMON_LAYOUT.CONTAINER} />
+                  <div data-ui-uuid={ONBOARDING.SHELL.ONBOARDING_PAGE_L87.uuid} />
                 )}
-                <UiButton
-                  ui={ONBOARDING.COMMON.NEXT_BUTTON}
-                  onClick={goToNextStep}
-                  className="w-full sm:w-auto"
-                >
+                <button data-ui-uuid={ONBOARDING.COMMON.NEXT_BUTTON.uuid} onClick={goToNextStep} className="w-full sm:w-auto">
                   {currentStepIndex === TOTAL_STEPS - 2 ? t(ONBOARDING.COMMON.FINISH_BUTTON) : t(ONBOARDING.COMMON.NEXT_BUTTON)}
-                </UiButton>
-              </UiDiv>
+                </button>
+              </div>
             )}
-          </UiCard>
-        </UiDiv>
-      </UiDiv>
-    </UiMain>
+          </div>
+        </div>
+      </div>
+    </main>
   );
 }
 

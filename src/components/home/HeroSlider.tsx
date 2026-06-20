@@ -1,10 +1,9 @@
 'use client';
-
+import Image from 'next/image';
 import { useState, useEffect, useCallback } from 'react';
-import { useTranslation, type TranslationKey } from '@/platform/ui';
-import { UiImage, UiLabel, UiHeader, UiSection, UiDiv } from '@/platform/ui';
-import { HOME } from '@/platform/ui';
-import { COMMON_LAYOUT } from '@/platform/ui/registry/categories';
+
+import { useTranslation, type TranslationKey, HOME } from '@/platform/ui';
+
 
 const SLIDES: Array<{
   id: string;
@@ -46,71 +45,29 @@ export function HeroSlider() {
   }, [advance]);
 
   return (
-    <UiSection
-      ui={HOME.HERO_SLIDER.CONTAINER}
-      id="hero-slider-section"
-      className="reveal active mt-4 relative overflow-hidden rounded-xl shadow-sm h-48 sm:h-64 md:h-80 lg:h-96 w-full"
-    >
-      <UiDiv
-        ui={HOME.HERO_SLIDER.SLIDER_TRACK}
-        id="hero-main-slider"
-        className="flex h-full transition-transform duration-500 ease-out"
-        style={{ transform: `translateX(${locale === 'ar' ? current * 100 : -current * 100}%)` }}
-      >
+    <section data-ui-uuid={HOME.HERO_SLIDER.CONTAINER.uuid} id="hero-slider-section" className="reveal active mt-4 relative overflow-hidden rounded-xl shadow-sm h-48 sm:h-64 md:h-80 lg:h-96 w-full">
+      <div data-ui-uuid={HOME.HERO_SLIDER.SLIDER_TRACK.uuid} id="hero-main-slider" className="flex h-full transition-transform duration-500 ease-out" style={{ transform: `translateX(${locale === 'ar' ? current * 100 : -current * 100}%)` }}>
         {SLIDES.map(slide => (
-          <UiDiv
-            ui={HOME.HERO_SLIDER.SLIDE}
-            key={slide.id}
-            id={slide.id}
-            className="min-w-full h-full relative"
-            style={{ flexShrink: 0 }}
-          >
-            <UiImage
-              ui={HOME.HERO_SLIDER.SLIDE_IMAGE}
-              src={slide.imgSrc}
-              alt={t(slide.titleKey)}
-              fill
-              className="object-cover"
-            />
-            <UiDiv
-              ui={HOME.HERO_SLIDER.SLIDE_CONTENT}
-              className="absolute inset-0 flex flex-col justify-center px-6 text-on-primary"
-              style={{ background: 'linear-gradient(to left, var(--gova-primary), var(--gova-primary-container), transparent)' }}
-            >
-              <UiLabel
-                ui={HOME.HERO_SLIDER.SLIDE_BADGE}
-                className="text-xs font-semibold px-2 py-0.5 rounded-full w-fit mb-2"
-                style={{ background: slide.badgeColor, color: slide.badgeTextColor }}
-              >
+          <div data-ui-uuid={HOME.HERO_SLIDER.SLIDE.uuid} key={slide.id} id={slide.id} className="min-w-full h-full relative" style={{ flexShrink: 0 }}>
+            <Image data-ui-uuid={HOME.HERO_SLIDER.SLIDE_IMAGE.uuid} src={slide.imgSrc} alt={t(slide.titleKey)} fill className="object-cover" />
+            <div data-ui-uuid={HOME.HERO_SLIDER.SLIDE_CONTENT.uuid} className="absolute inset-0 flex flex-col justify-center px-6 text-on-primary" style={{ background: 'linear-gradient(to left, var(--gova-primary), var(--gova-primary-container), transparent)' }}>
+              <span data-ui-uuid={HOME.HERO_SLIDER.SLIDE_BADGE.uuid} className="text-xs font-semibold px-2 py-0.5 rounded-full w-fit mb-2" style={{ background: slide.badgeColor, color: slide.badgeTextColor }}>
                 {t(slide.badgeKey)}
-              </UiLabel>
-              <UiHeader
-                ui={HOME.HERO_SLIDER.SLIDE_TITLE}
-                level={2}
-                className="text-2xl font-bold leading-tight"
-              >
+              </span>
+              <h2 data-ui-uuid={HOME.HERO_SLIDER.SLIDE_TITLE.uuid} className="text-2xl font-bold leading-tight">
                 {t(slide.titleKey)}
-              </UiHeader>
-            </UiDiv>
-          </UiDiv>
+              </h2>
+            </div>
+          </div>
         ))}
-      </UiDiv>
+      </div>
 
       {/* Dot indicators */}
-      <UiDiv
-        ui={HOME.HERO_SLIDER.INDICATORS}
-        id="slider-indicators"
-        className="absolute bottom-4 start-1/2 -translate-x-1/2 flex gap-2"
-      >
+      <div data-ui-uuid={HOME.HERO_SLIDER.INDICATORS.uuid} id="slider-indicators" className="absolute bottom-4 start-1/2 -translate-x-1/2 flex gap-2">
         {SLIDES.map((_, i) => (
-          <UiDiv ui={COMMON_LAYOUT.CONTAINER}
-            key={i}
-            id={`indicator-${i}`}
-            className="h-1.5 rounded-full bg-on-primary transition-all"
-            style={{ width: i === current ? '32px' : '8px', opacity: i === current ? 1 : 0.4 }}
-          />
+          <div data-ui-uuid={HOME.SHELL.BADGEKEY_CONTAINER_L68.uuid} key={i} id={`indicator-${i}`} className="h-1.5 rounded-full bg-on-primary transition-all" style={{ width: i === current ? '32px' : '8px', opacity: i === current ? 1 : 0.4 }} />
         ))}
-      </UiDiv>
-    </UiSection>
+      </div>
+    </section>
   );
 }

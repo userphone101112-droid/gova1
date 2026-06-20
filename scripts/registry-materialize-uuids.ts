@@ -22,6 +22,7 @@ interface ManifestIdentity {
   previousIds: string[];
   previousPaths: string[];
   aliases: string[];
+  repeatable?: boolean;
 }
 
 interface Manifest {
@@ -170,8 +171,19 @@ function materializeIdentityBlock(
   const existingUuid = extractString(body, 'uuid');
   const uuid = existingUuid || findManifestUuid(manifest, id, path);
   const lifecycle = extractLifecycle(body);
+  const repeatable = /\brepeatable:\s*true\b/.test(body);
 
-  identities.push({ uuid, id, path, feature, lifecycle, previousIds, previousPaths, aliases });
+  identities.push({
+    uuid,
+    id,
+    path,
+    feature,
+    lifecycle,
+    previousIds,
+    previousPaths,
+    aliases,
+    ...(repeatable ? { repeatable: true } : {}),
+  });
 
   let nextBody = body;
   if (!existingUuid) {

@@ -1,10 +1,11 @@
 import { readdirSync, readFileSync, writeFileSync, existsSync } from 'fs';
 import { join } from 'path';
+
+import { generateTranslationKeyFromUi } from '../../i18n/binding/registry-binding';
 import {
   ALL_UI_IDENTITIES,
   isTranslationRequiredForUiIdentity,
 } from '../../registry/registry';
-import { generateTranslationKeyFromUi } from '../../i18n/binding/registry-binding';
 
 interface TranslationStructure {
   [key: string]: string | TranslationStructure;

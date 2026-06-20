@@ -14,7 +14,8 @@
       "passwordPlaceholder": "••••••••",
       "highlightSecurity": "أمان بنكي",
       "highlightPhone": "تحقق عبر الهاتف",
-      "highlightEncrypted": "بيانات مشفرة"
+      "highlightEncrypted": "بيانات مشفرة",
+      "heroQuoteElement": "TODO(ar): Auth hero blockquote element"
     },
     "login": {
       "heading": "مرحباً بعودتك",
@@ -32,7 +33,10 @@
       "signupDivider": "جديد في سوق السويس؟",
       "successHeading": "مرحباً بعودتك!",
       "successDescription": "تم تسجيل الدخول إلى حسابك بنجاح.",
-      "signinAgainButton": "تسجيل الدخول مرة أخرى"
+      "signinAgainButton": "تسجيل الدخول مرة أخرى",
+      "phoneInputLabel": "TODO(ar): Login phone input label",
+      "passwordInputLabel": "TODO(ar): Login password input label",
+      "signupLinkButton": "TODO(ar): Login signup link button"
     },
     "registration": {
       "brandLogo": "شعار",
@@ -86,7 +90,11 @@
       "successHeading": "أنت جاهز!",
       "successDescription": "تم إنشاء حسابك وتم التحقق من رقم هاتفك.",
       "continueButton": "المتابعة للتطبيق",
-      "backButton": "العودة للبداية"
+      "backButton": "العودة للبداية",
+      "phoneInputLabel": "TODO(ar): Registration phone input label",
+      "passwordInputLabel": "TODO(ar): Registration password input label",
+      "confirmPasswordInputLabel": "TODO(ar): Registration confirm password input label",
+      "toggleConfirmPasswordVisibility": "TODO(ar): Registration confirm password toggle visibility"
     }
   }
 }

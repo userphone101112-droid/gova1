@@ -1,7 +1,7 @@
 'use client';
-
-import { UiDiv, UiH1, UiP, UiInput, UiLabel, UiSelect, UiOption, COMMON_LAYOUT, COMMON_FORMS, ONBOARDING, useTranslation } from '@/platform/ui';
 import { useOnboardingStore } from '@/lib/onboarding/store';
+import { ONBOARDING, useTranslation } from '@/platform/ui';
+
 
 export function BusinessDetailsStep() {
   const {
@@ -29,68 +29,45 @@ export function BusinessDetailsStep() {
   ];
 
   return (
-    <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="w-full">
-      <UiH1 ui={ONBOARDING.BUSINESS_DETAILS.TITLE} className="text-3xl font-bold tracking-tight mb-2">{t(ONBOARDING.BUSINESS_DETAILS.TITLE)}</UiH1>
-      <UiP ui={ONBOARDING.BUSINESS_DETAILS.DESCRIPTION} className="text-muted-foreground mb-8">{t(ONBOARDING.BUSINESS_DETAILS.DESCRIPTION)}</UiP>
+    <div data-ui-uuid={ONBOARDING.SHELL.BUSINESS_DETAILS_TITLE_CONTAINER_L32.uuid} className="w-full">
+      <h1 data-ui-uuid={ONBOARDING.BUSINESS_DETAILS.TITLE.uuid} className="text-3xl font-bold tracking-tight mb-2">{t(ONBOARDING.BUSINESS_DETAILS.TITLE)}</h1>
+      <p data-ui-uuid={ONBOARDING.BUSINESS_DETAILS.DESCRIPTION.uuid} className="text-muted-foreground mb-8">{t(ONBOARDING.BUSINESS_DETAILS.DESCRIPTION)}</p>
 
-      <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="space-y-6 max-w-4xl mx-auto">
-        <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="space-y-2">
-          <UiLabel ui={ONBOARDING.BUSINESS_DETAILS.BUSINESS_NAME_LABEL}>{t(ONBOARDING.BUSINESS_DETAILS.BUSINESS_NAME_LABEL)}</UiLabel>
-          <UiInput
-            ui={COMMON_FORMS.INPUT}
-            placeholder={t(ONBOARDING.BUSINESS_DETAILS.BUSINESS_NAME_PLACEHOLDER)}
-            value={businessDetails.businessName || ''}
-            onChange={(e) => updateBusinessDetails({ businessName: e.target.value })}
-          />
-        </UiDiv>
+      <div data-ui-uuid={ONBOARDING.SHELL.BUSINESS_DETAILS_BUSINESS_NAME_LABEL_CONTAINER_L36.uuid} className="space-y-6 max-w-4xl mx-auto">
+        <div data-ui-uuid={ONBOARDING.SHELL.BUSINESS_DETAILS_BUSINESS_NAME_LABEL_CONTAINER_L37.uuid} className="space-y-2">
+          <span data-ui-uuid={ONBOARDING.BUSINESS_DETAILS.BUSINESS_NAME_LABEL.uuid}>{t(ONBOARDING.BUSINESS_DETAILS.BUSINESS_NAME_LABEL)}</span>
+          <input data-ui-uuid={ONBOARDING.BUSINESS_DETAILS.BUSINESS_NAME_INPUT.uuid} placeholder={t(ONBOARDING.BUSINESS_DETAILS.BUSINESS_NAME_PLACEHOLDER)} value={businessDetails.businessName || ''} onChange={(e) => updateBusinessDetails({ businessName: e.target.value })} />
+        </div>
 
-        <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="space-y-2">
-          <UiLabel ui={ONBOARDING.BUSINESS_DETAILS.BUSINESS_TYPE_LABEL}>{t(ONBOARDING.BUSINESS_DETAILS.BUSINESS_TYPE_LABEL)}</UiLabel>
-          <UiSelect
-            ui={COMMON_FORMS.SELECT}
-            value={businessDetails.businessType || ''}
-            onChange={(e) => updateBusinessDetails({ businessType: e.target.value as any })}
-          >
+        <div data-ui-uuid={ONBOARDING.SHELL.BUSINESS_DETAILS_BUSINESS_TYPE_LABEL_CONTAINER_L42.uuid} className="space-y-2">
+          <span data-ui-uuid={ONBOARDING.BUSINESS_DETAILS.BUSINESS_TYPE_LABEL.uuid}>{t(ONBOARDING.BUSINESS_DETAILS.BUSINESS_TYPE_LABEL)}</span>
+          <select data-ui-uuid={ONBOARDING.BUSINESS_DETAILS.BUSINESS_TYPE_SELECT.uuid} value={businessDetails.businessType || ''} onChange={(e) => updateBusinessDetails({ businessType: e.target.value as any })}>
             {businessTypes.map((t) => (
-              <UiOption key={t.id} ui={COMMON_FORMS.OPTION}>{t.label}</UiOption>
+              <option data-ui-uuid={ONBOARDING.BUSINESS_DETAILS.BUSINESS_TYPE_OPTION.uuid} data-ui-instance-id={t.id} key={t.id}>{t.label}</option>
             ))}
-          </UiSelect>
-        </UiDiv>
+          </select>
+        </div>
 
-        <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="grid gap-6 sm:grid-cols-2">
-          <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="space-y-2">
-            <UiLabel ui={ONBOARDING.BUSINESS_DETAILS.REGISTRATION_NUMBER_LABEL}>{t(ONBOARDING.BUSINESS_DETAILS.REGISTRATION_NUMBER_LABEL)}</UiLabel>
-            <UiInput
-              ui={COMMON_FORMS.INPUT}
-              placeholder={t(ONBOARDING.BUSINESS_DETAILS.REGISTRATION_NUMBER_PLACEHOLDER)}
-              value={businessDetails.businessRegistrationNumber || ''}
-              onChange={(e) => updateBusinessDetails({ businessRegistrationNumber: e.target.value })}
-            />
-          </UiDiv>
-          <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="space-y-2">
-            <UiLabel ui={ONBOARDING.BUSINESS_DETAILS.YEAR_FOUNDED_LABEL}>{t(ONBOARDING.BUSINESS_DETAILS.YEAR_FOUNDED_LABEL)}</UiLabel>
-            <UiInput
-              ui={COMMON_FORMS.INPUT}
-              placeholder={t(ONBOARDING.BUSINESS_DETAILS.YEAR_FOUNDED_PLACEHOLDER)}
-              value={businessDetails.yearFounded || ''}
-              onChange={(e) => updateBusinessDetails({ yearFounded: e.target.value })}
-            />
-          </UiDiv>
-        </UiDiv>
+        <div data-ui-uuid={ONBOARDING.SHELL.BUSINESS_DETAILS_REGISTRATION_NUMBER_LABEL_CONTAINER_L51.uuid} className="grid gap-6 sm:grid-cols-2">
+          <div data-ui-uuid={ONBOARDING.SHELL.BUSINESS_DETAILS_REGISTRATION_NUMBER_LABEL_CONTAINER_L52.uuid} className="space-y-2">
+            <span data-ui-uuid={ONBOARDING.BUSINESS_DETAILS.REGISTRATION_NUMBER_LABEL.uuid}>{t(ONBOARDING.BUSINESS_DETAILS.REGISTRATION_NUMBER_LABEL)}</span>
+            <input data-ui-uuid={ONBOARDING.BUSINESS_DETAILS.REGISTRATION_NUMBER_INPUT.uuid} placeholder={t(ONBOARDING.BUSINESS_DETAILS.REGISTRATION_NUMBER_PLACEHOLDER)} value={businessDetails.businessRegistrationNumber || ''} onChange={(e) => updateBusinessDetails({ businessRegistrationNumber: e.target.value })} />
+          </div>
+          <div data-ui-uuid={ONBOARDING.SHELL.BUSINESS_DETAILS_YEAR_FOUNDED_LABEL_CONTAINER_L56.uuid} className="space-y-2">
+            <span data-ui-uuid={ONBOARDING.BUSINESS_DETAILS.YEAR_FOUNDED_LABEL.uuid}>{t(ONBOARDING.BUSINESS_DETAILS.YEAR_FOUNDED_LABEL)}</span>
+            <input data-ui-uuid={ONBOARDING.BUSINESS_DETAILS.YEAR_FOUNDED_INPUT.uuid} placeholder={t(ONBOARDING.BUSINESS_DETAILS.YEAR_FOUNDED_PLACEHOLDER)} value={businessDetails.yearFounded || ''} onChange={(e) => updateBusinessDetails({ yearFounded: e.target.value })} />
+          </div>
+        </div>
 
-        <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="space-y-2">
-          <UiLabel ui={ONBOARDING.BUSINESS_DETAILS.EMPLOYEE_COUNT_LABEL}>{t(ONBOARDING.BUSINESS_DETAILS.EMPLOYEE_COUNT_LABEL)}</UiLabel>
-          <UiSelect
-            ui={COMMON_FORMS.SELECT}
-            value={businessDetails.employeeCount || ''}
-            onChange={(e) => updateBusinessDetails({ employeeCount: e.target.value })}
-          >
+        <div data-ui-uuid={ONBOARDING.SHELL.BUSINESS_DETAILS_EMPLOYEE_COUNT_LABEL_CONTAINER_L62.uuid} className="space-y-2">
+          <span data-ui-uuid={ONBOARDING.BUSINESS_DETAILS.EMPLOYEE_COUNT_LABEL.uuid}>{t(ONBOARDING.BUSINESS_DETAILS.EMPLOYEE_COUNT_LABEL)}</span>
+          <select data-ui-uuid={ONBOARDING.BUSINESS_DETAILS.EMPLOYEE_COUNT_SELECT.uuid} value={businessDetails.employeeCount || ''} onChange={(e) => updateBusinessDetails({ employeeCount: e.target.value })}>
             {employeeCountOptions.map((e) => (
-              <UiOption key={e.id} ui={COMMON_FORMS.OPTION}>{e.label}</UiOption>
+              <option data-ui-uuid={ONBOARDING.BUSINESS_DETAILS.EMPLOYEE_COUNT_OPTION.uuid} data-ui-instance-id={e.id} key={e.id}>{e.label}</option>
             ))}
-          </UiSelect>
-        </UiDiv>
-      </UiDiv>
-    </UiDiv>
+          </select>
+        </div>
+      </div>
+    </div>
   );
 }

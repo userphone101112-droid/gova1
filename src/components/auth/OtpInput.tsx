@@ -3,8 +3,7 @@
 import * as React from 'react';
 
 import { cn } from '@/lib/utils';
-import { AUTH, UiDiv, UiInput, useTranslation } from '@/platform/ui';
-import { COMMON_LAYOUT } from '@/platform/ui/registry/categories';
+import { AUTH, useTranslation } from '@/platform/ui';
 import type { UiIdentity } from '@/platform/ui/registry/types';
 
 interface OtpInputProps {
@@ -18,7 +17,7 @@ interface OtpInputProps {
 }
 
 export function OtpInput({
-  ui,
+  ui: _ui,
   value,
   onChange,
   onComplete,
@@ -60,28 +59,12 @@ export function OtpInput({
   };
 
   return (
-    <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="flex gap-2 justify-center" onPaste={handlePaste}>
+    <div data-ui-uuid={AUTH.SHELL.OTP_INPUT_L63.uuid} className="flex gap-2 justify-center" onPaste={handlePaste}>
       {Array.from({ length }).map((_, index) => (
-        <UiInput
-          key={index}
-          ui={ui}
-          ref={(el) => {
-            inputsRef.current[index] = el;
-          }}
-          type="text"
-          inputMode="numeric"
-          maxLength={1}
-          disabled={disabled}
-          value={digits[index]?.trim() ?? ''}
-          aria-label={`${t(AUTH.REGISTRATION.OTP_INPUT)} ${index + 1}`}
-          className={cn(
-            'auth-otp-cell type-title-lg motion-colors focus:outline-none focus:ring-2 focus:ring-focus-ring',
-            hasError && 'border-error focus:ring-error'
-          )}
-          onChange={(e) => handleChange(index, e.target.value)}
-          onKeyDown={(e) => handleKeyDown(index, e)}
-        />
+        <input data-ui-uuid={AUTH.REGISTRATION.OTP_INPUT.uuid} data-ui-instance-id={String(index)} key={index} ref={(el) => {
+        inputsRef.current[index] = el;
+    }} type="text" inputMode="numeric" maxLength={1} disabled={disabled} value={digits[index]?.trim() ?? ''} aria-label={`${t(AUTH.REGISTRATION.OTP_INPUT)} ${index + 1}`} className={cn('auth-otp-cell type-title-lg motion-colors focus:outline-none focus:ring-2 focus:ring-focus-ring', hasError && 'border-error focus:ring-error')} onChange={(e) => handleChange(index, e.target.value)} onKeyDown={(e) => handleKeyDown(index, e)} />
       ))}
-    </UiDiv>
+    </div>
   );
 }

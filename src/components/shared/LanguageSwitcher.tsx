@@ -1,38 +1,25 @@
 'use client';
-
-import { useTranslation } from '@/platform/ui';
-import { Locale } from '@/platform/ui';
 import { Globe } from 'lucide-react';
-import { UiButton, UiDiv } from '@/platform/ui';
-import { HOME } from '@/platform/ui';
-import { COMMON_LAYOUT } from '@/platform/ui/registry/categories';
+
+import { useTranslation, Locale, HOME } from '@/platform/ui';
+
 
 export function LanguageSwitcher() {
-  const { t, locale, setLocale } = useTranslation();
+  const { t, setLocale } = useTranslation();
 
   const handleLocaleChange = (newLocale: Locale) => {
     setLocale(newLocale);
   };
 
   return (
-    <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="flex items-center gap-2">
+    <div data-ui-uuid={HOME.SHELL.LANGUAGE_SWITCHER_ENGLISH_BUTTON_WRAPPER_L15.uuid} className="flex items-center gap-2">
       <Globe className="w-4 h-4" />
-      <UiButton
-        ui={HOME.LANGUAGE_SWITCHER.ENGLISH_BUTTON}
-        onClick={() => handleLocaleChange('en')}
-        variant={locale === 'en' ? 'default' : 'secondary'}
-        size="sm"
-      >
+      <button data-ui-uuid={HOME.LANGUAGE_SWITCHER.ENGLISH_BUTTON.uuid} onClick={() => handleLocaleChange('en')}>
         {t(HOME.LANGUAGE_SWITCHER.ENGLISH_BUTTON)}
-      </UiButton>
-      <UiButton
-        ui={HOME.LANGUAGE_SWITCHER.ARABIC_BUTTON}
-        onClick={() => handleLocaleChange('ar')}
-        variant={locale === 'ar' ? 'default' : 'secondary'}
-        size="sm"
-      >
+      </button>
+      <button data-ui-uuid={HOME.LANGUAGE_SWITCHER.ARABIC_BUTTON.uuid} onClick={() => handleLocaleChange('ar')}>
         {t(HOME.LANGUAGE_SWITCHER.ARABIC_BUTTON)}
-      </UiButton>
-    </UiDiv>
+      </button>
+    </div>
   );
 }

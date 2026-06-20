@@ -1,20 +1,11 @@
 'use client';
+import { Package, ShoppingBag, Users, Star, DollarSign, TrendingUp, MessageCircle } from 'lucide-react';
 
-import {
-  UiSection,
-  UiDiv,
-  UiLabel,
-  UiCard,
-  UiSpan,
-  MERCHANT,
-  COMMON_LAYOUT,
-  COMMON_TYPOGRAPHY,
-  COMMON_COMPONENTS,
-  useTranslation,
-} from '@/platform/ui';
 import type { MerchantOverview as MerchantOverviewType } from '@/lib/merchant/types';
 import { formatCurrency, formatCompactNumber } from '@/lib/merchant/utils';
-import { Package, ShoppingBag, Users, Star, DollarSign, TrendingUp, MessageCircle } from 'lucide-react';
+import { MERCHANT, useTranslation } from '@/platform/ui';
+
+
 
 interface MerchantOverviewProps {
   overview: MerchantOverviewType;
@@ -34,8 +25,8 @@ const overviewCards = [
 export function MerchantOverview({ overview, className }: MerchantOverviewProps) {
   const { t } = useTranslation();
   return (
-    <UiSection ui={MERCHANT.MERCHANT_PROFILE.OVERVIEW.CONTAINER} className={className}>
-      <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-7">
+    <section data-ui-uuid={MERCHANT.MERCHANT_PROFILE.OVERVIEW.CONTAINER.uuid} className={className}>
+      <div data-ui-uuid={MERCHANT.SHELL.LABEL_CONTAINER_L29.uuid} className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-7">
         {overviewCards.map(({ key, label, icon: Icon, format }) => {
           const value = overview[key as keyof MerchantOverviewType];
           let displayValue: string;
@@ -58,30 +49,23 @@ export function MerchantOverview({ overview, className }: MerchantOverviewProps)
           }
 
           return (
-            <UiCard
-              key={key}
-              ui={COMMON_COMPONENTS.CARD.CONTAINER}
-              className="group relative overflow-hidden transition-all duration-300 hover:shadow-lg"
-            >
-              <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="flex flex-col items-center justify-center p-4 sm:p-6">
-                <UiDiv
-                  ui={COMMON_LAYOUT.CONTAINER}
-                  className="mb-3 rounded-full bg-muted p-2.5 transition-colors group-hover:bg-primary/10"
-                >
+            <div data-ui-uuid={MERCHANT.MERCHANT_PROFILE.OVERVIEW.STAT_CARD.uuid} data-ui-instance-id={key} key={key} className="group relative overflow-hidden transition-all duration-300 hover:shadow-lg">
+              <div data-ui-uuid={MERCHANT.SHELL.LABEL_CONTAINER_L53.uuid} className="flex flex-col items-center justify-center p-4 sm:p-6">
+                <div data-ui-uuid={MERCHANT.SHELL.LABEL_CONTAINER_L54.uuid} className="mb-3 rounded-full bg-muted p-2.5 transition-colors group-hover:bg-primary/10">
                   <Icon className="h-5 w-5 text-muted-foreground transition-colors group-hover:text-primary" />
-                </UiDiv>
-                <UiSpan ui={COMMON_LAYOUT.SPAN} className="text-2xl font-bold tracking-tight sm:text-3xl">
+                </div>
+                <span data-ui-uuid={MERCHANT.SHELL.LABEL_SPAN_L57.uuid} className="text-2xl font-bold tracking-tight sm:text-3xl">
                   {displayValue}
-                </UiSpan>
-                <UiLabel ui={COMMON_TYPOGRAPHY.P} className="mt-1 text-center text-xs text-muted-foreground sm:text-sm">
+                </span>
+                <span data-ui-uuid={MERCHANT.MERCHANT_PROFILE.OVERVIEW.STAT_LABEL.uuid} data-ui-instance-id={key} className="mt-1 text-center text-xs text-muted-foreground sm:text-sm">
                   {t(label)}
-                </UiLabel>
-              </UiDiv>
-            </UiCard>
+                </span>
+              </div>
+            </div>
           );
         })}
-      </UiDiv>
-    </UiSection>
+      </div>
+    </section>
   );
 }
 

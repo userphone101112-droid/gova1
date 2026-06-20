@@ -1,4 +1,5 @@
 import { SplashData, InitializationProgress } from '@/types/splash';
+
 import { getRandomCategories, getRandomSubcategories } from '../images/selectors';
 
 const INITIALIZATION_MILESTONES: InitializationProgress[] = [

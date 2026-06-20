@@ -14,7 +14,7 @@ import {
   getUiIdentityUuid,
   isValidUiUuid,
 } from '../../registry/registry';
-import { UI_SOURCE_INDEX, UI_SOURCE_INDEX_BY_UUID } from '../../registry/source-index';
+import { UI_SOURCE_INDEX_BY_UUID } from '../../registry/source-index';
 
 interface SnapshotEntry {
   uuid: string;
@@ -68,7 +68,7 @@ function buildCurrentSnapshot(): Record<string, SnapshotEntry> {
 
   for (const identity of ALL_UI_IDENTITIES) {
     const uuid = getUiIdentityUuid(identity);
-    const source = UI_SOURCE_INDEX_BY_UUID[uuid] ?? UI_SOURCE_INDEX[identity.id];
+    const source = UI_SOURCE_INDEX_BY_UUID[uuid];
     snapshot[uuid] = {
       uuid,
       id: identity.id,

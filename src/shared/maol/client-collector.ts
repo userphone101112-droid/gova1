@@ -14,6 +14,8 @@
  * PROD mode: message + route + uiContext only (no stack)
  */
 
+import { getUiIdentityByUuid } from '@/platform/ui/registry/registry';
+
 import type {
   MaolErrorEvent,
   MaolWarningEvent,
@@ -59,15 +61,17 @@ function getCurrentRoute(): string {
 }
 
 /**
- * Walk up the DOM from the event target to find the nearest [data-ui-id].
- * Returns the ID string or undefined.
+ * Walk up the DOM to find the nearest [data-ui-uuid].
+ * Returns the registry stable id from UI_UUID_MAP, or undefined.
  */
 function resolveUiContext(target: EventTarget | null): string | undefined {
   if (!target || !(target instanceof Element)) return undefined;
   let el: Element | null = target;
   while (el) {
-    const id = el.getAttribute('data-ui-id');
-    if (id) return id;
+    const uuid = el.getAttribute('data-ui-uuid');
+    if (uuid) {
+      return getUiIdentityByUuid(uuid)?.id ?? uuid;
+    }
     el = el.parentElement;
   }
   return undefined;

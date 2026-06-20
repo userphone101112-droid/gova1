@@ -23,15 +23,16 @@
  */
 
 import { useEffect, useRef } from 'react';
-import { getMaolSessionId } from '@/shared/maol/session';
+
 import {
   initMaolErrorCollector,
   initMaolWarningCollector,
   setMaolEnabledGetter,
 } from '@/shared/maol/client-collector';
 import { generateDomSummary } from '@/shared/maol/dom-summary';
-import { useMaolStore } from '@/store/index';
+import { getMaolSessionId } from '@/shared/maol/session';
 import type { MaolIngestPayload } from '@/shared/maol/types';
+import { useMaolStore } from '@/store/index';
 
 const INGEST_URL = '/api/maol/ingest';
 

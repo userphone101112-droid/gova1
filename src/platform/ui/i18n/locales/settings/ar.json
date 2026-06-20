@@ -28,7 +28,10 @@
       "timezoneLabel": "المنطقة الزمنية",
       "cairo": "توقيت القاهرة (GMT+3)",
       "mecca": "توقيت مكة (GMT+3)",
-      "dubai": "توقيت دبي (GMT+4)"
+      "dubai": "توقيت دبي (GMT+4)",
+      "cairoOption": "TODO(ar): Timezone cairo option",
+      "meccaOption": "TODO(ar): Timezone mecca option",
+      "dubaiOption": "TODO(ar): Timezone dubai option"
     },
     "appearance": {
       "sectionTitle": "المظهر",

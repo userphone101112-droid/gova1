@@ -1,7 +1,7 @@
 'use client';
-
-import { UiDiv, UiH1, UiP, UiInput, UiLabel, COMMON_LAYOUT, COMMON_FORMS, ONBOARDING, useTranslation } from '@/platform/ui';
 import { useOnboardingStore } from '@/lib/onboarding/store';
+import { ONBOARDING, useTranslation } from '@/platform/ui';
+
 
 export function TaxInfoStep() {
   const {
@@ -11,21 +11,16 @@ export function TaxInfoStep() {
   const { t } = useTranslation();
 
   return (
-    <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="w-full">
-      <UiH1 ui={ONBOARDING.TAX_INFO.TITLE} className="text-3xl font-bold tracking-tight mb-2">{t(ONBOARDING.TAX_INFO.TITLE)}</UiH1>
-      <UiP ui={ONBOARDING.TAX_INFO.DESCRIPTION} className="text-muted-foreground mb-8">{t(ONBOARDING.TAX_INFO.DESCRIPTION)}</UiP>
+    <div data-ui-uuid={ONBOARDING.SHELL.TAX_INFO_TITLE_CONTAINER_L14.uuid} className="w-full">
+      <h1 data-ui-uuid={ONBOARDING.TAX_INFO.TITLE.uuid} className="text-3xl font-bold tracking-tight mb-2">{t(ONBOARDING.TAX_INFO.TITLE)}</h1>
+      <p data-ui-uuid={ONBOARDING.TAX_INFO.DESCRIPTION.uuid} className="text-muted-foreground mb-8">{t(ONBOARDING.TAX_INFO.DESCRIPTION)}</p>
 
-      <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="space-y-6 max-w-4xl mx-auto">
-        <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="space-y-2">
-          <UiLabel ui={COMMON_FORMS.LABEL}>{t(ONBOARDING.TAX_INFO.TAX_ID_LABEL)}</UiLabel>
-          <UiInput
-            ui={COMMON_FORMS.INPUT}
-            placeholder={t(ONBOARDING.TAX_INFO.TAX_ID_PLACEHOLDER)}
-            value={taxInfo.taxId || ''}
-            onChange={(e) => updateTaxInfo({ taxId: e.target.value })}
-          />
-        </UiDiv>
-      </UiDiv>
-    </UiDiv>
+      <div data-ui-uuid={ONBOARDING.SHELL.TAX_INFO_TAX_ID_LABEL_CONTAINER_L18.uuid} className="space-y-6 max-w-4xl mx-auto">
+        <div data-ui-uuid={ONBOARDING.SHELL.TAX_INFO_TAX_ID_LABEL_CONTAINER_L19.uuid} className="space-y-2">
+          <span data-ui-uuid={ONBOARDING.TAX_INFO.TAX_ID_LABEL.uuid}>{t(ONBOARDING.TAX_INFO.TAX_ID_LABEL)}</span>
+          <input data-ui-uuid={ONBOARDING.TAX_INFO.TAX_ID_INPUT.uuid} placeholder={t(ONBOARDING.TAX_INFO.TAX_ID_PLACEHOLDER)} value={taxInfo.taxId || ''} onChange={(e) => updateTaxInfo({ taxId: e.target.value })} />
+        </div>
+      </div>
+    </div>
   );
 }

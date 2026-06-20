@@ -6,8 +6,7 @@ import { Controller, useFormContext } from 'react-hook-form';
 
 import { cn } from '@/lib/utils';
 import type { RegistrationFormData } from '@/lib/validation/auth';
-import { UiButton, UiDiv, UiInput, UiLabel, UiSpan, useTranslation } from '@/platform/ui';
-import { COMMON_LAYOUT } from '@/platform/ui/registry/categories';
+import { useTranslation } from '@/platform/ui';
 import { AUTH } from '@/platform/ui/registry/features/auth';
 
 import { OtpInput } from './OtpInput';
@@ -80,102 +79,69 @@ export function PhoneVerification() {
   };
 
   return (
-    <UiDiv ui={AUTH.REGISTRATION.PHONE_INPUT} className="space-y-4">
+    <div data-ui-uuid={AUTH.REGISTRATION.PHONE_VERIFICATION_SECTION.uuid} className="space-y-4">
       <Controller
         name="phone"
         control={control}
         render={({ field, fieldState }) => (
-          <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="space-y-2">
-            <UiLabel ui={AUTH.REGISTRATION.PHONE_INPUT} className="type-label-lg flex items-center gap-2">
+          <div data-ui-uuid={AUTH.SHELL.REGISTRATION_PHONE_INPUT_WRAPPER_L88.uuid} className="space-y-2">
+            <span data-ui-uuid={AUTH.REGISTRATION.PHONE_INPUT_LABEL.uuid} className="type-label-lg flex items-center gap-2">
               {t(AUTH.REGISTRATION.PHONE_INPUT)}
-            </UiLabel>
-            <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="flex gap-2">
-              <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="relative flex-1">
-                <UiSpan
-                  ui={COMMON_LAYOUT.SPAN}
-                  className="absolute start-3 top-1/2 -translate-y-1/2 type-body-sm text-on-surface-variant select-none"
-                >
+            </span>
+            <div data-ui-uuid={AUTH.SHELL.REGISTRATION_PHONE_INPUT_WRAPPER_L92.uuid} className="flex gap-2">
+              <div data-ui-uuid={AUTH.SHELL.REGISTRATION_PHONE_INPUT_WRAPPER_L93.uuid} className="relative flex-1">
+                <span data-ui-uuid={AUTH.SHELL.REGISTRATION_PHONE_INPUT_SPAN_L94.uuid} className="absolute start-3 top-1/2 -translate-y-1/2 type-body-sm text-on-surface-variant select-none">
                   +20
-                </UiSpan>
-                <UiInput
-                  ui={AUTH.REGISTRATION.PHONE_INPUT}
-                  type="tel"
-                  inputMode="tel"
-                  maxLength={11}
-                  disabled={phoneVerified}
-                  placeholder={t(AUTH.SHARED.PHONE_PLACEHOLDER)}
-                  className={cn(
-                    'auth-input ps-12 motion-colors w-full',
-                    phoneVerified && 'bg-surface-container pe-10',
-                    fieldState.error && 'border-error focus-visible:ring-error'
-                  )}
-                  value={field.value}
-                  onChange={(e) => {
-                    const raw = e.target.value.replace(/\D/g, '').slice(0, 11);
-                    field.onChange(raw);
-                    if (phoneVerified) setValue('phoneVerified', false);
-                    setOtpError('');
-                  }}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter' && !phoneVerified && !otpSent) {
-                      e.preventDefault();
-                      void handleSendOtp();
-                    }
-                  }}
-                />
+                </span>
+                <input data-ui-uuid={AUTH.REGISTRATION.PHONE_INPUT.uuid} type="tel" inputMode="tel" maxLength={11} disabled={phoneVerified} placeholder={t(AUTH.SHARED.PHONE_PLACEHOLDER)} className={cn('auth-input ps-12 motion-colors w-full', phoneVerified && 'bg-surface-container pe-10', fieldState.error && 'border-error focus-visible:ring-error')} value={field.value} onChange={(e) => {
+        const raw = e.target.value.replace(/\D/g, '').slice(0, 11);
+        field.onChange(raw);
+        if (phoneVerified)
+            setValue('phoneVerified', false);
+        setOtpError('');
+    }} onKeyDown={(e) => {
+        if (e.key === 'Enter' && !phoneVerified && !otpSent) {
+            e.preventDefault();
+            void handleSendOtp();
+        }
+    }} />
                 {phoneVerified && (
                   <CheckCircle2 className="absolute end-3 top-1/2 -translate-y-1/2 h-5 w-5 text-success" />
                 )}
-              </UiDiv>
+              </div>
               {!phoneVerified && (
-                <UiButton
-                  ui={AUTH.REGISTRATION.VERIFY_BUTTON}
-                  type="button"
-                  onClick={() => void handleSendOtp()}
-                  disabled={isSending || !phone || phone.length < 10}
-                  className="shrink-0 motion-colors"
-                >
+                <button data-ui-uuid={AUTH.REGISTRATION.VERIFY_BUTTON.uuid} type="button" onClick={() => void handleSendOtp()} disabled={isSending || !phone || phone.length < 10} className="shrink-0 motion-colors">
                   {isSending ? '...' : otpSent ? t(AUTH.REGISTRATION.RESEND_BUTTON) : t(AUTH.REGISTRATION.VERIFY_BUTTON)}
-                </UiButton>
+                </button>
               )}
               {phoneVerified && (
-                <UiButton
-                  ui={AUTH.REGISTRATION.EDIT_BUTTON}
-                  type="button"
-                  variant="outline"
-                  size="icon"
-                  onClick={handleEditPhone}
-                  aria-label={t(AUTH.REGISTRATION.EDIT_BUTTON)}
-                >
+                <button data-ui-uuid={AUTH.REGISTRATION.EDIT_BUTTON.uuid} type="button" onClick={handleEditPhone} aria-label={t(AUTH.REGISTRATION.EDIT_BUTTON)}>
                   <Pencil className="h-4 w-4" />
-                </UiButton>
+                </button>
               )}
-            </UiDiv>
+            </div>
             {phoneVerified && (
-              <p className="type-caption text-success flex items-center gap-1 mt-1">
+              <p data-ui-uuid={AUTH.REGISTRATION.PHONE_VERIFIED.uuid} className="type-caption text-success flex items-center gap-1 mt-1">
                 <CheckCircle2 className="h-3.5 w-3.5" />
                 {t(AUTH.REGISTRATION.PHONE_VERIFIED)}
               </p>
             )}
             {fieldState.error && (
-              <p className="type-caption text-error">{fieldState.error.message}</p>
+              <p data-ui-uuid={AUTH.SHELL.PHONE_VERIFICATION_L131.uuid} className="type-caption text-error">{fieldState.error.message}</p>
             )}
-          </UiDiv>
+          </div>
         )}
       />
 
       {otpSent && !phoneVerified && (
-        <UiDiv
-          ui={AUTH.REGISTRATION.OTP_INPUT}
-          className="motion-reveal space-y-4 rounded-xl border border-outline-variant bg-card p-4 elevation-2"
-        >
-          <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="space-y-1">
-            <p className="type-label-lg">{t(AUTH.REGISTRATION.OTP_LABEL)}</p>
-            <p className="type-caption text-on-surface-variant">
+        <div data-ui-uuid={AUTH.REGISTRATION.OTP_INPUT.uuid} className="motion-reveal space-y-4 rounded-xl border border-outline-variant bg-card p-4 elevation-2">
+          <div data-ui-uuid={AUTH.SHELL.REGISTRATION_OTP_LABEL_WRAPPER_L139.uuid} className="space-y-1">
+            <p data-ui-uuid={AUTH.REGISTRATION.OTP_LABEL.uuid} className="type-label-lg">{t(AUTH.REGISTRATION.OTP_LABEL)}</p>
+            <p data-ui-uuid={AUTH.REGISTRATION.OTP_DESCRIPTION.uuid} className="type-caption text-on-surface-variant">
               {t(AUTH.REGISTRATION.OTP_DESCRIPTION)}{' '}
-              <span className="font-medium text-on-surface">{formatPhoneDisplay(phone)}</span>
+              <span data-ui-uuid={AUTH.SHELL.REGISTRATION_OTP_LABEL_WRAPPER_L143.uuid} className="font-medium text-on-surface">{formatPhoneDisplay(phone)}</span>
             </p>
-          </UiDiv>
+          </div>
 
           <OtpInput
             ui={AUTH.REGISTRATION.OTP_INPUT}
@@ -186,31 +152,18 @@ export function PhoneVerification() {
             hasError={!!otpError}
           />
 
-          {otpError && <p className="type-caption text-error text-center">{otpError}</p>}
+          {otpError && <p data-ui-uuid={AUTH.SHELL.PHONE_VERIFICATION_L156.uuid} className="type-caption text-error text-center">{otpError}</p>}
 
-          <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="flex items-center gap-3 w-full">
-            <UiButton
-              ui={AUTH.REGISTRATION.VERIFY_OTP_BUTTON}
-              type="button"
-              onClick={() => void handleVerifyOtp()}
-              disabled={otp.length !== 6 || isVerifying}
-              className="flex-1 motion-colors"
-            >
+          <div data-ui-uuid={AUTH.SHELL.REGISTRATION_OTP_LABEL_WRAPPER_L158.uuid} className="flex items-center gap-3 w-full">
+            <button data-ui-uuid={AUTH.REGISTRATION.VERIFY_OTP_BUTTON.uuid} type="button" onClick={() => void handleVerifyOtp()} disabled={otp.length !== 6 || isVerifying} className="flex-1 motion-colors">
               {isVerifying ? t(AUTH.REGISTRATION.VERIFYING_OTP) : t(AUTH.REGISTRATION.VERIFY_OTP_BUTTON)}
-            </UiButton>
-            <UiButton
-              ui={AUTH.REGISTRATION.RESEND_BUTTON}
-              type="button"
-              variant="outline"
-              onClick={() => void handleSendOtp()}
-              disabled={countdown > 0 || isSending}
-              className="shrink-0"
-            >
+            </button>
+            <button data-ui-uuid={AUTH.REGISTRATION.RESEND_BUTTON.uuid} type="button" onClick={() => void handleSendOtp()} disabled={countdown > 0 || isSending} className="shrink-0">
               {countdown > 0 ? `${countdown}s` : t(AUTH.REGISTRATION.RESEND_BUTTON)}
-            </UiButton>
-          </UiDiv>
-        </UiDiv>
+            </button>
+          </div>
+        </div>
       )}
-    </UiDiv>
+    </div>
   );
 }

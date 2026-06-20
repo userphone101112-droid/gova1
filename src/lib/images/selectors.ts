@@ -1,5 +1,6 @@
-import { categories, subcategories } from '../db';
 import { CategoryItem, SubcategoryItem } from '@/types/splash';
+
+import { categories, subcategories } from '../db';
 
 function fisherYatesShuffle<T>(array: T[]): T[] {
   const shuffled = [...array];

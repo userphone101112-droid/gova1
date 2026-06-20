@@ -1,7 +1,7 @@
-
 'use client';
 
 import { useEffect } from 'react';
+
 import { useUnifiedStore } from '@/store/unified.store';
 
 // Forbidden patterns that violate our SSOT rules don't allow!
@@ -78,7 +78,7 @@ export function SSOTGuard() {
               // Skip if it's the root elements that needs it (but log it's allowed
             }
           }
-        } catch (e) {
+        } catch {
           // ignore
         }
       });

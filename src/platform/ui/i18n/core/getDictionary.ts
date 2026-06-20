@@ -1,5 +1,5 @@
-import { Locale, Feature, TranslationDictionary } from './types';
 import { resolveFeatureScope } from './featureScope';
+import { Locale, Feature, TranslationDictionary } from './types';
 
 /**
  * Cache entry with timestamp for potential TTL
@@ -130,7 +130,7 @@ async function loadCommonDictionary(locale: Locale): Promise<TranslationDictiona
   try {
     const module = await import(`@/platform/ui/i18n/locales/common/${locale}.json`);
     return module.default;
-  } catch (error) {
+  } catch {
     console.warn(`Common dictionary not found for locale: ${locale}`);
     return {};
   }
@@ -143,7 +143,7 @@ async function loadFeatureDictionary(feature: Feature, locale: Locale): Promise<
   try {
     const module = await import(`@/platform/ui/i18n/locales/${feature}/${locale}.json`);
     return module.default;
-  } catch (error) {
+  } catch {
     console.warn(`Feature dictionary not found for feature: ${feature}, locale: ${locale}`);
     return {};
   }

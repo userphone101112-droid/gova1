@@ -1,81 +1,186 @@
 import { mkdirSync, writeFileSync, existsSync, readFileSync } from 'fs';
 import { join } from 'path';
 
+import { createDeterministicUiUuid } from '../src/platform/ui/registry/identity-uuid';
+
 interface FeatureGeneratorOptions {
   featureName: string;
   withLayout?: boolean;
   withPage?: boolean;
 }
 
-/**
- * Generate default English translations for a new feature
- */
+type Category = 'action' | 'input' | 'navigation' | 'display' | 'container';
+
+interface IdentitySpec {
+  nest: string[];
+  key: string;
+  id: string;
+  path: string;
+  category: Category;
+  description: string;
+}
+
+function toUpperFeature(featureName: string): string {
+  return featureName.toUpperCase().replace(/-/g, '_');
+}
+
+function escapeSingleQuote(value: string): string {
+  return value.replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+}
+
+function buildIdentityBlock(spec: IdentitySpec, featureName: string, today: string): string {
+  const uuid = createDeterministicUiUuid(spec.id);
+  const indent = '    '.repeat(spec.nest.length + 1);
+  return `${indent}${spec.key}: {
+${indent}  uuid: '${uuid}',
+${indent}  id: '${escapeSingleQuote(spec.id)}',
+${indent}  path: '${escapeSingleQuote(spec.path)}',
+${indent}  lifecycle: 'active',
+${indent}  description: '${escapeSingleQuote(spec.description)}',
+${indent}  category: '${spec.category}',
+${indent}  feature: '${escapeSingleQuote(featureName)}',
+${indent}  version: '1.0.0',
+${indent}  createdAt: '${today}',
+${indent}  updatedAt: '${today}',
+${indent}} as const,`;
+}
+
+function buildRegistryTree(specs: IdentitySpec[], featureName: string, today: string): string {
+  const upperFeature = toUpperFeature(featureName);
+  const lines: string[] = [`/** ${featureName} feature UI identities */`, `export const ${upperFeature} = {`];
+  const openGroups: string[] = [];
+
+  for (const spec of specs) {
+    while (openGroups.length > spec.nest.length) {
+      const closingIndent = '  '.repeat(openGroups.length);
+      lines.push(`${closingIndent}},`);
+      openGroups.pop();
+    }
+
+    while (openGroups.length < spec.nest.length) {
+      const groupKey = spec.nest[openGroups.length];
+      const groupIndent = '  '.repeat(openGroups.length + 1);
+      lines.push(`${groupIndent}${groupKey}: {`);
+      openGroups.push(groupKey);
+    }
+
+    lines.push(buildIdentityBlock(spec, featureName, today));
+  }
+
+  while (openGroups.length > 0) {
+    const closingIndent = '  '.repeat(openGroups.length);
+    lines.push(`${closingIndent}},`);
+    openGroups.pop();
+  }
+
+  lines.push('} as const;', '');
+  return lines.join('\n');
+}
+
+function identitySpecs(featureName: string): IdentitySpec[] {
+  const upper = toUpperFeature(featureName);
+  return [
+    {
+      nest: ['PAGE'],
+      key: 'CONTAINER',
+      id: `UI_${upper}_PAGE_CONTAINER`,
+      path: `${featureName}.page.layout.container`,
+      category: 'container',
+      description: 'Page root container',
+    },
+    {
+      nest: ['PAGE'],
+      key: 'TITLE',
+      id: `UI_${upper}_PAGE_TITLE`,
+      path: `${featureName}.page.display.title`,
+      category: 'display',
+      description: 'Page title',
+    },
+    {
+      nest: ['PAGE'],
+      key: 'DESCRIPTION',
+      id: `UI_${upper}_PAGE_DESCRIPTION`,
+      path: `${featureName}.page.display.description`,
+      category: 'display',
+      description: 'Page description',
+    },
+    {
+      nest: ['ACTIONS'],
+      key: 'CREATE_BUTTON',
+      id: `UI_${upper}_ACTIONS_CREATE_BUTTON`,
+      path: `${featureName}.actions.create-button`,
+      category: 'action',
+      description: 'Create action button',
+    },
+    {
+      nest: ['ACTIONS'],
+      key: 'SAVE_BUTTON',
+      id: `UI_${upper}_ACTIONS_SAVE_BUTTON`,
+      path: `${featureName}.actions.save-button`,
+      category: 'action',
+      description: 'Save action button',
+    },
+    {
+      nest: ['ACTIONS'],
+      key: 'ROW',
+      id: `UI_${upper}_ACTIONS_ROW`,
+      path: `${featureName}.actions.layout.row`,
+      category: 'container',
+      description: 'Actions button row',
+    },
+  ];
+}
+
 function generateDefaultEnTranslations(featureName: string): string {
   const capitalized = featureName.charAt(0).toUpperCase() + featureName.slice(1);
-  
-  return JSON.stringify({
-    [featureName]: {
-      page: {
-        title: `${capitalized}`,
-        description: `${capitalized} description`,
-      },
-      actions: {
-        create: `Create`,
-        edit: `Edit`,
-        delete: `Delete`,
-        save: `Save`,
-        cancel: `Cancel`,
-      },
-      form: {
-        submitButton: `Submit`,
-        resetButton: `Reset`,
-      },
-      list: {
-        addButton: `Add`,
-        filterButton: `Filter`,
+
+  return JSON.stringify(
+    {
+      [featureName]: {
+        page: {
+          title: `${capitalized}`,
+          description: `${capitalized} description`,
+        },
+        actions: {
+          create: 'Create',
+          save: 'Save',
+        },
       },
     },
-  }, null, 2);
+    null,
+    2
+  );
 }
 
-/**
- * Generate default Arabic translations for a new feature
- */
 function generateDefaultArTranslations(featureName: string): string {
   const capitalized = featureName.charAt(0).toUpperCase() + featureName.slice(1);
-  
-  return JSON.stringify({
-    [featureName]: {
-      page: {
-        title: `${capitalized}`,
-        description: `وصف ${capitalized}`,
-      },
-      actions: {
-        create: `إنشاء`,
-        edit: `تعديل`,
-        delete: `حذف`,
-        save: `حفظ`,
-        cancel: `إلغاء`,
-      },
-      form: {
-        submitButton: `إرسال`,
-        resetButton: `إعادة تعيين`,
-      },
-      list: {
-        addButton: `إضافة`,
-        filterButton: `تصفية`,
+
+  return JSON.stringify(
+    {
+      [featureName]: {
+        page: {
+          title: `${capitalized}`,
+          description: `وصف ${capitalized}`,
+        },
+        actions: {
+          create: 'إنشاء',
+          save: 'حفظ',
+        },
       },
     },
-  }, null, 2);
+    null,
+    2
+  );
 }
 
-/**
- * Generate layout scaffold for a new feature
- */
 function generateLayoutScaffold(featureName: string): string {
-  const capitalized = featureName.charAt(0).toUpperCase() + featureName.slice(1).replace(/-([a-z])/g, (_, c) => c.toUpperCase());
-  
+  const capitalized = featureName
+    .charAt(0)
+    .toUpperCase()
+    .concat(featureName.slice(1).replace(/-([a-z])/g, (_, c) => c.toUpperCase()));
+
   return `import { ReactNode } from 'react';
+
 import { createFeatureLayout } from '@/platform/ui/server';
 
 interface ${capitalized}LayoutProps {
@@ -88,171 +193,55 @@ export default function ${capitalized}Layout({ children }: ${capitalized}LayoutP
 `;
 }
 
-/**
- * Generate UI identifiers for a new feature
- */
-function generateUiIdentifiers(featureName: string): string {
-  const upperFeature = featureName.toUpperCase().replace(/-/g, '_');
-  
-  return `// ============================================================================
-// ${upperFeature} PAGE IDENTIFIERS
-// ============================================================================
-export const ${upperFeature} = {
-  PAGE: {
-    TITLE: '${featureName}.page.title' as const,
-    DESCRIPTION: '${featureName}.page.description' as const,
-  },
-  ACTIONS: {
-    CREATE_BUTTON: '${featureName}.actions.create-button' as const,
-    EDIT_BUTTON: '${featureName}.actions.edit-button' as const,
-    DELETE_BUTTON: '${featureName}.actions.delete-button' as const,
-    SAVE_BUTTON: '${featureName}.actions.save-button' as const,
-    CANCEL_BUTTON: '${featureName}.actions.cancel-button' as const,
-  },
-  FORM: {
-    SUBMIT_BUTTON: '${featureName}.form.submit-button' as const,
-    RESET_BUTTON: '${featureName}.form.reset-button' as const,
-  },
-  LIST: {
-    ADD_BUTTON: '${featureName}.list.add-button' as const,
-    FILTER_BUTTON: '${featureName}.list.filter-button' as const,
-  },
-} as const;
-`;
-}
-
-/**
- * Generate binding file entry for the feature
- */
-function generateBindingEntry(featureName: string): string {
-  const upperFeature = featureName.toUpperCase().replace(/-/g, '_');
-  
-  return `// ============================================================================
-// ${upperFeature} BINDING ENTRIES
-// ============================================================================
-// This file defines the binding between UI identifiers and translation keys
-// for the ${featureName} feature. This ensures structural coupling between
-// the UI Identification System and Feature-Based i18n System.
-
-import { generateBindingMap, type BindingMap } from '@/platform/ui';
-
-/**
- * Binding map for ${featureName} feature
- * Maps each UI identifier to its required translation key
- */
-export const ${upperFeature}_BINDINGS: BindingMap = {
-  '${featureName}.page.title': '${featureName}.page.title',
-  '${featureName}.page.description': '${featureName}.page.description',
-  '${featureName}.actions.create-button': '${featureName}.actions.createButton',
-  '${featureName}.actions.edit-button': '${featureName}.actions.editButton',
-  '${featureName}.actions.delete-button': '${featureName}.actions.deleteButton',
-  '${featureName}.actions.save-button': '${featureName}.actions.saveButton',
-  '${featureName}.actions.cancel-button': '${featureName}.actions.cancelButton',
-  '${featureName}.form.submit-button': '${featureName}.form.submitButton',
-  '${featureName}.form.reset-button': '${featureName}.form.resetButton',
-  '${featureName}.list.add-button': '${featureName}.list.addButton',
-  '${featureName}.list.filter-button': '${featureName}.list.filterButton',
-} as const;
-`;
-}
-
-/**
- * Add UI identifiers to the registry file
- */
-function addUiIdentifiersToRegistry(featureName: string, uiIdentifiers: string): void {
-  const registryPath = join(process.cwd(), 'src', 'platform', 'ui', 'registry', 'registry.ts');
-  const upperFeature = featureName.toUpperCase().replace(/-/g, '_');
-  
-  if (!existsSync(registryPath)) {
-    console.error(`❌ UI registry file not found at ${registryPath}`);
-    return;
-  }
-  
-  const content = readFileSync(registryPath, 'utf-8');
-  
-  // Check if feature already exists in registry
-  if (content.includes(`export const ${upperFeature} =`)) {
-    console.log(`⚠️  Feature ${upperFeature} already exists in UI registry, skipping...`);
-    return;
-  }
-  
-  // Find the position to insert (before the REGISTRY VALIDATION section)
-  const validationSectionIndex = content.indexOf('// ============================================================================\n// REGISTRY VALIDATION');
-  
-  if (validationSectionIndex === -1) {
-    console.error(`❌ Could not find REGISTRY VALIDATION section in ui-registry.ts`);
-    return;
-  }
-  
-  // Insert the new UI identifiers
-  const newContent = 
-    content.slice(0, validationSectionIndex) + 
-    uiIdentifiers + '\n\n' +
-    content.slice(validationSectionIndex);
-  
-  // Update the UI_REGISTRY to include the new feature
-  const registryIndex = newContent.indexOf('export const UI_REGISTRY = {');
-  if (registryIndex !== -1) {
-    const closingBraceIndex = newContent.indexOf('} as const;', registryIndex);
-    if (closingBraceIndex !== -1) {
-      const beforeRegistry = newContent.slice(0, closingBraceIndex);
-      const afterRegistry = newContent.slice(closingBraceIndex);
-      
-      // Add the feature to the registry
-      const updatedRegistry = beforeRegistry + `  ...${upperFeature},\n` + afterRegistry;
-      
-      writeFileSync(registryPath, updatedRegistry, 'utf-8');
-      console.log(`✅ Added UI identifiers to registry: ${upperFeature}`);
-      return;
-    }
-  }
-  
-  // Fallback: just write the content with the new identifiers
-  writeFileSync(registryPath, newContent, 'utf-8');
-  console.log(`✅ Added UI identifiers to registry: ${upperFeature}`);
-}
-
-/**
- * Generate page scaffold for a new feature
- */
 function generatePageScaffold(featureName: string): string {
-  const capitalized = featureName.charAt(0).toUpperCase() + featureName.slice(1).replace(/-([a-z])/g, (_, c) => c.toUpperCase());
-  const upperFeature = featureName.toUpperCase().replace(/-/g, '_');
-  
+  const capitalized = featureName
+    .charAt(0)
+    .toUpperCase()
+    .concat(featureName.slice(1).replace(/-([a-z])/g, (_, c) => c.toUpperCase()));
+  const upperFeature = toUpperFeature(featureName);
+
   return `'use client';
 
-import { useTranslation } from '@/platform/ui';
-import { UiButton } from '@/platform/ui';
-import { ${upperFeature} } from '@/platform/ui';
-import { useBoundUI } from '@/platform/ui';
+import { ${upperFeature}, useTranslation } from '@/platform/ui';
 
 export default function ${capitalized}Page() {
   const { t } = useTranslation();
-  
-  // Get bound UI context for create button
-  const createButton = useBoundUI(${upperFeature}.ACTIONS.CREATE_BUTTON, new Set([
-    '${featureName}.actions.create-button',
-    '${featureName}.page.title',
-    '${featureName}.page.description',
-    '${featureName}.actions.save-button',
-    '${featureName}.actions.cancel-button',
-  ]));
 
   return (
-    <div className="min-h-screen bg-background flex flex-col items-center justify-center gap-8">
-      <h1 className="text-4xl font-bold text-on-surface">
+    <div
+      data-ui-uuid={${upperFeature}.PAGE.CONTAINER.uuid}
+      className="min-h-screen bg-background flex flex-col items-center justify-center gap-8"
+    >
+      <h1
+        data-ui-uuid={${upperFeature}.PAGE.TITLE.uuid}
+        className="text-4xl font-bold text-on-surface"
+      >
         {t('${featureName}.page.title')}
       </h1>
-      <p className="text-xl text-on-surface-variant">
+      <p
+        data-ui-uuid={${upperFeature}.PAGE.DESCRIPTION.uuid}
+        className="text-xl text-on-surface-variant"
+      >
         {t('${featureName}.page.description')}
       </p>
-      <div className="flex gap-4">
-        <UiButton ui={${upperFeature}.ACTIONS.CREATE_BUTTON}>
+      <div
+        data-ui-uuid={${upperFeature}.ACTIONS.ROW.uuid}
+        className="flex gap-4"
+      >
+        <button
+          type="button"
+          data-ui-uuid={${upperFeature}.ACTIONS.CREATE_BUTTON.uuid}
+          className="rounded-md bg-primary px-4 py-2 text-on-primary"
+        >
           {t('${featureName}.actions.create')}
-        </UiButton>
-        <UiButton ui={${upperFeature}.ACTIONS.SAVE_BUTTON} variant="secondary">
+        </button>
+        <button
+          type="button"
+          data-ui-uuid={${upperFeature}.ACTIONS.SAVE_BUTTON.uuid}
+          className="rounded-md bg-secondary px-4 py-2 text-on-secondary"
+        >
           {t('${featureName}.actions.save')}
-        </UiButton>
+        </button>
       </div>
     </div>
   );
@@ -260,102 +249,130 @@ export default function ${capitalized}Page() {
 `;
 }
 
-/**
- * Generate a new feature with all necessary files
- */
+function generateBindingEntry(featureName: string): string {
+  const upperFeature = toUpperFeature(featureName);
+
+  return `import type { BindingMap } from '@/platform/ui';
+
+export const ${upperFeature}_BINDINGS: BindingMap = {
+  '${featureName}.page.display.title': '${featureName}.page.title',
+  '${featureName}.page.display.description': '${featureName}.page.description',
+  '${featureName}.actions.create-button': '${featureName}.actions.create',
+  '${featureName}.actions.save-button': '${featureName}.actions.save',
+} as const;
+`;
+}
+
+function registerFeatureInRegistry(featureName: string): void {
+  const registryPath = join(process.cwd(), 'src/platform/ui/registry/registry.ts');
+  const upperFeature = toUpperFeature(featureName);
+
+  if (!existsSync(registryPath)) {
+    throw new Error(`Registry file not found: ${registryPath}`);
+  }
+
+  let content = readFileSync(registryPath, 'utf-8');
+
+  if (content.includes(`from './features/${featureName}'`)) {
+    console.log(`⚠️  Feature ${upperFeature} already registered, skipping registry patch...`);
+    return;
+  }
+
+  content = content.replace(
+    "import { ONBOARDING } from './features/onboarding';",
+    `import { ONBOARDING } from './features/onboarding';\nimport { ${upperFeature} } from './features/${featureName}';`
+  );
+
+  content = content.replace(
+    "export { ONBOARDING } from './features/onboarding';",
+    `export { ONBOARDING } from './features/onboarding';\nexport { ${upperFeature} } from './features/${featureName}';`
+  );
+
+  content = content.replace(
+    '  ONBOARDING,\n} as const;',
+    `  ONBOARDING,\n  ${upperFeature},\n} as const;`
+  );
+
+  content = content.replace(
+    '  ...flattenObject(ONBOARDING),\n  ...ALL_CATEGORY_IDENTITIES,',
+    `  ...flattenObject(ONBOARDING),\n  ...flattenObject(${upperFeature}),\n  ...ALL_CATEGORY_IDENTITIES,`
+  );
+
+  writeFileSync(registryPath, content, 'utf-8');
+  console.log(`✅ Registered ${upperFeature} in registry.ts`);
+}
+
 export function generateFeature(options: FeatureGeneratorOptions): void {
   const { featureName, withLayout = true, withPage = true } = options;
-  
-  // Validate feature name
+
   if (!featureName || !/^[a-z][a-z0-9-]*$/.test(featureName)) {
     console.error('❌ Invalid feature name. Use lowercase letters, numbers, and hyphens, starting with a letter.');
     process.exit(1);
   }
-  
-  const localesPath = join(process.cwd(), 'src', 'platform', 'ui', 'i18n', 'locales');
-  const i18nPath = join(localesPath, featureName);
-  
-  const featurePath = join(process.cwd(), 'src', 'features', featureName);
 
-  // Check if feature already exists
-  if (existsSync(i18nPath) || existsSync(featurePath)) {
+  const localesPath = join(process.cwd(), 'src/platform/ui/i18n/locales');
+  const i18nPath = join(localesPath, featureName);
+  const featurePath = join(process.cwd(), 'src/features', featureName);
+  const registryFeaturePath = join(process.cwd(), 'src/platform/ui/registry/features', `${featureName}.ts`);
+
+  if (existsSync(i18nPath) || existsSync(featurePath) || existsSync(registryFeaturePath)) {
     console.error(`❌ Feature "${featureName}" already exists.`);
     process.exit(1);
   }
-  
+
   console.log(`🚀 Generating feature: ${featureName}\n`);
-  
-  // Create directories
+
+  const today = new Date().toISOString().slice(0, 10);
+  const registryContent = buildRegistryTree(identitySpecs(featureName), featureName, today);
+
+  mkdirSync(join(process.cwd(), 'src/platform/ui/registry/features'), { recursive: true });
+  writeFileSync(registryFeaturePath, registryContent, 'utf-8');
+  console.log(`✅ Created registry identities: ${registryFeaturePath}`);
+
+  registerFeatureInRegistry(featureName);
+
   mkdirSync(i18nPath, { recursive: true });
-  console.log(`✅ Created directory: ${i18nPath}`);
-  
-  // Create translation files
-  const enTranslations = generateDefaultEnTranslations(featureName);
-  const arTranslations = generateDefaultArTranslations(featureName);
-  
-  writeFileSync(join(i18nPath, 'en.json'), enTranslations, 'utf-8');
-  console.log(`✅ Created: ${join(i18nPath, 'en.json')}`);
-  
-  writeFileSync(join(i18nPath, 'ar.json'), arTranslations, 'utf-8');
-  console.log(`✅ Created: ${join(i18nPath, 'ar.json')}`);
-  
-  // Create layout scaffold if requested
+  writeFileSync(join(i18nPath, 'en.json'), generateDefaultEnTranslations(featureName), 'utf-8');
+  writeFileSync(join(i18nPath, 'ar.json'), generateDefaultArTranslations(featureName), 'utf-8');
+  console.log(`✅ Created translations: ${i18nPath}`);
+
+  mkdirSync(featurePath, { recursive: true });
+
   if (withLayout) {
-    const layoutContent = generateLayoutScaffold(featureName);
-    writeFileSync(join(featurePath, 'layout.tsx'), layoutContent, 'utf-8');
+    writeFileSync(join(featurePath, 'layout.tsx'), generateLayoutScaffold(featureName), 'utf-8');
     console.log(`✅ Created: ${join(featurePath, 'layout.tsx')}`);
   }
-  
-  // Create page scaffold if requested
+
   if (withPage) {
-    const pageContent = generatePageScaffold(featureName);
-    writeFileSync(join(featurePath, 'page.tsx'), pageContent, 'utf-8');
+    writeFileSync(join(featurePath, 'page.tsx'), generatePageScaffold(featureName), 'utf-8');
     console.log(`✅ Created: ${join(featurePath, 'page.tsx')}`);
   }
-  
-  // Generate and add UI identifiers to registry
-  const uiIdentifiers = generateUiIdentifiers(featureName);
-  addUiIdentifiersToRegistry(featureName, uiIdentifiers);
-  
-  // Generate binding file
-  const bindingEntry = generateBindingEntry(featureName);
-  writeFileSync(join(featurePath, 'bindings.ts'), bindingEntry, 'utf-8');
+
+  writeFileSync(join(featurePath, 'bindings.ts'), generateBindingEntry(featureName), 'utf-8');
   console.log(`✅ Created: ${join(featurePath, 'bindings.ts')}`);
-  
+
   console.log(`\n✨ Feature "${featureName}" generated successfully!`);
-  console.log(`\n📝 Next steps:`);
-  console.log(`   1. Update the translations in ${i18nPath}`);
-  console.log(`   2. Implement your feature logic in ${featurePath}`);
-  console.log(`   3. Add the feature route to your app router if needed`);
-  console.log(`   4. Run: npm run i18n:validate to check translation coverage`);
-  console.log(`   5. UI identifiers have been added to src/platform/ui/registry/registry.ts`);
+  console.log('\n📝 Next steps:');
+  console.log(`   1. Run: npm run registry:materialize-uuids && npm run registry:generate`);
+  console.log(`   2. Update translations in ${i18nPath}`);
+  console.log(`   3. Implement feature logic in ${featurePath}`);
 }
 
-/**
- * Main function for CLI usage
- */
 function main() {
   const args = process.argv.slice(2);
-  
+
   if (args.length === 0) {
     console.error('❌ Usage: tsx scripts/generate-feature.ts <feature-name> [--no-layout] [--no-page]');
-    console.error('   Example: tsx scripts/generate-feature.ts dashboard');
-    console.error('   Example: tsx scripts/generate-feature.ts settings --no-layout');
     process.exit(1);
   }
-  
-  const featureName = args[0];
-  const withLayout = !args.includes('--no-layout');
-  const withPage = !args.includes('--no-page');
-  
+
   generateFeature({
-    featureName,
-    withLayout,
-    withPage,
+    featureName: args[0],
+    withLayout: !args.includes('--no-layout'),
+    withPage: !args.includes('--no-page'),
   });
 }
 
-// Run if called directly
 if (require.main === module) {
   main();
 }

@@ -4,6 +4,7 @@
  */
 import { readFileSync, writeFileSync, readdirSync } from 'fs';
 import { join } from 'path';
+
 import { findOrphans } from './find-orphans';
 import { getRequiredRegistryBindingKeys } from './validate-registry-bindings';
 

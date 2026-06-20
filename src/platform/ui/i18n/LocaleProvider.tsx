@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+
 import { useUnifiedStore } from '@/store/unified.store';
 
 interface LocaleProviderProps {

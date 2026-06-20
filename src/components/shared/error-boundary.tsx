@@ -3,10 +3,8 @@
 import React, { Component, ReactNode } from 'react';
 
 import { errorHandler } from '@/lib/error-handler';
+import { useTranslation, ERROR_BOUNDARY } from '@/platform/ui';
 import { AppError } from '@/types/errors';
-import { UiButton, UiDiv, UiHeader, UiMain, useTranslation } from '@/platform/ui';
-import { ERROR_BOUNDARY } from '@/platform/ui';
-import { COMMON_LAYOUT } from '@/platform/ui/registry/categories';
 
 interface Props {
   children: ReactNode;
@@ -29,23 +27,19 @@ function ErrorFallback({
   const { t } = useTranslation();
 
   return (
-    <UiMain ui={COMMON_LAYOUT.MAIN} className="flex min-h-error items-center justify-center p-4">
-      <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="max-w-md text-center">
-        <UiHeader
-          ui={ERROR_BOUNDARY.TITLE}
-          level={2}
-          className="mb-4 text-2xl font-bold text-on-surface"
-        >
+    <main data-ui-uuid={ERROR_BOUNDARY.MAIN.uuid} className="flex min-h-error items-center justify-center p-4">
+      <div data-ui-uuid={ERROR_BOUNDARY.SHELL.TITLE_CONTAINER_L32.uuid} className="max-w-md text-center">
+        <h2 data-ui-uuid={ERROR_BOUNDARY.TITLE.uuid} className="mb-4 text-2xl font-bold text-on-surface">
           {t(ERROR_BOUNDARY.TITLE)}
-        </UiHeader>
-        <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="mb-6 text-on-surface-variant">
+        </h2>
+        <div data-ui-uuid={ERROR_BOUNDARY.SHELL.TITLE_CONTAINER_L36.uuid} className="mb-6 text-on-surface-variant">
           {error?.message || t(ERROR_BOUNDARY.DEFAULT_MESSAGE)}
-        </UiDiv>
-        <UiButton ui={ERROR_BOUNDARY.RELOAD_BUTTON} onClick={onReload}>
+        </div>
+        <button data-ui-uuid={ERROR_BOUNDARY.RELOAD_BUTTON.uuid} onClick={onReload}>
           {t(ERROR_BOUNDARY.RELOAD_BUTTON)}
-        </UiButton>
-      </UiDiv>
-    </UiMain>
+        </button>
+      </div>
+    </main>
   );
 }
 

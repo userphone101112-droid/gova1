@@ -6,66 +6,100 @@ import { Controller, useFormContext } from 'react-hook-form';
 
 import { cn } from '@/lib/utils';
 import type { RegistrationFormData } from '@/lib/validation/auth';
-import { UiButton, UiDiv, UiInput, UiLabel, useTranslation } from '@/platform/ui';
-import { COMMON_LAYOUT } from '@/platform/ui/registry/categories';
+import { useTranslation } from '@/platform/ui';
 import { AUTH } from '@/platform/ui/registry/features/auth';
 
 interface PasswordInputProps {
   name: 'password' | 'confirmPassword';
-  labelIdentity: typeof AUTH.REGISTRATION.PASSWORD_INPUT | typeof AUTH.REGISTRATION.CONFIRM_PASSWORD_INPUT;
-  inputIdentity: typeof AUTH.REGISTRATION.PASSWORD_INPUT | typeof AUTH.REGISTRATION.CONFIRM_PASSWORD_INPUT;
-  toggleIdentity?: typeof AUTH.REGISTRATION.TOGGLE_PASSWORD;
-  placeholderIdentity?: typeof AUTH.SHARED.PASSWORD_PLACEHOLDER;
 }
 
-export function PasswordInput({
-  name,
-  labelIdentity,
-  inputIdentity,
-  toggleIdentity = AUTH.REGISTRATION.TOGGLE_PASSWORD,
-  placeholderIdentity = AUTH.SHARED.PASSWORD_PLACEHOLDER,
-}: PasswordInputProps) {
+export function PasswordInput({ name }: PasswordInputProps) {
   const [show, setShow] = React.useState(false);
   const { t } = useTranslation();
   const { control } = useFormContext<RegistrationFormData>();
 
+  if (name === 'password') {
+    return (
+      <Controller
+        name="password"
+        control={control}
+        render={({ field, fieldState }) => (
+          <div data-ui-uuid={AUTH.SHELL.PASSWORD_FIELD_WRAPPER.uuid} className="space-y-2">
+            <span data-ui-uuid={AUTH.REGISTRATION.PASSWORD_INPUT_LABEL.uuid} className="type-label-lg">
+              {t(AUTH.REGISTRATION.PASSWORD_INPUT)}
+            </span>
+            <div data-ui-uuid={AUTH.SHELL.PASSWORD_FIELD_INPUT_WRAPPER.uuid} className="relative">
+              <input
+                data-ui-uuid={AUTH.REGISTRATION.PASSWORD_INPUT.uuid}
+                type={show ? 'text' : 'password'}
+                placeholder={t(AUTH.SHARED.PASSWORD_PLACEHOLDER)}
+                className={cn(
+                  'auth-input pe-10 motion-colors w-full',
+                  fieldState.error && 'border-error focus-visible:ring-error'
+                )}
+                value={field.value}
+                onChange={field.onChange}
+              />
+              <button
+                data-ui-uuid={AUTH.REGISTRATION.TOGGLE_PASSWORD.uuid}
+                type="button"
+                className="absolute end-0 top-0 h-full px-3 text-on-surface-variant hover:text-on-surface"
+                onClick={() => setShow((s) => !s)}
+                tabIndex={-1}
+                aria-label={t(AUTH.REGISTRATION.TOGGLE_PASSWORD)}
+              >
+                {show ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+              </button>
+            </div>
+            {fieldState.error && (
+              <p data-ui-uuid={AUTH.SHELL.PASSWORD_INPUT_L48.uuid} className="type-caption text-error">
+                {fieldState.error.message}
+              </p>
+            )}
+          </div>
+        )}
+      />
+    );
+  }
+
   return (
     <Controller
-      name={name}
+      name="confirmPassword"
       control={control}
       render={({ field, fieldState }) => (
-        <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="space-y-2">
-          <UiLabel ui={labelIdentity} className="type-label-lg">
-            {t(labelIdentity)}
-          </UiLabel>
-          <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="relative">
-            <UiInput
-              ui={inputIdentity}
-              {...field}
+        <div data-ui-uuid={AUTH.SHELL.CONFIRM_PASSWORD_FIELD_WRAPPER.uuid} className="space-y-2">
+          <span data-ui-uuid={AUTH.REGISTRATION.CONFIRM_PASSWORD_INPUT_LABEL.uuid} className="type-label-lg">
+            {t(AUTH.REGISTRATION.CONFIRM_PASSWORD_INPUT)}
+          </span>
+          <div data-ui-uuid={AUTH.SHELL.CONFIRM_PASSWORD_FIELD_INPUT_WRAPPER.uuid} className="relative">
+            <input
+              data-ui-uuid={AUTH.REGISTRATION.CONFIRM_PASSWORD_INPUT.uuid}
               type={show ? 'text' : 'password'}
-              placeholder={t(placeholderIdentity)}
+              placeholder={t(AUTH.SHARED.PASSWORD_PLACEHOLDER)}
               className={cn(
                 'auth-input pe-10 motion-colors w-full',
                 fieldState.error && 'border-error focus-visible:ring-error'
               )}
+              value={field.value}
+              onChange={field.onChange}
             />
-            <UiButton
-              ui={toggleIdentity}
+            <button
+                data-ui-uuid={AUTH.REGISTRATION.CONFIRM_TOGGLE_PASSWORD.uuid}
               type="button"
-              variant="ghost"
-              size="icon"
               className="absolute end-0 top-0 h-full px-3 text-on-surface-variant hover:text-on-surface"
               onClick={() => setShow((s) => !s)}
               tabIndex={-1}
-              aria-label={t(toggleIdentity)}
+              aria-label={t(AUTH.REGISTRATION.TOGGLE_PASSWORD)}
             >
               {show ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-            </UiButton>
-          </UiDiv>
+            </button>
+          </div>
           {fieldState.error && (
-            <p className="type-caption text-error">{fieldState.error.message}</p>
+            <p data-ui-uuid={AUTH.SHELL.CONFIRM_PASSWORD_ERROR.uuid} className="type-caption text-error">
+              {fieldState.error.message}
+            </p>
           )}
-        </UiDiv>
+        </div>
       )}
     />
   );

@@ -91,7 +91,11 @@
       "categoryButton": "اختر الفئة",
       "categoryImage": "صورة الفئة",
       "categoryName": "الفئة",
-      "sectionTitle": "أسواق السويس"
+      "sectionTitle": "أسواق السويس",
+      "toggleLabel": "TODO(ar): Toggle categories grid button label"
+    },
+    "featured-marquee": {
+      "header": "TODO(ar): header"
     }
   }
 }

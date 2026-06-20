@@ -34,39 +34,39 @@ export function formatRelativeTime(dateStr: string): string {
 
 export function getMerchantStatusColor(status: MerchantStatus): string {
   const colors: Record<MerchantStatus, string> = {
-    active: 'text-green-500',
-    away: 'text-yellow-500',
-    offline: 'text-gray-500',
+    active: 'text-success',
+    away: 'text-warning',
+    offline: 'text-muted-foreground',
   };
   return colors[status];
 }
 
 export function getOrderStatusColor(status: OrderStatus): string {
   const colors: Record<OrderStatus, string> = {
-    pending: 'text-blue-500',
-    processing: 'text-yellow-500',
-    shipped: 'text-blue-600',
-    delivered: 'text-green-500',
-    cancelled: 'text-red-500',
+    pending: 'text-info',
+    processing: 'text-warning',
+    shipped: 'text-info',
+    delivered: 'text-success',
+    cancelled: 'text-error',
   };
   return colors[status];
 }
 
 export function getStockStatusColor(status: StockStatus): string {
   const colors: Record<StockStatus, string> = {
-    in_stock: 'text-green-500',
-    low_stock: 'text-yellow-500',
-    out_of_stock: 'text-red-500',
+    in_stock: 'text-success',
+    low_stock: 'text-warning',
+    out_of_stock: 'text-error',
   };
   return colors[status];
 }
 
 export function getAchievementRarityColor(rarity: string): string {
   const colors: Record<string, string> = {
-    common: 'border-gray-400 text-gray-600',
-    rare: 'border-blue-400 text-blue-600',
-    epic: 'border-purple-400 text-purple-600',
-    legendary: 'border-yellow-400 text-yellow-600',
+    common: 'border-outline-variant text-muted-foreground',
+    rare: 'border-info text-info',
+    epic: 'border-tertiary text-tertiary',
+    legendary: 'border-warning text-warning',
   };
   return colors[rarity];
 }

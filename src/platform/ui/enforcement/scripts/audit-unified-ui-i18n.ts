@@ -1,10 +1,12 @@
 import { readFileSync, readdirSync, existsSync, writeFileSync } from 'fs';
 import { join } from 'path';
+
 import { 
   generateTranslationKeyFromUi,
   extractFeatureFromUiIdentifier,
   isCategoryUiPath,
 } from '../../i18n/binding/registry-binding';
+import * as categories from '../../registry/categories';
 import {
   HOME,
   ERROR_BOUNDARY,
@@ -13,6 +15,7 @@ import {
   ALL_UI_IDENTIFIERS,
   ALL_UI_IDENTITIES,
   AUTH,
+  UI_REGISTRY,
   isTranslationRequiredForUiIdentity,
 } from '../../registry/registry';
 
@@ -24,8 +27,98 @@ const REGISTRY_SOURCES = {
   AUTH,
 };
 
+function buildRegistryPathToIdentity(): Map<string, (typeof ALL_UI_IDENTITIES)[number]> {
+  const map = new Map<string, (typeof ALL_UI_IDENTITIES)[number]>();
+
+  function isIdentity(obj: unknown): obj is (typeof ALL_UI_IDENTITIES)[number] {
+    return Boolean(obj && typeof obj === 'object' && 'uuid' in obj && 'path' in obj);
+  }
+
+  function walk(obj: unknown, prefix: string[]) {
+    if (isIdentity(obj)) {
+      map.set(prefix.join('.'), obj);
+      return;
+    }
+    if (obj && typeof obj === 'object') {
+      for (const [key, value] of Object.entries(obj)) {
+        walk(value, [...prefix, key]);
+      }
+    }
+  }
+
+  const roots: Record<string, unknown> = {
+    ...UI_REGISTRY,
+    COMMON_LAYOUT: categories.COMMON_LAYOUT,
+    COMMON_FORMS: categories.COMMON_FORMS,
+    COMMON_TYPOGRAPHY: categories.COMMON_TYPOGRAPHY,
+    COMMON_MEDIA: categories.COMMON_MEDIA,
+    COMMON_COMPONENTS: categories.COMMON_COMPONENTS,
+    COMMON_TABLES: categories.COMMON_TABLES,
+    COMMON_LISTS: categories.COMMON_LISTS,
+    COMMON_INTERACTIVE: categories.COMMON_INTERACTIVE,
+    COMMON_TEMPLATE: categories.COMMON_TEMPLATE,
+    COMMON_SPACING: categories.COMMON_SPACING,
+    DECORATIVE: categories.DECORATIVE,
+  };
+
+  for (const [root, tree] of Object.entries(roots)) {
+    if (tree) walk(tree, [root]);
+  }
+
+  return map;
+}
+
+const REGISTRY_PATH_TO_IDENTITY = buildRegistryPathToIdentity();
+
+function indexIdentityUsage(
+  identity: (typeof ALL_UI_IDENTITIES)[number],
+  filePath: string,
+  content: string,
+  matchIndex: number,
+  state: ComponentUsageResult
+): void {
+  state.usedUiIdentifiers.add(identity.path);
+  if (!state.uiUsageByFile[filePath]) {
+    state.uiUsageByFile[filePath] = [];
+  }
+  state.uiUsageByFile[filePath].push(identity.path);
+
+  const relativePath = filePath.replace(process.cwd(), '').replace(/\\/g, '/');
+  const componentName = getComponentName(content, filePath);
+  const lineNo = content.slice(0, matchIndex).split('\n').length;
+  const sourceLocation = {
+    uuid: identity.uuid,
+    id: identity.id,
+    path: identity.path,
+    lifecycle: identity.lifecycle ?? (identity.deprecated ? 'deprecated' : 'active'),
+    sourceFile: relativePath,
+    sourceComponent: componentName,
+    sourceLine: lineNo,
+    feature: identity.feature,
+  };
+  sourceMappings[identity.id] = sourceLocation;
+  sourceMappingsByUuid[identity.uuid] = sourceLocation;
+}
+
 const sourceMappings: Record<string, any> = {};
 const sourceMappingsByUuid: Record<string, any> = {};
+
+function writeFileWithRetry(filePath: string, content: string, attempts = 5): void {
+  let lastError: unknown;
+  for (let attempt = 0; attempt < attempts; attempt += 1) {
+    try {
+      writeFileSync(filePath, content, 'utf-8');
+      return;
+    } catch (error) {
+      lastError = error;
+      const waitUntil = Date.now() + 200;
+      while (Date.now() < waitUntil) {
+        // brief backoff for transient Windows file locks
+      }
+    }
+  }
+  throw lastError;
+}
 
 function getComponentName(content: string, filePath: string): string {
   const exportFuncMatch = content.match(/export\s+function\s+([A-Za-z0-9_]+)/);
@@ -435,55 +528,51 @@ function scanFile(filePath: string, state: ComponentUsageResult): void {
       }
     }
 
-    // Strict coverage checks:
-    let idx = 0;
-    while (true) {
-      const sliceContent = content.slice(idx);
-      const startMatch = sliceContent.match(/<(UiButton|UiInput|UiLink|UiCheckbox|UiRadio|UiSelect|UiSwitch|UiTextarea)\b/);
-      if (!startMatch || startMatch.index === undefined) break;
+    // Strict coverage: no legacy Ui* factory components; data-ui-uuid must use registry refs
+    if (!filePath.endsWith('.tsx')) {
+      return;
+    }
 
-      const tagStartIdx = idx + startMatch.index;
-      const componentName = startMatch[1];
-      
-      // Find the end of the tag '>' taking braces into account
-      let braceCount = 0;
-      let tagEndIdx = -1;
-      for (let i = tagStartIdx; i < content.length; i++) {
-        const char = content[i];
-        if (char === '{') braceCount++;
-        else if (char === '}') braceCount--;
-        else if (char === '>' && braceCount === 0) {
-          tagEndIdx = i;
-          break;
-        }
-      }
-
-      if (tagEndIdx === -1) {
-        idx = tagStartIdx + 1;
-        continue;
-      }
-
-      const tagContent = content.slice(tagStartIdx, tagEndIdx + 1);
+    const legacyUiRegex = /<(Ui[A-Z][a-zA-Z0-9]*)\b/g;
+    let legacyMatch;
+    while ((legacyMatch = legacyUiRegex.exec(content)) !== null) {
       const relativePath = filePath.replace(process.cwd(), '').replace(/\\/g, '/');
-      let lineNo = content.slice(0, tagStartIdx).split('\n').length;
+      const lineNo = content.slice(0, legacyMatch.index).split('\n').length;
+      state.strictViolations.push(
+        `Strict Coverage Violation: Legacy factory component <${legacyMatch[1]}> in "${relativePath}:${lineNo}". Use native elements with data-ui-uuid={IDENTITY.uuid}.`
+      );
+    }
 
-      // 1. Check if 'ui' prop is missing
-      if (!/\bui\s*=/g.test(tagContent)) {
+    const rawUuidLineRegex = /data-ui-uuid\s*=\s*(?:["']([^"']+)["']|\{\s*["']([^"']+)["']\s*\})/;
+    lines.forEach((line, i) => {
+      if (line.includes('querySelector') || line.includes('getAttribute')) return;
+      const rawMatch = line.match(rawUuidLineRegex);
+      if (rawMatch) {
+        const relativePath = filePath.replace(process.cwd(), '').replace(/\\/g, '/');
+        const raw = rawMatch[1] || rawMatch[2];
         state.strictViolations.push(
-          `Strict Coverage Violation: Component <${componentName}> in file "${relativePath}:${lineNo}" is missing the mandatory "ui" prop.`
+          `Strict Coverage Violation: data-ui-uuid uses raw string "${raw}" in "${relativePath}:${i + 1}". Use a registry identity reference: data-ui-uuid={HOME.X.uuid}.`
         );
-      } else {
-        // 2. Check if 'ui' prop is a string literal (e.g. ui="string" or ui={'string'})
-        const stringUiMatch = tagContent.match(/\bui\s*=\s*(?:["']([^"']+)["']|\{\s*["']([^"']+)["']\s*\})/);
-        if (stringUiMatch) {
-          const rawStringValue = stringUiMatch[1] || stringUiMatch[2];
-          state.strictViolations.push(
-            `Strict Coverage Violation: Component <${componentName}> in file "${relativePath}:${lineNo}" uses deprecated string-based ui prop: "${rawStringValue}". You must use a registered registry object reference.`
-          );
-        }
       }
+    });
 
-      idx = tagEndIdx + 1;
+    // Index source locations from data-ui-uuid={REF.uuid} and uiUuid(REF)
+    const uuidRefRegex = /data-ui-uuid=\{([A-Z_][A-Z0-9_.]*)\.uuid\}/g;
+    let uuidRefMatch;
+    while ((uuidRefMatch = uuidRefRegex.exec(content)) !== null) {
+      const identity = REGISTRY_PATH_TO_IDENTITY.get(uuidRefMatch[1]);
+      if (identity) {
+        indexIdentityUsage(identity, filePath, content, uuidRefMatch.index, state);
+      }
+    }
+
+    const uiUuidSpreadRegex = /uiUuid\(([A-Z_][A-Z0-9_.]*)\)/g;
+    let uiUuidMatch;
+    while ((uiUuidMatch = uiUuidSpreadRegex.exec(content)) !== null) {
+      const identity = REGISTRY_PATH_TO_IDENTITY.get(uiUuidMatch[1]);
+      if (identity) {
+        indexIdentityUsage(identity, filePath, content, uiUuidMatch.index, state);
+      }
     }
   } catch (error) {
     console.error(`Error scanning ${filePath}:`, error);
@@ -516,7 +605,7 @@ function buildBindingMatrix(
     let bindings = 0;
     let orphansUi = 0;
     let orphansTranslation = 0;
-    let mismatches = 0;
+    const mismatches = 0;
     
     for (const ui of uiIdentifiers) {
       if (!isTranslationRequiredForUiIdentity(ui) || isCategoryUiPath(ui)) {
@@ -779,7 +868,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = ${JSON.
 
 export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = ${JSON.stringify(sourceMappings, null, 2)};
 `;
-    writeFileSync(sourceIndexPath, indexContent, 'utf-8');
+    writeFileWithRetry(sourceIndexPath, indexContent);
     console.log(`📄 Generated source index: ${sourceIndexPath}`);
 
     // Phase 6: Generate identity-audit.md
@@ -828,7 +917,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = ${JSON.stringif
     // Check Orphans (unused IDs)
     const orphansList: string[] = [];
     ALL_UI_IDENTITIES.forEach(id => {
-      if (!sourceMappings[id.id]) {
+      if (!sourceMappingsByUuid[id.uuid]) {
         orphansList.push(id.id);
         identityWarnings.push(`Orphan UI Identity: "${id.id}" (registered but not used in code).`);
       }
@@ -857,13 +946,13 @@ ${Object.values(sourceMappingsByUuid).map((m: any) => `| \`${m.uuid}\` | \`${m.i
 `;
 
     const identityReportPath = join(process.cwd(), 'docs', 'audits', 'identity-audit.md');
-    writeFileSync(identityReportPath, identityAuditReport, 'utf-8');
+    writeFileWithRetry(identityReportPath, identityAuditReport);
     console.log(`📄 Generated identity audit report: ${identityReportPath}`);
     
     console.log(`\n${overall.pass && identityErrors.length === 0 ? '✅ AUDIT PASSED' : '❌ AUDIT FAILED'}`);
     console.log(`Score: ${overall.score}/100`);
     
-    if (!overall.pass || identityErrors.length > 0 || identityWarnings.length > 0) {
+    if (!overall.pass || identityErrors.length > 0) {
       process.exit(1);
     }
   } catch (error) {

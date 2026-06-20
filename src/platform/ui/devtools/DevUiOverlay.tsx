@@ -2,10 +2,10 @@
 
 import { useEffect, useRef, useState, useCallback } from 'react';
 
-import { UiButton, UiDiv } from '@/platform/ui';
 import { DECORATIVE } from '@/platform/ui/registry/categories';
-import { getUiIdentityLifecycle, getUiIdentityUuid, UI_ID_MAP } from '@/platform/ui/registry/registry';
-import { UI_SOURCE_INDEX, UI_SOURCE_INDEX_BY_UUID } from '@/platform/ui/registry/source-index';
+import { DEVTOOLS } from '@/platform/ui/registry/features/devtools';
+import { getUiIdentityByUuid, getUiIdentityLifecycle, getUiIdentityUuid } from '@/platform/ui/registry/registry';
+import { UI_SOURCE_INDEX_BY_UUID } from '@/platform/ui/registry/source-index';
 import { useMaolStore } from '@/store/index';
 
 interface TooltipState {
@@ -52,52 +52,63 @@ interface OverlayFrame {
 
 const STORAGE_KEY = 'dev-ui-overlay-active';
 
-const ALL_COMPONENT_TYPES = [
-  'UiButton',
-  'UiInput',
-  'UiTextarea',
-  'UiSelect',
-  'UiLink',
-  'UiImage',
-  'UiLabel',
-  'UiHeader',
-  'UiCheckbox',
-  'UiRadio',
-  'UiSwitch',
-  'UiCard',
-  'UiModal',
-  'UiBadge',
-  'UiDiv',
-  'UiSection',
+const ALL_ELEMENT_TAGS = [
+  'button',
+  'input',
+  'textarea',
+  'select',
+  'a',
+  'img',
+  'span',
+  'label',
+  'div',
+  'section',
+  'header',
+  'main',
+  'nav',
+  'article',
+  'aside',
+  'footer',
+  'h1',
+  'h2',
+  'h3',
+  'h4',
+  'h5',
+  'h6',
+  'p',
+  'form',
+  'table',
+  'dialog',
 ] as const;
 
-type ComponentType = typeof ALL_COMPONENT_TYPES[number];
+type ElementTag = typeof ALL_ELEMENT_TAGS[number];
+
+const DECORATIVE_SPACER_UUID = DECORATIVE.SPACER.uuid;
 
 function getInspectorData(
   data: Record<string, any>,
-  uiId: string,
+  uuid: string,
   identityKey: string,
-  identity: (typeof UI_ID_MAP)[string] | undefined
+  identity: ReturnType<typeof getUiIdentityByUuid>
 ) {
-  const uuid = identity ? getUiIdentityUuid(identity) : '';
-  return data[identityKey] || (uuid && data[uuid]) || data[uiId];
+  return data[identityKey] || (uuid && data[uuid]) || (identity ? data[identity.id] : undefined);
 }
 
-function computeFrames(selectedTypes: Set<ComponentType>): OverlayFrame[] {
+function computeFrames(selectedTags: Set<ElementTag>): OverlayFrame[] {
   if (typeof window === 'undefined') return [];
   
-  const elements = document.querySelectorAll<HTMLElement>('[data-ui-id]');
+  const elements = document.querySelectorAll<HTMLElement>('[data-ui-uuid]');
   const frames: OverlayFrame[] = [];
 
   elements.forEach((el) => {
-    const id = el.getAttribute('data-ui-id') || '';
-    const componentType = el.getAttribute('data-ui-component') || 'Unknown';
+    const uuid = el.getAttribute('data-ui-uuid') || '';
+    const componentType = el.tagName.toLowerCase();
     const rect = el.getBoundingClientRect();
     if (rect.width === 0 && rect.height === 0) return;
 
-    const identity = UI_ID_MAP[id];
+    const identity = getUiIdentityByUuid(uuid);
     let color: 'blue' | 'amber' | 'red' = 'red';
-    let label = id || '?';
+    let label = uuid.slice(0, 8) || '?';
 
     if (identity) {
       color = getUiIdentityLifecycle(identity) === 'deprecated' ? 'amber' : 'blue';
@@ -105,7 +116,7 @@ function computeFrames(selectedTypes: Set<ComponentType>): OverlayFrame[] {
     }
 
     frames.push({
-      id,
+      id: uuid,
       top: rect.top + window.scrollY,
       left: rect.left + window.scrollX,
       width: rect.width,
@@ -116,7 +127,7 @@ function computeFrames(selectedTypes: Set<ComponentType>): OverlayFrame[] {
     });
   });
 
-  return frames.filter(f => selectedTypes.has(f.componentType as ComponentType));
+  return frames.filter(f => selectedTags.has(f.componentType as ElementTag));
 }
 
 const COLOR_MAP = {
@@ -139,24 +150,24 @@ export function DevUiOverlay() {
 
   // Filter state
   const [isFilterPanelOpen, setIsFilterPanelOpen] = useState(false);
-  const [selectedComponentTypes, setSelectedComponentTypes] = useState<Set<ComponentType>>(new Set());
+  const [selectedComponentTypes, setSelectedComponentTypes] = useState<Set<ElementTag>>(new Set());
   const [isHoverInspectionEnabled, setIsHoverInspectionEnabled] = useState(false);
   const [hoveredFrame, setHoveredFrame] = useState<OverlayFrame | null>(null);
 
   // Function to compute component type counts
-  const getComponentCounts = useCallback((selectedTypes: Set<ComponentType>) => {
+  const getComponentCounts = useCallback((selectedTags: Set<ElementTag>) => {
     if (typeof window === 'undefined') {
       const counts: Record<string, number> = {};
-      ALL_COMPONENT_TYPES.forEach(type => counts[type] = 0);
+      ALL_ELEMENT_TAGS.forEach(type => counts[type] = 0);
       return counts;
     }
     
     const counts: Record<string, number> = {};
-    ALL_COMPONENT_TYPES.forEach(type => counts[type] = 0);
-    const elements = document.querySelectorAll<HTMLElement>('[data-ui-id]');
+    ALL_ELEMENT_TAGS.forEach(type => counts[type] = 0);
+    const elements = document.querySelectorAll<HTMLElement>('[data-ui-uuid]');
     elements.forEach(el => {
-      const type = el.getAttribute('data-ui-component');
-      if (type && selectedTypes.has(type as ComponentType)) {
+      const type = el.tagName.toLowerCase();
+      if (type && selectedTags.has(type as ElementTag)) {
         counts[type] = (counts[type] || 0) + 1;
       }
     });
@@ -166,7 +177,7 @@ export function DevUiOverlay() {
   const [frames, setFrames] = useState<OverlayFrame[]>([]);
   const [componentCounts, setComponentCounts] = useState<Record<string, number>>(() => {
     const initial: Record<string, number> = {};
-    ALL_COMPONENT_TYPES.forEach(type => initial[type] = 0);
+    ALL_ELEMENT_TAGS.forEach(type => initial[type] = 0);
     return initial;
   });
 
@@ -218,7 +229,7 @@ export function DevUiOverlay() {
     if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
     rafRef.current = requestAnimationFrame(() => {
       const effectiveTypes = selectedComponentTypes.size === 0 
-        ? new Set(ALL_COMPONENT_TYPES) 
+        ? new Set(ALL_ELEMENT_TAGS) 
         : selectedComponentTypes;
       const newFrames = computeFrames(effectiveTypes);
       setFrames(newFrames);
@@ -281,15 +292,14 @@ export function DevUiOverlay() {
         continue;
       }
       
-      // Check if this element or any ancestor has data-ui-id
-      const uiElement = el.closest('[data-ui-id]') as HTMLElement | null;
+      // Check if this element or any ancestor has data-ui-uuid
+      const uiElement = el.closest('[data-ui-uuid]') as HTMLElement | null;
       if (!uiElement) {
         continue;
       }
       
-      // Skip decorative spacer
-      const uiId = uiElement.getAttribute('data-ui-id');
-      if (uiId === 'UI_COMMON_DECORATIVE_SPACER') {
+      const uuid = uiElement.getAttribute('data-ui-uuid');
+      if (uuid === DECORATIVE_SPACER_UUID) {
         continue;
       }
       
@@ -301,41 +311,34 @@ export function DevUiOverlay() {
     return null;
   }, []);
 
-  // Helper to get child UI elements from a given UI id
-  const getChildUiElements = useCallback((uiId: string): Array<{ id: string; identityKey: string; componentType: string }> => {
-    // Find the element by its data-ui-id
-    const parentElement = document.querySelector(`[data-ui-id="${uiId}"]`) as HTMLElement | null;
+  // Helper to get child UI elements from a given UUID
+  const getChildUiElements = useCallback((uuid: string): Array<{ id: string; identityKey: string; componentType: string }> => {
+    const parentElement = document.querySelector(`[data-ui-uuid="${uuid}"]`) as HTMLElement | null;
     if (!parentElement) return [];
     
-    // Get all descendant elements that have data-ui-id, but are not nested inside another UI element
     const children: Array<{ id: string; identityKey: string; componentType: string }> = [];
-    
-    // Iterate through all descendants
-    const allDescendants = parentElement.querySelectorAll('[data-ui-id]');
+    const allDescendants = parentElement.querySelectorAll('[data-ui-uuid]');
     for (const descendant of allDescendants) {
-      const descId = descendant.getAttribute('data-ui-id');
-      if (!descId) continue;
+      const descUuid = descendant.getAttribute('data-ui-uuid');
+      if (!descUuid) continue;
+      if (descUuid === DECORATIVE_SPACER_UUID) continue;
       
-      // Skip decorative spacer
-      if (descId === 'UI_COMMON_DECORATIVE_SPACER') continue;
-      
-      // Check if this descendant is a direct child (not nested inside another UI element)
       let isDirectChild = true;
       let current: Element | null = descendant.parentElement;
       while (current && current !== parentElement) {
-        if (current.hasAttribute('data-ui-id')) {
+        if (current.hasAttribute('data-ui-uuid')) {
           isDirectChild = false;
           break;
         }
         current = current.parentElement;
       }
       
-      const identityKey = descendant.getAttribute('data-ui-identity-key') || descId;
+      const identityKey = descendant.getAttribute('data-ui-identity-key') || descUuid;
       if (isDirectChild && !children.find(c => c.identityKey === identityKey)) {
         children.push({
-          id: descId,
+          id: descUuid,
           identityKey,
-          componentType: descendant.getAttribute('data-ui-component') || 'Unknown'
+          componentType: descendant.tagName.toLowerCase()
         });
       }
     }
@@ -363,19 +366,17 @@ export function DevUiOverlay() {
         return;
       }
 
-      const uiId = uiElement.getAttribute('data-ui-id');
-      if (!uiId) return;
+      const uiUuid = uiElement.getAttribute('data-ui-uuid');
+      if (!uiUuid) return;
+      if (uiUuid === DECORATIVE_SPACER_UUID) return;
 
-      // Skip hover inspection for UI_COMMON_DECORATIVE_SPACER
-      if (uiId === 'UI_COMMON_DECORATIVE_SPACER') return;
-
-      const componentType = uiElement.getAttribute('data-ui-component') || 'Unknown';
+      const componentType = uiElement.tagName.toLowerCase();
       const rect = uiElement.getBoundingClientRect();
       if (rect.width === 0 && rect.height === 0) return;
 
-      const identity = UI_ID_MAP[uiId];
+      const identity = getUiIdentityByUuid(uiUuid);
       let color: 'blue' | 'amber' | 'red' = 'red';
-      let label = uiId || '?';
+      let label = uiUuid.slice(0, 8) || '?';
 
       if (identity) {
         color = getUiIdentityLifecycle(identity) === 'deprecated' ? 'amber' : 'blue';
@@ -383,7 +384,7 @@ export function DevUiOverlay() {
       }
 
       setHoveredFrame({
-        id: uiId,
+        id: uiUuid,
         top: rect.top + window.scrollY,
         left: rect.left + window.scrollX,
         width: rect.width,
@@ -416,17 +417,15 @@ export function DevUiOverlay() {
       const uiElement = getUiElementFromPoint(e.clientX, e.clientY);
       if (!uiElement) return;
 
-      const uiId = uiElement.getAttribute('data-ui-id');
-      if (!uiId) return;
+      const uiUuid = uiElement.getAttribute('data-ui-uuid');
+      if (!uiUuid) return;
 
-      const identity = UI_ID_MAP[uiId];
-      const uiUuid = identity ? getUiIdentityUuid(identity) : uiElement.getAttribute('data-ui-uuid') || '';
-      const source = UI_SOURCE_INDEX_BY_UUID[uiUuid] ?? UI_SOURCE_INDEX[uiId];
+      const identity = getUiIdentityByUuid(uiUuid);
+      const source = UI_SOURCE_INDEX_BY_UUID[uiUuid];
       const uiInstanceId = uiElement.getAttribute('data-ui-instance-id') || '';
       const identityKey = uiElement.getAttribute('data-ui-identity-key') || uiUuid;
-      const savedData = getInspectorData(allInspectorData, uiId, identityKey, identity);
+      const savedData = getInspectorData(allInspectorData, uiUuid, identityKey, identity);
 
-      // Open tooltip
       setTooltip({
         visible: true,
         x: e.clientX + 12,
@@ -434,8 +433,8 @@ export function DevUiOverlay() {
         uuid: uiUuid,
         uiInstanceId,
         identityKey,
-        id: uiId,
-        instanceId: `${uiId}_${Date.now()}`,
+        id: identity?.id || uiUuid,
+        instanceId: `${uiUuid}_${Date.now()}`,
         path: identity?.path || '—',
         feature: identity?.feature || '—',
         version: identity?.version || '—',
@@ -529,7 +528,7 @@ export function DevUiOverlay() {
   };
 
   // Filter functions
-  const toggleComponentFilter = (type: ComponentType) => {
+  const toggleComponentFilter = (type: ElementTag) => {
     setSelectedComponentTypes(prev => {
       const newSet = new Set(prev);
       if (newSet.has(type)) newSet.delete(type);
@@ -539,8 +538,8 @@ export function DevUiOverlay() {
   };
 
   const selectAllComponents = () => {
-    if (selectedComponentTypes.size < ALL_COMPONENT_TYPES.length) {
-      setSelectedComponentTypes(new Set(ALL_COMPONENT_TYPES));
+    if (selectedComponentTypes.size < ALL_ELEMENT_TAGS.length) {
+      setSelectedComponentTypes(new Set(ALL_ELEMENT_TAGS));
     }
   };
 
@@ -559,166 +558,138 @@ export function DevUiOverlay() {
 
   if (!active && frames.length === 0) {
     return (
-      <UiButton
-        ui={DECORATIVE.SPACER}
-        aria-label="Toggle UI Identity Overlay (Ctrl+Shift+U)"
-        title="Toggle UI Identity Overlay (Ctrl+Shift+U)"
-        onClick={() => setActive(true)}
-        style={{
-          position: 'fixed',
-          bottom: '72px',
-          right: '12px',
-          zIndex: 99990,
-          background: 'var(--gova-component-dev-ui-bg-darker)',
-          color: 'var(--gova-component-dev-ui-text-secondary)',
-          border: '1px solid var(--gova-component-dev-ui-border-color)',
-          borderRadius: '8px',
-          padding: '6px 10px',
-          fontSize: '11px',
-          cursor: 'pointer',
-          fontFamily: 'monospace',
-          opacity: 0.6,
-        }}
-      >
+      <button data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L560.uuid} aria-label="Toggle UI Identity Overlay (Ctrl+Shift+U)" title="Toggle UI Identity Overlay (Ctrl+Shift+U)" onClick={() => setActive(true)} style={{
+        position: 'fixed',
+        bottom: '72px',
+        right: '12px',
+        zIndex: 99990,
+        background: 'var(--gova-component-dev-ui-bg-darker)',
+        color: 'var(--gova-component-dev-ui-text-secondary)',
+        border: '1px solid var(--gova-component-dev-ui-border-color)',
+        borderRadius: '8px',
+        padding: '6px 10px',
+        fontSize: '11px',
+        cursor: 'pointer',
+        fontFamily: 'monospace',
+        opacity: 0.6,
+    }}>
         UI Inspector
-      </UiButton>
+      </button>
     );
   }
 
   return (
     <>
       {/* Control bar - Always visible, works across all screen sizes */}
-      <UiDiv
-        ui={DECORATIVE.SPACER}
-        data-control-panel="true"
-        style={{
-          position: 'fixed',
-          bottom: '72px',
-          right: '12px',
-          zIndex: 99999,
-          display: 'flex',
-          gap: '6px',
-          alignItems: 'center',
-          background: 'var(--gova-component-dev-ui-bg-dark)',
-          border: '1px solid var(--gova-component-dev-ui-border-color)',
-          borderRadius: '10px',
-          padding: '6px 10px',
-          boxShadow: 'var(--gova-component-dev-ui-shadow-1)',
-          fontSize: '11px',
-          fontFamily: 'monospace',
-          color: 'var(--gova-component-dev-ui-text-secondary)',
-        }}
-      >
-        <span style={{ color: 'var(--gova-component-dev-ui-primary)', fontWeight: 700 }}>UI Inspector</span>
-        <span>|</span>
-        <UiButton
-          ui={DECORATIVE.SPACER}
-          onClick={() => setIsHoverInspectionEnabled(!isHoverInspectionEnabled)}
-          style={{
-            padding: '2px 8px',
-            borderRadius: '10px',
-            border: 'none',
-            cursor: 'pointer',
-            fontSize: '10px',
-            fontWeight: 600,
-            background: isHoverInspectionEnabled ? 'var(--gova-component-dev-ui-success)' : 'var(--gova-component-dev-ui-secondary)',
-            color: 'var(--gova-on-primary)',
-            fontFamily: 'monospace',
-          }}
-        >
+      <div data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L583.uuid} data-control-panel="true" style={{
+        position: 'fixed',
+        bottom: '72px',
+        right: '12px',
+        zIndex: 99999,
+        display: 'flex',
+        gap: '6px',
+        alignItems: 'center',
+        background: 'var(--gova-component-dev-ui-bg-dark)',
+        border: '1px solid var(--gova-component-dev-ui-border-color)',
+        borderRadius: '10px',
+        padding: '6px 10px',
+        boxShadow: 'var(--gova-component-dev-ui-shadow-1)',
+        fontSize: '11px',
+        fontFamily: 'monospace',
+        color: 'var(--gova-component-dev-ui-text-secondary)',
+    }}>
+        <span data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L600.uuid} style={{ color: 'var(--gova-component-dev-ui-primary)', fontWeight: 700 }}>UI Inspector</span>
+        <span data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L601.uuid}>|</span>
+        <button data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L602.uuid} onClick={() => setIsHoverInspectionEnabled(!isHoverInspectionEnabled)} style={{
+        padding: '2px 8px',
+        borderRadius: '10px',
+        border: 'none',
+        cursor: 'pointer',
+        fontSize: '10px',
+        fontWeight: 600,
+        background: isHoverInspectionEnabled ? 'var(--gova-component-dev-ui-success)' : 'var(--gova-component-dev-ui-secondary)',
+        color: 'var(--gova-on-primary)',
+        fontFamily: 'monospace',
+    }}>
           Hover {isHoverInspectionEnabled ? 'ON' : 'OFF'}
-        </UiButton>
-        <span>|</span>
+        </button>
+        <span data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L615.uuid}>|</span>
         {isFilterPanelOpen && (
           <>
-            <span style={{ color: 'var(--gova-component-dev-ui-success)' }}>{frames.filter(f => f.color === 'blue').length} ok</span>
-            <span style={{ color: 'var(--gova-component-dev-ui-amber)' }}>{frames.filter(f => f.color === 'amber').length} dep</span>
-            <span style={{ color: 'var(--gova-component-dev-ui-error)' }}>{frames.filter(f => f.color === 'red').length} err</span>
-            <span>|</span>
+            <span data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L618.uuid} style={{ color: 'var(--gova-component-dev-ui-success)' }}>{frames.filter(f => f.color === 'blue').length} ok</span>
+            <span data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L619.uuid} style={{ color: 'var(--gova-component-dev-ui-amber)' }}>{frames.filter(f => f.color === 'amber').length} dep</span>
+            <span data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L620.uuid} style={{ color: 'var(--gova-component-dev-ui-error)' }}>{frames.filter(f => f.color === 'red').length} err</span>
+            <span data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L621.uuid}>|</span>
           </>
         )}
         {/* Filter Types Button */}
-        <UiButton
-                ui={DECORATIVE.SPACER}
-                onClick={() => setIsFilterPanelOpen(!isFilterPanelOpen)}
-                style={{
-                  padding: '2px 10px',
-                  borderRadius: '10px',
-                  border: 'none',
-                  cursor: 'pointer',
-                  fontSize: '10px',
-                  fontWeight: 600,
-                  background: isFilterPanelOpen ? 'var(--gova-component-dev-ui-success)' : 'var(--gova-component-dev-ui-secondary)',
-                  color: 'var(--gova-on-primary)',
-                  fontFamily: 'monospace',
-                }}
-              >
+        <button data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L625.uuid} onClick={() => setIsFilterPanelOpen(!isFilterPanelOpen)} style={{
+        padding: '2px 10px',
+        borderRadius: '10px',
+        border: 'none',
+        cursor: 'pointer',
+        fontSize: '10px',
+        fontWeight: 600,
+        background: isFilterPanelOpen ? 'var(--gova-component-dev-ui-success)' : 'var(--gova-component-dev-ui-secondary)',
+        color: 'var(--gova-on-primary)',
+        fontFamily: 'monospace',
+    }}>
                 أنواع العناصر
-              </UiButton>
-        <span>|</span>
+              </button>
+        <span data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L638.uuid}>|</span>
         {/* MAOL Toggle - Toggle MAOL ON/OFF directly from here */}
-        <UiButton
-          ui={DECORATIVE.SPACER}
-          onClick={toggleMaol}
-          style={{
-            padding: '2px 8px',
-            borderRadius: '10px',
-            border: 'none',
-            cursor: 'pointer',
-            fontSize: '10px',
-            fontWeight: 600,
-            background: isMaolEnabled ? 'var(--gova-component-dev-ui-success)' : 'var(--gova-component-dev-ui-secondary)',
-            color: 'var(--gova-on-primary)',
-            fontFamily: 'monospace',
-          }}
-        >
+        <button data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L640.uuid} onClick={toggleMaol} style={{
+        padding: '2px 8px',
+        borderRadius: '10px',
+        border: 'none',
+        cursor: 'pointer',
+        fontSize: '10px',
+        fontWeight: 600,
+        background: isMaolEnabled ? 'var(--gova-component-dev-ui-success)' : 'var(--gova-component-dev-ui-secondary)',
+        color: 'var(--gova-on-primary)',
+        fontFamily: 'monospace',
+    }}>
           MAOL {isMaolEnabled ? 'ON' : 'OFF'}
-        </UiButton>
-        <span>|</span>
-        <UiButton
-          ui={DECORATIVE.SPACER}
-          onClick={() => {
-            setActive(false);
-            setTooltip(t => ({ ...t, visible: false }));
-            try { localStorage.setItem(STORAGE_KEY, 'false'); } catch { /* noop */ }
-          }}
-          style={{
-            background: 'transparent',
-            border: 'none',
-            color: 'var(--gova-component-dev-ui-text-muted)',
-            cursor: 'pointer',
-            fontSize: '12px',
-            padding: '0 2px',
-          }}
-          aria-label="Close UI Inspector"
-          title="Close (Ctrl+Shift+U)"
-        >
+        </button>
+        <span data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L653.uuid}>|</span>
+        <button data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L654.uuid} onClick={() => {
+        setActive(false);
+        setTooltip(t => ({ ...t, visible: false }));
+        try {
+            localStorage.setItem(STORAGE_KEY, 'false');
+        }
+        catch { /* noop */ }
+    }} style={{
+        background: 'transparent',
+        border: 'none',
+        color: 'var(--gova-component-dev-ui-text-muted)',
+        cursor: 'pointer',
+        fontSize: '12px',
+        padding: '0 2px',
+    }} aria-label="Close UI Inspector" title="Close (Ctrl+Shift+U)">
           ✕
-        </UiButton>
-      </UiDiv>
+        </button>
+      </div>
 
       {/* Filter Panel */}
       {isFilterPanelOpen && (
-        <UiDiv
-          ui={DECORATIVE.SPACER}
-          style={{
-            position: 'fixed',
-            bottom: '110px',
-            right: '12px',
-            zIndex: 99998,
-            background: 'var(--gova-component-dev-ui-bg-dark)',
-            border: '1px solid var(--gova-component-dev-ui-border-color)',
-            borderRadius: '10px',
-            padding: '12px',
-            boxShadow: 'var(--gova-component-dev-ui-shadow-2)',
-            fontSize: '11px',
-            fontFamily: 'monospace',
-            minWidth: '200px',
-            maxHeight: '300px',
-            overflowY: 'auto',
-          }}
-        >
-          <div style={{ 
+        <div data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L675.uuid} style={{
+        position: 'fixed',
+        bottom: '110px',
+        right: '12px',
+        zIndex: 99998,
+        background: 'var(--gova-component-dev-ui-bg-dark)',
+        border: '1px solid var(--gova-component-dev-ui-border-color)',
+        borderRadius: '10px',
+        padding: '12px',
+        boxShadow: 'var(--gova-component-dev-ui-shadow-2)',
+        fontSize: '11px',
+        fontFamily: 'monospace',
+        minWidth: '200px',
+        maxHeight: '300px',
+        overflowY: 'auto',
+    }}>
+          <div data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L691.uuid} style={{ 
             position: 'sticky',
             top: 0,
             background: 'var(--gova-component-dev-ui-bg-dark)',
@@ -730,19 +701,19 @@ export function DevUiOverlay() {
             marginBottom: '4px',
             borderBottom: '1px solid var(--gova-component-dev-ui-border-color)'
           }}>
-            <span style={{ color: 'var(--gova-component-dev-ui-primary-light)', fontWeight: 700, fontSize: '12px' }}>أنواع المكونات</span>
-            <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
-              <label style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer', color: 'var(--gova-component-dev-ui-text-primary)', fontSize: '11px' }}>
-                <input
+            <span data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L703.uuid} style={{ color: 'var(--gova-component-dev-ui-primary-light)', fontWeight: 700, fontSize: '12px' }}>أنواع المكونات</span>
+            <div data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L704.uuid} style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
+              <label data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L705.uuid} style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer', color: 'var(--gova-component-dev-ui-text-primary)', fontSize: '11px' }}>
+                <input data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L706.uuid}
                   type="checkbox"
-                  checked={selectedComponentTypes.size === ALL_COMPONENT_TYPES.length}
+                  checked={selectedComponentTypes.size === ALL_ELEMENT_TAGS.length}
                   onChange={selectAllComponents}
                   style={{ cursor: 'pointer' }}
                 />
                 اختيار الكل
               </label>
-              <label style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer', color: 'var(--gova-component-dev-ui-text-primary)', fontSize: '11px' }}>
-                <input
+              <label data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L714.uuid} style={{ display: 'flex', alignItems: 'center', gap: '6px', cursor: 'pointer', color: 'var(--gova-component-dev-ui-text-primary)', fontSize: '11px' }}>
+                <input data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L715.uuid}
                   type="checkbox"
                   checked={selectedComponentTypes.size === 0}
                   onChange={deselectAllComponents}
@@ -752,9 +723,9 @@ export function DevUiOverlay() {
               </label>
             </div>
           </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', marginTop: '8px' }}>
-            {ALL_COMPONENT_TYPES.map((type) => (
-              <div
+          <div data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L725.uuid} style={{ display: 'flex', flexDirection: 'column', gap: '6px', marginTop: '8px' }}>
+            {ALL_ELEMENT_TAGS.map((type) => (
+              <div data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L727.uuid}
                 key={type}
                 style={{
                   display: 'flex',
@@ -765,16 +736,16 @@ export function DevUiOverlay() {
                   background: selectedComponentTypes.has(type) ? 'var(--gova-component-dev-ui-success)' : 'transparent',
                 }}
               >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <span style={{ color: 'var(--gova-component-dev-ui-text-primary)' }}>{type}</span>
+                <div data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L738.uuid} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <span data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L739.uuid} style={{ color: 'var(--gova-component-dev-ui-text-primary)' }}>{type}</span>
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <div data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L741.uuid} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                   {isFilterPanelOpen && (
-                    <span style={{ color: 'var(--gova-component-dev-ui-text-secondary)', fontSize: '10px' }}>
+                    <span data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L743.uuid} style={{ color: 'var(--gova-component-dev-ui-text-secondary)', fontSize: '10px' }}>
                       {(componentCounts[type] || 0) > 99 ? '99+' : (componentCounts[type] || 0)}
                     </span>
                   )}
-                  <button
+                  <button data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L747.uuid}
                     onClick={() => toggleComponentFilter(type)}
                     style={{
                       padding: '2px 6px',
@@ -794,7 +765,7 @@ export function DevUiOverlay() {
               </div>
             ))}
           </div>
-        </UiDiv>
+        </div>
       )}
 
       {/* Frames overlay */}
@@ -803,24 +774,19 @@ export function DevUiOverlay() {
         const colors = COLOR_MAP[frame.color];
         const isHovered = hoveredFrame && hoveredFrame.id === frame.id;
         return (
-          <UiDiv
-            key={`${frame.id}-${i}`}
-            ui={DECORATIVE.SPACER}
-            data-inspector-overlay="true"
-            style={{
-              position: 'absolute',
-              top: frame.top,
-              left: frame.left,
-              width: frame.width,
-              height: frame.height,
-              border: isHovered ? `2px solid ${colors.border}` : `1.5px solid ${colors.border}`,
-              background: colors.bg,
-              boxSizing: 'border-box',
-              pointerEvents: 'none',
-              zIndex: isHovered ? 99999 : 99900,
-            }}
-          >
-            <span
+          <div data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L776.uuid} key={`${frame.id}-${i}`} data-inspector-overlay="true" style={{
+        position: 'absolute',
+        top: frame.top,
+        left: frame.left,
+        width: frame.width,
+        height: frame.height,
+        border: isHovered ? `2px solid ${colors.border}` : `1.5px solid ${colors.border}`,
+        background: colors.bg,
+        boxSizing: 'border-box',
+        pointerEvents: 'none',
+        zIndex: isHovered ? 99999 : 99900,
+    }}>
+            <span data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L788.uuid}
               style={{
                 position: 'absolute',
                 top: -1,
@@ -841,30 +807,25 @@ export function DevUiOverlay() {
             >
               {frame.label}
             </span>
-          </UiDiv>
+          </div>
         );
       })}
       
       {/* Show only hovered frame when Hover is ON */}
       {isHoverInspectionEnabled && hoveredFrame && (
-        <UiDiv
-          key={`hovered-${hoveredFrame.id}`}
-          ui={DECORATIVE.SPACER}
-          data-inspector-overlay="true"
-          style={{
-            position: 'absolute',
-            top: hoveredFrame.top,
-            left: hoveredFrame.left,
-            width: hoveredFrame.width,
-            height: hoveredFrame.height,
-            border: `2px solid ${COLOR_MAP[hoveredFrame.color].border}`,
-            background: COLOR_MAP[hoveredFrame.color].bg,
-            boxSizing: 'border-box',
-            pointerEvents: 'none',
-            zIndex: 99999,
-          }}
-        >
-          <span
+        <div data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L815.uuid} key={`hovered-${hoveredFrame.id}`} data-inspector-overlay="true" style={{
+        position: 'absolute',
+        top: hoveredFrame.top,
+        left: hoveredFrame.left,
+        width: hoveredFrame.width,
+        height: hoveredFrame.height,
+        border: `2px solid ${COLOR_MAP[hoveredFrame.color].border}`,
+        background: COLOR_MAP[hoveredFrame.color].bg,
+        boxSizing: 'border-box',
+        pointerEvents: 'none',
+        zIndex: 99999,
+    }}>
+          <span data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L827.uuid}
             style={{
               position: 'absolute',
               top: -1,
@@ -885,42 +846,37 @@ export function DevUiOverlay() {
           >
             {hoveredFrame.label}
           </span>
-        </UiDiv>
+        </div>
       )}
 
       {/* Tooltip - Only closes on ✕ button click */}
       {tooltip.visible && (
-        <UiDiv
-          key={tooltip.instanceId}
-          ui={DECORATIVE.SPACER}
-          data-tooltip="true"
-          onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside
-          style={{
-            position: 'fixed',
-            top: Math.min(tooltip.y, 20),
-            left: Math.min(tooltip.x, (typeof window !== 'undefined' ? window.innerWidth : 1000) - 380),
-            zIndex: 100000,
-            background: 'var(--gova-component-dev-ui-bg-dark)',
-            border: '1px solid var(--gova-component-dev-ui-border-light)',
-            borderRadius: '10px',
-            padding: '14px 16px',
-            boxShadow: 'var(--gova-component-dev-ui-shadow-3)',
-            fontSize: '11px',
-            fontFamily: 'monospace',
-            color: 'var(--gova-component-dev-ui-text-primary)',
-            minWidth: '340px',
-            maxWidth: '380px',
-            maxHeight: '80vh',
-            overflowY: 'auto',
-            lineHeight: 1.6,
-            pointerEvents: 'auto',
-          }}
-        >
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
-            <div style={{ color: 'var(--gova-component-dev-ui-primary-light)', fontWeight: 700, fontSize: '13px' }}>
+        <div data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L853.uuid} key={tooltip.instanceId} data-tooltip="true" onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside
+ style={{
+        position: 'fixed',
+        top: Math.min(tooltip.y, 20),
+        left: Math.min(tooltip.x, (typeof window !== 'undefined' ? window.innerWidth : 1000) - 380),
+        zIndex: 100000,
+        background: 'var(--gova-component-dev-ui-bg-dark)',
+        border: '1px solid var(--gova-component-dev-ui-border-light)',
+        borderRadius: '10px',
+        padding: '14px 16px',
+        boxShadow: 'var(--gova-component-dev-ui-shadow-3)',
+        fontSize: '11px',
+        fontFamily: 'monospace',
+        color: 'var(--gova-component-dev-ui-text-primary)',
+        minWidth: '340px',
+        maxWidth: '380px',
+        maxHeight: '80vh',
+        overflowY: 'auto',
+        lineHeight: 1.6,
+        pointerEvents: 'auto',
+    }}>
+          <div data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L874.uuid} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
+            <div data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L875.uuid} style={{ color: 'var(--gova-component-dev-ui-primary-light)', fontWeight: 700, fontSize: '13px' }}>
               UI Identity Inspector
             </div>
-            <button
+            <button data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L878.uuid}
               onClick={(e) => {
                 e.stopPropagation();
                 dismissTooltip();
@@ -938,12 +894,12 @@ export function DevUiOverlay() {
             </button>
           </div>
           
-          <div style={{ marginBottom: '12px' }}>
+          <div data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L896.uuid} style={{ marginBottom: '12px' }}>
             <Row label="Stable ID" value={tooltip.id} color="var(--gova-component-dev-ui-accent-purple)" />
             <Row label="UUID" value={tooltip.uuid} color="var(--gova-component-dev-ui-text-secondary)" />
             {tooltip.uiInstanceId && <Row label="Instance" value={tooltip.uiInstanceId} color="var(--gova-component-dev-ui-text-secondary)" />}
             <Row label="Identity Key" value={tooltip.identityKey} color="var(--gova-component-dev-ui-text-secondary)" />
-            <div style={{ display: 'flex', gap: '6px', marginTop: '6px', marginBottom: '6px' }}>
+            <div data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L901.uuid} style={{ display: 'flex', gap: '6px', marginTop: '6px', marginBottom: '6px' }}>
               <CopyButton value={tooltip.uuid} label="Copy UUID" />
               <CopyButton value={tooltip.identityKey} label="Copy Key" />
             </div>
@@ -951,29 +907,29 @@ export function DevUiOverlay() {
             <Row label="Feature" value={tooltip.feature} color="var(--gova-component-dev-ui-accent-amber)" />
             <Row label="Version" value={tooltip.version} color="var(--gova-component-dev-ui-text-secondary)" />
             {tooltip.deprecated && (
-              <div style={{ color: 'var(--gova-component-dev-ui-error)', marginTop: '4px', fontWeight: 600 }}>⚠ DEPRECATED</div>
+              <div data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L909.uuid} style={{ color: 'var(--gova-component-dev-ui-error)', marginTop: '4px', fontWeight: 600 }}>⚠ DEPRECATED</div>
             )}
           </div>
 
-          <div style={{ borderTop: '1px solid var(--gova-component-dev-ui-border-color)', marginTop: '8px', paddingTop: '8px' }}>
+          <div data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L913.uuid} style={{ borderTop: '1px solid var(--gova-component-dev-ui-border-color)', marginTop: '8px', paddingTop: '8px' }}>
             <Row label="Component" value={tooltip.sourceComponent} color="var(--gova-component-dev-ui-accent-pink)" />
             <Row label="File" value={tooltip.sourceFile} color="var(--gova-component-dev-ui-text-secondary)" />
             {tooltip.sourceLine > 0 && <Row label="Line" value={String(tooltip.sourceLine)} color="var(--gova-component-dev-ui-text-secondary)" />}
           </div>
 
           {/* Children Section */}
-          <div style={{ borderTop: '1px solid var(--gova-component-dev-ui-border-color)', marginTop: '12px', paddingTop: '12px' }}>
-            <div style={{ marginBottom: '8px' }}>
-              <span style={{ color: 'var(--gova-component-dev-ui-accent-purple)', fontWeight: 600, fontSize: '12px' }}>العناصر الأبن</span>
+          <div data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L920.uuid} style={{ borderTop: '1px solid var(--gova-component-dev-ui-border-color)', marginTop: '12px', paddingTop: '12px' }}>
+            <div data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L921.uuid} style={{ marginBottom: '8px' }}>
+              <span data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L922.uuid} style={{ color: 'var(--gova-component-dev-ui-accent-purple)', fontWeight: 600, fontSize: '12px' }}>العناصر الأبن</span>
             </div>
             {currentChildren.length === 0 ? (
-              <div style={{ color: 'var(--gova-component-dev-ui-text-muted)', fontSize: '10px', fontStyle: 'italic', padding: '8px 0' }}>
+              <div data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L925.uuid} style={{ color: 'var(--gova-component-dev-ui-text-muted)', fontSize: '10px', fontStyle: 'italic', padding: '8px 0' }}>
                 لا يوجد عناصر أبن
               </div>
             ) : (
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', maxHeight: '150px', overflowY: 'auto' }}>
+              <div data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L929.uuid} style={{ display: 'flex', flexDirection: 'column', gap: '4px', maxHeight: '150px', overflowY: 'auto' }}>
                 {currentChildren.map((child, index) => (
-                  <div 
+                  <div data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L931.uuid} 
                     key={`${child.identityKey}_${index}`}
                     style={{
                       background: 'var(--gova-component-dev-ui-bg-darker)',
@@ -988,7 +944,7 @@ export function DevUiOverlay() {
                       const el = document.querySelector(`[data-ui-identity-key="${child.identityKey}"]`) as HTMLElement | null;
                       if (!el) return;
                       const rect = el.getBoundingClientRect();
-                      const identity = UI_ID_MAP[child.id];
+                      const identity = getUiIdentityByUuid(child.id);
                       let color: 'blue' | 'amber' | 'red' = 'red';
                       if (identity) {
                         color = getUiIdentityLifecycle(identity) === 'deprecated' ? 'amber' : 'blue';
@@ -1012,9 +968,9 @@ export function DevUiOverlay() {
                       e.stopPropagation();
                       const el = document.querySelector(`[data-ui-identity-key="${child.identityKey}"]`) as HTMLElement | null;
                       if (!el) return;
-                      const identity = UI_ID_MAP[child.id];
+                      const identity = getUiIdentityByUuid(child.id);
                       const childUuid = identity ? getUiIdentityUuid(identity) : el.getAttribute('data-ui-uuid') || '';
-                      const source = UI_SOURCE_INDEX_BY_UUID[childUuid] ?? UI_SOURCE_INDEX[child.id];
+                      const source = UI_SOURCE_INDEX_BY_UUID[childUuid];
                       const childInstanceId = el.getAttribute('data-ui-instance-id') || '';
                       const childIdentityKey = el.getAttribute('data-ui-identity-key') || childUuid;
                       const savedData = getInspectorData(allInspectorData, child.id, childIdentityKey, identity);
@@ -1052,10 +1008,10 @@ export function DevUiOverlay() {
                       });
                     }}
                   >
-                    <div style={{ color: 'var(--gova-component-dev-ui-text-primary)', fontSize: '11px', fontWeight: 500 }}>
+                    <div data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L1010.uuid} style={{ color: 'var(--gova-component-dev-ui-text-primary)', fontSize: '11px', fontWeight: 500 }}>
                       {child.id}
                     </div>
-                    <div style={{ color: 'var(--gova-component-dev-ui-text-muted)', fontSize: '10px', marginTop: '2px' }}>
+                    <div data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L1013.uuid} style={{ color: 'var(--gova-component-dev-ui-text-muted)', fontSize: '10px', marginTop: '2px' }}>
                       {child.componentType}
                     </div>
                   </div>
@@ -1065,10 +1021,10 @@ export function DevUiOverlay() {
           </div>
 
           {/* Database Section */}
-          <div style={{ borderTop: '1px solid var(--gova-component-dev-ui-border-color)', marginTop: '12px', paddingTop: '12px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
-              <span style={{ color: 'var(--gova-component-dev-ui-primary-light)', fontWeight: 600, fontSize: '12px' }}>Database</span>
-              <button
+          <div data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L1023.uuid} style={{ borderTop: '1px solid var(--gova-component-dev-ui-border-color)', marginTop: '12px', paddingTop: '12px' }}>
+            <div data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L1024.uuid} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
+              <span data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L1025.uuid} style={{ color: 'var(--gova-component-dev-ui-primary-light)', fontWeight: 600, fontSize: '12px' }}>Database</span>
+              <button data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L1026.uuid}
                 onClick={() => setTooltip(t => ({ ...t, databaseEnabled: !t.databaseEnabled }))}
                 style={{
                   padding: '4px 12px',
@@ -1088,10 +1044,10 @@ export function DevUiOverlay() {
 
             {/* Database Inputs (only if enabled) */}
             {tooltip.databaseEnabled && (
-              <div style={{ marginBottom: '16px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <span style={{ color: 'var(--gova-component-dev-ui-text-secondary)', fontSize: '11px', minWidth: '40px' }}>inf1</span>
-                  <input
+              <div data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L1046.uuid} style={{ marginBottom: '16px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                <div data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L1047.uuid} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <span data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L1048.uuid} style={{ color: 'var(--gova-component-dev-ui-text-secondary)', fontSize: '11px', minWidth: '40px' }}>inf1</span>
+                  <input data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L1049.uuid}
                     type="text"
                     value={tooltip.inf1}
                     onChange={(e) => setTooltip(t => ({ ...t, inf1: e.target.value }))}
@@ -1108,9 +1064,9 @@ export function DevUiOverlay() {
                     }}
                   />
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <span style={{ color: 'var(--gova-component-dev-ui-text-secondary)', fontSize: '11px', minWidth: '40px' }}>inf2</span>
-                  <input
+                <div data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L1066.uuid} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <span data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L1067.uuid} style={{ color: 'var(--gova-component-dev-ui-text-secondary)', fontSize: '11px', minWidth: '40px' }}>inf2</span>
+                  <input data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L1068.uuid}
                     type="text"
                     value={tooltip.inf2}
                     onChange={(e) => setTooltip(t => ({ ...t, inf2: e.target.value }))}
@@ -1127,9 +1083,9 @@ export function DevUiOverlay() {
                     }}
                   />
                 </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <span style={{ color: 'var(--gova-component-dev-ui-text-secondary)', fontSize: '11px', minWidth: '40px' }}>inf3</span>
-                  <input
+                <div data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L1085.uuid} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <span data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L1086.uuid} style={{ color: 'var(--gova-component-dev-ui-text-secondary)', fontSize: '11px', minWidth: '40px' }}>inf3</span>
+                  <input data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L1087.uuid}
                     type="text"
                     value={tooltip.inf3}
                     onChange={(e) => setTooltip(t => ({ ...t, inf3: e.target.value }))}
@@ -1151,10 +1107,10 @@ export function DevUiOverlay() {
           </div>
 
           {/* Attributes Section */}
-          <div style={{ borderTop: '1px solid var(--gova-component-dev-ui-border-color)', marginTop: '12px', paddingTop: '12px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
-              <span style={{ color: 'var(--gova-component-dev-ui-accent-pink)', fontWeight: 600, fontSize: '12px' }}>Attributes</span>
-              <button
+          <div data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L1109.uuid} style={{ borderTop: '1px solid var(--gova-component-dev-ui-border-color)', marginTop: '12px', paddingTop: '12px' }}>
+            <div data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L1110.uuid} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
+              <span data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L1111.uuid} style={{ color: 'var(--gova-component-dev-ui-accent-pink)', fontWeight: 600, fontSize: '12px' }}>Attributes</span>
+              <button data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L1112.uuid}
                 onClick={() => setTooltip(t => ({ ...t, attributesEnabled: !t.attributesEnabled }))}
                 style={{
                   padding: '4px 12px',
@@ -1174,62 +1130,57 @@ export function DevUiOverlay() {
 
             {/* Attributes Checkboxes (only if enabled) */}
             {tooltip.attributesEnabled && (
-              <div style={{ marginBottom: '16px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
-                  <input
+              <div data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L1132.uuid} style={{ marginBottom: '16px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                <label data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L1133.uuid} style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
+                  <input data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L1134.uuid}
                     type="checkbox"
                     checked={tooltip.attribute1}
                     onChange={(e) => setTooltip(t => ({ ...t, attribute1: e.target.checked }))}
                     style={{ cursor: 'pointer' }}
                   />
-                  <span style={{ color: 'var(--gova-component-dev-ui-text-secondary)', fontSize: '11px' }}>Attribute 1</span>
+                  <span data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L1140.uuid} style={{ color: 'var(--gova-component-dev-ui-text-secondary)', fontSize: '11px' }}>Attribute 1</span>
                 </label>
-                <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
-                  <input
+                <label data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L1142.uuid} style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
+                  <input data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L1143.uuid}
                     type="checkbox"
                     checked={tooltip.attribute2}
                     onChange={(e) => setTooltip(t => ({ ...t, attribute2: e.target.checked }))}
                     style={{ cursor: 'pointer' }}
                   />
-                  <span style={{ color: 'var(--gova-component-dev-ui-text-secondary)', fontSize: '11px' }}>Attribute 2</span>
+                  <span data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L1149.uuid} style={{ color: 'var(--gova-component-dev-ui-text-secondary)', fontSize: '11px' }}>Attribute 2</span>
                 </label>
-                <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
-                  <input
+                <label data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L1151.uuid} style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
+                  <input data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L1152.uuid}
                     type="checkbox"
                     checked={tooltip.attribute3}
                     onChange={(e) => setTooltip(t => ({ ...t, attribute3: e.target.checked }))}
                     style={{ cursor: 'pointer' }}
                   />
-                  <span style={{ color: 'var(--gova-component-dev-ui-text-secondary)', fontSize: '11px' }}>Attribute 3</span>
+                  <span data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L1158.uuid} style={{ color: 'var(--gova-component-dev-ui-text-secondary)', fontSize: '11px' }}>Attribute 3</span>
                 </label>
               </div>
             )}
           </div>
 
           {/* Save Button */}
-          <div style={{ marginTop: '12px' }}>
-            <UiButton
-              ui={DECORATIVE.SPACER}
-              onClick={handleSave}
-              disabled={isSaving}
-              style={{
-                width: '100%',
-                padding: '10px 16px',
-                border: 'none',
-                borderRadius: '6px',
-                fontSize: '12px',
-                fontWeight: 600,
-                cursor: isSaving ? 'not-allowed' : 'pointer',
-                background: saveStatus === 'saved' 
-                  ? 'var(--gova-component-dev-ui-success)' 
-                  : saveStatus === 'error' 
-                  ? 'var(--gova-component-dev-ui-error)' 
-                  : 'var(--gova-component-dev-ui-primary)',
-                color: 'var(--gova-on-primary)',
-                transition: 'all 0.2s',
-                fontFamily: 'monospace',
-              }}
-            >
+          <div data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L1165.uuid} style={{ marginTop: '12px' }}>
+            <button data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L1166.uuid} onClick={handleSave} disabled={isSaving} style={{
+        width: '100%',
+        padding: '10px 16px',
+        border: 'none',
+        borderRadius: '6px',
+        fontSize: '12px',
+        fontWeight: 600,
+        cursor: isSaving ? 'not-allowed' : 'pointer',
+        background: saveStatus === 'saved'
+            ? 'var(--gova-component-dev-ui-success)'
+            : saveStatus === 'error'
+                ? 'var(--gova-component-dev-ui-error)'
+                : 'var(--gova-component-dev-ui-primary)',
+        color: 'var(--gova-on-primary)',
+        transition: 'all 0.2s',
+        fontFamily: 'monospace',
+    }}>
               {isSaving 
                 ? 'Saving...' 
                 : saveStatus === 'saved' 
@@ -1237,9 +1188,9 @@ export function DevUiOverlay() {
                 : saveStatus === 'error' 
                 ? '✗ Failed' 
                 : '💾 Save Data'}
-            </UiButton>
+            </button>
           </div>
-        </UiDiv>
+        </div>
       )}
     </>
   );
@@ -1247,16 +1198,16 @@ export function DevUiOverlay() {
 
 function Row({ label, value, color }: { label: string; value: string; color: string }) {
   return (
-    <div style={{ display: 'flex', gap: '6px', marginBottom: '2px' }}>
-      <span style={{ color: 'var(--gova-component-dev-ui-secondary)', minWidth: '70px' }}>{label}:</span>
-      <span style={{ color, wordBreak: 'break-all' }}>{value}</span>
+    <div data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L1200.uuid} style={{ display: 'flex', gap: '6px', marginBottom: '2px' }}>
+      <span data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L1201.uuid} style={{ color: 'var(--gova-component-dev-ui-secondary)', minWidth: '70px' }}>{label}:</span>
+      <span data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L1202.uuid} style={{ color, wordBreak: 'break-all' }}>{value}</span>
     </div>
   );
 }
 
 function CopyButton({ value, label }: { value: string; label: string }) {
   return (
-    <button
+    <button data-ui-uuid={DEVTOOLS.SHELL.DEV_UI_OVERLAY_L1209.uuid}
       type="button"
       onClick={(event) => {
         event.stopPropagation();

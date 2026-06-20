@@ -3,15 +3,46 @@
  * For server-only APIs (cookies, dictionaries), use @/platform/ui/server.
  */
 
-// Registry & Identity
-export * from './registry/registry';
+/**
+ * UI Platform — UUID-first identity, registry, i18n hooks.
+ * For server-only APIs (cookies, dictionaries), use @/platform/ui/server.
+ */
+
+export {
+  UI_UUID_MAP,
+  ALL_UI_IDENTITIES,
+  ALL_UI_IDENTIFIERS,
+  FEATURE_MAP,
+  UI_REGISTRY,
+  HOME,
+  SPLASH,
+  ERROR_BOUNDARY,
+  SHARED_LAYOUT,
+  AUTH,
+  SETTINGS,
+  MERCHANT,
+  ONBOARDING,
+  getUiIdentityByUuid,
+  getUiIdentity,
+  resolveUiIdentity,
+  getUiIdentityByFeature,
+  getUiIdentityLifecycle,
+  isUiIdentityDeprecated,
+  isUiIdentity,
+  isTranslationRequiredForUiIdentity,
+  resolveSourceFromIdentity,
+  isValidUiIdentifier,
+  isRegisteredUiIdentifier,
+  createDeterministicUiUuid,
+  getUiIdentityUuid,
+  isValidUiUuid,
+} from './registry/registry';
+export type { UiIdentity, UiParam, UiIdentifier, UiSourceLocation } from './registry/registry';
 export * from './registry/categories';
-export type { UiIdentity } from './registry/types';
 export { UI_REGISTRY_CONFIG } from './registry/config';
 export * from './registry/generator';
-export { UI_SOURCE_INDEX, UI_SOURCE_INDEX_BY_UUID } from './registry/source-index';
-export type { UiSourceLocation } from './registry/source-index';
-
+export { UI_SOURCE_INDEX_BY_UUID } from './registry/source-index';
+// uiUuid() removed — use data-ui-uuid={IDENTITY.uuid} only
 // i18n (client)
 export { I18nProvider, useI18nContext } from './i18n/core/provider';
 export { useTranslation } from './i18n/core/useTranslation';
@@ -31,9 +62,6 @@ export { LocaleProvider } from './i18n/LocaleProvider';
 export * from './i18n/binding/registry-binding';
 export * from './i18n/binding/useBoundUI';
 export { warnOnTranslationMismatch } from './i18n/binding/translation-validator';
-
-// Runtime components (Ui*)
-export * from './runtime/public-api';
 
 // Telemetry & testing
 export * from './telemetry/ui-telemetry';

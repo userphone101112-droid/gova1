@@ -1,7 +1,7 @@
 'use client';
-
-import { UiDiv, UiH1, UiP, UiLabel, UiSelect, UiOption, UiCheckbox, COMMON_LAYOUT, COMMON_FORMS, ONBOARDING, useTranslation } from '@/platform/ui';
 import { useOnboardingStore } from '@/lib/onboarding/store';
+import { ONBOARDING, useTranslation } from '@/platform/ui';
+
 
 export function PaymentsStep() {
   const {
@@ -26,51 +26,45 @@ export function PaymentsStep() {
   ];
 
   return (
-    <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="w-full">
-      <UiH1 ui={ONBOARDING.PAYMENTS.TITLE} className="text-3xl font-bold tracking-tight mb-2">{t(ONBOARDING.PAYMENTS.TITLE)}</UiH1>
-      <UiP ui={ONBOARDING.PAYMENTS.DESCRIPTION} className="text-muted-foreground mb-8">{t(ONBOARDING.PAYMENTS.DESCRIPTION)}</UiP>
+    <div data-ui-uuid={ONBOARDING.SHELL.PAYMENTS_TITLE_CONTAINER_L29.uuid} className="w-full">
+      <h1 data-ui-uuid={ONBOARDING.PAYMENTS.TITLE.uuid} className="text-3xl font-bold tracking-tight mb-2">{t(ONBOARDING.PAYMENTS.TITLE)}</h1>
+      <p data-ui-uuid={ONBOARDING.PAYMENTS.DESCRIPTION.uuid} className="text-muted-foreground mb-8">{t(ONBOARDING.PAYMENTS.DESCRIPTION)}</p>
 
-      <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="space-y-6 max-w-4xl mx-auto">
-        <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="space-y-2">
-          <UiLabel ui={ONBOARDING.PAYMENTS.PAYMENT_METHODS_LABEL}>{t(ONBOARDING.PAYMENTS.PAYMENT_METHODS_LABEL)}</UiLabel>
-          <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="space-y-3">
+      <div data-ui-uuid={ONBOARDING.SHELL.PAYMENTS_PAYMENT_METHODS_LABEL_CONTAINER_L33.uuid} className="space-y-6 max-w-4xl mx-auto">
+        <div data-ui-uuid={ONBOARDING.SHELL.PAYMENTS_PAYMENT_METHODS_LABEL_CONTAINER_L34.uuid} className="space-y-2">
+          <span data-ui-uuid={ONBOARDING.PAYMENTS.PAYMENT_METHODS_LABEL.uuid}>{t(ONBOARDING.PAYMENTS.PAYMENT_METHODS_LABEL)}</span>
+          <div data-ui-uuid={ONBOARDING.SHELL.PAYMENTS_PAYMENT_METHODS_LABEL_CONTAINER_L36.uuid} className="space-y-3">
             {paymentMethods.map((method) => (
-              <UiDiv key={method.id} ui={COMMON_LAYOUT.CONTAINER} className="flex items-center gap-2">
-                <UiCheckbox
-                  ui={COMMON_FORMS.CHECKBOX}
-                  checked={(payments.paymentMethods || []).includes(method.id as any)}
-                  onCheckedChange={(checked) => {
-                    const currentMethods = payments.paymentMethods || [];
-                    if (checked) {
-                      updatePayments({
-                        paymentMethods: [...currentMethods, method.id as any],
-                      });
-                    } else {
-                      updatePayments({
-                        paymentMethods: currentMethods.filter((id) => id !== method.id as any),
-                      });
-                    }
-                  }}
-                />
-                <UiLabel ui={COMMON_FORMS.LABEL}>{method.label}</UiLabel>
-              </UiDiv>
+              <div data-ui-uuid={ONBOARDING.SHELL.PAYMENTS_PAYMENT_METHODS_LABEL_CONTAINER_L38.uuid} key={method.id} className="flex items-center gap-2">
+                <input type="checkbox" data-ui-uuid={ONBOARDING.PAYMENTS.METHOD_CHECKBOX.uuid} data-ui-instance-id={method.id} checked={(payments.paymentMethods || []).includes(method.id as any)} onChange={(e) => {
+        const checked = e.target.checked;
+        const currentMethods = payments.paymentMethods || [];
+        if (checked) {
+            updatePayments({
+                paymentMethods: [...currentMethods, method.id as any],
+            });
+        }
+        else {
+            updatePayments({
+                paymentMethods: currentMethods.filter((id) => id !== method.id as any),
+            });
+        }
+    }} />
+                <span data-ui-uuid={ONBOARDING.PAYMENTS.METHOD_LABEL.uuid} data-ui-instance-id={method.id}>{method.label}</span>
+              </div>
             ))}
-          </UiDiv>
-        </UiDiv>
+          </div>
+        </div>
 
-        <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="space-y-2">
-          <UiLabel ui={ONBOARDING.PAYMENTS.CURRENCY_LABEL}>{t(ONBOARDING.PAYMENTS.CURRENCY_LABEL)}</UiLabel>
-          <UiSelect
-            ui={COMMON_FORMS.SELECT}
-            value={payments.currency || 'USD'}
-            onChange={(e) => updatePayments({ currency: e.target.value })}
-          >
+        <div data-ui-uuid={ONBOARDING.SHELL.PAYMENTS_CURRENCY_LABEL_CONTAINER_L59.uuid} className="space-y-2">
+          <span data-ui-uuid={ONBOARDING.PAYMENTS.CURRENCY_LABEL.uuid}>{t(ONBOARDING.PAYMENTS.CURRENCY_LABEL)}</span>
+          <select data-ui-uuid={ONBOARDING.PAYMENTS.CURRENCY_SELECT.uuid} value={payments.currency || 'USD'} onChange={(e) => updatePayments({ currency: e.target.value })}>
             {currencyOptions.map((opt) => (
-              <UiOption key={opt.id} ui={COMMON_FORMS.OPTION}>{opt.label}</UiOption>
+              <option data-ui-uuid={ONBOARDING.PAYMENTS.CURRENCY_OPTION.uuid} data-ui-instance-id={opt.id} key={opt.id}>{opt.label}</option>
             ))}
-          </UiSelect>
-        </UiDiv>
-      </UiDiv>
-    </UiDiv>
+          </select>
+        </div>
+      </div>
+    </div>
   );
 }

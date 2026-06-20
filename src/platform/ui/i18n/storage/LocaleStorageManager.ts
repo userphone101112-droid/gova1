@@ -1,7 +1,8 @@
 import { Locale } from '../core/types';
-import { LocaleStorageAdapter } from './LocaleStorageAdapter';
+
 import { CookieLocaleAdapter } from './CookieLocaleAdapter';
 import { IndexedDbLocaleAdapter } from './IndexedDbLocaleAdapter';
+import { LocaleStorageAdapter } from './LocaleStorageAdapter';
 
 /**
  * Locale storage manager

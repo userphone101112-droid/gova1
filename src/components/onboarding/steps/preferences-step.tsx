@@ -1,7 +1,7 @@
 'use client';
-
-import { UiDiv, UiH1, UiP, UiLabel, UiSelect, UiOption, UiCheckbox, COMMON_LAYOUT, COMMON_FORMS, ONBOARDING, useTranslation } from '@/platform/ui';
 import { useOnboardingStore } from '@/lib/onboarding/store';
+import { ONBOARDING, useTranslation } from '@/platform/ui';
+
 
 const notificationOptions = [
   { id: 'order-notifications', label: ONBOARDING.PREFERENCES.NOTIFICATION_ORDER },
@@ -29,50 +29,44 @@ export function PreferencesStep() {
   const currentNotifications = preferences.notifications || [];
 
   return (
-    <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="w-full">
-      <UiH1 ui={ONBOARDING.PREFERENCES.TITLE} className="text-3xl font-bold tracking-tight mb-2">{t(ONBOARDING.PREFERENCES.TITLE)}</UiH1>
-      <UiP ui={ONBOARDING.PREFERENCES.DESCRIPTION} className="text-muted-foreground mb-8">{t(ONBOARDING.PREFERENCES.DESCRIPTION)}</UiP>
+    <div data-ui-uuid={ONBOARDING.SHELL.PREFERENCES_TITLE_CONTAINER_L32.uuid} className="w-full">
+      <h1 data-ui-uuid={ONBOARDING.PREFERENCES.TITLE.uuid} className="text-3xl font-bold tracking-tight mb-2">{t(ONBOARDING.PREFERENCES.TITLE)}</h1>
+      <p data-ui-uuid={ONBOARDING.PREFERENCES.DESCRIPTION.uuid} className="text-muted-foreground mb-8">{t(ONBOARDING.PREFERENCES.DESCRIPTION)}</p>
 
-      <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="space-y-6 max-w-4xl mx-auto">
-        <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="space-y-2">
-          <UiLabel ui={COMMON_FORMS.LABEL}>{t(ONBOARDING.PREFERENCES.TIMEZONE_LABEL)}</UiLabel>
-          <UiSelect
-            ui={COMMON_FORMS.SELECT}
-            value={preferences.timezone || 'America/New_York'}
-            onChange={(e) => updatePreferences({ timezone: e.target.value })}
-          >
+      <div data-ui-uuid={ONBOARDING.SHELL.PREFERENCES_TIMEZONE_LABEL_CONTAINER_L36.uuid} className="space-y-6 max-w-4xl mx-auto">
+        <div data-ui-uuid={ONBOARDING.SHELL.PREFERENCES_TIMEZONE_LABEL_CONTAINER_L37.uuid} className="space-y-2">
+          <span data-ui-uuid={ONBOARDING.PREFERENCES.TIMEZONE_LABEL.uuid}>{t(ONBOARDING.PREFERENCES.TIMEZONE_LABEL)}</span>
+          <select data-ui-uuid={ONBOARDING.PREFERENCES.TIMEZONE_SELECT.uuid} value={preferences.timezone || 'America/New_York'} onChange={(e) => updatePreferences({ timezone: e.target.value })}>
             {timezoneOptions.map((opt) => (
-              <UiOption key={opt.id} ui={COMMON_FORMS.OPTION}>{t(opt.label)}</UiOption>
+              <option data-ui-uuid={ONBOARDING.PREFERENCES.TIMEZONE_OPTION.uuid} data-ui-instance-id={opt.id} key={opt.id}>{t(opt.label)}</option>
             ))}
-          </UiSelect>
-        </UiDiv>
+          </select>
+        </div>
 
-        <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="space-y-2">
-          <UiLabel ui={COMMON_FORMS.LABEL}>{t(ONBOARDING.PREFERENCES.NOTIFICATIONS_LABEL)}</UiLabel>
-          <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="space-y-3">
+        <div data-ui-uuid={ONBOARDING.SHELL.PREFERENCES_NOTIFICATIONS_LABEL_CONTAINER_L46.uuid} className="space-y-2">
+          <span data-ui-uuid={ONBOARDING.PREFERENCES.NOTIFICATIONS_LABEL.uuid}>{t(ONBOARDING.PREFERENCES.NOTIFICATIONS_LABEL)}</span>
+          <div data-ui-uuid={ONBOARDING.SHELL.LABEL_CONTAINER_L48.uuid} className="space-y-3">
             {notificationOptions.map((option) => (
-              <UiDiv key={option.id} ui={COMMON_LAYOUT.CONTAINER} className="flex items-center gap-2">
-                <UiCheckbox
-                  ui={COMMON_FORMS.CHECKBOX}
-                  checked={currentNotifications.includes(option.id as any)}
-                  onCheckedChange={(checked) => {
-                    if (checked) {
-                      updatePreferences({
-                        notifications: [...currentNotifications, option.id as any],
-                      });
-                    } else {
-                      updatePreferences({
-                        notifications: currentNotifications.filter((id) => id !== option.id as any),
-                      });
-                    }
-                  }}
-                />
-                <UiLabel ui={COMMON_FORMS.LABEL}>{t(option.label)}</UiLabel>
-              </UiDiv>
+              <div data-ui-uuid={ONBOARDING.SHELL.LABEL_CONTAINER_L50.uuid} key={option.id} className="flex items-center gap-2">
+                <input type="checkbox" data-ui-uuid={ONBOARDING.PREFERENCES.NOTIFICATION_CHECKBOX.uuid} data-ui-instance-id={option.id} checked={currentNotifications.includes(option.id as any)} onChange={(e) => {
+        const checked = e.target.checked;
+        if (checked) {
+            updatePreferences({
+                notifications: [...currentNotifications, option.id as any],
+            });
+        }
+        else {
+            updatePreferences({
+                notifications: currentNotifications.filter((id) => id !== option.id as any),
+            });
+        }
+    }} />
+                <span data-ui-uuid={ONBOARDING.PREFERENCES.NOTIFICATION_OPTION_LABEL.uuid} data-ui-instance-id={option.id}>{t(option.label)}</span>
+              </div>
             ))}
-          </UiDiv>
-        </UiDiv>
-      </UiDiv>
-    </UiDiv>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }

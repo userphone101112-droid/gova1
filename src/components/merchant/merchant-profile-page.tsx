@@ -1,11 +1,4 @@
 'use client';
-
-import {
-  UiMain,
-  UiDiv,
-  COMMON_LAYOUT,
-} from '@/platform/ui';
-import { mockMerchantProfile } from '@/lib/merchant/mock-data';
 import {
   MerchantHero,
   MerchantOverview,
@@ -18,6 +11,9 @@ import {
   CustomerReviews,
   TrustCredibility,
 } from '@/components/merchant';
+import { mockMerchantProfile } from '@/lib/merchant/mock-data';
+import { MERCHANT } from '@/platform/ui';
+
 
 interface MerchantProfilePageProps {
   merchantId?: string;
@@ -28,10 +24,10 @@ export function MerchantProfilePage({ className }: MerchantProfilePageProps) {
   const data = mockMerchantProfile;
 
   return (
-    <UiMain ui={COMMON_LAYOUT.MAIN} className={className}>
+    <main data-ui-uuid={MERCHANT.MERCHANT_PROFILE.PAGE_MAIN.uuid} className={className}>
       <MerchantHero merchant={data.merchant} />
 
-      <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="container px-4 sm:px-6 py-8 space-y-8">
+      <div data-ui-uuid={MERCHANT.SHELL.MERCHANT_PROFILE_PAGE_L30.uuid} className="container px-4 sm:px-6 py-8 space-y-8">
         <MerchantOverview overview={data.overview} />
 
         <QuickActions actions={data.quickActions} />
@@ -42,8 +38,8 @@ export function MerchantProfilePage({ className }: MerchantProfilePageProps) {
 
         <BestSellingProducts products={data.bestSellingProducts} />
 
-        <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="grid gap-6 lg:grid-cols-3">
-          <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="lg:col-span-2 space-y-6">
+        <div data-ui-uuid={MERCHANT.SHELL.MERCHANT_PROFILE_PAGE_L41.uuid} className="grid gap-6 lg:grid-cols-3">
+          <div data-ui-uuid={MERCHANT.SHELL.MERCHANT_PROFILE_PAGE_L42.uuid} className="lg:col-span-2 space-y-6">
             <RecentOrders orders={data.recentOrders} />
             <CustomerReviews
               reviews={data.reviews}
@@ -51,18 +47,18 @@ export function MerchantProfilePage({ className }: MerchantProfilePageProps) {
               averageRating={data.merchant.metrics.rating}
               totalReviews={data.merchant.metrics.reviewCount}
             />
-          </UiDiv>
-          <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="space-y-6">
+          </div>
+          <div data-ui-uuid={MERCHANT.SHELL.MERCHANT_PROFILE_PAGE_L51.uuid} className="space-y-6">
             <StoreInformation store={data.storeInformation} />
             <TrustCredibility
               credentials={data.trustCredentials}
               achievements={data.achievements}
               badges={data.badges}
             />
-          </UiDiv>
-        </UiDiv>
-      </UiDiv>
-    </UiMain>
+          </div>
+        </div>
+      </div>
+    </main>
   );
 }
 

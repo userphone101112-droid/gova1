@@ -1,10 +1,9 @@
 'use client';
-
 import { Heart, ShoppingCart, Tag } from 'lucide-react';
-import { useTranslation, type TranslationKey } from '@/platform/ui';
-import { UiButton, UiImage, UiLabel, UiHeader, UiSection, UiDiv, UiArticle } from '@/platform/ui';
-import { HOME } from '@/platform/ui';
-import { COMMON_LAYOUT } from '@/platform/ui/registry/categories';
+import Image from 'next/image';
+
+import { useTranslation, type TranslationKey, HOME } from '@/platform/ui';
+
 
 const PRODUCTS: Array<{
   id: string;
@@ -62,141 +61,67 @@ export function CuratedOffers() {
   const { t } = useTranslation();
 
   return (
-    <UiSection
-      ui={HOME.CURATED_OFFERS.CONTAINER}
-      id="curated-offers-section"
-      className="reveal active space-y-4"
-    >
+    <section data-ui-uuid={HOME.CURATED_OFFERS.CONTAINER.uuid} id="curated-offers-section" className="reveal active space-y-4">
       {/* Section header */}
-      <UiDiv
-        ui={HOME.CURATED_OFFERS.HEADER}
-        className="flex justify-between items-center"
-      >
-        <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="flex items-center gap-2">
+      <div data-ui-uuid={HOME.CURATED_OFFERS.HEADER.uuid} className="flex justify-between items-center">
+        <div data-ui-uuid={HOME.SHELL.CURATED_OFFERS_SECTION_TITLE_WRAPPER_L67.uuid} className="flex items-center gap-2">
           <Tag size={24} style={{ color: 'var(--gova-primary)' }} />
-          <UiHeader
-            ui={HOME.CURATED_OFFERS.SECTION_TITLE}
-            level={3}
-            className="text-xl font-bold"
-            style={{ color: 'var(--gova-on-surface)' }}
-          >
+          <h3 data-ui-uuid={HOME.CURATED_OFFERS.SECTION_TITLE.uuid} className="text-xl font-bold" style={{ color: 'var(--gova-on-surface)' }}>
             {t(HOME.CURATED_OFFERS.SECTION_TITLE)}
-          </UiHeader>
-        </UiDiv>
-        <UiLabel
-          ui={HOME.CURATED_OFFERS.PROMO_TAG}
-          id="promo-tag-badge"
-          className="px-2 py-1 rounded-lg text-xs font-semibold"
-          style={{ background: 'var(--gova-warning)', color: 'var(--gova-on-warning)' }}
-        >
+          </h3>
+        </div>
+        <span data-ui-uuid={HOME.CURATED_OFFERS.PROMO_TAG.uuid} id="promo-tag-badge" className="px-2 py-1 rounded-lg text-xs font-semibold" style={{ background: 'var(--gova-warning)', color: 'var(--gova-on-warning)' }}>
           {t(HOME.CURATED_OFFERS.PROMO_TAG)}
-        </UiLabel>
-      </UiDiv>
+        </span>
+      </div>
 
       {/* Responsive product grid */}
-      <UiDiv
-        ui={HOME.CURATED_OFFERS.PRODUCT_GRID}
-        id="product-grid-display"
-        className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-6"
-      >
+      <div data-ui-uuid={HOME.CURATED_OFFERS.PRODUCT_GRID.uuid} id="product-grid-display" className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 sm:gap-6">
         {PRODUCTS.map(p => (
-          <UiArticle
-            ui={HOME.CURATED_OFFERS.PRODUCT_CARD}
-            key={p.id}
-            id={p.id}
-            className="rounded-xl overflow-hidden shadow-sm border transition-all active:scale-95"
-            style={{
-              background: 'var(--gova-surface-container-lowest)',
-              borderColor: 'var(--gova-outline-variant)',
-            }}
-          >
-            <UiDiv
-              ui={HOME.CURATED_OFFERS.PRODUCT_IMAGE_CONTAINER}
-              className="relative aspect-square"
-            >
-              <UiImage
-                ui={HOME.CURATED_OFFERS.PRODUCT_IMAGE}
-                src={p.img}
-                alt={t(p.titleKey)}
-                fill
-                className="object-cover transition-transform active:scale-110"
-              />
-              <UiButton
-                ui={HOME.CURATED_OFFERS.ADD_TO_FAVORITES}
-                id={p.favId}
-                className="absolute top-2 start-2 w-8 h-8 rounded-full bg-surface-container-lowest/90 backdrop-blur flex items-center justify-center shadow-sm transition-transform active:scale-90"
-                aria-label={t(HOME.CURATED_OFFERS.ADD_TO_FAVORITES)}
-                style={{ color: p.favFilled ? 'var(--gova-error)' : 'var(--gova-on-surface-variant)' }}
-              >
+          <article data-ui-uuid={HOME.CURATED_OFFERS.PRODUCT_CARD.uuid} key={p.id} id={p.id} className="rounded-xl overflow-hidden shadow-sm border transition-all active:scale-95" style={{
+        background: 'var(--gova-surface-container-lowest)',
+        borderColor: 'var(--gova-outline-variant)',
+    }}>
+            <div data-ui-uuid={HOME.CURATED_OFFERS.PRODUCT_IMAGE_CONTAINER.uuid} className="relative aspect-square">
+              <Image data-ui-uuid={HOME.CURATED_OFFERS.PRODUCT_IMAGE.uuid} src={p.img} alt={t(p.titleKey)} fill className="object-cover transition-transform active:scale-110" />
+              <button data-ui-uuid={HOME.CURATED_OFFERS.ADD_TO_FAVORITES.uuid} id={p.favId} className="absolute top-2 start-2 w-8 h-8 rounded-full bg-surface-container-lowest/90 backdrop-blur flex items-center justify-center shadow-sm transition-transform active:scale-90" aria-label={t(HOME.CURATED_OFFERS.ADD_TO_FAVORITES)} style={{ color: p.favFilled ? 'var(--gova-error)' : 'var(--gova-on-surface-variant)' }}>
                 <Heart
                   size={18}
                   fill={p.favFilled ? 'currentColor' : 'none'}
                 />
-              </UiButton>
-            </UiDiv>
+              </button>
+            </div>
 
-            <UiDiv
-              ui={HOME.CURATED_OFFERS.PRODUCT_INFO}
-              className="p-3 space-y-1"
-            >
-              <UiLabel
-                ui={HOME.CURATED_OFFERS.CATEGORY_LABEL}
-                className="text-xs font-semibold"
-                style={{ color: 'var(--gova-success)' }}
-              >
+            <div data-ui-uuid={HOME.CURATED_OFFERS.PRODUCT_INFO.uuid} className="p-3 space-y-1">
+              <span data-ui-uuid={HOME.CURATED_OFFERS.CATEGORY_LABEL.uuid} className="text-xs font-semibold" style={{ color: 'var(--gova-success)' }}>
                 {t(p.categoryKey)}
-              </UiLabel>
-              <UiLabel
-                ui={HOME.CURATED_OFFERS.PRODUCT_TITLE}
-                className="text-sm font-bold truncate"
-                style={{ color: 'var(--gova-on-surface)' }}
-              >
+              </span>
+              <span data-ui-uuid={HOME.CURATED_OFFERS.PRODUCT_TITLE.uuid} className="text-sm font-bold truncate" style={{ color: 'var(--gova-on-surface)' }}>
                 {t(p.titleKey)}
-              </UiLabel>
-              <UiDiv
-                ui={HOME.CURATED_OFFERS.PRICE_ROW}
-                className="flex justify-between items-center pt-1"
-              >
-                <UiLabel
-                  ui={HOME.CURATED_OFFERS.PRICE_LABEL}
-                  className="text-base font-bold"
-                  style={{ color: 'var(--gova-primary)' }}
-                >
+              </span>
+              <div data-ui-uuid={HOME.CURATED_OFFERS.PRICE_ROW.uuid} className="flex justify-between items-center pt-1">
+                <span data-ui-uuid={HOME.CURATED_OFFERS.PRICE_LABEL.uuid} className="text-base font-bold" style={{ color: 'var(--gova-primary)' }}>
                   {t(p.priceKey)}
-                </UiLabel>
-                <UiButton
-                  ui={HOME.CURATED_OFFERS.ADD_TO_CART}
-                  id={p.addId}
-                  className="w-8 h-8 rounded-lg flex items-center justify-center transition-transform active:scale-90"
-                  style={{ background: 'var(--gova-primary)', color: 'var(--gova-on-primary)' }}
-                  aria-label={t(HOME.CURATED_OFFERS.ADD_TO_CART)}
-                >
+                </span>
+                <button data-ui-uuid={HOME.CURATED_OFFERS.ADD_TO_CART.uuid} id={p.addId} className="w-8 h-8 rounded-lg flex items-center justify-center transition-transform active:scale-90" style={{ background: 'var(--gova-primary)', color: 'var(--gova-on-primary)' }} aria-label={t(HOME.CURATED_OFFERS.ADD_TO_CART)}>
                   <ShoppingCart size={18} />
-                </UiButton>
-              </UiDiv>
-            </UiDiv>
-          </UiArticle>
+                </button>
+              </div>
+            </div>
+          </article>
         ))}
-      </UiDiv>
+      </div>
 
       {/* Show More Button */}
-      <UiDiv
-        ui={HOME.CURATED_OFFERS.SHOW_MORE_CONTAINER}
-        className="flex justify-center pt-2"
-      >
-        <UiButton
-          ui={HOME.CURATED_OFFERS.SHOW_MORE}
-          id="curated-offers-show-more"
-          className="px-6 py-2 rounded-full font-bold text-sm border transition-transform active:scale-95"
-          style={{
-            background: 'var(--gova-surface-container-low)',
-            borderColor: 'var(--gova-outline-variant)',
-            color: 'var(--gova-primary)',
-          }}
-        >
+      <div data-ui-uuid={HOME.CURATED_OFFERS.SHOW_MORE_CONTAINER.uuid} className="flex justify-center pt-2">
+        <button data-ui-uuid={HOME.CURATED_OFFERS.SHOW_MORE.uuid} id="curated-offers-show-more" className="px-6 py-2 rounded-full font-bold text-sm border transition-transform active:scale-95" style={{
+        background: 'var(--gova-surface-container-low)',
+        borderColor: 'var(--gova-outline-variant)',
+        color: 'var(--gova-primary)',
+    }}>
           {t(HOME.CURATED_OFFERS.SHOW_MORE)}
-        </UiButton>
-      </UiDiv>
-    </UiSection>
+        </button>
+      </div>
+    </section>
   );
 }

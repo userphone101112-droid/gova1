@@ -30,7 +30,12 @@
       "categorySports": "الرياضة والأنشطة الخارجية",
       "categoryOther": "أخرى",
       "storeDescription": "وصف المتجر",
-      "storeDescriptionPlaceholder": "أخبر عملاءك عن متجرك..."
+      "storeDescriptionPlaceholder": "أخبر عملاءك عن متجرك...",
+      "storeDescriptionTextarea": "TODO(ar): Store description textarea",
+      "categoryOption": "TODO(ar): Category option",
+      "storeCategorySelect": "TODO(ar): Store category select",
+      "storeUrlInput": "TODO(ar): Store URL input",
+      "storeNameInput": "TODO(ar): Store name input"
     },
     "business-details": {
       "title": "تفاصيل العمل",
@@ -49,7 +54,14 @@
       "yearFounded": "سنة التأسيس",
       "yearFoundedPlaceholder": "2024",
       "employeeCount": "عدد الموظفين",
-      "employeeCountPlaceholder": "اختر النطاق"
+      "employeeCountPlaceholder": "اختر النطاق",
+      "employeeCountOption": "TODO(ar): Employee count option",
+      "employeeCountSelect": "TODO(ar): Employee count select",
+      "yearFoundedInput": "TODO(ar): Year founded input",
+      "registrationNumberInput": "TODO(ar): Registration number input",
+      "businessTypeOption": "TODO(ar): Business type option",
+      "businessTypeSelect": "TODO(ar): Business type select",
+      "businessNameInput": "TODO(ar): Business name input"
     },
     "identity-verification": {
       "title": "التحقق من الهوية",
@@ -67,7 +79,16 @@
       "idNumber": "رقم الهوية",
       "uploadId": "تحميل الهوية الحكومية",
       "uploadIdSubtitle": "PNG، JPG، PDF حتى 10 ميجابايت",
-      "chooseFile": "اختر ملف"
+      "chooseFile": "اختر ملف",
+      "uploadButton": "TODO(ar): upload button",
+      "idNumberInput": "TODO(ar): id number input",
+      "idTypeOption": "TODO(ar): id type option",
+      "idTypeSelect": "TODO(ar): id type select",
+      "phoneInput": "TODO(ar): phone input",
+      "emailInput": "TODO(ar): email input",
+      "dateOfBirthInput": "TODO(ar): date of birth input",
+      "lastNameInput": "TODO(ar): last name input",
+      "firstNameInput": "TODO(ar): first name input"
     },
     "products": {
       "title": "المنتجات",
@@ -77,7 +98,11 @@
       "physicalProducts": "هل تبيع منتجات مادية؟",
       "physicalProductsSubtitle": "السلع الملموسة التي تتطلب شحن",
       "productCatalog": "إعداد كتالوج المنتجات",
-      "addProductsLater": "إضافة المنتجات لاحقاً"
+      "addProductsLater": "إضافة المنتجات لاحقاً",
+      "addLaterButton": "TODO(ar): Add later button",
+      "catalogText": "TODO(ar): Catalog text",
+      "physicalCheckbox": "TODO(ar): Physical checkbox",
+      "digitalCheckbox": "TODO(ar): Digital checkbox"
     },
     "shipping": {
       "title": "الشحن",
@@ -90,7 +115,12 @@
       "postalCodePlaceholder": "الرمز البريدي",
       "address": "العنوان",
       "addressPlaceholder": "عنوان الشحن",
-      "offerFreeShipping": "تقديم شحن مجاني"
+      "offerFreeShipping": "تقديم شحن مجاني",
+      "freeShippingCheckbox": "TODO(ar): Free shipping checkbox",
+      "addressTextarea": "TODO(ar): Address textarea",
+      "postalCodeInput": "TODO(ar): Postal code input",
+      "cityInput": "TODO(ar): City input",
+      "countryInput": "TODO(ar): Country input"
     },
     "payments": {
       "title": "المدفوعات",
@@ -105,7 +135,11 @@
       "currencyEur": "يورو (€)",
       "currencyGbp": "جنيه إسترليني (£)",
       "currencyCad": "دولار كندي ($)",
-      "currencyAud": "دولار أسترالي ($)"
+      "currencyAud": "دولار أسترالي ($)",
+      "currencyOption": "TODO(ar): Currency option",
+      "currencySelect": "TODO(ar): Currency select",
+      "methodLabel": "TODO(ar): Payment method label",
+      "methodCheckbox": "TODO(ar): Payment method checkbox"
     },
     "policies": {
       "title": "السياسات",
@@ -117,7 +151,11 @@
       "privacyPolicy": "سياسة الخصوصية",
       "privacyPolicyPlaceholder": "صف سياسة الخصوصية الخاصة بك...",
       "termsOfService": "شروط الخدمة",
-      "termsOfServicePlaceholder": "صف شروط الخدمة الخاصة بك..."
+      "termsOfServicePlaceholder": "صف شروط الخدمة الخاصة بك...",
+      "termsTextarea": "TODO(ar): Terms textarea",
+      "privacyPolicyTextarea": "TODO(ar): Privacy policy textarea",
+      "refundPolicyTextarea": "TODO(ar): Refund policy textarea",
+      "returnPolicyTextarea": "TODO(ar): Return policy textarea"
     },
     "branding": {
       "title": "العلامة التجارية",
@@ -128,7 +166,9 @@
       "logoSubtitle": "تحميل شعار متجرك",
       "primaryColor": "اللون الأساسي",
       "primaryColorSubtitle": "اختر اللون الأساسي لمتجرك",
-      "upload": "تحميل"
+      "upload": "تحميل",
+      "logoButton": "TODO(ar): logo button",
+      "taglineInput": "TODO(ar): tagline input"
     },
     "preferences": {
       "title": "التفضيلات",
@@ -144,13 +184,18 @@
       "timezoneMt": "توقيت الجبال (MT)",
       "timezonePt": "التوقيت الهادئ (PT)",
       "timezoneGmt": "لندن (GMT)",
-      "timezoneCet": "باريس (CET)"
+      "timezoneCet": "باريس (CET)",
+      "notificationOptionLabel": "TODO(ar): Notification option label",
+      "notificationCheckbox": "TODO(ar): Notification checkbox",
+      "timezoneOption": "TODO(ar): Timezone option",
+      "timezoneSelect": "TODO(ar): Timezone select"
     },
     "tax-info": {
       "title": "معلومات الضرائب",
       "description": "تفاصيل الضرائب لمتجرك",
       "taxId": "الرقم الضريبي/رقم الضريبة المضافة",
-      "taxIdPlaceholder": "رقم التعريف الضريبي"
+      "taxIdPlaceholder": "رقم التعريف الضريبي",
+      "taxIdInput": "TODO(ar): Tax ID input"
     },
     "marketing": {
       "title": "التسويق",
@@ -160,7 +205,10 @@
       "socialSharing": "المشاركة الاجتماعية",
       "socialSharingSubtitle": "إضافة أزرار المشاركة الاجتماعية للمنتجات",
       "productReviews": "مراجعات المنتجات",
-      "productReviewsSubtitle": "السماح للعملاء بترك مراجعات"
+      "productReviewsSubtitle": "السماح للعملاء بترك مراجعات",
+      "reviewsCheckbox": "TODO(ar): Reviews checkbox",
+      "socialCheckbox": "TODO(ar): Social checkbox",
+      "emailCheckbox": "TODO(ar): Email checkbox"
     },
     "completion": {
       "title": "أنت جاهز! 🎉",

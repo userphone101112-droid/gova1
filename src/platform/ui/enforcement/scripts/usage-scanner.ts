@@ -1,5 +1,6 @@
 import { readFileSync, readdirSync, existsSync } from 'fs';
 import { join } from 'path';
+
 import { generateTranslationKeyFromUi, isCategoryUiPath } from '../../i18n/binding/registry-binding';
 import {
   HOME,

@@ -1,7 +1,7 @@
 'use client';
-
-import { UiDiv, UiH1, UiP, UiInput, UiLabel, UiTextarea, UiSelect, UiOption, COMMON_LAYOUT, COMMON_FORMS, ONBOARDING, useTranslation } from '@/platform/ui';
 import { useOnboardingStore } from '@/lib/onboarding/store';
+import { ONBOARDING, useTranslation } from '@/platform/ui';
+
 
 export function StoreInfoStep() {
   const {
@@ -21,55 +21,35 @@ export function StoreInfoStep() {
   ];
 
   return (
-    <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="w-full">
-      <UiH1 ui={ONBOARDING.STORE_INFO.TITLE} className="text-3xl font-bold tracking-tight mb-2">{t(ONBOARDING.STORE_INFO.TITLE)}</UiH1>
-      <UiP ui={ONBOARDING.STORE_INFO.DESCRIPTION} className="text-muted-foreground mb-8">{t(ONBOARDING.STORE_INFO.DESCRIPTION)}</UiP>
+    <div data-ui-uuid={ONBOARDING.SHELL.STORE_INFO_TITLE_CONTAINER_L24.uuid} className="w-full">
+      <h1 data-ui-uuid={ONBOARDING.STORE_INFO.TITLE.uuid} className="text-3xl font-bold tracking-tight mb-2">{t(ONBOARDING.STORE_INFO.TITLE)}</h1>
+      <p data-ui-uuid={ONBOARDING.STORE_INFO.DESCRIPTION.uuid} className="text-muted-foreground mb-8">{t(ONBOARDING.STORE_INFO.DESCRIPTION)}</p>
 
-      <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="space-y-4 sm:space-y-6 max-w-4xl mx-auto">
-        <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="space-y-2">
-          <UiLabel ui={ONBOARDING.STORE_INFO.STORE_NAME_LABEL}>{t(ONBOARDING.STORE_INFO.STORE_NAME_LABEL)}</UiLabel>
-          <UiInput
-            ui={COMMON_FORMS.INPUT}
-            placeholder={t(ONBOARDING.STORE_INFO.STORE_NAME_PLACEHOLDER)}
-            value={storeInfo.storeName || ''}
-            onChange={(e) => updateStoreInfo({ storeName: e.target.value })}
-          />
-        </UiDiv>
+      <div data-ui-uuid={ONBOARDING.SHELL.STORE_INFO_STORE_NAME_LABEL_CONTAINER_L28.uuid} className="space-y-4 sm:space-y-6 max-w-4xl mx-auto">
+        <div data-ui-uuid={ONBOARDING.SHELL.STORE_INFO_STORE_NAME_LABEL_CONTAINER_L29.uuid} className="space-y-2">
+          <span data-ui-uuid={ONBOARDING.STORE_INFO.STORE_NAME_LABEL.uuid}>{t(ONBOARDING.STORE_INFO.STORE_NAME_LABEL)}</span>
+          <input data-ui-uuid={ONBOARDING.STORE_INFO.STORE_NAME_INPUT.uuid} placeholder={t(ONBOARDING.STORE_INFO.STORE_NAME_PLACEHOLDER)} value={storeInfo.storeName || ''} onChange={(e) => updateStoreInfo({ storeName: e.target.value })} />
+        </div>
 
-        <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="space-y-2">
-          <UiLabel ui={ONBOARDING.STORE_INFO.STORE_URL_LABEL}>{t(ONBOARDING.STORE_INFO.STORE_URL_LABEL)}</UiLabel>
-          <UiInput
-            ui={COMMON_FORMS.INPUT}
-            placeholder={t(ONBOARDING.STORE_INFO.STORE_URL_PLACEHOLDER)}
-            value={storeInfo.storeUrl || ''}
-            onChange={(e) => updateStoreInfo({ storeUrl: e.target.value })}
-          />
-        </UiDiv>
+        <div data-ui-uuid={ONBOARDING.SHELL.STORE_INFO_STORE_URL_LABEL_CONTAINER_L34.uuid} className="space-y-2">
+          <span data-ui-uuid={ONBOARDING.STORE_INFO.STORE_URL_LABEL.uuid}>{t(ONBOARDING.STORE_INFO.STORE_URL_LABEL)}</span>
+          <input data-ui-uuid={ONBOARDING.STORE_INFO.STORE_URL_INPUT.uuid} placeholder={t(ONBOARDING.STORE_INFO.STORE_URL_PLACEHOLDER)} value={storeInfo.storeUrl || ''} onChange={(e) => updateStoreInfo({ storeUrl: e.target.value })} />
+        </div>
 
-        <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="space-y-2">
-          <UiLabel ui={ONBOARDING.STORE_INFO.STORE_CATEGORY_LABEL}>{t(ONBOARDING.STORE_INFO.STORE_CATEGORY_LABEL)}</UiLabel>
-          <UiSelect
-            ui={COMMON_FORMS.SELECT}
-            value={storeInfo.storeCategory || ''}
-            onChange={(e) => updateStoreInfo({ storeCategory: e.target.value })}
-          >
+        <div data-ui-uuid={ONBOARDING.SHELL.STORE_INFO_STORE_CATEGORY_LABEL_CONTAINER_L39.uuid} className="space-y-2">
+          <span data-ui-uuid={ONBOARDING.STORE_INFO.STORE_CATEGORY_LABEL.uuid}>{t(ONBOARDING.STORE_INFO.STORE_CATEGORY_LABEL)}</span>
+          <select data-ui-uuid={ONBOARDING.STORE_INFO.STORE_CATEGORY_SELECT.uuid} value={storeInfo.storeCategory || ''} onChange={(e) => updateStoreInfo({ storeCategory: e.target.value })}>
             {categories.map((cat) => (
-              <UiOption key={cat.id} ui={COMMON_FORMS.OPTION}>{cat.label}</UiOption>
+              <option data-ui-uuid={ONBOARDING.STORE_INFO.CATEGORY_OPTION.uuid} data-ui-instance-id={cat.id || "placeholder"} key={cat.id}>{cat.label}</option>
             ))}
-          </UiSelect>
-        </UiDiv>
+          </select>
+        </div>
 
-        <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="space-y-2">
-          <UiLabel ui={ONBOARDING.STORE_INFO.STORE_DESCRIPTION_LABEL}>{t(ONBOARDING.STORE_INFO.STORE_DESCRIPTION_LABEL)}</UiLabel>
-          <UiTextarea
-            ui={COMMON_FORMS.TEXTAREA}
-            placeholder={t(ONBOARDING.STORE_INFO.STORE_DESCRIPTION_PLACEHOLDER)}
-            value={storeInfo.storeDescription || ''}
-            onChange={(e) => updateStoreInfo({ storeDescription: e.target.value })}
-            rows={4}
-          />
-        </UiDiv>
-      </UiDiv>
-    </UiDiv>
+        <div data-ui-uuid={ONBOARDING.SHELL.STORE_INFO_STORE_DESCRIPTION_LABEL_CONTAINER_L48.uuid} className="space-y-2">
+          <span data-ui-uuid={ONBOARDING.STORE_INFO.STORE_DESCRIPTION_LABEL.uuid}>{t(ONBOARDING.STORE_INFO.STORE_DESCRIPTION_LABEL)}</span>
+          <textarea data-ui-uuid={ONBOARDING.STORE_INFO.STORE_DESCRIPTION_TEXTAREA.uuid} placeholder={t(ONBOARDING.STORE_INFO.STORE_DESCRIPTION_PLACEHOLDER)} value={storeInfo.storeDescription || ''} onChange={(e) => updateStoreInfo({ storeDescription: e.target.value })} rows={4} />
+        </div>
+      </div>
+    </div>
   );
 }

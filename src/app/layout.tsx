@@ -1,19 +1,15 @@
 import type { Metadata } from "next";
 import { Inter, Noto_Sans_Arabic } from "next/font/google";
+
+import { SSOTGuard } from "@/components/shared/SSOTGuard";
+import { I18nProvider, LocaleProvider } from '@/platform/ui';
+import { DevUiOverlayLoader } from "@/platform/ui/devtools/DevUiOverlayLoader";
+import { SHARED_LAYOUT } from '@/platform/ui/registry/features/shared-layout';
 import "./globals.css";
-import { I18nProvider } from "@/platform/ui";
-import { getAppDictionaryCached } from "@/platform/ui/server";
-import { getLocale, getDirection, getThemeMode, getEffectiveTheme, getSSOTPreferences } from "@/platform/ui/server";
+import { getAppDictionaryCached, getDirection, getEffectiveTheme, getLocale, getSSOTPreferences, getThemeMode } from "@/platform/ui/server";
+import { MaolProvider } from '@/providers/MaolProvider';
 import { SSOTProvider } from "@/providers/SSOTProvider";
 import { ThemePreferencesSync } from "@/providers/ThemePreferencesSync";
-import { SSOTGuard } from "@/components/shared/SSOTGuard";
-import { LocaleProvider } from "@/platform/ui";
-
-const DevUiOverlay = process.env.NODE_ENV === 'development'
-  ? require('@/platform/ui').DevUiOverlay
-  : null;
-
-import { MaolProvider } from '@/providers/MaolProvider';
 
 // Inter loaded locally via next/font — avoids CSP violations from Google Fonts CDN
 const inter = Inter({
@@ -79,6 +75,7 @@ export default async function RootLayout({
 
   return (
     <html
+      data-ui-uuid={SHARED_LAYOUT.ROOT.HTML.uuid}
       lang={locale}
       dir={direction}
       data-theme={effectiveTheme}
@@ -86,7 +83,7 @@ export default async function RootLayout({
       className={htmlClassName}
       style={{ fontSize: `${ssotPreferences.fontSize}px` }}
     >
-      <body className="min-h-full flex flex-col">
+      <body data-ui-uuid={SHARED_LAYOUT.ROOT.BODY.uuid} className="min-h-full flex flex-col">
         <SSOTProvider
           snapshot={{
             language: locale,
@@ -104,7 +101,7 @@ export default async function RootLayout({
           >
             <ThemePreferencesSync />
             {children}
-            {DevUiOverlay && <DevUiOverlay />}
+            <DevUiOverlayLoader />
           </I18nProvider>
         </SSOTProvider>
         {process.env.NEXT_PUBLIC_MAOL_ENABLED === 'true' && <MaolProvider />}

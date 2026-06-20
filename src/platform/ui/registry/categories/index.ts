@@ -16,16 +16,17 @@ export * from './template';
 export * from './components';
 
 import type { UiIdentity } from '../types';
-import { LAYOUT_IDENTITIES } from './layout';
-import { TYPOGRAPHY_IDENTITIES } from './typography';
-import { FORMS_IDENTITIES } from './forms';
-import { MEDIA_IDENTITIES } from './media';
-import { LISTS_IDENTITIES } from './lists';
-import { TABLES_IDENTITIES } from './tables';
-import { INTERACTIVE_IDENTITIES } from './interactive';
-import { SPACING_IDENTITIES } from './spacing';
-import { TEMPLATE_IDENTITIES } from './template';
+
 import { COMPONENT_IDENTITIES } from './components';
+import { FORMS_IDENTITIES } from './forms';
+import { INTERACTIVE_IDENTITIES } from './interactive';
+import { LAYOUT_IDENTITIES } from './layout';
+import { LISTS_IDENTITIES } from './lists';
+import { MEDIA_IDENTITIES } from './media';
+import { SPACING_IDENTITIES } from './spacing';
+import { TABLES_IDENTITIES } from './tables';
+import { TEMPLATE_IDENTITIES } from './template';
+import { TYPOGRAPHY_IDENTITIES } from './typography';
 
 export const ALL_CATEGORY_IDENTITIES = [
   ...LAYOUT_IDENTITIES,

@@ -1,4 +1,5 @@
 import type { TranslationKey } from '../keys';
+
 import { TranslationDictionary } from './types';
 
 const missingKeys = new Set<string>();

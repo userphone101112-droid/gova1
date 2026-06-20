@@ -1,7 +1,7 @@
 import type { UiParam } from '../../registry/registry';
 import { resolveTranslationKey } from '../core/resolveTranslationSource';
-import type { TranslationKey } from '../keys';
 import type { TranslationSource } from '../core/resolveTranslationSource';
+import type { TranslationKey } from '../keys';
 
 export type TranslateFn = (source: TranslationSource, fallback?: string) => string;
 

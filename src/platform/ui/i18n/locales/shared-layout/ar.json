@@ -17,7 +17,18 @@
       "favoritesLink": "المفضلة",
       "ordersLink": "الطلبات",
       "profileLink": "الملف الشخصي",
-      "container": "حاوية"
+      "container": "حاوية",
+      "homeLinkLabel": "TODO(ar): Bottom nav home-link-label",
+      "notificationsLinkLabel": "TODO(ar): Bottom nav notifications-link-label",
+      "favoritesLinkLabel": "TODO(ar): Bottom nav favorites-link-label",
+      "ordersLinkLabel": "TODO(ar): Bottom nav orders-link-label",
+      "profileLinkLabel": "TODO(ar): Bottom nav profile-link-label",
+      "homeActiveIndicator": "TODO(ar): Bottom nav home-active-indicator",
+      "notificationsActiveIndicator": "TODO(ar): Bottom nav notifications-active-indicator",
+      "favoritesActiveIndicator": "TODO(ar): Bottom nav favorites-active-indicator",
+      "ordersActiveIndicator": "TODO(ar): Bottom nav orders-active-indicator",
+      "profileActiveIndicator": "TODO(ar): Bottom nav profile-active-indicator",
+      "notificationsBadge": "TODO(ar): Bottom nav notifications-badge"
     },
     "sidebar": {
       "english": "English",

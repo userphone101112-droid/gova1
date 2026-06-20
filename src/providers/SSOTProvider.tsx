@@ -1,6 +1,7 @@
 'use client';
 
 import { useLayoutEffect, useRef, type ReactNode } from 'react';
+
 import {
   initializeUnifiedStore,
   syncDOMFromStore,

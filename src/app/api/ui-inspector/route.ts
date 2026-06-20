@@ -3,7 +3,7 @@ import path from 'path';
 
 import { NextResponse } from 'next/server';
 
-import { getUiIdentityUuid, UI_ID_MAP, UI_UUID_MAP } from '@/platform/ui';
+import { getUiIdentityUuid, getUiIdentityByUuid } from '@/platform/ui';
 
 // Define the type for our inspector data
 interface InspectorData {
@@ -63,7 +63,6 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
     const { 
-      uiId,
       uiUuid,
       uiInstanceId,
       databaseEnabled, 
@@ -76,20 +75,20 @@ export async function POST(request: Request) {
       attribute3 
     } = body;
 
-    if (!uiId && !uiUuid) {
+    if (!uiUuid) {
       return NextResponse.json(
-        { error: 'Missing uiId or uiUuid parameter' },
+        { error: 'Missing uiUuid parameter' },
         { status: 400 }
       );
     }
 
     const data = await readData();
-    const identity = uiUuid ? UI_UUID_MAP[uiUuid] : UI_ID_MAP[uiId];
+    const identity = getUiIdentityByUuid(uiUuid);
     const resolvedUuid = identity ? getUiIdentityUuid(identity) : uiUuid || '';
     const resolvedInstanceId = uiInstanceId === undefined || uiInstanceId === null ? '' : String(uiInstanceId);
     const storageKey = resolvedUuid && resolvedInstanceId
       ? `${resolvedUuid}:${resolvedInstanceId}`
-      : resolvedUuid || uiId;
+      : resolvedUuid;
     
     // Update the data
     data[storageKey] = {
@@ -111,7 +110,7 @@ export async function POST(request: Request) {
 
     await writeData(data);
 
-    return NextResponse.json({ success: true, uiId: identity?.id || uiId, uiUuid: storageKey });
+    return NextResponse.json({ success: true, uiUuid: storageKey, id: identity?.id });
   } catch (error) {
     console.error('Error saving inspector data:', error);
     return NextResponse.json(

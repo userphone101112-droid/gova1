@@ -12,7 +12,11 @@
       "messageButton": "رسالة",
       "joined": "انضم في",
       "bannerAltSuffix": "الغلاف",
-      "statusLabel": "الحالة:"
+      "statusLabel": "الحالة:",
+      "categoryBadge": "TODO(ar): category badge",
+      "merchantName": "TODO(ar): merchant name",
+      "logoImage": "TODO(ar): logo image",
+      "bannerImage": "TODO(ar): banner image"
     },
     "overview": {
       "container": "حاوية نظرة عامة على التاجر",
@@ -23,12 +27,15 @@
       "rating": "تقييم",
       "revenue": "إيرادات",
       "completionRate": "معدل الإكمال",
-      "responseRate": "معدل الاستجابة"
+      "responseRate": "معدل الاستجابة",
+      "statLabel": "TODO(ar): stat label"
     },
     "quick-actions": {
       "container": "حاوية الإجراءات السريعة",
       "button": "زر إجراء سريع",
-      "title": "إجراءات سريعة"
+      "title": "إجراءات سريعة",
+      "actionBadge": "TODO(ar): Quick action badge",
+      "actionLabel": "TODO(ar): Quick action label"
     },
     "performance": {
       "container": "حاوية لوحة الأداء",
@@ -47,14 +54,30 @@
       "avgOrderValueSubtitle": "لكل معاملة",
       "bestSellingCategory": "الأكثر مبيعاً",
       "bestSellingCategorySubtitle": "الأفضل أداءً هذا الشهر",
-      "inventoryHealth": "صحة المخزون"
+      "inventoryHealth": "صحة المخزون",
+      "metricSubtitle": "TODO(ar): metric subtitle",
+      "metricValue": "TODO(ar): metric value",
+      "metricTitle": "TODO(ar): metric title",
+      "revenueTodayValue": "TODO(ar): Revenue today value",
+      "revenueMonthValue": "TODO(ar): Revenue this month value",
+      "ordersTodayValue": "TODO(ar): Orders today value",
+      "ordersMonthValue": "TODO(ar): Orders this month value",
+      "conversionRateValue": "TODO(ar): Conversion rate value",
+      "avgOrderValueValue": "TODO(ar): Average order value display",
+      "bestSellingCategoryValue": "TODO(ar): Best selling category value",
+      "inventoryHealthValue": "TODO(ar): Inventory health value"
     },
     "collections": {
       "container": "حاوية المجموعات",
       "card": "بطاقة مجموعة",
       "title": "المجموعات المميزة",
       "viewAll": "عرض الكل",
-      "items": "عناصر"
+      "items": "عناصر",
+      "itemCount": "TODO(ar): collection item count",
+      "collectionName": "TODO(ar): collection name",
+      "typeBadge": "TODO(ar): collection type badge",
+      "collectionImage": "TODO(ar): collection image",
+      "viewAllButton": "TODO(ar): view all button"
     },
     "best-sellers": {
       "container": "حاوية الأكثر مبيعاً",
@@ -62,14 +85,27 @@
       "title": "المنتجات الأكثر مبيعاً",
       "viewAll": "عرض الكل",
       "percentOff": "% خصم",
-      "sold": "تم بيعه"
+      "sold": "تم بيعه",
+      "productImage": "TODO(ar): Best selling product image",
+      "saleBadge": "TODO(ar): Sale badge",
+      "stockBadge": "TODO(ar): Stock badge",
+      "productName": "TODO(ar): Product name",
+      "productRating": "TODO(ar): Product rating",
+      "viewAllButton": "TODO(ar): View all button"
     },
     "recent-orders": {
       "container": "حاوية الطلبات الأخيرة",
       "title": "الطلبات الأخيرة",
       "viewAll": "عرض الكل",
       "item": "منتج",
-      "items": "منتجات"
+      "items": "منتجات",
+      "orderValue": "TODO(ar): order value",
+      "orderTime": "TODO(ar): order time",
+      "orderId": "TODO(ar): order id",
+      "itemsText": "TODO(ar): items text",
+      "customerName": "TODO(ar): customer name",
+      "orderAvatar": "TODO(ar): order avatar",
+      "viewAllButton": "TODO(ar): view all button"
     },
     "reviews": {
       "container": "حاوية التقييمات",
@@ -80,7 +116,18 @@
       "star": "نجمة",
       "stars": "نجوم",
       "purchased": "تم الشراء",
-      "helpful": "مفيد"
+      "helpful": "مفيد",
+      "helpfulButton": "TODO(ar): helpful button",
+      "reviewComment": "TODO(ar): review comment",
+      "reviewProduct": "TODO(ar): review product",
+      "reviewTime": "TODO(ar): review time",
+      "reviewerName": "TODO(ar): reviewer name",
+      "reviewAvatar": "TODO(ar): review avatar",
+      "ratingPercent": "TODO(ar): rating percent",
+      "ratingLabel": "TODO(ar): rating label",
+      "reviewCountText": "TODO(ar): review count text",
+      "averageRating": "TODO(ar): average rating",
+      "viewAllButton": "TODO(ar): view all button"
     },
     "store-info": {
       "container": "حاوية معلومات المتجر",
@@ -92,14 +139,35 @@
       "shippingCoverage": "تغطية الشحن",
       "more": "المزيد",
       "returnPolicy": "سياسة الإرجاع",
-      "storeSpecialties": "تخصصات المتجر"
+      "storeSpecialties": "تخصصات المتجر",
+      "specialtyBadge": "TODO(ar): specialty badge",
+      "specialtiesHeading": "TODO(ar): specialties heading",
+      "returnPolicyText": "TODO(ar): return policy text",
+      "returnPolicyHeading": "TODO(ar): return policy heading",
+      "moreCountriesBadge": "TODO(ar): more countries badge",
+      "countryBadge": "TODO(ar): country badge",
+      "shippingHeading": "TODO(ar): shipping heading",
+      "categoryBadge": "TODO(ar): category badge",
+      "categoriesHeading": "TODO(ar): categories heading",
+      "expandButton": "TODO(ar): expand button",
+      "aboutText": "TODO(ar): about text",
+      "aboutHeading": "TODO(ar): about heading"
     },
     "trust": {
       "container": "حاوية الثقة والمصداقية",
       "title": "الثقة والمصداقية",
       "achievements": "الإنجازات",
       "sellerBadges": "شارات البائع",
-      "noBadgesEarned": "لم يتم كسب أي شارات بعد"
+      "noBadgesEarned": "لم يتم كسب أي شارات بعد",
+      "noBadgesText": "TODO(ar): no badges text",
+      "sellerBadgeName": "TODO(ar): seller badge name",
+      "sellerBadge": "TODO(ar): seller badge",
+      "sellerBadgesHeading": "TODO(ar): seller badges heading",
+      "achievementName": "TODO(ar): achievement name",
+      "achievementBadge": "TODO(ar): achievement badge",
+      "achievementsHeading": "TODO(ar): achievements heading",
+      "credentialDescription": "TODO(ar): credential description",
+      "credentialTitle": "TODO(ar): credential title"
     },
     "common": {
       "viewAll": "عرض الكل"

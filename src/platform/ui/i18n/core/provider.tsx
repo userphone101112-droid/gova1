@@ -1,11 +1,14 @@
 'use client';
 
-import { createContext, useContext, useState, useEffect, useCallback, ReactNode, useMemo } from 'react';
 import { usePathname } from 'next/navigation';
-import { Locale, I18nContext, TranslationDictionary } from './types';
+import { createContext, useContext, useState, useEffect, useCallback, ReactNode, useMemo } from 'react';
+
+import { useUnifiedStore } from '@/store/unified.store';
+
 import { getAppDictionary } from './getDictionary';
 import { resolveFeatureFromPathname } from './i18n-route-manifest';
-import { useUnifiedStore } from '@/store/unified.store';
+import { Locale, I18nContext, TranslationDictionary } from './types';
+
 
 const I18nContextInstance = createContext<I18nContext | undefined>(undefined);
 

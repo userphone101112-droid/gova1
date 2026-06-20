@@ -14,7 +14,8 @@
       "passwordPlaceholder": "••••••••",
       "highlightSecurity": "Bank-grade security",
       "highlightPhone": "Phone verified",
-      "highlightEncrypted": "Encrypted data"
+      "highlightEncrypted": "Encrypted data",
+      "heroQuoteElement": "Auth hero blockquote element"
     },
     "login": {
       "heading": "Welcome Back",
@@ -32,7 +33,10 @@
       "signupDivider": "New to Suez Marketplace?",
       "successHeading": "Welcome Back!",
       "successDescription": "You have successfully signed in to your account.",
-      "signinAgainButton": "Sign In Again"
+      "signinAgainButton": "Sign In Again",
+      "phoneInputLabel": "Login phone input label",
+      "passwordInputLabel": "Login password input label",
+      "signupLinkButton": "Login signup link button"
     },
     "registration": {
       "brandLogo": "Logo",
@@ -86,7 +90,11 @@
       "successHeading": "You're all set!",
       "successDescription": "Your account has been created and your phone number is verified.",
       "continueButton": "Continue to App",
-      "backButton": "Back to start"
+      "backButton": "Back to start",
+      "phoneInputLabel": "Registration phone input label",
+      "passwordInputLabel": "Registration password input label",
+      "confirmPasswordInputLabel": "Registration confirm password input label",
+      "toggleConfirmPasswordVisibility": "Registration confirm password toggle visibility"
     }
   }
 }

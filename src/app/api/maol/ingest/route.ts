@@ -8,8 +8,9 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server';
-import { isValidMaolSessionId } from '@/shared/maol/session';
+
 import { storeError, storeWarning, storeDomSummary } from '@/lib/maol-store';
+import { isValidMaolSessionId } from '@/shared/maol/session';
 import type {
   MaolIngestPayload,
   MaolErrorEvent,

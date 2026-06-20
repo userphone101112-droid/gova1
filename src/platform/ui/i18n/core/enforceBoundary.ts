@@ -1,5 +1,6 @@
-import { Feature } from './types';
 import type { TranslationKey } from '../keys';
+
+import { Feature } from './types';
 
 /**
  * Enforce feature localization boundary

@@ -20,10 +20,12 @@ export interface UiIdentity {
   readonly version: string;
   readonly createdAt: string;
   readonly updatedAt: string;
+  /** When true, the same UUID may appear on multiple DOM nodes with data-ui-instance-id. */
+  readonly repeatable?: boolean;
   /** @deprecated Use lifecycle: 'deprecated' instead. Kept for compatibility. */
   readonly deprecated?: boolean;
 }
 
 /** Overridden in registry.ts with a union of all registered paths */
 export type UiIdentifier = string;
-export type UiParam = UiIdentifier | UiIdentity;
+export type UiParam = UiIdentity;

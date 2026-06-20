@@ -1,5 +1,7 @@
 import { cookies } from 'next/headers';
+
 import { Locale } from '../core/types';
+
 import { LocaleStorageAdapter } from './LocaleStorageAdapter';
 
 /**

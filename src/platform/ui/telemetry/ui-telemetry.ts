@@ -6,14 +6,12 @@
  */
 
 import {
-  getUiIdentityById,
   getUiIdentityByUuid,
-  getUiIdentity,
   getUiIdentityUuid,
+  isUiIdentity,
   type UiIdentity,
-  type UiParam,
 } from '../registry/registry';
-import { UI_SOURCE_INDEX, UI_SOURCE_INDEX_BY_UUID } from '../registry/source-index';
+import { UI_SOURCE_INDEX_BY_UUID } from '../registry/source-index';
 
 export interface UiTelemetryData {
   uuid: string;
@@ -39,20 +37,19 @@ export interface InspectorLocationInfo extends UiIdentity {
 /**
  * Helper to resolve UI Identity from either an HTMLElement or a UiParam.
  */
-export function resolveTelemetryIdentity(target: HTMLElement | UiParam | null): UiIdentity | null {
+export function resolveTelemetryIdentity(target: HTMLElement | UiIdentity | null): UiIdentity | null {
   if (!target) return null;
   if (typeof target === 'object' && 'getAttribute' in target && typeof target.getAttribute === 'function') {
     const uuid = target.getAttribute('data-ui-uuid');
     if (uuid) {
-      const id = target.getAttribute('data-ui-id');
-      return getUiIdentityByUuid(uuid) || (id ? getUiIdentityById(id) || null : null);
+      return getUiIdentityByUuid(uuid) || null;
     }
-
-    const id = target.getAttribute('data-ui-id');
-    if (!id) return null;
-    return getUiIdentityById(id) || null;
+    return null;
   }
-  return getUiIdentity(target as UiParam) || null;
+  if (isUiIdentity(target)) {
+    return getUiIdentityByUuid(target.uuid) || null;
+  }
+  return null;
 }
 
 /**
@@ -62,12 +59,12 @@ export function resolveTelemetryIdentity(target: HTMLElement | UiParam | null): 
  * @param target The DOM element or UiParam
  * @returns Metadata including source file and component name, or null if not registered
  */
-export function resolveElementIdentity(target: HTMLElement | UiParam | null): InspectorLocationInfo | null {
+export function resolveElementIdentity(target: HTMLElement | UiIdentity | null): InspectorLocationInfo | null {
   const identity = resolveTelemetryIdentity(target);
   if (!identity) return null;
 
   // Get source code mapping
-  const sourceLocation = UI_SOURCE_INDEX_BY_UUID[identity.uuid] ?? UI_SOURCE_INDEX[identity.id];
+  const sourceLocation = UI_SOURCE_INDEX_BY_UUID[identity.uuid];
 
   return {
     ...identity,
@@ -84,7 +81,7 @@ export function resolveElementIdentity(target: HTMLElement | UiParam | null): In
  * @param target The DOM element or UiParam
  * @returns Telemetry data payload, or null if the element has no UI Identity
  */
-export function trackUiInteraction(target: HTMLElement | UiParam | null): UiTelemetryData | null {
+export function trackUiInteraction(target: HTMLElement | UiIdentity | null): UiTelemetryData | null {
   const identity = resolveTelemetryIdentity(target);
   if (!identity) return null;
 
@@ -130,7 +127,7 @@ export function trackUiInteraction(target: HTMLElement | UiParam | null): UiTele
  * @param target The DOM element or UiParam
  * @returns Telemetry data payload, or null if the element has no UI Identity
  */
-export function trackUiView(target: HTMLElement | UiParam | null): UiTelemetryData | null {
+export function trackUiView(target: HTMLElement | UiIdentity | null): UiTelemetryData | null {
   const identity = resolveTelemetryIdentity(target);
   if (!identity) return null;
 
@@ -170,7 +167,7 @@ export function trackUiView(target: HTMLElement | UiParam | null): UiTelemetryDa
  * @param error The thrown error object
  * @returns Error telemetry payload, or null if target has no UI identity
  */
-export function trackUiError(target: HTMLElement | UiParam | null, error: Error): UiErrorTelemetryData | null {
+export function trackUiError(target: HTMLElement | UiIdentity | null, error: Error): UiErrorTelemetryData | null {
   const identity = resolveTelemetryIdentity(target);
   if (!identity) return null;
 

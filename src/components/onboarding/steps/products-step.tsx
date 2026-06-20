@@ -1,8 +1,9 @@
 'use client';
-
-import { UiDiv, UiH1, UiP, UiCheckbox, UiLabel, UiCard, UiButton, COMMON_LAYOUT, COMMON_TYPOGRAPHY, COMMON_FORMS, COMMON_COMPONENTS, ONBOARDING, useTranslation } from '@/platform/ui';
-import { useOnboardingStore } from '@/lib/onboarding/store';
 import { Package } from 'lucide-react';
+
+import { useOnboardingStore } from '@/lib/onboarding/store';
+import { ONBOARDING, useTranslation } from '@/platform/ui';
+
 
 export function ProductsStep() {
   const {
@@ -12,50 +13,42 @@ export function ProductsStep() {
   const { t } = useTranslation();
 
   return (
-    <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="w-full">
-      <UiH1 ui={ONBOARDING.PRODUCTS.TITLE} className="text-3xl font-bold tracking-tight mb-2">{t(ONBOARDING.PRODUCTS.TITLE)}</UiH1>
-      <UiP ui={ONBOARDING.PRODUCTS.DESCRIPTION} className="text-muted-foreground mb-8">{t(ONBOARDING.PRODUCTS.DESCRIPTION)}</UiP>
+    <div data-ui-uuid={ONBOARDING.SHELL.PRODUCTS_TITLE_CONTAINER_L16.uuid} className="w-full">
+      <h1 data-ui-uuid={ONBOARDING.PRODUCTS.TITLE.uuid} className="text-3xl font-bold tracking-tight mb-2">{t(ONBOARDING.PRODUCTS.TITLE)}</h1>
+      <p data-ui-uuid={ONBOARDING.PRODUCTS.DESCRIPTION.uuid} className="text-muted-foreground mb-8">{t(ONBOARDING.PRODUCTS.DESCRIPTION)}</p>
 
-      <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="space-y-4 sm:space-y-6 max-w-4xl mx-auto">
-        <UiCard ui={COMMON_COMPONENTS.CARD.CONTAINER} className="p-4 sm:p-6">
-          <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="flex flex-col sm:flex-row items-start gap-3 sm:gap-4">
-            <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="rounded-full bg-primary/10 p-3">
+      <div data-ui-uuid={ONBOARDING.SHELL.PRODUCTS_DIGITAL_PRODUCTS_LABEL_CONTAINER_L20.uuid} className="space-y-4 sm:space-y-6 max-w-4xl mx-auto">
+        <div data-ui-uuid={ONBOARDING.PRODUCTS.DIGITAL_CARD.uuid} className="p-4 sm:p-6">
+          <div data-ui-uuid={ONBOARDING.SHELL.PRODUCTS_DIGITAL_PRODUCTS_LABEL_CONTAINER_L22.uuid} className="flex flex-col sm:flex-row items-start gap-3 sm:gap-4">
+            <div data-ui-uuid={ONBOARDING.SHELL.PRODUCTS_DIGITAL_PRODUCTS_LABEL_CONTAINER_L23.uuid} className="rounded-full bg-primary/10 p-3">
               <Package className="h-6 w-6 text-primary" />
-            </UiDiv>
-            <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="flex-1">
-              <UiLabel ui={COMMON_TYPOGRAPHY.P} className="font-medium">{t(ONBOARDING.PRODUCTS.DIGITAL_PRODUCTS_LABEL)}</UiLabel>
-              <UiLabel ui={COMMON_TYPOGRAPHY.P} className="text-sm text-muted-foreground">{t(ONBOARDING.PRODUCTS.DIGITAL_PRODUCTS_SUBTITLE)}</UiLabel>
-            </UiDiv>
-            <UiCheckbox
-              ui={COMMON_FORMS.CHECKBOX}
-              checked={products.isDigital || false}
-              onCheckedChange={(checked) => updateProducts({ isDigital: checked as boolean })}
-            />
-          </UiDiv>
-        </UiCard>
+            </div>
+            <div data-ui-uuid={ONBOARDING.SHELL.PRODUCTS_DIGITAL_PRODUCTS_LABEL_CONTAINER_L26.uuid} className="flex-1">
+              <span data-ui-uuid={ONBOARDING.PRODUCTS.DIGITAL_PRODUCTS_LABEL.uuid} className="font-medium">{t(ONBOARDING.PRODUCTS.DIGITAL_PRODUCTS_LABEL)}</span>
+              <span data-ui-uuid={ONBOARDING.PRODUCTS.DIGITAL_PRODUCTS_SUBTITLE.uuid} className="text-sm text-muted-foreground">{t(ONBOARDING.PRODUCTS.DIGITAL_PRODUCTS_SUBTITLE)}</span>
+            </div>
+            <input type="checkbox" data-ui-uuid={ONBOARDING.PRODUCTS.DIGITAL_CHECKBOX.uuid} checked={products.isDigital || false} onChange={(e) => updateProducts({ isDigital: e.target.checked })} />
+          </div>
+        </div>
 
-        <UiCard ui={COMMON_COMPONENTS.CARD.CONTAINER} className="p-4 sm:p-6">
-          <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="flex flex-col sm:flex-row items-start gap-3 sm:gap-4">
-            <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="rounded-full bg-primary/10 p-3">
+        <div data-ui-uuid={ONBOARDING.PRODUCTS.PHYSICAL_CARD.uuid} className="p-4 sm:p-6">
+          <div data-ui-uuid={ONBOARDING.SHELL.PRODUCTS_PHYSICAL_PRODUCTS_LABEL_CONTAINER_L35.uuid} className="flex flex-col sm:flex-row items-start gap-3 sm:gap-4">
+            <div data-ui-uuid={ONBOARDING.SHELL.PRODUCTS_PHYSICAL_PRODUCTS_LABEL_CONTAINER_L36.uuid} className="rounded-full bg-primary/10 p-3">
               <Package className="h-6 w-6 text-primary" />
-            </UiDiv>
-            <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="flex-1">
-              <UiLabel ui={COMMON_TYPOGRAPHY.P} className="font-medium">{t(ONBOARDING.PRODUCTS.PHYSICAL_PRODUCTS_LABEL)}</UiLabel>
-              <UiLabel ui={COMMON_TYPOGRAPHY.P} className="text-sm text-muted-foreground">{t(ONBOARDING.PRODUCTS.PHYSICAL_PRODUCTS_SUBTITLE)}</UiLabel>
-            </UiDiv>
-            <UiCheckbox
-              ui={COMMON_FORMS.CHECKBOX}
-              checked={products.isPhysical || false}
-              onCheckedChange={(checked) => updateProducts({ isPhysical: checked as boolean })}
-            />
-          </UiDiv>
-        </UiCard>
+            </div>
+            <div data-ui-uuid={ONBOARDING.SHELL.PRODUCTS_PHYSICAL_PRODUCTS_LABEL_CONTAINER_L39.uuid} className="flex-1">
+              <span data-ui-uuid={ONBOARDING.PRODUCTS.PHYSICAL_PRODUCTS_LABEL.uuid} className="font-medium">{t(ONBOARDING.PRODUCTS.PHYSICAL_PRODUCTS_LABEL)}</span>
+              <span data-ui-uuid={ONBOARDING.PRODUCTS.PHYSICAL_PRODUCTS_SUBTITLE.uuid} className="text-sm text-muted-foreground">{t(ONBOARDING.PRODUCTS.PHYSICAL_PRODUCTS_SUBTITLE)}</span>
+            </div>
+            <input type="checkbox" data-ui-uuid={ONBOARDING.PRODUCTS.PHYSICAL_CHECKBOX.uuid} checked={products.isPhysical || false} onChange={(e) => updateProducts({ isPhysical: e.target.checked })} />
+          </div>
+        </div>
 
-        <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="flex flex-col items-center justify-center gap-4 py-8 sm:py-12 px-4 border-2 border-dashed rounded-lg border-gray-300">
-          <UiP ui={COMMON_TYPOGRAPHY.P} className="text-muted-foreground">{t(ONBOARDING.PRODUCTS.PRODUCT_CATALOG_LABEL)}</UiP>
-          <UiButton ui={COMMON_FORMS.BUTTON} variant="ghost">{t(ONBOARDING.PRODUCTS.ADD_PRODUCTS_LATER_BUTTON)}</UiButton>
-        </UiDiv>
-      </UiDiv>
-    </UiDiv>
+        <div data-ui-uuid={ONBOARDING.SHELL.PRODUCTS_PRODUCT_CATALOG_LABEL_CONTAINER_L47.uuid} className="flex flex-col items-center justify-center gap-4 py-8 sm:py-12 px-4 border-2 border-dashed rounded-lg border-outline-variant">
+          <p data-ui-uuid={ONBOARDING.PRODUCTS.CATALOG_TEXT.uuid} className="text-muted-foreground">{t(ONBOARDING.PRODUCTS.PRODUCT_CATALOG_LABEL)}</p>
+          <button data-ui-uuid={ONBOARDING.PRODUCTS.ADD_LATER_BUTTON.uuid}>{t(ONBOARDING.PRODUCTS.ADD_PRODUCTS_LATER_BUTTON)}</button>
+        </div>
+      </div>
+    </div>
   );
 }

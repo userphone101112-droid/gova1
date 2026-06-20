@@ -91,7 +91,11 @@
       "categoryButton": "Select Category",
       "categoryImage": "Category Image",
       "categoryName": "Category",
-      "sectionTitle": "Suez Markets"
+      "sectionTitle": "Suez Markets",
+      "toggleLabel": "Toggle categories grid button label"
+    },
+    "featured-marquee": {
+      "header": "header"
     }
   }
 }

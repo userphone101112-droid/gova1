@@ -623,7 +623,7 @@ const enforceUiTranslationCoupling = {
     },
     schema: [],
     messages: {
-      missingUiContext: 'Translation key "{{key}}" is used without UI context. Wrap it in a Ui* component with proper ui prop.',
+      missingUiContext: 'Translation key "{{key}}" is used without UI context. Wrap it in an element with data-ui-uuid from the registry.',
     },
   },
   create(context) {
@@ -643,20 +643,31 @@ const enforceUiTranslationCoupling = {
     
     let hasUiContext = false;
     
+    function hasDataUiUuid(node) {
+      if (!node.attributes) return false;
+      return node.attributes.some(
+        (attr) => attr.type === 'JSXAttribute' && attr.name?.name === 'data-ui-uuid'
+      );
+    }
+    
     return {
       JSXOpeningElement(node) {
-        const componentName = node.name.name;
-        
-        // Check if this is a Ui* component
-        if (componentName && componentName.startsWith('Ui')) {
+        if (node.name?.type === 'JSXIdentifier' && node.name.name.startsWith('Ui')) {
           hasUiContext = true;
+          return;
+        }
+        if (node.name?.type === 'JSXIdentifier' && node.name.name === node.name.name.toLowerCase()) {
+          if (hasDataUiUuid(node)) {
+            hasUiContext = true;
+          }
         }
       },
       
       'JSXOpeningElement:exit'(node) {
-        const componentName = node.name.name;
-        if (componentName && componentName.startsWith('Ui')) {
-          hasUiContext = false;
+        if (node.name?.type === 'JSXIdentifier') {
+          if (node.name.name.startsWith('Ui') || (node.name.name === node.name.name.toLowerCase() && hasDataUiUuid(node))) {
+            hasUiContext = false;
+          }
         }
       },
       
@@ -839,21 +850,14 @@ const noDecorativeWithText = {
       if (!opening || opening.name?.type !== 'JSXIdentifier') {
         return false;
       }
-      const uiAttr = opening.attributes?.find(
-        (attr) => attr.type === 'JSXAttribute' && attr.name?.name === 'ui'
+      const uuidAttr = opening.attributes?.find(
+        (attr) => attr.type === 'JSXAttribute' && attr.name?.name === 'data-ui-uuid'
       );
-      if (!uiAttr?.value) {
+      if (!uuidAttr?.value || uuidAttr.value.type !== 'JSXExpressionContainer') {
         return false;
       }
-      const expr = uiAttr.value;
-      if (expr.type === 'JSXExpressionContainer' && expr.expression) {
-        const source = context.sourceCode.getText(expr.expression);
-        return /DECORATIVE\.[A-Z_]+/.test(source) || /common\.decorative\./.test(source);
-      }
-      if (expr.type === 'Literal' && typeof expr.value === 'string') {
-        return expr.value.includes('common.decorative.');
-      }
-      return false;
+      const source = context.sourceCode.getText(uuidAttr.value.expression);
+      return /DECORATIVE\.[A-Z_]+\.uuid/.test(source) || /common\.decorative\./.test(source);
     }
 
     return {

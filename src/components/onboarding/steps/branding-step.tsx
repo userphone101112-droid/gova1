@@ -1,8 +1,9 @@
 'use client';
-
-import { UiDiv, UiH1, UiP, UiInput, UiLabel, UiCard, UiButton, COMMON_LAYOUT, COMMON_TYPOGRAPHY, COMMON_FORMS, COMMON_COMPONENTS, ONBOARDING, useTranslation } from '@/platform/ui';
-import { useOnboardingStore } from '@/lib/onboarding/store';
 import { Image, Palette } from 'lucide-react';
+
+import { useOnboardingStore } from '@/lib/onboarding/store';
+import { ONBOARDING, useTranslation } from '@/platform/ui';
+
 
 export function BrandingStep() {
   const {
@@ -12,52 +13,44 @@ export function BrandingStep() {
   const { t } = useTranslation();
 
   return (
-    <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="w-full">
-      <UiH1 ui={ONBOARDING.BRANDING.TITLE} className="text-3xl font-bold tracking-tight mb-2">{t(ONBOARDING.BRANDING.TITLE)}</UiH1>
-      <UiP ui={ONBOARDING.BRANDING.DESCRIPTION} className="text-muted-foreground mb-8">{t(ONBOARDING.BRANDING.DESCRIPTION)}</UiP>
+    <div data-ui-uuid={ONBOARDING.SHELL.BRANDING_TITLE_CONTAINER_L16.uuid} className="w-full">
+      <h1 data-ui-uuid={ONBOARDING.BRANDING.TITLE.uuid} className="text-3xl font-bold tracking-tight mb-2">{t(ONBOARDING.BRANDING.TITLE)}</h1>
+      <p data-ui-uuid={ONBOARDING.BRANDING.DESCRIPTION.uuid} className="text-muted-foreground mb-8">{t(ONBOARDING.BRANDING.DESCRIPTION)}</p>
 
-      <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="space-y-6 max-w-4xl mx-auto">
-        <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="space-y-2">
-          <UiLabel ui={COMMON_FORMS.LABEL}>{t(ONBOARDING.BRANDING.STORE_TAGLINE_LABEL)}</UiLabel>
-          <UiInput
-            ui={COMMON_FORMS.INPUT}
-            placeholder={t(ONBOARDING.BRANDING.STORE_TAGLINE_PLACEHOLDER)}
-            value={branding.storeTagline || ''}
-            onChange={(e) => updateBranding({ storeTagline: e.target.value })}
-          />
-        </UiDiv>
+      <div data-ui-uuid={ONBOARDING.SHELL.BRANDING_STORE_TAGLINE_LABEL_CONTAINER_L20.uuid} className="space-y-6 max-w-4xl mx-auto">
+        <div data-ui-uuid={ONBOARDING.SHELL.BRANDING_STORE_TAGLINE_LABEL_CONTAINER_L21.uuid} className="space-y-2">
+          <span data-ui-uuid={ONBOARDING.BRANDING.STORE_TAGLINE_LABEL.uuid}>{t(ONBOARDING.BRANDING.STORE_TAGLINE_LABEL)}</span>
+          <input data-ui-uuid={ONBOARDING.BRANDING.TAGLINE_INPUT.uuid} placeholder={t(ONBOARDING.BRANDING.STORE_TAGLINE_PLACEHOLDER)} value={branding.storeTagline || ''} onChange={(e) => updateBranding({ storeTagline: e.target.value })} />
+        </div>
 
-        <UiCard ui={COMMON_COMPONENTS.CARD.CONTAINER} className="p-6">
-          <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="flex items-start gap-4">
-            <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="rounded-full bg-primary/10 p-3">
+        <div data-ui-uuid={ONBOARDING.BRANDING.LOGO_CARD.uuid} className="p-6">
+          <div data-ui-uuid={ONBOARDING.SHELL.BRANDING_LOGO_LABEL_CONTAINER_L27.uuid} className="flex items-start gap-4">
+            <div data-ui-uuid={ONBOARDING.SHELL.BRANDING_LOGO_LABEL_CONTAINER_L28.uuid} className="rounded-full bg-primary/10 p-3">
               <Image className="h-6 w-6 text-primary" />
-            </UiDiv>
-            <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="flex-1">
-              <UiLabel ui={COMMON_TYPOGRAPHY.P} className="font-medium">{t(ONBOARDING.BRANDING.LOGO_LABEL)}</UiLabel>
-              <UiLabel ui={COMMON_TYPOGRAPHY.P} className="text-sm text-muted-foreground">{t(ONBOARDING.BRANDING.LOGO_SUBTITLE)}</UiLabel>
-            </UiDiv>
-            <UiButton
-              ui={COMMON_FORMS.BUTTON}
-              variant="ghost"
-            >
+            </div>
+            <div data-ui-uuid={ONBOARDING.SHELL.BRANDING_LOGO_LABEL_CONTAINER_L31.uuid} className="flex-1">
+              <span data-ui-uuid={ONBOARDING.BRANDING.LOGO_LABEL.uuid} className="font-medium">{t(ONBOARDING.BRANDING.LOGO_LABEL)}</span>
+              <span data-ui-uuid={ONBOARDING.BRANDING.LOGO_SUBTITLE.uuid} className="text-sm text-muted-foreground">{t(ONBOARDING.BRANDING.LOGO_SUBTITLE)}</span>
+            </div>
+            <button data-ui-uuid={ONBOARDING.BRANDING.LOGO_BUTTON.uuid}>
               {t(ONBOARDING.BRANDING.UPLOAD_BUTTON)}
-            </UiButton>
-          </UiDiv>
-        </UiCard>
+            </button>
+          </div>
+        </div>
 
-        <UiCard ui={COMMON_COMPONENTS.CARD.CONTAINER} className="p-6">
-          <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="flex items-start gap-4">
-            <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="rounded-full bg-primary/10 p-3">
+        <div data-ui-uuid={ONBOARDING.BRANDING.COLOR_CARD.uuid} className="p-6">
+          <div data-ui-uuid={ONBOARDING.SHELL.BRANDING_PRIMARY_COLOR_LABEL_CONTAINER_L42.uuid} className="flex items-start gap-4">
+            <div data-ui-uuid={ONBOARDING.SHELL.BRANDING_PRIMARY_COLOR_LABEL_CONTAINER_L43.uuid} className="rounded-full bg-primary/10 p-3">
               <Palette className="h-6 w-6 text-primary" />
-            </UiDiv>
-            <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="flex-1">
-              <UiLabel ui={COMMON_TYPOGRAPHY.P} className="font-medium">{t(ONBOARDING.BRANDING.PRIMARY_COLOR_LABEL)}</UiLabel>
-              <UiLabel ui={COMMON_TYPOGRAPHY.P} className="text-sm text-muted-foreground">{t(ONBOARDING.BRANDING.PRIMARY_COLOR_SUBTITLE)}</UiLabel>
-            </UiDiv>
-            <UiDiv ui={COMMON_LAYOUT.CONTAINER} className="w-10 h-10 rounded-full bg-primary" />
-          </UiDiv>
-        </UiCard>
-      </UiDiv>
-    </UiDiv>
+            </div>
+            <div data-ui-uuid={ONBOARDING.SHELL.BRANDING_PRIMARY_COLOR_LABEL_CONTAINER_L46.uuid} className="flex-1">
+              <span data-ui-uuid={ONBOARDING.BRANDING.PRIMARY_COLOR_LABEL.uuid} className="font-medium">{t(ONBOARDING.BRANDING.PRIMARY_COLOR_LABEL)}</span>
+              <span data-ui-uuid={ONBOARDING.BRANDING.PRIMARY_COLOR_SUBTITLE.uuid} className="text-sm text-muted-foreground">{t(ONBOARDING.BRANDING.PRIMARY_COLOR_SUBTITLE)}</span>
+            </div>
+            <div data-ui-uuid={ONBOARDING.SHELL.BRANDING_PRIMARY_COLOR_LABEL_CONTAINER_L50.uuid} className="w-10 h-10 rounded-full bg-primary" />
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }

@@ -1,10 +1,11 @@
 'use client';
-
-import { useTranslation, type TranslationKey } from '@/platform/ui';
 import { Store, ChevronLeft, ChevronRight } from 'lucide-react';
-import { UiButton, UiImage, UiLabel, UiHeader, UiDiv, UiSection } from '@/platform/ui';
-import { HOME } from '@/platform/ui';
-import { COMMON_LAYOUT } from '@/platform/ui/registry/categories';
+import Image from 'next/image';
+
+import { useTranslation, type TranslationKey, HOME } from '@/platform/ui';
+
+
+
 
 const CATEGORIES: Array<{
   id: string;
@@ -25,63 +26,34 @@ export function CategoriesGrid() {
   const { t, locale } = useTranslation();
 
   return (
-    <UiSection ui={COMMON_LAYOUT.SECTION} id="categories-section" className="reveal active">
-      <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="flex justify-between items-end mb-4">
-        <UiDiv ui={COMMON_LAYOUT.WRAPPER}
-          className="flex items-center gap-2 px-4 py-2 rounded-full border shadow-sm bg-primary-container/10 border-primary/30"
-        >
+    <section data-ui-uuid={HOME.CATEGORIES_GRID.SECTION.uuid} id="categories-section" className="reveal active">
+      <div data-ui-uuid={HOME.SHELL.CATEGORIES_GRID_SECTION_TITLE_WRAPPER_L29.uuid} className="flex justify-between items-end mb-4">
+        <div data-ui-uuid={HOME.SHELL.CATEGORIES_GRID_SECTION_TITLE_WRAPPER_L30.uuid} className="flex items-center gap-2 px-4 py-2 rounded-full border shadow-sm bg-primary-container/10 border-primary/30">
           <Store className="w-5 h-5 text-primary" />
-          <UiHeader
-            ui={HOME.CATEGORIES_GRID.SECTION_TITLE}
-            level={3}
-            className="font-semibold text-primary text-xl font-semibold"
-          >
+          <h3 data-ui-uuid={HOME.CATEGORIES_GRID.SECTION_TITLE.uuid} className="font-semibold text-primary text-xl font-semibold">
             {t(HOME.CATEGORIES_GRID.SECTION_TITLE)}
-          </UiHeader>
-        </UiDiv>
-        <UiButton
-          ui={HOME.CATEGORIES_GRID.TOGGLE}
-          id="view-all-categories"
-          variant="outline"
-          className="flex items-center gap-1 px-4 py-1.5 rounded-full text-xs font-semibold transition-colors active:bg-surface-container"
-          onClick={() => {
-            window.location.href = '/categories';
-          }}
-        >
-          <span>{t(HOME.CATEGORIES_GRID.TOGGLE)}</span>
+          </h3>
+        </div>
+        <button data-ui-uuid={HOME.CATEGORIES_GRID.TOGGLE.uuid} id="view-all-categories" className="flex items-center gap-1 px-4 py-1.5 rounded-full text-xs font-semibold transition-colors active:bg-surface-container" onClick={() => {
+        window.location.href = '/categories';
+    }}>
+          <span data-ui-uuid={HOME.CATEGORIES_GRID.TOGGLE_LABEL.uuid}>{t(HOME.CATEGORIES_GRID.TOGGLE)}</span>
           {locale === 'ar' ? <ChevronLeft className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}
-        </UiButton>
-      </UiDiv>
+        </button>
+      </div>
 
-      <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-4 sm:gap-6 pb-2">
+      <div data-ui-uuid={HOME.SHELL.NAMEKEY_WRAPPER_L44.uuid} className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-4 sm:gap-6 pb-2">
         {CATEGORIES.map((cat) => (
-          <UiButton
-            ui={HOME.CATEGORIES_GRID.ITEM}
-            key={cat.id}
-            id={`category-${cat.id}`}
-            className="flex flex-col items-center gap-2 group"
-            aria-label={t(cat.nameKey)}
-          >
-            <UiDiv ui={COMMON_LAYOUT.WRAPPER}
-              className="rounded-full overflow-hidden border-2 border-transparent group-active:border-primary transition-all w-full aspect-square relative bg-surface-container"
-            >
-              <UiImage
-                ui={HOME.CATEGORIES_GRID.CATEGORY_IMAGE}
-                src={cat.imgSrc}
-                alt={t(cat.nameKey)}
-                fill
-                className="object-cover"
-              />
-            </UiDiv>
-            <UiLabel
-              ui={HOME.CATEGORIES_GRID.CATEGORY_NAME}
-              className="text-center text-xs font-semibold leading-4 text-on-surface-variant"
-            >
+          <button data-ui-uuid={HOME.CATEGORIES_GRID.ITEM.uuid} key={cat.id} id={`category-${cat.id}`} className="flex flex-col items-center gap-2 group" aria-label={t(cat.nameKey)}>
+            <div data-ui-uuid={HOME.SHELL.NAMEKEY_WRAPPER_L47.uuid} className="rounded-full overflow-hidden border-2 border-transparent group-active:border-primary transition-all w-full aspect-square relative bg-surface-container">
+              <Image data-ui-uuid={HOME.CATEGORIES_GRID.CATEGORY_IMAGE.uuid} src={cat.imgSrc} alt={t(cat.nameKey)} fill className="object-cover" />
+            </div>
+            <span data-ui-uuid={HOME.CATEGORIES_GRID.CATEGORY_NAME.uuid} className="text-center text-xs font-semibold leading-4 text-on-surface-variant">
               {t(cat.nameKey)}
-            </UiLabel>
-          </UiButton>
+            </span>
+          </button>
         ))}
-      </UiDiv>
-    </UiSection>
+      </div>
+    </section>
   );
 }

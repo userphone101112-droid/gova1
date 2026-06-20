@@ -1,7 +1,9 @@
 import { readFileSync, readdirSync, existsSync } from 'fs';
 import { join } from 'path';
-import { scanSourceUsage } from './usage-scanner';
+
 import { isCategoryUiPath } from '../../i18n/binding/registry-binding';
+
+import { scanSourceUsage } from './usage-scanner';
 
 interface OrphanReport {
   orphanTranslations: Array<{

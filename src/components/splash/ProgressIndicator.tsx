@@ -1,9 +1,8 @@
 'use client';
-
 import { useEffect, useState } from 'react';
-import { useTranslation, type TranslationKey } from '@/platform/ui';
-import { UiDiv, UiSpan } from '@/platform/ui';
-import { COMMON_LAYOUT } from '@/platform/ui/registry/categories';
+
+import { useTranslation, type TranslationKey, SPLASH } from '@/platform/ui';
+
 
 interface ProgressIndicatorProps {
   progress: number;
@@ -30,29 +29,23 @@ export default function ProgressIndicator({ progress, status }: ProgressIndicato
   }, []);
 
   return (
-    <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="w-full max-w-xs flex flex-col items-center z-10 px-4">
-      <UiDiv ui={COMMON_LAYOUT.CONTAINER}
-        className="h-8 text-xs font-semibold text-secondary text-center px-4 transition-all duration-500 ease-in-out"
-        style={{ color: 'var(--gova-secondary)' }}
-      >
+    <div data-ui-uuid={SPLASH.SHELL.PROGRESS_INDICATOR_L32.uuid} className="w-full max-w-xs flex flex-col items-center z-10 px-4">
+      <div data-ui-uuid={SPLASH.SHELL.PROGRESS_INDICATOR_L33.uuid} className="h-8 text-xs font-semibold text-secondary text-center px-4 transition-all duration-500 ease-in-out" style={{ color: 'var(--gova-secondary)' }}>
         {status || t(PROGRESS_MESSAGE_KEYS[msgIndex]!)}
-      </UiDiv>
+      </div>
 
-      <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="w-full mt-4 bg-surface-container-highest h-1 rounded-full overflow-hidden relative shadow-inner">
-        <UiDiv ui={COMMON_LAYOUT.CONTAINER}
-          className="h-full bg-primary transition-all duration-300 ease-out shadow-lg"
-          style={{ width: `${progress}%` }}
-        />
-      </UiDiv>
+      <div data-ui-uuid={SPLASH.SHELL.PROGRESS_INDICATOR_L37.uuid} className="w-full mt-4 bg-surface-container-highest h-1 rounded-full overflow-hidden relative shadow-inner">
+        <div data-ui-uuid={SPLASH.SHELL.PROGRESS_INDICATOR_L38.uuid} className="h-full bg-primary transition-all duration-300 ease-out shadow-lg" style={{ width: `${progress}%` }} />
+      </div>
 
-      <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="flex items-center gap-1.5 mt-2">
-        <UiSpan ui={COMMON_LAYOUT.SPAN} className="text-xs font-semibold text-on-surface-variant">
+      <div data-ui-uuid={SPLASH.SHELL.PROGRESS_INDICATOR_L41.uuid} className="flex items-center gap-1.5 mt-2">
+        <span data-ui-uuid={SPLASH.SHELL.PROGRESS_INDICATOR_L42.uuid} className="text-xs font-semibold text-on-surface-variant">
           {t('splash.loading')}
-        </UiSpan>
-        <UiSpan ui={COMMON_LAYOUT.SPAN} className="text-xs font-semibold text-primary">
+        </span>
+        <span data-ui-uuid={SPLASH.SHELL.PROGRESS_INDICATOR_L45.uuid} className="text-xs font-semibold text-primary">
           {progress}%
-        </UiSpan>
-      </UiDiv>
-    </UiDiv>
+        </span>
+      </div>
+    </div>
   );
 }

@@ -30,7 +30,12 @@
       "categorySports": "Sports & Outdoors",
       "categoryOther": "Other",
       "storeDescription": "Store Description",
-      "storeDescriptionPlaceholder": "Tell your customers about your store..."
+      "storeDescriptionPlaceholder": "Tell your customers about your store...",
+      "storeDescriptionTextarea": "Store description textarea",
+      "categoryOption": "Category option",
+      "storeCategorySelect": "Store category select",
+      "storeUrlInput": "Store URL input",
+      "storeNameInput": "Store name input"
     },
     "business-details": {
       "title": "Business Details",
@@ -49,7 +54,14 @@
       "yearFounded": "Year Founded",
       "yearFoundedPlaceholder": "2024",
       "employeeCount": "Number of Employees",
-      "employeeCountPlaceholder": "Select range"
+      "employeeCountPlaceholder": "Select range",
+      "employeeCountOption": "Employee count option",
+      "employeeCountSelect": "Employee count select",
+      "yearFoundedInput": "Year founded input",
+      "registrationNumberInput": "Registration number input",
+      "businessTypeOption": "Business type option",
+      "businessTypeSelect": "Business type select",
+      "businessNameInput": "Business name input"
     },
     "identity-verification": {
       "title": "Identity Verification",
@@ -67,7 +79,16 @@
       "idNumber": "ID Number",
       "uploadId": "Upload Government ID",
       "uploadIdSubtitle": "PNG, JPG, PDF up to 10MB",
-      "chooseFile": "Choose File"
+      "chooseFile": "Choose File",
+      "uploadButton": "upload button",
+      "idNumberInput": "id number input",
+      "idTypeOption": "id type option",
+      "idTypeSelect": "id type select",
+      "phoneInput": "phone input",
+      "emailInput": "email input",
+      "dateOfBirthInput": "date of birth input",
+      "lastNameInput": "last name input",
+      "firstNameInput": "first name input"
     },
     "products": {
       "title": "Products",
@@ -77,7 +98,11 @@
       "physicalProducts": "Are you selling physical products?",
       "physicalProductsSubtitle": "Tangible goods that require shipping",
       "productCatalog": "Product catalog setup",
-      "addProductsLater": "Add Products Later"
+      "addProductsLater": "Add Products Later",
+      "addLaterButton": "Add later button",
+      "catalogText": "Catalog text",
+      "physicalCheckbox": "Physical checkbox",
+      "digitalCheckbox": "Digital checkbox"
     },
     "shipping": {
       "title": "Shipping",
@@ -90,7 +115,12 @@
       "postalCodePlaceholder": "Postal Code",
       "address": "Address",
       "addressPlaceholder": "Shipping address",
-      "offerFreeShipping": "Offer free shipping"
+      "offerFreeShipping": "Offer free shipping",
+      "freeShippingCheckbox": "Free shipping checkbox",
+      "addressTextarea": "Address textarea",
+      "postalCodeInput": "Postal code input",
+      "cityInput": "City input",
+      "countryInput": "Country input"
     },
     "payments": {
       "title": "Payments",
@@ -105,7 +135,11 @@
       "currencyEur": "EUR (€)",
       "currencyGbp": "GBP (£)",
       "currencyCad": "CAD ($)",
-      "currencyAud": "AUD ($)"
+      "currencyAud": "AUD ($)",
+      "currencyOption": "Currency option",
+      "currencySelect": "Currency select",
+      "methodLabel": "Payment method label",
+      "methodCheckbox": "Payment method checkbox"
     },
     "policies": {
       "title": "Policies",
@@ -117,7 +151,11 @@
       "privacyPolicy": "Privacy Policy",
       "privacyPolicyPlaceholder": "Describe your privacy policy...",
       "termsOfService": "Terms of Service",
-      "termsOfServicePlaceholder": "Describe your terms of service..."
+      "termsOfServicePlaceholder": "Describe your terms of service...",
+      "termsTextarea": "Terms textarea",
+      "privacyPolicyTextarea": "Privacy policy textarea",
+      "refundPolicyTextarea": "Refund policy textarea",
+      "returnPolicyTextarea": "Return policy textarea"
     },
     "branding": {
       "title": "Branding",
@@ -128,7 +166,9 @@
       "logoSubtitle": "Upload your store logo",
       "primaryColor": "Primary Color",
       "primaryColorSubtitle": "Choose your store's main color",
-      "upload": "Upload"
+      "upload": "Upload",
+      "logoButton": "logo button",
+      "taglineInput": "tagline input"
     },
     "preferences": {
       "title": "Preferences",
@@ -144,13 +184,18 @@
       "timezoneMt": "Mountain Time (MT)",
       "timezonePt": "Pacific Time (PT)",
       "timezoneGmt": "London (GMT)",
-      "timezoneCet": "Paris (CET)"
+      "timezoneCet": "Paris (CET)",
+      "notificationOptionLabel": "Notification option label",
+      "notificationCheckbox": "Notification checkbox",
+      "timezoneOption": "Timezone option",
+      "timezoneSelect": "Timezone select"
     },
     "tax-info": {
       "title": "Tax Information",
       "description": "Tax details for your store",
       "taxId": "Tax ID/VAT Number",
-      "taxIdPlaceholder": "Tax identification number"
+      "taxIdPlaceholder": "Tax identification number",
+      "taxIdInput": "Tax ID input"
     },
     "marketing": {
       "title": "Marketing",
@@ -160,7 +205,10 @@
       "socialSharing": "Social Sharing",
       "socialSharingSubtitle": "Add social share buttons to products",
       "productReviews": "Product Reviews",
-      "productReviewsSubtitle": "Allow customers to leave reviews"
+      "productReviewsSubtitle": "Allow customers to leave reviews",
+      "reviewsCheckbox": "Reviews checkbox",
+      "socialCheckbox": "Social checkbox",
+      "emailCheckbox": "Email checkbox"
     },
     "completion": {
       "title": "You're All Set! 🎉",

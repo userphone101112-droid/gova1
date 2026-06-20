@@ -1,10 +1,10 @@
-import { useI18nContext } from './provider';
-import { t as translateKey } from './t';
 import { validateTranslationKey } from './enforceBoundary';
+import { useI18nContext } from './provider';
 import {
   resolveTranslationKey,
   type TranslationSource,
 } from './resolveTranslationSource';
+import { t as translateKey } from './t';
 
 export type TranslateFn = (source: TranslationSource, fallback?: string) => string;
 

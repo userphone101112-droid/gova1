@@ -1,9 +1,9 @@
 'use client';
-
-import { useTranslation, type TranslationKey } from '@/platform/ui';
 import { Sparkles } from 'lucide-react';
-import { UiDiv, UiSection, UiHeader, UiImage, UiP } from '@/platform/ui';
-import { COMMON_LAYOUT } from '@/platform/ui/registry/categories';
+import Image from 'next/image';
+
+import { useTranslation, type TranslationKey, HOME } from '@/platform/ui';
+
 
 const FEATURED: Array<{
   id: string;
@@ -49,80 +49,50 @@ export function FeaturedMarquee() {
   const items = [...FEATURED, ...FEATURED];
 
   return (
-    <UiSection ui={COMMON_LAYOUT.SECTION} id="featured-marquee-section" className="space-y-3 overflow-hidden reveal active">
+    <section data-ui-uuid={HOME.FEATURED_MARQUEE.SECTION.uuid} id="featured-marquee-section" className="space-y-3 overflow-hidden reveal active">
       {/* Section Header */}
-      <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="flex justify-between items-center">
-        <UiDiv ui={COMMON_LAYOUT.WRAPPER}
-          className="flex items-center gap-2 px-4 py-2 rounded-full border shadow-sm"
-          style={{
-            background: 'var(--gova-warning-container)',
-            borderColor: 'var(--gova-warning)',
-          }}
-        >
+      <div data-ui-uuid={HOME.SHELL.TITLEKEY_WRAPPER_L54.uuid} className="flex justify-between items-center">
+        <div data-ui-uuid={HOME.SHELL.TITLEKEY_WRAPPER_L55.uuid} className="flex items-center gap-2 px-4 py-2 rounded-full border shadow-sm" style={{
+        background: 'var(--gova-warning-container)',
+        borderColor: 'var(--gova-warning)',
+    }}>
           <Sparkles
             className="animate-pulse-gova"
             style={{ color: 'var(--gova-warning)', width: '20px', height: '20px' }}
           />
-          <UiHeader ui={COMMON_LAYOUT.HEADER}
-            level={3}
-            className="font-bold"
-            style={{
-              color: 'var(--gova-on-surface)',
-              fontSize: '20px',
-              lineHeight: '28px',
-              fontWeight: '600',
-            }}
-          >
+          <h3 data-ui-uuid={HOME.FEATURED_MARQUEE.HEADER.uuid} className="font-bold" style={{
+        color: 'var(--gova-on-surface)',
+        fontSize: '20px',
+        lineHeight: '28px',
+        fontWeight: '600',
+    }}>
             {t('home.featured.title')}
-          </UiHeader>
-        </UiDiv>
-      </UiDiv>
+          </h3>
+        </div>
+      </div>
 
       {/* Marquee strip */}
-      <UiDiv ui={COMMON_LAYOUT.WRAPPER}
-        className="relative flex overflow-hidden py-4 border-y"
-        style={{
-          background: 'var(--gova-surface-container-low)',
-          borderColor: 'var(--gova-outline-variant)',
-        }}
-      >
-        <UiDiv ui={COMMON_LAYOUT.WRAPPER} className="flex gap-4 animate-marquee-cards whitespace-nowrap pr-4">
+      <div data-ui-uuid={HOME.SHELL.TITLEKEY_WRAPPER_L75.uuid} className="relative flex overflow-hidden py-4 border-y" style={{
+        background: 'var(--gova-surface-container-low)',
+        borderColor: 'var(--gova-outline-variant)',
+    }}>
+        <div data-ui-uuid={HOME.SHELL.TITLEKEY_WRAPPER_L79.uuid} className="flex gap-4 animate-marquee-cards whitespace-nowrap pr-4">
           {items.map((item, idx) => (
-            <UiDiv
-              key={`${item.id}-${idx}`}
-              ui={COMMON_LAYOUT.CONTAINER}
-              className="flex-none w-40 rounded-xl p-2 shadow-sm border"
-              style={{
-                background: 'var(--gova-surface-container-lowest)',
-                borderColor: 'var(--gova-outline-variant)',
-              }}
-            >
-              <UiImage
-                ui={COMMON_LAYOUT.CONTAINER}
-                src={item.imgSrc}
-                alt={t(item.titleKey)}
-                width={160}
-                height={160}
-                className="w-full aspect-square object-cover rounded-lg mb-2"
-              />
-              <UiP
-                ui={COMMON_LAYOUT.CONTAINER}
-                className="truncate font-bold"
-                style={{ fontSize: '12px', fontWeight: '600', color: 'var(--gova-on-surface)' }}
-              >
+            <div data-ui-uuid={HOME.SHELL.TITLEKEY_CONTAINER_L81.uuid} key={`${item.id}-${idx}`} className="flex-none w-40 rounded-xl p-2 shadow-sm border" style={{
+        background: 'var(--gova-surface-container-lowest)',
+        borderColor: 'var(--gova-outline-variant)',
+    }}>
+              <Image data-ui-uuid={HOME.SHELL.TITLEKEY_CONTAINER_L85.uuid} src={item.imgSrc} alt={t(item.titleKey)} width={160} height={160} className="w-full aspect-square object-cover rounded-lg mb-2" />
+              <p data-ui-uuid={HOME.SHELL.TITLEKEY_CONTAINER_L86.uuid} className="truncate font-bold" style={{ fontSize: '12px', fontWeight: '600', color: 'var(--gova-on-surface)' }}>
                 {t(item.titleKey)}
-              </UiP>
-              <UiP
-                ui={COMMON_LAYOUT.CONTAINER}
-                className="font-bold"
-                style={{ fontSize: '12px', fontWeight: '700', color: 'var(--gova-primary)' }}
-              >
+              </p>
+              <p data-ui-uuid={HOME.SHELL.TITLEKEY_CONTAINER_L89.uuid} className="font-bold" style={{ fontSize: '12px', fontWeight: '700', color: 'var(--gova-primary)' }}>
                 {item.price}
-              </UiP>
-            </UiDiv>
+              </p>
+            </div>
           ))}
-        </UiDiv>
-      </UiDiv>
-    </UiSection>
+        </div>
+      </div>
+    </section>
   );
 }
