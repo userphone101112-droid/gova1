@@ -49,7 +49,6 @@ export type DatabaseConnectionDetails = {
 export type StorageConnectionDetails = {
   bindingId: string;
   storageMainFile: string;
-  storageSubFile: string;
   enabled: boolean;
   confidence: ElementBinding['confidence'];
   reason?: string;
@@ -85,7 +84,6 @@ export type DatabaseRenameMap = {
 
 export type StorageRenameMap = {
   mainFile?: { oldName: string; newName: string };
-  subFile?: { folderName: string; oldName: string; newName: string };
 };
 
 export type DatabaseSelectionInput = {
@@ -99,7 +97,6 @@ export type DatabaseSelectionInput = {
 
 export type StorageSelectionInput = {
   storageMainFile: string;
-  storageSubFile?: string;
   enabled?: boolean;
   confidence?: ElementBinding['confidence'];
   reason?: string;
@@ -143,7 +140,6 @@ export type DatabaseColumnRef = {
 
 export type StorageLocationRef = {
   storageMainFile: string;
-  storageSubFile?: string;
 };
 
 export type PageBoundElement = {

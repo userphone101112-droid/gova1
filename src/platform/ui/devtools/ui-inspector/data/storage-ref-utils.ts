@@ -88,6 +88,12 @@ function normalizeFolder(raw: unknown): StorageFolder {
   if (accessLevel) folder.accessLevel = accessLevel;
   const retention = enumValue<RetentionPolicy>(source.retention, RETENTION_OPTIONS);
   if (retention) folder.retention = retention;
+  const linkedDatabaseName = optionalString(source.linkedDatabaseName);
+  if (linkedDatabaseName) folder.linkedDatabaseName = linkedDatabaseName;
+  const linkedTableName = optionalString(source.linkedTableName);
+  if (linkedTableName) folder.linkedTableName = linkedTableName;
+  const linkedColumnName = optionalString(source.linkedColumnName);
+  if (linkedColumnName) folder.linkedColumnName = linkedColumnName;
   return folder;
 }
 

@@ -137,16 +137,13 @@ export function listColumnForeignKeys(databaseRef: DatabaseRefFile): SchemaRelat
   return relationships;
 }
 
-export function linkStorageSubFileToDatabaseColumn(
+export function linkStorageMainFileToDatabaseColumn(
   storageRef: StorageRefFile,
   location: StorageLocationRef,
   anchor: DatabaseColumnRef,
   databaseRef: DatabaseRefFile
 ): StorageRefFile {
   assertColumnExists(databaseRef, anchor);
-  if (!location.storageSubFile) {
-    throw createDomainError('INVALID_BINDING', 'Storage anchor requires a sub file (storageSubFile).');
-  }
   const folder = findStorageFolder(storageRef, location.storageMainFile);
   if (!folder) throw createDomainError('NOT_FOUND', `Storage main file "${location.storageMainFile}" not found.`);
 
@@ -156,62 +153,42 @@ export function linkStorageSubFileToDatabaseColumn(
         ? entry
         : {
             ...entry,
-            subfolders: entry.subfolders.map((sub) =>
-              sub.name !== location.storageSubFile
-                ? sub
-                : {
-                    ...sub,
-                    linkedDatabaseName: anchor.databaseName,
-                    linkedTableName: anchor.tableName,
-                    linkedColumnName: anchor.columnName,
-                  }
-            ),
+            linkedDatabaseName: anchor.databaseName,
+            linkedTableName: anchor.tableName,
+            linkedColumnName: anchor.columnName,
           }
     ),
   };
 }
 
-export function unlinkStorageSubFileFromDatabaseColumn(
+export function unlinkStorageMainFileFromDatabaseColumn(
   storageRef: StorageRefFile,
   location: StorageLocationRef
 ): StorageRefFile {
-  if (!location.storageSubFile) return storageRef;
   return {
-    folders: storageRef.folders.map((entry) =>
-      entry.name !== location.storageMainFile
-        ? entry
-        : {
-            ...entry,
-            subfolders: entry.subfolders.map((sub) =>
-              sub.name !== location.storageSubFile
-                ? sub
-                : (() => {
-                    const { linkedDatabaseName: _a, linkedTableName: _b, linkedColumnName: _c, ...rest } = sub;
-                    return rest;
-                  })()
-            ),
-          }
-    ),
+    folders: storageRef.folders.map((entry) => {
+      if (entry.name !== location.storageMainFile) return entry;
+      const { linkedDatabaseName: _a, linkedTableName: _b, linkedColumnName: _c, ...rest } = entry;
+      return rest;
+    }),
   };
 }
 
 export function listStorageColumnAnchors(storageRef: StorageRefFile): SchemaRelationship[] {
   const relationships: SchemaRelationship[] = [];
   for (const folder of storageRef.folders) {
-    for (const sub of folder.subfolders) {
-      if (!hasStorageColumnAnchor(sub)) continue;
-      relationships.push({
-        id: `storage-anchor:${folder.name}/${sub.name}`,
-        kind: 'storage_backed_by_column',
-        storageLocation: { storageMainFile: folder.name, storageSubFile: sub.name },
-        anchoredDatabaseColumn: {
-          databaseName: sub.linkedDatabaseName!,
-          tableName: sub.linkedTableName!,
-          columnName: sub.linkedColumnName!,
-        },
-        reason: 'Storage sub file anchored to database column.',
-      });
-    }
+    if (!hasStorageColumnAnchor(folder)) continue;
+    relationships.push({
+      id: `storage-anchor:${folder.name}`,
+      kind: 'storage_backed_by_column',
+      storageLocation: { storageMainFile: folder.name },
+      anchoredDatabaseColumn: {
+        databaseName: folder.linkedDatabaseName!,
+        tableName: folder.linkedTableName!,
+        columnName: folder.linkedColumnName!,
+      },
+      reason: 'Storage main file anchored to database column.',
+    });
   }
   return relationships;
 }
@@ -258,15 +235,14 @@ export function listSchemaRelationships(
       for (const binding of resolveEntryBindings(entry, { databases: [] })) {
         if (!binding.enabled || binding.kind !== 'storage') continue;
         const main = binding.storageMainFile ?? '';
-        const sub = binding.storageSubFile ?? '';
         if (!main) continue;
-        const shared = getElementsSharingStorage(inspectorData, main, sub || undefined);
+        const shared = getElementsSharingStorage(inspectorData, main);
         if (shared.length > 1) {
           relationships.push({
-            id: `shared-storage:${storageLocationKey({ storageMainFile: main, storageSubFile: sub })}`,
+            id: `shared-storage:${storageLocationKey({ storageMainFile: main })}`,
             kind: 'shared_storage_location',
-            storageLocation: sub ? { storageMainFile: main, storageSubFile: sub } : { storageMainFile: main },
-            reason: `${shared.length} elements share storage ${main}${sub ? `/${sub}` : ''}.`,
+            storageLocation: { storageMainFile: main },
+            reason: `${shared.length} elements share storage ${main}.`,
           });
         }
       }

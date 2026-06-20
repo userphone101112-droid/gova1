@@ -1,17 +1,17 @@
 import { describe, expect, it } from '@jest/globals';
 
+import type { InspectElementSnapshot } from '../../../UiInspectorFrameBridge';
 import { createDatabaseBinding } from '../../data/element-binding-utils';
 import { buildInspectorDataEntry, emptyFormState } from '../../data/inspector-config-storage';
 import type { StorageRefFile } from '../../data/storage-ref.types';
-import type { InspectElementSnapshot } from '../../../UiInspectorFrameBridge';
-import { createStorageSubFile } from '../storage-domain';
 import {
   isLegacyStorageLocation,
   listLegacyReadonlyStorageLocations,
   validateNewStorageBinding,
   validateStorageRefGovernance,
 } from '../governance-domain';
-import { linkStorageSubFileToDatabaseColumn } from '../schema-relationship-domain';
+import { linkStorageMainFileToDatabaseColumn } from '../schema-relationship-domain';
+import { createStorageMainFile } from '../storage-domain';
 
 function dbRef() {
   return {
@@ -45,38 +45,38 @@ function mockSnapshot(): InspectElementSnapshot {
 
 describe('governance-domain', () => {
   it('marks legacy storage without anchor as readonly', () => {
-    const storageRef = {
-      folders: [{ name: 'Projects', subfolders: [{ name: 'Legacy' }] }],
+    const storageRef: StorageRefFile = {
+      folders: [{ name: 'Projects', subfolders: [] }],
     };
-    expect(isLegacyStorageLocation(storageRef, { storageMainFile: 'Projects', storageSubFile: 'Legacy' })).toBe(
-      true
-    );
+    expect(isLegacyStorageLocation(storageRef, { storageMainFile: 'Projects' })).toBe(true);
     expect(listLegacyReadonlyStorageLocations(storageRef)).toHaveLength(1);
   });
 
-  it('blocks new storage sub file without database column anchor', () => {
-    let storageRef = emptyStorageRefFile();
-    storageRef = { folders: [{ name: 'Projects', subfolders: [] }] };
+  it('blocks new storage main file without database column anchor', () => {
+    const storageRef: StorageRefFile = { folders: [] };
     expect(() =>
-      createStorageSubFile(storageRef, 'Projects', {
-        name: 'NewDocs',
-        linkedDatabaseColumn: { databaseName: '', tableName: '', columnName: '' },
-      }, dbRef())
+      createStorageMainFile(
+        storageRef,
+        {
+          name: 'Projects',
+          linkedDatabaseColumn: { databaseName: '', tableName: '', columnName: '' },
+        },
+        dbRef()
+      )
     ).toThrow();
   });
 
-  it('allows new storage sub file with valid anchor', () => {
-    const storageRef: StorageRefFile = { folders: [{ name: 'Projects', subfolders: [] }] };
-    const next = createStorageSubFile(
+  it('allows new storage main file with valid anchor', () => {
+    const storageRef: StorageRefFile = { folders: [] };
+    const next = createStorageMainFile(
       storageRef,
-      'Projects',
       {
         name: 'Anchored',
         linkedDatabaseColumn: { databaseName: 'db1', tableName: 'users', columnName: 'avatar_path' },
       },
       dbRef()
     );
-    expect(next.folders[0]?.subfolders[0]?.linkedColumnName).toBe('avatar_path');
+    expect(next.folders[0]?.linkedColumnName).toBe('avatar_path');
   });
 
   it('allows storage binding when element has enabled database binding', () => {
@@ -84,8 +84,8 @@ describe('governance-domain', () => {
       ...emptyFormState(),
       bindings: [createDatabaseBinding({ databaseName: 'db1', tableName: 'users', columnName: 'email' })],
     });
-    const storageRef = {
-      folders: [{ name: 'Projects', subfolders: [{ name: 'Legacy' }] }],
+    const storageRef: StorageRefFile = {
+      folders: [{ name: 'Projects', subfolders: [] }],
     };
     expect(() =>
       validateNewStorageBinding({
@@ -93,24 +93,21 @@ describe('governance-domain', () => {
         storageRef,
         databaseRef: dbRef(),
         storageMainFile: 'Projects',
-        storageSubFile: 'Legacy',
       })
     ).not.toThrow();
   });
 
   it('upgrading legacy storage via anchor removes readonly state', () => {
-    let storageRef = {
-      folders: [{ name: 'Projects', subfolders: [{ name: 'Legacy' }] }],
+    let storageRef: StorageRefFile = {
+      folders: [{ name: 'Projects', subfolders: [] }],
     };
-    storageRef = linkStorageSubFileToDatabaseColumn(
+    storageRef = linkStorageMainFileToDatabaseColumn(
       storageRef,
-      { storageMainFile: 'Projects', storageSubFile: 'Legacy' },
+      { storageMainFile: 'Projects' },
       { databaseName: 'db1', tableName: 'users', columnName: 'avatar_path' },
       dbRef()
     );
-    expect(isLegacyStorageLocation(storageRef, { storageMainFile: 'Projects', storageSubFile: 'Legacy' })).toBe(
-      false
-    );
+    expect(isLegacyStorageLocation(storageRef, { storageMainFile: 'Projects' })).toBe(false);
     const report = validateStorageRefGovernance(storageRef, dbRef());
     expect(report.legacyReadonlyStorageLocations).toHaveLength(0);
   });

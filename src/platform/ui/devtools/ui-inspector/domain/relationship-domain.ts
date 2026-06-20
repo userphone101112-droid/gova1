@@ -147,15 +147,13 @@ export function getElementsSharingDatabase(
 
 export function getElementsSharingStorage(
   inspectorData: InspectorDataMap,
-  mainFileName: string,
-  subFileName?: string
+  mainFileName: string
 ): string[] {
   const keys = new Set<string>();
   for (const entry of Object.values(inspectorData)) {
     for (const binding of resolveEntryBindings(entry, { databases: [] })) {
       if (!binding.enabled || binding.kind !== 'storage') continue;
       if ((binding.storageMainFile ?? '') !== mainFileName) continue;
-      if (subFileName && (binding.storageSubFile ?? '') !== subFileName) continue;
       keys.add(entry.dataUiIdentityKey);
     }
   }

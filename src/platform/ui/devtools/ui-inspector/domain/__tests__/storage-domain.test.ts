@@ -8,7 +8,6 @@ import { isDomainError } from '../domain-errors';
 import {
   applyStorageRenameToInspectorData,
   createStorageMainFile,
-  createStorageSubFile,
   deleteStorageMainFile,
   renameStorageMainFile,
 } from '../storage-domain';
@@ -44,18 +43,16 @@ function mockSnapshot(): InspectElementSnapshot {
 }
 
 describe('storage-domain', () => {
-  it('creates, renames, and deletes main and sub files', () => {
-    let ref = createStorageMainFile(emptyStorageRefFile(), { name: 'Projects' });
-    ref = createStorageSubFile(
-      ref,
-      'Projects',
+  it('creates, renames, and deletes main files with anchor', () => {
+    let ref = createStorageMainFile(
+      emptyStorageRefFile(),
       {
-        name: 'Images',
+        name: 'Projects',
         linkedDatabaseColumn: { databaseName: 'db1', tableName: 'users', columnName: 'avatar_path' },
       },
       dbRef()
     );
-    expect(ref.folders[0]?.subfolders[0]?.name).toBe('Images');
+    expect(ref.folders[0]?.linkedColumnName).toBe('avatar_path');
     ref = renameStorageMainFile(ref, 'Projects', 'Assets');
     expect(ref.folders[0]?.name).toBe('Assets');
     ref = deleteStorageMainFile(ref, 'Assets');
@@ -63,10 +60,33 @@ describe('storage-domain', () => {
   });
 
   it('throws DUPLICATE_NAME for duplicate main file', () => {
-    const ref = createStorageMainFile(emptyStorageRefFile(), { name: 'Projects' });
-    expect(() => createStorageMainFile(ref, { name: 'Projects' })).toThrow();
+    const ref = createStorageMainFile(
+      emptyStorageRefFile(),
+      {
+        name: 'Projects',
+        linkedDatabaseColumn: { databaseName: 'db1', tableName: 'users', columnName: 'avatar_path' },
+      },
+      dbRef()
+    );
+    expect(() =>
+      createStorageMainFile(
+        ref,
+        {
+          name: 'Projects',
+          linkedDatabaseColumn: { databaseName: 'db1', tableName: 'users', columnName: 'avatar_path' },
+        },
+        dbRef()
+      )
+    ).toThrow();
     try {
-      createStorageMainFile(ref, { name: 'Projects' });
+      createStorageMainFile(
+        ref,
+        {
+          name: 'Projects',
+          linkedDatabaseColumn: { databaseName: 'db1', tableName: 'users', columnName: 'avatar_path' },
+        },
+        dbRef()
+      );
     } catch (error) {
       expect(isDomainError(error)).toBe(true);
       if (isDomainError(error)) expect(error.code).toBe('DUPLICATE_NAME');
@@ -77,15 +97,13 @@ describe('storage-domain', () => {
     const snapshot = mockSnapshot();
     const entry = buildInspectorDataEntry(snapshot, {
       ...emptyFormState(),
-      bindings: [createStorageBinding({ storageMainFile: 'OldMain', storageSubFile: 'OldSub' })],
+      bindings: [createStorageBinding({ storageMainFile: 'OldMain' })],
     });
     const data = { [entry.dataUiIdentityKey]: entry };
     const next = applyStorageRenameToInspectorData(data, {
       mainFile: { oldName: 'OldMain', newName: 'NewMain' },
-      subFile: { folderName: 'NewMain', oldName: 'OldSub', newName: 'NewSub' },
     });
     const remapped = next[entry.dataUiIdentityKey];
     expect(remapped?.bindings?.[0]?.storageMainFile).toBe('NewMain');
-    expect(remapped?.bindings?.[0]?.storageSubFile).toBe('NewSub');
   });
 });

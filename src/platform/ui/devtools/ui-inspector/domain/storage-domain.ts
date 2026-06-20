@@ -11,18 +11,13 @@ import {
 import type { CreateStorageBindingInput, ElementBinding } from '../data/element-binding.types';
 import type { InspectorDataEntry, InspectorDataMap } from '../data/inspector-config.types';
 import {
-  addStorageFolder,
   deleteStorageFolder,
-  deleteStorageSubfolder,
   findStorageFolder,
-  findStorageSubfolder,
   renameStorageFolder,
-  renameStorageSubfolder,
   updateStorageFolderDescription,
-  updateStorageSubfolderDescription,
   validateStorageName,
 } from '../data/storage-ref-utils';
-import type { StorageFolder, StorageRefFile, StorageSubfolder } from '../data/storage-ref.types';
+import type { StorageFolder, StorageRefFile } from '../data/storage-ref.types';
 
 import { createDomainError, mapRefErrorToDomain } from './domain-errors';
 import type { DatabaseColumnRef, StorageAnchorInput, StorageRenameMap } from './domain-types';
@@ -47,8 +42,12 @@ export function getStorageMainFile(storageRef: StorageRefFile, mainFileName: str
 
 export function createStorageMainFile(
   storageRef: StorageRefFile,
-  input: Pick<StorageFolder, 'name'> & Partial<Omit<StorageFolder, 'name' | 'subfolders'>>
+  input: Pick<StorageFolder, 'name'> &
+    Partial<Omit<StorageFolder, 'name' | 'subfolders'>> &
+    StorageAnchorInput,
+  databaseRef: DatabaseRefFile
 ): StorageRefFile {
+  assertNewStorageAnchor(input, databaseRef);
   const name = input.name.trim();
   if (findStorageFolder(storageRef, name)) {
     throw createDomainError('DUPLICATE_NAME', `Storage main file "${name}" already exists.`);
@@ -58,6 +57,9 @@ export function createStorageMainFile(
   const folder: StorageFolder = {
     name,
     subfolders: [],
+    linkedDatabaseName: input.linkedDatabaseColumn.databaseName,
+    linkedTableName: input.linkedDatabaseColumn.tableName,
+    linkedColumnName: input.linkedDatabaseColumn.columnName,
     ...(input.description ? { description: input.description } : {}),
     ...(input.entityName ? { entityName: input.entityName } : {}),
     ...(input.storageType ? { storageType: input.storageType } : {}),
@@ -73,6 +75,7 @@ export function renameStorageMainFile(
   oldName: string,
   newName: string
 ): StorageRefFile {
+  assertStorageLocationMutable(storageRef, { storageMainFile: oldName }, 'Rename');
   const result = renameStorageFolder(storageRef, oldName, newName);
   throwIfRefError(result);
   return result.file;
@@ -87,117 +90,24 @@ export function updateStorageMainFileDescription(
 }
 
 export function deleteStorageMainFile(storageRef: StorageRefFile, mainFileName: string): StorageRefFile {
+  assertStorageLocationMutable(storageRef, { storageMainFile: mainFileName }, 'Delete');
   if (!findStorageFolder(storageRef, mainFileName)) {
     throw createDomainError('NOT_FOUND', `Storage main file "${mainFileName}" not found.`);
   }
   return deleteStorageFolder(storageRef, mainFileName);
 }
 
-export function listStorageSubFiles(storageRef: StorageRefFile, mainFileName: string): StorageSubfolder[] {
-  const folder = findStorageFolder(storageRef, mainFileName);
-  if (!folder) throw createDomainError('NOT_FOUND', `Storage main file "${mainFileName}" not found.`);
-  return [...folder.subfolders];
-}
-
-export function getStorageSubFile(
+export function quickAddStorageMainFile(
   storageRef: StorageRefFile,
-  mainFileName: string,
-  subFileName: string
-): StorageSubfolder | null {
-  return findStorageSubfolder(findStorageFolder(storageRef, mainFileName), subFileName) ?? null;
-}
-
-export function createStorageSubFile(
-  storageRef: StorageRefFile,
-  mainFileName: string,
-  input: Pick<StorageSubfolder, 'name'> &
-    Partial<Omit<StorageSubfolder, 'name'>> &
-    StorageAnchorInput,
-  databaseRef: DatabaseRefFile
-): StorageRefFile {
-  assertNewStorageAnchor(input, databaseRef);
-  const folder = findStorageFolder(storageRef, mainFileName);
-  if (!folder) throw createDomainError('NOT_FOUND', `Storage main file "${mainFileName}" not found.`);
-  const name = input.name.trim();
-  const nameError = validateStorageName(name, folder.subfolders.map((sub) => sub.name));
-  if (nameError) throw mapRefErrorToDomain(nameError, 'INVALID_NAME');
-  if (findStorageSubfolder(folder, name)) {
-    throw createDomainError('DUPLICATE_NAME', `Storage sub file "${name}" already exists.`);
-  }
-  const subfolder: StorageSubfolder = {
-    ...input,
-    name,
-    linkedDatabaseName: input.linkedDatabaseColumn.databaseName,
-    linkedTableName: input.linkedDatabaseColumn.tableName,
-    linkedColumnName: input.linkedDatabaseColumn.columnName,
-  };
-  return {
-    folders: storageRef.folders.map((entry) =>
-      entry.name !== mainFileName ? entry : { ...entry, subfolders: [...entry.subfolders, subfolder] }
-    ),
-  };
-}
-
-export function renameStorageSubFile(
-  storageRef: StorageRefFile,
-  mainFileName: string,
-  oldSubFileName: string,
-  newSubFileName: string
-): StorageRefFile {
-  assertStorageLocationMutable(
-    storageRef,
-    { storageMainFile: mainFileName, storageSubFile: oldSubFileName },
-    'Rename'
-  );
-  const result = renameStorageSubfolder(storageRef, mainFileName, oldSubFileName, newSubFileName);
-  throwIfRefError(result);
-  return result.file;
-}
-
-export function updateStorageSubFileDescription(
-  storageRef: StorageRefFile,
-  mainFileName: string,
-  subFileName: string,
-  description: string
-): StorageRefFile {
-  return updateStorageSubfolderDescription(storageRef, mainFileName, subFileName, description);
-}
-
-export function deleteStorageSubFile(
-  storageRef: StorageRefFile,
-  mainFileName: string,
-  subFileName: string
-): StorageRefFile {
-  assertStorageLocationMutable(
-    storageRef,
-    { storageMainFile: mainFileName, storageSubFile: subFileName },
-    'Delete'
-  );
-  if (!findStorageSubfolder(findStorageFolder(storageRef, mainFileName), subFileName)) {
-    throw createDomainError('NOT_FOUND', `Storage sub file "${subFileName}" not found.`);
-  }
-  return deleteStorageSubfolder(storageRef, mainFileName, subFileName);
-}
-
-export function quickAddStorageMainFile(storageRef: StorageRefFile): StorageRefFile {
-  return addStorageFolder(storageRef);
-}
-
-export function quickAddStorageSubFile(
-  storageRef: StorageRefFile,
-  mainFileName: string,
   anchor: StorageAnchorInput,
   databaseRef: DatabaseRefFile
 ): StorageRefFile {
-  const folder = findStorageFolder(storageRef, mainFileName);
-  if (!folder) throw createDomainError('NOT_FOUND', `Storage main file "${mainFileName}" not found.`);
   const name = uniqueName(
-    'new_subfolder',
-    folder.subfolders.map((sub) => sub.name)
+    'new_folder',
+    storageRef.folders.map((folder) => folder.name)
   );
-  return createStorageSubFile(
+  return createStorageMainFile(
     storageRef,
-    mainFileName,
     { name, linkedDatabaseColumn: anchor.linkedDatabaseColumn },
     databaseRef
   );
@@ -219,7 +129,6 @@ export function createStorageBindingForElement(
     storageRef: context.storageRef,
     databaseRef: context.databaseRef,
     storageMainFile: input.storageMainFile,
-    ...(input.storageSubFile ? { storageSubFile: input.storageSubFile } : {}),
     ...(context.anchorDatabaseColumn ? { anchorDatabaseColumn: context.anchorDatabaseColumn } : {}),
   });
 
@@ -232,6 +141,7 @@ export function createStorageBindingForElement(
 
   const binding = createStorageBinding({
     ...input,
+    storageSubFile: '',
     ...(Object.keys(metadata).length ? { metadata } : {}),
   });
   return upsertBinding(entry, binding);
@@ -273,29 +183,14 @@ export function remapStorageBindingsInEntry(
   const bindings = resolveEntryBindings(entry, { databases: [] }).map((binding) => {
     if (binding.kind !== 'storage') return binding;
     let storageMainFile = binding.storageMainFile ?? '';
-    let storageSubFile = binding.storageSubFile ?? '';
     if (rename.mainFile && storageMainFile === rename.mainFile.oldName) {
       storageMainFile = rename.mainFile.newName;
     }
-    if (
-      rename.subFile &&
-      storageMainFile === rename.subFile.folderName &&
-      storageSubFile === rename.subFile.oldName
-    ) {
-      storageSubFile = rename.subFile.newName;
-    }
-    return { ...binding, storageMainFile, storageSubFile };
+    return { ...binding, storageMainFile, storageSubFile: '' };
   });
   let nextEntry = { ...entry };
   if (rename.mainFile && nextEntry.storageMainFile === rename.mainFile.oldName) {
     nextEntry = { ...nextEntry, storageMainFile: rename.mainFile.newName, storageSubFile: '' };
-  }
-  if (
-    rename.subFile &&
-    nextEntry.storageMainFile === rename.subFile.folderName &&
-    nextEntry.storageSubFile === rename.subFile.oldName
-  ) {
-    nextEntry = { ...nextEntry, storageSubFile: rename.subFile.newName };
   }
   const normalized = normalizeBindings(bindings);
   return syncLegacyFieldsFromBindings({ ...nextEntry, bindings: normalized }, normalized);
@@ -318,10 +213,9 @@ export function getStorageConnectionDetails(entry: InspectorDataEntry) {
     .map((binding) => ({
       bindingId: binding.id,
       storageMainFile: binding.storageMainFile ?? '',
-      storageSubFile: binding.storageSubFile ?? '',
       enabled: binding.enabled,
       confidence: binding.confidence,
-      reason: binding.reason,
+      ...(binding.reason ? { reason: binding.reason } : {}),
     }));
 }
 
@@ -331,9 +225,8 @@ export function getPrimaryStorageConnection(entry: InspectorDataEntry) {
   return {
     bindingId: primary.id,
     storageMainFile: primary.storageMainFile ?? '',
-    storageSubFile: primary.storageSubFile ?? '',
     enabled: primary.enabled,
     confidence: primary.confidence,
-    reason: primary.reason,
+    ...(primary.reason ? { reason: primary.reason } : {}),
   };
 }

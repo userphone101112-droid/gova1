@@ -108,7 +108,6 @@ export function saveElementStorageSelection(
     entry,
     {
       storageMainFile: selection.storageMainFile,
-      storageSubFile: selection.storageSubFile ?? '',
       enabled: selection.enabled ?? true,
       confidence: selection.confidence ?? 'confirmed',
       ...(selection.reason ? { reason: selection.reason } : {}),
@@ -287,9 +286,7 @@ export function getSimulationSummary(
       if (binding.tableName) tableCounts.set(tableKey, (tableCounts.get(tableKey) ?? 0) + 1);
     }
     for (const binding of storage) {
-      const key = binding.storageSubFile
-        ? `${binding.storageMainFile}/${binding.storageSubFile}`
-        : binding.storageMainFile ?? '';
+      const key = binding.storageMainFile ?? '';
       if (key) storageCounts.set(key, (storageCounts.get(key) ?? 0) + 1);
     }
   }
@@ -355,6 +352,6 @@ export {
   isLegacyStorageLocation,
 } from './governance-domain';
 
-export { listSchemaRelationships, linkStorageSubFileToDatabaseColumn, setColumnForeignKey } from './schema-relationship-domain';
+export { listSchemaRelationships, linkStorageMainFileToDatabaseColumn, setColumnForeignKey } from './schema-relationship-domain';
 
 export type { DatabaseRenameMap, StorageRenameMap };

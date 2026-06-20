@@ -1,12 +1,12 @@
 import { describe, expect, it } from '@jest/globals';
 
+import type { InspectElementSnapshot } from '../../../UiInspectorFrameBridge';
 import { emptyDatabaseRefFile } from '../../data/database-ref-utils';
 import { createDatabaseBinding } from '../../data/element-binding-utils';
 import { buildInspectorDataEntry, emptyFormState } from '../../data/inspector-config-storage';
-import type { InspectElementSnapshot } from '../../../UiInspectorFrameBridge';
 import {
   getColumnForeignKey,
-  linkStorageSubFileToDatabaseColumn,
+  linkStorageMainFileToDatabaseColumn,
   listSchemaRelationships,
   setColumnForeignKey,
 } from '../schema-relationship-domain';
@@ -50,13 +50,13 @@ describe('schema-relationship-domain', () => {
     expect(fk?.columnName).toBe('id');
   });
 
-  it('links storage sub file to database column', () => {
+  it('links storage main file to database column', () => {
     const storageRef = {
-      folders: [{ name: 'Projects', subfolders: [{ name: 'Avatars' }] }],
+      folders: [{ name: 'Projects', subfolders: [] }],
     };
-    const next = linkStorageSubFileToDatabaseColumn(
+    const next = linkStorageMainFileToDatabaseColumn(
       storageRef,
-      { storageMainFile: 'Projects', storageSubFile: 'Avatars' },
+      { storageMainFile: 'Projects' },
       { databaseName: 'db1', tableName: 'users', columnName: 'id' },
       dbRef()
     );
@@ -85,13 +85,6 @@ describe('schema-relationship-domain', () => {
       ...emptyFormState(),
       bindings: [createDatabaseBinding({ databaseName: 'db1', tableName: 'users', columnName: 'email' })],
     });
-    const entryB = buildInspectorDataEntry(
-      { ...snapshot, uuid: 'uuid-2', identityKey: 'uuid-2', scanKey: 'scan-2' },
-      {
-        ...emptyFormState(),
-        bindings: [createDatabaseBinding({ databaseName: 'db1', tableName: 'users', columnName: 'email' })],
-      }
-    );
     const entryB = buildInspectorDataEntry(
       { ...snapshot, uuid: 'uuid-2', identityKey: 'uuid-2', scanKey: 'scan-2' },
       {

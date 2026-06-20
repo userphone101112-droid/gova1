@@ -1,8 +1,8 @@
 import { describe, expect, it } from '@jest/globals';
 
+import type { InspectElementSnapshot } from '../../../UiInspectorFrameBridge';
 import { createDatabaseBinding, createStorageBinding } from '../../data/element-binding-utils';
 import { buildInspectorDataEntry, emptyFormState } from '../../data/inspector-config-storage';
-import type { InspectElementSnapshot } from '../../../UiInspectorFrameBridge';
 import {
   getPageBindingSummary,
   listBoundElementsOnPage,
@@ -67,7 +67,7 @@ describe('page-domain', () => {
       ...emptyFormState(),
       bindings: [
         createDatabaseBinding({ databaseName: 'db1', tableName: 'users', columnName: 'email' }),
-        createStorageBinding({ storageMainFile: 'Projects', storageSubFile: 'Docs' }),
+        createStorageBinding({ storageMainFile: 'Projects' }),
       ],
     });
     const summary = getPageBindingSummary({ [entry.dataUiIdentityKey]: entry }, '/home');

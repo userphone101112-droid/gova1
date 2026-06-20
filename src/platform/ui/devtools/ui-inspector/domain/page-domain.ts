@@ -3,8 +3,8 @@ import { resolveFeatureFromPathname } from '@/platform/ui/i18n/core/i18n-route-m
 import type { InspectElementSnapshot } from '../../UiInspectorFrameBridge';
 import type { InspectorDataMap } from '../data/inspector-config.types';
 
-import type { DatabaseConnectionDetails, PageBindingSummary, PageBoundElement, StorageConnectionDetails } from './domain-types';
 import { getDatabaseConnectionDetails } from './database-domain';
+import type { DatabaseConnectionDetails, PageBindingSummary, PageBoundElement, StorageConnectionDetails } from './domain-types';
 import { getElementProfile, hasAnySavedBinding, hasDatabaseBinding, hasStorageBinding } from './element-domain';
 import { getStorageConnectionDetails } from './storage-domain';
 

@@ -28,6 +28,10 @@ export type StorageFolder = {
   basePath?: string;
   accessLevel?: AccessLevel;
   retention?: RetentionPolicy;
+  /** Required for new main files — anchors storage to a database column. */
+  linkedDatabaseName?: string;
+  linkedTableName?: string;
+  linkedColumnName?: string;
   subfolders: StorageSubfolder[];
 };
 

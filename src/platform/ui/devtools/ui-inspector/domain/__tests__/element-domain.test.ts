@@ -37,7 +37,7 @@ describe('element-domain', () => {
       ...emptyFormState(),
       bindings: [
         createDatabaseBinding({ databaseName: 'db1', tableName: 'users', columnName: 'email' }),
-        createStorageBinding({ storageMainFile: 'Projects', storageSubFile: 'Docs' }),
+        createStorageBinding({ storageMainFile: 'Projects' }),
       ],
     });
     const profile = getElementProfile({ [entry.dataUiIdentityKey]: entry }, entry.dataUiIdentityKey);
@@ -54,7 +54,7 @@ describe('element-domain', () => {
       ...emptyFormState(),
       bindings: [
         createDatabaseBinding({ databaseName: 'db1', tableName: 't1', columnName: 'c1' }),
-        createStorageBinding({ storageMainFile: 'Projects', storageSubFile: 'Docs' }),
+        createStorageBinding({ storageMainFile: 'Projects' }),
       ],
       attributesEnabled: true,
       attribute1: true,
@@ -73,7 +73,7 @@ describe('element-domain', () => {
       ...emptyFormState(),
       bindings: [
         createDatabaseBinding({ databaseName: 'db1', tableName: 't1', columnName: 'c1' }),
-        createStorageBinding({ storageMainFile: 'Projects', storageSubFile: 'Docs' }),
+        createStorageBinding({ storageMainFile: 'Projects' }),
       ],
     });
     const cleared = clearElementStorageBindings(entry);

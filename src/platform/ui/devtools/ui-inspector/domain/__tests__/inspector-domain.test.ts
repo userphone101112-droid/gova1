@@ -34,7 +34,7 @@ describe('inspector-domain', () => {
       ...emptyFormState(),
       bindings: [
         createDatabaseBinding({ databaseName: 'db1', tableName: 'users', columnName: 'email' }),
-        createStorageBinding({ storageMainFile: 'Projects', storageSubFile: 'Docs' }),
+        createStorageBinding({ storageMainFile: 'Projects' }),
       ],
     });
     const context = {

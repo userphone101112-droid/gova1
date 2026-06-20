@@ -28,15 +28,9 @@ export function StorageCatalogTree({ catalog }: StorageCatalogTreeProps) {
       catalog.file.folders.map((folder) => ({
         id: nodeToTreeId({ level: 'main', mainName: folder.name }),
         label: folder.name,
-        children: folder.subfolders.map((sub) => ({
-          id: nodeToTreeId({ level: 'sub', mainName: folder.name, subName: sub.name }),
-          label: sub.name,
-        })),
       })),
     [catalog.file]
   );
-
-  const selected = catalog.selectedNode;
 
   return (
     <div className="flex flex-col gap-2">
@@ -47,20 +41,17 @@ export function StorageCatalogTree({ catalog }: StorageCatalogTreeProps) {
         instanceId="storage-catalog-tree"
       />
       <div className="flex flex-wrap gap-2 border-t border-outline-variant/40 pt-2">
-        <InspectorActionButton variant="secondary" disabled={catalog.busy} onClick={() => void catalog.addAndSaveMainFile()} instanceId="storage-catalog-add-main">
-          + Main File
-        </InspectorActionButton>
         <InspectorActionButton
           variant="secondary"
-          disabled={catalog.busy || selected?.level !== 'main' || !anchorFromSelection}
+          disabled={catalog.busy || !anchorFromSelection}
           onClick={() => {
-            if (selected?.level === 'main' && anchorFromSelection) {
-              void catalog.addAndSaveSubFile(selected.mainName, { linkedDatabaseColumn: anchorFromSelection });
+            if (anchorFromSelection) {
+              void catalog.addAndSaveMainFile({ linkedDatabaseColumn: anchorFromSelection });
             }
           }}
-          instanceId="storage-catalog-add-sub"
+          instanceId="storage-catalog-add-main"
         >
-          + Sub File
+          + Main File
         </InspectorActionButton>
       </div>
     </div>

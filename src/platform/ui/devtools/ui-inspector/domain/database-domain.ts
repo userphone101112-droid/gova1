@@ -365,7 +365,7 @@ export function getDatabaseConnectionDetails(entry: InspectorDataEntry) {
       columnName: binding.columnName ?? '',
       enabled: binding.enabled,
       confidence: binding.confidence,
-      reason: binding.reason,
+      ...(binding.reason ? { reason: binding.reason } : {}),
     }));
 }
 
@@ -379,7 +379,7 @@ export function getPrimaryDatabaseConnection(entry: InspectorDataEntry) {
     columnName: primary.columnName ?? '',
     enabled: primary.enabled,
     confidence: primary.confidence,
-    reason: primary.reason,
+    ...(primary.reason ? { reason: primary.reason } : {}),
   };
 }
 

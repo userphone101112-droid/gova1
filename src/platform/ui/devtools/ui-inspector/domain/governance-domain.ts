@@ -3,7 +3,7 @@ import type { DatabaseRefFile } from '../data/database-ref.types';
 import { resolveEntryBindings } from '../data/element-binding-utils';
 import type { ElementBinding } from '../data/element-binding.types';
 import type { InspectorDataEntry, InspectorDataMap } from '../data/inspector-config.types';
-import { findStorageFolder, findStorageSubfolder } from '../data/storage-ref-utils';
+import { findStorageFolder } from '../data/storage-ref-utils';
 import type { StorageRefFile } from '../data/storage-ref.types';
 
 import { createDomainError } from './domain-errors';
@@ -21,9 +21,7 @@ export function columnRefKey(ref: DatabaseColumnRef): string {
 }
 
 export function storageLocationKey(location: StorageLocationRef): string {
-  return location.storageSubFile
-    ? `${location.storageMainFile}/${location.storageSubFile}`
-    : location.storageMainFile;
+  return location.storageMainFile;
 }
 
 export function isDatabaseColumnRefComplete(ref: Partial<DatabaseColumnRef>): ref is DatabaseColumnRef {
@@ -39,12 +37,12 @@ export function databaseColumnExists(databaseRef: DatabaseRefFile, ref: Database
 }
 
 export function hasStorageColumnAnchor(
-  subfolder: { linkedDatabaseName?: string; linkedTableName?: string; linkedColumnName?: string } | undefined
+  folder: { linkedDatabaseName?: string; linkedTableName?: string; linkedColumnName?: string } | undefined
 ): boolean {
-  if (!subfolder) return false;
-  const databaseName = subfolder.linkedDatabaseName?.trim() ?? '';
-  const tableName = subfolder.linkedTableName?.trim() ?? '';
-  const columnName = subfolder.linkedColumnName?.trim() ?? '';
+  if (!folder) return false;
+  const databaseName = folder.linkedDatabaseName?.trim() ?? '';
+  const tableName = folder.linkedTableName?.trim() ?? '';
+  const columnName = folder.linkedColumnName?.trim() ?? '';
   return Boolean(databaseName && tableName && columnName);
 }
 
@@ -53,33 +51,24 @@ export function resolveStorageColumnAnchor(
   location: StorageLocationRef
 ): DatabaseColumnRef | null {
   const folder = findStorageFolder(storageRef, location.storageMainFile);
-  if (!location.storageSubFile) return null;
-  const sub = findStorageSubfolder(folder, location.storageSubFile);
-  if (!hasStorageColumnAnchor(sub)) return null;
+  if (!hasStorageColumnAnchor(folder)) return null;
   return {
-    databaseName: sub!.linkedDatabaseName!,
-    tableName: sub!.linkedTableName!,
-    columnName: sub!.linkedColumnName!,
+    databaseName: folder!.linkedDatabaseName!,
+    tableName: folder!.linkedTableName!,
+    columnName: folder!.linkedColumnName!,
   };
 }
 
 export function isLegacyStorageLocation(storageRef: StorageRefFile, location: StorageLocationRef): boolean {
   const folder = findStorageFolder(storageRef, location.storageMainFile);
-  if (!folder) return false;
-  if (!location.storageSubFile) {
-    return folder.subfolders.some((sub) => !hasStorageColumnAnchor(sub));
-  }
-  const sub = findStorageSubfolder(folder, location.storageSubFile);
-  return Boolean(sub && !hasStorageColumnAnchor(sub));
+  return Boolean(folder && !hasStorageColumnAnchor(folder));
 }
 
 export function listLegacyReadonlyStorageLocations(storageRef: StorageRefFile): StorageLocationRef[] {
   const legacy: StorageLocationRef[] = [];
   for (const folder of storageRef.folders) {
-    for (const sub of folder.subfolders) {
-      if (!hasStorageColumnAnchor(sub)) {
-        legacy.push({ storageMainFile: folder.name, storageSubFile: sub.name });
-      }
+    if (!hasStorageColumnAnchor(folder)) {
+      legacy.push({ storageMainFile: folder.name });
     }
   }
   return legacy;
@@ -133,13 +122,9 @@ export function validateNewStorageBinding(input: {
   storageRef: StorageRefFile;
   databaseRef: DatabaseRefFile;
   storageMainFile: string;
-  storageSubFile?: string;
   anchorDatabaseColumn?: DatabaseColumnRef;
 }): void {
-  const location: StorageLocationRef = {
-    storageMainFile: input.storageMainFile,
-    ...(input.storageSubFile ? { storageSubFile: input.storageSubFile } : {}),
-  };
+  const location: StorageLocationRef = { storageMainFile: input.storageMainFile };
 
   const catalogAnchor = resolveStorageColumnAnchor(input.storageRef, location);
   if (catalogAnchor) {
@@ -203,20 +188,18 @@ export function validateStorageRefGovernance(
   }
 
   for (const folder of storageRef.folders) {
-    for (const sub of folder.subfolders) {
-      if (!hasStorageColumnAnchor(sub)) continue;
-      const anchor: DatabaseColumnRef = {
-        databaseName: sub.linkedDatabaseName!,
-        tableName: sub.linkedTableName!,
-        columnName: sub.linkedColumnName!,
-      };
-      if (!databaseColumnExists(databaseRef, anchor)) {
-        violations.push({
-          code: 'GOVERNANCE_VIOLATION',
-          message: `Storage "${folder.name}/${sub.name}" anchors missing column ${columnRefKey(anchor)}.`,
-          path: `${folder.name}/${sub.name}`,
-        });
-      }
+    if (!hasStorageColumnAnchor(folder)) continue;
+    const anchor: DatabaseColumnRef = {
+      databaseName: folder.linkedDatabaseName!,
+      tableName: folder.linkedTableName!,
+      columnName: folder.linkedColumnName!,
+    };
+    if (!databaseColumnExists(databaseRef, anchor)) {
+      violations.push({
+        code: 'GOVERNANCE_VIOLATION',
+        message: `Storage "${folder.name}" anchors missing column ${columnRefKey(anchor)}.`,
+        path: folder.name,
+      });
     }
   }
 
@@ -239,7 +222,6 @@ export function validateInspectorDataGovernance(
     for (const binding of resolveEntryBindings(entry, { databases: [] })) {
       if (!binding.enabled || binding.kind !== 'storage') continue;
       const main = binding.storageMainFile ?? '';
-      const sub = binding.storageSubFile ?? '';
       if (!main) continue;
       try {
         validateNewStorageBinding({
@@ -247,7 +229,6 @@ export function validateInspectorDataGovernance(
           storageRef,
           databaseRef,
           storageMainFile: main,
-          ...(sub ? { storageSubFile: sub } : {}),
           ...(resolveBindingStorageAnchor(binding)
             ? { anchorDatabaseColumn: resolveBindingStorageAnchor(binding)! }
             : {}),
