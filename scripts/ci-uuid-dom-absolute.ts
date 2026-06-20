@@ -92,6 +92,7 @@ for (const file of collectFiles()) {
 
   if (
     rel.startsWith('src/platform/ui/enforcement/') ||
+    rel.startsWith('src/platform/ui/devtools/') ||
     rel === 'src/platform/ui/index.ts'
   ) {
     continue;

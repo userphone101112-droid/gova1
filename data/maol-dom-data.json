@@ -73,7 +73,7 @@
   "maol_71vE0otdyL": [
     {
       "route": "/login",
-      "timestamp": 1781959804927,
+      "timestamp": 1781960644198,
       "totalIdentified": 87,
       "tree": {
         "type": "page",
@@ -297,7 +297,7 @@
     },
     {
       "route": "/home",
-      "timestamp": 1781958235866,
+      "timestamp": 1781964453188,
       "totalIdentified": 229,
       "tree": {
         "type": "page",
@@ -688,8 +688,8 @@
     },
     {
       "route": "/devtools/ui-inspector",
-      "timestamp": 1781959804928,
-      "totalIdentified": 88,
+      "timestamp": 1781964454181,
+      "totalIdentified": 70,
       "tree": {
         "type": "page",
         "children": [
@@ -729,13 +729,9 @@
               "UI_DEVTOOLS_UI_INSPECTOR_STATUS_COUNT_VALUE",
               "UI_DEVTOOLS_UI_INSPECTOR_STATUS_URL_VALUE",
               "UI_DEVTOOLS_UI_INSPECTOR_SIDEBAR_DBATTRS_LABEL",
-              "UI_DEVTOOLS_UI_INSPECTOR_SIDEBAR_DBMGMT_LABEL",
               "UI_DEVTOOLS_UI_INSPECTOR_DATA_CONTAINER",
-              "UI_DEVTOOLS_UI_INSPECTOR_DBMGMT_CONTAINER",
-              "UI_DEVTOOLS_UI_INSPECTOR_DATA_DATABASE_LABEL",
-              "UI_DEVTOOLS_UI_INSPECTOR_DBREF_ADD_DB",
-              "UI_DEVTOOLS_UI_INSPECTOR_DBREF_DB_SELECT",
-              "UI_DEVTOOLS_UI_INSPECTOR_FILTER_FEATURE_OPTION",
+              "UI_DEVTOOLS_UI_INSPECTOR_DATA_SAVE_BUTTON",
+              "UI_DEVTOOLS_UI_INSPECTOR_SIDEBAR_DBMGMT_LABEL",
               "UI_DEVTOOLS_UI_INSPECTOR_SIDEBAR_SCHEMA_LABEL",
               "UI_DEVTOOLS_UI_INSPECTOR_SEARCH_LABEL",
               "UI_DEVTOOLS_UI_INSPECTOR_ELEMENT_COUNT",

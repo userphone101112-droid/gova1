@@ -1,7 +1,7 @@
 import type { InspectorRoutePath } from '../../inspector-routes';
 import { emptyDatabaseRefFile } from '../data/database-ref-utils';
-import { mergeInspectorEntry } from '../data/inspector-config-storage';
 import type { DatabaseRefFile } from '../data/database-ref.types';
+import { mergeInspectorEntry } from '../data/inspector-config-storage';
 import { emptyFormState, getStorageKey } from '../data/inspector-config-storage';
 import type { ViewportSettings } from '../data/inspector-config.types';
 import { emptyStorageRefFile } from '../data/storage-ref-utils';
@@ -50,9 +50,10 @@ export function createInitialInspectorState(): InspectorState {
     iframeReady: false,
     lastScanTime: null,
     expanded: {
-      dbAttributes: false,
-      dbManagement: false,
-      storageManagement: false,
+      elementBindings: false,
+      databaseCatalog: false,
+      storageCatalog: false,
+      simulationInsights: false,
       filters: false,
       list: false,
       details: false,
@@ -153,7 +154,7 @@ export function inspectorReducer(state: InspectorState, action: InspectorAction)
     case 'MARK_IFRAME_LOADING':
       return { ...state, iframeReady: false, lastScanTime: null };
     case 'TOGGLE_SECTION': {
-      if (action.section === 'dbAttributes' && state.databasePanelPinned && state.expanded.dbAttributes) {
+      if (action.section === 'elementBindings' && state.databasePanelPinned && state.expanded.elementBindings) {
         return state;
       }
       return {

@@ -12,7 +12,7 @@ export function useStorageSettings() {
     const nextEnabled = !state.formState.storageEnabled;
     if (nextEnabled) {
       dispatch({ type: 'SET_DATABASE_PANEL_PINNED', pinned: true });
-      dispatch({ type: 'SET_EXPANDED', expanded: { dbAttributes: true } });
+      dispatch({ type: 'SET_EXPANDED', expanded: { elementBindings: true } });
     }
     dispatch({
       type: 'PATCH_FORM_STATE',

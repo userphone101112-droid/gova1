@@ -75,6 +75,19 @@ const eslintConfig = defineConfig([
     },
   },
   {
+    files: ['src/platform/ui/devtools/ui-inspector/**/*.{ts,tsx}'],
+    rules: {
+      // Internal inspector primitives use shared layout components; not app-facing registry DOM.
+      'ui-registry/require-data-ui-uuid': 'off',
+    },
+  },
+  {
+    files: ['src/app/api/ui-inspector/route.ts'],
+    rules: {
+      'import/order': 'off',
+    },
+  },
+  {
     files: [
       'src/platform/ui/enforcement/eslint/**/*.js',
       'src/platform/ui/enforcement/scripts/**/*.ts',

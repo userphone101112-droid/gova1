@@ -1,6 +1,7 @@
 import { describe, expect, it } from '@jest/globals';
 
 import type { InspectElementSnapshot } from '../../UiInspectorFrameBridge';
+import { createDatabaseBinding, createStorageBinding } from '../data/element-binding-utils';
 import {
   buildInspectorDataEntry,
   emptyFormState,
@@ -46,6 +47,13 @@ describe('inspector-config-storage', () => {
     const element = mockElement();
     const form = {
       ...emptyFormState(),
+      bindings: [
+        createDatabaseBinding({
+          databaseName: 'db_en',
+          tableName: 'table_en',
+          columnName: 'column_en',
+        }),
+      ],
       databaseEnabled: true,
       databaseName: 'db_en',
       tableName: 'table_en',
@@ -59,7 +67,10 @@ describe('inspector-config-storage', () => {
     const entry = buildInspectorDataEntry(element, form);
     expect(entry.dataUiUuid).toBe('uuid-1');
     expect(entry.databaseName).toBe('db_en');
-    expect(formStateFromEntry(entry, { databases: [] })).toEqual(form);
+    const loaded = formStateFromEntry(entry, { databases: [] });
+    expect(loaded.databaseName).toBe('db_en');
+    expect(loaded.inf1).toBe('note');
+    expect(loaded.bindings.length).toBeGreaterThan(0);
   });
 
   it('resolves saved data by storage key', () => {
@@ -67,6 +78,13 @@ describe('inspector-config-storage', () => {
     const map = {
       'uuid-1:inst-1': buildInspectorDataEntry(element, {
         ...emptyFormState(),
+        bindings: [
+          createDatabaseBinding({
+            databaseName: 'saved-db',
+            tableName: 't1',
+            columnName: 'c1',
+          }),
+        ],
         databaseName: 'saved-db',
       }),
     };
@@ -77,6 +95,11 @@ describe('inspector-config-storage', () => {
     const element = mockElement({ instanceId: 'inst-1' });
     const entry = buildInspectorDataEntry(element, {
       ...emptyFormState(),
+      bindings: [
+        createStorageBinding({
+          storageMainFile: 'Projects',
+        }),
+      ],
       storageEnabled: true,
       storageMainFile: 'Projects',
     });

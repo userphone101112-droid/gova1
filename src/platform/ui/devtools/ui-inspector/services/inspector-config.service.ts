@@ -1,5 +1,6 @@
 import type { InspectElementSnapshot } from '../../UiInspectorFrameBridge';
 import { inspectorApiClient } from '../api/client';
+import type { DatabaseRefFile } from '../data/database-ref.types';
 import {
   buildInspectorDataEntry,
   getStorageKey,
@@ -18,7 +19,7 @@ export async function loadInspectorConfigMap(): Promise<InspectorDataMap> {
 export async function saveInspectorElementConfig(
   selected: InspectElementSnapshot,
   formState: ElementFormState,
-  options?: { confirm?: boolean }
+  options?: { confirm?: boolean; databaseRef?: DatabaseRefFile }
 ): Promise<InspectorDataEntryResult> {
   if (options?.confirm !== false && !confirmAction(ELEMENT_SAVE_CONFIRM_MESSAGE)) {
     return { saved: false };
@@ -27,7 +28,8 @@ export async function saveInspectorElementConfig(
   await inspectorApiClient.saveInspectorElement({
     uiUuid: selected.uuid,
     uiInstanceId: selected.instanceId ?? '',
-    databaseEnabled: formState.databaseEnabled,
+    bindings: formState.bindings,
+    customAttributes: formState.customAttributes,
     databaseName: formState.databaseName,
     tableName: formState.tableName,
     columnName: formState.columnName,
@@ -47,7 +49,7 @@ export async function saveInspectorElementConfig(
   return {
     saved: true,
     storageKey,
-    entry: buildInspectorDataEntry(selected, formState),
+    entry: buildInspectorDataEntry(selected, formState, options?.databaseRef),
   };
 }
 

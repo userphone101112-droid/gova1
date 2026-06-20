@@ -4,14 +4,15 @@ import type { CSSProperties } from 'react';
 
 import { DEVTOOLS } from '@/platform/ui/registry/features/devtools';
 
-import { DatabaseAttributesSection } from '../sidebar/DatabaseAttributesSection';
-import { DatabaseManagementSection } from '../sidebar/DatabaseManagementSection';
+import { DatabaseCatalogSection } from '../sections/DatabaseCatalogSection';
+import { ElementBindingSection } from '../sections/ElementBindingSection';
+import { SimulationInsightsSection } from '../sections/SimulationInsightsSection';
+import { StorageCatalogSection } from '../sections/StorageCatalogSection';
 import { DisplaySection } from '../sidebar/DisplaySection';
 import { ElementsSection } from '../sidebar/ElementsSection';
 import { FiltersSection } from '../sidebar/FiltersSection';
 import { FullDetailsSection } from '../sidebar/FullDetailsSection';
 import { SidebarSection } from '../sidebar/SidebarSection';
-import { StorageManagementSection } from '../sidebar/StorageManagementSection';
 import { useInspectorContext } from '../state/InspectorProvider';
 import { sectionChevron } from '../utils/format';
 import {
@@ -28,7 +29,7 @@ export function InspectorSidebar() {
     handlePickModeToggle,
   } = useInspectorContext();
   const hasElementSelection = selectors.hasElementSelection;
-  const databaseSuffix = state.databasePanelPinned ? ' (unsaved)' : '';
+  const bindingsSuffix = state.databasePanelPinned ? ' (unsaved)' : '';
 
   return (
     <aside
@@ -70,6 +71,7 @@ export function InspectorSidebar() {
         >
           Display
         </span>
+        <p className="px-3 pb-1 text-[10px] text-on-surface-variant">Shows the last selected UI element.</p>
         <div
           data-ui-uuid={DEVTOOLS.UI_INSPECTOR.STATUS.CONTAINER.uuid}
           data-ui-instance-id="display-content"
@@ -81,59 +83,88 @@ export function InspectorSidebar() {
 
       {hasElementSelection && (
         <SidebarSection
-          tone="dbAttributes"
-          open={state.expanded.dbAttributes}
+          tone="elementBindings"
+          open={state.expanded.elementBindings}
           toggleButton={
             <button
               data-ui-uuid={DEVTOOLS.UI_INSPECTOR.SIDEBAR.DB_ATTRIBUTES_LABEL.uuid}
               type="button"
-              onClick={() => toggleSection('dbAttributes')}
-              className={sidebarSectionToggleClass('dbAttributes')}
+              onClick={() => toggleSection('elementBindings')}
+              className={sidebarSectionToggleClass('elementBindings')}
             >
-              Database &amp; Attributes
-              {databaseSuffix}
-              {sectionChevron(state.expanded.dbAttributes)}
+              Element Bindings
+              {bindingsSuffix}
+              {sectionChevron(state.expanded.elementBindings)}
             </button>
           }
         >
-          <DatabaseAttributesSection />
+          <p className="px-3 pb-1 text-[10px] text-on-surface-variant">
+            Define how this element reads, writes, uploads, or inherits data.
+          </p>
+          <ElementBindingSection />
         </SidebarSection>
       )}
 
       <SidebarSection
-        tone="dbManagement"
-        open={state.expanded.dbManagement}
+        tone="databaseCatalog"
+        open={state.expanded.databaseCatalog}
         toggleButton={
           <button
             data-ui-uuid={DEVTOOLS.UI_INSPECTOR.SIDEBAR.DB_MANAGEMENT_LABEL.uuid}
             type="button"
-            onClick={() => toggleSection('dbManagement')}
-            className={sidebarSectionToggleClass('dbManagement')}
+            onClick={() => toggleSection('databaseCatalog')}
+            className={sidebarSectionToggleClass('databaseCatalog')}
           >
-            Database Management
-            {sectionChevron(state.expanded.dbManagement)}
+            Database Catalog
+            {sectionChevron(state.expanded.databaseCatalog)}
           </button>
         }
       >
-        <DatabaseManagementSection />
+        <p className="px-3 pb-1 text-[10px] text-on-surface-variant">
+          Manage database, table, and column catalog metadata.
+        </p>
+        <DatabaseCatalogSection />
       </SidebarSection>
 
       <SidebarSection
-        tone="storageManagement"
-        open={state.expanded.storageManagement}
+        tone="storageCatalog"
+        open={state.expanded.storageCatalog}
         toggleButton={
           <button
             data-ui-uuid={DEVTOOLS.UI_INSPECTOR.SIDEBAR.SCHEMA_EDITOR_LABEL.uuid}
             type="button"
-            onClick={() => toggleSection('storageManagement')}
-            className={sidebarSectionToggleClass('storageManagement')}
+            onClick={() => toggleSection('storageCatalog')}
+            className={sidebarSectionToggleClass('storageCatalog')}
           >
-            Storage Manager
-            {sectionChevron(state.expanded.storageManagement)}
+            Storage Catalog
+            {sectionChevron(state.expanded.storageCatalog)}
           </button>
         }
       >
-        <StorageManagementSection />
+        <p className="px-3 pb-1 text-[10px] text-on-surface-variant">
+          Manage storage folders, paths, access, and file rules.
+        </p>
+        <StorageCatalogSection />
+      </SidebarSection>
+
+      <SidebarSection
+        tone="simulationInsights"
+        open={state.expanded.simulationInsights}
+        toggleButton={
+          <button
+            type="button"
+            onClick={() => toggleSection('simulationInsights')}
+            className={sidebarSectionToggleClass('simulationInsights')}
+          >
+            Simulation Insights
+            {sectionChevron(state.expanded.simulationInsights)}
+          </button>
+        }
+      >
+        <p className="px-3 pb-1 text-[10px] text-on-surface-variant">
+          Analyze saved bindings to guide architecture decisions.
+        </p>
+        <SimulationInsightsSection />
       </SidebarSection>
 
       <SidebarSection

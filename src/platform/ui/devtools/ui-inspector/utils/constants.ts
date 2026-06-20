@@ -35,22 +35,33 @@ export const TAG_FILTERS = [
 ] as const;
 
 export const DEFAULT_EXPANDED_SECTIONS = {
-  dbAttributes: false,
-  dbManagement: false,
-  storageManagement: false,
+  elementBindings: false,
+  databaseCatalog: false,
+  storageCatalog: false,
+  simulationInsights: false,
   filters: false,
   list: false,
   details: false,
 } as const;
 
 export const ELEMENT_SAVE_CONFIRM_MESSAGE =
-  'Save inspector settings for the selected element? This writes to ui-inspector-data.json.';
+  'Save selected element bindings and attributes to ui-inspector-data.json?';
 
-export const DATABASE_REF_SAVE_CONFIRM_MESSAGE =
-  'Save changes to database_ref.json? This updates the shared schema file.';
+export const DATABASE_CATALOG_SAVE_CONFIRM_MESSAGE =
+  'Save database catalog changes to database_ref.json?';
 
-export const STORAGE_REF_SAVE_CONFIRM_MESSAGE =
-  'Save changes to storage.json? This updates the shared storage catalog.';
+export const STORAGE_CATALOG_SAVE_CONFIRM_MESSAGE =
+  'Save storage catalog changes to storage.json?';
+
+export const DATABASE_REF_SAVE_CONFIRM_MESSAGE = DATABASE_CATALOG_SAVE_CONFIRM_MESSAGE;
+
+export const STORAGE_REF_SAVE_CONFIRM_MESSAGE = STORAGE_CATALOG_SAVE_CONFIRM_MESSAGE;
+
+export const DATABASE_QUICK_ADD_CONFIRM_MESSAGE =
+  'Add this item to database_ref.json and save now?';
+
+export const STORAGE_QUICK_ADD_CONFIRM_MESSAGE =
+  'Add this item to storage.json and save now?';
 
 export const STORAGE_DESCRIPTION_SAVE_CONFIRM_MESSAGE =
   'Save this storage description to storage.json?';

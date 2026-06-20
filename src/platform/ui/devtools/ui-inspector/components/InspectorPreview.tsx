@@ -2,8 +2,8 @@
 
 import { DEVTOOLS } from '@/platform/ui/registry/features/devtools';
 
-import { useInspectorContext } from '../state/InspectorProvider';
 import { FieldGroup } from '../sidebar/FieldGroup';
+import { useInspectorContext } from '../state/InspectorProvider';
 
 import { InspectorToolbar } from './InspectorToolbar';
 

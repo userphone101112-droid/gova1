@@ -1,7 +1,13 @@
 import { describe, expect, it } from '@jest/globals';
 
 import type { InspectElementSnapshot } from '../../UiInspectorFrameBridge';
-import { emptyFormState, formStateFromEntry, getStorageKey, buildInspectorDataEntry } from '../data/inspector-config-storage';
+import { createDatabaseBinding, createStorageBinding } from '../data/element-binding-utils';
+import {
+  buildInspectorDataEntry,
+  emptyFormState,
+  formStateFromEntry,
+  getStorageKey,
+} from '../data/inspector-config-storage';
 import { selectSelectedElement } from '../state/inspector-selectors';
 import { createInitialInspectorState, inspectorReducer } from '../state/inspector-store';
 
@@ -63,6 +69,37 @@ describe('inspector-store selection stability', () => {
     const { selected, hasElementSelection } = selectSelectedElement(state);
     expect(selected).toEqual(element);
     expect(hasElementSelection).toBe(true);
+  });
+
+  it('SET_ELEMENTS does not collapse expanded sidebar sections', () => {
+    let state = createInitialInspectorState();
+    state = inspectorReducer(state, { type: 'SET_EXPANDED', expanded: { databaseCatalog: true, list: true } });
+    state = inspectorReducer(state, {
+      type: 'SET_ELEMENTS',
+      elements: [mockElement()],
+      lastScanTime: new Date(),
+    });
+    expect(state.expanded.databaseCatalog).toBe(true);
+    expect(state.expanded.list).toBe(true);
+  });
+
+  it('SET_ELEMENTS does not reset formState', () => {
+    let state = createInitialInspectorState();
+    state = {
+      ...state,
+      formState: {
+        ...emptyFormState(),
+        inf1: 'unchanged',
+        bindings: [createDatabaseBinding({ databaseName: 'db', tableName: 't', columnName: 'c' })],
+      },
+    };
+    state = inspectorReducer(state, {
+      type: 'SET_ELEMENTS',
+      elements: [mockElement({ scanKey: 'other' })],
+      lastScanTime: new Date(),
+    });
+    expect(state.formState.inf1).toBe('unchanged');
+    expect(state.formState.bindings).toHaveLength(1);
   });
 });
 
@@ -139,8 +176,19 @@ describe('inspector-config legacy migration', () => {
 describe('inspector-config storage fields', () => {
   it('buildInspectorDataEntry keeps database binding separate from free inf fields', () => {
     const element = mockElement();
-    const form = {
+    const entry = buildInspectorDataEntry(element, {
       ...emptyFormState(),
+      bindings: [
+        createDatabaseBinding({
+          databaseName: 'db1',
+          tableName: 't1',
+          columnName: 'c1',
+        }),
+        createStorageBinding({
+          storageMainFile: 'Projects',
+          storageSubFile: 'Frontend',
+        }),
+      ],
       databaseEnabled: true,
       databaseName: 'db1',
       tableName: 't1',
@@ -151,9 +199,7 @@ describe('inspector-config storage fields', () => {
       storageEnabled: true,
       storageMainFile: 'Projects',
       storageSubFile: 'Frontend',
-    };
-
-    const entry = buildInspectorDataEntry(element, form);
+    });
     expect(entry.databaseName).toBe('db1');
     expect(entry.inf1).toBe('note-a');
     expect(entry.storageMainFile).toBe('Projects');

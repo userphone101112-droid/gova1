@@ -1,3 +1,10 @@
+import {
+  ACCESS_PATTERN_OPTIONS,
+  COLUMN_DATA_TYPE_OPTIONS,
+  COLUMN_SENSITIVITY_OPTIONS,
+  DATABASE_LIFECYCLE_OPTIONS,
+  TABLE_TYPE_OPTIONS,
+} from './catalog-options';
 import type {
   DatabaseRefColumn,
   DatabaseRefDatabase,
@@ -28,14 +35,56 @@ function readNormalizedDescription(source: Record<string, unknown>): string | un
   return legacyAr || undefined;
 }
 
+function optionalString(value: unknown): string | undefined {
+  if (value === undefined || value === null) return undefined;
+  const trimmed = String(value).trim();
+  return trimmed || undefined;
+}
+
+function optionalBoolean(value: unknown): boolean | undefined {
+  if (value === undefined || value === null) return undefined;
+  return Boolean(value);
+}
+
+function enumValue<T extends string>(value: unknown, allowed: readonly T[]): T | undefined {
+  const trimmed = String(value ?? '').trim();
+  return allowed.includes(trimmed as T) ? (trimmed as T) : undefined;
+}
+
 function normalizeColumn(raw: unknown): DatabaseRefColumn {
   if (!raw || typeof raw !== 'object') {
     return { name: '' };
   }
   const source = raw as Record<string, unknown>;
   const name = readLegacyName(source);
+  const column: DatabaseRefColumn = { name };
   const description = readNormalizedDescription(source);
-  return description ? { name, description } : { name };
+  if (description) column.description = description;
+  const dataType = enumValue(source.dataType, COLUMN_DATA_TYPE_OPTIONS);
+  if (dataType) column.dataType = dataType;
+  const nullable = optionalBoolean(source.nullable);
+  if (nullable !== undefined) column.nullable = nullable;
+  const unique = optionalBoolean(source.unique);
+  if (unique !== undefined) column.unique = unique;
+  const indexed = optionalBoolean(source.indexed);
+  if (indexed !== undefined) column.indexed = indexed;
+  const isPrimaryKey = optionalBoolean(source.isPrimaryKey);
+  if (isPrimaryKey !== undefined) column.isPrimaryKey = isPrimaryKey;
+  const isForeignKey = optionalBoolean(source.isForeignKey);
+  if (isForeignKey !== undefined) column.isForeignKey = isForeignKey;
+  const referencesDatabase = optionalString(source.referencesDatabase);
+  if (referencesDatabase) column.referencesDatabase = referencesDatabase;
+  const referencesTable = optionalString(source.referencesTable);
+  if (referencesTable) column.referencesTable = referencesTable;
+  const referencesColumn = optionalString(source.referencesColumn);
+  if (referencesColumn) column.referencesColumn = referencesColumn;
+  const sensitivity = enumValue(source.sensitivity, COLUMN_SENSITIVITY_OPTIONS);
+  if (sensitivity) column.sensitivity = sensitivity;
+  const validationRule = optionalString(source.validationRule);
+  if (validationRule) column.validationRule = validationRule;
+  const exampleValue = optionalString(source.exampleValue);
+  if (exampleValue) column.exampleValue = exampleValue;
+  return column;
 }
 
 function normalizeTable(raw: unknown): DatabaseRefTable {
@@ -47,8 +96,20 @@ function normalizeTable(raw: unknown): DatabaseRefTable {
     ? source.columns.map(normalizeColumn).filter((column) => column.name)
     : [];
   const name = readLegacyName(source);
+  const table: DatabaseRefTable = { name, columns };
   const description = readNormalizedDescription(source);
-  return description ? { name, columns, description } : { name, columns };
+  if (description) table.description = description;
+  const entityName = optionalString(source.entityName);
+  if (entityName) table.entityName = entityName;
+  const tableType = enumValue(source.tableType, TABLE_TYPE_OPTIONS);
+  if (tableType) table.tableType = tableType;
+  const expectedRows = optionalString(source.expectedRows);
+  if (expectedRows) table.expectedRows = expectedRows;
+  const accessPattern = enumValue(source.accessPattern, ACCESS_PATTERN_OPTIONS);
+  if (accessPattern) table.accessPattern = accessPattern;
+  const notes = optionalString(source.notes);
+  if (notes) table.notes = notes;
+  return table;
 }
 
 function normalizeDatabase(raw: unknown): DatabaseRefDatabase {
@@ -60,8 +121,18 @@ function normalizeDatabase(raw: unknown): DatabaseRefDatabase {
     ? source.tables.map(normalizeTable).filter((table) => table.name)
     : [];
   const name = readLegacyName(source);
+  const database: DatabaseRefDatabase = { name, tables };
   const description = readNormalizedDescription(source);
-  return description ? { name, tables, description } : { name, tables };
+  if (description) database.description = description;
+  const entityName = optionalString(source.entityName);
+  if (entityName) database.entityName = entityName;
+  const ownerFeature = optionalString(source.ownerFeature);
+  if (ownerFeature) database.ownerFeature = ownerFeature;
+  const domain = optionalString(source.domain);
+  if (domain) database.domain = domain;
+  const lifecycle = enumValue(source.lifecycle, DATABASE_LIFECYCLE_OPTIONS);
+  if (lifecycle) database.lifecycle = lifecycle;
+  return database;
 }
 
 export function normalizeDatabaseRefFile(raw: unknown): DatabaseRefFile {
@@ -443,4 +514,200 @@ export function remapElementFieldNames(
     inf3 = renameMap.column.newName;
   }
   return { databaseName, tableName, columnName, inf1, inf2, inf3 };
+}
+
+export type DatabaseRefValidationIssue = {
+  path: string;
+  message: string;
+};
+
+function validateColumnEntity(
+  file: DatabaseRefFile,
+  databaseName: string,
+  tableName: string,
+  column: DatabaseRefColumn
+): DatabaseRefValidationIssue[] {
+  const issues: DatabaseRefValidationIssue[] = [];
+  const basePath = `${databaseName}/${tableName}/${column.name || '(unnamed)'}`;
+
+  if (!column.name.trim()) {
+    issues.push({ path: basePath, message: 'Column name is required.' });
+  }
+
+  if (column.dataType && !COLUMN_DATA_TYPE_OPTIONS.includes(column.dataType)) {
+    issues.push({ path: basePath, message: 'Invalid column dataType.' });
+  }
+
+  if (column.sensitivity && !COLUMN_SENSITIVITY_OPTIONS.includes(column.sensitivity)) {
+    issues.push({ path: basePath, message: 'Invalid column sensitivity.' });
+  }
+
+  if (column.isPrimaryKey && column.nullable) {
+    issues.push({ path: basePath, message: 'Primary key columns cannot be nullable.' });
+  }
+
+  if (column.isForeignKey) {
+    const refDb = column.referencesDatabase?.trim();
+    const refTable = column.referencesTable?.trim();
+    const refColumn = column.referencesColumn?.trim();
+    if (!refDb || !refTable || !refColumn) {
+      issues.push({ path: basePath, message: 'Foreign key requires complete references.' });
+    } else {
+      const targetDb = findDatabase(file, refDb);
+      const targetTable = findTable(targetDb, refTable);
+      const targetColumn = findColumn(targetTable, refColumn);
+      if (!targetDb || !targetTable || !targetColumn) {
+        issues.push({ path: basePath, message: 'Foreign key references must point to existing catalog entries.' });
+      }
+    }
+  }
+
+  return issues;
+}
+
+export function validateDatabaseRefFile(file: DatabaseRefFile): DatabaseRefValidationIssue[] {
+  const issues: DatabaseRefValidationIssue[] = [];
+  const databaseNames = new Set<string>();
+
+  for (const database of file.databases) {
+    if (!database.name.trim()) {
+      issues.push({ path: 'database/(unnamed)', message: 'Database name is required.' });
+      continue;
+    }
+    if (databaseNames.has(database.name)) {
+      issues.push({ path: database.name, message: 'Duplicate database name.' });
+    }
+    databaseNames.add(database.name);
+
+    if (database.lifecycle && !DATABASE_LIFECYCLE_OPTIONS.includes(database.lifecycle)) {
+      issues.push({ path: database.name, message: 'Invalid database lifecycle.' });
+    }
+
+    const tableNames = new Set<string>();
+    for (const table of database.tables) {
+      const tablePath = `${database.name}/${table.name || '(unnamed)'}`;
+      if (!table.name.trim()) {
+        issues.push({ path: tablePath, message: 'Table name is required.' });
+        continue;
+      }
+      if (tableNames.has(table.name)) {
+        issues.push({ path: tablePath, message: 'Duplicate table name in database.' });
+      }
+      tableNames.add(table.name);
+
+      if (table.tableType && !TABLE_TYPE_OPTIONS.includes(table.tableType)) {
+        issues.push({ path: tablePath, message: 'Invalid tableType.' });
+      }
+      if (table.accessPattern && !ACCESS_PATTERN_OPTIONS.includes(table.accessPattern)) {
+        issues.push({ path: tablePath, message: 'Invalid accessPattern.' });
+      }
+
+      const columnNames = new Set<string>();
+      for (const column of table.columns) {
+        if (column.name && columnNames.has(column.name)) {
+          issues.push({ path: `${tablePath}/${column.name}`, message: 'Duplicate column name in table.' });
+        }
+        if (column.name) columnNames.add(column.name);
+        issues.push(...validateColumnEntity(file, database.name, table.name, column));
+      }
+    }
+  }
+
+  return issues;
+}
+
+export function replaceDatabase(
+  file: DatabaseRefFile,
+  databaseName: string,
+  nextDatabase: DatabaseRefDatabase
+): { file: DatabaseRefFile; error?: string } {
+  const db = findDatabase(file, databaseName);
+  if (!db) return { file, error: 'Database not found.' };
+  const error = validateName(
+    nextDatabase.name,
+    file.databases.map((entry) => entry.name),
+    databaseName
+  );
+  if (error) return { file, error };
+  const candidate: DatabaseRefFile = {
+    databases: file.databases.map((entry) =>
+      entry.name === databaseName ? nextDatabase : entry
+    ),
+  };
+  const issues = validateDatabaseRefFile(candidate);
+  if (issues.length) return { file, error: issues[0]?.message ?? 'Validation failed.' };
+  return { file: candidate };
+}
+
+export function replaceTable(
+  file: DatabaseRefFile,
+  databaseName: string,
+  tableName: string,
+  nextTable: DatabaseRefTable
+): { file: DatabaseRefFile; error?: string } {
+  const db = findDatabase(file, databaseName);
+  const table = findTable(db, tableName);
+  if (!db || !table) return { file, error: 'Table not found.' };
+  const error = validateName(
+    nextTable.name,
+    db.tables.map((entry) => entry.name),
+    tableName
+  );
+  if (error) return { file, error };
+  const candidate: DatabaseRefFile = {
+    databases: file.databases.map((entry) =>
+      entry.name === databaseName
+        ? {
+            ...entry,
+            tables: entry.tables.map((tableEntry) =>
+              tableEntry.name === tableName ? nextTable : tableEntry
+            ),
+          }
+        : entry
+    ),
+  };
+  const issues = validateDatabaseRefFile(candidate);
+  if (issues.length) return { file, error: issues[0]?.message ?? 'Validation failed.' };
+  return { file: candidate };
+}
+
+export function replaceColumn(
+  file: DatabaseRefFile,
+  databaseName: string,
+  tableName: string,
+  columnName: string,
+  nextColumn: DatabaseRefColumn
+): { file: DatabaseRefFile; error?: string } {
+  const db = findDatabase(file, databaseName);
+  const table = findTable(db, tableName);
+  const column = findColumn(table, columnName);
+  if (!db || !table || !column) return { file, error: 'Column not found.' };
+  const error = validateName(
+    nextColumn.name,
+    table.columns.map((entry) => entry.name),
+    columnName
+  );
+  if (error) return { file, error };
+  const candidate: DatabaseRefFile = {
+    databases: file.databases.map((entry) =>
+      entry.name === databaseName
+        ? {
+            ...entry,
+            tables: entry.tables.map((tableEntry) =>
+              tableEntry.name === tableName
+                ? {
+                    ...tableEntry,
+                    columns: tableEntry.columns.map((columnEntry) =>
+                      columnEntry.name === columnName ? nextColumn : columnEntry
+                    ),
+                  }
+                : tableEntry
+            ),
+          }
+        : entry
+    ),
+  };
+  const issues = validateDatabaseRefFile(candidate);
+  if (issues.length) return { file, error: issues[0]?.message ?? 'Validation failed.' };
+  return { file: candidate };
 }

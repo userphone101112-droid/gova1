@@ -19,7 +19,10 @@ export function useSaveInspectorConfig() {
     if (!selected) return;
     dispatch({ type: 'SET_SAVE_STATUS', status: 'saving' });
     try {
-      const result = await saveInspectorElementConfig(selected, state.formState, { confirm: true });
+      const result = await saveInspectorElementConfig(selected, state.formState, {
+        confirm: true,
+        databaseRef: state.databaseRef,
+      });
       if (!result.saved || !result.storageKey || !result.entry) {
         dispatch({ type: 'SET_SAVE_STATUS', status: 'idle' });
         return;

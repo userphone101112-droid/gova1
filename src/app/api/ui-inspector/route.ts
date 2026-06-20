@@ -3,15 +3,19 @@ import path from 'path';
 
 import { NextResponse } from 'next/server';
 
+import { getUiIdentityUuid, getUiIdentityByUuid } from '@/platform/ui';
+import { isUiInspectorEnabled } from '@/platform/ui/devtools/inspector-access';
+import {
+  normalizeBindings,
+  syncLegacyFieldsFromBindings,
+} from '@/platform/ui/devtools/ui-inspector/data/element-binding-utils';
+import type { ElementAttribute } from '@/platform/ui/devtools/ui-inspector/data/element-binding.types';
 import {
   mergeInspectorEntry,
   normalizeInspectorDataMap,
   resolveInspectorIdentityKey,
 } from '@/platform/ui/devtools/ui-inspector/data/inspector-config-storage';
 import type { InspectorDataEntry } from '@/platform/ui/devtools/ui-inspector/data/inspector-config.types';
-import { getUiIdentityUuid, getUiIdentityByUuid } from '@/platform/ui';
-import { isUiInspectorEnabled } from '@/platform/ui/devtools/inspector-access';
-
 type InspectorData = Record<string, InspectorDataEntry>;
 
 const DATA_FILE_PATH = path.join(process.cwd(), 'data', 'ui-inspector-data.json');
@@ -61,6 +65,8 @@ export async function POST(request: Request) {
     const {
       uiUuid,
       uiInstanceId,
+      bindings,
+      customAttributes,
       databaseEnabled,
       databaseName,
       tableName,
@@ -89,9 +95,13 @@ export async function POST(request: Request) {
     const resolvedUuid = identity ? getUiIdentityUuid(identity) : uiUuid || '';
     const resolvedInstanceId = uiInstanceId === undefined || uiInstanceId === null ? '' : String(uiInstanceId);
     const storageKey = resolveInspectorIdentityKey(resolvedUuid, resolvedInstanceId);
-    const storageOn = storageEnabled ?? false;
 
-    const entry: InspectorDataEntry = {
+    const normalizedBindings = Array.isArray(bindings) ? normalizeBindings(bindings) : [];
+    const normalizedAttributes: ElementAttribute[] = Array.isArray(customAttributes) ? customAttributes : [];
+
+    let entry: InspectorDataEntry = {
+      bindings: normalizedBindings,
+      customAttributes: normalizedAttributes,
       databaseEnabled: databaseEnabled ?? false,
       databaseName: databaseName || '',
       tableName: tableName || '',
@@ -99,9 +109,9 @@ export async function POST(request: Request) {
       inf1: inf1 || '',
       inf2: inf2 || '',
       inf3: inf3 || '',
-      storageEnabled: storageOn,
-      storageMainFile: storageOn ? storageMainFile || '' : '',
-      storageSubFile: storageOn ? storageSubFile || '' : '',
+      storageEnabled: storageEnabled ?? false,
+      storageMainFile: storageMainFile || '',
+      storageSubFile: storageSubFile || '',
       attributesEnabled: attributesEnabled ?? false,
       attribute1: attribute1 ?? false,
       attribute2: attribute2 ?? false,
@@ -113,6 +123,13 @@ export async function POST(request: Request) {
       dataUiIdentityKey: storageKey,
       updatedAt: new Date().toISOString(),
     };
+
+    entry = syncLegacyFieldsFromBindings(entry, normalizedBindings);
+    entry.bindings = normalizedBindings;
+    entry.customAttributes = normalizedAttributes;
+    entry.inf1 = inf1 || '';
+    entry.inf2 = inf2 || '';
+    entry.inf3 = inf3 || '';
 
     await writeData(mergeInspectorEntry(data, storageKey, entry));
 

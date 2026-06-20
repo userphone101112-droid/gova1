@@ -9,6 +9,7 @@ export type {
 export {
   emptyDatabaseRefFile,
   normalizeDatabaseRefFile,
+  validateDatabaseRefFile,
   findDatabase,
   findTable,
   findColumn,

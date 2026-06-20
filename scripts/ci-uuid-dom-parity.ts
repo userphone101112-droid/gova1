@@ -39,6 +39,7 @@ const violations: string[] = [];
 for (const file of walk(ROOT)) {
   const rel = relative(process.cwd(), file).replace(/\\/g, '/');
   if (rel.includes('.test.') || rel.includes('.spec.') || rel.includes('__tests__')) continue;
+  if (rel.startsWith('src/platform/ui/devtools/')) continue;
 
   const content = readFileSync(file, 'utf-8');
   let ast: any;

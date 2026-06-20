@@ -4,8 +4,8 @@ import { join } from 'node:path';
 import { describe, expect, it } from '@jest/globals';
 import { render, screen } from '@testing-library/react';
 
-import type { InspectElementSnapshot } from '../../UiInspectorFrameBridge';
 import { InspectorSidebar } from '../components/InspectorSidebar';
+import { createDatabaseBinding, createStorageBinding } from '../data/element-binding-utils';
 import {
   buildInspectorDataEntry,
   emptyFormState,
@@ -20,35 +20,15 @@ function readModule(relativePath: string): string {
   return readFileSync(join(ROOT, relativePath), 'utf8');
 }
 
-function mockElement(overrides: Partial<InspectElementSnapshot> = {}): InspectElementSnapshot {
-  return {
-    scanKey: 'scan-1',
-    uuid: 'uuid-1',
-    instanceId: 'inst-1',
-    id: 'UI_TEST',
-    path: 'test.path',
-    feature: 'devtools',
-    tagName: 'button',
-    lifecycle: 'active',
-    identityKey: 'uuid-1:inst-1',
-    hasSource: true,
-    sourceFile: '/src/test.tsx',
-    sourceLine: 1,
-    sourceComponent: 'Test',
-    rect: { top: 0, left: 0, width: 100, height: 40 },
-    ...overrides,
-  };
-}
-
 describe('ui-inspector section separation', () => {
-  it('useDatabaseManagement does not import inspector-config.service', () => {
-    const source = readModule('hooks/useDatabaseManagement.ts');
+  it('useDatabaseCatalog does not import inspector-config.service', () => {
+    const source = readModule('hooks/useDatabaseCatalog.ts');
     expect(source).not.toMatch(/inspector-config\.service/);
     expect(source).toMatch(/database-ref\.service/);
   });
 
-  it('useStorageManagement does not import inspector-config.service', () => {
-    const source = readModule('hooks/useStorageManagement.ts');
+  it('useStorageCatalog does not import inspector-config.service', () => {
+    const source = readModule('hooks/useStorageCatalog.ts');
     expect(source).not.toMatch(/inspector-config\.service/);
     expect(source).toMatch(/storage-ref\.service/);
   });
@@ -60,58 +40,111 @@ describe('ui-inspector section separation', () => {
     expect(source).toMatch(/inspector-config\.service/);
   });
 
-  it('StorageSection does not write to storage.json', () => {
-    const source = readModule('sidebar/StorageSection.tsx');
+  it('SimulationInsightsSection does not import save services', () => {
+    const source = readModule('sections/SimulationInsightsSection.tsx');
+    expect(source).not.toMatch(/inspector-config\.service/);
+    expect(source).not.toMatch(/database-ref\.service/);
     expect(source).not.toMatch(/storage-ref\.service/);
-    expect(source).toMatch(/useStorageSettings/);
   });
 
-  it('InspectorSidebar hides Database & Attributes without a selected element', () => {
+  it('ElementBindingSection does not write database_ref or storage catalogs', () => {
+    const source = readModule('sections/ElementBindingSection.tsx');
+    expect(source).not.toMatch(/database-ref\.service/);
+    expect(source).not.toMatch(/storage-ref\.service/);
+  });
+
+  it('InspectorSidebar hides Element Bindings without a selected element', () => {
     render(
       <InspectorProvider>
         <InspectorSidebar />
       </InspectorProvider>
     );
-    expect(screen.queryByRole('button', { name: /Database & Attributes/i })).toBeNull();
-    expect(screen.getByRole('button', { name: /Database Management/i })).toBeTruthy();
-    expect(screen.getByRole('button', { name: /Storage Manager/i })).toBeTruthy();
+    expect(screen.queryByRole('button', { name: /Element Bindings/i })).toBeNull();
+    expect(screen.getByRole('button', { name: /Database Catalog/i })).toBeTruthy();
+    expect(screen.getByRole('button', { name: /Storage Catalog/i })).toBeTruthy();
+    expect(screen.getByRole('button', { name: /Simulation Insights/i })).toBeTruthy();
   });
 
-  it('persists databaseName/tableName/columnName and storage fields in ui-inspector-data shape', () => {
-    const element = mockElement();
+  it('persists bindings and legacy fields in ui-inspector-data shape', () => {
+    const element = {
+      scanKey: 's1',
+      uuid: 'uuid-1',
+      instanceId: 'inst-1',
+      id: 'UI_TEST',
+      path: 'test.path',
+      feature: 'devtools',
+      tagName: 'button',
+      lifecycle: 'active' as const,
+      identityKey: 'uuid-1:inst-1',
+      hasSource: true,
+      sourceFile: '/src/test.tsx',
+      sourceLine: 1,
+      sourceComponent: 'Test',
+      rect: { top: 0, left: 0, width: 100, height: 40 },
+    };
     const form = {
       ...emptyFormState(),
+      bindings: [
+        createDatabaseBinding({
+          databaseName: 'human_resource_management_system',
+          tableName: 'employees',
+          columnName: 'employee_id',
+        }),
+        createStorageBinding({
+          storageMainFile: 'Projects',
+          storageSubFile: 'Frontend',
+        }),
+      ],
       databaseEnabled: true,
       databaseName: 'human_resource_management_system',
       tableName: 'employees',
       columnName: 'employee_id',
       inf1: 'extra-1',
-      inf2: 'extra-2',
-      inf3: 'extra-3',
       storageEnabled: true,
       storageMainFile: 'Projects',
       storageSubFile: 'Frontend',
-      attributesEnabled: true,
-      attribute1: true,
-      attribute2: false,
-      attribute3: true,
     };
     const entry = buildInspectorDataEntry(element, form);
     expect(entry.databaseName).toBe('human_resource_management_system');
-    expect(entry.tableName).toBe('employees');
-    expect(entry.columnName).toBe('employee_id');
     expect(entry.inf1).toBe('extra-1');
-    expect(entry.storageMainFile).toBe('Projects');
-    expect(entry.storageSubFile).toBe('Frontend');
-    expect(entry.storageEnabled).toBe(true);
-    expect(formStateFromEntry(entry, { databases: [] })).toEqual(form);
+    expect(entry.bindings?.length).toBeGreaterThan(0);
+    const loaded = formStateFromEntry(entry, { databases: [] });
+    expect(loaded.databaseName).toBe('human_resource_management_system');
+    expect(loaded.inf1).toBe('extra-1');
+    expect(loaded.bindings.length).toBeGreaterThan(0);
   });
 
   it('uses stable storage keys so returning to the same element restores saved values', () => {
-    const element = mockElement();
+    const element = {
+      scanKey: 's1',
+      uuid: 'uuid-1',
+      instanceId: 'inst-1',
+      id: 'UI_TEST',
+      path: 'test.path',
+      feature: 'devtools',
+      tagName: 'button',
+      lifecycle: 'active' as const,
+      identityKey: 'uuid-1:inst-1',
+      hasSource: true,
+      sourceFile: '/src/test.tsx',
+      sourceLine: 1,
+      sourceComponent: 'Test',
+      rect: { top: 0, left: 0, width: 100, height: 40 },
+    };
     const key = getStorageKey(element);
     const saved = buildInspectorDataEntry(element, {
       ...emptyFormState(),
+      bindings: [
+        createDatabaseBinding({
+          databaseName: 'ecommerce_system',
+          tableName: 'products',
+          columnName: 'product_id',
+        }),
+        createStorageBinding({
+          storageMainFile: 'Database',
+          storageSubFile: 'Tables',
+        }),
+      ],
       databaseEnabled: true,
       databaseName: 'ecommerce_system',
       tableName: 'products',
@@ -119,27 +152,48 @@ describe('ui-inspector section separation', () => {
       storageEnabled: true,
       storageMainFile: 'Database',
       storageSubFile: 'Tables',
-      attributesEnabled: true,
-      attribute1: false,
-      attribute2: true,
-      attribute3: false,
     });
     const map = { [key]: saved };
-    expect(formStateFromEntry(map[key], { databases: [] })).toEqual({
-      databaseEnabled: true,
-      databaseName: 'ecommerce_system',
-      tableName: 'products',
-      columnName: 'product_id',
-      inf1: '',
-      inf2: '',
-      inf3: '',
-      storageEnabled: true,
-      storageMainFile: 'Database',
-      storageSubFile: 'Tables',
-      attributesEnabled: true,
-      attribute1: false,
-      attribute2: true,
-      attribute3: false,
+    const loaded = formStateFromEntry(map[key], { databases: [] });
+    expect(loaded.databaseName).toBe('ecommerce_system');
+    expect(loaded.storageMainFile).toBe('Database');
+    expect(loaded.bindings.some((b) => b.kind === 'database')).toBe(true);
+  });
+
+  it('persists empty bindings array when all bindings are removed', () => {
+    const element = {
+      scanKey: 's1',
+      uuid: 'uuid-1',
+      instanceId: 'inst-1',
+      id: 'UI_TEST',
+      path: 'test.path',
+      feature: 'devtools',
+      tagName: 'button',
+      lifecycle: 'active' as const,
+      identityKey: 'uuid-1:inst-1',
+      hasSource: true,
+      sourceFile: '/src/test.tsx',
+      sourceLine: 1,
+      sourceComponent: 'Test',
+      rect: { top: 0, left: 0, width: 100, height: 40 },
+    };
+    const entry = buildInspectorDataEntry(element, {
+      ...emptyFormState(),
+      bindings: [],
+      customAttributes: [],
+      inf1: 'keep-note',
     });
+    expect(entry.bindings).toEqual([]);
+    expect(entry.customAttributes).toEqual([]);
+    expect(entry.databaseEnabled).toBe(false);
+    expect(entry.databaseName).toBe('');
+    expect(entry.storageEnabled).toBe(false);
+    expect(entry.inf1).toBe('keep-note');
+  });
+
+  it('DatabaseBindingEditor quick add uses database-ref.service', () => {
+    const source = readModule('bindings/DatabaseBindingEditor.tsx');
+    expect(source).toMatch(/database-ref\.service/);
+    expect(source).not.toMatch(/inspector-config\.service/);
   });
 });

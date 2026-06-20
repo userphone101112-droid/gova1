@@ -2,6 +2,12 @@ import type { InspectElementSnapshot } from '../../UiInspectorFrameBridge';
 
 import { findColumn, findDatabase, findTable } from './database-ref-utils';
 import type { DatabaseRefFile } from './database-ref.types';
+import {
+  bindingsFromLegacyEntry,
+  normalizeBindings,
+  syncLegacyFieldsFromBindings,
+} from './element-binding-utils';
+import type { ElementAttribute } from './element-binding.types';
 import type {
   ElementDatabaseSettings,
   ElementFormState,
@@ -24,6 +30,9 @@ export function getInspectorData(
 
 export function emptyFormState(): ElementFormState {
   return {
+    bindings: [],
+    activeBindingId: '',
+    customAttributes: [],
     databaseEnabled: false,
     databaseName: '',
     tableName: '',
@@ -56,7 +65,6 @@ export function isSameInspectorElement(
   return entry.dataUiUuid === uuid && entryInstance === targetInstance;
 }
 
-/** Collapse duplicate keys for the same element; keeps the newest entry per identity. */
 export function normalizeInspectorDataMap(data: InspectorDataMap): InspectorDataMap {
   const normalized: InspectorDataMap = {};
 
@@ -135,13 +143,45 @@ function resolveLegacyDatabaseBinding(
   return { databaseName, tableName, columnName, inf1, inf2, inf3 };
 }
 
+function resolveBindings(
+  entry: InspectorDataEntry,
+  databaseRef: DatabaseRefFile
+): ElementFormState['bindings'] {
+  if (entry.bindings?.length) {
+    return normalizeBindings(entry.bindings);
+  }
+  const legacyPath = resolveLegacyDatabaseBinding(entry, databaseRef);
+  return bindingsFromLegacyEntry(
+    {
+      ...entry,
+      databaseName: legacyPath.databaseName,
+      tableName: legacyPath.tableName,
+      columnName: legacyPath.columnName,
+    },
+    databaseRef
+  );
+}
+
+function resolveCustomAttributes(entry: InspectorDataEntry): ElementAttribute[] {
+  if (entry.customAttributes?.length) {
+    return entry.customAttributes;
+  }
+  return [];
+}
+
 export function formStateFromEntry(
   entry: InspectorDataEntry | undefined,
   databaseRef: DatabaseRefFile = { databases: [] }
 ): ElementFormState {
   if (!entry) return emptyFormState();
+
   const binding = resolveLegacyDatabaseBinding(entry, databaseRef);
+  const bindings = resolveBindings(entry, databaseRef);
+
   return {
+    bindings,
+    activeBindingId: bindings[0]?.id ?? '',
+    customAttributes: resolveCustomAttributes(entry),
     databaseEnabled: entry.databaseEnabled,
     databaseName: binding.databaseName,
     tableName: binding.tableName,
@@ -159,12 +199,21 @@ export function formStateFromEntry(
   };
 }
 
+function resolveBindingsForSave(formState: ElementFormState): ElementFormState['bindings'] {
+  return normalizeBindings(formState.bindings);
+}
+
 export function buildInspectorDataEntry(
   el: InspectElementSnapshot,
-  formState: ElementFormState
+  formState: ElementFormState,
+  _databaseRef: DatabaseRefFile = { databases: [] }
 ): InspectorDataEntry {
   const storageKey = getStorageKey(el);
-  return {
+  const bindings = resolveBindingsForSave(formState);
+
+  const base: InspectorDataEntry = {
+    bindings,
+    customAttributes: formState.customAttributes,
     databaseEnabled: formState.databaseEnabled,
     databaseName: formState.databaseName,
     tableName: formState.tableName,
@@ -186,6 +235,8 @@ export function buildInspectorDataEntry(
     dataUiIdentityKey: storageKey,
     updatedAt: new Date().toISOString(),
   };
+
+  return syncLegacyFieldsFromBindings(base, bindings);
 }
 
 export function databaseSettingsFromForm(form: ElementFormState): ElementDatabaseSettings {
@@ -215,8 +266,20 @@ export function remapStorageFolderName(
   oldName: string,
   newName: string
 ): ElementFormState {
-  if (form.storageMainFile !== oldName) return form;
-  return { ...form, storageMainFile: newName, storageSubFile: '' };
+  const nextBindings = form.bindings.map((binding) =>
+    binding.kind === 'storage' && binding.storageMainFile === oldName
+      ? { ...binding, storageMainFile: newName, storageSubFile: '' }
+      : binding
+  );
+  if (form.storageMainFile !== oldName) {
+    return { ...form, bindings: nextBindings };
+  }
+  return {
+    ...form,
+    bindings: nextBindings,
+    storageMainFile: newName,
+    storageSubFile: '',
+  };
 }
 
 export function remapStorageSubfolderName(
@@ -225,6 +288,15 @@ export function remapStorageSubfolderName(
   oldName: string,
   newName: string
 ): ElementFormState {
-  if (form.storageMainFile !== folderName || form.storageSubFile !== oldName) return form;
-  return { ...form, storageSubFile: newName };
+  const nextBindings = form.bindings.map((binding) =>
+    binding.kind === 'storage' &&
+    binding.storageMainFile === folderName &&
+    binding.storageSubFile === oldName
+      ? { ...binding, storageSubFile: newName }
+      : binding
+  );
+  if (form.storageMainFile !== folderName || form.storageSubFile !== oldName) {
+    return { ...form, bindings: nextBindings };
+  }
+  return { ...form, bindings: nextBindings, storageSubFile: newName };
 }

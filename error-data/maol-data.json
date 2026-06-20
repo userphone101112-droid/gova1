@@ -1551,6 +1551,14 @@
         "route": "/devtools/ui-inspector",
         "timestamp": 1781958053828,
         "env": "dev"
+      },
+      {
+        "type": "error",
+        "message": "Uncaught TypeError: Cannot read properties of undefined (reading 'toggle')",
+        "stack": "TypeError: Cannot read properties of undefined (reading 'toggle')\n    at sidebarSectionToggleClass (http://localhost:3001/_next/static/chunks/src_platform_ui_devtools_0ol5an6._.js:2692:60)\n    at InspectorSidebar (http://localhost:3001/_next/static/chunks/src_platform_ui_devtools_0tp2uba._.js?id=%255Bproject%255D%252Fsrc%252Fplatform%252Fui%252Fdevtools%252Fui-inspector%252Fcomponents%252FInspectorSidebar.tsx+%255Bapp-client%255D+%2528ecmascript%2529:125:257)\n    at Object.react_stack_bottom_frame (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:15037:24)\n    at renderWithHooks (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:4620:24)\n    at updateFunctionComponent (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:6081:21)\n    at beginWork (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:6691:24)\n    at runWithFiberInDEV (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:965:74)\n    at performUnitOfWork (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:9555:97)\n    at workLoopSync (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:9449:40)\n    at renderRootSync (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:9433:13)\n    at performWorkOnRoot (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:9061:186)\n    at performSyncWorkOnRoot (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:10263:9)\n    at flushSyncWorkAcrossRoots_impl (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:10179:316)\n    at processRootScheduleInMicrotask (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:10200:106)\n    at http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:10274:158",
+        "route": "/devtools/ui-inspector",
+        "timestamp": 1781960694754,
+        "env": "dev"
       }
     ],
     "warnings": [

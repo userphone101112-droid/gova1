@@ -18,6 +18,7 @@ import {
   renameDatabase,
   renameTable,
   uniqueName,
+  validateDatabaseRefFile,
   validateName,
 } from '../data/database-ref-utils';
 
@@ -156,5 +157,73 @@ describe('database-ref-utils', () => {
       inf2: 'table_new',
       inf3: 'col_new',
     });
+  });
+
+  it('preserves full database metadata on normalize', () => {
+    const file = normalizeDatabaseRefFile({
+      databases: [
+        {
+          name: 'hr',
+          description: 'HR DB',
+          entityName: 'Employee',
+          ownerFeature: 'settings',
+          domain: 'people',
+          lifecycle: 'active',
+          tables: [
+            {
+              name: 'employees',
+              description: 'Employees',
+              entityName: 'Employee',
+              tableType: 'entity',
+              expectedRows: '10000',
+              accessPattern: 'read_heavy',
+              notes: 'core table',
+              columns: [
+                {
+                  name: 'employee_id',
+                  description: 'PK',
+                  dataType: 'uuid',
+                  nullable: false,
+                  unique: true,
+                  indexed: true,
+                  isPrimaryKey: true,
+                  isForeignKey: false,
+                  sensitivity: 'internal',
+                  validationRule: 'required',
+                  exampleValue: '550e8400-e29b-41d4-a716-446655440000',
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    });
+    const db = findDatabase(file, 'hr');
+    expect(db?.lifecycle).toBe('active');
+    expect(db?.domain).toBe('people');
+    const table = findTable(db, 'employees');
+    expect(table?.tableType).toBe('entity');
+    const column = table?.columns[0];
+    expect(column?.dataType).toBe('uuid');
+    expect(column?.isPrimaryKey).toBe(true);
+    expect(column?.exampleValue).toContain('550e8400');
+  });
+
+  it('rejects primary key nullable columns during validation', () => {
+    const file = normalizeDatabaseRefFile({
+      databases: [
+        {
+          name: 'db1',
+          tables: [
+            {
+              name: 'users',
+              columns: [{ name: 'id', isPrimaryKey: true, nullable: true }],
+            },
+          ],
+        },
+      ],
+    });
+    const issues = validateDatabaseRefFile(file);
+    expect(issues.some((issue) => issue.message.includes('Primary key'))).toBe(true);
   });
 });

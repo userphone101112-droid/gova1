@@ -4,9 +4,9 @@ import { DEVTOOLS } from '@/platform/ui/registry/features/devtools';
 
 import type { InspectorRoutePath } from '../../inspector-routes';
 import { usePageRegistry } from '../hooks/usePageRegistry';
+import { FieldGroup, inspectorFieldSelectClass } from '../sidebar/FieldGroup';
 import { useInspectorContext } from '../state/InspectorProvider';
 
-import { FieldGroup, inspectorFieldSelectClass } from '../sidebar/FieldGroup';
 
 export function InspectorToolbar() {
   const { state, handleRouteChange, handleRefresh } = useInspectorContext();

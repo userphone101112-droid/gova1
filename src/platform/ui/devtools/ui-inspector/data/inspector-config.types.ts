@@ -1,12 +1,15 @@
 import type { InspectorRoutePath } from '../../inspector-routes';
 import type { InspectElementSnapshot } from '../../UiInspectorFrameBridge';
 
+import type { ElementAttribute, ElementBinding } from './element-binding.types';
+
 export type SaveStatus = 'idle' | 'saving' | 'saved' | 'error';
 
 export type SidebarSection =
-  | 'dbAttributes'
-  | 'dbManagement'
-  | 'storageManagement'
+  | 'elementBindings'
+  | 'databaseCatalog'
+  | 'storageCatalog'
+  | 'simulationInsights'
   | 'filters'
   | 'list'
   | 'details';
@@ -26,6 +29,9 @@ export type ElementDatabaseSettings = {
 };
 
 export type ElementFormState = {
+  bindings: ElementBinding[];
+  activeBindingId: string;
+  customAttributes: ElementAttribute[];
   databaseEnabled: boolean;
   databaseName: string;
   tableName: string;
@@ -49,6 +55,8 @@ export type ViewportSettings = {
 };
 
 export interface InspectorDataEntry {
+  bindings?: ElementBinding[];
+  customAttributes?: ElementAttribute[];
   databaseEnabled: boolean;
   databaseName?: string;
   tableName?: string;
