@@ -2,7 +2,7 @@ import { cookies } from 'next/headers';
 
 import { Locale } from '../core/types';
 
-const DEFAULT_LOCALE: Locale = 'en';
+const DEFAULT_LOCALE: Locale = 'ar';
 const DEFAULT_THEME_MODE: 'light' | 'dark' | 'system' = 'system';
 
 export interface SSOTPreferences {

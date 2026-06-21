@@ -2695,16 +2695,6 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "sourceLine": 705,
     "feature": "auth"
   },
-  "6fa54f24-ff7e-5c83-a8a5-1a9e8977b74d": {
-    "uuid": "6fa54f24-ff7e-5c83-a8a5-1a9e8977b74d",
-    "id": "UI_AUTH_REGISTRATION_STRENGTH_FAIR",
-    "path": "auth.registration.strength-fair",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
-    "sourceComponent": "AUTH",
-    "sourceLine": 717,
-    "feature": "auth"
-  },
   "59ada5af-8b08-55c8-b351-93dd9ac2f816": {
     "uuid": "59ada5af-8b08-55c8-b351-93dd9ac2f816",
     "id": "UI_AUTH_REGISTRATION_STRENGTH_GOOD",
@@ -2715,16 +2705,6 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "sourceLine": 729,
     "feature": "auth"
   },
-  "681b4e19-d725-530a-a16e-a38f1459bc10": {
-    "uuid": "681b4e19-d725-530a-a16e-a38f1459bc10",
-    "id": "UI_AUTH_REGISTRATION_STRENGTH_STRONG",
-    "path": "auth.registration.strength-strong",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
-    "sourceComponent": "AUTH",
-    "sourceLine": 741,
-    "feature": "auth"
-  },
   "9d7afff3-a2d9-5e40-b2cb-509d4aeb07a2": {
     "uuid": "9d7afff3-a2d9-5e40-b2cb-509d4aeb07a2",
     "id": "UI_AUTH_REGISTRATION_REQ_MIN",
@@ -2733,46 +2713,6 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
     "sourceLine": 753,
-    "feature": "auth"
-  },
-  "839e43f3-70bf-53b0-a341-db3db484167a": {
-    "uuid": "839e43f3-70bf-53b0-a341-db3db484167a",
-    "id": "UI_AUTH_REGISTRATION_REQ_UPPER",
-    "path": "auth.registration.req-uppercase",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
-    "sourceComponent": "AUTH",
-    "sourceLine": 765,
-    "feature": "auth"
-  },
-  "aea145a6-37e5-5029-961b-2ee8e1f1595b": {
-    "uuid": "aea145a6-37e5-5029-961b-2ee8e1f1595b",
-    "id": "UI_AUTH_REGISTRATION_REQ_LOWER",
-    "path": "auth.registration.req-lowercase",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
-    "sourceComponent": "AUTH",
-    "sourceLine": 777,
-    "feature": "auth"
-  },
-  "13d0a784-7c3f-573d-8318-160ac157d603": {
-    "uuid": "13d0a784-7c3f-573d-8318-160ac157d603",
-    "id": "UI_AUTH_REGISTRATION_REQ_NUMBER",
-    "path": "auth.registration.req-number",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
-    "sourceComponent": "AUTH",
-    "sourceLine": 789,
-    "feature": "auth"
-  },
-  "79396ddc-0990-592f-86f9-1f12ba280d65": {
-    "uuid": "79396ddc-0990-592f-86f9-1f12ba280d65",
-    "id": "UI_AUTH_REGISTRATION_REQ_SPECIAL",
-    "path": "auth.registration.req-special",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
-    "sourceComponent": "AUTH",
-    "sourceLine": 801,
     "feature": "auth"
   },
   "0b9f78c9-5753-53ce-9ab7-b397db02d8d4": {
@@ -11395,6 +11335,66 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "sourceLine": 133,
     "feature": "common"
   },
+  "6fa54f24-ff7e-5c83-a8a5-1a9e8977b74d": {
+    "uuid": "6fa54f24-ff7e-5c83-a8a5-1a9e8977b74d",
+    "id": "UI_AUTH_REGISTRATION_STRENGTH_FAIR",
+    "path": "auth.registration.strength-fair",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 717,
+    "feature": "auth"
+  },
+  "681b4e19-d725-530a-a16e-a38f1459bc10": {
+    "uuid": "681b4e19-d725-530a-a16e-a38f1459bc10",
+    "id": "UI_AUTH_REGISTRATION_STRENGTH_STRONG",
+    "path": "auth.registration.strength-strong",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 741,
+    "feature": "auth"
+  },
+  "839e43f3-70bf-53b0-a341-db3db484167a": {
+    "uuid": "839e43f3-70bf-53b0-a341-db3db484167a",
+    "id": "UI_AUTH_REGISTRATION_REQ_UPPER",
+    "path": "auth.registration.req-uppercase",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 765,
+    "feature": "auth"
+  },
+  "aea145a6-37e5-5029-961b-2ee8e1f1595b": {
+    "uuid": "aea145a6-37e5-5029-961b-2ee8e1f1595b",
+    "id": "UI_AUTH_REGISTRATION_REQ_LOWER",
+    "path": "auth.registration.req-lowercase",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 777,
+    "feature": "auth"
+  },
+  "13d0a784-7c3f-573d-8318-160ac157d603": {
+    "uuid": "13d0a784-7c3f-573d-8318-160ac157d603",
+    "id": "UI_AUTH_REGISTRATION_REQ_NUMBER",
+    "path": "auth.registration.req-number",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 789,
+    "feature": "auth"
+  },
+  "79396ddc-0990-592f-86f9-1f12ba280d65": {
+    "uuid": "79396ddc-0990-592f-86f9-1f12ba280d65",
+    "id": "UI_AUTH_REGISTRATION_REQ_SPECIAL",
+    "path": "auth.registration.req-special",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 801,
+    "feature": "auth"
+  },
   "0df51331-ce60-5b24-85f9-1d9fc2a8b4ba": {
     "uuid": "0df51331-ce60-5b24-85f9-1d9fc2a8b4ba",
     "id": "UI_AUTH_STRUCTURE_LABELIDENTITY_WRAPPER_L37",
@@ -15738,16 +15738,6 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "sourceLine": 705,
     "feature": "auth"
   },
-  "UI_AUTH_REGISTRATION_STRENGTH_FAIR": {
-    "uuid": "6fa54f24-ff7e-5c83-a8a5-1a9e8977b74d",
-    "id": "UI_AUTH_REGISTRATION_STRENGTH_FAIR",
-    "path": "auth.registration.strength-fair",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
-    "sourceComponent": "AUTH",
-    "sourceLine": 717,
-    "feature": "auth"
-  },
   "UI_AUTH_REGISTRATION_STRENGTH_GOOD": {
     "uuid": "59ada5af-8b08-55c8-b351-93dd9ac2f816",
     "id": "UI_AUTH_REGISTRATION_STRENGTH_GOOD",
@@ -15758,16 +15748,6 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "sourceLine": 729,
     "feature": "auth"
   },
-  "UI_AUTH_REGISTRATION_STRENGTH_STRONG": {
-    "uuid": "681b4e19-d725-530a-a16e-a38f1459bc10",
-    "id": "UI_AUTH_REGISTRATION_STRENGTH_STRONG",
-    "path": "auth.registration.strength-strong",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
-    "sourceComponent": "AUTH",
-    "sourceLine": 741,
-    "feature": "auth"
-  },
   "UI_AUTH_REGISTRATION_REQ_MIN": {
     "uuid": "9d7afff3-a2d9-5e40-b2cb-509d4aeb07a2",
     "id": "UI_AUTH_REGISTRATION_REQ_MIN",
@@ -15776,46 +15756,6 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
     "sourceLine": 753,
-    "feature": "auth"
-  },
-  "UI_AUTH_REGISTRATION_REQ_UPPER": {
-    "uuid": "839e43f3-70bf-53b0-a341-db3db484167a",
-    "id": "UI_AUTH_REGISTRATION_REQ_UPPER",
-    "path": "auth.registration.req-uppercase",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
-    "sourceComponent": "AUTH",
-    "sourceLine": 765,
-    "feature": "auth"
-  },
-  "UI_AUTH_REGISTRATION_REQ_LOWER": {
-    "uuid": "aea145a6-37e5-5029-961b-2ee8e1f1595b",
-    "id": "UI_AUTH_REGISTRATION_REQ_LOWER",
-    "path": "auth.registration.req-lowercase",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
-    "sourceComponent": "AUTH",
-    "sourceLine": 777,
-    "feature": "auth"
-  },
-  "UI_AUTH_REGISTRATION_REQ_NUMBER": {
-    "uuid": "13d0a784-7c3f-573d-8318-160ac157d603",
-    "id": "UI_AUTH_REGISTRATION_REQ_NUMBER",
-    "path": "auth.registration.req-number",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
-    "sourceComponent": "AUTH",
-    "sourceLine": 789,
-    "feature": "auth"
-  },
-  "UI_AUTH_REGISTRATION_REQ_SPECIAL": {
-    "uuid": "79396ddc-0990-592f-86f9-1f12ba280d65",
-    "id": "UI_AUTH_REGISTRATION_REQ_SPECIAL",
-    "path": "auth.registration.req-special",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
-    "sourceComponent": "AUTH",
-    "sourceLine": 801,
     "feature": "auth"
   },
   "UI_AUTH_STRUCTURE_REGISTRATION_PASSWORD_STRENGTH_WRAPPER_L41": {
@@ -24437,6 +24377,66 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "sourceComponent": "COMMON_TYPOGRAPHY",
     "sourceLine": 133,
     "feature": "common"
+  },
+  "UI_AUTH_REGISTRATION_STRENGTH_FAIR": {
+    "uuid": "6fa54f24-ff7e-5c83-a8a5-1a9e8977b74d",
+    "id": "UI_AUTH_REGISTRATION_STRENGTH_FAIR",
+    "path": "auth.registration.strength-fair",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 717,
+    "feature": "auth"
+  },
+  "UI_AUTH_REGISTRATION_STRENGTH_STRONG": {
+    "uuid": "681b4e19-d725-530a-a16e-a38f1459bc10",
+    "id": "UI_AUTH_REGISTRATION_STRENGTH_STRONG",
+    "path": "auth.registration.strength-strong",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 741,
+    "feature": "auth"
+  },
+  "UI_AUTH_REGISTRATION_REQ_UPPER": {
+    "uuid": "839e43f3-70bf-53b0-a341-db3db484167a",
+    "id": "UI_AUTH_REGISTRATION_REQ_UPPER",
+    "path": "auth.registration.req-uppercase",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 765,
+    "feature": "auth"
+  },
+  "UI_AUTH_REGISTRATION_REQ_LOWER": {
+    "uuid": "aea145a6-37e5-5029-961b-2ee8e1f1595b",
+    "id": "UI_AUTH_REGISTRATION_REQ_LOWER",
+    "path": "auth.registration.req-lowercase",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 777,
+    "feature": "auth"
+  },
+  "UI_AUTH_REGISTRATION_REQ_NUMBER": {
+    "uuid": "13d0a784-7c3f-573d-8318-160ac157d603",
+    "id": "UI_AUTH_REGISTRATION_REQ_NUMBER",
+    "path": "auth.registration.req-number",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 789,
+    "feature": "auth"
+  },
+  "UI_AUTH_REGISTRATION_REQ_SPECIAL": {
+    "uuid": "79396ddc-0990-592f-86f9-1f12ba280d65",
+    "id": "UI_AUTH_REGISTRATION_REQ_SPECIAL",
+    "path": "auth.registration.req-special",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 801,
+    "feature": "auth"
   },
   "UI_AUTH_STRUCTURE_LABELIDENTITY_WRAPPER_L37": {
     "uuid": "0df51331-ce60-5b24-85f9-1d9fc2a8b4ba",

@@ -22,7 +22,7 @@ export function OtpInput({
   onChange,
   onComplete,
   disabled = false,
-  length = 6,
+  length = 4,
   hasError = false,
 }: OtpInputProps) {
   const { t } = useTranslation();

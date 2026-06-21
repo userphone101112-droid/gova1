@@ -86,7 +86,7 @@ id: 'UI_TEST1_FORM_SAVE_BUTTON',
       version: '1.0.0',
       createdAt: '2026-06-21',
       updatedAt: '2026-06-21',
-    } as const,
+} as const,
   },
   IMAGE_UPLOAD: {
     CONTAINER: {
@@ -126,7 +126,7 @@ id: 'UI_TEST1_IMAGE_UPLOAD_PREVIEW_CONTAINER',
       updatedAt: '2026-06-20',
 } as const,
     PREVIEW_IMAGE: {
-      uuid: '48527ae9-3f51-5a80-a07d-31a701e8f256',
+uuid: '48527ae9-3f51-5a80-a07d-31a701e8f256',
 id: 'UI_TEST1_IMAGE_UPLOAD_PREVIEW_IMAGE',
       path: 'test1.image-upload.display.preview-image',
       description: 'Image preview image',

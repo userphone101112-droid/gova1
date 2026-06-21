@@ -70,10 +70,6 @@ export type authTranslationKey =
   | 'auth.registration.strengthGood'
   | 'auth.registration.strengthStrong'
   | 'auth.registration.reqMinLength'
-  | 'auth.registration.reqUppercase'
-  | 'auth.registration.reqLowercase'
-  | 'auth.registration.reqNumber'
-  | 'auth.registration.reqSpecial'
   | 'auth.registration.togglePasswordVisibility'
   | 'auth.registration.submitButton'
   | 'auth.registration.submittingButton'
@@ -89,6 +85,17 @@ export type authTranslationKey =
   | 'auth.registration.passwordInputLabel'
   | 'auth.registration.confirmPasswordInputLabel'
   | 'auth.registration.toggleConfirmPasswordVisibility'
+  | 'auth.registration.errorPhoneRequired'
+  | 'auth.registration.errorPhoneLength'
+  | 'auth.registration.errorPhonePrefix'
+  | 'auth.registration.errorPasswordMinLength'
+  | 'auth.registration.errorConfirmPasswordRequired'
+  | 'auth.registration.errorPasswordMatch'
+  | 'auth.registration.errorPhoneVerification'
+  | 'auth.registration.reqUppercase'
+  | 'auth.registration.reqLowercase'
+  | 'auth.registration.reqNumber'
+  | 'auth.registration.reqSpecial'
 ;
 
 // common feature translations
@@ -841,6 +848,17 @@ export type splashTranslationKey =
   | 'splash.marquee.bottomSupplies'
 ;
 
+// test1 feature translations
+export type test1TranslationKey =
+  | 'test1.page.title'
+  | 'test1.form.input1'
+  | 'test1.form.input2'
+  | 'test1.form.input3'
+  | 'test1.form.saveButton'
+  | 'test1.image-upload.uploadButton'
+  | 'test1.image-upload.previewImage'
+;
+
 
 // Union type of all possible translation keys
 export type AllTranslationKeys =
@@ -855,5 +873,6 @@ export type AllTranslationKeys =
   | settingsTranslationKey
   | sharedLayoutTranslationKey
   | splashTranslationKey
+  | test1TranslationKey
 
 export type TranslationKey = AllTranslationKeys;

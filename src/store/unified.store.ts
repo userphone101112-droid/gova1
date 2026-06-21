@@ -68,7 +68,7 @@ type UnifiedStore = UnifiedStoreState & UnifiedStoreActions;
 // --- Constants ---
 
 const DEFAULT_PREFERENCES = {
-  language: 'en' as Language,
+  language: 'ar' as Language,
   themeMode: 'system' as ThemeMode,
   fontSize: 16,
   density: 'comfortable' as Density,

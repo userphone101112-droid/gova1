@@ -2861,6 +2861,64 @@
         "severity": "low",
         "timestamp": 1782042066772,
         "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "Feature dictionary not found for feature: signup, locale: en",
+        "route": "/image-upload-form",
+        "severity": "low",
+        "timestamp": 1782042705272,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[Fast Refresh] performing full reload Fast Refresh will perform a full reload when you edit a file that's imported by modules outside of the React rendering tree.\nYou might have a file which exports a React component but also exports a value that is imported by a non-React component file.\nConsider migrating the non-React component export to a separate file and importing it into both files. It is also possible the parent component of the component you edited is a class component, which disables F",
+        "route": "/registration",
+        "severity": "low",
+        "timestamp": 1782045034928,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "%s Feature dictionary not found for feature: signup, locale: ar",
+        "route": "/settings",
+        "severity": "low",
+        "timestamp": 1782045588277,
+        "env": "dev"
+      }
+    ]
+  },
+  "maol_sGgJUQRrv3": {
+    "errors": [],
+    "warnings": [
+      {
+        "type": "warning",
+        "message": "%s Feature dictionary not found for feature: signup, locale: ar",
+        "route": "/settings",
+        "severity": "low",
+        "timestamp": 1782045899995,
+        "env": "dev"
+      }
+    ]
+  },
+  "maol_Ft9kOcJZ8z": {
+    "errors": [],
+    "warnings": [
+      {
+        "type": "warning",
+        "message": "%s Feature dictionary not found for feature: signup, locale: ar",
+        "route": "/registration",
+        "severity": "low",
+        "timestamp": 1782046519156,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "Image with src \"/images/logos/logo-full.webp\" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: \"auto\"' or 'height: \"auto\"' to maintain the aspect ratio.",
+        "route": "/home",
+        "severity": "low",
+        "timestamp": 1782046646769,
+        "env": "dev"
       }
     ]
   }

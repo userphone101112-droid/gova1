@@ -1,13 +1,26 @@
 'use client';
 import { Settings as SettingsIcon, Globe, Palette, Accessibility, Terminal, Database, FileText } from 'lucide-react';
+import * as React from 'react';
 
 import { useTranslation } from '@/platform/ui';
 import { SETTINGS } from '@/platform/ui/registry/features/settings';
 import { useUnifiedStore } from '@/store/unified.store';
+import { calculateLocalStorageSize, formatBytes, clearAllStorage } from '@/lib/storage';
 
 export default function SettingsPage() {
   const { t, locale, setLocale } = useTranslation();
   const { themeMode, setThemeMode, fontSize, setFontSize, density, setDensity, highContrast, setHighContrast, reducedMotion, setReducedMotion, ssotGuardEnabled, setSSOTGuardEnabled, resetPreferences, reset, syncDOM } = useUnifiedStore();
+  const [storageSize, setStorageSize] = React.useState<number>(0);
+
+  React.useEffect(() => {
+    setStorageSize(calculateLocalStorageSize());
+  }, []);
+
+  const handleClearAllStorage = async () => {
+    await clearAllStorage();
+    setStorageSize(0);
+    window.location.reload();
+  };
 
   return (
     <div data-ui-uuid={SETTINGS.SHELL.TITLE_CONTAINER_L14.uuid} className="mx-auto w-full max-w-4xl px-4 py-6 pb-32 sm:px-6 sm:py-12 md:px-12">
@@ -342,11 +355,11 @@ export default function SettingsPage() {
                   {t(SETTINGS.STORAGE.LOCAL_STORAGE)}
                 </span>
                 <span data-ui-uuid={SETTINGS.STORAGE.USAGE.uuid} className="text-xs font-semibold text-secondary">
-                  {t(SETTINGS.STORAGE.USAGE)}
+                  {formatBytes(storageSize)}
                 </span>
               </div>
               <div data-ui-uuid={SETTINGS.SHELL.STORAGE_LOCAL_STORAGE_WRAPPER_L349.uuid} className="h-2 w-full rounded-full bg-surface-container">
-                <div data-ui-uuid={SETTINGS.SHELL.STORAGE_LOCAL_STORAGE_WRAPPER_L350.uuid} className="h-2 w-2/5 rounded-full bg-primary" />
+                <div data-ui-uuid={SETTINGS.SHELL.STORAGE_LOCAL_STORAGE_WRAPPER_L350.uuid} className="h-2 rounded-full bg-primary transition-all" style={{ width: `${Math.min((storageSize / 5242880) * 100, 100)}%` }} />
               </div>
             </div>
             <div data-ui-uuid={SETTINGS.SHELL.STORAGE_COOKIES_WRAPPER_L353.uuid} className="flex-1 flex items-center justify-between rounded-xl bg-surface-container-low p-4">
@@ -356,7 +369,7 @@ export default function SettingsPage() {
                   {t(SETTINGS.STORAGE.COOKIES)}
                 </span>
               </div>
-              <button data-ui-uuid={SETTINGS.SHELL.STORAGE_CLEAR_ALL_WRAPPER_L360.uuid} className="rounded-lg px-4 py-2 text-xs font-semibold hover:bg-on-surface-variant">
+              <button data-ui-uuid={SETTINGS.SHELL.STORAGE_CLEAR_ALL_WRAPPER_L360.uuid} onClick={handleClearAllStorage} className="rounded-lg px-4 py-2 text-xs font-semibold hover:bg-on-surface-variant">
                 {t(SETTINGS.STORAGE.CLEAR_ALL)}
               </button>
             </div>

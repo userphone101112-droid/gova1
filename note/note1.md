@@ -31,3 +31,6 @@ Terminal: Clear
 # قواعد البيانات
 src/platform/ui/devtools/ui-inspector/domain/
 
+# قواعد الرسم 
+Graph Schema
+Relationship Graph in JSON format only,

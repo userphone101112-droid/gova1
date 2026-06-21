@@ -53,7 +53,7 @@ export function PasswordInput({ name }: PasswordInputProps) {
             </div>
             {fieldState.error && (
               <p data-ui-uuid={AUTH.SHELL.PASSWORD_INPUT_L48.uuid} className="type-caption text-error">
-                {fieldState.error.message}
+                {fieldState.error.message ? t(fieldState.error.message as any, fieldState.error.message) : ''}
               </p>
             )}
           </div>
@@ -96,7 +96,7 @@ export function PasswordInput({ name }: PasswordInputProps) {
           </div>
           {fieldState.error && (
             <p data-ui-uuid={AUTH.SHELL.CONFIRM_PASSWORD_ERROR.uuid} className="type-caption text-error">
-              {fieldState.error.message}
+              {fieldState.error.message ? t(fieldState.error.message as any, fieldState.error.message) : ''}
             </p>
           )}
         </div>

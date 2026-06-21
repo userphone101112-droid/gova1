@@ -43,12 +43,19 @@ export function PhoneVerification() {
     setIsSending(false);
     setOtpSent(true);
     setCountdown(RESEND_COUNTDOWN);
-    setOtp('');
+    
+    // Pre-fill OTP and auto-verify in development mode
+    if (process.env.NODE_ENV === 'development') {
+      setOtp('0000');
+      // Auto-verify after a short delay
+      await new Promise((resolve) => setTimeout(resolve, 300));
+      setValue('phoneVerified', true, { shouldValidate: true });
+    }
   };
 
   const handleVerifyOtp = async () => {
-    if (otp.length !== 6) {
-      setOtpError('Please enter the complete 6-digit code');
+    if (otp.length !== 4) {
+      setOtpError('Please enter the complete 4-digit code'); // Add translation for this later if needed
       return;
     }
 
@@ -127,7 +134,7 @@ export function PhoneVerification() {
               </p>
             )}
             {fieldState.error && (
-              <p data-ui-uuid={AUTH.SHELL.PHONE_VERIFICATION_L131.uuid} className="type-caption text-error">{fieldState.error.message}</p>
+              <p data-ui-uuid={AUTH.SHELL.PHONE_VERIFICATION_L131.uuid} className="type-caption text-error">{fieldState.error.message ? t(fieldState.error.message as any, fieldState.error.message) : ''}</p>
             )}
           </div>
         )}
@@ -155,7 +162,7 @@ export function PhoneVerification() {
           {otpError && <p data-ui-uuid={AUTH.SHELL.PHONE_VERIFICATION_L156.uuid} className="type-caption text-error text-center">{otpError}</p>}
 
           <div data-ui-uuid={AUTH.SHELL.REGISTRATION_OTP_LABEL_WRAPPER_L158.uuid} className="flex items-center gap-3 w-full">
-            <button data-ui-uuid={AUTH.REGISTRATION.VERIFY_OTP_BUTTON.uuid} type="button" onClick={() => void handleVerifyOtp()} disabled={otp.length !== 6 || isVerifying} className="flex-1 motion-colors">
+            <button data-ui-uuid={AUTH.REGISTRATION.VERIFY_OTP_BUTTON.uuid} type="button" onClick={() => void handleVerifyOtp()} disabled={otp.length !== 4 || isVerifying} className="flex-1 motion-colors">
               {isVerifying ? t(AUTH.REGISTRATION.VERIFYING_OTP) : t(AUTH.REGISTRATION.VERIFY_OTP_BUTTON)}
             </button>
             <button data-ui-uuid={AUTH.REGISTRATION.RESEND_BUTTON.uuid} type="button" onClick={() => void handleSendOtp()} disabled={countdown > 0 || isSending} className="shrink-0">

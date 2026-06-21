@@ -90,7 +90,18 @@
       "phoneInputLabel": "Registration phone input label",
       "passwordInputLabel": "Registration password input label",
       "confirmPasswordInputLabel": "Registration confirm password input label",
-      "toggleConfirmPasswordVisibility": "Registration confirm password toggle visibility"
+      "toggleConfirmPasswordVisibility": "Registration confirm password toggle visibility",
+      "errorPhoneRequired": "Phone number is required",
+      "errorPhoneLength": "Phone number must be 11 digits",
+      "errorPhonePrefix": "Phone number must start with 010, 011, 012, or 015",
+      "errorPasswordMinLength": "Password must be at least 4 characters",
+      "errorConfirmPasswordRequired": "Please confirm your password",
+      "errorPasswordMatch": "Passwords do not match",
+      "errorPhoneVerification": "Please verify your phone number before creating an account",
+      "reqUppercase": "Password requirement uppercase",
+      "reqLowercase": "Password requirement lowercase",
+      "reqNumber": "Password requirement number",
+      "reqSpecial": "Password requirement special char"
     }
   }
 }

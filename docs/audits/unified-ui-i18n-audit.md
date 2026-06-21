@@ -1,6 +1,6 @@
 # Unified UI + i18n Audit Report
 
-Generated: 2026-06-21T07:16:10.137Z
+Generated: 2026-06-21T12:44:36.161Z
 
 ## Executive Summary
 
@@ -14,13 +14,13 @@ Generated: 2026-06-21T07:16:10.137Z
 
 ## Phase 2: Translation Scan
 
-- Total Translation Keys: 851
+- Total Translation Keys: 858
 - Features: auth, common, devtools, error-boundary, home, image-upload-form, merchant, onboarding, settings, shared-layout, splash, test1
 
 ## Phase 3: Component Usage
 
 - Used UI Identifiers: 1304
-- Used Translation Keys: 49
+- Used Translation Keys: 50
 - Hardcoded Text Instances: 21
 
 ## Phase 4: Binding Matrix
@@ -31,7 +31,7 @@ Generated: 2026-06-21T07:16:10.137Z
 | error-boundary | 14 | 9 | 14 | 0 | 0 |
 | splash | 39 | 24 | 39 | 0 | 0 |
 | shared-layout | 57 | 51 | 57 | 0 | 0 |
-| auth | 137 | 90 | 137 | 0 | 0 |
+| auth | 137 | 97 | 137 | 0 | 0 |
 | settings | 174 | 62 | 174 | 0 | 0 |
 | merchant | 305 | 150 | 305 | 0 | 0 |
 | onboarding | 298 | 190 | 298 | 0 | 0 |
@@ -43,7 +43,7 @@ Generated: 2026-06-21T07:16:10.137Z
 ## Phase 5: Orphan Detection
 
 - Orphan UI Identifiers: 0
-- Orphan Translations: 715
+- Orphan Translations: 722
 - Missing Bindings: 0
 - Cross-Feature Violations: 0
 
@@ -53,5 +53,5 @@ None
 
 ## Warnings
 
-- Orphan translations: 715 found (features pending UI identity migration)
+- Orphan translations: 722 found (features pending UI identity migration)
 - Hardcoded text: 21 instance(s) found — review if intentional
