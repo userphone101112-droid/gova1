@@ -1,1 +1,48 @@
-{"databases": []}
+{
+  "databases": [
+    {
+      "name": "allusers",
+      "tables": [
+        {
+          "name": "users",
+          "columns": [
+            {
+              "name": "id",
+              "description": "رقم تعريفي داخلي لكل مستخدم داخل قاعدة البيانات"
+            },
+            {
+              "name": "uid",
+              "description": "معرف فريد عالمي يُستخدم في واجهات البرمجة والربط الخارجي"
+            },
+            {
+              "name": "phone",
+              "description": "رقم الهاتف المستخدم للتواصل أو تسجيل الدخول"
+            },
+            {
+              "name": "password",
+              "description": "كلمة المرور المشفرة لحماية الحساب"
+            },
+            {
+              "name": "last_login_at",
+              "description": "تاريخ ووقت آخر تسجيل دخول للمستخدم"
+            },
+            {
+              "name": "created_at",
+              "description": "تاريخ ووقت إنشاء الحساب"
+            },
+            {
+              "name": "updated_at",
+              "description": "تاريخ ووقت آخر تعديل على بيانات المستخدم"
+            },
+            {
+              "name": "deleted_at",
+              "description": "تاريخ الحذف الناعم (Soft Delete) أو NULL إذا كان الحساب نشط"
+            }
+          ],
+          "description": "جدول المستخدمين الأساسي في قاعدة بيانات SQLite. يحتوي على بيانات تعريف المستخدم، بيانات تسجيل الدخول، وتتبع نشاط الحساب."
+        }
+      ],
+      "description": "قاعدة بيانات المستخدمين"
+    }
+  ]
+}
