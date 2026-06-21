@@ -6,9 +6,9 @@
     "databaseName": "",
     "tableName": "",
     "columnName": "",
-    "inf1": "",
-    "inf2": "",
-    "inf3": "",
+    "inf1": "human_resource_management_system",
+    "inf2": "employees",
+    "inf3": "employee_id",
     "storageEnabled": false,
     "storageMainFile": "",
     "storageSubFile": "",
@@ -48,25 +48,6 @@
     "updatedAt": "2026-06-20T11:06:03.355Z"
   },
   "4ecf8039-11c1-5808-b0d8-c48fb4f66c9e": {
-    "databaseEnabled": false,
-    "databaseName": "",
-    "tableName": "",
-    "columnName": "",
-    "inf1": "",
-    "inf2": "",
-    "inf3": "",
-    "storageMainFile": "Projects",
-    "storageSubFile": "Frontend",
-    "attributesEnabled": true,
-    "attribute1": true,
-    "attribute2": false,
-    "attribute3": true,
-    "dataUiPath": "auth.registration.brand-name",
-    "dataUiFeature": "auth",
-    "dataUiUuid": "4ecf8039-11c1-5808-b0d8-c48fb4f66c9e",
-    "dataUiInstanceId": "",
-    "dataUiIdentityKey": "4ecf8039-11c1-5808-b0d8-c48fb4f66c9e",
-    "updatedAt": "2026-06-20T12:25:39.502Z",
     "bindings": [
       {
         "id": "storage_e2253af4-58aa-4adc-808d-69a33adc9a89",
@@ -81,6 +62,75 @@
         "storageSubFile": "Frontend"
       }
     ],
-    "customAttributes": []
+    "customAttributes": [],
+    "databaseEnabled": false,
+    "databaseName": "",
+    "tableName": "",
+    "columnName": "",
+    "inf1": "1",
+    "inf2": "2",
+    "inf3": "3",
+    "storageEnabled": true,
+    "storageMainFile": "Projects",
+    "storageSubFile": "Frontend",
+    "attributesEnabled": true,
+    "attribute1": true,
+    "attribute2": false,
+    "attribute3": true,
+    "dataUiPath": "auth.registration.brand-name",
+    "dataUiFeature": "auth",
+    "dataUiUuid": "4ecf8039-11c1-5808-b0d8-c48fb4f66c9e",
+    "dataUiInstanceId": "",
+    "dataUiIdentityKey": "4ecf8039-11c1-5808-b0d8-c48fb4f66c9e",
+    "updatedAt": "2026-06-20T12:25:39.502Z"
+  },
+  "dc25839f-b4f2-5f9a-bb4b-fc15b69586e8": {
+    "bindings": [
+      {
+        "id": "database_fd2cd13f-9578-42b4-93c8-6b333f9c1b14",
+        "kind": "database",
+        "role": "read_from",
+        "enabled": true,
+        "label": "database binding",
+        "confidence": "medium",
+        "createdAt": "2026-06-21T10:45:22.239Z",
+        "updatedAt": "2026-06-21T10:48:37.710Z",
+        "databaseName": "allusers",
+        "tableName": "users",
+        "columnName": "phone",
+        "queryHint": "search",
+        "indexNeed": "required",
+        "required": true,
+        "sensitive": true
+      }
+    ],
+    "customAttributes": [
+      {
+        "id": "attr_08984f4a-23a7-4e65-a2ae-fe2cf8720cae",
+        "key": "",
+        "value": "",
+        "type": "string"
+      }
+    ],
+    "databaseEnabled": true,
+    "databaseName": "allusers",
+    "tableName": "users",
+    "columnName": "phone",
+    "inf1": "",
+    "inf2": "",
+    "inf3": "",
+    "storageEnabled": false,
+    "storageMainFile": "",
+    "storageSubFile": "",
+    "attributesEnabled": true,
+    "attribute1": false,
+    "attribute2": false,
+    "attribute3": false,
+    "dataUiPath": "auth.login.form.phone-input",
+    "dataUiFeature": "auth",
+    "dataUiUuid": "dc25839f-b4f2-5f9a-bb4b-fc15b69586e8",
+    "dataUiInstanceId": "",
+    "dataUiIdentityKey": "dc25839f-b4f2-5f9a-bb4b-fc15b69586e8",
+    "updatedAt": "2026-06-21T10:48:50.089Z"
   }
 }

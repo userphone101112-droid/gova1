@@ -1,0 +1,23 @@
+{
+  "identityKey": "dc25839f-b4f2-5f9a-bb4b-fc15b69586e8",
+  "bindings": [
+    {
+      "id": "database_fd2cd13f-9578-42b4-93c8-6b333f9c1b14",
+      "kind": "database",
+      "role": "read_from",
+      "enabled": true,
+      "label": "database binding",
+      "confidence": "medium",
+      "createdAt": "2026-06-21T10:45:22.239Z",
+      "updatedAt": "2026-06-21T10:48:37.710Z",
+      "databaseName": "allusers",
+      "tableName": "users",
+      "columnName": "phone",
+      "queryHint": "search",
+      "indexNeed": "required",
+      "required": true,
+      "sensitive": true
+    }
+  ],
+  "updatedAt": "2026-06-21T10:48:50.089Z"
+}

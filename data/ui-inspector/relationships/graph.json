@@ -25,8 +25,18 @@
       "kinds": [
         "storage"
       ]
+    },
+    {
+      "identityKey": "dc25839f-b4f2-5f9a-bb4b-fc15b69586e8",
+      "uuid": "dc25839f-b4f2-5f9a-bb4b-fc15b69586e8",
+      "path": "auth.login.form.phone-input",
+      "feature": "auth",
+      "bindingCount": 1,
+      "kinds": [
+        "database"
+      ]
     }
   ],
   "edges": [],
-  "updatedAt": "2026-06-20T14:22:32.041Z"
+  "updatedAt": "2026-06-21T10:48:50.186Z"
 }

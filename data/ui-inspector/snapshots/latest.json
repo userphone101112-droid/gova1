@@ -1,29 +1,15 @@
 {
-  "updatedAt": "2026-06-20T14:22:32.249Z",
-  "totalElements": 3,
-  "totalBindings": 3,
+  "updatedAt": "2026-06-21T10:48:50.186Z",
+  "totalElements": 4,
+  "totalBindings": 2,
   "entries": [
     {
-      "bindings": [
-        {
-          "id": "database_dabd48c8-c60c-43d3-81a4-4ac20bfb4974",
-          "kind": "database",
-          "role": "write_to",
-          "enabled": true,
-          "label": "human_resource_management_system.employees.employee_id",
-          "confidence": "medium",
-          "createdAt": "2026-06-20T14:22:31.420Z",
-          "updatedAt": "2026-06-20T14:22:31.420Z",
-          "databaseName": "human_resource_management_system",
-          "tableName": "employees",
-          "columnName": "employee_id"
-        }
-      ],
+      "bindings": [],
       "customAttributes": [],
-      "databaseEnabled": true,
-      "databaseName": "human_resource_management_system",
-      "tableName": "employees",
-      "columnName": "employee_id",
+      "databaseEnabled": false,
+      "databaseName": "",
+      "tableName": "",
+      "columnName": "",
       "inf1": "human_resource_management_system",
       "inf2": "employees",
       "inf3": "employee_id",
@@ -68,19 +54,6 @@
     {
       "bindings": [
         {
-          "id": "database_e11e416e-ea9d-4cfb-a3a1-0ad574a1dfe3",
-          "kind": "database",
-          "role": "write_to",
-          "enabled": true,
-          "label": "human_resource_management_system.employees.employee_id",
-          "confidence": "confirmed",
-          "createdAt": "2026-06-20T14:22:31.937Z",
-          "updatedAt": "2026-06-20T14:22:31.937Z",
-          "databaseName": "human_resource_management_system",
-          "tableName": "employees",
-          "columnName": "employee_id"
-        },
-        {
           "id": "storage_e2253af4-58aa-4adc-808d-69a33adc9a89",
           "kind": "storage",
           "role": "upload_to",
@@ -94,10 +67,10 @@
         }
       ],
       "customAttributes": [],
-      "databaseEnabled": true,
-      "databaseName": "human_resource_management_system",
-      "tableName": "employees",
-      "columnName": "employee_id",
+      "databaseEnabled": false,
+      "databaseName": "",
+      "tableName": "",
+      "columnName": "",
       "inf1": "1",
       "inf2": "2",
       "inf3": "3",
@@ -114,7 +87,55 @@
       "dataUiInstanceId": "",
       "dataUiIdentityKey": "4ecf8039-11c1-5808-b0d8-c48fb4f66c9e",
       "updatedAt": "2026-06-20T12:25:39.502Z"
+    },
+    {
+      "bindings": [
+        {
+          "id": "database_fd2cd13f-9578-42b4-93c8-6b333f9c1b14",
+          "kind": "database",
+          "role": "read_from",
+          "enabled": true,
+          "label": "database binding",
+          "confidence": "medium",
+          "createdAt": "2026-06-21T10:45:22.239Z",
+          "updatedAt": "2026-06-21T10:48:37.710Z",
+          "databaseName": "allusers",
+          "tableName": "users",
+          "columnName": "phone",
+          "queryHint": "search",
+          "indexNeed": "required",
+          "required": true,
+          "sensitive": true
+        }
+      ],
+      "customAttributes": [
+        {
+          "id": "attr_08984f4a-23a7-4e65-a2ae-fe2cf8720cae",
+          "key": "",
+          "value": "",
+          "type": "string"
+        }
+      ],
+      "databaseEnabled": true,
+      "databaseName": "allusers",
+      "tableName": "users",
+      "columnName": "phone",
+      "inf1": "",
+      "inf2": "",
+      "inf3": "",
+      "storageEnabled": false,
+      "storageMainFile": "",
+      "storageSubFile": "",
+      "attributesEnabled": true,
+      "attribute1": false,
+      "attribute2": false,
+      "attribute3": false,
+      "dataUiPath": "auth.login.form.phone-input",
+      "dataUiFeature": "auth",
+      "dataUiUuid": "dc25839f-b4f2-5f9a-bb4b-fc15b69586e8",
+      "dataUiInstanceId": "",
+      "dataUiIdentityKey": "dc25839f-b4f2-5f9a-bb4b-fc15b69586e8",
+      "updatedAt": "2026-06-21T10:48:50.089Z"
     }
-  ],
-  "migratedAt": "2026-06-20T14:22:31.419Z"
+  ]
 }
