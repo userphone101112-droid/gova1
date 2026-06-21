@@ -23,14 +23,20 @@ export function Test1Content() {
 
   const handleFileChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;
+    console.log("files received:", files);
     if (!files?.length) return;
 
     const nextImages: PreviewImage[] = Array.from(files).map((file) => ({
       id: `${file.name}-${file.lastModified}-${file.size}`,
       url: URL.createObjectURL(file),
     }));
+    console.log("nextImages", nextImages);
 
-    setPreviewImages((current) => [...current, ...nextImages]);
+    setPreviewImages((current) => {
+      const newState = [...current, ...nextImages];
+      console.log("new state", newState);
+      return newState;
+    });
     event.target.value = '';
   }, []);
 
@@ -79,11 +85,20 @@ export function Test1Content() {
           placeholder={t(TEST1.FORM.INPUT_3)}
           className="w-full rounded-lg border border-outline-variant bg-surface px-3 py-2 text-on-surface placeholder:text-on-surface-variant"
         />
+
+        <button
+          type="button"
+          data-ui-uuid={TEST1.FORM.SAVE_BUTTON.uuid}
+          onClick={() => alert('Saved!')}
+          className="rounded-lg bg-primary px-4 py-2 text-sm font-medium text-on-primary transition-colors hover:bg-primary/90"
+        >
+          {t(TEST1.FORM.SAVE_BUTTON)}
+        </button>
       </div>
 
       <div
         data-ui-uuid={TEST1.IMAGE_UPLOAD.CONTAINER.uuid}
-        className="space-y-4 rounded-xl border border-outline-variant bg-surface-container p-4"
+        className="grid grid-cols-2 gap-3 space-y-4 rounded-xl border border-outline-variant bg-surface-container p-4 sm:grid-cols-3"
       >
         <button
           type="button"
@@ -102,21 +117,16 @@ export function Test1Content() {
           className="hidden"
         />
 
-        {previewImages.length > 0 && (
-          <div
-            data-ui-uuid={TEST1.IMAGE_UPLOAD.PREVIEW_CONTAINER.uuid}
-            className="grid grid-cols-2 gap-3 sm:grid-cols-3"
-          >
-            {previewImages.map((image) => (
-              <img
-                key={image.id}
-                src={image.url}
-                alt="Preview"
-                className="col-span-1 h-32 w-full rounded-lg border border-outline-variant object-cover"
-              />
-            ))}
-          </div>
-        )}
+        {previewImages.map((image) => (
+          <img
+            key={image.id}
+            data-ui-uuid={TEST1.IMAGE_UPLOAD.PREVIEW_IMAGE.uuid}
+            data-ui-instance-id={image.id}
+            src={image.url}
+            alt={t(TEST1.IMAGE_UPLOAD.PREVIEW_IMAGE)}
+            className="col-span-1 h-32 w-full rounded-lg border border-outline-variant object-cover"
+          />
+        ))}
       </div>
     </div>
   );

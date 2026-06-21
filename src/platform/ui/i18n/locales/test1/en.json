@@ -6,10 +6,12 @@
     "form": {
       "input1": "First Name",
       "input2": "Last Name",
-      "input3": "Email"
+      "input3": "Email",
+      "saveButton": "Save"
     },
     "image-upload": {
-      "uploadButton": "Upload Image"
+      "uploadButton": "Upload Image",
+      "previewImage": "Image preview image"
     }
   }
 }

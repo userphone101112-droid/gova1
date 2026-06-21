@@ -90,9 +90,9 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "id": "UI_AUTH_SHARED_PAGE",
     "path": "auth.shared.layout.page",
     "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/shared-layout.ts",
-    "sourceComponent": "SHARED_LAYOUT",
-    "sourceLine": 564,
+    "sourceFile": "/src/platform/ui/registry/features/test1.ts",
+    "sourceComponent": "TEST1",
+    "sourceLine": 3,
     "feature": "auth"
   },
   "7dad3c32-2a07-52e1-9d2c-d01c6357148b": {
@@ -3330,9 +3330,9 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "id": "UI_SPLASH_LOGO_IMAGE",
     "path": "splash.logo.display.logo-image",
     "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/splash.ts",
-    "sourceComponent": "SPLASH",
-    "sourceLine": 4,
+    "sourceFile": "/src/platform/ui/registry/features/test1.ts",
+    "sourceComponent": "TEST1",
+    "sourceLine": 91,
     "feature": "splash"
   },
   "485db1a9-bbdf-5192-9d5d-57df2f586640": {
@@ -3854,6 +3854,116 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "sourceComponent": "HOME",
     "sourceLine": 786,
     "feature": "home"
+  },
+  "0f9ef543-6486-538a-9480-fca1962dd810": {
+    "uuid": "0f9ef543-6486-538a-9480-fca1962dd810",
+    "id": "UI_IMAGE_UPLOAD_FORM_PAGE_CONTAINER",
+    "path": "image-upload-form.page.layout.container",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/image-upload-form.ts",
+    "sourceComponent": "IMAGE_UPLOAD_FORM",
+    "sourceLine": 7,
+    "feature": "image-upload-form"
+  },
+  "c8ae5681-29d3-59ca-a31b-b63ba7359644": {
+    "uuid": "c8ae5681-29d3-59ca-a31b-b63ba7359644",
+    "id": "UI_IMAGE_UPLOAD_FORM_FORM_FIELD1_LABEL",
+    "path": "image-upload-form.form.display.field1-label",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/image-upload-form.ts",
+    "sourceComponent": "IMAGE_UPLOAD_FORM",
+    "sourceLine": 81,
+    "feature": "image-upload-form"
+  },
+  "69140c6f-08f7-5e70-a6d0-e8d16648a212": {
+    "uuid": "69140c6f-08f7-5e70-a6d0-e8d16648a212",
+    "id": "UI_IMAGE_UPLOAD_FORM_FORM_FIELD1_INPUT",
+    "path": "image-upload-form.form.input.field1",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/image-upload-form.ts",
+    "sourceComponent": "IMAGE_UPLOAD_FORM",
+    "sourceLine": 93,
+    "feature": "image-upload-form"
+  },
+  "30488744-1cf1-59db-8fb2-ea2a3f9b6581": {
+    "uuid": "30488744-1cf1-59db-8fb2-ea2a3f9b6581",
+    "id": "UI_IMAGE_UPLOAD_FORM_FORM_FIELD2_LABEL",
+    "path": "image-upload-form.form.display.field2-label",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/image-upload-form.ts",
+    "sourceComponent": "IMAGE_UPLOAD_FORM",
+    "sourceLine": 105,
+    "feature": "image-upload-form"
+  },
+  "ef5b9312-0a88-5d71-a55e-30d0e0011b6f": {
+    "uuid": "ef5b9312-0a88-5d71-a55e-30d0e0011b6f",
+    "id": "UI_IMAGE_UPLOAD_FORM_FORM_FIELD2_INPUT",
+    "path": "image-upload-form.form.input.field2",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/image-upload-form.ts",
+    "sourceComponent": "IMAGE_UPLOAD_FORM",
+    "sourceLine": 117,
+    "feature": "image-upload-form"
+  },
+  "6ad2cc2f-6c27-5410-8a6c-3dfd1bc5b4be": {
+    "uuid": "6ad2cc2f-6c27-5410-8a6c-3dfd1bc5b4be",
+    "id": "UI_IMAGE_UPLOAD_FORM_FORM_FIELD3_LABEL",
+    "path": "image-upload-form.form.display.field3-label",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/image-upload-form.ts",
+    "sourceComponent": "IMAGE_UPLOAD_FORM",
+    "sourceLine": 129,
+    "feature": "image-upload-form"
+  },
+  "b060a1b5-3958-5fde-90be-f27b3e115924": {
+    "uuid": "b060a1b5-3958-5fde-90be-f27b3e115924",
+    "id": "UI_IMAGE_UPLOAD_FORM_FORM_FIELD3_INPUT",
+    "path": "image-upload-form.form.input.field3",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/image-upload-form.ts",
+    "sourceComponent": "IMAGE_UPLOAD_FORM",
+    "sourceLine": 141,
+    "feature": "image-upload-form"
+  },
+  "2e800f0e-147a-5961-8d35-017c7e6786af": {
+    "uuid": "2e800f0e-147a-5961-8d35-017c7e6786af",
+    "id": "UI_IMAGE_UPLOAD_FORM_GALLERY_CONTAINER",
+    "path": "image-upload-form.gallery.layout.container",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/image-upload-form.ts",
+    "sourceComponent": "IMAGE_UPLOAD_FORM",
+    "sourceLine": 155,
+    "feature": "image-upload-form"
+  },
+  "b78f0520-c97a-544f-b83c-66123943f4e9": {
+    "uuid": "b78f0520-c97a-544f-b83c-66123943f4e9",
+    "id": "UI_IMAGE_UPLOAD_FORM_GALLERY_SELECT_BUTTON",
+    "path": "image-upload-form.gallery.actions.select-button",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/image-upload-form.ts",
+    "sourceComponent": "IMAGE_UPLOAD_FORM",
+    "sourceLine": 167,
+    "feature": "image-upload-form"
+  },
+  "ad2fa9da-bf8e-5857-944e-669494fe4a21": {
+    "uuid": "ad2fa9da-bf8e-5857-944e-669494fe4a21",
+    "id": "UI_IMAGE_UPLOAD_FORM_GALLERY_FILE_INPUT",
+    "path": "image-upload-form.gallery.input.file-input",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/image-upload-form.ts",
+    "sourceComponent": "IMAGE_UPLOAD_FORM",
+    "sourceLine": 179,
+    "feature": "image-upload-form"
+  },
+  "58074a33-c71b-5648-a558-16214acf881e": {
+    "uuid": "58074a33-c71b-5648-a558-16214acf881e",
+    "id": "UI_IMAGE_UPLOAD_FORM_GALLERY_PREVIEW_IMAGE",
+    "path": "image-upload-form.gallery.display.preview-image",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/image-upload-form.ts",
+    "sourceComponent": "IMAGE_UPLOAD_FORM",
+    "sourceLine": 191,
+    "feature": "image-upload-form"
   },
   "815a8f02-23b6-519d-a770-0ac0521d798b": {
     "uuid": "815a8f02-23b6-519d-a770-0ac0521d798b",
@@ -9595,6 +9705,106 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "sourceLine": 468,
     "feature": "splash"
   },
+  "7601d600-06cf-5dd9-837f-977ee579f247": {
+    "uuid": "7601d600-06cf-5dd9-837f-977ee579f247",
+    "id": "UI_TEST1_PAGE_CONTAINER",
+    "path": "test1.page.layout.container",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/test1.ts",
+    "sourceComponent": "TEST1",
+    "sourceLine": 7,
+    "feature": "test1"
+  },
+  "9623b6b1-1742-54bc-b69d-0803eb9ffe76": {
+    "uuid": "9623b6b1-1742-54bc-b69d-0803eb9ffe76",
+    "id": "UI_TEST1_PAGE_TITLE",
+    "path": "test1.page.display.title",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/test1.ts",
+    "sourceComponent": "TEST1",
+    "sourceLine": 19,
+    "feature": "test1"
+  },
+  "e8e664a1-5044-59ec-a819-03b7fef1e732": {
+    "uuid": "e8e664a1-5044-59ec-a819-03b7fef1e732",
+    "id": "UI_TEST1_FORM_CONTAINER",
+    "path": "test1.form.layout.container",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/test1.ts",
+    "sourceComponent": "TEST1",
+    "sourceLine": 33,
+    "feature": "test1"
+  },
+  "8730117e-8e40-5523-961a-5a402ad1dc2d": {
+    "uuid": "8730117e-8e40-5523-961a-5a402ad1dc2d",
+    "id": "UI_TEST1_FORM_INPUT_1",
+    "path": "test1.form.input.input1",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/test1.ts",
+    "sourceComponent": "TEST1",
+    "sourceLine": 45,
+    "feature": "test1"
+  },
+  "86300feb-8f40-56b6-991a-5ef927d1d774": {
+    "uuid": "86300feb-8f40-56b6-991a-5ef927d1d774",
+    "id": "UI_TEST1_FORM_INPUT_2",
+    "path": "test1.form.input.input2",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/test1.ts",
+    "sourceComponent": "TEST1",
+    "sourceLine": 57,
+    "feature": "test1"
+  },
+  "85300e58-9040-5849-981a-5d6628d1d907": {
+    "uuid": "85300e58-9040-5849-981a-5d6628d1d907",
+    "id": "UI_TEST1_FORM_INPUT_3",
+    "path": "test1.form.input.input3",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/test1.ts",
+    "sourceComponent": "TEST1",
+    "sourceLine": 69,
+    "feature": "test1"
+  },
+  "52d4b5e4-d0bb-5b7d-b22f-aa96d8644267": {
+    "uuid": "52d4b5e4-d0bb-5b7d-b22f-aa96d8644267",
+    "id": "UI_TEST1_FORM_SAVE_BUTTON",
+    "path": "test1.form.action.save-button",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/test1.ts",
+    "sourceComponent": "TEST1",
+    "sourceLine": 81,
+    "feature": "test1"
+  },
+  "d30739c4-1e2d-51b9-aea7-5dbaa3a00ee7": {
+    "uuid": "d30739c4-1e2d-51b9-aea7-5dbaa3a00ee7",
+    "id": "UI_TEST1_IMAGE_UPLOAD_CONTAINER",
+    "path": "test1.image-upload.layout.container",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/test1.ts",
+    "sourceComponent": "TEST1",
+    "sourceLine": 95,
+    "feature": "test1"
+  },
+  "cf703e21-bed9-5334-b8b5-e5377d97ee12": {
+    "uuid": "cf703e21-bed9-5334-b8b5-e5377d97ee12",
+    "id": "UI_TEST1_IMAGE_UPLOAD_UPLOAD_BUTTON",
+    "path": "test1.image-upload.action.upload-button",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/test1.ts",
+    "sourceComponent": "TEST1",
+    "sourceLine": 107,
+    "feature": "test1"
+  },
+  "48527ae9-3f51-5a80-a07d-31a701e8f256": {
+    "uuid": "48527ae9-3f51-5a80-a07d-31a701e8f256",
+    "id": "UI_TEST1_IMAGE_UPLOAD_PREVIEW_IMAGE",
+    "path": "test1.image-upload.display.preview-image",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/test1.ts",
+    "sourceComponent": "TEST1",
+    "sourceLine": 131,
+    "feature": "test1"
+  },
   "6a43c38c-5ec7-5087-b8b1-c4526b26e60d": {
     "uuid": "6a43c38c-5ec7-5087-b8b1-c4526b26e60d",
     "id": "UI_DEVTOOLS_UI_INSPECTOR_WORKSPACE_CONTAINER",
@@ -11485,6 +11695,56 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "sourceLine": 1241,
     "feature": "devtools"
   },
+  "a5e11cca-caba-5ea7-9897-e0447ca05f41": {
+    "uuid": "a5e11cca-caba-5ea7-9897-e0447ca05f41",
+    "id": "UI_IMAGE_UPLOAD_FORM_PAGE_TITLE",
+    "path": "image-upload-form.page.display.title",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/image-upload-form.ts",
+    "sourceComponent": "IMAGE_UPLOAD_FORM",
+    "sourceLine": 19,
+    "feature": "image-upload-form"
+  },
+  "e72b30a6-8870-52e3-b57b-9794149ed8a1": {
+    "uuid": "e72b30a6-8870-52e3-b57b-9794149ed8a1",
+    "id": "UI_IMAGE_UPLOAD_FORM_PAGE_DESCRIPTION",
+    "path": "image-upload-form.page.display.description",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/image-upload-form.ts",
+    "sourceComponent": "IMAGE_UPLOAD_FORM",
+    "sourceLine": 31,
+    "feature": "image-upload-form"
+  },
+  "0b6cc731-753a-51b6-bf59-75c3efa5e2e0": {
+    "uuid": "0b6cc731-753a-51b6-bf59-75c3efa5e2e0",
+    "id": "UI_IMAGE_UPLOAD_FORM_ACTIONS_CREATE_BUTTON",
+    "path": "image-upload-form.actions.create-button",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/image-upload-form.ts",
+    "sourceComponent": "IMAGE_UPLOAD_FORM",
+    "sourceLine": 43,
+    "feature": "image-upload-form"
+  },
+  "89af3dca-6269-5911-83da-7e143fc8f0fb": {
+    "uuid": "89af3dca-6269-5911-83da-7e143fc8f0fb",
+    "id": "UI_IMAGE_UPLOAD_FORM_ACTIONS_SAVE_BUTTON",
+    "path": "image-upload-form.actions.save-button",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/image-upload-form.ts",
+    "sourceComponent": "IMAGE_UPLOAD_FORM",
+    "sourceLine": 55,
+    "feature": "image-upload-form"
+  },
+  "fd2ef148-0438-5aeb-8e64-369ef9aacf29": {
+    "uuid": "fd2ef148-0438-5aeb-8e64-369ef9aacf29",
+    "id": "UI_IMAGE_UPLOAD_FORM_ACTIONS_ROW",
+    "path": "image-upload-form.actions.layout.row",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/image-upload-form.ts",
+    "sourceComponent": "IMAGE_UPLOAD_FORM",
+    "sourceLine": 67,
+    "feature": "image-upload-form"
+  },
   "1ff85999-dff4-576c-8c93-f967346eeb22": {
     "uuid": "1ff85999-dff4-576c-8c93-f967346eeb22",
     "id": "UI_MERCHANT_PROFILE_HERO_BANNER",
@@ -12784,6 +13044,16 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "sourceComponent": "SHARED_LAYOUT",
     "sourceLine": 551,
     "feature": "shared-layout"
+  },
+  "543784c3-c363-5d16-b0fd-e1c1b4936f84": {
+    "uuid": "543784c3-c363-5d16-b0fd-e1c1b4936f84",
+    "id": "UI_TEST1_IMAGE_UPLOAD_PREVIEW_CONTAINER",
+    "path": "test1.image-upload.layout.preview-container",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/test1.ts",
+    "sourceComponent": "TEST1",
+    "sourceLine": 119,
+    "feature": "test1"
   }
 };
 
@@ -12863,9 +13133,9 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "id": "UI_AUTH_SHARED_PAGE",
     "path": "auth.shared.layout.page",
     "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/shared-layout.ts",
-    "sourceComponent": "SHARED_LAYOUT",
-    "sourceLine": 564,
+    "sourceFile": "/src/platform/ui/registry/features/test1.ts",
+    "sourceComponent": "TEST1",
+    "sourceLine": 3,
     "feature": "auth"
   },
   "UI_HOME_STRUCTURE_HOME_L14": {
@@ -16103,9 +16373,9 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "id": "UI_SPLASH_LOGO_IMAGE",
     "path": "splash.logo.display.logo-image",
     "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/splash.ts",
-    "sourceComponent": "SPLASH",
-    "sourceLine": 4,
+    "sourceFile": "/src/platform/ui/registry/features/test1.ts",
+    "sourceComponent": "TEST1",
+    "sourceLine": 91,
     "feature": "splash"
   },
   "UI_HOME_CURATED_OFFERS_CONTAINER": {
@@ -16627,6 +16897,116 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "sourceComponent": "HOME",
     "sourceLine": 786,
     "feature": "home"
+  },
+  "UI_IMAGE_UPLOAD_FORM_PAGE_CONTAINER": {
+    "uuid": "0f9ef543-6486-538a-9480-fca1962dd810",
+    "id": "UI_IMAGE_UPLOAD_FORM_PAGE_CONTAINER",
+    "path": "image-upload-form.page.layout.container",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/image-upload-form.ts",
+    "sourceComponent": "IMAGE_UPLOAD_FORM",
+    "sourceLine": 7,
+    "feature": "image-upload-form"
+  },
+  "UI_IMAGE_UPLOAD_FORM_FORM_FIELD1_LABEL": {
+    "uuid": "c8ae5681-29d3-59ca-a31b-b63ba7359644",
+    "id": "UI_IMAGE_UPLOAD_FORM_FORM_FIELD1_LABEL",
+    "path": "image-upload-form.form.display.field1-label",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/image-upload-form.ts",
+    "sourceComponent": "IMAGE_UPLOAD_FORM",
+    "sourceLine": 81,
+    "feature": "image-upload-form"
+  },
+  "UI_IMAGE_UPLOAD_FORM_FORM_FIELD1_INPUT": {
+    "uuid": "69140c6f-08f7-5e70-a6d0-e8d16648a212",
+    "id": "UI_IMAGE_UPLOAD_FORM_FORM_FIELD1_INPUT",
+    "path": "image-upload-form.form.input.field1",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/image-upload-form.ts",
+    "sourceComponent": "IMAGE_UPLOAD_FORM",
+    "sourceLine": 93,
+    "feature": "image-upload-form"
+  },
+  "UI_IMAGE_UPLOAD_FORM_FORM_FIELD2_LABEL": {
+    "uuid": "30488744-1cf1-59db-8fb2-ea2a3f9b6581",
+    "id": "UI_IMAGE_UPLOAD_FORM_FORM_FIELD2_LABEL",
+    "path": "image-upload-form.form.display.field2-label",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/image-upload-form.ts",
+    "sourceComponent": "IMAGE_UPLOAD_FORM",
+    "sourceLine": 105,
+    "feature": "image-upload-form"
+  },
+  "UI_IMAGE_UPLOAD_FORM_FORM_FIELD2_INPUT": {
+    "uuid": "ef5b9312-0a88-5d71-a55e-30d0e0011b6f",
+    "id": "UI_IMAGE_UPLOAD_FORM_FORM_FIELD2_INPUT",
+    "path": "image-upload-form.form.input.field2",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/image-upload-form.ts",
+    "sourceComponent": "IMAGE_UPLOAD_FORM",
+    "sourceLine": 117,
+    "feature": "image-upload-form"
+  },
+  "UI_IMAGE_UPLOAD_FORM_FORM_FIELD3_LABEL": {
+    "uuid": "6ad2cc2f-6c27-5410-8a6c-3dfd1bc5b4be",
+    "id": "UI_IMAGE_UPLOAD_FORM_FORM_FIELD3_LABEL",
+    "path": "image-upload-form.form.display.field3-label",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/image-upload-form.ts",
+    "sourceComponent": "IMAGE_UPLOAD_FORM",
+    "sourceLine": 129,
+    "feature": "image-upload-form"
+  },
+  "UI_IMAGE_UPLOAD_FORM_FORM_FIELD3_INPUT": {
+    "uuid": "b060a1b5-3958-5fde-90be-f27b3e115924",
+    "id": "UI_IMAGE_UPLOAD_FORM_FORM_FIELD3_INPUT",
+    "path": "image-upload-form.form.input.field3",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/image-upload-form.ts",
+    "sourceComponent": "IMAGE_UPLOAD_FORM",
+    "sourceLine": 141,
+    "feature": "image-upload-form"
+  },
+  "UI_IMAGE_UPLOAD_FORM_GALLERY_CONTAINER": {
+    "uuid": "2e800f0e-147a-5961-8d35-017c7e6786af",
+    "id": "UI_IMAGE_UPLOAD_FORM_GALLERY_CONTAINER",
+    "path": "image-upload-form.gallery.layout.container",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/image-upload-form.ts",
+    "sourceComponent": "IMAGE_UPLOAD_FORM",
+    "sourceLine": 155,
+    "feature": "image-upload-form"
+  },
+  "UI_IMAGE_UPLOAD_FORM_GALLERY_SELECT_BUTTON": {
+    "uuid": "b78f0520-c97a-544f-b83c-66123943f4e9",
+    "id": "UI_IMAGE_UPLOAD_FORM_GALLERY_SELECT_BUTTON",
+    "path": "image-upload-form.gallery.actions.select-button",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/image-upload-form.ts",
+    "sourceComponent": "IMAGE_UPLOAD_FORM",
+    "sourceLine": 167,
+    "feature": "image-upload-form"
+  },
+  "UI_IMAGE_UPLOAD_FORM_GALLERY_FILE_INPUT": {
+    "uuid": "ad2fa9da-bf8e-5857-944e-669494fe4a21",
+    "id": "UI_IMAGE_UPLOAD_FORM_GALLERY_FILE_INPUT",
+    "path": "image-upload-form.gallery.input.file-input",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/image-upload-form.ts",
+    "sourceComponent": "IMAGE_UPLOAD_FORM",
+    "sourceLine": 179,
+    "feature": "image-upload-form"
+  },
+  "UI_IMAGE_UPLOAD_FORM_GALLERY_PREVIEW_IMAGE": {
+    "uuid": "58074a33-c71b-5648-a558-16214acf881e",
+    "id": "UI_IMAGE_UPLOAD_FORM_GALLERY_PREVIEW_IMAGE",
+    "path": "image-upload-form.gallery.display.preview-image",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/image-upload-form.ts",
+    "sourceComponent": "IMAGE_UPLOAD_FORM",
+    "sourceLine": 191,
+    "feature": "image-upload-form"
   },
   "UI_SHARED_HEADER_CONTAINER": {
     "uuid": "815a8f02-23b6-519d-a770-0ac0521d798b",
@@ -22368,6 +22748,106 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "sourceLine": 468,
     "feature": "splash"
   },
+  "UI_TEST1_PAGE_CONTAINER": {
+    "uuid": "7601d600-06cf-5dd9-837f-977ee579f247",
+    "id": "UI_TEST1_PAGE_CONTAINER",
+    "path": "test1.page.layout.container",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/test1.ts",
+    "sourceComponent": "TEST1",
+    "sourceLine": 7,
+    "feature": "test1"
+  },
+  "UI_TEST1_PAGE_TITLE": {
+    "uuid": "9623b6b1-1742-54bc-b69d-0803eb9ffe76",
+    "id": "UI_TEST1_PAGE_TITLE",
+    "path": "test1.page.display.title",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/test1.ts",
+    "sourceComponent": "TEST1",
+    "sourceLine": 19,
+    "feature": "test1"
+  },
+  "UI_TEST1_FORM_CONTAINER": {
+    "uuid": "e8e664a1-5044-59ec-a819-03b7fef1e732",
+    "id": "UI_TEST1_FORM_CONTAINER",
+    "path": "test1.form.layout.container",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/test1.ts",
+    "sourceComponent": "TEST1",
+    "sourceLine": 33,
+    "feature": "test1"
+  },
+  "UI_TEST1_FORM_INPUT_1": {
+    "uuid": "8730117e-8e40-5523-961a-5a402ad1dc2d",
+    "id": "UI_TEST1_FORM_INPUT_1",
+    "path": "test1.form.input.input1",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/test1.ts",
+    "sourceComponent": "TEST1",
+    "sourceLine": 45,
+    "feature": "test1"
+  },
+  "UI_TEST1_FORM_INPUT_2": {
+    "uuid": "86300feb-8f40-56b6-991a-5ef927d1d774",
+    "id": "UI_TEST1_FORM_INPUT_2",
+    "path": "test1.form.input.input2",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/test1.ts",
+    "sourceComponent": "TEST1",
+    "sourceLine": 57,
+    "feature": "test1"
+  },
+  "UI_TEST1_FORM_INPUT_3": {
+    "uuid": "85300e58-9040-5849-981a-5d6628d1d907",
+    "id": "UI_TEST1_FORM_INPUT_3",
+    "path": "test1.form.input.input3",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/test1.ts",
+    "sourceComponent": "TEST1",
+    "sourceLine": 69,
+    "feature": "test1"
+  },
+  "UI_TEST1_FORM_SAVE_BUTTON": {
+    "uuid": "52d4b5e4-d0bb-5b7d-b22f-aa96d8644267",
+    "id": "UI_TEST1_FORM_SAVE_BUTTON",
+    "path": "test1.form.action.save-button",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/test1.ts",
+    "sourceComponent": "TEST1",
+    "sourceLine": 81,
+    "feature": "test1"
+  },
+  "UI_TEST1_IMAGE_UPLOAD_CONTAINER": {
+    "uuid": "d30739c4-1e2d-51b9-aea7-5dbaa3a00ee7",
+    "id": "UI_TEST1_IMAGE_UPLOAD_CONTAINER",
+    "path": "test1.image-upload.layout.container",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/test1.ts",
+    "sourceComponent": "TEST1",
+    "sourceLine": 95,
+    "feature": "test1"
+  },
+  "UI_TEST1_IMAGE_UPLOAD_UPLOAD_BUTTON": {
+    "uuid": "cf703e21-bed9-5334-b8b5-e5377d97ee12",
+    "id": "UI_TEST1_IMAGE_UPLOAD_UPLOAD_BUTTON",
+    "path": "test1.image-upload.action.upload-button",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/test1.ts",
+    "sourceComponent": "TEST1",
+    "sourceLine": 107,
+    "feature": "test1"
+  },
+  "UI_TEST1_IMAGE_UPLOAD_PREVIEW_IMAGE": {
+    "uuid": "48527ae9-3f51-5a80-a07d-31a701e8f256",
+    "id": "UI_TEST1_IMAGE_UPLOAD_PREVIEW_IMAGE",
+    "path": "test1.image-upload.display.preview-image",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/test1.ts",
+    "sourceComponent": "TEST1",
+    "sourceLine": 131,
+    "feature": "test1"
+  },
   "UI_DEVTOOLS_UI_INSPECTOR_WORKSPACE_CONTAINER": {
     "uuid": "6a43c38c-5ec7-5087-b8b1-c4526b26e60d",
     "id": "UI_DEVTOOLS_UI_INSPECTOR_WORKSPACE_CONTAINER",
@@ -24258,6 +24738,56 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "sourceLine": 1241,
     "feature": "devtools"
   },
+  "UI_IMAGE_UPLOAD_FORM_PAGE_TITLE": {
+    "uuid": "a5e11cca-caba-5ea7-9897-e0447ca05f41",
+    "id": "UI_IMAGE_UPLOAD_FORM_PAGE_TITLE",
+    "path": "image-upload-form.page.display.title",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/image-upload-form.ts",
+    "sourceComponent": "IMAGE_UPLOAD_FORM",
+    "sourceLine": 19,
+    "feature": "image-upload-form"
+  },
+  "UI_IMAGE_UPLOAD_FORM_PAGE_DESCRIPTION": {
+    "uuid": "e72b30a6-8870-52e3-b57b-9794149ed8a1",
+    "id": "UI_IMAGE_UPLOAD_FORM_PAGE_DESCRIPTION",
+    "path": "image-upload-form.page.display.description",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/image-upload-form.ts",
+    "sourceComponent": "IMAGE_UPLOAD_FORM",
+    "sourceLine": 31,
+    "feature": "image-upload-form"
+  },
+  "UI_IMAGE_UPLOAD_FORM_ACTIONS_CREATE_BUTTON": {
+    "uuid": "0b6cc731-753a-51b6-bf59-75c3efa5e2e0",
+    "id": "UI_IMAGE_UPLOAD_FORM_ACTIONS_CREATE_BUTTON",
+    "path": "image-upload-form.actions.create-button",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/image-upload-form.ts",
+    "sourceComponent": "IMAGE_UPLOAD_FORM",
+    "sourceLine": 43,
+    "feature": "image-upload-form"
+  },
+  "UI_IMAGE_UPLOAD_FORM_ACTIONS_SAVE_BUTTON": {
+    "uuid": "89af3dca-6269-5911-83da-7e143fc8f0fb",
+    "id": "UI_IMAGE_UPLOAD_FORM_ACTIONS_SAVE_BUTTON",
+    "path": "image-upload-form.actions.save-button",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/image-upload-form.ts",
+    "sourceComponent": "IMAGE_UPLOAD_FORM",
+    "sourceLine": 55,
+    "feature": "image-upload-form"
+  },
+  "UI_IMAGE_UPLOAD_FORM_ACTIONS_ROW": {
+    "uuid": "fd2ef148-0438-5aeb-8e64-369ef9aacf29",
+    "id": "UI_IMAGE_UPLOAD_FORM_ACTIONS_ROW",
+    "path": "image-upload-form.actions.layout.row",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/image-upload-form.ts",
+    "sourceComponent": "IMAGE_UPLOAD_FORM",
+    "sourceLine": 67,
+    "feature": "image-upload-form"
+  },
   "UI_MERCHANT_PROFILE_HERO_BANNER": {
     "uuid": "1ff85999-dff4-576c-8c93-f967346eeb22",
     "id": "UI_MERCHANT_PROFILE_HERO_BANNER",
@@ -25557,5 +26087,15 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "sourceComponent": "SHARED_LAYOUT",
     "sourceLine": 551,
     "feature": "shared-layout"
+  },
+  "UI_TEST1_IMAGE_UPLOAD_PREVIEW_CONTAINER": {
+    "uuid": "543784c3-c363-5d16-b0fd-e1c1b4936f84",
+    "id": "UI_TEST1_IMAGE_UPLOAD_PREVIEW_CONTAINER",
+    "path": "test1.image-upload.layout.preview-container",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/test1.ts",
+    "sourceComponent": "TEST1",
+    "sourceLine": 119,
+    "feature": "test1"
   }
 };

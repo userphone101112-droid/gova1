@@ -1,7 +1,7 @@
 {
   "version": 1,
   "namespace": "gova.ui-registry",
-  "generatedAt": "2026-06-20T21:01:15.519Z",
+  "generatedAt": "2026-06-21T07:15:07.070Z",
   "identities": {
     "8771d585-21d5-51cc-bb1b-910f1ae955f6": {
       "uuid": "8771d585-21d5-51cc-bb1b-910f1ae955f6",
@@ -13039,6 +13039,16 @@
       "previousPaths": [],
       "aliases": []
     },
+    "52d4b5e4-d0bb-5b7d-b22f-aa96d8644267": {
+      "uuid": "52d4b5e4-d0bb-5b7d-b22f-aa96d8644267",
+      "id": "UI_TEST1_FORM_SAVE_BUTTON",
+      "path": "test1.form.action.save-button",
+      "feature": "test1",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
     "d30739c4-1e2d-51b9-aea7-5dbaa3a00ee7": {
       "uuid": "d30739c4-1e2d-51b9-aea7-5dbaa3a00ee7",
       "id": "UI_TEST1_IMAGE_UPLOAD_CONTAINER",
@@ -13058,6 +13068,17 @@
       "previousIds": [],
       "previousPaths": [],
       "aliases": []
+    },
+    "48527ae9-3f51-5a80-a07d-31a701e8f256": {
+      "uuid": "48527ae9-3f51-5a80-a07d-31a701e8f256",
+      "id": "UI_TEST1_IMAGE_UPLOAD_PREVIEW_IMAGE",
+      "path": "test1.image-upload.display.preview-image",
+      "feature": "test1",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": [],
+      "repeatable": true
     },
     "cf703e21-bed9-5334-b8b5-e5377d97ee12": {
       "uuid": "cf703e21-bed9-5334-b8b5-e5377d97ee12",

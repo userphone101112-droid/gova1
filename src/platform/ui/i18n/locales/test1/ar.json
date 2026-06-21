@@ -6,10 +6,12 @@
     "form": {
       "input1": "الاسم الأول",
       "input2": "الاسم الأخير",
-      "input3": "البريد الإلكتروني"
+      "input3": "البريد الإلكتروني",
+      "saveButton": "حفظ"
     },
     "image-upload": {
-      "uploadButton": "رفع صورة"
+      "uploadButton": "رفع صورة",
+      "previewImage": "TODO(ar): Image preview image"
     }
   }
 }
