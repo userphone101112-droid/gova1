@@ -1,7 +1,8 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 
-import { normalizeApiError } from './api-error-normalizer';
 import { govaDbGetAuth, govaDbSetAuth } from '@/lib/gova-db';
+
+import { normalizeApiError } from './api-error-normalizer';
 
 class ApiClient {
   private client: AxiosInstance;

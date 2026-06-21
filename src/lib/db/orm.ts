@@ -1,8 +1,9 @@
 // Drizzle ORM Database (Server Only)
-import { drizzle as drizzleLibsql } from 'drizzle-orm/libsql';
-import { drizzle as drizzleBetterSqlite3 } from 'drizzle-orm/better-sqlite3';
 import { createClient } from '@libsql/client';
 import Database from 'better-sqlite3';
+import { drizzle as drizzleBetterSqlite3 } from 'drizzle-orm/better-sqlite3';
+import { drizzle as drizzleLibsql } from 'drizzle-orm/libsql';
+
 import * as schema from './schema';
 
 // Check environment

@@ -8,7 +8,6 @@ import { DatabaseCatalogSection } from '../sections/DatabaseCatalogSection';
 import { ElementBindingSection } from '../sections/ElementBindingSection';
 import { SimulationInsightsSection } from '../sections/SimulationInsightsSection';
 import { StorageCatalogSection } from '../sections/StorageCatalogSection';
-import { TranslationPanel } from './TranslationPanel';
 import { DisplaySection } from '../sidebar/DisplaySection';
 import { ElementsSection } from '../sidebar/ElementsSection';
 import { FiltersSection } from '../sidebar/FiltersSection';
@@ -21,6 +20,8 @@ import {
   sidebarSectionLabelClass,
   sidebarSectionToggleClass,
 } from '../utils/sidebar-section-theme';
+
+import { TranslationPanel } from './TranslationPanel';
 
 export function InspectorSidebar() {
   const {

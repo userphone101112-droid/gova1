@@ -18,8 +18,18 @@
 import { existsSync, readFileSync, readdirSync, writeFileSync } from 'fs';
 import { join } from 'path';
 
-import { ALL_UI_IDENTITIES, UI_UUID_MAP } from '../src/platform/ui/registry/registry';
-import { UI_SOURCE_INDEX } from '../src/platform/ui/registry/source-index';
+import {
+  generateTranslationKeyFromUi,
+  isCategoryUiPath,
+} from '../src/platform/ui/i18n/binding/registry-binding';
+import { loadAllTranslationKeys } from '../src/platform/ui/enforcement/scripts/validate-registry-bindings';
+import {
+  ALL_UI_IDENTITIES,
+  isTranslationRequiredForUiIdentity,
+  isUuidBackedUiIdentity,
+  UI_UUID_MAP,
+} from '../src/platform/ui/registry/registry';
+import { UI_SOURCE_INDEX_BY_UUID } from '../src/platform/ui/registry/source-index';
 
 const ROOT = process.cwd();
 const INSPECTOR_DATA_DIR = join(ROOT, 'data/ui-inspector');
@@ -68,35 +78,22 @@ function checkInspectorBindingsUsage(uuid: string): boolean {
 }
 
 function checkSourceIndexUsage(uuid: string): boolean {
-  return uuid in UI_SOURCE_INDEX;
+  return uuid in UI_SOURCE_INDEX_BY_UUID;
 }
 
-function checkTranslationUsage(uuid: string): boolean {
-  // Check if UUID has a translation binding
+function checkTranslationUsage(uuid: string, translationKeys: Set<string>): boolean {
   const identity = UI_UUID_MAP[uuid];
   if (!identity) return false;
-  
-  // Check if there's a translation key for this identity
-  // This is a simplified check - in reality, you'd need to check the locale files
-  const feature = identity.feature;
-  const enPath = join(ROOT, `src/platform/ui/i18n/locales/${feature}/en.json`);
-  
-  if (!existsSync(enPath)) return false;
-  
-  try {
-    const enContent = readFileSync(enPath, 'utf-8');
-    const enData = JSON.parse(enContent);
-    
-    // Check if the identity's path exists in the translation file
-    if (identity.path && enData[identity.path]) return true;
-  } catch {
+  if (!isUuidBackedUiIdentity(identity.path)) return false;
+  if (isCategoryUiPath(identity.path) || !isTranslationRequiredForUiIdentity(identity)) {
     return false;
   }
-  
-  return false;
+
+  return translationKeys.has(generateTranslationKeyFromUi(identity.path));
 }
 
 function generatePruneReport(): PruneReport {
+  const translationKeys = loadAllTranslationKeys();
   const report: PruneReport = {
     unusedUuids: [],
     safeToRemove: [],
@@ -122,7 +119,7 @@ function generatePruneReport(): PruneReport {
       reasons.push('Appears in source index');
     }
     
-    if (checkTranslationUsage(identity.uuid)) {
+    if (checkTranslationUsage(identity.uuid, translationKeys)) {
       reasons.push('Has translation binding');
     }
     

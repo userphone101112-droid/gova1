@@ -1,5 +1,7 @@
 'use client';
 
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+
 import { DEVTOOLS } from '@/platform/ui/registry/features/devtools';
 
 import { buildAbsoluteInspectUrl } from '../../inspector-routes';
@@ -25,21 +27,21 @@ export function TargetPageSection() {
           type="button"
           onClick={handleRouteBack}
           disabled={!canGoBack}
-          className="rounded border border-outline-variant px-2 py-1.5 text-sm disabled:cursor-not-allowed disabled:opacity-40"
+          className="grid size-8 shrink-0 place-items-center rounded border border-outline-variant text-on-surface-variant disabled:cursor-not-allowed disabled:opacity-40"
           aria-label="Back"
           title="Back"
         >
-          Back
+          <ChevronLeft className="size-4" aria-hidden="true" />
         </button>
         <button
           type="button"
           onClick={handleRouteForward}
           disabled={!canGoForward}
-          className="rounded border border-outline-variant px-2 py-1.5 text-sm disabled:cursor-not-allowed disabled:opacity-40"
+          className="grid size-8 shrink-0 place-items-center rounded border border-outline-variant text-on-surface-variant disabled:cursor-not-allowed disabled:opacity-40"
           aria-label="Forward"
           title="Forward"
         >
-          Forward
+          <ChevronRight className="size-4" aria-hidden="true" />
         </button>
         <select
           data-ui-uuid={DEVTOOLS.UI_INSPECTOR.HEADER.ROUTE_SELECT.uuid}

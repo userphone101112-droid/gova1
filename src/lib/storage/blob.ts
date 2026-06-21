@@ -11,7 +11,7 @@ export interface BlobUploadOptions {
   name: string;
   data: Buffer | string | File | Blob;
   contentType?: string;
-  access?: 'public' | 'private';
+  access?: 'public';
 }
 
 export interface BlobResult {
@@ -20,8 +20,6 @@ export interface BlobResult {
   pathname: string;
   contentType: string;
   contentDisposition: string;
-  size: number;
-  uploadedAt: Date;
 }
 
 /**
@@ -29,11 +27,9 @@ export interface BlobResult {
  */
 export async function uploadToBlob(options: BlobUploadOptions): Promise<BlobResult> {
   const { name, data, contentType, access = 'public' } = options;
+  const putOptions = contentType ? { access, contentType } : { access };
 
-  const blob = await put(name, data, {
-    access,
-    contentType,
-  });
+  const blob = await put(name, data, putOptions);
 
   return {
     url: blob.url,
@@ -41,8 +37,6 @@ export async function uploadToBlob(options: BlobUploadOptions): Promise<BlobResu
     pathname: blob.pathname,
     contentType: blob.contentType,
     contentDisposition: blob.contentDisposition,
-    size: blob.size,
-    uploadedAt: blob.uploadedAt,
   };
 }
 
@@ -57,7 +51,8 @@ export async function deleteFromBlob(url: string): Promise<void> {
  * List all blobs in the storage
  */
 export async function listBlobs(prefix?: string) {
-  const { blobs } = await list({ prefix });
+  const options = prefix ? { prefix } : undefined;
+  const { blobs } = await list(options);
   return blobs;
 }
 

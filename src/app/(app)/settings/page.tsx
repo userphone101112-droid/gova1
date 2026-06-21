@@ -2,19 +2,17 @@
 import { Settings as SettingsIcon, Globe, Palette, Accessibility, Terminal, Database, FileText } from 'lucide-react';
 import * as React from 'react';
 
+import { calculateLocalStorageSize, formatBytes, clearAllStorage } from '@/lib/storage';
 import { useTranslation } from '@/platform/ui';
 import { SETTINGS } from '@/platform/ui/registry/features/settings';
 import { useUnifiedStore } from '@/store/unified.store';
-import { calculateLocalStorageSize, formatBytes, clearAllStorage } from '@/lib/storage';
 
 export default function SettingsPage() {
   const { t, locale, setLocale } = useTranslation();
   const { themeMode, setThemeMode, fontSize, setFontSize, density, setDensity, highContrast, setHighContrast, reducedMotion, setReducedMotion, ssotGuardEnabled, setSSOTGuardEnabled, resetPreferences, reset, syncDOM } = useUnifiedStore();
-  const [storageSize, setStorageSize] = React.useState<number>(0);
-
-  React.useEffect(() => {
-    setStorageSize(calculateLocalStorageSize());
-  }, []);
+  const [storageSize, setStorageSize] = React.useState<number>(() =>
+    typeof window === 'undefined' ? 0 : calculateLocalStorageSize()
+  );
 
   const handleClearAllStorage = async () => {
     await clearAllStorage();

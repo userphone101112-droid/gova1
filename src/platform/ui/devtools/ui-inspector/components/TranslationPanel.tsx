@@ -76,7 +76,7 @@ export function TranslationPanel() {
   const handleIgnore = (scanKey: string) => {
     // In a real implementation, this would mark the item as ignored
     // For now, we just log it
-    console.log('Ignoring item:', scanKey);
+    console.warn('Ignoring translation item:', scanKey);
   };
 
   const toggleButton = (

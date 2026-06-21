@@ -34,8 +34,15 @@ export type GovaDbStoreName = typeof GOVA_DB_STORES[keyof typeof GOVA_DB_STORES]
 // --- Core DB Connection ---
 let dbInstance: IDBDatabase | null = null;
 
+function hasIndexedDb(): boolean {
+  return typeof indexedDB !== 'undefined';
+}
+
 async function getDB(): Promise<IDBDatabase> {
   if (dbInstance) return dbInstance;
+  if (!hasIndexedDb()) {
+    throw new Error('GovaDB IndexedDB storage is only available in the browser');
+  }
 
   return new Promise((resolve, reject) => {
     const request = indexedDB.open(DB_NAME, DB_VERSION);
@@ -80,6 +87,7 @@ async function idbRequestToPromise<T>(request: IDBRequest<T>): Promise<T> {
  * Generic function to get a value from GovaDB by key
  */
 export async function govaDbGet<T>(storeName: GovaDbStoreName, key: string): Promise<T | null> {
+  if (!hasIndexedDb()) return null;
   const store = await getStore(storeName, 'readonly');
   const result = await idbRequestToPromise<{ key: string; value: T } | undefined>(
     store.get(key)
@@ -91,6 +99,7 @@ export async function govaDbGet<T>(storeName: GovaDbStoreName, key: string): Pro
  * Generic function to set a value in GovaDB by key
  */
 export async function govaDbSet<T>(storeName: GovaDbStoreName, key: string, value: T): Promise<void> {
+  if (!hasIndexedDb()) return;
   const store = await getStore(storeName, 'readwrite');
   await idbRequestToPromise(store.put({ key, value }));
 }
@@ -99,6 +108,7 @@ export async function govaDbSet<T>(storeName: GovaDbStoreName, key: string, valu
  * Generic function to delete a value from GovaDB by key
  */
 export async function govaDbDelete(storeName: GovaDbStoreName, key: string): Promise<void> {
+  if (!hasIndexedDb()) return;
   const store = await getStore(storeName, 'readwrite');
   await idbRequestToPromise(store.delete(key));
 }
@@ -107,6 +117,7 @@ export async function govaDbDelete(storeName: GovaDbStoreName, key: string): Pro
  * Clear all entries from a store
  */
 export async function govaDbClearStore(storeName: GovaDbStoreName): Promise<void> {
+  if (!hasIndexedDb()) return;
   const store = await getStore(storeName, 'readwrite');
   await idbRequestToPromise(store.clear());
 }
@@ -115,6 +126,7 @@ export async function govaDbClearStore(storeName: GovaDbStoreName): Promise<void
  * Clear ALL data in GovaDB (for development/reset purposes)
  */
 export async function govaDbClearAll(): Promise<void> {
+  if (!hasIndexedDb()) return;
   await getDB(); // Wait for DB to open (in case not yet initialized)
   for (const storeName of Object.values(GOVA_DB_STORES)) {
     await govaDbClearStore(storeName);

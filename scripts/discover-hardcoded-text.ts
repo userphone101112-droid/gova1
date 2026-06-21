@@ -78,23 +78,25 @@ function scanJsxFile(filePath: string): HardcodedTextMatch[] {
 
     // Detect JSXText (text between JSX tags)
     // Simple regex for demonstration - in production, use AST parsing
-    const jsxTextMatches = line.matchAll(/>([^<{]+)</g);
-    for (const match of jsxTextMatches) {
-      const text = match[1].trim();
-      if (text && !isIgnoredText(text) && !isAlreadyWrappedInT(text)) {
-        const uuid = extractUuidFromLine(line);
-        const matchObj: HardcodedTextMatch = {
-          file: filePath,
-          line: lineNum,
-          column: match.index + match[0].indexOf(text),
-          type: 'jsx-text',
-          text,
-          hasUuid: line.includes('data-ui-uuid'),
-        };
-        if (uuid !== undefined) {
-          matchObj.uuid = uuid;
+    if (/<[a-z][\w:-]*[\s>]/i.test(line) && /<\/[a-z][\w:-]*>/i.test(line)) {
+      const jsxTextMatches = line.matchAll(/>([^<{]+)</g);
+      for (const match of jsxTextMatches) {
+        const text = match[1].trim();
+        if (text && !isIgnoredText(text) && !isAlreadyWrappedInT(text)) {
+          const uuid = extractUuidFromLine(line);
+          const matchObj: HardcodedTextMatch = {
+            file: filePath,
+            line: lineNum,
+            column: match.index + match[0].indexOf(text),
+            type: 'jsx-text',
+            text,
+            hasUuid: line.includes('data-ui-uuid'),
+          };
+          if (uuid !== undefined) {
+            matchObj.uuid = uuid;
+          }
+          matches.push(matchObj);
         }
-        matches.push(matchObj);
       }
     }
 

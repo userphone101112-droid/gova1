@@ -40,6 +40,7 @@
     "registry:move": "tsx scripts/registry-move-identity.ts",
     "registry:remove": "tsx scripts/registry-remove-identity.ts",
     "registry:validate-uuids": "tsx scripts/registry-validate-uuids.ts",
+    "registry:prune-unused-uuids": "tsx scripts/registry-prune-unused-uuids.ts",
     "i18n:prune-orphans": "tsx src/platform/ui/enforcement/scripts/prune-orphans.ts",
     "registry:generate": "tsx scripts/registry-generate.ts",
     "ci:uuid-dom-absolute": "tsx scripts/ci-uuid-dom-absolute.ts",

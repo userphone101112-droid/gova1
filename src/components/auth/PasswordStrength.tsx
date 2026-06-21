@@ -3,7 +3,7 @@
 import { Check } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
-import { useTranslation } from '@/platform/ui';
+import { type UiIdentity, useTranslation } from '@/platform/ui';
 import { AUTH } from '@/platform/ui/registry/features/auth';
 
 interface PasswordStrengthProps {
@@ -26,7 +26,7 @@ export function PasswordStrength({ password }: PasswordStrengthProps) {
   const hasSpecial = REQUIREMENTS[3].test(password);
 
   let strength = 0;
-  let strengthLabelKey = AUTH.REGISTRATION.STRENGTH_WEAK;
+  let strengthLabelKey: UiIdentity = AUTH.REGISTRATION.STRENGTH_WEAK;
   let strengthColor = 'bg-error text-error';
 
   if (!hasMinLength) {
@@ -77,19 +77,46 @@ export function PasswordStrength({ password }: PasswordStrengthProps) {
         ))}
       </div>
       <ul data-ui-uuid={AUTH.SHELL.KEY_WRAPPER_L59.uuid} className="space-y-1">
-        {REQUIREMENTS.map((req) => (
-          <li
-            key={req.key.uuid}
-            data-ui-uuid={req.key.uuid}
-            className={cn(
-              'flex items-center gap-1.5 type-caption motion-colors',
-              req.test(password) ? 'text-success' : 'text-on-surface-variant'
-            )}
-          >
-            <Check className={cn('h-3.5 w-3.5', req.test(password) ? 'opacity-100' : 'opacity-subtle')} />
-            {t(req.key)}
-          </li>
-        ))}
+        <li
+          data-ui-uuid={AUTH.REGISTRATION.REQ_MIN_LENGTH.uuid}
+          className={cn(
+            'flex items-center gap-1.5 type-caption motion-colors',
+            REQUIREMENTS[0].test(password) ? 'text-success' : 'text-on-surface-variant'
+          )}
+        >
+          <Check className={cn('h-3.5 w-3.5', REQUIREMENTS[0].test(password) ? 'opacity-100' : 'opacity-subtle')} />
+          {t(AUTH.REGISTRATION.REQ_MIN_LENGTH)}
+        </li>
+        <li
+          data-ui-uuid={AUTH.REGISTRATION.REQ_LOWERCASE.uuid}
+          className={cn(
+            'flex items-center gap-1.5 type-caption motion-colors',
+            REQUIREMENTS[1].test(password) ? 'text-success' : 'text-on-surface-variant'
+          )}
+        >
+          <Check className={cn('h-3.5 w-3.5', REQUIREMENTS[1].test(password) ? 'opacity-100' : 'opacity-subtle')} />
+          {t(AUTH.REGISTRATION.REQ_LOWERCASE)}
+        </li>
+        <li
+          data-ui-uuid={AUTH.REGISTRATION.REQ_NUMBER.uuid}
+          className={cn(
+            'flex items-center gap-1.5 type-caption motion-colors',
+            REQUIREMENTS[2].test(password) ? 'text-success' : 'text-on-surface-variant'
+          )}
+        >
+          <Check className={cn('h-3.5 w-3.5', REQUIREMENTS[2].test(password) ? 'opacity-100' : 'opacity-subtle')} />
+          {t(AUTH.REGISTRATION.REQ_NUMBER)}
+        </li>
+        <li
+          data-ui-uuid={AUTH.REGISTRATION.REQ_SPECIAL.uuid}
+          className={cn(
+            'flex items-center gap-1.5 type-caption motion-colors',
+            REQUIREMENTS[3].test(password) ? 'text-success' : 'text-on-surface-variant'
+          )}
+        >
+          <Check className={cn('h-3.5 w-3.5', REQUIREMENTS[3].test(password) ? 'opacity-100' : 'opacity-subtle')} />
+          {t(AUTH.REGISTRATION.REQ_SPECIAL)}
+        </li>
       </ul>
     </div>
   );

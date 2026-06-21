@@ -3108,5 +3108,109 @@
         "env": "dev"
       }
     ]
+  },
+  "maol_Ues6Mipw28": {
+    "errors": [
+      {
+        "type": "error",
+        "message": "Uncaught",
+        "stack": "DataCloneError: Failed to execute 'postMessage' on 'Window': SVGAnimatedString object could not be cloned.\n    at postFrameMessage (http://localhost:3001/_next/static/chunks/src_platform_ui_devtools_1ypzpy4._.js:490:19)\n    at sendScanResult (http://localhost:3001/_next/static/chunks/src_platform_ui_devtools_1ypzpy4._.js:494:5)\n    at InspectCollectorBridge.useEffect (http://localhost:3001/_next/static/chunks/src_platform_ui_devtools_1ypzpy4._.js:513:13)\n    at Object.react_stack_bottom_frame (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:15087:22)\n    at runWithFiberInDEV (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:965:74)\n    at commitHookEffectListMount (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:7255:167)\n    at commitHookPassiveMountEffects (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:7290:60)\n    at reconnectPassiveEffects (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:8779:17)\n    at recursivelyTraverseReconnectPassiveEffects (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:8766:13)\n    at reconnectPassiveEffects (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:8778:17)\n    at recursivelyTraverseReconnectPassiveEffects (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:8766:13)\n    at commitPassiveMountOnFiber (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:8738:970)\n    at recursivelyTraversePassiveMountEffects (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:8676:316)\n    at commitPassiveMountOnFiber (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:8730:17)\n    at recursivelyTraversePassiveMountEffects (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:8676:316)\n    at commitPassiveMountOnFiber (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:8688:17)\n    at recursivelyTraversePassiveMountEffects (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:8676:316)\n    at commitPassiveMountOnFiber (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:8688:17)\n    at recursivelyTraversePassiveMountEffects (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:8676:316)\n    at commitPassiveMountOnFiber (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:8750:17)\n    at recursivelyTraversePassiveMountEffects (http://localhost:3001/_n",
+        "route": "/home",
+        "timestamp": 1782085110079,
+        "env": "dev"
+      }
+    ],
+    "warnings": []
+  },
+  "maol_AfCKm8oOFa": {
+    "errors": [
+      {
+        "type": "error",
+        "message": "Uncaught",
+        "stack": "DataCloneError: Failed to execute 'postMessage' on 'Window': SVGAnimatedString object could not be cloned.\n    at postFrameMessage (http://localhost:3001/_next/static/chunks/src_platform_ui_devtools_1ypzpy4._.js:490:19)\n    at sendScanResult (http://localhost:3001/_next/static/chunks/src_platform_ui_devtools_1ypzpy4._.js:494:5)\n    at InspectCollectorBridge.useEffect (http://localhost:3001/_next/static/chunks/src_platform_ui_devtools_1ypzpy4._.js:513:13)\n    at Object.react_stack_bottom_frame (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:15087:22)\n    at runWithFiberInDEV (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:965:74)\n    at commitHookEffectListMount (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:7255:167)\n    at commitHookPassiveMountEffects (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:7290:60)\n    at reconnectPassiveEffects (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:8779:17)\n    at recursivelyTraverseReconnectPassiveEffects (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:8766:13)\n    at reconnectPassiveEffects (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:8778:17)\n    at recursivelyTraverseReconnectPassiveEffects (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:8766:13)\n    at commitPassiveMountOnFiber (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:8738:970)\n    at recursivelyTraversePassiveMountEffects (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:8676:316)\n    at commitPassiveMountOnFiber (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:8730:17)\n    at recursivelyTraversePassiveMountEffects (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:8676:316)\n    at commitPassiveMountOnFiber (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:8688:17)\n    at recursivelyTraversePassiveMountEffects (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:8676:316)\n    at commitPassiveMountOnFiber (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:8688:17)\n    at recursivelyTraversePassiveMountEffects (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:8676:316)\n    at commitPassiveMountOnFiber (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:8750:17)\n    at recursivelyTraversePassiveMountEffects (http://localhost:3001/_n",
+        "route": "/home",
+        "timestamp": 1782085110136,
+        "env": "dev"
+      }
+    ],
+    "warnings": []
+  },
+  "maol_UV4Sb5yXwQ": {
+    "errors": [],
+    "warnings": [
+      {
+        "type": "warning",
+        "message": "Image with src \"/images/logos/logo-full.webp\" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: \"auto\"' or 'height: \"auto\"' to maintain the aspect ratio.",
+        "route": "/home",
+        "severity": "low",
+        "timestamp": 1782085506088,
+        "env": "dev"
+      }
+    ]
+  },
+  "maol_7HrOph1qR6": {
+    "errors": [],
+    "warnings": [
+      {
+        "type": "warning",
+        "message": "Image with src \"/images/logos/logo-full.webp\" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: \"auto\"' or 'height: \"auto\"' to maintain the aspect ratio.",
+        "route": "/home",
+        "severity": "low",
+        "timestamp": 1782085506094,
+        "env": "dev"
+      }
+    ]
+  },
+  "maol_hHCxjEa7WZ": {
+    "errors": [],
+    "warnings": [
+      {
+        "type": "warning",
+        "message": "Image with src \"/images/logos/logo-full.webp\" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: \"auto\"' or 'height: \"auto\"' to maintain the aspect ratio.",
+        "route": "/home",
+        "severity": "low",
+        "timestamp": 1782085570879,
+        "env": "dev"
+      }
+    ]
+  },
+  "maol_C4bkQuZ1AL": {
+    "errors": [],
+    "warnings": [
+      {
+        "type": "warning",
+        "message": "Image with src \"/images/logos/logo-full.webp\" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: \"auto\"' or 'height: \"auto\"' to maintain the aspect ratio.",
+        "route": "/home",
+        "severity": "low",
+        "timestamp": 1782085572963,
+        "env": "dev"
+      }
+    ]
+  },
+  "maol_3zjhDAlY7G": {
+    "errors": [],
+    "warnings": [
+      {
+        "type": "warning",
+        "message": "Image with src \"/images/logos/logo-full.webp\" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: \"auto\"' or 'height: \"auto\"' to maintain the aspect ratio.",
+        "route": "/home",
+        "severity": "low",
+        "timestamp": 1782085669917,
+        "env": "dev"
+      }
+    ]
+  },
+  "maol_ii4Mz2d5Kx": {
+    "errors": [],
+    "warnings": [
+      {
+        "type": "warning",
+        "message": "Image with src \"/images/logos/logo-full.webp\" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: \"auto\"' or 'height: \"auto\"' to maintain the aspect ratio.",
+        "route": "/home",
+        "severity": "low",
+        "timestamp": 1782085669891,
+        "env": "dev"
+      }
+    ]
   }
 }

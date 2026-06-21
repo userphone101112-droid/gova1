@@ -1,3 +1,5 @@
+import { govaDbGetUiInspector, govaDbSetUiInspector } from '@/lib/gova-db';
+
 import type { ViewportSettings } from '../data/inspector-config.types';
 
 import {
@@ -8,7 +10,6 @@ import {
   MIN_PANEL_SIZE,
   RESIZER_WIDTH,
 } from './constants';
-import { govaDbGetUiInspector, govaDbSetUiInspector } from '@/lib/gova-db';
 
 export async function readSidebarWidth(): Promise<number> {
   const data = await govaDbGetUiInspector();

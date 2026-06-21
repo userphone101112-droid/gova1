@@ -8,6 +8,7 @@
 
 import { createClient } from '@libsql/client';
 import { drizzle } from 'drizzle-orm/libsql';
+
 import * as schema from '../db/schema';
 
 let client: ReturnType<typeof createClient> | null = null;
@@ -24,10 +25,7 @@ function getTursoClient() {
       throw new Error('TURSO_DATABASE_URL is not set');
     }
 
-    client = createClient({
-      url,
-      authToken,
-    });
+    client = createClient(authToken ? { url, authToken } : { url });
   }
   return client;
 }

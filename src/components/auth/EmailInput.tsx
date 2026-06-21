@@ -25,7 +25,7 @@ export function EmailInput() {
               data-ui-uuid={AUTH.REGISTRATION.EMAIL_INPUT.uuid}
               type="email"
               inputMode="email"
-              placeholder="email@example.com"
+              placeholder={t(AUTH.REGISTRATION.EMAIL_INPUT)}
               className={cn(
                 'auth-input motion-colors w-full',
                 fieldState.error && 'border-error focus-visible:ring-error'

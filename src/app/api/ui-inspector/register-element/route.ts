@@ -1,3 +1,4 @@
+/* eslint-disable i18n-enforcement/no-hardcoded-text */
 import { execFileSync } from 'child_process';
 import { existsSync, readFileSync, writeFileSync } from 'fs';
 import path from 'path';

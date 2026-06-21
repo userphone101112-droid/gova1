@@ -88,7 +88,7 @@ export function scanInspectableElements(): InspectElementSnapshot[] {
       // Element without UUID - collect basic info for registration
       const domPath = getDomPath(el);
       const textSnippet = getTextSnippet(el);
-      const className = el.className || '';
+      const className = getClassName(el);
 
       // Try to get source info from dev-only markers
       const sourceFile = el.getAttribute('data-gova-source-file') || '';
@@ -138,8 +138,14 @@ function getDomPath(el: HTMLElement): string {
     let selector = current.tagName.toLowerCase();
     if (current.id) {
       selector += `#${current.id}`;
-    } else if (current.className && typeof current.className === 'string') {
-      const classes = current.className.split(' ').filter(c => c).slice(0, 2);
+    } else {
+      const className = getClassName(current);
+      if (!className) {
+        path.unshift(selector);
+        current = current.parentElement;
+        continue;
+      }
+      const classes = className.split(' ').filter(c => c).slice(0, 2);
       if (classes.length > 0) {
         selector += `.${classes.join('.')}`;
       }
@@ -149,6 +155,15 @@ function getDomPath(el: HTMLElement): string {
   }
   
   return path.join(' > ');
+}
+
+function getClassName(el: Element): string {
+  const className = (el as unknown as { className?: unknown }).className;
+  if (typeof className === 'string') return className;
+  if (className && typeof className === 'object') {
+    return String((className as { baseVal?: string }).baseVal ?? '');
+  }
+  return '';
 }
 
 function getTextSnippet(el: HTMLElement): string {

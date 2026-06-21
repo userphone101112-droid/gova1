@@ -1,4 +1,3 @@
-// @ts-ignore - Playwright types may not be fully recognized yet
 import { test, expect } from '@playwright/test';
 
 /**
@@ -15,6 +14,9 @@ test.describe('UI Inspector Source Markers', () => {
   test('should have source markers on elements in development mode', async ({ page }: any) => {
     // Navigate to a page with the inspector enabled
     await page.goto('/devtools/ui-inspector');
+    await page.locator('iframe').first().evaluate((iframe: HTMLIFrameElement) => {
+      iframe.src = '/devtools/ui-inspector?inspect=1';
+    });
     
     // Wait for the iframe to load
     const iframe = page.frameLocator('iframe').first();
@@ -67,9 +69,9 @@ test.describe('UI Inspector Source Markers', () => {
     expect(hasSourceMarker).toBeNull();
   });
 
-  test('should have source markers only in development mode', async ({ context }: any) => {
+  test('should have source markers only in development mode', async ({ browser }: any) => {
     // Create a new context with production environment
-    const productionContext = await context.newContext({
+    const productionContext = await browser.newContext({
       // In a real test, you'd set NODE_ENV to production
       // For now, this is a placeholder for the concept
     });
