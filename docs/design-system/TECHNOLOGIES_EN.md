@@ -58,6 +58,13 @@ This document lists all technologies and libraries used in the GOVA project.
 - **Related Files:**
   - `database/settings.db`
 
+### @libsql/client 0.14.1
+- **Version:** 0.14.1
+- **Related Files:**
+  - `drizzle.config.ts`
+  - `src/lib/storage/turso.ts`
+  - `.env.vercel.example`
+
 ### Drizzle Kit 0.31.10
 - **Version:** 0.31.10
 - **Related Files:**
@@ -149,6 +156,31 @@ This document lists all technologies and libraries used in the GOVA project.
 
 ### Firebase 12.14.0
 - **Version:** 12.14.0
+
+### pg 8.13.1
+- **Version:** 8.13.1
+- **Related Files:**
+  - `drizzle.config.ts`
+  - `src/lib/db/schema.postgres.ts`
+  - `src/lib/storage/postgres.ts`
+  - `.env.vercel.example`
+
+### @vercel/blob 0.27.2
+- **Version:** 0.27.2
+- **Related Files:**
+  - `.env.vercel.example`
+
+### @upstash/redis 1.34.4
+- **Version:** 1.34.4
+- **Related Files:**
+  - `src/lib/storage/kv.ts`
+  - `.env.vercel.example`
+
+### @vercel/analytics 1.3.2
+- **Version:** 1.3.2
+
+### @vercel/edge 1.1.4
+- **Version:** 1.1.4
 
 ---
 
@@ -268,6 +300,8 @@ This document lists all technologies and libraries used in the GOVA project.
 | State Management | @tanstack/react-query | 5.101.0 |
 | Database | Drizzle ORM | 0.45.2 |
 | Database | better-sqlite3 | 12.10.1 |
+| Database | @libsql/client | 0.14.0 |
+| Database | pg | 8.13.1 |
 | Forms | react-hook-form | 7.79.0 |
 | Validation | Zod | 4.4.3 |
 | HTTP | Axios | 1.17.0 |
@@ -278,6 +312,10 @@ This document lists all technologies and libraries used in the GOVA project.
 | Utilities | date-fns | 4.4.0 |
 | Utilities | nanoid | 5.1.11 |
 | Backend | Firebase | 12.14.0 |
+| Backend | @vercel/blob | 0.27.2 |
+| Backend | @upstash/redis | 1.34.4 |
+| Backend | @vercel/analytics | 1.3.2 |
+| Backend | @vercel/edge | 1.1.4 |
 | Testing | Jest | 30.4.2 |
 | Testing | @testing-library/react | 16.3.2 |
 | Development | ESLint | 9 |

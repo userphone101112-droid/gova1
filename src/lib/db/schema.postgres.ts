@@ -1,34 +1,18 @@
 import { sql } from 'drizzle-orm';
-import { sqliteTable, text, integer } from 'drizzle-orm/sqlite-core';
+import { pgTable, text, integer, timestamp, serial, varchar, boolean } from 'drizzle-orm/pg-core';
 
 // Helper function for timestamps
 const timestamps = {
-  createdAt: integer('created_at', { mode: 'timestamp_ms' })
-    .default(sql`(strftime('%s', 'now') * 1000)`)
+  createdAt: timestamp('created_at', { mode: 'date' })
+    .default(sql`CURRENT_TIMESTAMP`)
     .notNull(),
-  updatedAt: integer('updated_at', { mode: 'timestamp_ms' })
-    .default(sql`(strftime('%s', 'now') * 1000)`)
+  updatedAt: timestamp('updated_at', { mode: 'date' })
+    .default(sql`CURRENT_TIMESTAMP`)
     .notNull(),
 };
 
-// Users table from sym_data/sym_sql/schema.sql
-export const users = sqliteTable('users', {
-  id: integer('id').primaryKey({ autoIncrement: true }),
-  uid: text('uid').notNull().unique(),
-  phone: text('phone').notNull().unique(),
-  password: text('password').notNull(),
-  lastLoginAt: text('last_login_at'),
-  createdAt: text('created_at')
-    .default(sql`CURRENT_TIMESTAMP`)
-    .notNull(),
-  updatedAt: text('updated_at')
-    .default(sql`CURRENT_TIMESTAMP`)
-    .notNull(),
-  deletedAt: text('deleted_at'),
-});
-
 // Categories from list.json
-export const categories = sqliteTable('categories', {
+export const categories = pgTable('categories', {
   id: integer('id').primaryKey(),
   titleAr: text('title_ar').notNull(),
   titleEn: text('title_en').notNull(),
@@ -38,8 +22,8 @@ export const categories = sqliteTable('categories', {
 });
 
 // Subcategories from list.json
-export const subcategories = sqliteTable('subcategories', {
-  id: integer('id').primaryKey({ autoIncrement: true }),
+export const subcategories = pgTable('subcategories', {
+  id: serial('id').primaryKey(),
   categoryId: integer('category_id')
     .references(() => categories.id)
     .notNull(),
@@ -52,8 +36,8 @@ export const subcategories = sqliteTable('subcategories', {
 });
 
 // Pharmacy categories from pharmList.json
-export const pharmacyCategories = sqliteTable('pharmacy_categories', {
-  id: integer('id').primaryKey({ autoIncrement: true }),
+export const pharmacyCategories = pgTable('pharmacy_categories', {
+  id: serial('id').primaryKey(),
   titleAr: text('title_ar').notNull(),
   titleEn: text('title_en').notNull(),
   icon: text('icon').notNull(),
@@ -61,8 +45,8 @@ export const pharmacyCategories = sqliteTable('pharmacy_categories', {
 });
 
 // Pharmacy subcategories from pharmList.json
-export const pharmacySubcategories = sqliteTable('pharmacy_subcategories', {
-  id: integer('id').primaryKey({ autoIncrement: true }),
+export const pharmacySubcategories = pgTable('pharmacy_subcategories', {
+  id: serial('id').primaryKey(),
   pharmacyCategoryId: integer('pharmacy_category_id')
     .references(() => pharmacyCategories.id)
     .notNull(),
@@ -75,24 +59,24 @@ export const pharmacySubcategories = sqliteTable('pharmacy_subcategories', {
 });
 
 // Forms from reference_data.json
-export const forms = sqliteTable('forms', {
-  id: text('id').primaryKey(),
+export const forms = pgTable('forms', {
+  id: varchar('id').primaryKey(),
   nameAr: text('name_ar').notNull(),
   nameEn: text('name_en').notNull(),
   ...timestamps,
 });
 
 // Strengths from reference_data.json
-export const strengths = sqliteTable('strengths', {
-  id: text('id').primaryKey(),
+export const strengths = pgTable('strengths', {
+  id: varchar('id').primaryKey(),
   nameAr: text('name_ar').notNull(),
   nameEn: text('name_en').notNull(),
   ...timestamps,
 });
 
 // Active ingredients from pharmList/*.json
-export const activeIngredients = sqliteTable('active_ingredients', {
-  id: integer('id').primaryKey({ autoIncrement: true }),
+export const activeIngredients = pgTable('active_ingredients', {
+  id: serial('id').primaryKey(),
   pharmacySubcategoryId: integer('pharmacy_subcategory_id')
     .references(() => pharmacySubcategories.id)
     .notNull(),
@@ -100,35 +84,35 @@ export const activeIngredients = sqliteTable('active_ingredients', {
   nameAr: text('name_ar').notNull(),
   nameEn: text('name_en').notNull(),
   imageUrl: text('image_url').notNull(),
-  isPrescriptionRequired: integer('is_prescription_required', { mode: 'boolean' })
+  isPrescriptionRequired: boolean('is_prescription_required')
     .default(false)
     .notNull(),
   ...timestamps,
 });
 
 // Junction table for active ingredients and forms
-export const activeIngredientForms = sqliteTable('active_ingredient_forms', {
+export const activeIngredientForms = pgTable('active_ingredient_forms', {
   activeIngredientId: integer('active_ingredient_id')
     .references(() => activeIngredients.id)
     .notNull(),
-  formId: text('form_id')
+  formId: varchar('form_id')
     .references(() => forms.id)
     .notNull(),
 });
 
 // Junction table for active ingredients and strengths
-export const activeIngredientStrengths = sqliteTable('active_ingredient_strengths', {
+export const activeIngredientStrengths = pgTable('active_ingredient_strengths', {
   activeIngredientId: integer('active_ingredient_id')
     .references(() => activeIngredients.id)
     .notNull(),
-  strengthId: text('strength_id')
+  strengthId: varchar('strength_id')
     .references(() => strengths.id)
     .notNull(),
 });
 
 // Product brands from pharmList/*.json
-export const productBrands = sqliteTable('product_brands', {
-  id: integer('id').primaryKey({ autoIncrement: true }),
+export const productBrands = pgTable('product_brands', {
+  id: serial('id').primaryKey(),
   activeIngredientId: integer('active_ingredient_id')
     .references(() => activeIngredients.id)
     .notNull(),

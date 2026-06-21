@@ -16,7 +16,7 @@
 
 // --- Constants ---
 const DB_NAME = 'GovaDB';
-const DB_VERSION = 1;
+const DB_VERSION = 2; // Bumped from 1 to 2 to add missing stores
 
 export const GOVA_DB_STORES = {
   /** Guest session data (from use-guest-session.ts) */
@@ -49,7 +49,7 @@ async function getDB(): Promise<IDBDatabase> {
     request.onupgradeneeded = (event) => {
       const idb = (event.target as IDBOpenDBRequest).result;
       
-      // Create object stores if they don't exist
+      // Create ALL object stores if they don't exist (regardless of upgrade path)
       for (const storeName of Object.values(GOVA_DB_STORES)) {
         if (!idb.objectStoreNames.contains(storeName)) {
           idb.createObjectStore(storeName, { keyPath: 'key' });

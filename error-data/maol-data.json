@@ -2960,6 +2960,14 @@
         "route": "/devtools/ui-inspector",
         "timestamp": 1782051631649,
         "env": "dev"
+      },
+      {
+        "type": "error",
+        "message": "Failed to execute 'transaction' on 'IDBDatabase': One of the specified object stores was not found.",
+        "stack": "NotFoundError: Failed to execute 'transaction' on 'IDBDatabase': One of the specified object stores was not found.\n    at getStore (http://localhost:3001/_next/static/chunks/src_1b2v2o5._.js:84:28)\n    at async govaDbGet (http://localhost:3001/_next/static/chunks/src_1b2v2o5._.js:94:19)\n    at async govaDbGetUiInspector (http://localhost:3001/_next/static/chunks/src_1b2v2o5._.js:132:12)\n    at async govaDbSetUiInspector (http://localhost:3001/_next/static/chunks/src_1b2v2o5._.js:135:21)\n    at async persistPickModeEnabled (http://localhost:3001/_next/static/chunks/src_platform_ui_devtools_1elknno._.js:5030:5)",
+        "route": "/devtools/ui-inspector",
+        "timestamp": 1782057647149,
+        "env": "dev"
       }
     ],
     "warnings": [
@@ -3017,6 +3025,22 @@
         "route": "/devtools/ui-inspector",
         "severity": "low",
         "timestamp": 1782051793964,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "Image with src \"https://lh3.googleusercontent.com/aida-public/AB6AXuC8-m7Ccp-1Px2GILiQBkEVbicyFRjjkymFy8ZFtdhuYRL8pQON8o1CIXyU6BN7JVfZrAI0yvezebhNWRoGVMHvg0DN77QP6OfeYY8W2MCXLeJfVyaMNxSGJlX3P3iAMznOw9eICUGva3NKPLGLvI8cNctLItAwJr7ENeM_1D_78vtUOVOwDnSGcbsS5HOdrkOT1zMs8uhh-xaosMu8LdnGFafiAQEvo9WJamGcpA3K5rbhwKVtLkguHv9lD35rXTuja9bBvgTzrkIj\" was detected as the Largest Contentful Paint (LCP). Please add the `loading=\"eager\"` property if this image is above the fold.\nRead more: https://nextjs.org/doc",
+        "route": "/home",
+        "severity": "low",
+        "timestamp": 1782052277064,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "Image with src \"https://lh3.googleusercontent.com/aida-public/AB6AXuB5BKAM75HnyHLdSANV4UMPvSgTfcM9isT6xav32tg3Gvhoo2VHZS2bjvuAmMZ-WMizUytLM-OSXNJGlwlpSSHUzeUCPhSlf-13GvVtmlFYRo8KBxJHUd6C7-TfCGGAm31WcQmrU3uAhVycmQoa7cbdByUtAph_Lnc9fP7QJRlCAh2IAm_pBfGGn-_wmPqP3YSDPVN7R81BJObut_pcxju-opt0cQMpN0kLCsQLQnttGb-QWeNyipOCwPx-GmOSicTzoq5QKsdZTA\" was detected as the Largest Contentful Paint (LCP). Please add the `loading=\"eager\"` property if this image is above the fold.\nRead more: https://nextjs.org/docs/",
+        "route": "/home",
+        "severity": "low",
+        "timestamp": 1782057505092,
         "env": "dev"
       }
     ]

@@ -305,7 +305,18 @@ export const useUnifiedStore = create<UnifiedStore>()(
         name: 'gova-unified-store',
         storage: createGovaDbZustandStorage(GOVA_DB_STORES.APP_SETTINGS) as any,
         skipHydration: true,
-        partialize: (state) => state as any,
+        partialize: (state) => ({
+          settings: state.settings,
+          features: state.features,
+          maintenanceBypassed: state.maintenanceBypassed,
+          language: state.language,
+          themeMode: state.themeMode,
+          fontSize: state.fontSize,
+          density: state.density,
+          highContrast: state.highContrast,
+          reducedMotion: state.reducedMotion,
+          ssotGuardEnabled: state.ssotGuardEnabled,
+        }),
         onRehydrateStorage: () => (state) => {
           if (state) {
             state.direction = getDirectionForLanguage(state.language);

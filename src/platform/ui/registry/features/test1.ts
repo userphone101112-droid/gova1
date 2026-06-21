@@ -137,6 +137,6 @@ id: 'UI_TEST1_IMAGE_UPLOAD_PREVIEW_IMAGE',
       createdAt: '2026-06-21',
       updatedAt: '2026-06-21',
       repeatable: true,
-    } as const,
+} as const,
   },
 } as const;

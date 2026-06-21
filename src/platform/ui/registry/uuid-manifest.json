@@ -1,7 +1,7 @@
 {
   "version": 1,
   "namespace": "gova.ui-registry",
-  "generatedAt": "2026-06-21T12:44:57.948Z",
+  "generatedAt": "2026-06-21T16:55:44.447Z",
   "identities": {
     "8771d585-21d5-51cc-bb1b-910f1ae955f6": {
       "uuid": "8771d585-21d5-51cc-bb1b-910f1ae955f6",
@@ -287,6 +287,26 @@
       "uuid": "c7dc86f9-88e1-5e1a-b9ce-22e7e93e69e8",
       "id": "UI_AUTH_REGISTRATION_EDIT_BUTTON",
       "path": "auth.registration.edit-button",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "7748b67f-a8ca-5024-abff-50cd06e17032": {
+      "uuid": "7748b67f-a8ca-5024-abff-50cd06e17032",
+      "id": "UI_AUTH_REGISTRATION_EMAIL_INPUT",
+      "path": "auth.registration.form.email-input",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "604b8abe-1bc6-5a09-9327-0d9cbef81fcf": {
+      "uuid": "604b8abe-1bc6-5a09-9327-0d9cbef81fcf",
+      "id": "UI_AUTH_REGISTRATION_EMAIL_INPUT_LABEL",
+      "path": "auth.registration.display.email-input-label",
       "feature": "auth",
       "lifecycle": "active",
       "previousIds": [],
@@ -668,6 +688,16 @@
       "uuid": "87e3affa-e857-53e5-ab74-417cde48182f",
       "id": "UI_AUTH_SHARED_BRAND_ROW",
       "path": "auth.shared.display.brand-row",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "080bbaca-bb75-56f9-b8ab-3be837cab93f": {
+      "uuid": "080bbaca-bb75-56f9-b8ab-3be837cab93f",
+      "id": "UI_AUTH_SHARED_EMAIL_PLACEHOLDER",
+      "path": "auth.shared.display.email-placeholder",
       "feature": "auth",
       "lifecycle": "active",
       "previousIds": [],

@@ -76,6 +76,9 @@
 
 ---
 
+
+
+
 ## 3. Database & ORM
 
 ### Drizzle ORM 0.45.2
@@ -98,6 +101,19 @@
   - Synchronous API
 - **الملفات المرتبطة:**
   - `database/settings.db` - قاعدة البيانات الرئيسية
+
+### @libsql/client 0.14.0
+- **الاستخدام:** عميل Turso (libSQL) لقاعدة بيانات SQLite على Edge
+- **الإصدار:** 0.14.0
+- **الميزات المستخدمة:**
+  - Edge SQLite Database
+  - Serverless Support
+  - Replication
+  - Compatible with SQLite Schema
+- **الملفات المرتبطة:**
+  - `drizzle.config.ts` - تكوين Drizzle مع Turso
+  - `src/lib/storage/turso.ts` - دوال مساعدة لـ Turso
+  - `.env.vercel.example` - متغيرات البيئة
 
 ### Drizzle Kit 0.31.10
 - **الاستخدام:** أدوات تطوير لـ Drizzle ORM
@@ -264,6 +280,61 @@
   - Storage
   - Real-time Database
 - **ملاحظة:** مثبت في package.json لكن لم يُستخدم بشكل واضح في الكود المصدري الحالي
+
+### pg 8.13.1
+- **الاستخدام:** عميل PostgreSQL للاتصال بقواعد بيانات PostgreSQL
+- **الإصدار:** 8.13.1
+- **الميزات المستخدمة:**
+  - PostgreSQL Client
+  - Connection Pooling
+  - Standard PostgreSQL Connections
+- **الملفات المرتبطة:**
+  - `drizzle.config.ts` - تكوين Drizzle مع PostgreSQL
+  - `src/lib/db/schema.postgres.ts` - Schema لـ PostgreSQL
+  - `src/lib/storage/postgres.ts` - دوال مساعدة لـ PostgreSQL
+  - `.env.vercel.example` - متغيرات البيئة
+
+### @vercel/blob 0.27.2
+- **الاستخدام:** تخزين الملفات من Vercel
+- **الإصدار:** 0.27.2
+- **الميزات المستخدمة:**
+  - File Storage
+  - Image Upload
+  - CDN Integration
+  - Automatic Optimization
+- **الملفات المرتبطة:**
+  - `.env.vercel.example` - متغيرات البيئة
+
+### @upstash/redis 1.34.4
+- **الاستخدام:** عميل Redis من Upstash (بديل لـ Vercel KV المُهمَل)
+- **الإصدار:** 1.34.4
+- **الميزات المستخدمة:**
+  - Redis Database
+  - Caching
+  - Session Storage
+  - Rate Limiting
+  - REST API Support
+- **الملفات المرتبطة:**
+  - `src/lib/storage/kv.ts` - دوال مساعدة لـ Redis
+  - `.env.vercel.example` - متغيرات البيئة
+
+### @vercel/analytics 1.3.2
+- **الاستخدام:** تحليلات الويب من Vercel
+- **الإصدار:** 1.3.2
+- **الميزات المستخدمة:**
+  - Web Analytics
+  - Performance Monitoring
+  - User Insights
+  - Real-time Data
+
+### @vercel/edge 1.1.4
+- **الاستخدام:** Edge Runtime Support من Vercel
+- **الإصدار:** 1.1.4
+- **الميزات المستخدمة:**
+  - Edge Runtime
+  - Serverless Functions
+  - Global Edge Network
+  - Low Latency
 
 ---
 
@@ -469,6 +540,8 @@
 | State Management | @tanstack/react-query | 5.101.0 | Server State |
 | Database | Drizzle ORM | 0.45.2 | ORM |
 | Database | better-sqlite3 | 12.10.1 | SQLite Engine |
+| Database | @libsql/client | 0.14.0 | Turso Client |
+| Database | pg | 8.13.1 | PostgreSQL Client |
 | Forms | react-hook-form | 7.79.0 | Form Management |
 | Validation | Zod | 4.4.3 | Schema Validation |
 | HTTP | Axios | 1.17.0 | HTTP Client |
@@ -479,6 +552,10 @@
 | Utilities | date-fns | 4.4.0 | Date Handling |
 | Utilities | nanoid | 5.1.11 | ID Generation |
 | Backend | Firebase | 12.14.0 | Backend Services |
+| Backend | @vercel/blob | 0.27.2 | File Storage |
+| Backend | @upstash/redis | 1.34.4 | Redis Database |
+| Backend | @vercel/analytics | 1.3.2 | Web Analytics |
+| Backend | @vercel/edge | 1.1.4 | Edge Runtime |
 | Testing | Jest | 30.4.2 | Testing Framework |
 | Testing | @testing-library/react | 16.3.2 | React Testing |
 | Development | ESLint | 9 | Linting |

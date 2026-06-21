@@ -2002,7 +2002,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 222,
+    "sourceLine": 234,
     "feature": "auth"
   },
   "4ecf8039-11c1-5808-b0d8-c48fb4f66c9e": {
@@ -2012,7 +2012,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 416,
+    "sourceLine": 428,
     "feature": "auth"
   },
   "2b72275a-5d33-5b4d-bb6f-bd80fd4d5293": {
@@ -2022,7 +2022,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 431,
+    "sourceLine": 443,
     "feature": "auth"
   },
   "a2e038ce-c60a-56b1-8c42-afd07192831b": {
@@ -2032,7 +2032,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 443,
+    "sourceLine": 455,
     "feature": "auth"
   },
   "c64ecabf-caef-5ad2-91d7-d225d047d188": {
@@ -2042,7 +2042,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 924,
+    "sourceLine": 960,
     "feature": "auth"
   },
   "c34ec606-c5ef-52f3-8ad7-c720d747dc8d": {
@@ -2052,7 +2052,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 936,
+    "sourceLine": 972,
     "feature": "auth"
   },
   "cf4ed8ea-d1ef-55d7-96d7-da04cb47c9a9": {
@@ -2062,7 +2062,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 948,
+    "sourceLine": 984,
     "feature": "auth"
   },
   "e2c55b0f-aca0-5722-8d97-9a69e8bd9d44": {
@@ -2072,7 +2072,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 960,
+    "sourceLine": 996,
     "feature": "auth"
   },
   "e1c5597c-ada0-58b5-8c97-98d6e9bd9ed7": {
@@ -2082,7 +2082,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 972,
+    "sourceLine": 1008,
     "feature": "auth"
   },
   "04b49cf4-03e4-5043-bfb3-c30e0a1d076d": {
@@ -2092,7 +2092,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 984,
+    "sourceLine": 1020,
     "feature": "auth"
   },
   "413b9418-19e5-58ff-af06-210616fc83ad": {
@@ -2102,7 +2102,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 996,
+    "sourceLine": 1032,
     "feature": "auth"
   },
   "fb517f18-f5d8-5db1-aba2-a3c2d6d03b23": {
@@ -2113,6 +2113,36 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
     "sourceLine": 148,
+    "feature": "auth"
+  },
+  "080bbaca-bb75-56f9-b8ab-3be837cab93f": {
+    "uuid": "080bbaca-bb75-56f9-b8ab-3be837cab93f",
+    "id": "UI_AUTH_SHARED_EMAIL_PLACEHOLDER",
+    "path": "auth.shared.email-placeholder",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 184,
+    "feature": "auth"
+  },
+  "604b8abe-1bc6-5a09-9327-0d9cbef81fcf": {
+    "uuid": "604b8abe-1bc6-5a09-9327-0d9cbef81fcf",
+    "id": "UI_AUTH_REGISTRATION_EMAIL_INPUT_LABEL",
+    "path": "auth.registration.display.email-input-label",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 669,
+    "feature": "auth"
+  },
+  "7748b67f-a8ca-5024-abff-50cd06e17032": {
+    "uuid": "7748b67f-a8ca-5024-abff-50cd06e17032",
+    "id": "UI_AUTH_REGISTRATION_EMAIL_INPUT",
+    "path": "auth.registration.email-input",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/onboarding.ts",
+    "sourceComponent": "ONBOARDING",
+    "sourceLine": 765,
     "feature": "auth"
   },
   "4d96c903-4026-5d64-b003-27114c48b5f2": {
@@ -2152,7 +2182,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 189,
+    "sourceLine": 201,
     "feature": "auth"
   },
   "60c7edec-65c6-56b7-a181-27aef7180451": {
@@ -2162,7 +2192,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 198,
+    "sourceLine": 210,
     "feature": "auth"
   },
   "dc25839f-b4f2-5f9a-bb4b-fc15b69586e8": {
@@ -2172,7 +2202,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 237,
+    "sourceLine": 249,
     "feature": "auth"
   },
   "3db225de-397f-5e67-8e2a-f79450f6734d": {
@@ -2182,7 +2212,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 249,
+    "sourceLine": 261,
     "feature": "auth"
   },
   "93d1b686-6299-5719-94b5-bbe4c13f9197": {
@@ -2192,7 +2222,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 261,
+    "sourceLine": 273,
     "feature": "auth"
   },
   "5b3720f3-c5be-55a8-9f4f-61c9470422c6": {
@@ -2202,7 +2232,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 273,
+    "sourceLine": 285,
     "feature": "auth"
   },
   "8771d585-21d5-51cc-bb1b-910f1ae955f6": {
@@ -2212,7 +2242,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 282,
+    "sourceLine": 294,
     "feature": "auth"
   },
   "4cea7814-285f-59e5-b886-88860889399f": {
@@ -2222,7 +2252,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 297,
+    "sourceLine": 309,
     "feature": "auth"
   },
   "daaef5f8-7bd6-5be7-b540-defa4ad196b1": {
@@ -2232,7 +2262,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 309,
+    "sourceLine": 321,
     "feature": "auth"
   },
   "1679e034-605c-5f77-a5a1-1db657580559": {
@@ -2242,7 +2272,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 321,
+    "sourceLine": 333,
     "feature": "auth"
   },
   "11c1d460-3543-51e1-81a8-73f65fbfa30f": {
@@ -2252,7 +2282,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 330,
+    "sourceLine": 342,
     "feature": "auth"
   },
   "6a903f45-fd9e-56a8-86c3-61234587bbf6": {
@@ -2262,7 +2292,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 342,
+    "sourceLine": 354,
     "feature": "auth"
   },
   "91014c8e-c685-53a1-95f7-cab0b5f5af33": {
@@ -2272,7 +2302,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 354,
+    "sourceLine": 366,
     "feature": "auth"
   },
   "1157333a-96f5-5559-b177-52ec1295ab3b": {
@@ -2282,7 +2312,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 366,
+    "sourceLine": 378,
     "feature": "auth"
   },
   "e1b13cea-7b58-5a63-9490-ea10db7a5dd1": {
@@ -2292,7 +2322,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 381,
+    "sourceLine": 393,
     "feature": "auth"
   },
   "9383019e-718f-56ab-9d3f-0920d2a10a5d": {
@@ -2302,7 +2332,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 393,
+    "sourceLine": 405,
     "feature": "auth"
   },
   "2b915385-0009-5b76-a965-be63639a33c4": {
@@ -2312,7 +2342,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 402,
+    "sourceLine": 414,
     "feature": "auth"
   },
   "d8607ce2-c39e-526f-9517-ad508e63965d": {
@@ -2322,7 +2352,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1008,
+    "sourceLine": 1044,
     "feature": "auth"
   },
   "d95e3fde-3a97-5eff-8e1f-27900d669ce1": {
@@ -2332,7 +2362,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1020,
+    "sourceLine": 1056,
     "feature": "auth"
   },
   "660080c3-96f8-5b0a-a23a-b8a9e51bfdc0": {
@@ -2342,7 +2372,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1032,
+    "sourceLine": 1068,
     "feature": "auth"
   },
   "6eae3df3-cc47-50da-b542-da69027a39f0": {
@@ -2352,7 +2382,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1044,
+    "sourceLine": 1080,
     "feature": "auth"
   },
   "6b0088a2-91f8-532b-a33a-ba3cec1c08c5": {
@@ -2362,7 +2392,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1056,
+    "sourceLine": 1092,
     "feature": "auth"
   },
   "05b981ad-74d3-5a60-b33c-48fb6dc5cf2e": {
@@ -2372,7 +2402,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1068,
+    "sourceLine": 1104,
     "feature": "auth"
   },
   "721647f9-fa39-5296-bd9d-b153b3466e10": {
@@ -2382,7 +2412,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1080,
+    "sourceLine": 1116,
     "feature": "auth"
   },
   "75164cb2-ff39-5a75-809d-b60cb84675ef": {
@@ -2392,7 +2422,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1092,
+    "sourceLine": 1128,
     "feature": "auth"
   },
   "0b8b1316-73e9-5c23-baec-0b542b6a1ef9": {
@@ -2402,7 +2432,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1104,
+    "sourceLine": 1140,
     "feature": "auth"
   },
   "b761e155-e6a6-5b9e-b7c2-298b09c8f8c4": {
@@ -2412,7 +2442,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1116,
+    "sourceLine": 1152,
     "feature": "auth"
   },
   "0c964722-558c-5417-9da5-52fc05ec9ef1": {
@@ -2422,7 +2452,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1128,
+    "sourceLine": 1164,
     "feature": "auth"
   },
   "0d9648b5-548c-5284-9ea5-548f04ec9d5e": {
@@ -2432,7 +2462,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1140,
+    "sourceLine": 1176,
     "feature": "auth"
   },
   "0c9885b9-4d89-58e8-a9a7-a477f9ea4d76": {
@@ -2442,7 +2472,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1152,
+    "sourceLine": 1188,
     "feature": "auth"
   },
   "b85516f5-61b2-5632-acc9-9d7f88d4f9a4": {
@@ -2452,7 +2482,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1164,
+    "sourceLine": 1200,
     "feature": "auth"
   },
   "437d8a36-dce7-5347-ac58-0b4864fd4cf1": {
@@ -2462,7 +2492,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1176,
+    "sourceLine": 1212,
     "feature": "auth"
   },
   "427d88a3-dde7-54da-af58-100161fd4838": {
@@ -2472,7 +2502,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1188,
+    "sourceLine": 1224,
     "feature": "auth"
   },
   "417d8710-dee7-566d-ae58-0e6e62fd49cb": {
@@ -2482,7 +2512,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1200,
+    "sourceLine": 1236,
     "feature": "auth"
   },
   "487d9215-d7e7-5b68-b158-132767fd51aa": {
@@ -2492,7 +2522,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1212,
+    "sourceLine": 1248,
     "feature": "auth"
   },
   "467d8eef-d9e7-5e8e-b358-164d65fd4e84": {
@@ -2502,7 +2532,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1224,
+    "sourceLine": 1260,
     "feature": "auth"
   },
   "6405facf-a300-5aac-80ef-e445345135ea": {
@@ -2512,7 +2542,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1548,
+    "sourceLine": 1584,
     "feature": "auth"
   },
   "2d0cd531-d49d-56a4-91aa-4c2f27b8e61a": {
@@ -2522,7 +2552,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1560,
+    "sourceLine": 1596,
     "feature": "auth"
   },
   "911d441a-5b04-5445-929d-4af406c29e2f": {
@@ -2532,7 +2562,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 560,
+    "sourceLine": 572,
     "feature": "auth"
   },
   "67ce700a-09f6-54db-a87d-7794a5efbf15": {
@@ -2542,7 +2572,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1236,
+    "sourceLine": 1272,
     "feature": "auth"
   },
   "44b2b3d2-8d19-5133-8732-c708bb730df1": {
@@ -2552,7 +2582,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 612,
+    "sourceLine": 624,
     "feature": "auth"
   },
   "4b252def-4083-5ac2-94c1-96ed93558a70": {
@@ -2562,7 +2592,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 624,
+    "sourceLine": 636,
     "feature": "auth"
   },
   "c8277664-0566-5611-b32a-97825b994e47": {
@@ -2572,7 +2602,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 633,
+    "sourceLine": 645,
     "feature": "auth"
   },
   "3d6c8d06-d2f7-53bb-ba38-68445e3a8b71": {
@@ -2582,7 +2612,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 645,
+    "sourceLine": 657,
     "feature": "auth"
   },
   "68273140-e384-5b9b-9241-946ab3302f4d": {
@@ -2592,7 +2622,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 660,
+    "sourceLine": 696,
     "feature": "auth"
   },
   "68c304df-018b-527c-9636-8a715937c28e": {
@@ -2602,7 +2632,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 669,
+    "sourceLine": 705,
     "feature": "auth"
   },
   "c7bdc585-4410-5ffa-9fac-c9231b82a540": {
@@ -2612,7 +2642,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1272,
+    "sourceLine": 1308,
     "feature": "auth"
   },
   "5099169f-0301-5310-a70b-6d4dd6ed384e": {
@@ -2622,7 +2652,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1596,
+    "sourceLine": 1632,
     "feature": "auth"
   },
   "ada1848c-6be8-5d4b-a1fc-8822ecf58d89": {
@@ -2632,7 +2662,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1608,
+    "sourceLine": 1644,
     "feature": "auth"
   },
   "f9d3a17e-8ea1-54a9-95e3-becc6fe44337": {
@@ -2642,7 +2672,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1620,
+    "sourceLine": 1656,
     "feature": "auth"
   },
   "490ce3f9-638f-58be-8cf7-cfe7b09a6534": {
@@ -2652,7 +2682,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1632,
+    "sourceLine": 1668,
     "feature": "auth"
   },
   "de899e90-fdbc-59b3-be00-3e9af8e7f4bd": {
@@ -2662,7 +2692,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1644,
+    "sourceLine": 1680,
     "feature": "auth"
   },
   "cd056997-595b-5918-91d9-c04df6798496": {
@@ -2672,7 +2702,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 681,
+    "sourceLine": 717,
     "feature": "auth"
   },
   "83280aef-dee2-50d8-bf72-5ab5107b4c46": {
@@ -2682,7 +2712,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 693,
+    "sourceLine": 729,
     "feature": "auth"
   },
   "61cc3696-71ec-5759-9b97-24a01e5eaa73": {
@@ -2692,7 +2722,17 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 705,
+    "sourceLine": 741,
+    "feature": "auth"
+  },
+  "6fa54f24-ff7e-5c83-a8a5-1a9e8977b74d": {
+    "uuid": "6fa54f24-ff7e-5c83-a8a5-1a9e8977b74d",
+    "id": "UI_AUTH_REGISTRATION_STRENGTH_FAIR",
+    "path": "auth.registration.strength-fair",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 753,
     "feature": "auth"
   },
   "59ada5af-8b08-55c8-b351-93dd9ac2f816": {
@@ -2702,7 +2742,17 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 729,
+    "sourceLine": 765,
+    "feature": "auth"
+  },
+  "681b4e19-d725-530a-a16e-a38f1459bc10": {
+    "uuid": "681b4e19-d725-530a-a16e-a38f1459bc10",
+    "id": "UI_AUTH_REGISTRATION_STRENGTH_STRONG",
+    "path": "auth.registration.strength-strong",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 777,
     "feature": "auth"
   },
   "9d7afff3-a2d9-5e40-b2cb-509d4aeb07a2": {
@@ -2712,7 +2762,37 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 753,
+    "sourceLine": 789,
+    "feature": "auth"
+  },
+  "aea145a6-37e5-5029-961b-2ee8e1f1595b": {
+    "uuid": "aea145a6-37e5-5029-961b-2ee8e1f1595b",
+    "id": "UI_AUTH_REGISTRATION_REQ_LOWER",
+    "path": "auth.registration.req-lowercase",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 813,
+    "feature": "auth"
+  },
+  "13d0a784-7c3f-573d-8318-160ac157d603": {
+    "uuid": "13d0a784-7c3f-573d-8318-160ac157d603",
+    "id": "UI_AUTH_REGISTRATION_REQ_NUMBER",
+    "path": "auth.registration.req-number",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 825,
+    "feature": "auth"
+  },
+  "79396ddc-0990-592f-86f9-1f12ba280d65": {
+    "uuid": "79396ddc-0990-592f-86f9-1f12ba280d65",
+    "id": "UI_AUTH_REGISTRATION_REQ_SPECIAL",
+    "path": "auth.registration.req-special",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 837,
     "feature": "auth"
   },
   "0b9f78c9-5753-53ce-9ab7-b397db02d8d4": {
@@ -2722,7 +2802,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1284,
+    "sourceLine": 1320,
     "feature": "auth"
   },
   "0e9f7d82-5c53-5bad-95b7-abb8d802d41b": {
@@ -2732,7 +2812,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1296,
+    "sourceLine": 1332,
     "feature": "auth"
   },
   "0ca1b8f3-d650-5a24-9bb9-f3c1da0098aa": {
@@ -2742,7 +2822,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1308,
+    "sourceLine": 1344,
     "feature": "auth"
   },
   "71a6bd4d-5cf6-540e-b4d3-9b974df78bb0": {
@@ -2752,7 +2832,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1320,
+    "sourceLine": 1356,
     "feature": "auth"
   },
   "c2e9c1d6-1da5-565b-b83a-a4e0d4fbeda5": {
@@ -2762,7 +2842,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1332,
+    "sourceLine": 1368,
     "feature": "auth"
   },
   "a1fed973-0ee2-517c-8c71-b511dc3a4a02": {
@@ -2772,7 +2852,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 479,
+    "sourceLine": 491,
     "feature": "auth"
   },
   "9692ec02-cccf-5f71-b5a3-f710687be23f": {
@@ -2782,7 +2862,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 491,
+    "sourceLine": 503,
     "feature": "auth"
   },
   "ba2266be-dd3d-5783-a41a-6c9833bc7e45": {
@@ -2792,7 +2872,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 500,
+    "sourceLine": 512,
     "feature": "auth"
   },
   "7598a99a-b039-526d-bd4e-f504b16dfe2f": {
@@ -2802,7 +2882,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 512,
+    "sourceLine": 524,
     "feature": "auth"
   },
   "c7dc86f9-88e1-5e1a-b9ce-22e7e93e69e8": {
@@ -2812,7 +2892,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 524,
+    "sourceLine": 536,
     "feature": "auth"
   },
   "55dc966c-7955-5b5f-84e2-782eabe8ae41": {
@@ -2822,7 +2902,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 536,
+    "sourceLine": 548,
     "feature": "auth"
   },
   "3f273638-fcbf-588b-99e9-625a0c5888bd": {
@@ -2832,7 +2912,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 548,
+    "sourceLine": 560,
     "feature": "auth"
   },
   "bb4df5a4-f94c-51c3-9111-ff3efb834165": {
@@ -2842,7 +2922,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 573,
+    "sourceLine": 585,
     "feature": "auth"
   },
   "3b0a97fb-b5b8-52f6-b7c7-0371a4ba7214": {
@@ -2852,7 +2932,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 585,
+    "sourceLine": 597,
     "feature": "auth"
   },
   "9afd2ced-6741-533c-8b5e-18af5206418e": {
@@ -2862,7 +2942,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 597,
+    "sourceLine": 609,
     "feature": "auth"
   },
   "54c78009-400c-5916-9ea4-998b723cb518": {
@@ -2872,7 +2952,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 813,
+    "sourceLine": 849,
     "feature": "auth"
   },
   "b9486a5e-263c-5899-80b8-8054b3a6150f": {
@@ -2882,7 +2962,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1344,
+    "sourceLine": 1380,
     "feature": "auth"
   },
   "b94aa8f5-2a3a-504e-bcba-b89fb3a3d678": {
@@ -2892,7 +2972,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1356,
+    "sourceLine": 1392,
     "feature": "auth"
   },
   "b84aa762-2b3a-51e1-bbba-b70cb4a3d80b": {
@@ -2902,7 +2982,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1368,
+    "sourceLine": 1404,
     "feature": "auth"
   },
   "770c599c-2402-5261-95a9-3bca9469d2ff": {
@@ -2912,7 +2992,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1380,
+    "sourceLine": 1416,
     "feature": "auth"
   },
   "2af846f4-9407-5601-a940-b52ad987434f": {
@@ -2922,7 +3002,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1392,
+    "sourceLine": 1428,
     "feature": "auth"
   },
   "3d062510-cd56-5c8d-8ada-064a0679243f": {
@@ -2932,7 +3012,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1404,
+    "sourceLine": 1440,
     "feature": "auth"
   },
   "4f087ffd-535d-5b44-90d2-8a770876e8ce": {
@@ -2942,7 +3022,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1416,
+    "sourceLine": 1452,
     "feature": "auth"
   },
   "29e93ad7-94f8-5d0a-a43b-669d66821118": {
@@ -2952,7 +3032,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1428,
+    "sourceLine": 1464,
     "feature": "auth"
   },
   "4a0ab6b5-485b-5b5c-bfd5-77cb8973e24a": {
@@ -2962,7 +3042,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1440,
+    "sourceLine": 1476,
     "feature": "auth"
   },
   "864c7832-f232-5f91-9240-6f288dca5b3f": {
@@ -2972,7 +3052,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 455,
+    "sourceLine": 467,
     "feature": "auth"
   },
   "325e1cd3-ecfd-5572-a498-8fcd6eb9a2cc": {
@@ -2982,7 +3062,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 464,
+    "sourceLine": 476,
     "feature": "auth"
   },
   "0674e208-4ab7-5bcd-a071-4ef250f59f2f": {
@@ -2992,7 +3072,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 828,
+    "sourceLine": 864,
     "feature": "auth"
   },
   "94739038-3c4f-5c81-b19e-4eaebc2358d7": {
@@ -3002,7 +3082,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 837,
+    "sourceLine": 873,
     "feature": "auth"
   },
   "d9ad77f4-fa94-5b1d-9c1e-921e2a94949f": {
@@ -3012,7 +3092,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 852,
+    "sourceLine": 888,
     "feature": "auth"
   },
   "89f7b3b7-4e1f-5a54-b585-3c997944e5de": {
@@ -3022,7 +3102,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 861,
+    "sourceLine": 897,
     "feature": "auth"
   },
   "e7342b91-ba9f-5612-91db-82ebfc351e8c": {
@@ -3032,7 +3112,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 873,
+    "sourceLine": 909,
     "feature": "auth"
   },
   "dab3ef8e-1b17-5f75-b73c-bf2c566325ab": {
@@ -3042,7 +3122,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 888,
+    "sourceLine": 924,
     "feature": "auth"
   },
   "ecb64d3a-8163-5609-bb32-d374b3fbeec3": {
@@ -3052,7 +3132,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 900,
+    "sourceLine": 936,
     "feature": "auth"
   },
   "a964dbc5-4234-55bc-816d-c2077331e58e": {
@@ -3062,7 +3142,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 909,
+    "sourceLine": 945,
     "feature": "auth"
   },
   "32c7eade-65ec-596d-9d3f-c3584c070427": {
@@ -3072,7 +3152,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1452,
+    "sourceLine": 1488,
     "feature": "auth"
   },
   "2fc7e625-58ec-54f6-9a3f-be9f3f06efb0": {
@@ -3082,7 +3162,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1464,
+    "sourceLine": 1500,
     "feature": "auth"
   },
   "10671a38-5027-530b-8a91-9a86d5fe9179": {
@@ -3092,7 +3172,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1476,
+    "sourceLine": 1512,
     "feature": "auth"
   },
   "5e6dc810-c221-5f63-b5db-ef8ec1932081": {
@@ -3102,7 +3182,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1488,
+    "sourceLine": 1524,
     "feature": "auth"
   },
   "0d64d6e8-5729-5ca7-8b8f-5d826101aae1": {
@@ -3112,7 +3192,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1500,
+    "sourceLine": 1536,
     "feature": "auth"
   },
   "478df020-2a2f-505f-b700-e0eac5fe4281": {
@@ -3122,17 +3202,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1512,
-    "feature": "auth"
-  },
-  "4a8df4d9-2b2f-51f2-b600-df57c2fe3dc8": {
-    "uuid": "4a8df4d9-2b2f-51f2-b600-df57c2fe3dc8",
-    "id": "UI_AUTH_STRUCTURE_REGISTRATION_PHONE_REQUIRED_WRAPPER_L103",
-    "path": "auth.dom.registration-page-content.registration-phone-required-wrapper-l103",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
-    "sourceComponent": "AUTH",
-    "sourceLine": 1524,
+    "sourceLine": 1548,
     "feature": "auth"
   },
   "4e9039bc-272d-5d0f-a202-fe72c6fc057d": {
@@ -3142,7 +3212,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1536,
+    "sourceLine": 1572,
     "feature": "auth"
   },
   "8dd9dabb-a434-5ff6-aeb7-47495fd024d4": {
@@ -3152,7 +3222,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1572,
+    "sourceLine": 1608,
     "feature": "auth"
   },
   "9a09f49d-25da-5ce6-997d-c293770adf8c": {
@@ -3162,7 +3232,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1584,
+    "sourceLine": 1620,
     "feature": "auth"
   },
   "5d8c78aa-6864-5ccf-abf3-38b0bc1d7355": {
@@ -11335,60 +11405,10 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "sourceLine": 133,
     "feature": "common"
   },
-  "6fa54f24-ff7e-5c83-a8a5-1a9e8977b74d": {
-    "uuid": "6fa54f24-ff7e-5c83-a8a5-1a9e8977b74d",
-    "id": "UI_AUTH_REGISTRATION_STRENGTH_FAIR",
-    "path": "auth.registration.strength-fair",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
-    "sourceComponent": "AUTH",
-    "sourceLine": 717,
-    "feature": "auth"
-  },
-  "681b4e19-d725-530a-a16e-a38f1459bc10": {
-    "uuid": "681b4e19-d725-530a-a16e-a38f1459bc10",
-    "id": "UI_AUTH_REGISTRATION_STRENGTH_STRONG",
-    "path": "auth.registration.strength-strong",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
-    "sourceComponent": "AUTH",
-    "sourceLine": 741,
-    "feature": "auth"
-  },
   "839e43f3-70bf-53b0-a341-db3db484167a": {
     "uuid": "839e43f3-70bf-53b0-a341-db3db484167a",
     "id": "UI_AUTH_REGISTRATION_REQ_UPPER",
     "path": "auth.registration.req-uppercase",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
-    "sourceComponent": "AUTH",
-    "sourceLine": 765,
-    "feature": "auth"
-  },
-  "aea145a6-37e5-5029-961b-2ee8e1f1595b": {
-    "uuid": "aea145a6-37e5-5029-961b-2ee8e1f1595b",
-    "id": "UI_AUTH_REGISTRATION_REQ_LOWER",
-    "path": "auth.registration.req-lowercase",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
-    "sourceComponent": "AUTH",
-    "sourceLine": 777,
-    "feature": "auth"
-  },
-  "13d0a784-7c3f-573d-8318-160ac157d603": {
-    "uuid": "13d0a784-7c3f-573d-8318-160ac157d603",
-    "id": "UI_AUTH_REGISTRATION_REQ_NUMBER",
-    "path": "auth.registration.req-number",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
-    "sourceComponent": "AUTH",
-    "sourceLine": 789,
-    "feature": "auth"
-  },
-  "79396ddc-0990-592f-86f9-1f12ba280d65": {
-    "uuid": "79396ddc-0990-592f-86f9-1f12ba280d65",
-    "id": "UI_AUTH_REGISTRATION_REQ_SPECIAL",
-    "path": "auth.registration.req-special",
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
@@ -11402,7 +11422,7 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1248,
+    "sourceLine": 1284,
     "feature": "auth"
   },
   "07f2cb28-cc6c-53f1-83ed-1806c4aaf677": {
@@ -11412,7 +11432,17 @@ export const UI_SOURCE_INDEX_BY_UUID: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1260,
+    "sourceLine": 1296,
+    "feature": "auth"
+  },
+  "4a8df4d9-2b2f-51f2-b600-df57c2fe3dc8": {
+    "uuid": "4a8df4d9-2b2f-51f2-b600-df57c2fe3dc8",
+    "id": "UI_AUTH_STRUCTURE_REGISTRATION_PHONE_REQUIRED_WRAPPER_L103",
+    "path": "auth.dom.registration-page-content.registration-phone-required-wrapper-l103",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 1560,
     "feature": "auth"
   },
   "395d7741-ef14-5f76-951a-ea6f5c521314": {
@@ -15045,7 +15075,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 222,
+    "sourceLine": 234,
     "feature": "auth"
   },
   "UI_AUTH_REGISTRATION_BRAND_NAME": {
@@ -15055,7 +15085,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 416,
+    "sourceLine": 428,
     "feature": "auth"
   },
   "UI_AUTH_REGISTRATION_HEADING": {
@@ -15065,7 +15095,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 431,
+    "sourceLine": 443,
     "feature": "auth"
   },
   "UI_AUTH_REGISTRATION_DESCRIPTION": {
@@ -15075,7 +15105,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 443,
+    "sourceLine": 455,
     "feature": "auth"
   },
   "UI_AUTH_STRUCTURE_REGISTRATION_BRAND_NAME_WRAPPER_L23": {
@@ -15085,7 +15115,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 924,
+    "sourceLine": 960,
     "feature": "auth"
   },
   "UI_AUTH_STRUCTURE_REGISTRATION_BRAND_NAME_WRAPPER_L24": {
@@ -15095,7 +15125,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 936,
+    "sourceLine": 972,
     "feature": "auth"
   },
   "UI_AUTH_STRUCTURE_REGISTRATION_BRAND_NAME_WRAPPER_L28": {
@@ -15105,7 +15135,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 948,
+    "sourceLine": 984,
     "feature": "auth"
   },
   "UI_AUTH_STRUCTURE_SHARED_HIGHLIGHT_SECURITY_WRAPPER_L50": {
@@ -15115,7 +15145,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 960,
+    "sourceLine": 996,
     "feature": "auth"
   },
   "UI_AUTH_STRUCTURE_SHARED_HIGHLIGHT_SECURITY_WRAPPER_L51": {
@@ -15125,7 +15155,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 972,
+    "sourceLine": 1008,
     "feature": "auth"
   },
   "UI_AUTH_STRUCTURE_SHARED_HIGHLIGHT_PHONE_WRAPPER_L55": {
@@ -15135,7 +15165,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 984,
+    "sourceLine": 1020,
     "feature": "auth"
   },
   "UI_AUTH_STRUCTURE_SHARED_HIGHLIGHT_ENCRYPTED_WRAPPER_L59": {
@@ -15145,7 +15175,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 996,
+    "sourceLine": 1032,
     "feature": "auth"
   },
   "UI_AUTH_SHARED_MOBILE_BRAND": {
@@ -15156,6 +15186,36 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
     "sourceLine": 148,
+    "feature": "auth"
+  },
+  "UI_AUTH_SHARED_EMAIL_PLACEHOLDER": {
+    "uuid": "080bbaca-bb75-56f9-b8ab-3be837cab93f",
+    "id": "UI_AUTH_SHARED_EMAIL_PLACEHOLDER",
+    "path": "auth.shared.email-placeholder",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 184,
+    "feature": "auth"
+  },
+  "UI_AUTH_REGISTRATION_EMAIL_INPUT_LABEL": {
+    "uuid": "604b8abe-1bc6-5a09-9327-0d9cbef81fcf",
+    "id": "UI_AUTH_REGISTRATION_EMAIL_INPUT_LABEL",
+    "path": "auth.registration.display.email-input-label",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 669,
+    "feature": "auth"
+  },
+  "UI_AUTH_REGISTRATION_EMAIL_INPUT": {
+    "uuid": "7748b67f-a8ca-5024-abff-50cd06e17032",
+    "id": "UI_AUTH_REGISTRATION_EMAIL_INPUT",
+    "path": "auth.registration.email-input",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/onboarding.ts",
+    "sourceComponent": "ONBOARDING",
+    "sourceLine": 765,
     "feature": "auth"
   },
   "UI_HOME_CATEGORIES_GRID_TOGGLE": {
@@ -15195,7 +15255,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 189,
+    "sourceLine": 201,
     "feature": "auth"
   },
   "UI_AUTH_LOGIN_SUBHEADING": {
@@ -15205,7 +15265,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 198,
+    "sourceLine": 210,
     "feature": "auth"
   },
   "UI_AUTH_LOGIN_PHONE_INPUT": {
@@ -15215,7 +15275,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 237,
+    "sourceLine": 249,
     "feature": "auth"
   },
   "UI_AUTH_LOGIN_PHONE_INPUT_LABEL": {
@@ -15225,7 +15285,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 249,
+    "sourceLine": 261,
     "feature": "auth"
   },
   "UI_AUTH_LOGIN_PASSWORD_INPUT": {
@@ -15235,7 +15295,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 261,
+    "sourceLine": 273,
     "feature": "auth"
   },
   "UI_AUTH_LOGIN_PASSWORD_INPUT_LABEL": {
@@ -15245,7 +15305,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 273,
+    "sourceLine": 285,
     "feature": "auth"
   },
   "UI_AUTH_LOGIN_FORGOT_PASSWORD": {
@@ -15255,7 +15315,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 282,
+    "sourceLine": 294,
     "feature": "auth"
   },
   "UI_AUTH_LOGIN_TOGGLE_PASSWORD": {
@@ -15265,7 +15325,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 297,
+    "sourceLine": 309,
     "feature": "auth"
   },
   "UI_AUTH_LOGIN_SUBMIT": {
@@ -15275,7 +15335,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 309,
+    "sourceLine": 321,
     "feature": "auth"
   },
   "UI_AUTH_LOGIN_SUBMITTING": {
@@ -15285,7 +15345,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 321,
+    "sourceLine": 333,
     "feature": "auth"
   },
   "UI_AUTH_LOGIN_GUEST": {
@@ -15295,7 +15355,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 330,
+    "sourceLine": 342,
     "feature": "auth"
   },
   "UI_AUTH_LOGIN_SIGNUP_LINK": {
@@ -15305,7 +15365,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 342,
+    "sourceLine": 354,
     "feature": "auth"
   },
   "UI_AUTH_LOGIN_SIGNUP_LINK_BUTTON": {
@@ -15315,7 +15375,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 354,
+    "sourceLine": 366,
     "feature": "auth"
   },
   "UI_AUTH_LOGIN_SIGNUP_DIVIDER": {
@@ -15325,7 +15385,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 366,
+    "sourceLine": 378,
     "feature": "auth"
   },
   "UI_AUTH_LOGIN_SUCCESS_HEADING": {
@@ -15335,7 +15395,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 381,
+    "sourceLine": 393,
     "feature": "auth"
   },
   "UI_AUTH_LOGIN_SUCCESS_DESCRIPTION": {
@@ -15345,7 +15405,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 393,
+    "sourceLine": 405,
     "feature": "auth"
   },
   "UI_AUTH_LOGIN_SIGNIN_AGAIN": {
@@ -15355,7 +15415,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 402,
+    "sourceLine": 414,
     "feature": "auth"
   },
   "UI_AUTH_STRUCTURE_LOGIN_SUCCESS_HEADING_WRAPPER_L58": {
@@ -15365,7 +15425,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1008,
+    "sourceLine": 1044,
     "feature": "auth"
   },
   "UI_AUTH_STRUCTURE_LOGIN_SUCCESS_HEADING_WRAPPER_L61": {
@@ -15375,7 +15435,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1020,
+    "sourceLine": 1056,
     "feature": "auth"
   },
   "UI_AUTH_STRUCTURE_LOGIN_HEADING_WRAPPER_L80": {
@@ -15385,7 +15445,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1032,
+    "sourceLine": 1068,
     "feature": "auth"
   },
   "UI_AUTH_STRUCTURE_LOGIN_HEADING_CONTAINER_L84": {
@@ -15395,7 +15455,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1044,
+    "sourceLine": 1080,
     "feature": "auth"
   },
   "UI_AUTH_STRUCTURE_LOGIN_HEADING_WRAPPER_L87": {
@@ -15405,7 +15465,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1056,
+    "sourceLine": 1092,
     "feature": "auth"
   },
   "UI_AUTH_STRUCTURE_LOGIN_GUEST_LOGIN_WRAPPER_L95": {
@@ -15415,7 +15475,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1068,
+    "sourceLine": 1104,
     "feature": "auth"
   },
   "UI_AUTH_STRUCTURE_LOGIN_PHONE_INPUT_WRAPPER_L100": {
@@ -15425,7 +15485,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1080,
+    "sourceLine": 1116,
     "feature": "auth"
   },
   "UI_AUTH_STRUCTURE_LOGIN_PHONE_INPUT_WRAPPER_L105": {
@@ -15435,7 +15495,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1092,
+    "sourceLine": 1128,
     "feature": "auth"
   },
   "UI_AUTH_STRUCTURE_LOGIN_PHONE_INPUT_SPAN_L106": {
@@ -15445,7 +15505,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1104,
+    "sourceLine": 1140,
     "feature": "auth"
   },
   "UI_AUTH_STRUCTURE_LOGIN_HEADING_WRAPPER_L112": {
@@ -15455,7 +15515,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1116,
+    "sourceLine": 1152,
     "feature": "auth"
   },
   "UI_AUTH_STRUCTURE_LOGIN_PASSWORD_INPUT_WRAPPER_L122": {
@@ -15465,7 +15525,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1128,
+    "sourceLine": 1164,
     "feature": "auth"
   },
   "UI_AUTH_STRUCTURE_LOGIN_PASSWORD_INPUT_WRAPPER_L123": {
@@ -15475,7 +15535,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1140,
+    "sourceLine": 1176,
     "feature": "auth"
   },
   "UI_AUTH_STRUCTURE_LOGIN_PASSWORD_INPUT_WRAPPER_L134": {
@@ -15485,7 +15545,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1152,
+    "sourceLine": 1188,
     "feature": "auth"
   },
   "UI_AUTH_STRUCTURE_LOGIN_HEADING_WRAPPER_L141": {
@@ -15495,7 +15555,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1164,
+    "sourceLine": 1200,
     "feature": "auth"
   },
   "UI_AUTH_STRUCTURE_LOGIN_SIGNUP_DIVIDER_WRAPPER_L171": {
@@ -15505,7 +15565,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1176,
+    "sourceLine": 1212,
     "feature": "auth"
   },
   "UI_AUTH_STRUCTURE_LOGIN_SIGNUP_DIVIDER_WRAPPER_L172": {
@@ -15515,7 +15575,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1188,
+    "sourceLine": 1224,
     "feature": "auth"
   },
   "UI_AUTH_STRUCTURE_LOGIN_SIGNUP_DIVIDER_WRAPPER_L173": {
@@ -15525,7 +15585,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1200,
+    "sourceLine": 1236,
     "feature": "auth"
   },
   "UI_AUTH_STRUCTURE_LOGIN_SIGNUP_DIVIDER_WRAPPER_L174": {
@@ -15535,7 +15595,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1212,
+    "sourceLine": 1248,
     "feature": "auth"
   },
   "UI_AUTH_STRUCTURE_LOGIN_SIGNUP_DIVIDER_WRAPPER_L176": {
@@ -15545,7 +15605,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1224,
+    "sourceLine": 1260,
     "feature": "auth"
   },
   "UI_AUTH_LOGIN_SUCCESS_PAGE": {
@@ -15555,7 +15615,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1548,
+    "sourceLine": 1584,
     "feature": "auth"
   },
   "UI_AUTH_LOGIN_SUCCESS_FORM_CARD": {
@@ -15565,7 +15625,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1560,
+    "sourceLine": 1596,
     "feature": "auth"
   },
   "UI_AUTH_REGISTRATION_OTP_INPUT": {
@@ -15575,7 +15635,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 560,
+    "sourceLine": 572,
     "feature": "auth"
   },
   "UI_AUTH_STRUCTURE_OTP_INPUT_L63": {
@@ -15585,7 +15645,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1236,
+    "sourceLine": 1272,
     "feature": "auth"
   },
   "UI_AUTH_REGISTRATION_PASSWORD_INPUT": {
@@ -15595,7 +15655,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 612,
+    "sourceLine": 624,
     "feature": "auth"
   },
   "UI_AUTH_REGISTRATION_PASSWORD_INPUT_LABEL": {
@@ -15605,7 +15665,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 624,
+    "sourceLine": 636,
     "feature": "auth"
   },
   "UI_AUTH_REGISTRATION_CONFIRM_PASSWORD": {
@@ -15615,7 +15675,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 633,
+    "sourceLine": 645,
     "feature": "auth"
   },
   "UI_AUTH_REGISTRATION_CONFIRM_PASSWORD_INPUT_LABEL": {
@@ -15625,7 +15685,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 645,
+    "sourceLine": 657,
     "feature": "auth"
   },
   "UI_AUTH_REGISTRATION_TOGGLE_PASSWORD": {
@@ -15635,7 +15695,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 660,
+    "sourceLine": 696,
     "feature": "auth"
   },
   "UI_AUTH_REGISTRATION_CONFIRM_TOGGLE_PASSWORD": {
@@ -15645,7 +15705,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 669,
+    "sourceLine": 705,
     "feature": "auth"
   },
   "UI_AUTH_STRUCTURE_PASSWORD_INPUT_L48": {
@@ -15655,7 +15715,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1272,
+    "sourceLine": 1308,
     "feature": "auth"
   },
   "UI_AUTH_SHELL_PASSWORD_FIELD_WRAPPER": {
@@ -15665,7 +15725,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1596,
+    "sourceLine": 1632,
     "feature": "auth"
   },
   "UI_AUTH_SHELL_PASSWORD_FIELD_INPUT_WRAPPER": {
@@ -15675,7 +15735,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1608,
+    "sourceLine": 1644,
     "feature": "auth"
   },
   "UI_AUTH_SHELL_CONFIRM_PASSWORD_FIELD_WRAPPER": {
@@ -15685,7 +15745,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1620,
+    "sourceLine": 1656,
     "feature": "auth"
   },
   "UI_AUTH_SHELL_CONFIRM_PASSWORD_FIELD_INPUT_WRAPPER": {
@@ -15695,7 +15755,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1632,
+    "sourceLine": 1668,
     "feature": "auth"
   },
   "UI_AUTH_SHELL_CONFIRM_PASSWORD_ERROR": {
@@ -15705,7 +15765,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1644,
+    "sourceLine": 1680,
     "feature": "auth"
   },
   "UI_AUTH_REGISTRATION_PASSWORD_STRENGTH": {
@@ -15715,7 +15775,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 681,
+    "sourceLine": 717,
     "feature": "auth"
   },
   "UI_AUTH_REGISTRATION_PASSWORD_STRENGTH_CONTAINER": {
@@ -15725,7 +15785,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 693,
+    "sourceLine": 729,
     "feature": "auth"
   },
   "UI_AUTH_REGISTRATION_STRENGTH_WEAK": {
@@ -15735,7 +15795,17 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 705,
+    "sourceLine": 741,
+    "feature": "auth"
+  },
+  "UI_AUTH_REGISTRATION_STRENGTH_FAIR": {
+    "uuid": "6fa54f24-ff7e-5c83-a8a5-1a9e8977b74d",
+    "id": "UI_AUTH_REGISTRATION_STRENGTH_FAIR",
+    "path": "auth.registration.strength-fair",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 753,
     "feature": "auth"
   },
   "UI_AUTH_REGISTRATION_STRENGTH_GOOD": {
@@ -15745,7 +15815,17 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 729,
+    "sourceLine": 765,
+    "feature": "auth"
+  },
+  "UI_AUTH_REGISTRATION_STRENGTH_STRONG": {
+    "uuid": "681b4e19-d725-530a-a16e-a38f1459bc10",
+    "id": "UI_AUTH_REGISTRATION_STRENGTH_STRONG",
+    "path": "auth.registration.strength-strong",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 777,
     "feature": "auth"
   },
   "UI_AUTH_REGISTRATION_REQ_MIN": {
@@ -15755,7 +15835,37 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 753,
+    "sourceLine": 789,
+    "feature": "auth"
+  },
+  "UI_AUTH_REGISTRATION_REQ_LOWER": {
+    "uuid": "aea145a6-37e5-5029-961b-2ee8e1f1595b",
+    "id": "UI_AUTH_REGISTRATION_REQ_LOWER",
+    "path": "auth.registration.req-lowercase",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 813,
+    "feature": "auth"
+  },
+  "UI_AUTH_REGISTRATION_REQ_NUMBER": {
+    "uuid": "13d0a784-7c3f-573d-8318-160ac157d603",
+    "id": "UI_AUTH_REGISTRATION_REQ_NUMBER",
+    "path": "auth.registration.req-number",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 825,
+    "feature": "auth"
+  },
+  "UI_AUTH_REGISTRATION_REQ_SPECIAL": {
+    "uuid": "79396ddc-0990-592f-86f9-1f12ba280d65",
+    "id": "UI_AUTH_REGISTRATION_REQ_SPECIAL",
+    "path": "auth.registration.req-special",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 837,
     "feature": "auth"
   },
   "UI_AUTH_STRUCTURE_REGISTRATION_PASSWORD_STRENGTH_WRAPPER_L41": {
@@ -15765,7 +15875,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1284,
+    "sourceLine": 1320,
     "feature": "auth"
   },
   "UI_AUTH_STRUCTURE_REGISTRATION_PASSWORD_STRENGTH_WRAPPER_L44": {
@@ -15775,7 +15885,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1296,
+    "sourceLine": 1332,
     "feature": "auth"
   },
   "UI_AUTH_STRUCTURE_REGISTRATION_PASSWORD_STRENGTH_WRAPPER_L54": {
@@ -15785,7 +15895,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1308,
+    "sourceLine": 1344,
     "feature": "auth"
   },
   "UI_AUTH_STRUCTURE_REGISTRATION_PASSWORD_STRENGTH_CONTAINER_L56": {
@@ -15795,7 +15905,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1320,
+    "sourceLine": 1356,
     "feature": "auth"
   },
   "UI_AUTH_STRUCTURE_KEY_WRAPPER_L59": {
@@ -15805,7 +15915,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1332,
+    "sourceLine": 1368,
     "feature": "auth"
   },
   "UI_AUTH_REGISTRATION_PHONE_INPUT": {
@@ -15815,7 +15925,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 479,
+    "sourceLine": 491,
     "feature": "auth"
   },
   "UI_AUTH_REGISTRATION_PHONE_INPUT_LABEL": {
@@ -15825,7 +15935,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 491,
+    "sourceLine": 503,
     "feature": "auth"
   },
   "UI_AUTH_REGISTRATION_PHONE_VERIFICATION_SECTION": {
@@ -15835,7 +15945,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 500,
+    "sourceLine": 512,
     "feature": "auth"
   },
   "UI_AUTH_REGISTRATION_VERIFY_BUTTON": {
@@ -15845,7 +15955,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 512,
+    "sourceLine": 524,
     "feature": "auth"
   },
   "UI_AUTH_REGISTRATION_EDIT_BUTTON": {
@@ -15855,7 +15965,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 524,
+    "sourceLine": 536,
     "feature": "auth"
   },
   "UI_AUTH_REGISTRATION_OTP_LABEL": {
@@ -15865,7 +15975,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 536,
+    "sourceLine": 548,
     "feature": "auth"
   },
   "UI_AUTH_REGISTRATION_OTP_DESCRIPTION": {
@@ -15875,7 +15985,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 548,
+    "sourceLine": 560,
     "feature": "auth"
   },
   "UI_AUTH_REGISTRATION_RESEND_BUTTON": {
@@ -15885,7 +15995,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 573,
+    "sourceLine": 585,
     "feature": "auth"
   },
   "UI_AUTH_REGISTRATION_VERIFY_OTP": {
@@ -15895,7 +16005,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 585,
+    "sourceLine": 597,
     "feature": "auth"
   },
   "UI_AUTH_REGISTRATION_PHONE_VERIFIED": {
@@ -15905,7 +16015,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 597,
+    "sourceLine": 609,
     "feature": "auth"
   },
   "UI_AUTH_REGISTRATION_VERIFYING_OTP": {
@@ -15915,7 +16025,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 813,
+    "sourceLine": 849,
     "feature": "auth"
   },
   "UI_AUTH_STRUCTURE_REGISTRATION_PHONE_INPUT_WRAPPER_L88": {
@@ -15925,7 +16035,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1344,
+    "sourceLine": 1380,
     "feature": "auth"
   },
   "UI_AUTH_STRUCTURE_REGISTRATION_PHONE_INPUT_WRAPPER_L92": {
@@ -15935,7 +16045,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1356,
+    "sourceLine": 1392,
     "feature": "auth"
   },
   "UI_AUTH_STRUCTURE_REGISTRATION_PHONE_INPUT_WRAPPER_L93": {
@@ -15945,7 +16055,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1368,
+    "sourceLine": 1404,
     "feature": "auth"
   },
   "UI_AUTH_STRUCTURE_REGISTRATION_PHONE_INPUT_SPAN_L94": {
@@ -15955,7 +16065,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1380,
+    "sourceLine": 1416,
     "feature": "auth"
   },
   "UI_AUTH_STRUCTURE_PHONE_VERIFICATION_L131": {
@@ -15965,7 +16075,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1392,
+    "sourceLine": 1428,
     "feature": "auth"
   },
   "UI_AUTH_STRUCTURE_REGISTRATION_OTP_LABEL_WRAPPER_L139": {
@@ -15975,7 +16085,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1404,
+    "sourceLine": 1440,
     "feature": "auth"
   },
   "UI_AUTH_STRUCTURE_REGISTRATION_OTP_LABEL_WRAPPER_L143": {
@@ -15985,7 +16095,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1416,
+    "sourceLine": 1452,
     "feature": "auth"
   },
   "UI_AUTH_STRUCTURE_PHONE_VERIFICATION_L156": {
@@ -15995,7 +16105,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1428,
+    "sourceLine": 1464,
     "feature": "auth"
   },
   "UI_AUTH_STRUCTURE_REGISTRATION_OTP_LABEL_WRAPPER_L158": {
@@ -16005,7 +16115,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1440,
+    "sourceLine": 1476,
     "feature": "auth"
   },
   "UI_AUTH_REGISTRATION_TITLE": {
@@ -16015,7 +16125,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 455,
+    "sourceLine": 467,
     "feature": "auth"
   },
   "UI_AUTH_REGISTRATION_CARD_DESCRIPTION": {
@@ -16025,7 +16135,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 464,
+    "sourceLine": 476,
     "feature": "auth"
   },
   "UI_AUTH_REGISTRATION_SUBMITTING": {
@@ -16035,7 +16145,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 828,
+    "sourceLine": 864,
     "feature": "auth"
   },
   "UI_AUTH_REGISTRATION_PHONE_REQUIRED": {
@@ -16045,7 +16155,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 837,
+    "sourceLine": 873,
     "feature": "auth"
   },
   "UI_AUTH_REGISTRATION_SUBMIT": {
@@ -16055,7 +16165,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 852,
+    "sourceLine": 888,
     "feature": "auth"
   },
   "UI_AUTH_REGISTRATION_SIGNIN_LINK": {
@@ -16065,7 +16175,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 861,
+    "sourceLine": 897,
     "feature": "auth"
   },
   "UI_AUTH_REGISTRATION_SIGNIN_PROMPT": {
@@ -16075,7 +16185,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 873,
+    "sourceLine": 909,
     "feature": "auth"
   },
   "UI_AUTH_REGISTRATION_SUCCESS_HEADING": {
@@ -16085,7 +16195,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 888,
+    "sourceLine": 924,
     "feature": "auth"
   },
   "UI_AUTH_REGISTRATION_SUCCESS_DESCRIPTION": {
@@ -16095,7 +16205,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 900,
+    "sourceLine": 936,
     "feature": "auth"
   },
   "UI_AUTH_REGISTRATION_CONTINUE": {
@@ -16105,7 +16215,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 909,
+    "sourceLine": 945,
     "feature": "auth"
   },
   "UI_AUTH_STRUCTURE_REGISTRATION_SUCCESS_HEADING_WRAPPER_L65": {
@@ -16115,7 +16225,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1452,
+    "sourceLine": 1488,
     "feature": "auth"
   },
   "UI_AUTH_STRUCTURE_REGISTRATION_SUCCESS_HEADING_WRAPPER_L68": {
@@ -16125,7 +16235,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1464,
+    "sourceLine": 1500,
     "feature": "auth"
   },
   "UI_AUTH_STRUCTURE_REGISTRATION_TITLE_WRAPPER_L85": {
@@ -16135,7 +16245,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1476,
+    "sourceLine": 1512,
     "feature": "auth"
   },
   "UI_AUTH_STRUCTURE_REGISTRATION_TITLE_CONTAINER_L89": {
@@ -16145,7 +16255,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1488,
+    "sourceLine": 1524,
     "feature": "auth"
   },
   "UI_AUTH_STRUCTURE_REGISTRATION_TITLE_WRAPPER_L92": {
@@ -16155,7 +16265,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1500,
+    "sourceLine": 1536,
     "feature": "auth"
   },
   "UI_AUTH_STRUCTURE_REGISTRATION_PHONE_REQUIRED_WRAPPER_L100": {
@@ -16165,17 +16275,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1512,
-    "feature": "auth"
-  },
-  "UI_AUTH_STRUCTURE_REGISTRATION_PHONE_REQUIRED_WRAPPER_L103": {
-    "uuid": "4a8df4d9-2b2f-51f2-b600-df57c2fe3dc8",
-    "id": "UI_AUTH_STRUCTURE_REGISTRATION_PHONE_REQUIRED_WRAPPER_L103",
-    "path": "auth.dom.registration-page-content.registration-phone-required-wrapper-l103",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
-    "sourceComponent": "AUTH",
-    "sourceLine": 1524,
+    "sourceLine": 1548,
     "feature": "auth"
   },
   "UI_AUTH_STRUCTURE_REGISTRATION_PHONE_REQUIRED_WRAPPER_L117": {
@@ -16185,7 +16285,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1536,
+    "sourceLine": 1572,
     "feature": "auth"
   },
   "UI_AUTH_REGISTRATION_SUCCESS_PAGE": {
@@ -16195,7 +16295,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1572,
+    "sourceLine": 1608,
     "feature": "auth"
   },
   "UI_AUTH_REGISTRATION_SUCCESS_FORM_CARD": {
@@ -16205,7 +16305,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1584,
+    "sourceLine": 1620,
     "feature": "auth"
   },
   "UI_HOME_CATEGORIES_GRID_SECTION": {
@@ -24378,60 +24478,10 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "sourceLine": 133,
     "feature": "common"
   },
-  "UI_AUTH_REGISTRATION_STRENGTH_FAIR": {
-    "uuid": "6fa54f24-ff7e-5c83-a8a5-1a9e8977b74d",
-    "id": "UI_AUTH_REGISTRATION_STRENGTH_FAIR",
-    "path": "auth.registration.strength-fair",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
-    "sourceComponent": "AUTH",
-    "sourceLine": 717,
-    "feature": "auth"
-  },
-  "UI_AUTH_REGISTRATION_STRENGTH_STRONG": {
-    "uuid": "681b4e19-d725-530a-a16e-a38f1459bc10",
-    "id": "UI_AUTH_REGISTRATION_STRENGTH_STRONG",
-    "path": "auth.registration.strength-strong",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
-    "sourceComponent": "AUTH",
-    "sourceLine": 741,
-    "feature": "auth"
-  },
   "UI_AUTH_REGISTRATION_REQ_UPPER": {
     "uuid": "839e43f3-70bf-53b0-a341-db3db484167a",
     "id": "UI_AUTH_REGISTRATION_REQ_UPPER",
     "path": "auth.registration.req-uppercase",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
-    "sourceComponent": "AUTH",
-    "sourceLine": 765,
-    "feature": "auth"
-  },
-  "UI_AUTH_REGISTRATION_REQ_LOWER": {
-    "uuid": "aea145a6-37e5-5029-961b-2ee8e1f1595b",
-    "id": "UI_AUTH_REGISTRATION_REQ_LOWER",
-    "path": "auth.registration.req-lowercase",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
-    "sourceComponent": "AUTH",
-    "sourceLine": 777,
-    "feature": "auth"
-  },
-  "UI_AUTH_REGISTRATION_REQ_NUMBER": {
-    "uuid": "13d0a784-7c3f-573d-8318-160ac157d603",
-    "id": "UI_AUTH_REGISTRATION_REQ_NUMBER",
-    "path": "auth.registration.req-number",
-    "lifecycle": "active",
-    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
-    "sourceComponent": "AUTH",
-    "sourceLine": 789,
-    "feature": "auth"
-  },
-  "UI_AUTH_REGISTRATION_REQ_SPECIAL": {
-    "uuid": "79396ddc-0990-592f-86f9-1f12ba280d65",
-    "id": "UI_AUTH_REGISTRATION_REQ_SPECIAL",
-    "path": "auth.registration.req-special",
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
@@ -24445,7 +24495,7 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1248,
+    "sourceLine": 1284,
     "feature": "auth"
   },
   "UI_AUTH_STRUCTURE_LABELIDENTITY_WRAPPER_L41": {
@@ -24455,7 +24505,17 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = {
     "lifecycle": "active",
     "sourceFile": "/src/platform/ui/registry/features/auth.ts",
     "sourceComponent": "AUTH",
-    "sourceLine": 1260,
+    "sourceLine": 1296,
+    "feature": "auth"
+  },
+  "UI_AUTH_STRUCTURE_REGISTRATION_PHONE_REQUIRED_WRAPPER_L103": {
+    "uuid": "4a8df4d9-2b2f-51f2-b600-df57c2fe3dc8",
+    "id": "UI_AUTH_STRUCTURE_REGISTRATION_PHONE_REQUIRED_WRAPPER_L103",
+    "path": "auth.dom.registration-page-content.registration-phone-required-wrapper-l103",
+    "lifecycle": "active",
+    "sourceFile": "/src/platform/ui/registry/features/auth.ts",
+    "sourceComponent": "AUTH",
+    "sourceLine": 1560,
     "feature": "auth"
   },
   "UI_DEVTOOLS_UI_INSPECTOR_ROUTE_LABEL": {

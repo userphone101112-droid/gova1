@@ -1,0 +1,37 @@
+{
+  "buildCommand": "npm run build",
+  "devCommand": "npm run dev",
+  "installCommand": "npm install",
+  "framework": "nextjs",
+  "regions": ["iad1"],
+  "env": {
+    "NEXT_PUBLIC_VERCEL_ENV": {
+      "description": "Vercel environment (development, preview, production)",
+      "value": "development"
+    },
+    "TURSO_DATABASE_URL": {
+      "description": "Turso database URL",
+      "value": ""
+    },
+    "TURSO_AUTH_TOKEN": {
+      "description": "Turso authentication token",
+      "value": ""
+    },
+    "POSTGRES_URL": {
+      "description": "PostgreSQL database URL",
+      "value": ""
+    },
+    "BLOB_READ_WRITE_TOKEN": {
+      "description": "Vercel Blob read/write token",
+      "value": ""
+    },
+    "UPSTASH_REDIS_REST_URL": {
+      "description": "Upstash Redis REST API URL",
+      "value": ""
+    },
+    "UPSTASH_REDIS_REST_TOKEN": {
+      "description": "Upstash Redis REST API token",
+      "value": ""
+    }
+  }
+}
