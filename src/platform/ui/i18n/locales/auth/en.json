@@ -70,7 +70,7 @@
       "passwordInput": "Password",
       "confirmPasswordLabel": "Confirm password",
       "confirmPasswordInput": "Confirm password",
-      "emailInput": "Email (optional)",
+      "emailInput": "Email (optional) - used only if you forget your password",
       "emailInputLabel": "Registration email input label",
       "passwordStrengthLabel": "Password strength",
       "strengthWeak": "Weak",

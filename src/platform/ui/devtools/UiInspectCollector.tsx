@@ -134,9 +134,23 @@ export function InspectCollectorBridge() {
             }
             return password;
           };
-          
+
+          // Helper to generate random valid email
+          const generateRandomEmail = () => {
+            const domains = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com'];
+            const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
+            const usernameLength = Math.floor(Math.random() * 8) + 6; // 6-14 chars
+            let username = '';
+            for (let i = 0; i < usernameLength; i++) {
+              username += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            const randomDomain = domains[Math.floor(Math.random() * domains.length)];
+            return `${username}@${randomDomain}`;
+          };
+
           const randomPhone = generateRandomPhone();
           const randomPassword = generateRandomPassword();
+          const randomEmail = generateRandomEmail();
           
           // Fill phone input
           const phoneInput = document.querySelector('[data-ui-uuid="a1fed973-0ee2-517c-8c71-b511dc3a4a02"]') as HTMLInputElement;
@@ -157,10 +171,16 @@ export function InspectCollectorBridge() {
               if (passwordInput) {
                 fillInput(passwordInput, randomPassword);
               }
-              
+
               const confirmPasswordInput = document.querySelector('[data-ui-uuid="c8277664-0566-5611-b32a-97825b994e47"]') as HTMLInputElement;
               if (confirmPasswordInput) {
                 fillInput(confirmPasswordInput, randomPassword);
+              }
+
+              // Fill email input (optional field)
+              const emailInput = document.querySelector('[data-ui-uuid="7748b67f-a8ca-5024-abff-50cd06e17032"]') as HTMLInputElement;
+              if (emailInput) {
+                fillInput(emailInput, randomEmail);
               }
             }, 1500);
           }, 400);

@@ -70,7 +70,7 @@
       "passwordInput": "كلمة المرور",
       "confirmPasswordLabel": "تأكيد كلمة المرور",
       "confirmPasswordInput": "تأكيد كلمة المرور",
-      "emailInput": "البريد الإلكتروني (اختياري)",
+      "emailInput": "البريد الإلكتروني (اختياري) يستخدم فقط في حاله نسيان كلمه المرور",
       "emailInputLabel": "TODO(ar): Registration email input label",
       "passwordStrengthLabel": "قوة كلمة المرور",
       "strengthWeak": "ضعيفة",
