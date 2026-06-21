@@ -8,6 +8,7 @@ import { DatabaseCatalogSection } from '../sections/DatabaseCatalogSection';
 import { ElementBindingSection } from '../sections/ElementBindingSection';
 import { SimulationInsightsSection } from '../sections/SimulationInsightsSection';
 import { StorageCatalogSection } from '../sections/StorageCatalogSection';
+import { TranslationPanel } from './TranslationPanel';
 import { DisplaySection } from '../sidebar/DisplaySection';
 import { ElementsSection } from '../sidebar/ElementsSection';
 import { FiltersSection } from '../sidebar/FiltersSection';
@@ -29,8 +30,10 @@ export function InspectorSidebar() {
     handlePickModeToggle,
     handleFramesModeToggle,
     handleAutofill,
+    handleRefresh,
   } = useInspectorContext();
   const hasElementSelection = selectors.hasElementSelection;
+  const hasUuidBackedElement = selectors.hasUuidBackedElement;
   const bindingsSuffix = state.databasePanelPinned ? ' (unsaved)' : '';
 
   return (
@@ -113,7 +116,7 @@ export function InspectorSidebar() {
         </div>
       </section>
 
-      {hasElementSelection && (
+      {hasElementSelection && hasUuidBackedElement && (
         <SidebarSection
           tone="elementBindings"
           open={state.expanded.elementBindings}
@@ -137,67 +140,148 @@ export function InspectorSidebar() {
         </SidebarSection>
       )}
 
-      <SidebarSection
-        tone="databaseCatalog"
-        open={state.expanded.databaseCatalog}
-        toggleButton={
-          <button
-            data-ui-uuid={DEVTOOLS.UI_INSPECTOR.SIDEBAR.DB_MANAGEMENT_LABEL.uuid}
-            type="button"
-            onClick={() => toggleSection('databaseCatalog')}
-            className={sidebarSectionToggleClass('databaseCatalog')}
-          >
-            Database Catalog
-            {sectionChevron(state.expanded.databaseCatalog)}
-          </button>
-        }
-      >
-        <p className="px-3 pb-1 text-[10px] text-on-surface-variant">
-          Manage database, table, and column catalog metadata.
-        </p>
-        <DatabaseCatalogSection />
-      </SidebarSection>
+      {hasElementSelection && !hasUuidBackedElement && (
+        <SidebarSection
+          tone="elementBindings"
+          open={state.expanded.elementBindings}
+          toggleButton={
+            <button
+              type="button"
+              onClick={() => toggleSection('elementBindings')}
+              className={sidebarSectionToggleClass('elementBindings')}
+            >
+              Element Registration
+              {sectionChevron(state.expanded.elementBindings)}
+            </button>
+          }
+        >
+          <p className="px-3 pb-1 text-[10px] text-on-surface-variant">
+            This element does not have a UUID. Database and storage bindings require a UUID-backed element.
+          </p>
+          <div className="px-3 pb-2">
+            <div className="rounded border border-outline-variant bg-surface-container-low p-2 text-xs">
+              <div className="font-medium text-on-surface mb-1">Element Info</div>
+              <div className="text-on-surface-variant space-y-1">
+                <div><span className="font-medium">Tag:</span> {selectors.selected?.tagName}</div>
+                {selectors.selected?.textSnippet && <div><span className="font-medium">Text:</span> {selectors.selected.textSnippet}</div>}
+                {selectors.selected?.sourceFile && <div><span className="font-medium">Source:</span> {selectors.selected.sourceFile}</div>}
+              </div>
+            </div>
+          </div>
+          <div className="px-3 pb-2">
+            <button
+              type="button"
+              onClick={() => {
+                const { selected } = selectors;
+                if (selected) {
+                  // Trigger UUID registration flow using the same function as pick confirm
+                  // This will call the register endpoint and refresh the iframe
+                  const element = {
+                    sourceFile: selected.sourceFile || '',
+                    sourceLine: selected.sourceLine || 0,
+                    sourceColumn: selected.sourceColumn || 0,
+                    tagName: selected.tagName,
+                    domPath: selected.domPath || '',
+                    textSnippet: selected.textSnippet || '',
+                    route: state.routePath,
+                    requestedPurpose: 'inspector-binding' as const,
+                  };
+                  fetch('/api/ui-inspector/register-element', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(element),
+                  }).then(async (response) => {
+                    const result = await response.json();
+                    if (result.success) {
+                      // Refresh iframe to pick up the new UUID
+                      handleRefresh();
+                      setTimeout(() => {
+                        // Request new scan after refresh - this will be handled by the iframe ready event
+                      }, 500);
+                    } else {
+                      alert(`Failed to register element: ${result.error}`);
+                    }
+                  }).catch((error) => {
+                    console.error('Error registering element:', error);
+                    alert('Failed to register element. Please try again.');
+                  });
+                }
+              }}
+              className="w-full rounded border border-primary bg-primary px-3 py-1.5 text-xs font-medium text-on-primary hover:bg-primary/90"
+            >
+              Create UUID
+            </button>
+          </div>
+        </SidebarSection>
+      )}
 
-      <SidebarSection
-        tone="storageCatalog"
-        open={state.expanded.storageCatalog}
-        toggleButton={
-          <button
-            data-ui-uuid={DEVTOOLS.UI_INSPECTOR.SIDEBAR.SCHEMA_EDITOR_LABEL.uuid}
-            type="button"
-            onClick={() => toggleSection('storageCatalog')}
-            className={sidebarSectionToggleClass('storageCatalog')}
-          >
-            Storage Catalog
-            {sectionChevron(state.expanded.storageCatalog)}
-          </button>
-        }
-      >
-        <p className="px-3 pb-1 text-[10px] text-on-surface-variant">
-          Manage storage folders, paths, access, and file rules.
-        </p>
-        <StorageCatalogSection />
-      </SidebarSection>
+      {hasElementSelection && hasUuidBackedElement && (
+        <SidebarSection
+          tone="databaseCatalog"
+          open={state.expanded.databaseCatalog}
+          toggleButton={
+            <button
+              data-ui-uuid={DEVTOOLS.UI_INSPECTOR.SIDEBAR.DB_MANAGEMENT_LABEL.uuid}
+              type="button"
+              onClick={() => toggleSection('databaseCatalog')}
+              className={sidebarSectionToggleClass('databaseCatalog')}
+            >
+              Database Catalog
+              {sectionChevron(state.expanded.databaseCatalog)}
+            </button>
+          }
+        >
+          <p className="px-3 pb-1 text-[10px] text-on-surface-variant">
+            Manage database, table, and column catalog metadata.
+          </p>
+          <DatabaseCatalogSection />
+        </SidebarSection>
+      )}
 
-      <SidebarSection
-        tone="simulationInsights"
-        open={state.expanded.simulationInsights}
-        toggleButton={
-          <button
-            type="button"
-            onClick={() => toggleSection('simulationInsights')}
-            className={sidebarSectionToggleClass('simulationInsights')}
-          >
-            Simulation Insights
-            {sectionChevron(state.expanded.simulationInsights)}
-          </button>
-        }
-      >
-        <p className="px-3 pb-1 text-[10px] text-on-surface-variant">
-          Analyze saved bindings to guide architecture decisions.
-        </p>
-        <SimulationInsightsSection />
-      </SidebarSection>
+      {hasElementSelection && hasUuidBackedElement && (
+        <SidebarSection
+          tone="storageCatalog"
+          open={state.expanded.storageCatalog}
+          toggleButton={
+            <button
+              data-ui-uuid={DEVTOOLS.UI_INSPECTOR.SIDEBAR.SCHEMA_EDITOR_LABEL.uuid}
+              type="button"
+              onClick={() => toggleSection('storageCatalog')}
+              className={sidebarSectionToggleClass('storageCatalog')}
+            >
+              Storage Catalog
+              {sectionChevron(state.expanded.storageCatalog)}
+            </button>
+          }
+        >
+          <p className="px-3 pb-1 text-[10px] text-on-surface-variant">
+            Manage storage folders, paths, access, and file rules.
+          </p>
+          <StorageCatalogSection />
+        </SidebarSection>
+      )}
+
+      {hasElementSelection && hasUuidBackedElement && (
+        <SidebarSection
+          tone="simulationInsights"
+          open={state.expanded.simulationInsights}
+          toggleButton={
+            <button
+              type="button"
+              onClick={() => toggleSection('simulationInsights')}
+              className={sidebarSectionToggleClass('simulationInsights')}
+            >
+              Simulation Insights
+              {sectionChevron(state.expanded.simulationInsights)}
+            </button>
+          }
+        >
+          <p className="px-3 pb-1 text-[10px] text-on-surface-variant">
+            Analyze saved bindings to guide architecture decisions.
+          </p>
+          <SimulationInsightsSection />
+        </SidebarSection>
+      )}
 
       <SidebarSection
         tone="filters"
@@ -234,6 +318,8 @@ export function InspectorSidebar() {
       >
         <ElementsSection />
       </SidebarSection>
+
+      <TranslationPanel />
 
       <SidebarSection
         tone="details"

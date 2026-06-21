@@ -51,6 +51,8 @@ type InspectorContextValue = {
   selectElement: (scanKey: string) => void;
   toggleSection: (section: keyof InspectorState['expanded']) => void;
   handleRouteChange: (route: InspectorRoutePath) => void;
+  handleRouteBack: () => void;
+  handleRouteForward: () => void;
   handleRefresh: () => void;
   handlePickModeToggle: () => void;
   handleFramesModeToggle: () => void;
@@ -192,6 +194,47 @@ export function InspectorProvider({ children }: { children: ReactNode }) {
     );
   }, []);
 
+  const handleRegisterElement = useCallback(
+    async (element: InspectElementSnapshot) => {
+      try {
+        // Call the register endpoint
+        const response = await fetch('/api/ui-inspector/register-element', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            sourceFile: element.sourceFile,
+            sourceLine: element.sourceLine,
+            sourceColumn: element.sourceColumn,
+            tagName: element.tagName,
+            domPath: element.domPath,
+            textSnippet: element.textSnippet,
+            route: state.routePath,
+            requestedPurpose: 'inspector-binding',
+          }),
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          // Refresh iframe to pick up the new UUID
+          dispatch({ type: 'REFRESH_IFRAME' });
+          
+          // After refresh, request a new scan
+          setTimeout(() => {
+            requestScan();
+          }, 500);
+        } else {
+          console.error('Failed to register element:', result.error);
+          alert(`Failed to register element: ${result.error}`);
+        }
+      } catch (error) {
+        console.error('Error registering element:', error);
+        alert('Failed to register element. Please try again.');
+      }
+    },
+    [state.routePath, requestScan]
+  );
+
   const selectElement = useCallback(
     (scanKey: string) => {
       const element = state.elements.find((el) => el.scanKey === scanKey);
@@ -237,7 +280,26 @@ export function InspectorProvider({ children }: { children: ReactNode }) {
       }
 
       if (event.data.type === 'ELEMENT_PICKED') {
-        selectElement(event.data.scanKey);
+        const element = state.elements.find((el) => el.scanKey === event.data.scanKey);
+        if (!element) return;
+
+        // Check if element has UUID
+        if (element.hasUuid) {
+          // Normal flow for UUID-backed elements
+          selectElement(event.data.scanKey);
+        } else {
+          const confirmed = window.confirm(
+            'This element does not have a UUID. Create a permanent UUID so database and storage binding tools can be enabled?'
+          );
+
+          if (confirmed) {
+            // User accepted: call register endpoint
+            handleRegisterElement(element);
+          } else {
+            // User rejected: select for display only without UUID
+            selectElement(event.data.scanKey);
+          }
+        }
       }
     };
 
@@ -245,6 +307,7 @@ export function InspectorProvider({ children }: { children: ReactNode }) {
     return () => window.removeEventListener('message', onMessage);
   }, [
     requestScan,
+    handleRegisterElement,
     selectElement,
     sendBindingFrames,
     sendPickMode,
@@ -335,6 +398,14 @@ export function InspectorProvider({ children }: { children: ReactNode }) {
     dispatch({ type: 'SET_ROUTE', routePath });
   }, []);
 
+  const handleRouteBack = useCallback(() => {
+    dispatch({ type: 'ROUTE_BACK' });
+  }, []);
+
+  const handleRouteForward = useCallback(() => {
+    dispatch({ type: 'ROUTE_FORWARD' });
+  }, []);
+
   const handleRefresh = useCallback(() => {
     dispatch({ type: 'REFRESH_IFRAME' });
   }, []);
@@ -390,6 +461,8 @@ export function InspectorProvider({ children }: { children: ReactNode }) {
       selectElement,
       toggleSection,
       handleRouteChange,
+      handleRouteBack,
+      handleRouteForward,
       handleRefresh,
       handlePickModeToggle,
       handleFramesModeToggle,
@@ -404,6 +477,8 @@ export function InspectorProvider({ children }: { children: ReactNode }) {
       selectElement,
       toggleSection,
       handleRouteChange,
+      handleRouteBack,
+      handleRouteForward,
       handleRefresh,
       handlePickModeToggle,
       handleFramesModeToggle,

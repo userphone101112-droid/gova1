@@ -18,6 +18,7 @@ function mockElement(): InspectElementSnapshot {
   return {
     scanKey: 'scan-1',
     uuid: 'uuid-a',
+    hasUuid: true,
     instanceId: '',
     id: 'UI_A',
     path: 'auth.login.email',

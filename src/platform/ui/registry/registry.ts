@@ -135,6 +135,11 @@ export function getUiIdentityByUuid(uuid: string): UiIdentity | undefined {
 }
 
 export function isUiIdentity(obj: unknown): obj is UiIdentity {
+  return Boolean(obj && typeof obj === 'object' && 'id' in obj && 'path' in obj);
+}
+
+/** Check if an identity has a UUID (is UUID-backed) */
+export function isUuidBackedUiIdentity(obj: unknown): obj is UiIdentity {
   return Boolean(obj && typeof obj === 'object' && 'uuid' in obj && 'id' in obj && 'path' in obj);
 }
 
@@ -146,18 +151,20 @@ export function isUiIdentityDeprecated(identity: UiIdentity): boolean {
   return getUiIdentityLifecycle(identity) === 'deprecated' || identity.deprecated === true;
 }
 
-/** Resolve a registry identity object (validates UUID is registered). */
+/** Resolve a registry identity object (validates UUID is registered if present). */
 export function resolveUiIdentity(identity: UiIdentity): UiIdentity | undefined {
-  if (!identity?.uuid) return undefined;
+  if (!identity) return undefined;
+  if (!identity.uuid) return identity; // Non-UUID-backed identities are valid
   const resolved = getUiIdentityByUuid(identity.uuid);
   if (resolved && isUiIdentityDeprecated(resolved) && process.env.NODE_ENV === 'development') {
     console.warn(`[UI Registry Deprecation] UI Identity "${resolved.id}" is deprecated.`);
   }
-  return resolved;
+  return resolved || identity;
 }
 
 export function getUiIdentity(identity: UiIdentity): UiIdentity | undefined {
-  return getUiIdentityByUuid(identity.uuid);
+  if (!identity.uuid) return identity;
+  return getUiIdentityByUuid(identity.uuid) || identity;
 }
 
 export const FEATURE_MAP: Record<string, UiIdentity[]> = ALL_UI_IDENTITIES.reduce(
@@ -237,12 +244,14 @@ export function getDuplicateStableIds(): string[] {
 
 /**
  * Get all duplicate UI UUIDs (should always return empty array)
+ * Only checks identities that have UUIDs
  */
 export function getDuplicateUiUuids(): string[] {
   const seen = new Set<string>();
   const duplicates: string[] = [];
 
   ALL_UI_IDENTITIES.forEach((identity) => {
+    if (!identity.uuid) return; // Skip identities without UUID
     const uuid = getUiIdentityUuid(identity);
     if (seen.has(uuid)) {
       duplicates.push(uuid);
@@ -302,15 +311,15 @@ export function validateRegistry(): void {
     throw new Error(`Duplicate UI UUIDs found in registry: ${duplicateUuids.join(', ')}`);
   }
 
-  const missingUuids = ALL_UI_IDENTITIES.filter((identity) => !identity.uuid).map(
-    (identity) => identity.id
-  );
+  // UUIDs are now optional - skip this check
+  // const missingUuids = ALL_UI_IDENTITIES.filter((identity) => !identity.uuid).map(
+  //   (identity) => identity.id
+  // );
+  // if (missingUuids.length > 0) {
+  //   throw new Error(`Missing UI UUIDs found in registry: ${missingUuids.join(', ')}`);
+  // }
 
-  if (missingUuids.length > 0) {
-    throw new Error(`Missing UI UUIDs found in registry: ${missingUuids.join(', ')}`);
-  }
-
-  const invalidUuids = ALL_UI_IDENTITIES.filter((identity) => !isValidUiUuid(identity.uuid)).map(
+  const invalidUuids = ALL_UI_IDENTITIES.filter((identity) => identity.uuid && !isValidUiUuid(identity.uuid)).map(
     (identity) => `${identity.id}: ${identity.uuid}`
   );
 
@@ -350,7 +359,7 @@ export function validateRegistry(): void {
     | undefined;
 
   const missingManifestEntries = ALL_UI_IDENTITIES.filter(
-    (identity) => !manifestIdentities[identity.uuid]
+    (identity) => identity.uuid && !manifestIdentities[identity.uuid]
   ).map((identity) => `${identity.id}: ${identity.uuid}`);
 
   if (missingManifestEntries.length > 0) {
@@ -359,24 +368,27 @@ export function validateRegistry(): void {
     );
   }
 
+  // UUID IMMUTABILITY VALIDATION
+  // Once a UUID is assigned to an identity (id/path/feature), it cannot be changed
   const manifestMismatches = ALL_UI_IDENTITIES.flatMap((identity) => {
+    if (!identity.uuid) return []; // Skip identities without UUID
     const manifestEntry = manifestIdentities[identity.uuid];
     if (!manifestEntry) return [];
 
     const errors: string[] = [];
+    
+    // UUID immutability: if the same id/path/feature exists in manifest with a different UUID, that's a violation
+    // This check ensures that once a UUID is assigned to an identity, it cannot be changed
     if (manifestEntry.id !== identity.id) {
-      errors.push(`${identity.uuid} id: manifest="${manifestEntry.id}" registry="${identity.id}"`);
+      errors.push(`UUID IMMUTABILITY VIOLATION: ${identity.uuid} id changed from manifest="${manifestEntry.id}" to registry="${identity.id}". UUIDs are immutable once assigned.`);
     }
     if (manifestEntry.path !== identity.path) {
-      errors.push(
-        `${identity.uuid} path: manifest="${manifestEntry.path}" registry="${identity.path}"`
-      );
+      errors.push(`UUID IMMUTABILITY VIOLATION: ${identity.uuid} path changed from manifest="${manifestEntry.path}" to registry="${identity.path}". UUIDs are immutable once assigned.`);
     }
     if (manifestEntry.feature !== identity.feature) {
-      errors.push(
-        `${identity.uuid} feature: manifest="${manifestEntry.feature}" registry="${identity.feature}"`
-      );
+      errors.push(`UUID IMMUTABILITY VIOLATION: ${identity.uuid} feature changed from manifest="${manifestEntry.feature}" to registry="${identity.feature}". UUIDs are immutable once assigned.`);
     }
+    
     const manifestLifecycle = manifestEntry.lifecycle ?? 'active';
     const registryLifecycle = getUiIdentityLifecycle(identity);
     if (manifestLifecycle !== registryLifecycle) {
@@ -394,7 +406,7 @@ export function validateRegistry(): void {
   }
 
   const reusedRemovedUuids = ALL_UI_IDENTITIES.filter(
-    (identity) => removedManifestIdentities?.[identity.uuid]
+    (identity) => identity.uuid && removedManifestIdentities?.[identity.uuid]
   ).map((identity) => `${identity.id}: ${identity.uuid}`);
 
   if (reusedRemovedUuids.length > 0) {

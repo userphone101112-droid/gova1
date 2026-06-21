@@ -31,28 +31,25 @@ ruleTester.run('require-data-ui-uuid', requireDataUiUuid, {
       code: 'const Icon = () => (<svg data-ui-uuid={HOME.CURATED_OFFERS.CONTAINER.uuid}><path data-ui-uuid={HOME.CURATED_OFFERS.HEADER.uuid} d="M0 0" /></svg>);',
       filename: 'src/components/Icon.tsx',
     },
-  ],
-  invalid: [
+    // UUIDs are now optional - elements without UUID are valid
     {
       code: '<div />',
       filename: 'src/app/page.tsx',
-      errors: [{ messageId: 'missingUuid' }],
     },
     {
       code: '<html><body><div data-ui-uuid={HOME.CURATED_OFFERS.CONTAINER.uuid} /></body></html>',
       filename: 'src/app/layout.tsx',
-      errors: [{ messageId: 'missingUuid' }, { messageId: 'missingUuid' }],
     },
     {
       code: '<div data-ui-uuid={HOME.CURATED_OFFERS.CONTAINER.uuid}><option>x</option></div>',
       filename: 'src/app/(app)/settings/page.tsx',
-      errors: [{ messageId: 'missingUuid' }],
     },
     {
       code: '<svg data-ui-uuid={HOME.CURATED_OFFERS.CONTAINER.uuid}><path d="M0 0" /></svg>',
       filename: 'src/components/Icon.tsx',
-      errors: [{ messageId: 'missingUuid' }],
     },
+  ],
+  invalid: [
     {
       code: '<div data-ui-uuid={COMMON_LAYOUT.SECTION.uuid} />',
       filename: 'src/app/page.tsx',

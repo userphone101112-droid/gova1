@@ -31,7 +31,7 @@ function buildRegistryPathToIdentity(): Map<string, (typeof ALL_UI_IDENTITIES)[n
   const map = new Map<string, (typeof ALL_UI_IDENTITIES)[number]>();
 
   function isIdentity(obj: unknown): obj is (typeof ALL_UI_IDENTITIES)[number] {
-    return Boolean(obj && typeof obj === 'object' && 'uuid' in obj && 'path' in obj);
+    return Boolean(obj && typeof obj === 'object' && 'id' in obj && 'path' in obj);
   }
 
   function walk(obj: unknown, prefix: string[]) {
@@ -87,7 +87,7 @@ function indexIdentityUsage(
   const componentName = getComponentName(content, filePath);
   const lineNo = content.slice(0, matchIndex).split('\n').length;
   const sourceLocation = {
-    uuid: identity.uuid,
+    uuid: identity.uuid || '',
     id: identity.id,
     path: identity.path,
     lifecycle: identity.lifecycle ?? (identity.deprecated ? 'deprecated' : 'active'),
@@ -97,7 +97,10 @@ function indexIdentityUsage(
     feature: identity.feature,
   };
   sourceMappings[identity.id] = sourceLocation;
-  sourceMappingsByUuid[identity.uuid] = sourceLocation;
+  // Only add to UUID map if identity has a UUID
+  if (identity.uuid) {
+    sourceMappingsByUuid[identity.uuid] = sourceLocation;
+  }
 }
 
 const sourceMappings: Record<string, any> = {};
@@ -483,7 +486,7 @@ function scanFile(filePath: string, state: ComponentUsageResult): void {
           }
 
           const sourceLocation = {
-            uuid: identity.uuid,
+            uuid: identity.uuid || '',
             id: identity.id,
             path: identity.path,
             lifecycle: identity.lifecycle ?? (identity.deprecated ? 'deprecated' : 'active'),
@@ -493,7 +496,10 @@ function scanFile(filePath: string, state: ComponentUsageResult): void {
             feature: identity.feature
           };
           sourceMappings[identity.id] = sourceLocation;
-          sourceMappingsByUuid[identity.uuid] = sourceLocation;
+          // Only add to UUID map if identity has a UUID
+          if (identity.uuid) {
+            sourceMappingsByUuid[identity.uuid] = sourceLocation;
+          }
         }
       }
     });
@@ -955,10 +961,10 @@ export const UI_SOURCE_INDEX: Record<string, UiSourceLocation> = ${JSON.stringif
       }
     });
 
-    // Check Orphans (unused IDs)
+    // Check Orphans (unused IDs) - only check UUID-backed identities
     const orphansList: string[] = [];
     ALL_UI_IDENTITIES.forEach(id => {
-      if (!sourceMappingsByUuid[id.uuid]) {
+      if (id.uuid && !sourceMappingsByUuid[id.uuid]) {
         orphansList.push(id.id);
         identityWarnings.push(`Orphan UI Identity: "${id.id}" (registered but not used in code).`);
       }

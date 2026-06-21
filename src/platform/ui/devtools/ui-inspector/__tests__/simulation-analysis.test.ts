@@ -9,6 +9,7 @@ function mockElement(): InspectElementSnapshot {
   return {
     scanKey: 's1',
     uuid: 'uuid-1',
+    hasUuid: true,
     instanceId: 'i1',
     id: 'UI_TEST',
     path: 'auth.login',

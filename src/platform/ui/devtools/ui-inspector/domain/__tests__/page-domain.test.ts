@@ -13,6 +13,7 @@ function mockSnapshot(overrides: Partial<InspectElementSnapshot> = {}): InspectE
   return {
     scanKey: 'scan-1',
     uuid: 'uuid-1',
+    hasUuid: true,
     instanceId: '',
     id: 'UI_TEST',
     path: 'home.hero.title',

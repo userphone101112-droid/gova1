@@ -8,7 +8,7 @@ import { findStorageFolder } from '../data/storage-ref-utils';
 import type { InspectorState } from './inspector-actions';
 
 export function selectSelectedElement(state: InspectorState) {
-  const { elements, selectedScanKey, lastSelectedElement, selectedIdentityKey, search, featureFilter, tagFilter, lifecycleFilter, missingSourceOnly } =
+  const { elements, selectedScanKey, lastSelectedElement, search, featureFilter, tagFilter, lifecycleFilter, missingSourceOnly } =
     state;
   const query = search.trim().toLowerCase();
   const filtered = elements.filter((el) => {
@@ -28,10 +28,11 @@ export function selectSelectedElement(state: InspectorState) {
   const liveSelected = selectedScanKey
     ? elements.find((el) => el.scanKey === selectedScanKey)
     : null;
-  const selected = liveSelected ?? (selectedIdentityKey ? lastSelectedElement : null);
-  const hasElementSelection = Boolean(selectedIdentityKey && lastSelectedElement);
+  const selected = liveSelected ?? lastSelectedElement;
+  const hasElementSelection = Boolean(selected);
+  const hasUuidBackedElement = selected?.hasUuid ?? false;
 
-  return { selected, hasElementSelection, filteredElements: filtered };
+  return { selected, hasElementSelection, hasUuidBackedElement, filteredElements: filtered };
 }
 
 export function selectFeatureOptions(state: InspectorState): string[] {

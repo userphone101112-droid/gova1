@@ -2968,6 +2968,14 @@
         "route": "/devtools/ui-inspector",
         "timestamp": 1782057647149,
         "env": "dev"
+      },
+      {
+        "type": "error",
+        "message": "Uncaught",
+        "stack": "DataCloneError: Failed to execute 'postMessage' on 'Window': SVGAnimatedString object could not be cloned.\n    at postFrameMessage (http://localhost:3001/_next/static/chunks/src_platform_ui_devtools_1ypzpy4._.js:487:19)\n    at sendScanResult (http://localhost:3001/_next/static/chunks/src_platform_ui_devtools_1ypzpy4._.js:491:5)\n    at InspectCollectorBridge.useEffect (http://localhost:3001/_next/static/chunks/src_platform_ui_devtools_1ypzpy4._.js:510:13)\n    at Object.react_stack_bottom_frame (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:15087:22)\n    at runWithFiberInDEV (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:965:74)\n    at commitHookEffectListMount (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:7255:167)\n    at commitHookPassiveMountEffects (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:7290:60)\n    at reconnectPassiveEffects (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:8779:17)\n    at recursivelyTraverseReconnectPassiveEffects (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:8766:13)\n    at reconnectPassiveEffects (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:8778:17)\n    at recursivelyTraverseReconnectPassiveEffects (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:8766:13)\n    at commitPassiveMountOnFiber (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:8738:970)\n    at recursivelyTraversePassiveMountEffects (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:8676:316)\n    at commitPassiveMountOnFiber (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:8730:17)\n    at recursivelyTraversePassiveMountEffects (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:8676:316)\n    at commitPassiveMountOnFiber (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:8688:17)\n    at recursivelyTraversePassiveMountEffects (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:8676:316)\n    at commitPassiveMountOnFiber (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:8688:17)\n    at recursivelyTraversePassiveMountEffects (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:8676:316)\n    at commitPassiveMountOnFiber (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:8750:17)\n    at recursivelyTraversePassiveMountEffects (http://localhost:3001/_n",
+        "route": "/home",
+        "timestamp": 1782076145223,
+        "env": "dev"
       }
     ],
     "warnings": [
@@ -3081,6 +3089,22 @@
         "route": "/devtools/ui-inspector",
         "severity": "low",
         "timestamp": 1782065011483,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "Feature dictionary not found for feature: signup, locale: ar",
+        "route": "/home",
+        "severity": "low",
+        "timestamp": 1782072048028,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "%s Feature dictionary not found for feature: signup, locale: en",
+        "route": "/home",
+        "severity": "low",
+        "timestamp": 1782073910128,
         "env": "dev"
       }
     ]

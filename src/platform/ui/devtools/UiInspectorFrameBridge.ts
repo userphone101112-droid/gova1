@@ -6,6 +6,8 @@ export interface InspectElementSnapshot {
   /** Stable key for this DOM occurrence within a scan (unique even when uuid repeats). */
   scanKey: string;
   uuid: string;
+  /** Whether this element has a UUID (is UUID-backed) */
+  hasUuid: boolean;
   tagName: string;
   id: string;
   path: string;
@@ -22,7 +24,14 @@ export interface InspectElementSnapshot {
   sourceFile: string;
   sourceComponent: string;
   sourceLine: number;
+  sourceColumn?: number;
   hasSource: boolean;
+  /** DOM path for elements without UUID */
+  domPath?: string;
+  /** Text snippet for elements without UUID */
+  textSnippet?: string;
+  /** Element class for elements without UUID */
+  className?: string;
 }
 
 export type FrameCandidateKind = 'database' | 'storage' | 'linked' | 'mixed';
@@ -57,7 +66,7 @@ export type UiInspectorParentMessage =
 export type UiInspectorFrameMessage =
   | { channel: typeof UI_INSPECTOR_CHANNEL; type: 'READY' }
   | { channel: typeof UI_INSPECTOR_CHANNEL; type: 'SCAN_RESULT'; elements: InspectElementSnapshot[] }
-  | { channel: typeof UI_INSPECTOR_CHANNEL; type: 'ELEMENT_PICKED'; scanKey: string };
+  | { channel: typeof UI_INSPECTOR_CHANNEL; type: 'ELEMENT_PICKED'; scanKey: string; snapshot: InspectElementSnapshot };
 
 export function isUiInspectorParentMessage(data: unknown): data is UiInspectorParentMessage {
   if (!data || typeof data !== 'object') return false;
@@ -91,7 +100,7 @@ export function isUiInspectorFrameMessage(data: unknown): data is UiInspectorFra
     case 'SCAN_RESULT':
       return Array.isArray(msg.elements);
     case 'ELEMENT_PICKED':
-      return typeof msg.scanKey === 'string';
+      return typeof msg.scanKey === 'string' && typeof msg.snapshot === 'object';
     default:
       return false;
   }

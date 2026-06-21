@@ -8,6 +8,7 @@ import {
 import {
   ALL_UI_IDENTIFIERS,
   isTranslationRequiredForUiIdentity,
+  isUuidBackedUiIdentity,
 } from '../../registry/registry';
 
 function flattenTranslationKeys(
@@ -55,6 +56,10 @@ export function getRequiredRegistryBindingKeys(): Set<string> {
   const required = new Set<string>();
 
   for (const ui of ALL_UI_IDENTIFIERS) {
+    // Only require translations for UUID-backed identities
+    if (!isUuidBackedUiIdentity(ui)) {
+      continue;
+    }
     if (isCategoryUiPath(ui) || !isTranslationRequiredForUiIdentity(ui)) {
       continue;
     }
@@ -73,6 +78,10 @@ export function validateRegistryBindings(): {
   const missing: Array<{ ui: string; expectedKey: string }> = [];
 
   for (const ui of ALL_UI_IDENTIFIERS) {
+    // Only validate UUID-backed identities
+    if (!isUuidBackedUiIdentity(ui)) {
+      continue;
+    }
     if (isCategoryUiPath(ui) || !isTranslationRequiredForUiIdentity(ui)) {
       continue;
     }

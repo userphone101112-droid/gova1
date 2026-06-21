@@ -14,6 +14,8 @@ import { DEFAULT_EXPANDED_SECTIONS } from '../utils/constants';
 
 export type InspectorState = {
   routePath: InspectorRoutePath;
+  routeHistory: InspectorRoutePath[];
+  routeHistoryIndex: number;
   iframeKey: number;
   elements: InspectElementSnapshot[];
   selectedScanKey: string | null;
@@ -44,6 +46,8 @@ export type InspectorState = {
 
 export type InspectorAction =
   | { type: 'SET_ROUTE'; routePath: InspectorRoutePath }
+  | { type: 'ROUTE_BACK' }
+  | { type: 'ROUTE_FORWARD' }
   | { type: 'REFRESH_IFRAME' }
   | { type: 'SET_ELEMENTS'; elements: InspectElementSnapshot[]; lastScanTime: Date }
   | { type: 'SELECT_ELEMENT'; scanKey: string; element: InspectElementSnapshot }

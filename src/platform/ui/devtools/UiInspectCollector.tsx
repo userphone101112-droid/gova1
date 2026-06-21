@@ -52,10 +52,15 @@ export function InspectCollectorBridge() {
     sendScanResult();
 
     const unbindPick = bindInspectablePickHandlers((scanKey) => {
+      const elements = scanInspectableElements();
+      const snapshot = elements.find(el => el.scanKey === scanKey);
+      if (!snapshot) return;
+      
       postFrameMessage({
         channel: UI_INSPECTOR_CHANNEL,
         type: 'ELEMENT_PICKED',
         scanKey,
+        snapshot,
       });
     });
 

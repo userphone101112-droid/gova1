@@ -1,6 +1,7 @@
 #!/usr/bin/env tsx
 /**
- * CI: absolute UUID on every JSX intrinsic — AST scan of src, DevTools, generate-feature.
+ * CI: validate data-ui-uuid if present on JSX intrinsics — AST scan of src, DevTools, generate-feature.
+ * UUIDs are now optional - this script only validates that if a UUID is present, it must be valid.
  */
 import { readFileSync, readdirSync } from 'fs';
 import { join, relative } from 'path';
@@ -122,6 +123,12 @@ for (const file of collectFiles()) {
 
     const tag = getJsxTagName(node.name);
     const result = validateOpeningElement(node, registryPaths, rel);
+    
+    // Skip elements without data-ui-uuid - they're now allowed
+    if (!result.valid && result.reason === 'missing') {
+      return;
+    }
+    
     if (!result.valid) {
       violations.push(`${rel}:${node.loc.start.line}: <${tag}> ${result.reason}`);
       return;

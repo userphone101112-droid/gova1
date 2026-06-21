@@ -69,6 +69,7 @@ describe('ui-inspector section separation', () => {
     const element = {
       scanKey: 's1',
       uuid: 'uuid-1',
+      hasUuid: true,
       instanceId: 'inst-1',
       id: 'UI_TEST',
       path: 'test.path',
@@ -118,6 +119,7 @@ describe('ui-inspector section separation', () => {
     const element = {
       scanKey: 's1',
       uuid: 'uuid-1',
+      hasUuid: true,
       instanceId: 'inst-1',
       id: 'UI_TEST',
       path: 'test.path',
@@ -164,6 +166,7 @@ describe('ui-inspector section separation', () => {
     const element = {
       scanKey: 's1',
       uuid: 'uuid-1',
+      hasUuid: true,
       instanceId: 'inst-1',
       id: 'UI_TEST',
       path: 'test.path',

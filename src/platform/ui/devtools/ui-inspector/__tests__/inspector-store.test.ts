@@ -15,6 +15,7 @@ function mockElement(overrides: Partial<InspectElementSnapshot> = {}): InspectEl
   return {
     scanKey: 'scan-1',
     uuid: 'uuid-1',
+    hasUuid: true,
     instanceId: 'inst-1',
     id: 'UI_TEST',
     path: 'test.path',

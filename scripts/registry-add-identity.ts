@@ -1,9 +1,6 @@
 #!/usr/bin/env tsx
-import { execFileSync } from 'child_process';
 import { existsSync, readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';
-
-import { createDeterministicUiUuid } from '../src/platform/ui/registry/identity-uuid';
 
 type Category = 'action' | 'input' | 'navigation' | 'display' | 'container';
 
@@ -32,6 +29,9 @@ function parseArgs(): AddOptions {
     else if (key === '--description') options.description = value;
     else if (key === '--category') options.category = value as Category;
     else if (key === '--feature') options.feature = value;
+    else if (key === '--with-uuid') {
+      throw new Error('--with-uuid option is no longer supported. UUIDs are now optional and should be assigned via the UI Inspector in development mode.');
+    }
     else throw new Error(`Unknown option: ${key}`);
   }
 
@@ -77,10 +77,9 @@ function main() {
   }
 
   const today = new Date().toISOString().slice(0, 10);
-  const uuid = createDeterministicUiUuid(options.id);
   const propertyKey = toKey(options.id);
+  
   const entry = `  ${propertyKey}: {
-    uuid: '${uuid}',
     id: '${escapeSingleQuote(options.id)}',
     path: '${escapeSingleQuote(options.path)}',
     lifecycle: 'active',
@@ -99,11 +98,8 @@ function main() {
   }
 
   writeFileSync(filePath, nextContent, 'utf-8');
-  execFileSync('cmd', ['/c', 'npx', 'tsx', 'scripts/registry-materialize-uuids.ts'], {
-    stdio: 'inherit',
-    cwd: ROOT,
-  });
-  console.log(`Added UI identity ${options.id} (${uuid}) to ${filePath}`);
+  console.log(`Added UI identity ${options.id} to ${filePath}`);
+  console.log('Note: UUID is optional. Assign UUID via UI Inspector in development mode when needed.');
 }
 
 main();

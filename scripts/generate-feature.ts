@@ -1,8 +1,6 @@
 import { mkdirSync, writeFileSync, existsSync, readFileSync } from 'fs';
 import { join } from 'path';
 
-import { createDeterministicUiUuid } from '../src/platform/ui/registry/identity-uuid';
-
 interface FeatureGeneratorOptions {
   featureName: string;
   withLayout?: boolean;
@@ -29,10 +27,8 @@ function escapeSingleQuote(value: string): string {
 }
 
 function buildIdentityBlock(spec: IdentitySpec, featureName: string, today: string): string {
-  const uuid = createDeterministicUiUuid(spec.id);
   const indent = '    '.repeat(spec.nest.length + 1);
   return `${indent}${spec.key}: {
-${indent}  uuid: '${uuid}',
 ${indent}  id: '${escapeSingleQuote(spec.id)}',
 ${indent}  path: '${escapeSingleQuote(spec.path)}',
 ${indent}  lifecycle: 'active',
@@ -198,46 +194,31 @@ function generatePageScaffold(featureName: string): string {
     .charAt(0)
     .toUpperCase()
     .concat(featureName.slice(1).replace(/-([a-z])/g, (_, c) => c.toUpperCase()));
-  const upperFeature = toUpperFeature(featureName);
 
   return `'use client';
 
-import { ${upperFeature}, useTranslation } from '@/platform/ui';
+import { useTranslation } from '@/platform/ui';
 
 export default function ${capitalized}Page() {
   const { t } = useTranslation();
 
   return (
-    <div
-      data-ui-uuid={${upperFeature}.PAGE.CONTAINER.uuid}
-      className="min-h-screen bg-background flex flex-col items-center justify-center gap-8"
-    >
-      <h1
-        data-ui-uuid={${upperFeature}.PAGE.TITLE.uuid}
-        className="text-4xl font-bold text-on-surface"
-      >
+    <div className="min-h-screen bg-background flex flex-col items-center justify-center gap-8">
+      <h1 className="text-4xl font-bold text-on-surface">
         {t('${featureName}.page.title')}
       </h1>
-      <p
-        data-ui-uuid={${upperFeature}.PAGE.DESCRIPTION.uuid}
-        className="text-xl text-on-surface-variant"
-      >
+      <p className="text-xl text-on-surface-variant">
         {t('${featureName}.page.description')}
       </p>
-      <div
-        data-ui-uuid={${upperFeature}.ACTIONS.ROW.uuid}
-        className="flex gap-4"
-      >
+      <div className="flex gap-4">
         <button
           type="button"
-          data-ui-uuid={${upperFeature}.ACTIONS.CREATE_BUTTON.uuid}
           className="rounded-md bg-primary px-4 py-2 text-on-primary"
         >
           {t('${featureName}.actions.create')}
         </button>
         <button
           type="button"
-          data-ui-uuid={${upperFeature}.ACTIONS.SAVE_BUTTON.uuid}
           className="rounded-md bg-secondary px-4 py-2 text-on-secondary"
         >
           {t('${featureName}.actions.save')}
@@ -353,9 +334,8 @@ export function generateFeature(options: FeatureGeneratorOptions): void {
 
   console.log(`\n✨ Feature "${featureName}" generated successfully!`);
   console.log('\n📝 Next steps:');
-  console.log(`   1. Run: npm run registry:materialize-uuids && npm run registry:generate`);
-  console.log(`   2. Update translations in ${i18nPath}`);
-  console.log(`   3. Implement feature logic in ${featurePath}`);
+  console.log(`   1. Update translations in ${i18nPath}`);
+  console.log(`   2. Implement feature logic in ${featurePath}`);
 }
 
 function main() {

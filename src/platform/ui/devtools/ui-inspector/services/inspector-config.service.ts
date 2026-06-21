@@ -21,6 +21,12 @@ export async function saveInspectorElementConfig(
   formState: ElementFormState,
   options?: { confirm?: boolean; databaseRef?: DatabaseRefFile; route?: string }
 ): Promise<InspectorDataEntryResult> {
+  // Require UUID for save - elements without UUID cannot be saved to Inspector database
+  if (!selected.hasUuid || !selected.uuid) {
+    console.warn('Cannot save Inspector config for element without UUID');
+    return { saved: false };
+  }
+
   if (options?.confirm !== false && !confirmAction(ELEMENT_SAVE_CONFIRM_MESSAGE)) {
     return { saved: false };
   }

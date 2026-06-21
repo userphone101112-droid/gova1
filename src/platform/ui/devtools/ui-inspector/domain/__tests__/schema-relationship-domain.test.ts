@@ -68,6 +68,7 @@ describe('schema-relationship-domain', () => {
     const snapshot: InspectElementSnapshot = {
       scanKey: 'scan-1',
       uuid: 'uuid-1',
+      hasUuid: true,
       instanceId: '',
       id: 'UI_TEST',
       path: 'test.a',

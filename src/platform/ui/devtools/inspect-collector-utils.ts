@@ -23,48 +23,137 @@ export function scanInspectableElements(): InspectElementSnapshot[] {
   if (typeof document === 'undefined') return [];
 
   elementByScanKey = new Map();
-  const elements = document.querySelectorAll<HTMLElement>('[data-ui-uuid]');
+  const elements = document.querySelectorAll<HTMLElement>('*');
   const snapshots: InspectElementSnapshot[] = [];
 
   elements.forEach((el) => {
-    const uuid = el.getAttribute('data-ui-uuid') || '';
-    if (!uuid || !(uuid in UI_UUID_MAP)) return;
-
     const rect = el.getBoundingClientRect();
     if (rect.width === 0 && rect.height === 0) return;
+
+    // Skip inspector-related elements
+    if (
+      el.closest('[data-gova-inspector-highlight]') ||
+      el.closest('[data-gova-inspector-frame]') ||
+      el.closest(`#${FRAMES_CONTAINER_ID}`) ||
+      el.closest(`#${HOVER_HIGHLIGHT_ID}`) ||
+      el.id === HIGHLIGHT_ID ||
+      el.id === HOVER_HIGHLIGHT_ID
+    ) {
+      return;
+    }
+
+    // Skip non-intrinsic elements
+    if (!el.tagName || el.tagName === 'HTML' || el.tagName === 'BODY' || el.tagName === 'HEAD') {
+      return;
+    }
+
+    const uuid = el.getAttribute('data-ui-uuid') || '';
+    const hasUuid = Boolean(uuid && uuid in UI_UUID_MAP);
 
     const scanKey = `scan-${snapshots.length}`;
     elementByScanKey.set(scanKey, el);
 
-    const identity = getUiIdentityByUuid(uuid);
-    const source = UI_SOURCE_INDEX_BY_UUID[uuid];
-    const instanceId = el.getAttribute('data-ui-instance-id');
-    const identityKey = el.getAttribute('data-ui-identity-key');
+    let snapshot: InspectElementSnapshot;
 
-    snapshots.push({
-      scanKey,
-      uuid,
-      tagName: el.tagName.toLowerCase(),
-      id: identity?.id ?? '',
-      path: identity?.path ?? '',
-      feature: identity?.feature ?? '',
-      lifecycle: identity ? getUiIdentityLifecycle(identity) : 'active',
-      instanceId,
-      identityKey,
-      rect: {
-        top: rect.top,
-        left: rect.left,
-        width: rect.width,
-        height: rect.height,
-      },
-      sourceFile: source?.sourceFile ?? '',
-      sourceComponent: source?.sourceComponent ?? '',
-      sourceLine: source?.sourceLine ?? 0,
-      hasSource: Boolean(source),
-    });
+    if (hasUuid) {
+      const identity = getUiIdentityByUuid(uuid);
+      const source = UI_SOURCE_INDEX_BY_UUID[uuid];
+      const instanceId = el.getAttribute('data-ui-instance-id');
+      const identityKey = el.getAttribute('data-ui-identity-key');
+
+      snapshot = {
+        scanKey,
+        uuid,
+        hasUuid: true,
+        tagName: el.tagName.toLowerCase(),
+        id: identity?.id ?? '',
+        path: identity?.path ?? '',
+        feature: identity?.feature ?? '',
+        lifecycle: identity ? getUiIdentityLifecycle(identity) : 'active',
+        instanceId,
+        identityKey,
+        rect: {
+          top: rect.top,
+          left: rect.left,
+          width: rect.width,
+          height: rect.height,
+        },
+        sourceFile: source?.sourceFile ?? '',
+        sourceComponent: source?.sourceComponent ?? '',
+        sourceLine: source?.sourceLine ?? 0,
+        sourceColumn: (source as any)?.sourceColumn ?? 0,
+        hasSource: Boolean(source),
+      };
+    } else {
+      // Element without UUID - collect basic info for registration
+      const domPath = getDomPath(el);
+      const textSnippet = getTextSnippet(el);
+      const className = el.className || '';
+
+      // Try to get source info from dev-only markers
+      const sourceFile = el.getAttribute('data-gova-source-file') || '';
+      const sourceLine = parseInt(el.getAttribute('data-gova-source-line') || '0', 10);
+      const sourceColumn = parseInt(el.getAttribute('data-gova-source-column') || '0', 10);
+      const sourceComponent = el.getAttribute('data-gova-source-component') || '';
+
+      snapshot = {
+        scanKey,
+        uuid: '',
+        hasUuid: false,
+        tagName: el.tagName.toLowerCase(),
+        id: el.id || '',
+        path: '',
+        feature: '',
+        lifecycle: 'active',
+        instanceId: null,
+        identityKey: null,
+        rect: {
+          top: rect.top,
+          left: rect.left,
+          width: rect.width,
+          height: rect.height,
+        },
+        sourceFile,
+        sourceComponent,
+        sourceLine,
+        sourceColumn,
+        hasSource: Boolean(sourceFile),
+        domPath,
+        textSnippet,
+        className,
+      };
+    }
+
+    snapshots.push(snapshot);
   });
 
   return snapshots.sort((a, b) => a.path.localeCompare(b.path));
+}
+
+function getDomPath(el: HTMLElement): string {
+  const path: string[] = [];
+  let current: HTMLElement | null = el;
+  
+  while (current && current !== document.body) {
+    let selector = current.tagName.toLowerCase();
+    if (current.id) {
+      selector += `#${current.id}`;
+    } else if (current.className && typeof current.className === 'string') {
+      const classes = current.className.split(' ').filter(c => c).slice(0, 2);
+      if (classes.length > 0) {
+        selector += `.${classes.join('.')}`;
+      }
+    }
+    path.unshift(selector);
+    current = current.parentElement;
+  }
+  
+  return path.join(' > ');
+}
+
+function getTextSnippet(el: HTMLElement): string {
+  const text = el.textContent?.trim() || '';
+  return text.length > 50 ? text.substring(0, 50) + '...' : text;
 }
 
 function getInspectableElement(scanKey: string): HTMLElement | null {
@@ -97,14 +186,20 @@ function getUiElementFromPoint(clientX: number, clientY: number): HTMLElement | 
       continue;
     }
 
+    // First, try to find a UUID-backed element
     const uiElement = el.closest('[data-ui-uuid]') as HTMLElement | null;
-    if (!uiElement) continue;
+    if (uiElement) {
+      const uuid = uiElement.getAttribute('data-ui-uuid');
+      if (uuid && uuid in UI_UUID_MAP && uuid !== DECORATIVE_SPACER_UUID) {
+        return uiElement;
+      }
+    }
 
-    const uuid = uiElement.getAttribute('data-ui-uuid');
-    if (!uuid || !(uuid in UI_UUID_MAP)) continue;
-    if (uuid === DECORATIVE_SPACER_UUID) continue;
-
-    return uiElement;
+    // If no UUID-backed element found, return the first visible intrinsic element
+    // This allows picking elements without UUID for later registration
+    if (el.tagName && el.tagName !== 'HTML' && el.tagName !== 'BODY') {
+      return el;
+    }
   }
 
   return null;

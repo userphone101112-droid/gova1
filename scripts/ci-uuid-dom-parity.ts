@@ -1,6 +1,7 @@
 #!/usr/bin/env tsx
 /**
- * CI: JSX intrinsic count must equal data-ui-uuid attribute count (excluding tests).
+ * CI: Legacy parity check - now informational only since UUIDs are optional.
+ * This script no longer fails - it just logs statistics.
  */
 import { readFileSync, readdirSync } from 'fs';
 import { join, relative } from 'path';
@@ -73,9 +74,8 @@ for (const file of walk(ROOT)) {
 }
 
 if (violations.length > 0) {
-  console.error('❌ ci:uuid-dom-parity failed:\n');
-  violations.forEach((v) => console.error(`  - ${v}`));
-  process.exit(1);
+  console.log('ℹ️  ci:uuid-dom-parity informational (UUIDs are now optional):');
+  violations.forEach((v) => console.log(`  - ${v}`));
 }
 
-console.log('✅ ci:uuid-dom-parity passed');
+console.log('✅ ci:uuid-dom-parity check completed (informational only)');

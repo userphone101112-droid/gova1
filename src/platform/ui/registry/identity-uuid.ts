@@ -22,6 +22,7 @@ function toHex32(value: number): string {
 /**
  * Creates a deterministic UUID-shaped value for legacy identities that do not
  * yet have an explicit immutable uuid field.
+ * @deprecated This is legacy - use createInspectorAssignedUiUuid() for new Inspector-assigned UUIDs
  */
 export function createDeterministicUiUuid(seed: string): string {
   const source = `${UI_UUID_NAMESPACE}:${seed}`;
@@ -41,10 +42,30 @@ export function createDeterministicUiUuid(seed: string): string {
   ].join('-');
 }
 
+/**
+ * Creates a random UUID for Inspector-assigned elements.
+ * Uses crypto.randomUUID() to ensure uniqueness and avoid deterministic reproduction.
+ * This is the preferred method for assigning UUIDs via the UI Inspector.
+ */
+export function createInspectorAssignedUiUuid(): string {
+  if (typeof crypto !== 'undefined' && crypto.randomUUID) {
+    return crypto.randomUUID();
+  }
+  // Fallback for environments without crypto.randomUUID
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
+    const r = (Math.random() * 16) | 0;
+    const v = c === 'x' ? r : (r & 0x3) | 0x8;
+    return v.toString(16);
+  });
+}
+
 export function isValidUiUuid(uuid: string): boolean {
   return UUID_REGEX.test(uuid);
 }
 
 export function getUiIdentityUuid(identity: UiIdentity): string {
+  if (!identity.uuid) {
+    throw new Error(`UiIdentity ${identity.id} does not have a UUID`);
+  }
   return identity.uuid;
 }

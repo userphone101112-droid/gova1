@@ -16,6 +16,10 @@ import type {
 } from './inspector-config.types';
 
 export function getStorageKey(el: InspectElementSnapshot): string {
+  // Elements without UUID cannot have storage keys
+  if (!el.hasUuid || !el.uuid) {
+    throw new Error('Cannot create storage key for element without UUID');
+  }
   const instanceId = el.instanceId ?? '';
   return instanceId ? `${el.uuid}:${instanceId}` : el.uuid;
 }
@@ -24,6 +28,10 @@ export function getInspectorData(
   data: InspectorDataMap,
   el: InspectElementSnapshot
 ): InspectorDataEntry | undefined {
+  // Elements without UUID cannot have Inspector data
+  if (!el.hasUuid || !el.uuid) {
+    return undefined;
+  }
   const storageKey = getStorageKey(el);
   return data[storageKey] || data[el.uuid] || (el.id ? data[el.id] : undefined);
 }

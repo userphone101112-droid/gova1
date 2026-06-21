@@ -27,6 +27,7 @@ function mockSnapshot(): InspectElementSnapshot {
   return {
     scanKey: 'scan-1',
     uuid: 'uuid-1',
+    hasUuid: true,
     instanceId: '',
     id: 'UI_TEST',
     path: 'auth.avatar.image',

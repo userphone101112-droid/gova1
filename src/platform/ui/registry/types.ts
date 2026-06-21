@@ -5,8 +5,8 @@
  */
 
 export interface UiIdentity {
-  /** Immutable element UUID. Keep this value stable when moving or renaming UI paths. */
-  readonly uuid: string;
+  /** Immutable element UUID. Optional - only assigned via UI Inspector. Keep this value stable when moving or renaming UI paths. */
+  readonly uuid?: string;
   readonly id: string;
   readonly path: string;
   /** Lifecycle state for compatibility and removal governance. */

@@ -25,6 +25,7 @@ export function buildInternalMaps(identities: readonly UiIdentity[]) {
 
   const UI_UUID_MAP = identities.reduce(
     (acc, identity) => {
+      if (!identity.uuid) return acc; // Skip identities without UUID
       acc[getUiIdentityUuid(identity)] = identity;
       return acc;
     },

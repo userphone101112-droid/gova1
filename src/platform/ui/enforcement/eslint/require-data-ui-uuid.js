@@ -1,5 +1,7 @@
 /**
- * ESLint rule: absolute data-ui-uuid on every intrinsic JSX element.
+ * ESLint rule: validate data-ui-uuid if present on intrinsic JSX elements.
+ * UUIDs are now optional - this rule only validates that if a UUID is present,
+ * it must be valid and registered in the registry.
  */
 
 const {
@@ -21,19 +23,17 @@ const requireDataUiUuid = {
   meta: {
     type: 'problem',
     docs: {
-      description: 'Require absolute registry-backed data-ui-uuid on every JSX intrinsic element',
+      description: 'Validate data-ui-uuid if present on JSX intrinsic elements. UUIDs are now optional.',
       recommended: true,
     },
     schema: [],
     messages: {
-      missingUuid:
-        'Intrinsic <{{tag}}> requires data-ui-uuid={REGISTRY.IDENTITY.uuid}. No inherited UUID from parent.',
       invalidUuid:
         'data-ui-uuid must be data-ui-uuid={REGISTRY.PATH.uuid}. No variables, spreads, or literals.',
       unknownPath: 'Unknown registry path "{{path}}". Register via registry:add.',
       bannedGeneric:
         'Banned generic identity "{{path}}". Use a dedicated element identity (not COMMON_*, DECORATIVE.*, STRUCTURE.*).',
-      forbiddenSpread: 'JSX spread props are forbidden on intrinsics. Use data-ui-uuid={REGISTRY.PATH.uuid} only.',
+      forbiddenSpread: 'JSX spread props are forbidden on intrinsics when using data-ui-uuid. Use data-ui-uuid={REGISTRY.PATH.uuid} only.',
       duplicateUuid:
         'Registry path "{{path}}" appears {{count}} times in this file without repeatable:true.',
       missingInstanceId:
@@ -56,10 +56,13 @@ const requireDataUiUuid = {
         const tagName = getJsxTagName(node.name);
         const result = validateOpeningElement(node, registryPaths, filename);
 
+        // Skip elements without data-ui-uuid - they're now allowed
+        if (!result.valid && result.reason === 'missing') {
+          return;
+        }
+
         if (!result.valid) {
-          if (result.reason === 'missing') {
-            context.report({ node, messageId: 'missingUuid', data: { tag: tagName } });
-          } else if (result.reason === 'bannedGeneric') {
+          if (result.reason === 'bannedGeneric') {
             context.report({ node, messageId: 'bannedGeneric', data: { path: result.path } });
           } else if (result.reason === 'unknownPath') {
             context.report({ node, messageId: 'unknownPath', data: { path: result.path || '?' } });

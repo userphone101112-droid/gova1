@@ -17,6 +17,7 @@
     "lint:fix": "eslint src --fix",
     "typecheck": "tsc --noEmit",
     "test": "jest",
+    "test:playwright": "playwright test",
     "test:eslint-ui": "node src/platform/ui/enforcement/eslint/require-data-ui-uuid.test.js && node src/platform/ui/enforcement/eslint/ui-uuid-ban.test.js",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
@@ -33,6 +34,7 @@
     "routes:generate": "tsx scripts/generate-app-route-manifest.ts",
     "audit:unified-ui-i18n": "tsx src/platform/ui/enforcement/scripts/audit-unified-ui-i18n.ts",
     "audit:orphans": "tsx src/platform/ui/enforcement/scripts/find-orphans.ts",
+    "discover:hardcoded-text": "tsx scripts/discover-hardcoded-text.ts",
     "registry:materialize-uuids": "tsx scripts/registry-materialize-uuids.ts",
     "registry:add": "tsx scripts/registry-add-identity.ts",
     "registry:move": "tsx scripts/registry-move-identity.ts",
@@ -47,7 +49,7 @@
     "ci:ui-legacy-guard": "tsx scripts/ci-ui-legacy-guard.ts",
     "platform:doctor": "tsx scripts/platform-doctor.ts",
     "ci:i18n": "npm run registry:validate-uuids && npm run i18n:sync && npm run i18n:validate && npm run i18n:validate-bindings && npm run i18n:generate-keys",
-    "ci:check": "npm run registry:validate-uuids && npm run ci:registry-integrity && npm run typecheck && npm run lint && npm run test:eslint-ui && npm run ci:uuid-dom-absolute && npm run ci:uuid-dom-parity && npm run ci:i18n && npm run audit:unified-ui-i18n && npm run maol:diff && npm run validate:theme && npm run ci:ui-legacy-guard && npm run ci:project-legacy-scan",
+    "ci:check": "npm run registry:validate-uuids && npm run ci:registry-integrity && npm run typecheck && npm run lint && npm run test:eslint-ui && npm run ci:uuid-dom-absolute && npm run ci:i18n && npm run audit:unified-ui-i18n && npm run maol:diff && npm run validate:theme && npm run ci:ui-legacy-guard && npm run ci:project-legacy-scan",
     "ci:enforcement": "npm run typecheck && npm run lint && npm run ci:i18n && npm run validate:theme && npm run audit:unified-ui-i18n && npm run audit:orphans",
     "ci:pre-commit": "npm run ci:i18n",
     "prebuild": "npm run ci:i18n && npm run registry:generate && npm run validate:theme",
@@ -83,6 +85,7 @@
     "zustand": "^5.0.14"
   },
   "devDependencies": {
+    "@playwright/test": "^1.61.0",
     "@tailwindcss/postcss": "^4",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",

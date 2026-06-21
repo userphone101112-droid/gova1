@@ -22,6 +22,8 @@ import type { InspectorAction, InspectorState } from './inspector-actions';
 export function createInitialInspectorState(): InspectorState {
   return {
     routePath: '/home',
+    routeHistory: ['/home'],
+    routeHistoryIndex: 0,
     iframeKey: 0,
     elements: [],
     selectedScanKey: null,
@@ -76,14 +78,55 @@ function nextPreviewSize(current: ViewportSettings, patch: Partial<ViewportSetti
 export function inspectorReducer(state: InspectorState, action: InspectorAction): InspectorState {
   switch (action.type) {
     case 'SET_ROUTE':
+      if (action.routePath === state.routePath) {
+        return state;
+      }
+      const nextRouteHistory = [
+        ...state.routeHistory.slice(0, state.routeHistoryIndex + 1),
+        action.routePath,
+      ];
       return {
         ...state,
         routePath: action.routePath,
+        routeHistory: nextRouteHistory,
+        routeHistoryIndex: nextRouteHistory.length - 1,
         selectedScanKey: null,
+        lastSelectedElement: null,
+        selectedIdentityKey: null,
         elements: [],
         iframeReady: false,
         lastScanTime: null,
       };
+    case 'ROUTE_BACK': {
+      if (state.routeHistoryIndex <= 0) return state;
+      const routeHistoryIndex = state.routeHistoryIndex - 1;
+      return {
+        ...state,
+        routePath: state.routeHistory[routeHistoryIndex],
+        routeHistoryIndex,
+        selectedScanKey: null,
+        lastSelectedElement: null,
+        selectedIdentityKey: null,
+        elements: [],
+        iframeReady: false,
+        lastScanTime: null,
+      };
+    }
+    case 'ROUTE_FORWARD': {
+      if (state.routeHistoryIndex >= state.routeHistory.length - 1) return state;
+      const routeHistoryIndex = state.routeHistoryIndex + 1;
+      return {
+        ...state,
+        routePath: state.routeHistory[routeHistoryIndex],
+        routeHistoryIndex,
+        selectedScanKey: null,
+        lastSelectedElement: null,
+        selectedIdentityKey: null,
+        elements: [],
+        iframeReady: false,
+        lastScanTime: null,
+      };
+    }
     case 'REFRESH_IFRAME':
       return {
         ...state,
@@ -99,11 +142,14 @@ export function inspectorReducer(state: InspectorState, action: InspectorAction)
         lastScanTime: action.lastScanTime,
       };
     case 'SELECT_ELEMENT':
+      // For elements without UUID, don't call getStorageKey and set selectedIdentityKey to null
+      // This prevents loading form state and Inspector data for non-UUID elements
+      const identityKey = action.element.hasUuid ? getStorageKey(action.element) : null;
       return {
         ...state,
         selectedScanKey: action.scanKey,
         lastSelectedElement: action.element,
-        selectedIdentityKey: getStorageKey(action.element),
+        selectedIdentityKey: identityKey,
       };
     case 'CLEAR_SELECTED_ELEMENT':
       return {

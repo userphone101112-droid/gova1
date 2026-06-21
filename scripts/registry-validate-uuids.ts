@@ -61,7 +61,7 @@ if (missingUuid.length > 0) {
   errors.push(`Missing uuid: ${missingUuid.map((identity) => identity.id).join(', ')}`);
 }
 
-const invalidUuid = ALL_UI_IDENTITIES.filter((identity) => !isValidUiUuid(identity.uuid));
+const invalidUuid = ALL_UI_IDENTITIES.filter((identity) => identity.uuid && !isValidUiUuid(identity.uuid));
 if (invalidUuid.length > 0) {
   errors.push(
     `Invalid uuid: ${invalidUuid.map((identity) => `${identity.id}:${identity.uuid}`).join(', ')}`

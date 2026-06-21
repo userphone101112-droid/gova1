@@ -1,6 +1,6 @@
 # Unified UI + i18n Audit Report
 
-Generated: 2026-06-21T17:52:43.202Z
+Generated: 2026-06-21T23:13:30.171Z
 
 ## Executive Summary
 
@@ -20,8 +20,8 @@ Generated: 2026-06-21T17:52:43.202Z
 ## Phase 3: Component Usage
 
 - Used UI Identifiers: 1309
-- Used Translation Keys: 57
-- Hardcoded Text Instances: 21
+- Used Translation Keys: 61
+- Hardcoded Text Instances: 28
 
 ## Phase 4: Binding Matrix
 
@@ -54,4 +54,4 @@ None
 ## Warnings
 
 - Orphan translations: 725 found (features pending UI identity migration)
-- Hardcoded text: 21 instance(s) found — review if intentional
+- Hardcoded text: 28 instance(s) found — review if intentional

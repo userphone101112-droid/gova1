@@ -47,7 +47,11 @@ export function resolveTelemetryIdentity(target: HTMLElement | UiIdentity | null
     return null;
   }
   if (isUiIdentity(target)) {
-    return getUiIdentityByUuid(target.uuid) || null;
+    // Only resolve if UUID is present
+    if (target.uuid) {
+      return getUiIdentityByUuid(target.uuid) || null;
+    }
+    return null;
   }
   return null;
 }
@@ -61,7 +65,7 @@ export function resolveTelemetryIdentity(target: HTMLElement | UiIdentity | null
  */
 export function resolveElementIdentity(target: HTMLElement | UiIdentity | null): InspectorLocationInfo | null {
   const identity = resolveTelemetryIdentity(target);
-  if (!identity) return null;
+  if (!identity || !identity.uuid) return null;
 
   // Get source code mapping
   const sourceLocation = UI_SOURCE_INDEX_BY_UUID[identity.uuid];
