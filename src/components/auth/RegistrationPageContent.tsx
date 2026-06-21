@@ -10,6 +10,7 @@ import { FormProvider, useForm, useWatch } from 'react-hook-form';
 
 import { AuthHero } from '@/components/auth/AuthHero';
 import { AuthMobileBrand } from '@/components/auth/AuthMobileBrand';
+import { EmailInput } from '@/components/auth/EmailInput';
 import { PasswordInput } from '@/components/auth/PasswordInput';
 import { PasswordStrength } from '@/components/auth/PasswordStrength';
 import { PhoneVerification } from '@/components/auth/PhoneVerification';
@@ -33,6 +34,7 @@ export function RegistrationPageContent() {
       phone: '',
       password: '',
       confirmPassword: '',
+      email: '',
       phoneVerified: false,
     },
     mode: 'onChange',
@@ -101,6 +103,7 @@ export function RegistrationPageContent() {
                   <PasswordInput name="password" />
                   {password.length > 0 && <PasswordStrength password={password} />}
                   <PasswordInput name="confirmPassword" />
+                  <EmailInput />
                 </div>
 
                 <div data-ui-uuid={AUTH.SHELL.REGISTRATION_PHONE_REQUIRED_WRAPPER_L117.uuid} className="space-y-3">

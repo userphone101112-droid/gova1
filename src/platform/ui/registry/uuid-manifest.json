@@ -1,7 +1,7 @@
 {
   "version": 1,
   "namespace": "gova.ui-registry",
-  "generatedAt": "2026-06-21T16:55:44.447Z",
+  "generatedAt": "2026-06-21T17:52:27.640Z",
   "identities": {
     "8771d585-21d5-51cc-bb1b-910f1ae955f6": {
       "uuid": "8771d585-21d5-51cc-bb1b-910f1ae955f6",
@@ -296,7 +296,7 @@
     "7748b67f-a8ca-5024-abff-50cd06e17032": {
       "uuid": "7748b67f-a8ca-5024-abff-50cd06e17032",
       "id": "UI_AUTH_REGISTRATION_EMAIL_INPUT",
-      "path": "auth.registration.form.email-input",
+      "path": "auth.registration.email-input",
       "feature": "auth",
       "lifecycle": "active",
       "previousIds": [],
@@ -694,16 +694,6 @@
       "previousPaths": [],
       "aliases": []
     },
-    "080bbaca-bb75-56f9-b8ab-3be837cab93f": {
-      "uuid": "080bbaca-bb75-56f9-b8ab-3be837cab93f",
-      "id": "UI_AUTH_SHARED_EMAIL_PLACEHOLDER",
-      "path": "auth.shared.display.email-placeholder",
-      "feature": "auth",
-      "lifecycle": "active",
-      "previousIds": [],
-      "previousPaths": [],
-      "aliases": []
-    },
     "91dd78ed-2152-5cca-85d9-fdcbcc6684f0": {
       "uuid": "91dd78ed-2152-5cca-85d9-fdcbcc6684f0",
       "id": "UI_AUTH_SHARED_FORM_CARD",
@@ -878,6 +868,36 @@
       "uuid": "5099169f-0301-5310-a70b-6d4dd6ed384e",
       "id": "UI_AUTH_SHELL_PASSWORD_FIELD_WRAPPER",
       "path": "auth.dom.password-input.password-field-wrapper",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "a250338d-7677-581c-be9c-fa4b9eef946a": {
+      "uuid": "a250338d-7677-581c-be9c-fa4b9eef946a",
+      "id": "UI_AUTH_STRUCTURE_EMAIL_ERROR",
+      "path": "auth.dom.registration.email-error",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "ad9cf564-9379-561d-88e3-c786613a6857": {
+      "uuid": "ad9cf564-9379-561d-88e3-c786613a6857",
+      "id": "UI_AUTH_STRUCTURE_EMAIL_FIELD_INPUT_WRAPPER",
+      "path": "auth.dom.registration.email-field-input-wrapper",
+      "feature": "auth",
+      "lifecycle": "active",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
+    "36050e67-2867-5db2-83a3-2f01bbae343c": {
+      "uuid": "36050e67-2867-5db2-83a3-2f01bbae343c",
+      "id": "UI_AUTH_STRUCTURE_EMAIL_FIELD_WRAPPER",
+      "path": "auth.dom.registration.email-field-wrapper",
       "feature": "auth",
       "lifecycle": "active",
       "previousIds": [],
@@ -13142,6 +13162,16 @@
     }
   },
   "removedIdentities": {
+    "080bbaca-bb75-56f9-b8ab-3be837cab93f": {
+      "uuid": "080bbaca-bb75-56f9-b8ab-3be837cab93f",
+      "id": "UI_AUTH_SHARED_EMAIL_PLACEHOLDER",
+      "path": "auth.shared.display.email-placeholder",
+      "feature": "auth",
+      "lifecycle": "removed",
+      "previousIds": [],
+      "previousPaths": [],
+      "aliases": []
+    },
     "d12b5dea-6147-5ed5-99f8-4a1c4eef6c17": {
       "uuid": "d12b5dea-6147-5ed5-99f8-4a1c4eef6c17",
       "id": "UI_DEVTOOLS_STRUCTURE_DEV_UI_OVERLAY_L1010",

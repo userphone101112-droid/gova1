@@ -11,6 +11,7 @@ export const validationErrorKeys = {
   confirmPasswordRequired: 'auth.registration.errorConfirmPasswordRequired',
   passwordMatch: 'auth.registration.errorPasswordMatch',
   phoneVerification: 'auth.registration.errorPhoneVerification',
+  emailInvalid: 'auth.registration.errorEmailInvalid',
   passwordRequired: 'Password is required', // Keep this for login as fallback
 } as const;
 
@@ -32,6 +33,7 @@ export const registrationSchema = z
     phone: phoneField,
     password: z.string().min(4, validationErrorKeys.passwordMinLength),
     confirmPassword: z.string().min(1, validationErrorKeys.confirmPasswordRequired),
+    email: z.string().email(validationErrorKeys.emailInvalid).optional().or(z.literal('')),
     phoneVerified: z.boolean().refine((val) => val === true, {
       message: validationErrorKeys.phoneVerification,
     }),
