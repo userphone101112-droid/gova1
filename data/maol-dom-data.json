@@ -1931,7 +1931,7 @@
     },
     {
       "route": "/devtools/ui-inspector",
-      "timestamp": 1782039059259,
+      "timestamp": 1782039062656,
       "totalIdentified": 72,
       "tree": {
         "type": "page",
@@ -2432,7 +2432,7 @@
     },
     {
       "route": "/login",
-      "timestamp": 1782039058249,
+      "timestamp": 1782039061255,
       "totalIdentified": 87,
       "tree": {
         "type": "page",
