@@ -57,6 +57,7 @@ type InspectorContextValue = {
   handleResizeStart: () => void;
   sendHighlight: (scanKey: string) => void;
   sendScroll: (scanKey: string) => void;
+  handleAutofill: () => void;
 };
 
 const InspectorContext = createContext<InspectorContextValue | null>(null);
@@ -167,6 +168,14 @@ export function InspectorProvider({ children }: { children: ReactNode }) {
     postToInspectorFrame(
       iframeRef.current,
       { channel: UI_INSPECTOR_CHANNEL, type: 'SCROLL', scanKey },
+      window.location.origin
+    );
+  }, []);
+
+  const handleAutofill = useCallback(() => {
+    postToInspectorFrame(
+      iframeRef.current,
+      { channel: UI_INSPECTOR_CHANNEL, type: 'AUTOFILL_REGISTRATION' },
       window.location.origin
     );
   }, []);
@@ -375,6 +384,7 @@ export function InspectorProvider({ children }: { children: ReactNode }) {
       handleResizeStart,
       sendHighlight,
       sendScroll,
+      handleAutofill,
     }),
     [
       state,
@@ -388,6 +398,7 @@ export function InspectorProvider({ children }: { children: ReactNode }) {
       handleResizeStart,
       sendHighlight,
       sendScroll,
+      handleAutofill,
     ]
   );
 

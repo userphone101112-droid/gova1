@@ -2919,6 +2919,27 @@
         "severity": "low",
         "timestamp": 1782046646769,
         "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "%s Feature dictionary not found for feature: signup, locale: ar",
+        "route": "/devtools/ui-inspector",
+        "severity": "low",
+        "timestamp": 1782047220576,
+        "env": "dev"
+      }
+    ]
+  },
+  "maol_EFFpBHB2WE": {
+    "errors": [],
+    "warnings": [
+      {
+        "type": "warning",
+        "message": "%s Feature dictionary not found for feature: signup, locale: ar",
+        "route": "/registration",
+        "severity": "low",
+        "timestamp": 1782047890291,
+        "env": "dev"
       }
     ]
   }

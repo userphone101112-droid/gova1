@@ -51,7 +51,8 @@ export type UiInspectorParentMessage =
       enabled: boolean;
       candidates: FrameCandidate[];
     }
-  | { channel: typeof UI_INSPECTOR_CHANNEL; type: 'CLEAR_BINDING_FRAMES' };
+  | { channel: typeof UI_INSPECTOR_CHANNEL; type: 'CLEAR_BINDING_FRAMES' }
+  | { channel: typeof UI_INSPECTOR_CHANNEL; type: 'AUTOFILL_REGISTRATION' };
 
 export type UiInspectorFrameMessage =
   | { channel: typeof UI_INSPECTOR_CHANNEL; type: 'READY' }
@@ -66,6 +67,7 @@ export function isUiInspectorParentMessage(data: unknown): data is UiInspectorPa
     case 'REQUEST_SCAN':
     case 'CLEAR_HIGHLIGHT':
     case 'CLEAR_BINDING_FRAMES':
+    case 'AUTOFILL_REGISTRATION':
       return true;
     case 'HIGHLIGHT':
     case 'SCROLL':

@@ -89,6 +89,83 @@ export function InspectCollectorBridge() {
         case 'CLEAR_BINDING_FRAMES':
           clearInspectableBindingFrames();
           break;
+        case 'AUTOFILL_REGISTRATION': {
+          // Helper to fill an input and trigger React's onChange properly
+          const fillInput = (element: HTMLInputElement, value: string) => {
+            const nativeInputValueSetter = Object.getOwnPropertyDescriptor(
+              window.HTMLInputElement.prototype,
+              'value'
+            )?.set;
+            if (nativeInputValueSetter) {
+              nativeInputValueSetter.call(element, value);
+            } else {
+              element.value = value;
+            }
+            
+            element.focus();
+            
+            const inputEvent = new Event('input', { bubbles: true });
+            const changeEvent = new Event('change', { bubbles: true });
+            
+            element.dispatchEvent(inputEvent);
+            element.dispatchEvent(changeEvent);
+            
+            element.blur();
+          };
+          
+          // Helper to generate random valid Egyptian phone number
+          const generateRandomPhone = () => {
+            const prefixes = ['010', '011', '012', '015'];
+            const randomPrefix = prefixes[Math.floor(Math.random() * prefixes.length)];
+            let randomSuffix = '';
+            for (let i = 0; i < 8; i++) {
+              randomSuffix += Math.floor(Math.random() * 10).toString();
+            }
+            return randomPrefix + randomSuffix;
+          };
+          
+          // Helper to generate random valid password (at least 4 chars)
+          const generateRandomPassword = () => {
+            const chars = 'abcdefghijklmnopqrstuvwxyz0123456789';
+            const length = Math.floor(Math.random() * 6) + 4; // 4-10 chars
+            let password = '';
+            for (let i = 0; i < length; i++) {
+              password += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return password;
+          };
+          
+          const randomPhone = generateRandomPhone();
+          const randomPassword = generateRandomPassword();
+          
+          // Fill phone input
+          const phoneInput = document.querySelector('[data-ui-uuid="a1fed973-0ee2-517c-8c71-b511dc3a4a02"]') as HTMLInputElement;
+          if (phoneInput) {
+            fillInput(phoneInput, randomPhone);
+          }
+          
+          // Wait for RHF validation then click verify
+          setTimeout(() => {
+            const verifyButton = document.querySelector('[data-ui-uuid="7598a99a-b039-526d-bd4e-f504b16dfe2f"]') as HTMLButtonElement;
+            if (verifyButton && !verifyButton.disabled) {
+              verifyButton.click();
+            }
+            
+            // Wait for verification then fill password fields
+            setTimeout(() => {
+              const passwordInput = document.querySelector('[data-ui-uuid="44b2b3d2-8d19-5133-8732-c708bb730df1"]') as HTMLInputElement;
+              if (passwordInput) {
+                fillInput(passwordInput, randomPassword);
+              }
+              
+              const confirmPasswordInput = document.querySelector('[data-ui-uuid="c8277664-0566-5611-b32a-97825b994e47"]') as HTMLInputElement;
+              if (confirmPasswordInput) {
+                fillInput(confirmPasswordInput, randomPassword);
+              }
+            }, 1500);
+          }, 400);
+          break;
+        }
         default:
           break;
       }

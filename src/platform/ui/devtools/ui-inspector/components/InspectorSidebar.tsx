@@ -28,6 +28,7 @@ export function InspectorSidebar() {
     toggleSection,
     handlePickModeToggle,
     handleFramesModeToggle,
+    handleAutofill,
   } = useInspectorContext();
   const hasElementSelection = selectors.hasElementSelection;
   const bindingsSuffix = state.databasePanelPinned ? ' (unsaved)' : '';
@@ -50,6 +51,14 @@ export function InspectorSidebar() {
           UI Inspector
         </h1>
         <div className="flex items-center gap-1">
+          <button
+            type="button"
+            data-ui-instance-id="autofill-button"
+            onClick={handleAutofill}
+            className="rounded border border-outline-variant px-2 py-1 text-xs font-medium"
+          >
+            Autofill
+          </button>
           <button
             data-ui-uuid={DEVTOOLS.UI_INSPECTOR.PICK.MODE_TOGGLE.uuid}
             data-ui-instance-id="pick-mode-toggle"
