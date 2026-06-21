@@ -1788,7 +1788,7 @@
   "maol_eK1K2M9Ynt": [
     {
       "route": "/home",
-      "timestamp": 1782037615260,
+      "timestamp": 1782038339265,
       "totalIdentified": 229,
       "tree": {
         "type": "page",
@@ -1931,8 +1931,8 @@
     },
     {
       "route": "/devtools/ui-inspector",
-      "timestamp": 1782037617253,
-      "totalIdentified": 59,
+      "timestamp": 1782038562256,
+      "totalIdentified": 71,
       "tree": {
         "type": "page",
         "children": [
@@ -1959,10 +1959,21 @@
               "UI_DEVTOOLS_UI_INSPECTOR_SELECTED_CONTAINER",
               "UI_DEVTOOLS_UI_INSPECTOR_SIDEBAR_DISPLAY_LABEL",
               "UI_DEVTOOLS_UI_INSPECTOR_STATUS_CONTAINER",
+              "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_STABLE_ID_LABEL",
+              "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_STABLE_ID_VALUE",
+              "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_PATH_LABEL",
+              "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_PATH_VALUE",
+              "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_TAG_LABEL",
+              "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_TAG_VALUE",
+              "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_UUID_LABEL",
+              "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_UUID_VALUE",
               "UI_DEVTOOLS_UI_INSPECTOR_STATUS_IFRAME_VALUE",
               "UI_DEVTOOLS_UI_INSPECTOR_STATUS_SCAN_VALUE",
               "UI_DEVTOOLS_UI_INSPECTOR_STATUS_COUNT_VALUE",
               "UI_DEVTOOLS_UI_INSPECTOR_STATUS_URL_VALUE",
+              "UI_DEVTOOLS_UI_INSPECTOR_SIDEBAR_DBATTRS_LABEL",
+              "UI_DEVTOOLS_UI_INSPECTOR_DATA_CONTAINER",
+              "UI_DEVTOOLS_UI_INSPECTOR_DATA_SAVE_BUTTON",
               "UI_DEVTOOLS_UI_INSPECTOR_SIDEBAR_DBMGMT_LABEL",
               "UI_DEVTOOLS_UI_INSPECTOR_SIDEBAR_SCHEMA_LABEL",
               "UI_DEVTOOLS_UI_INSPECTOR_SEARCH_LABEL",
@@ -1991,7 +2002,6 @@
               "h1",
               "button",
               "span",
-              "code",
               "select",
               "option",
               "input",
@@ -2422,7 +2432,7 @@
     },
     {
       "route": "/login",
-      "timestamp": 1782036251510,
+      "timestamp": 1782038564255,
       "totalIdentified": 87,
       "tree": {
         "type": "page",

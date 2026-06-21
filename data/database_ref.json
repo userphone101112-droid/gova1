@@ -8,35 +8,55 @@
           "columns": [
             {
               "name": "id",
-              "description": "رقم تعريفي داخلي لكل مستخدم داخل قاعدة البيانات"
+              "description": "رقم تعريفي داخلي لكل مستخدم داخل قاعدة البيانات",
+              "dataType": "integer",
+              "nullable": false,
+              "unique": true,
+              "isPrimaryKey": true
             },
             {
               "name": "uid",
-              "description": "معرف فريد عالمي يُستخدم في واجهات البرمجة والربط الخارجي"
+              "description": "معرف فريد عالمي يُستخدم في واجهات البرمجة والربط الخارجي",
+              "dataType": "text",
+              "nullable": false,
+              "unique": true
             },
             {
               "name": "phone",
-              "description": "رقم الهاتف المستخدم للتواصل أو تسجيل الدخول"
+              "description": "رقم الهاتف المستخدم للتواصل أو تسجيل الدخول",
+              "dataType": "text",
+              "nullable": false,
+              "unique": true
             },
             {
               "name": "password",
-              "description": "كلمة المرور المشفرة لحماية الحساب"
+              "description": "كلمة المرور المشفرة لحماية الحساب",
+              "dataType": "text",
+              "nullable": false
             },
             {
               "name": "last_login_at",
-              "description": "تاريخ ووقت آخر تسجيل دخول للمستخدم"
+              "description": "تاريخ ووقت آخر تسجيل دخول للمستخدم",
+              "dataType": "datetime",
+              "nullable": true
             },
             {
               "name": "created_at",
-              "description": "تاريخ ووقت إنشاء الحساب"
+              "description": "تاريخ ووقت إنشاء الحساب",
+              "dataType": "datetime",
+              "nullable": true
             },
             {
               "name": "updated_at",
-              "description": "تاريخ ووقت آخر تعديل على بيانات المستخدم"
+              "description": "تاريخ ووقت آخر تعديل على بيانات المستخدم",
+              "dataType": "datetime",
+              "nullable": true
             },
             {
               "name": "deleted_at",
-              "description": "تاريخ الحذف الناعم (Soft Delete) أو NULL إذا كان الحساب نشط"
+              "description": "تاريخ الحذف الناعم (Soft Delete) أو NULL إذا كان الحساب نشط",
+              "dataType": "datetime",
+              "nullable": true
             }
           ],
           "description": "جدول المستخدمين الأساسي في قاعدة بيانات SQLite. يحتوي على بيانات تعريف المستخدم، بيانات تسجيل الدخول، وتتبع نشاط الحساب."
