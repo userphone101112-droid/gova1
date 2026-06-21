@@ -52,3 +52,6 @@ next-env.d.ts
 .git_deploy_key
 .git_deploy_key.pub
 .ssh_config
+
+# Local data files
+data/maol-dom-data.json

@@ -9,15 +9,15 @@
       "label": "database binding",
       "confidence": "medium",
       "createdAt": "2026-06-21T10:52:02.102Z",
-      "updatedAt": "2026-06-21T10:53:05.486Z",
+      "updatedAt": "2026-06-21T11:29:31.870Z",
       "databaseName": "allusers",
       "tableName": "users",
       "columnName": "password",
       "queryHint": "search",
-      "indexNeed": "required",
+      "indexNeed": "none",
       "required": true,
       "sensitive": true
     }
   ],
-  "updatedAt": "2026-06-21T10:53:11.465Z"
+  "updatedAt": "2026-06-21T11:29:36.318Z"
 }

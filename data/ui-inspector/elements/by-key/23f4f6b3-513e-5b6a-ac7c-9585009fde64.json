@@ -4,5 +4,6 @@
   "dataUiFeature": "settings",
   "dataUiUuid": "23f4f6b3-513e-5b6a-ac7c-9585009fde64",
   "dataUiInstanceId": "",
-  "updatedAt": "2026-06-20T11:48:07.938Z"
+  "updatedAt": "2026-06-21T11:36:28.444Z",
+  "route": "/settings"
 }

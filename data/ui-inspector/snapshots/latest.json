@@ -1,10 +1,21 @@
 {
-  "updatedAt": "2026-06-21T11:17:53.285Z",
+  "updatedAt": "2026-06-21T11:36:28.569Z",
   "totalElements": 7,
-  "totalBindings": 4,
+  "totalBindings": 5,
   "entries": [
     {
-      "bindings": [],
+      "bindings": [
+        {
+          "id": "database_ac5394c5-cc39-4264-8207-2e5bdcb6de77",
+          "kind": "database",
+          "role": "write_to",
+          "enabled": false,
+          "label": "database binding",
+          "confidence": "medium",
+          "createdAt": "2026-06-21T11:36:15.498Z",
+          "updatedAt": "2026-06-21T11:36:19.802Z"
+        }
+      ],
       "customAttributes": [],
       "databaseEnabled": false,
       "databaseName": "",
@@ -25,7 +36,7 @@
       "dataUiUuid": "23f4f6b3-513e-5b6a-ac7c-9585009fde64",
       "dataUiInstanceId": "",
       "dataUiIdentityKey": "23f4f6b3-513e-5b6a-ac7c-9585009fde64",
-      "updatedAt": "2026-06-20T11:48:07.938Z"
+      "updatedAt": "2026-06-21T11:36:28.444Z"
     },
     {
       "bindings": [],
@@ -126,12 +137,12 @@
           "label": "database binding",
           "confidence": "medium",
           "createdAt": "2026-06-21T10:52:02.102Z",
-          "updatedAt": "2026-06-21T10:53:05.486Z",
+          "updatedAt": "2026-06-21T11:29:31.870Z",
           "databaseName": "allusers",
           "tableName": "users",
           "columnName": "password",
           "queryHint": "search",
-          "indexNeed": "required",
+          "indexNeed": "none",
           "required": true,
           "sensitive": true
         }
@@ -156,7 +167,7 @@
       "dataUiUuid": "93d1b686-6299-5719-94b5-bbe4c13f9197",
       "dataUiInstanceId": "",
       "dataUiIdentityKey": "93d1b686-6299-5719-94b5-bbe4c13f9197",
-      "updatedAt": "2026-06-21T10:53:11.465Z"
+      "updatedAt": "2026-06-21T11:29:36.318Z"
     },
     {
       "bindings": [

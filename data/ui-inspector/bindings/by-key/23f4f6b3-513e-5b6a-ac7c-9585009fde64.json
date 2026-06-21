@@ -1,5 +1,16 @@
 {
   "identityKey": "23f4f6b3-513e-5b6a-ac7c-9585009fde64",
-  "bindings": [],
-  "updatedAt": "2026-06-20T11:48:07.938Z"
+  "bindings": [
+    {
+      "id": "database_ac5394c5-cc39-4264-8207-2e5bdcb6de77",
+      "kind": "database",
+      "role": "write_to",
+      "enabled": false,
+      "label": "database binding",
+      "confidence": "medium",
+      "createdAt": "2026-06-21T11:36:15.498Z",
+      "updatedAt": "2026-06-21T11:36:19.802Z"
+    }
+  ],
+  "updatedAt": "2026-06-21T11:36:28.444Z"
 }

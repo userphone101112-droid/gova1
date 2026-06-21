@@ -2773,6 +2773,94 @@
         "severity": "low",
         "timestamp": 1782040503745,
         "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "Feature dictionary not found for feature: signup, locale: en",
+        "route": "/settings",
+        "severity": "low",
+        "timestamp": 1782041601989,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "Feature dictionary not found for feature: signup, locale: en",
+        "route": "/profile",
+        "severity": "low",
+        "timestamp": 1782041929041,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "Feature dictionary not found for feature: signup, locale: en",
+        "route": "/orders",
+        "severity": "low",
+        "timestamp": 1782041941677,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "Feature dictionary not found for feature: signup, locale: en",
+        "route": "/merchant",
+        "severity": "low",
+        "timestamp": 1782041953464,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "Image with src \"https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=80\" has \"fill\" but is missing \"sizes\" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes",
+        "route": "/merchant",
+        "severity": "low",
+        "timestamp": 1782041953477,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "Image with src \"https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=80\" has \"fill\" but is missing \"sizes\" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes",
+        "route": "/merchant",
+        "severity": "low",
+        "timestamp": 1782041953478,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "Image with src \"https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=80\" has \"fill\" but is missing \"sizes\" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes",
+        "route": "/merchant",
+        "severity": "low",
+        "timestamp": 1782041953478,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "Image with src \"https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=80\" has \"fill\" but is missing \"sizes\" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes",
+        "route": "/merchant",
+        "severity": "low",
+        "timestamp": 1782041953479,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "Image with src \"https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=80\" has \"fill\" but is missing \"sizes\" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes",
+        "route": "/merchant",
+        "severity": "low",
+        "timestamp": 1782041953479,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "Feature dictionary not found for feature: signup, locale: en",
+        "route": "/onboarding",
+        "severity": "low",
+        "timestamp": 1782041975354,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "Feature dictionary not found for feature: signup, locale: en",
+        "route": "/",
+        "severity": "low",
+        "timestamp": 1782042066772,
+        "env": "dev"
       }
     ]
   }
