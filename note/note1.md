@@ -23,7 +23,11 @@ npm run server:status 2>&1
 npm run server:logs
 
 # لمسح الترمينال
-
 Ctrl + Shift + P
 ثم اكتب:
 Terminal: Clear
+
+
+# قواعد البيانات
+src/platform/ui/devtools/ui-inspector/domain/
+
