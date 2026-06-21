@@ -1,28 +1,14 @@
 {
   "23f4f6b3-513e-5b6a-ac7c-9585009fde64": {
-    "bindings": [
-      {
-        "id": "database_dabd48c8-c60c-43d3-81a4-4ac20bfb4974",
-        "kind": "database",
-        "role": "write_to",
-        "enabled": true,
-        "label": "human_resource_management_system.employees.employee_id",
-        "confidence": "medium",
-        "createdAt": "2026-06-20T14:22:31.420Z",
-        "updatedAt": "2026-06-20T14:22:31.420Z",
-        "databaseName": "human_resource_management_system",
-        "tableName": "employees",
-        "columnName": "employee_id"
-      }
-    ],
+    "bindings": [],
     "customAttributes": [],
-    "databaseEnabled": true,
-    "databaseName": "human_resource_management_system",
-    "tableName": "employees",
-    "columnName": "employee_id",
-    "inf1": "human_resource_management_system",
-    "inf2": "employees",
-    "inf3": "employee_id",
+    "databaseEnabled": false,
+    "databaseName": "",
+    "tableName": "",
+    "columnName": "",
+    "inf1": "",
+    "inf2": "",
+    "inf3": "",
     "storageEnabled": false,
     "storageMainFile": "",
     "storageSubFile": "",
@@ -62,13 +48,13 @@
     "updatedAt": "2026-06-20T11:06:03.355Z"
   },
   "4ecf8039-11c1-5808-b0d8-c48fb4f66c9e": {
-    "databaseEnabled": true,
-    "databaseName": "human_resource_management_system",
-    "tableName": "employees",
-    "columnName": "employee_id",
-    "inf1": "1",
-    "inf2": "2",
-    "inf3": "3",
+    "databaseEnabled": false,
+    "databaseName": "",
+    "tableName": "",
+    "columnName": "",
+    "inf1": "",
+    "inf2": "",
+    "inf3": "",
     "storageMainFile": "Projects",
     "storageSubFile": "Frontend",
     "attributesEnabled": true,
@@ -82,19 +68,6 @@
     "dataUiIdentityKey": "4ecf8039-11c1-5808-b0d8-c48fb4f66c9e",
     "updatedAt": "2026-06-20T12:25:39.502Z",
     "bindings": [
-      {
-        "id": "database_e11e416e-ea9d-4cfb-a3a1-0ad574a1dfe3",
-        "kind": "database",
-        "role": "write_to",
-        "enabled": true,
-        "label": "human_resource_management_system.employees.employee_id",
-        "confidence": "confirmed",
-        "createdAt": "2026-06-20T14:22:31.937Z",
-        "updatedAt": "2026-06-20T14:22:31.937Z",
-        "databaseName": "human_resource_management_system",
-        "tableName": "employees",
-        "columnName": "employee_id"
-      },
       {
         "id": "storage_e2253af4-58aa-4adc-808d-69a33adc9a89",
         "kind": "storage",

@@ -1788,7 +1788,7 @@
   "maol_eK1K2M9Ynt": [
     {
       "route": "/home",
-      "timestamp": 1782031753255,
+      "timestamp": 1782034333255,
       "totalIdentified": 229,
       "tree": {
         "type": "page",
@@ -1931,8 +1931,8 @@
     },
     {
       "route": "/devtools/ui-inspector",
-      "timestamp": 1782031753253,
-      "totalIdentified": 59,
+      "timestamp": 1782034333252,
+      "totalIdentified": 60,
       "tree": {
         "type": "page",
         "children": [
@@ -1964,6 +1964,7 @@
               "UI_DEVTOOLS_UI_INSPECTOR_STATUS_COUNT_VALUE",
               "UI_DEVTOOLS_UI_INSPECTOR_STATUS_URL_VALUE",
               "UI_DEVTOOLS_UI_INSPECTOR_SIDEBAR_DBMGMT_LABEL",
+              "UI_DEVTOOLS_UI_INSPECTOR_DATA_CONTAINER",
               "UI_DEVTOOLS_UI_INSPECTOR_SIDEBAR_SCHEMA_LABEL",
               "UI_DEVTOOLS_UI_INSPECTOR_SEARCH_LABEL",
               "UI_DEVTOOLS_UI_INSPECTOR_ELEMENT_COUNT",

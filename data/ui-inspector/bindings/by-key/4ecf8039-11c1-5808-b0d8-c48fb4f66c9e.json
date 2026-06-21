@@ -2,19 +2,6 @@
   "identityKey": "4ecf8039-11c1-5808-b0d8-c48fb4f66c9e",
   "bindings": [
     {
-      "id": "database_e11e416e-ea9d-4cfb-a3a1-0ad574a1dfe3",
-      "kind": "database",
-      "role": "write_to",
-      "enabled": true,
-      "label": "human_resource_management_system.employees.employee_id",
-      "confidence": "confirmed",
-      "createdAt": "2026-06-20T14:22:31.937Z",
-      "updatedAt": "2026-06-20T14:22:31.937Z",
-      "databaseName": "human_resource_management_system",
-      "tableName": "employees",
-      "columnName": "employee_id"
-    },
-    {
       "id": "storage_e2253af4-58aa-4adc-808d-69a33adc9a89",
       "kind": "storage",
       "role": "upload_to",
