@@ -1,9 +1,11 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 
 import { normalizeApiError } from './api-error-normalizer';
+import { govaDbGetAuth, govaDbSetAuth } from '@/lib/gova-db';
 
 class ApiClient {
   private client: AxiosInstance;
+  private cachedAuthToken: string | null = null;
 
   constructor(baseURL: string = process.env.NEXT_PUBLIC_API_URL || '/api') {
     this.client = axios.create({
@@ -19,9 +21,9 @@ class ApiClient {
 
   private setupInterceptors(): void {
     this.client.interceptors.request.use(
-      (config) => {
+      async (config) => {
         // Add auth token if available
-        const token = this.getAuthToken();
+        const token = await this.getAuthToken();
         if (token) {
           config.headers.Authorization = `Bearer ${token}`;
         }
@@ -41,11 +43,21 @@ class ApiClient {
     );
   }
 
-  private getAuthToken(): string | null {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('authToken');
+  private async getAuthToken(): Promise<string | null> {
+    if (typeof window === 'undefined') return null;
+    if (this.cachedAuthToken) return this.cachedAuthToken;
+    const authData = await govaDbGetAuth();
+    this.cachedAuthToken = authData.authToken ?? null;
+    return this.cachedAuthToken;
+  }
+
+  public async setAuthToken(token: string | null): Promise<void> {
+    this.cachedAuthToken = token;
+    if (token) {
+      await govaDbSetAuth({ authToken: token });
+    } else {
+      await govaDbSetAuth({});
     }
-    return null;
   }
 
   public async get<T>(url: string, config?: AxiosRequestConfig): Promise<T> {

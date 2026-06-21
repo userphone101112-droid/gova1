@@ -2927,6 +2927,14 @@
         "severity": "low",
         "timestamp": 1782047220576,
         "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[Fast Refresh] performing full reload Fast Refresh will perform a full reload when you edit a file that's imported by modules outside of the React rendering tree.\nYou might have a file which exports a React component but also exports a value that is imported by a non-React component file.\nConsider migrating the non-React component export to a separate file and importing it into both files. It is also possible the parent component of the component you edited is a class component, which disables F",
+        "route": "/devtools/ui-inspector",
+        "severity": "low",
+        "timestamp": 1782051619723,
+        "env": "dev"
       }
     ]
   },
@@ -2939,6 +2947,76 @@
         "route": "/registration",
         "severity": "low",
         "timestamp": 1782047890291,
+        "env": "dev"
+      }
+    ]
+  },
+  "maol_Q4fffeYYGJ": {
+    "errors": [
+      {
+        "type": "error",
+        "message": "Failed to execute 'transaction' on 'IDBDatabase': One of the specified object stores was not found.",
+        "stack": "NotFoundError: Failed to execute 'transaction' on 'IDBDatabase': One of the specified object stores was not found.\n    at getStore (http://localhost:3001/_next/static/chunks/src_1b2v2o5._.js:84:28)\n    at async govaDbGet (http://localhost:3001/_next/static/chunks/src_1b2v2o5._.js:94:19)\n    at async govaDbGetUiInspector (http://localhost:3001/_next/static/chunks/src_1b2v2o5._.js:132:12)\n    at async readSidebarWidth (http://localhost:3001/_next/static/chunks/src_platform_ui_devtools_1elknno._.js:4982:18)\n    at async Promise.all (index 0)\n    at async InspectorProvider.useEffect.loadLayout (http://localhost:3001/_next/static/chunks/src_platform_ui_devtools_1elknno._.js:5534:93)",
+        "route": "/devtools/ui-inspector",
+        "timestamp": 1782051631649,
+        "env": "dev"
+      }
+    ],
+    "warnings": [
+      {
+        "type": "warning",
+        "message": "%s Feature dictionary not found for feature: signup, locale: ar",
+        "route": "/registration",
+        "severity": "low",
+        "timestamp": 1782050888616,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[Fast Refresh] performing full reload Fast Refresh will perform a full reload when you edit a file that's imported by modules outside of the React rendering tree.\nYou might have a file which exports a React component but also exports a value that is imported by a non-React component file.\nConsider migrating the non-React component export to a separate file and importing it into both files. It is also possible the parent component of the component you edited is a class component, which disables F",
+        "route": "/registration",
+        "severity": "low",
+        "timestamp": 1782051619729,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "Image with src \"/images/logos/logo-full.webp\" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: \"auto\"' or 'height: \"auto\"' to maintain the aspect ratio.",
+        "route": "/home",
+        "severity": "low",
+        "timestamp": 1782051632132,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "%s Feature dictionary not found for feature: signup, locale: ar",
+        "route": "/home",
+        "severity": "low",
+        "timestamp": 1782051648700,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[Fast Refresh] performing full reload Fast Refresh will perform a full reload when you edit a file that's imported by modules outside of the React rendering tree.\nYou might have a file which exports a React component but also exports a value that is imported by a non-React component file.\nConsider migrating the non-React component export to a separate file and importing it into both files. It is also possible the parent component of the component you edited is a class component, which disables F",
+        "route": "/home",
+        "severity": "low",
+        "timestamp": 1782051778666,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[Fast Refresh] performing full reload Fast Refresh will perform a full reload when you edit a file that's imported by modules outside of the React rendering tree.\nYou might have a file which exports a React component but also exports a value that is imported by a non-React component file.\nConsider migrating the non-React component export to a separate file and importing it into both files. It is also possible the parent component of the component you edited is a class component, which disables F",
+        "route": "/devtools/ui-inspector",
+        "severity": "low",
+        "timestamp": 1782051778662,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "%s Feature dictionary not found for feature: signup, locale: ar",
+        "route": "/devtools/ui-inspector",
+        "severity": "low",
+        "timestamp": 1782051793964,
         "env": "dev"
       }
     ]

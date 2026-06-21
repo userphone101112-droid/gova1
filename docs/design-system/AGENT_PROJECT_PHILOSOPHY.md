@@ -334,7 +334,49 @@ Adding a new `page.tsx` under `src/app` is enough for inspector to see it — no
 
 ---
 
-## 13. What Usually Goes Wrong (And Why)
+## 13. GovaDB — Centralized Client-Side Storage (SSOT for localStorage)
+
+**GovaDB is the ONLY allowed way to store data on the client.** NO direct use of `localStorage`, `sessionStorage`, or raw IndexedDB — everything goes through `src/lib/gova-db`.
+
+### Why GovaDB Exists
+- **Single source of truth:** no scattered `localStorage.setItem` calls across the codebase
+- **Type safety:** every store has typed get/set functions
+- **Scalability:** IndexedDB can store much more data than localStorage
+- **Future-proof:** easy to add encryption, sync, or other features later
+
+### GovaDB Structure
+```text
+src/lib/gova-db/
+  index.ts  ← Central entry point (all exports from here)
+  (future: separate store files if needed)
+```
+
+### Stores in GovaDB
+- `GUEST_SESSIONS`: Guest user session data
+- `UI_INSPECTOR`: UI Inspector preferences (sidebar width, etc.)
+- `APP_SETTINGS`: Unified Zustand store persistence
+- `AUTH`: Authentication tokens
+
+### Rules for Using GovaDB
+1. **Never use `localStorage` directly** — ESLint will block you
+2. **Add new typed APIs** in `src/lib/gova-db/index.ts` for new data types
+3. **Use existing typed functions** instead of generic `govaDbGet`/`govaDbSet` when possible
+4. **Follow SSOT principle**: any data that needs to persist on the client must go through GovaDB
+
+### Example
+```typescript
+import { govaDbGetGuestSession, govaDbSetGuestSession } from '@/lib/gova-db';
+
+// Read
+const session = await govaDbGetGuestSession();
+
+// Write
+await govaDbSetGuestSession({ id: '...', createdAt: new Date().toISOString() });
+```
+
+---
+
+## 14. What Usually Goes Wrong (And Why)
 
 Understanding failures prevents maze-walking:
 

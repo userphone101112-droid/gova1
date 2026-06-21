@@ -1,5 +1,7 @@
 'use client';
 
+import { govaDbClearAll } from '@/lib/gova-db';
+
 export function calculateLocalStorageSize(): number {
   if (typeof window === 'undefined' || !window.localStorage) return 0;
 
@@ -51,7 +53,7 @@ export async function clearIndexedDB(): Promise<void> {
   for (const db of dbs) {
     if (db.name) {
       await new Promise<void>((resolve) => {
-        const request = window.indexedDB.deleteDatabase(db.name);
+        const request = window.indexedDB.deleteDatabase(db.name as string);
         request.onsuccess = () => resolve();
         request.onerror = () => resolve();
       });
@@ -62,5 +64,6 @@ export async function clearIndexedDB(): Promise<void> {
 export async function clearAllStorage(): Promise<void> {
   clearLocalStorage();
   clearCookies();
+  await govaDbClearAll();
   await clearIndexedDB();
 }

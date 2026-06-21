@@ -6,18 +6,14 @@ import {
   DEFAULT_PREVIEW_WIDTH,
   DEFAULT_SIDEBAR_WIDTH,
   MIN_PANEL_SIZE,
-  PICK_MODE_KEY,
-  FRAMES_MODE_KEY,
-  PREVIEW_SIZE_KEY,
   RESIZER_WIDTH,
-  SIDEBAR_WIDTH_KEY,
 } from './constants';
+import { govaDbGetUiInspector, govaDbSetUiInspector } from '@/lib/gova-db';
 
-export function readSidebarWidth(): number {
-  if (typeof window === 'undefined') return DEFAULT_SIDEBAR_WIDTH;
-  const saved = window.localStorage.getItem(SIDEBAR_WIDTH_KEY);
-  const parsed = saved ? Number(saved) : DEFAULT_SIDEBAR_WIDTH;
-  if (!Number.isFinite(parsed) || parsed <= 0) return DEFAULT_SIDEBAR_WIDTH;
+export async function readSidebarWidth(): Promise<number> {
+  const data = await govaDbGetUiInspector();
+  const parsed = data.sidebarWidth;
+  if (parsed == null || !Number.isFinite(parsed) || parsed <= 0) return DEFAULT_SIDEBAR_WIDTH;
   return parsed;
 }
 
@@ -26,53 +22,38 @@ export function clampSidebarWidth(width: number, viewportWidth: number): number 
   return Math.max(MIN_PANEL_SIZE, Math.min(maxWidth, width));
 }
 
-export function persistSidebarWidth(width: number): void {
-  window.localStorage.setItem(SIDEBAR_WIDTH_KEY, String(width));
+export async function persistSidebarWidth(width: number): Promise<void> {
+  await govaDbSetUiInspector({ sidebarWidth: width });
 }
 
-export function readPreviewSize(): ViewportSettings {
-  if (typeof window === 'undefined') {
+export async function readPreviewSize(): Promise<ViewportSettings> {
+  const data = await govaDbGetUiInspector();
+  const saved = data.previewSize;
+  if (!saved) {
     return {
       width: DEFAULT_PREVIEW_WIDTH,
       height: DEFAULT_PREVIEW_HEIGHT,
       scale: DEFAULT_PREVIEW_SCALE,
     };
   }
-  try {
-    const saved = window.localStorage.getItem(PREVIEW_SIZE_KEY);
-    if (!saved) {
-      return {
-        width: DEFAULT_PREVIEW_WIDTH,
-        height: DEFAULT_PREVIEW_HEIGHT,
-        scale: DEFAULT_PREVIEW_SCALE,
-      };
-    }
-    const parsed = JSON.parse(saved) as Partial<ViewportSettings>;
-    return {
-      width:
-        typeof parsed.width === 'number' && parsed.width > 0
-          ? parsed.width
-          : DEFAULT_PREVIEW_WIDTH,
-      height:
-        typeof parsed.height === 'number' && parsed.height > 0
-          ? parsed.height
-          : DEFAULT_PREVIEW_HEIGHT,
-      scale:
-        typeof parsed.scale === 'number' && parsed.scale > 0
-          ? parsed.scale
-          : DEFAULT_PREVIEW_SCALE,
-    };
-  } catch {
-    return {
-      width: DEFAULT_PREVIEW_WIDTH,
-      height: DEFAULT_PREVIEW_HEIGHT,
-      scale: DEFAULT_PREVIEW_SCALE,
-    };
-  }
+  return {
+    width:
+      typeof saved.width === 'number' && saved.width > 0
+        ? saved.width
+        : DEFAULT_PREVIEW_WIDTH,
+    height:
+      typeof saved.height === 'number' && saved.height > 0
+        ? saved.height
+        : DEFAULT_PREVIEW_HEIGHT,
+    scale:
+      typeof saved.scale === 'number' && saved.scale > 0
+        ? saved.scale
+        : DEFAULT_PREVIEW_SCALE,
+  };
 }
 
-export function persistPreviewSize(size: ViewportSettings): void {
-  window.localStorage.setItem(PREVIEW_SIZE_KEY, JSON.stringify(size));
+export async function persistPreviewSize(size: ViewportSettings): Promise<void> {
+  await govaDbSetUiInspector({ previewSize: size });
 }
 
 export function clampPreviewDimension(value: number): number {
@@ -85,22 +66,20 @@ export function clampPreviewScale(value: number): number {
   return Math.max(MIN_PANEL_SIZE / 100, value);
 }
 
-export function readPickModeEnabled(): boolean {
-  if (typeof window === 'undefined') return true;
-  const saved = window.localStorage.getItem(PICK_MODE_KEY);
-  return saved === null ? true : saved === 'true';
+export async function readPickModeEnabled(): Promise<boolean> {
+  const data = await govaDbGetUiInspector();
+  return data.pickModeEnabled ?? true;
 }
 
-export function persistPickModeEnabled(enabled: boolean): void {
-  window.localStorage.setItem(PICK_MODE_KEY, String(enabled));
+export async function persistPickModeEnabled(enabled: boolean): Promise<void> {
+  await govaDbSetUiInspector({ pickModeEnabled: enabled });
 }
 
-export function readFramesModeEnabled(): boolean {
-  if (typeof window === 'undefined') return false;
-  const saved = window.localStorage.getItem(FRAMES_MODE_KEY);
-  return saved === 'true';
+export async function readFramesModeEnabled(): Promise<boolean> {
+  const data = await govaDbGetUiInspector();
+  return data.framesModeEnabled ?? false;
 }
 
-export function persistFramesModeEnabled(enabled: boolean): void {
-  window.localStorage.setItem(FRAMES_MODE_KEY, String(enabled));
+export async function persistFramesModeEnabled(enabled: boolean): Promise<void> {
+  await govaDbSetUiInspector({ framesModeEnabled: enabled });
 }

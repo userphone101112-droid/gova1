@@ -80,11 +80,23 @@ export function InspectorProvider({ children }: { children: ReactNode }) {
   }, [state.sidebarWidth]);
 
   useEffect(() => {
-    const initialSidebar = clampSidebarWidth(readSidebarWidth(), window.innerWidth);
-    dispatch({ type: 'SET_SIDEBAR_WIDTH', width: initialSidebar });
-    dispatch({ type: 'SET_PREVIEW_SIZE', previewSize: readPreviewSize() });
-    dispatch({ type: 'SET_PICK_MODE', enabled: readPickModeEnabled() });
-    dispatch({ type: 'SET_FRAMES_MODE', enabled: readFramesModeEnabled() });
+    const loadLayout = async () => {
+      const [sidebarWidth, previewSize, pickModeEnabled, framesModeEnabled] =
+        await Promise.all([
+          readSidebarWidth(),
+          readPreviewSize(),
+          readPickModeEnabled(),
+          readFramesModeEnabled(),
+        ]);
+      dispatch({
+        type: 'SET_SIDEBAR_WIDTH',
+        width: clampSidebarWidth(sidebarWidth, window.innerWidth),
+      });
+      dispatch({ type: 'SET_PREVIEW_SIZE', previewSize });
+      dispatch({ type: 'SET_PICK_MODE', enabled: pickModeEnabled });
+      dispatch({ type: 'SET_FRAMES_MODE', enabled: framesModeEnabled });
+    };
+    void loadLayout();
   }, []);
 
   const sendBindingFrames = useCallback(
