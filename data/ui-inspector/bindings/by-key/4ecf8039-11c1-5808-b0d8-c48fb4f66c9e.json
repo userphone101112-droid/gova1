@@ -1,18 +1,5 @@
 {
   "identityKey": "4ecf8039-11c1-5808-b0d8-c48fb4f66c9e",
-  "bindings": [
-    {
-      "id": "storage_e2253af4-58aa-4adc-808d-69a33adc9a89",
-      "kind": "storage",
-      "role": "upload_to",
-      "enabled": true,
-      "label": "Projects/Frontend",
-      "confidence": "medium",
-      "createdAt": "2026-06-20T14:22:31.937Z",
-      "updatedAt": "2026-06-20T14:22:31.937Z",
-      "storageMainFile": "Projects",
-      "storageSubFile": "Frontend"
-    }
-  ],
-  "updatedAt": "2026-06-20T12:25:39.502Z"
+  "bindings": [],
+  "updatedAt": "2026-06-21T10:55:58.944Z"
 }

@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-06-21T10:53:11.528Z",
+  "updatedAt": "2026-06-21T10:55:59.151Z",
   "totalElements": 5,
-  "totalBindings": 3,
+  "totalBindings": 2,
   "entries": [
     {
       "bindings": [],
@@ -52,20 +52,7 @@
       "updatedAt": "2026-06-20T11:06:03.355Z"
     },
     {
-      "bindings": [
-        {
-          "id": "storage_e2253af4-58aa-4adc-808d-69a33adc9a89",
-          "kind": "storage",
-          "role": "upload_to",
-          "enabled": true,
-          "label": "Projects/Frontend",
-          "confidence": "medium",
-          "createdAt": "2026-06-20T14:22:31.937Z",
-          "updatedAt": "2026-06-20T14:22:31.937Z",
-          "storageMainFile": "Projects",
-          "storageSubFile": "Frontend"
-        }
-      ],
+      "bindings": [],
       "customAttributes": [],
       "databaseEnabled": false,
       "databaseName": "",
@@ -74,9 +61,9 @@
       "inf1": "1",
       "inf2": "2",
       "inf3": "3",
-      "storageEnabled": true,
-      "storageMainFile": "Projects",
-      "storageSubFile": "Frontend",
+      "storageEnabled": false,
+      "storageMainFile": "",
+      "storageSubFile": "",
       "attributesEnabled": true,
       "attribute1": true,
       "attribute2": false,
@@ -86,7 +73,7 @@
       "dataUiUuid": "4ecf8039-11c1-5808-b0d8-c48fb4f66c9e",
       "dataUiInstanceId": "",
       "dataUiIdentityKey": "4ecf8039-11c1-5808-b0d8-c48fb4f66c9e",
-      "updatedAt": "2026-06-20T12:25:39.502Z"
+      "updatedAt": "2026-06-21T10:55:58.944Z"
     },
     {
       "bindings": [

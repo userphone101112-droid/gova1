@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-06-21T10:53:11.526Z",
+  "updatedAt": "2026-06-21T10:55:59.150Z",
   "entries": [
     {
       "identityKey": "23f4f6b3-513e-5b6a-ac7c-9585009fde64",
@@ -32,10 +32,10 @@
       "instanceId": "",
       "path": "auth.registration.brand-name",
       "feature": "auth",
-      "updatedAt": "2026-06-20T12:25:39.502Z",
-      "hasBindings": true,
-      "bindingCount": 1,
-      "hasStorage": true,
+      "updatedAt": "2026-06-21T10:55:58.944Z",
+      "hasBindings": false,
+      "bindingCount": 0,
+      "hasStorage": false,
       "hasDatabase": false
     },
     {

@@ -48,20 +48,7 @@
     "updatedAt": "2026-06-20T11:06:03.355Z"
   },
   "4ecf8039-11c1-5808-b0d8-c48fb4f66c9e": {
-    "bindings": [
-      {
-        "id": "storage_e2253af4-58aa-4adc-808d-69a33adc9a89",
-        "kind": "storage",
-        "role": "upload_to",
-        "enabled": true,
-        "label": "Projects/Frontend",
-        "confidence": "medium",
-        "createdAt": "2026-06-20T14:22:31.937Z",
-        "updatedAt": "2026-06-20T14:22:31.937Z",
-        "storageMainFile": "Projects",
-        "storageSubFile": "Frontend"
-      }
-    ],
+    "bindings": [],
     "customAttributes": [],
     "databaseEnabled": false,
     "databaseName": "",
@@ -70,9 +57,9 @@
     "inf1": "1",
     "inf2": "2",
     "inf3": "3",
-    "storageEnabled": true,
-    "storageMainFile": "Projects",
-    "storageSubFile": "Frontend",
+    "storageEnabled": false,
+    "storageMainFile": "",
+    "storageSubFile": "",
     "attributesEnabled": true,
     "attribute1": true,
     "attribute2": false,
@@ -82,7 +69,49 @@
     "dataUiUuid": "4ecf8039-11c1-5808-b0d8-c48fb4f66c9e",
     "dataUiInstanceId": "",
     "dataUiIdentityKey": "4ecf8039-11c1-5808-b0d8-c48fb4f66c9e",
-    "updatedAt": "2026-06-20T12:25:39.502Z"
+    "updatedAt": "2026-06-21T10:55:58.944Z"
+  },
+  "93d1b686-6299-5719-94b5-bbe4c13f9197": {
+    "bindings": [
+      {
+        "id": "database_1a0d9d0d-a517-4292-929f-c9a25eb80f9f",
+        "kind": "database",
+        "role": "read_from",
+        "enabled": true,
+        "label": "database binding",
+        "confidence": "medium",
+        "createdAt": "2026-06-21T10:52:02.102Z",
+        "updatedAt": "2026-06-21T10:53:05.486Z",
+        "databaseName": "allusers",
+        "tableName": "users",
+        "columnName": "password",
+        "queryHint": "search",
+        "indexNeed": "required",
+        "required": true,
+        "sensitive": true
+      }
+    ],
+    "customAttributes": [],
+    "databaseEnabled": true,
+    "databaseName": "allusers",
+    "tableName": "users",
+    "columnName": "password",
+    "inf1": "",
+    "inf2": "",
+    "inf3": "",
+    "storageEnabled": false,
+    "storageMainFile": "",
+    "storageSubFile": "",
+    "attributesEnabled": false,
+    "attribute1": false,
+    "attribute2": false,
+    "attribute3": false,
+    "dataUiPath": "auth.login.form.password-input",
+    "dataUiFeature": "auth",
+    "dataUiUuid": "93d1b686-6299-5719-94b5-bbe4c13f9197",
+    "dataUiInstanceId": "",
+    "dataUiIdentityKey": "93d1b686-6299-5719-94b5-bbe4c13f9197",
+    "updatedAt": "2026-06-21T10:53:11.465Z"
   },
   "dc25839f-b4f2-5f9a-bb4b-fc15b69586e8": {
     "bindings": [
@@ -132,47 +161,5 @@
     "dataUiInstanceId": "",
     "dataUiIdentityKey": "dc25839f-b4f2-5f9a-bb4b-fc15b69586e8",
     "updatedAt": "2026-06-21T10:48:50.089Z"
-  },
-  "93d1b686-6299-5719-94b5-bbe4c13f9197": {
-    "bindings": [
-      {
-        "id": "database_1a0d9d0d-a517-4292-929f-c9a25eb80f9f",
-        "kind": "database",
-        "role": "read_from",
-        "enabled": true,
-        "label": "database binding",
-        "confidence": "medium",
-        "createdAt": "2026-06-21T10:52:02.102Z",
-        "updatedAt": "2026-06-21T10:53:05.486Z",
-        "databaseName": "allusers",
-        "tableName": "users",
-        "columnName": "password",
-        "queryHint": "search",
-        "indexNeed": "required",
-        "required": true,
-        "sensitive": true
-      }
-    ],
-    "customAttributes": [],
-    "databaseEnabled": true,
-    "databaseName": "allusers",
-    "tableName": "users",
-    "columnName": "password",
-    "inf1": "",
-    "inf2": "",
-    "inf3": "",
-    "storageEnabled": false,
-    "storageMainFile": "",
-    "storageSubFile": "",
-    "attributesEnabled": false,
-    "attribute1": false,
-    "attribute2": false,
-    "attribute3": false,
-    "dataUiPath": "auth.login.form.password-input",
-    "dataUiFeature": "auth",
-    "dataUiUuid": "93d1b686-6299-5719-94b5-bbe4c13f9197",
-    "dataUiInstanceId": "",
-    "dataUiIdentityKey": "93d1b686-6299-5719-94b5-bbe4c13f9197",
-    "updatedAt": "2026-06-21T10:53:11.465Z"
   }
 }
