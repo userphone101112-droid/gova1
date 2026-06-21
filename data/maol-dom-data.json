@@ -297,7 +297,7 @@
     },
     {
       "route": "/home",
-      "timestamp": 1781990453191,
+      "timestamp": 1781990611195,
       "totalIdentified": 229,
       "tree": {
         "type": "page",
@@ -440,7 +440,7 @@
     },
     {
       "route": "/settings",
-      "timestamp": 1781990280838,
+      "timestamp": 1781990553754,
       "totalIdentified": 198,
       "tree": {
         "type": "page",
@@ -475,10 +475,10 @@
               "UI_SHARED_BOTTOM_NAV_CONTAINER",
               "UI_SHARED_BOTTOM_NAV_HOME",
               "UI_SHARED_BOTTOM_NAV_HOME_LABEL",
+              "UI_SHARED_BOTTOM_NAV_HOME_INDICATOR",
               "UI_SHARED_BOTTOM_NAV_NOTIFICATIONS",
               "UI_SHARED_BOTTOM_NAV_NOTIFICATIONS_BADGE",
               "UI_SHARED_BOTTOM_NAV_NOTIFICATIONS_LABEL",
-              "UI_SHARED_BOTTOM_NAV_NOTIFICATIONS_INDICATOR",
               "UI_SHARED_BOTTOM_NAV_FAVORITES",
               "UI_SHARED_BOTTOM_NAV_FAVORITES_LABEL",
               "UI_SHARED_BOTTOM_NAV_ORDERS",
@@ -688,8 +688,8 @@
     },
     {
       "route": "/devtools/ui-inspector",
-      "timestamp": 1781990452177,
-      "totalIdentified": 69,
+      "timestamp": 1781990611191,
+      "totalIdentified": 59,
       "tree": {
         "type": "page",
         "children": [
@@ -716,19 +716,10 @@
               "UI_DEVTOOLS_UI_INSPECTOR_SELECTED_CONTAINER",
               "UI_DEVTOOLS_UI_INSPECTOR_SIDEBAR_DISPLAY_LABEL",
               "UI_DEVTOOLS_UI_INSPECTOR_STATUS_CONTAINER",
-              "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_STABLE_ID_LABEL",
-              "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_STABLE_ID_VALUE",
-              "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_PATH_LABEL",
-              "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_PATH_VALUE",
-              "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_TAG_LABEL",
-              "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_TAG_VALUE",
-              "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_UUID_LABEL",
-              "UI_DEVTOOLS_UI_INSPECTOR_DETAILS_UUID_VALUE",
               "UI_DEVTOOLS_UI_INSPECTOR_STATUS_IFRAME_VALUE",
               "UI_DEVTOOLS_UI_INSPECTOR_STATUS_SCAN_VALUE",
               "UI_DEVTOOLS_UI_INSPECTOR_STATUS_COUNT_VALUE",
               "UI_DEVTOOLS_UI_INSPECTOR_STATUS_URL_VALUE",
-              "UI_DEVTOOLS_UI_INSPECTOR_SIDEBAR_DBATTRS_LABEL",
               "UI_DEVTOOLS_UI_INSPECTOR_SIDEBAR_DBMGMT_LABEL",
               "UI_DEVTOOLS_UI_INSPECTOR_SIDEBAR_SCHEMA_LABEL",
               "UI_DEVTOOLS_UI_INSPECTOR_SEARCH_LABEL",
@@ -757,6 +748,7 @@
               "h1",
               "button",
               "span",
+              "code",
               "select",
               "option",
               "input",
