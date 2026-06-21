@@ -1,0 +1,9 @@
+{
+  "identityKey": "a1fed973-0ee2-517c-8c71-b511dc3a4a02",
+  "dataUiPath": "auth.registration.phone-input",
+  "dataUiFeature": "auth",
+  "dataUiUuid": "a1fed973-0ee2-517c-8c71-b511dc3a4a02",
+  "dataUiInstanceId": "",
+  "updatedAt": "2026-06-21T11:17:09.016Z",
+  "route": "/registration"
+}

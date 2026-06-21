@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-06-21T10:55:59.150Z",
+  "updatedAt": "2026-06-21T11:17:53.284Z",
   "entries": [
     {
       "identityKey": "23f4f6b3-513e-5b6a-ac7c-9585009fde64",
@@ -27,6 +27,18 @@
       "hasDatabase": false
     },
     {
+      "identityKey": "44b2b3d2-8d19-5133-8732-c708bb730df1",
+      "uuid": "44b2b3d2-8d19-5133-8732-c708bb730df1",
+      "instanceId": "",
+      "path": "auth.registration.password-input",
+      "feature": "auth",
+      "updatedAt": "2026-06-21T11:17:53.199Z",
+      "hasBindings": true,
+      "bindingCount": 1,
+      "hasStorage": false,
+      "hasDatabase": true
+    },
+    {
       "identityKey": "4ecf8039-11c1-5808-b0d8-c48fb4f66c9e",
       "uuid": "4ecf8039-11c1-5808-b0d8-c48fb4f66c9e",
       "instanceId": "",
@@ -45,6 +57,18 @@
       "path": "auth.login.form.password-input",
       "feature": "auth",
       "updatedAt": "2026-06-21T10:53:11.465Z",
+      "hasBindings": true,
+      "bindingCount": 1,
+      "hasStorage": false,
+      "hasDatabase": true
+    },
+    {
+      "identityKey": "a1fed973-0ee2-517c-8c71-b511dc3a4a02",
+      "uuid": "a1fed973-0ee2-517c-8c71-b511dc3a4a02",
+      "instanceId": "",
+      "path": "auth.registration.phone-input",
+      "feature": "auth",
+      "updatedAt": "2026-06-21T11:17:09.016Z",
       "hasBindings": true,
       "bindingCount": 1,
       "hasStorage": false,

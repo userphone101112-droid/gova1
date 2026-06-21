@@ -1,0 +1,22 @@
+{
+  "identityKey": "44b2b3d2-8d19-5133-8732-c708bb730df1",
+  "bindings": [
+    {
+      "id": "database_06529363-4f4d-4009-9695-0a10f2e4117e",
+      "kind": "database",
+      "role": "write_to",
+      "enabled": true,
+      "label": "database binding",
+      "confidence": "medium",
+      "createdAt": "2026-06-21T11:17:15.396Z",
+      "updatedAt": "2026-06-21T11:17:36.972Z",
+      "databaseName": "allusers",
+      "tableName": "users",
+      "columnName": "password",
+      "queryHint": "search",
+      "required": true,
+      "sensitive": true
+    }
+  ],
+  "updatedAt": "2026-06-21T11:17:53.199Z"
+}

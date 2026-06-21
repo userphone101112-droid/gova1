@@ -1,0 +1,9 @@
+{
+  "identityKey": "44b2b3d2-8d19-5133-8732-c708bb730df1",
+  "dataUiPath": "auth.registration.password-input",
+  "dataUiFeature": "auth",
+  "dataUiUuid": "44b2b3d2-8d19-5133-8732-c708bb730df1",
+  "dataUiInstanceId": "",
+  "updatedAt": "2026-06-21T11:17:53.199Z",
+  "route": "/registration"
+}

@@ -17,6 +17,16 @@
       "kinds": []
     },
     {
+      "identityKey": "44b2b3d2-8d19-5133-8732-c708bb730df1",
+      "uuid": "44b2b3d2-8d19-5133-8732-c708bb730df1",
+      "path": "auth.registration.password-input",
+      "feature": "auth",
+      "bindingCount": 1,
+      "kinds": [
+        "database"
+      ]
+    },
+    {
       "identityKey": "4ecf8039-11c1-5808-b0d8-c48fb4f66c9e",
       "uuid": "4ecf8039-11c1-5808-b0d8-c48fb4f66c9e",
       "path": "auth.registration.brand-name",
@@ -28,6 +38,16 @@
       "identityKey": "93d1b686-6299-5719-94b5-bbe4c13f9197",
       "uuid": "93d1b686-6299-5719-94b5-bbe4c13f9197",
       "path": "auth.login.form.password-input",
+      "feature": "auth",
+      "bindingCount": 1,
+      "kinds": [
+        "database"
+      ]
+    },
+    {
+      "identityKey": "a1fed973-0ee2-517c-8c71-b511dc3a4a02",
+      "uuid": "a1fed973-0ee2-517c-8c71-b511dc3a4a02",
+      "path": "auth.registration.phone-input",
       "feature": "auth",
       "bindingCount": 1,
       "kinds": [
@@ -47,6 +67,50 @@
   ],
   "edges": [
     {
+      "id": "44b2b3d2-8d19-5133-8732-c708bb730df1::93d1b686-6299-5719-94b5-bbe4c13f9197::shares_database_table::database_06529363-4f4d-4009-9695-0a10f2e4117e",
+      "fromElementKey": "44b2b3d2-8d19-5133-8732-c708bb730df1",
+      "toElementKey": "93d1b686-6299-5719-94b5-bbe4c13f9197",
+      "fromBindingId": "database_06529363-4f4d-4009-9695-0a10f2e4117e",
+      "toBindingId": "database_1a0d9d0d-a517-4292-929f-c9a25eb80f9f",
+      "relationKind": "shares_database_table",
+      "confidence": "high",
+      "reason": "Shared column allusers.users.password",
+      "createdFrom": "inferred_shared_database"
+    },
+    {
+      "id": "44b2b3d2-8d19-5133-8732-c708bb730df1::a1fed973-0ee2-517c-8c71-b511dc3a4a02::same_database::database_06529363-4f4d-4009-9695-0a10f2e4117e",
+      "fromElementKey": "44b2b3d2-8d19-5133-8732-c708bb730df1",
+      "toElementKey": "a1fed973-0ee2-517c-8c71-b511dc3a4a02",
+      "fromBindingId": "database_06529363-4f4d-4009-9695-0a10f2e4117e",
+      "toBindingId": "database_abd586bc-63a6-4795-ae97-6717e73af7c0",
+      "relationKind": "same_database",
+      "confidence": "medium",
+      "reason": "Shared table allusers.users",
+      "createdFrom": "inferred_shared_database"
+    },
+    {
+      "id": "44b2b3d2-8d19-5133-8732-c708bb730df1::dc25839f-b4f2-5f9a-bb4b-fc15b69586e8::same_database::database_06529363-4f4d-4009-9695-0a10f2e4117e",
+      "fromElementKey": "44b2b3d2-8d19-5133-8732-c708bb730df1",
+      "toElementKey": "dc25839f-b4f2-5f9a-bb4b-fc15b69586e8",
+      "fromBindingId": "database_06529363-4f4d-4009-9695-0a10f2e4117e",
+      "toBindingId": "database_fd2cd13f-9578-42b4-93c8-6b333f9c1b14",
+      "relationKind": "same_database",
+      "confidence": "medium",
+      "reason": "Shared table allusers.users",
+      "createdFrom": "inferred_shared_database"
+    },
+    {
+      "id": "93d1b686-6299-5719-94b5-bbe4c13f9197::a1fed973-0ee2-517c-8c71-b511dc3a4a02::same_database::database_1a0d9d0d-a517-4292-929f-c9a25eb80f9f",
+      "fromElementKey": "93d1b686-6299-5719-94b5-bbe4c13f9197",
+      "toElementKey": "a1fed973-0ee2-517c-8c71-b511dc3a4a02",
+      "fromBindingId": "database_1a0d9d0d-a517-4292-929f-c9a25eb80f9f",
+      "toBindingId": "database_abd586bc-63a6-4795-ae97-6717e73af7c0",
+      "relationKind": "same_database",
+      "confidence": "medium",
+      "reason": "Shared table allusers.users",
+      "createdFrom": "inferred_shared_database"
+    },
+    {
       "id": "93d1b686-6299-5719-94b5-bbe4c13f9197::dc25839f-b4f2-5f9a-bb4b-fc15b69586e8::same_database::database_1a0d9d0d-a517-4292-929f-c9a25eb80f9f",
       "fromElementKey": "93d1b686-6299-5719-94b5-bbe4c13f9197",
       "toElementKey": "dc25839f-b4f2-5f9a-bb4b-fc15b69586e8",
@@ -56,7 +120,18 @@
       "confidence": "medium",
       "reason": "Shared table allusers.users",
       "createdFrom": "inferred_shared_database"
+    },
+    {
+      "id": "a1fed973-0ee2-517c-8c71-b511dc3a4a02::dc25839f-b4f2-5f9a-bb4b-fc15b69586e8::shares_database_table::database_abd586bc-63a6-4795-ae97-6717e73af7c0",
+      "fromElementKey": "a1fed973-0ee2-517c-8c71-b511dc3a4a02",
+      "toElementKey": "dc25839f-b4f2-5f9a-bb4b-fc15b69586e8",
+      "fromBindingId": "database_abd586bc-63a6-4795-ae97-6717e73af7c0",
+      "toBindingId": "database_fd2cd13f-9578-42b4-93c8-6b333f9c1b14",
+      "relationKind": "shares_database_table",
+      "confidence": "high",
+      "reason": "Shared column allusers.users.phone",
+      "createdFrom": "inferred_shared_database"
     }
   ],
-  "updatedAt": "2026-06-21T10:55:59.150Z"
+  "updatedAt": "2026-06-21T11:17:53.284Z"
 }
