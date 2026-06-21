@@ -27,6 +27,16 @@
       ]
     },
     {
+      "identityKey": "93d1b686-6299-5719-94b5-bbe4c13f9197",
+      "uuid": "93d1b686-6299-5719-94b5-bbe4c13f9197",
+      "path": "auth.login.form.password-input",
+      "feature": "auth",
+      "bindingCount": 1,
+      "kinds": [
+        "database"
+      ]
+    },
+    {
       "identityKey": "dc25839f-b4f2-5f9a-bb4b-fc15b69586e8",
       "uuid": "dc25839f-b4f2-5f9a-bb4b-fc15b69586e8",
       "path": "auth.login.form.phone-input",
@@ -37,6 +47,18 @@
       ]
     }
   ],
-  "edges": [],
-  "updatedAt": "2026-06-21T10:48:50.186Z"
+  "edges": [
+    {
+      "id": "dc25839f-b4f2-5f9a-bb4b-fc15b69586e8::93d1b686-6299-5719-94b5-bbe4c13f9197::same_database::database_fd2cd13f-9578-42b4-93c8-6b333f9c1b14",
+      "fromElementKey": "dc25839f-b4f2-5f9a-bb4b-fc15b69586e8",
+      "toElementKey": "93d1b686-6299-5719-94b5-bbe4c13f9197",
+      "fromBindingId": "database_fd2cd13f-9578-42b4-93c8-6b333f9c1b14",
+      "toBindingId": "database_1a0d9d0d-a517-4292-929f-c9a25eb80f9f",
+      "relationKind": "same_database",
+      "confidence": "medium",
+      "reason": "Shared table allusers.users",
+      "createdFrom": "inferred_shared_database"
+    }
+  ],
+  "updatedAt": "2026-06-21T10:53:11.527Z"
 }

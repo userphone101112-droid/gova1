@@ -1,0 +1,9 @@
+{
+  "identityKey": "93d1b686-6299-5719-94b5-bbe4c13f9197",
+  "dataUiPath": "auth.login.form.password-input",
+  "dataUiFeature": "auth",
+  "dataUiUuid": "93d1b686-6299-5719-94b5-bbe4c13f9197",
+  "dataUiInstanceId": "",
+  "updatedAt": "2026-06-21T10:53:11.465Z",
+  "route": "/login"
+}

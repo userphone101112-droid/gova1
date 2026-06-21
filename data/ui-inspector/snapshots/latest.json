@@ -1,7 +1,7 @@
 {
-  "updatedAt": "2026-06-21T10:48:50.186Z",
-  "totalElements": 4,
-  "totalBindings": 2,
+  "updatedAt": "2026-06-21T10:53:11.528Z",
+  "totalElements": 5,
+  "totalBindings": 3,
   "entries": [
     {
       "bindings": [],
@@ -87,6 +87,48 @@
       "dataUiInstanceId": "",
       "dataUiIdentityKey": "4ecf8039-11c1-5808-b0d8-c48fb4f66c9e",
       "updatedAt": "2026-06-20T12:25:39.502Z"
+    },
+    {
+      "bindings": [
+        {
+          "id": "database_1a0d9d0d-a517-4292-929f-c9a25eb80f9f",
+          "kind": "database",
+          "role": "read_from",
+          "enabled": true,
+          "label": "database binding",
+          "confidence": "medium",
+          "createdAt": "2026-06-21T10:52:02.102Z",
+          "updatedAt": "2026-06-21T10:53:05.486Z",
+          "databaseName": "allusers",
+          "tableName": "users",
+          "columnName": "password",
+          "queryHint": "search",
+          "indexNeed": "required",
+          "required": true,
+          "sensitive": true
+        }
+      ],
+      "customAttributes": [],
+      "databaseEnabled": true,
+      "databaseName": "allusers",
+      "tableName": "users",
+      "columnName": "password",
+      "inf1": "",
+      "inf2": "",
+      "inf3": "",
+      "storageEnabled": false,
+      "storageMainFile": "",
+      "storageSubFile": "",
+      "attributesEnabled": false,
+      "attribute1": false,
+      "attribute2": false,
+      "attribute3": false,
+      "dataUiPath": "auth.login.form.password-input",
+      "dataUiFeature": "auth",
+      "dataUiUuid": "93d1b686-6299-5719-94b5-bbe4c13f9197",
+      "dataUiInstanceId": "",
+      "dataUiIdentityKey": "93d1b686-6299-5719-94b5-bbe4c13f9197",
+      "updatedAt": "2026-06-21T10:53:11.465Z"
     },
     {
       "bindings": [

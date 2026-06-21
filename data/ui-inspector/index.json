@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-06-21T10:48:50.186Z",
+  "updatedAt": "2026-06-21T10:53:11.526Z",
   "entries": [
     {
       "identityKey": "23f4f6b3-513e-5b6a-ac7c-9585009fde64",
@@ -37,6 +37,18 @@
       "bindingCount": 1,
       "hasStorage": true,
       "hasDatabase": false
+    },
+    {
+      "identityKey": "93d1b686-6299-5719-94b5-bbe4c13f9197",
+      "uuid": "93d1b686-6299-5719-94b5-bbe4c13f9197",
+      "instanceId": "",
+      "path": "auth.login.form.password-input",
+      "feature": "auth",
+      "updatedAt": "2026-06-21T10:53:11.465Z",
+      "hasBindings": true,
+      "bindingCount": 1,
+      "hasStorage": false,
+      "hasDatabase": true
     },
     {
       "identityKey": "dc25839f-b4f2-5f9a-bb4b-fc15b69586e8",
