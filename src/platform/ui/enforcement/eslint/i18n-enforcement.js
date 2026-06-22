@@ -623,7 +623,7 @@ const enforceUiTranslationCoupling = {
     },
     schema: [],
     messages: {
-      missingUiContext: 'Translation key "{{key}}" is used without UI context. Wrap it in an element with data-ui-uuid from the registry.',
+      missingUiContext: 'Translation key "{{key}}" is used without UI context. Wrap it in an element with data-ui-lang-uuid.',
     },
   },
   create(context) {
@@ -643,10 +643,10 @@ const enforceUiTranslationCoupling = {
     
     let hasUiContext = false;
     
-    function hasDataUiUuid(node) {
+    function hasDataUiLangUuid(node) {
       if (!node.attributes) return false;
       return node.attributes.some(
-        (attr) => attr.type === 'JSXAttribute' && attr.name?.name === 'data-ui-uuid'
+        (attr) => attr.type === 'JSXAttribute' && attr.name?.name === 'data-ui-lang-uuid'
       );
     }
     
@@ -657,7 +657,7 @@ const enforceUiTranslationCoupling = {
           return;
         }
         if (node.name?.type === 'JSXIdentifier' && node.name.name === node.name.name.toLowerCase()) {
-          if (hasDataUiUuid(node)) {
+          if (hasDataUiLangUuid(node)) {
             hasUiContext = true;
           }
         }
@@ -665,7 +665,7 @@ const enforceUiTranslationCoupling = {
       
       'JSXOpeningElement:exit'(node) {
         if (node.name?.type === 'JSXIdentifier') {
-          if (node.name.name.startsWith('Ui') || (node.name.name === node.name.name.toLowerCase() && hasDataUiUuid(node))) {
+          if (node.name.name.startsWith('Ui') || (node.name.name === node.name.name.toLowerCase() && hasDataUiLangUuid(node))) {
             hasUiContext = false;
           }
         }

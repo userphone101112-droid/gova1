@@ -85,6 +85,9 @@ export function scanInspectableElements(): InspectElementSnapshot[] {
         sourceLine: source?.sourceLine ?? 0,
         sourceColumn: (source as any)?.sourceColumn ?? 0,
         hasSource: Boolean(source),
+        domPath: getDomPath(el),
+        textSnippet: getTextSnippet(el),
+        className: getClassName(el),
       };
     } else {
       // Element without UUID - collect basic info for registration

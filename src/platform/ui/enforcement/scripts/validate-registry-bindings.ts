@@ -1,16 +1,6 @@
 import { readFileSync, readdirSync, existsSync } from 'fs';
 import { join } from 'path';
 
-import {
-  generateTranslationKeyFromUi,
-  isCategoryUiPath,
-} from '../../i18n/binding/registry-binding';
-import {
-  ALL_UI_IDENTIFIERS,
-  isTranslationRequiredForUiIdentity,
-  isUuidBackedUiIdentity,
-} from '../../registry/registry';
-
 function flattenTranslationKeys(
   obj: Record<string, unknown>,
   prefix = '',
@@ -54,17 +44,54 @@ export function loadAllTranslationKeys(): Set<string> {
 
 export function getRequiredRegistryBindingKeys(): Set<string> {
   const required = new Set<string>();
+  const srcDir = join(process.cwd(), 'src');
 
-  for (const ui of ALL_UI_IDENTIFIERS) {
-    // Only require translations for UUID-backed identities
-    if (!isUuidBackedUiIdentity(ui)) {
-      continue;
+  function scanDir(dir: string) {
+    for (const item of readdirSync(dir, { withFileTypes: true })) {
+      const fullPath = join(dir, item.name);
+      if (item.isDirectory()) {
+        if (['node_modules', '.next', 'build', 'tests', 'mocks'].includes(item.name)) continue;
+        scanDir(fullPath);
+      } else if (/\.(tsx|ts)$/.test(item.name)) {
+        if (
+          item.name.endsWith('.d.ts') ||
+          item.name.endsWith('.test.ts') ||
+          item.name.endsWith('.spec.ts') ||
+          item.name.endsWith('.test.tsx') ||
+          item.name.endsWith('.spec.tsx')
+        ) {
+          continue;
+        }
+        scanFile(fullPath);
+      }
     }
-    if (isCategoryUiPath(ui) || !isTranslationRequiredForUiIdentity(ui)) {
-      continue;
-    }
+  }
 
-    required.add(generateTranslationKeyFromUi(ui));
+  function scanFile(filePath: string) {
+    const content = readFileSync(filePath, 'utf-8');
+    const langUuidRegex = /data-ui-lang-uuid=["'](lang-[a-f0-9-]+)["']/g;
+    let match;
+    
+    while ((match = langUuidRegex.exec(content)) !== null) {
+      const uuid = match[1];
+      const matchIndex = match.index;
+      const start = Math.max(0, matchIndex - 100);
+      const end = Math.min(content.length, matchIndex + 400);
+      const contextText = content.substring(start, end);
+      
+      const tCallRegex = /t\(\s*['"`]([^'"`]+)['"`]/g;
+      let tMatch;
+      while ((tMatch = tCallRegex.exec(contextText)) !== null) {
+        const key = tMatch[1];
+        if (key && !key.startsWith('common.')) {
+          required.add(key);
+        }
+      }
+    }
+  }
+
+  if (existsSync(srcDir)) {
+    scanDir(srcDir);
   }
 
   return required;
@@ -75,20 +102,12 @@ export function validateRegistryBindings(): {
   missing: Array<{ ui: string; expectedKey: string }>;
 } {
   const availableKeys = loadAllTranslationKeys();
+  const requiredKeys = getRequiredRegistryBindingKeys();
   const missing: Array<{ ui: string; expectedKey: string }> = [];
 
-  for (const ui of ALL_UI_IDENTIFIERS) {
-    // Only validate UUID-backed identities
-    if (!isUuidBackedUiIdentity(ui)) {
-      continue;
-    }
-    if (isCategoryUiPath(ui) || !isTranslationRequiredForUiIdentity(ui)) {
-      continue;
-    }
-
-    const expectedKey = generateTranslationKeyFromUi(ui);
-    if (!availableKeys.has(expectedKey)) {
-      missing.push({ ui, expectedKey });
+  for (const key of requiredKeys) {
+    if (!availableKeys.has(key)) {
+      missing.push({ ui: `Element with key: ${key}`, expectedKey: key });
     }
   }
 
@@ -99,12 +118,12 @@ export function validateRegistryBindings(): {
 }
 
 function main() {
-  console.log('🔗 Validating UI registry → translation bindings...\n');
+  console.log('🔗 Validating UI translation bindings...\n');
 
   const { isValid, missing } = validateRegistryBindings();
 
   if (!isValid) {
-    console.error(`❌ ${missing.length} missing registry binding(s):\n`);
+    console.error(`❌ ${missing.length} missing translation binding(s):\n`);
     for (const entry of missing) {
       console.error(`   UI path: ${entry.ui}`);
       console.error(`   Expected translation key: "${entry.expectedKey}"`);
@@ -113,13 +132,13 @@ function main() {
     console.error(
       'Add the missing keys to src/platform/ui/i18n/locales/<feature>/en.json and ar.json'
     );
-    console.error('Key shape follows generateTranslationKeyFromUi (page.section.camelCaseElement).');
     process.exit(1);
   }
 
-  console.log(`✅ All ${ALL_UI_IDENTIFIERS.length} registry identities have bound translations.`);
+  console.log(`✅ All translation identities have bound translations.`);
 }
 
 if (require.main === module) {
   main();
 }
+

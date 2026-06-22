@@ -1,11 +1,5 @@
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'fs';
+import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'fs';
 import { dirname, join } from 'path';
-
-import { generateTranslationKeyFromUi, isCategoryUiPath } from '../../i18n/binding/registry-binding';
-import {
-  ALL_UI_IDENTITIES,
-  isTranslationRequiredForUiIdentity,
-} from '../../registry/registry';
 
 type Locale = 'en' | 'ar';
 type TranslationValue = string | TranslationTree;
@@ -74,13 +68,58 @@ function fallbackValue(locale: Locale, description: string, key: string): string
 
 function getRequiredTranslationEntries(): Array<{ key: string; description: string }> {
   const entries = new Map<string, string>();
+  const srcDir = join(process.cwd(), 'src');
 
-  for (const identity of ALL_UI_IDENTITIES) {
-    if (isCategoryUiPath(identity.path) || !isTranslationRequiredForUiIdentity(identity)) {
-      continue;
+  function scanDir(dir: string) {
+    for (const item of readdirSync(dir, { withFileTypes: true })) {
+      const fullPath = join(dir, item.name);
+      if (item.isDirectory()) {
+        if (['node_modules', '.next', 'build', 'tests', 'mocks'].includes(item.name)) continue;
+        scanDir(fullPath);
+      } else if (/\.(tsx|ts)$/.test(item.name)) {
+        if (
+          item.name.endsWith('.d.ts') ||
+          item.name.endsWith('.test.ts') ||
+          item.name.endsWith('.spec.ts') ||
+          item.name.endsWith('.test.tsx') ||
+          item.name.endsWith('.spec.tsx')
+        ) {
+          continue;
+        }
+        scanFile(fullPath);
+      }
     }
+  }
 
-    entries.set(generateTranslationKeyFromUi(identity.path), identity.description);
+  function scanFile(filePath: string) {
+    const content = readFileSync(filePath, 'utf-8');
+    
+    // Find all occurrences of data-ui-lang-uuid
+    const langUuidRegex = /data-ui-lang-uuid=["'](lang-[a-f0-9-]+)["']/g;
+    let match;
+    
+    while ((match = langUuidRegex.exec(content)) !== null) {
+      const uuid = match[1];
+      const matchIndex = match.index;
+      
+      // Look at a window of 500 characters around the match to find the t() call.
+      const start = Math.max(0, matchIndex - 100);
+      const end = Math.min(content.length, matchIndex + 400);
+      const contextText = content.substring(start, end);
+      
+      const tCallRegex = /t\(\s*['"`]([^'"`]+)['"`]/g;
+      let tMatch;
+      while ((tMatch = tCallRegex.exec(contextText)) !== null) {
+        const key = tMatch[1];
+        if (key && !key.startsWith('common.')) {
+          entries.set(key, `Translation for ${key} (from ${uuid})`);
+        }
+      }
+    }
+  }
+
+  if (existsSync(srcDir)) {
+    scanDir(srcDir);
   }
 
   return [...entries.entries()].map(([key, description]) => ({ key, description }));
