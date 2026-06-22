@@ -65,13 +65,16 @@ export function RegistrationPageContent() {
             <CheckCircle2 className="h-10 w-10 text-success" />
           </div>
           <div className="space-y-2">
-            <h2 data-ui-uuid={AUTH.REGISTRATION.SUCCESS_HEADING.uuid} className="type-headline-md">
-              {t(AUTH.REGISTRATION.SUCCESS_HEADING)}
+            <h2 data-ui-uuid={AUTH.REGISTRATION.SUCCESS_HEADING.uuid}
+          data-ui-lang-uuid={`lang-${AUTH.REGISTRATION.SUCCESS_HEADING.uuid}`} className="type-headline-md">
+              {t('auth.registration.successHeading')}
             </h2>
-            <p data-ui-uuid={AUTH.REGISTRATION.SUCCESS_DESCRIPTION.uuid} className="type-body-md text-on-surface-variant">{t(AUTH.REGISTRATION.SUCCESS_DESCRIPTION)}</p>
+            <p data-ui-uuid={AUTH.REGISTRATION.SUCCESS_DESCRIPTION.uuid}
+          data-ui-lang-uuid={`lang-${AUTH.REGISTRATION.SUCCESS_DESCRIPTION.uuid}`} className="type-body-md text-on-surface-variant">{t('auth.registration.successDescription')}</p>
           </div>
-          <button data-ui-uuid={AUTH.REGISTRATION.CONTINUE_BUTTON.uuid} onClick={handleContinue} className="w-full auth-cta">
-            {t(AUTH.REGISTRATION.CONTINUE_BUTTON)}
+          <button data-ui-uuid={AUTH.REGISTRATION.CONTINUE_BUTTON.uuid}
+          data-ui-lang-uuid={`lang-${AUTH.REGISTRATION.CONTINUE_BUTTON.uuid}`} onClick={handleContinue} className="w-full auth-cta">
+            {t('auth.registration.continueButton')}
             <ArrowRight className="h-4 w-4 ms-2" />
           </button>
         </div>
@@ -89,10 +92,12 @@ export function RegistrationPageContent() {
             <AuthMobileBrand />
 
             <div className="space-y-2 text-center lg:text-start">
-              <h1 data-ui-uuid={AUTH.REGISTRATION.TITLE.uuid} className="type-display-sm text-on-surface">
-                {t(AUTH.REGISTRATION.TITLE)}
+              <h1 data-ui-uuid={AUTH.REGISTRATION.TITLE.uuid}
+          data-ui-lang-uuid={`lang-${AUTH.REGISTRATION.TITLE.uuid}`} className="type-display-sm text-on-surface">
+                {t('auth.registration.title')}
               </h1>
-              <p data-ui-uuid={AUTH.REGISTRATION.CARD_DESCRIPTION.uuid} className="type-body-md text-on-surface-variant">{t(AUTH.REGISTRATION.CARD_DESCRIPTION)}</p>
+              <p data-ui-uuid={AUTH.REGISTRATION.CARD_DESCRIPTION.uuid}
+          data-ui-lang-uuid={`lang-${AUTH.REGISTRATION.CARD_DESCRIPTION.uuid}`} className="type-body-md text-on-surface-variant">{t('auth.registration.cardDescription')}</p>
             </div>
 
             <FormProvider {...form}>
@@ -108,20 +113,22 @@ export function RegistrationPageContent() {
 
                 <div className="space-y-3">
                   {!phoneVerified && (
-                    <p data-ui-uuid={AUTH.REGISTRATION.PHONE_REQUIRED.uuid} className="type-caption text-on-surface-variant flex items-center gap-1.5">
+                    <p data-ui-uuid={AUTH.REGISTRATION.PHONE_REQUIRED.uuid}
+          data-ui-lang-uuid={`lang-${AUTH.REGISTRATION.PHONE_REQUIRED.uuid}`} className="type-caption text-on-surface-variant flex items-center gap-1.5">
                       <Shield className="h-3.5 w-3.5" />
-                      {t(AUTH.REGISTRATION.PHONE_REQUIRED)}
+                      {t('auth.registration.phoneRequiredNotice')}
                     </p>
                   )}
-                  <button data-ui-uuid={AUTH.REGISTRATION.SUBMIT_BUTTON.uuid} type="submit" disabled={isSubmitting || !phoneVerified} className={cn('w-full auth-cta h-12 type-label-lg', !phoneVerified && 'opacity-disabled')}>
+                  <button data-ui-uuid={AUTH.REGISTRATION.SUBMIT_BUTTON.uuid}
+          data-ui-lang-uuid={`lang-${AUTH.REGISTRATION.SUBMIT_BUTTON.uuid}`} type="submit" disabled={isSubmitting || !phoneVerified} className={cn('w-full auth-cta h-12 type-label-lg', !phoneVerified && 'opacity-disabled')}>
                     {isSubmitting ? (
                       <>
                         <Loader2 className="h-4 w-4 animate-spin me-2" />
-                        {t(AUTH.REGISTRATION.SUBMITTING_BUTTON)}
+                        {t('auth.registration.submitButton')}
                       </>
                     ) : (
                       <>
-                        {t(AUTH.REGISTRATION.SUBMIT_BUTTON)}
+                        {t('auth.registration.phoneRequiredNotice')}
                         <ArrowRight className="h-4 w-4 ms-2" />
                       </>
                     )}
@@ -130,10 +137,12 @@ export function RegistrationPageContent() {
               </form>
             </FormProvider>
 
-            <p data-ui-uuid={AUTH.REGISTRATION.SIGNIN_PROMPT.uuid} className="text-center type-body-sm text-on-surface-variant">
-              {t(AUTH.REGISTRATION.SIGNIN_PROMPT)}{' '}
-              <Link data-ui-uuid={AUTH.REGISTRATION.SIGNIN_LINK.uuid} href="/login" className="font-medium text-primary hover:underline">
-                {t(AUTH.REGISTRATION.SIGNIN_LINK)}
+            <p data-ui-uuid={AUTH.REGISTRATION.SIGNIN_PROMPT.uuid}
+          data-ui-lang-uuid={`lang-${AUTH.REGISTRATION.SIGNIN_PROMPT.uuid}`} className="text-center type-body-sm text-on-surface-variant">
+              {t('auth.registration.signinPrompt')}{' '}
+              <Link data-ui-uuid={AUTH.REGISTRATION.SIGNIN_LINK.uuid}
+          data-ui-lang-uuid={`lang-${AUTH.REGISTRATION.SIGNIN_LINK.uuid}`} href="/login" className="font-medium text-primary hover:underline">
+                {t('auth.registration.signinLink')}
               </Link>
             </p>
           </div>

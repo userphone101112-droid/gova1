@@ -22,14 +22,17 @@ export default function AppError({
 
   return (
     <div className="max-w-md mx-auto text-center py-12 px-4">
-      <h2 data-ui-uuid={ERROR_BOUNDARY.APP_ERROR.TITLE.uuid} className="mb-4 text-2xl font-bold text-on-surface">
-        {t(ERROR_BOUNDARY.APP_ERROR.TITLE)}
+      <h2 data-ui-uuid={ERROR_BOUNDARY.APP_ERROR.TITLE.uuid}
+          data-ui-lang-uuid={`lang-${ERROR_BOUNDARY.APP_ERROR.TITLE.uuid}`} className="mb-4 text-2xl font-bold text-on-surface">
+        {t('error-boundary.app-error.title')}
       </h2>
-      <div data-ui-uuid={ERROR_BOUNDARY.APP_ERROR.MESSAGE.uuid} className="mb-6 text-on-surface-variant">
-        {error.message || t(ERROR_BOUNDARY.APP_ERROR.MESSAGE)}
+      <div data-ui-uuid={ERROR_BOUNDARY.APP_ERROR.MESSAGE.uuid}
+          data-ui-lang-uuid={`lang-${ERROR_BOUNDARY.APP_ERROR.MESSAGE.uuid}`} className="mb-6 text-on-surface-variant">
+        {error.message || t('error-boundary.app-error.message')}
       </div>
-      <button data-ui-uuid={ERROR_BOUNDARY.APP_ERROR.RETRY_BUTTON.uuid} onClick={reset}>
-        {t(ERROR_BOUNDARY.APP_ERROR.RETRY_BUTTON)}
+      <button data-ui-uuid={ERROR_BOUNDARY.APP_ERROR.RETRY_BUTTON.uuid}
+          data-ui-lang-uuid={`lang-${ERROR_BOUNDARY.APP_ERROR.RETRY_BUTTON.uuid}`} onClick={reset}>
+        {t('error-boundary.app-error.retryButton')}
       </button>
     </div>
   );

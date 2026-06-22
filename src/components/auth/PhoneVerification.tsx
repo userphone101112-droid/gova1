@@ -93,14 +93,15 @@ export function PhoneVerification() {
         render={({ field, fieldState }) => (
           <div className="space-y-2">
             <span className="type-label-lg flex items-center gap-2">
-              {t(AUTH.REGISTRATION.PHONE_INPUT)}
+              {t('auth.registration.cardDescription')}
             </span>
             <div className="flex gap-2">
               <div className="relative flex-1">
                 <span className="absolute start-3 top-1/2 -translate-y-1/2 type-body-sm text-on-surface-variant select-none">
                   +20
                 </span>
-                <input data-ui-uuid={AUTH.REGISTRATION.PHONE_INPUT.uuid} type="tel" inputMode="tel" maxLength={11} disabled={phoneVerified} placeholder={t(AUTH.SHARED.PHONE_PLACEHOLDER)} className={cn('auth-input ps-12 motion-colors w-full', phoneVerified && 'bg-surface-container pe-10', fieldState.error && 'border-error focus-visible:ring-error')} value={field.value} onChange={(e) => {
+                <input data-ui-uuid={AUTH.REGISTRATION.PHONE_INPUT.uuid}
+          data-ui-lang-uuid={`lang-${AUTH.REGISTRATION.PHONE_INPUT.uuid}`} type="tel" inputMode="tel" maxLength={11} disabled={phoneVerified} placeholder={t('auth.registration.phoneInput')} className={cn('auth-input ps-12 motion-colors w-full', phoneVerified && 'bg-surface-container pe-10', fieldState.error && 'border-error focus-visible:ring-error')} value={field.value} onChange={(e) => {
         const raw = e.target.value.replace(/\D/g, '').slice(0, 11);
         field.onChange(raw);
         if (phoneVerified)
@@ -117,20 +118,23 @@ export function PhoneVerification() {
                 )}
               </div>
               {!phoneVerified && (
-                <button data-ui-uuid={AUTH.REGISTRATION.VERIFY_BUTTON.uuid} type="button" onClick={() => void handleSendOtp()} disabled={isSending || !phone || phone.length < 10} className="shrink-0 motion-colors">
-                  {isSending ? '...' : otpSent ? t(AUTH.REGISTRATION.RESEND_BUTTON) : t(AUTH.REGISTRATION.VERIFY_BUTTON)}
+                <button data-ui-uuid={AUTH.REGISTRATION.VERIFY_BUTTON.uuid}
+          data-ui-lang-uuid={`lang-${AUTH.REGISTRATION.VERIFY_BUTTON.uuid}`} type="button" onClick={() => void handleSendOtp()} disabled={isSending || !phone || phone.length < 10} className="shrink-0 motion-colors">
+                  {isSending ? '...' : otpSent ? t('auth.registration.verifyButton') : t('auth.registration.phoneVerificationSection')}
                 </button>
               )}
               {phoneVerified && (
-                <button data-ui-uuid={AUTH.REGISTRATION.EDIT_BUTTON.uuid} type="button" onClick={handleEditPhone} aria-label={t(AUTH.REGISTRATION.EDIT_BUTTON)}>
+                <button data-ui-uuid={AUTH.REGISTRATION.EDIT_BUTTON.uuid}
+          data-ui-lang-uuid={`lang-${AUTH.REGISTRATION.EDIT_BUTTON.uuid}`} type="button" onClick={handleEditPhone} aria-label={t('auth.registration.editButton')}>
                   <Pencil className="h-4 w-4" />
                 </button>
               )}
             </div>
             {phoneVerified && (
-              <p data-ui-uuid={AUTH.REGISTRATION.PHONE_VERIFIED.uuid} className="type-caption text-success flex items-center gap-1 mt-1">
+              <p data-ui-uuid={AUTH.REGISTRATION.PHONE_VERIFIED.uuid}
+          data-ui-lang-uuid={`lang-${AUTH.REGISTRATION.PHONE_VERIFIED.uuid}`} className="type-caption text-success flex items-center gap-1 mt-1">
                 <CheckCircle2 className="h-3.5 w-3.5" />
-                {t(AUTH.REGISTRATION.PHONE_VERIFIED)}
+                {t('auth.registration.phoneVerifiedMessage')}
               </p>
             )}
             {fieldState.error && (
@@ -141,11 +145,14 @@ export function PhoneVerification() {
       />
 
       {otpSent && !phoneVerified && (
-        <div data-ui-uuid={AUTH.REGISTRATION.OTP_INPUT.uuid} data-ui-instance-id="verification-shell" className="motion-reveal space-y-4 rounded-xl border border-outline-variant bg-card p-4 elevation-2">
+        <div data-ui-uuid={AUTH.REGISTRATION.OTP_INPUT.uuid}
+          data-ui-lang-uuid={`lang-${AUTH.REGISTRATION.OTP_INPUT.uuid}`} data-ui-instance-id="verification-shell" className="motion-reveal space-y-4 rounded-xl border border-outline-variant bg-card p-4 elevation-2">
           <div className="space-y-1">
-            <p data-ui-uuid={AUTH.REGISTRATION.OTP_LABEL.uuid} className="type-label-lg">{t(AUTH.REGISTRATION.OTP_LABEL)}</p>
-            <p data-ui-uuid={AUTH.REGISTRATION.OTP_DESCRIPTION.uuid} className="type-caption text-on-surface-variant">
-              {t(AUTH.REGISTRATION.OTP_DESCRIPTION)}{' '}
+            <p data-ui-uuid={AUTH.REGISTRATION.OTP_LABEL.uuid}
+          data-ui-lang-uuid={`lang-${AUTH.REGISTRATION.OTP_LABEL.uuid}`} className="type-label-lg">{t('auth.registration.otpLabel')}</p>
+            <p data-ui-uuid={AUTH.REGISTRATION.OTP_DESCRIPTION.uuid}
+          data-ui-lang-uuid={`lang-${AUTH.REGISTRATION.OTP_DESCRIPTION.uuid}`} className="type-caption text-on-surface-variant">
+              {t('auth.registration.otpDescription')}{' '}
               <span className="font-medium text-on-surface">{formatPhoneDisplay(phone)}</span>
             </p>
           </div>
@@ -162,11 +169,13 @@ export function PhoneVerification() {
           {otpError && <p className="type-caption text-error text-center">{otpError}</p>}
 
           <div className="flex items-center gap-3 w-full">
-            <button data-ui-uuid={AUTH.REGISTRATION.VERIFY_OTP_BUTTON.uuid} type="button" onClick={() => void handleVerifyOtp()} disabled={otp.length !== 4 || isVerifying} className="flex-1 motion-colors">
-              {isVerifying ? t(AUTH.REGISTRATION.VERIFYING_OTP) : t(AUTH.REGISTRATION.VERIFY_OTP_BUTTON)}
+            <button data-ui-uuid={AUTH.REGISTRATION.VERIFY_OTP_BUTTON.uuid}
+          data-ui-lang-uuid={`lang-${AUTH.REGISTRATION.VERIFY_OTP_BUTTON.uuid}`} type="button" onClick={() => void handleVerifyOtp()} disabled={otp.length !== 4 || isVerifying} className="flex-1 motion-colors">
+              {isVerifying ? t('auth.registration.verifyOtpButton') : t('auth.registration.resendButton')}
             </button>
-            <button data-ui-uuid={AUTH.REGISTRATION.RESEND_BUTTON.uuid} type="button" onClick={() => void handleSendOtp()} disabled={countdown > 0 || isSending} className="shrink-0">
-              {countdown > 0 ? `${countdown}s` : t(AUTH.REGISTRATION.RESEND_BUTTON)}
+            <button data-ui-uuid={AUTH.REGISTRATION.RESEND_BUTTON.uuid}
+          data-ui-lang-uuid={`lang-${AUTH.REGISTRATION.RESEND_BUTTON.uuid}`} type="button" onClick={() => void handleSendOtp()} disabled={countdown > 0 || isSending} className="shrink-0">
+              {countdown > 0 ? `${countdown}s` : t('auth.registration.resendButton')}
             </button>
           </div>
         </div>

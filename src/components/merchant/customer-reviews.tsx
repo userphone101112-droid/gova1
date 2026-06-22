@@ -44,10 +44,11 @@ export function CustomerReviews({
             <div className="rounded-full bg-muted p-2">
               <MessageSquare className="h-5 w-5 text-muted-foreground" />
             </div>
-            <h2 data-ui-uuid={MERCHANT.MERCHANT_PROFILE.REVIEWS.TITLE.uuid} className="text-lg">{t(MERCHANT.MERCHANT_PROFILE.REVIEWS.TITLE)}</h2>
+            <h2 data-ui-uuid={MERCHANT.MERCHANT_PROFILE.REVIEWS.TITLE.uuid}
+          data-ui-lang-uuid={`lang-${MERCHANT.MERCHANT_PROFILE.REVIEWS.TITLE.uuid}`} className="text-lg">{t('merchant.reviews.title')}</h2>
           </div>
           <button className="gap-1 text-sm">
-            {t(MERCHANT.MERCHANT_PROFILE.REVIEWS.VIEW_ALL)} <ChevronRight className="h-4 w-4" />
+            {t('merchant.reviews.viewAll')} <ChevronRight className="h-4 w-4" />
           </button>
         </div>
       </div>
@@ -56,13 +57,13 @@ export function CustomerReviews({
         <div className="flex flex-col items-center justify-center gap-3 p-6 rounded-lg bg-muted/30">
           <h1 className="text-5xl font-bold">{averageRating.toFixed(1)}</h1>
           <StarRating rating={Math.round(averageRating)} size="lg" />
-          <span className="text-sm text-muted-foreground">{t(MERCHANT.MERCHANT_PROFILE.REVIEWS.BASED_ON)} {totalReviews.toLocaleString()} {t(MERCHANT.MERCHANT_PROFILE.REVIEWS.REVIEWS)}</span>
+          <span className="text-sm text-muted-foreground">{t('merchant.reviews.basedOn')} {totalReviews.toLocaleString()} {t('merchant.reviews.reviews')}</span>
         </div>
 
         <div className="space-y-3">
           {[5, 4, 3, 2, 1].map((stars) => (
             <div key={stars} className="flex items-center gap-2">
-              <span data-ui-instance-id={String(stars)} className="w-16 text-sm font-medium">{stars} {stars === 1 ? t(MERCHANT.MERCHANT_PROFILE.REVIEWS.STAR) : t(MERCHANT.MERCHANT_PROFILE.REVIEWS.STARS)}</span>
+              <span data-ui-instance-id={String(stars)} className="w-16 text-sm font-medium">{stars} {stars === 1 ? t('merchant.reviews.star') : t('merchant.reviews.stars')}</span>
               <div className="h-2 flex-1 bg-surface-container rounded-full overflow-hidden">
                 <div className="h-full bg-warning" style={{ width: `${calculateRatingPercentage(ratingDistribution, stars)}%` }} />
               </div>
@@ -92,7 +93,7 @@ export function CustomerReviews({
                   <StarRating rating={review.rating} />
                   <span data-ui-instance-id={review.id} className="text-xs text-muted-foreground">{formatRelativeTime(review.createdAt)}</span>
                 </div>
-                <span data-ui-instance-id={review.id} className="text-xs text-muted-foreground mt-0.5">{t(MERCHANT.MERCHANT_PROFILE.REVIEWS.PURCHASED)}: {review.productName}</span>
+                <span data-ui-instance-id={review.id} className="text-xs text-muted-foreground mt-0.5">{t('merchant.reviews.purchased')}: {review.productName}</span>
               </div>
             </div>
 
@@ -101,7 +102,7 @@ export function CustomerReviews({
             <div className="flex items-center gap-4 pl-0 sm:pl-13">
               <button data-ui-instance-id={review.id} className="gap-1.5 h-8 text-muted-foreground">
                 <ThumbsUp className="h-3.5 w-3.5" />
-                <span className="text-xs">{t(MERCHANT.MERCHANT_PROFILE.REVIEWS.HELPFUL)} ({review.helpful})</span>
+                <span className="text-xs">{t('merchant.reviews.helpful')} ({review.helpful})</span>
               </button>
             </div>
           </div>

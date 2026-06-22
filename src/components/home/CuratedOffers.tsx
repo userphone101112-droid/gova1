@@ -67,12 +67,14 @@ export function CuratedOffers() {
       <div className="flex justify-between items-center">
         <div className="flex items-center gap-2">
           <Tag size={24} style={{ color: 'var(--gova-primary)' }} />
-          <h3 data-ui-uuid={HOME.CURATED_OFFERS.SECTION_TITLE.uuid} className="text-xl font-bold" style={{ color: 'var(--gova-on-surface)' }}>
-            {t(HOME.CURATED_OFFERS.SECTION_TITLE)}
+          <h3 data-ui-uuid={HOME.CURATED_OFFERS.SECTION_TITLE.uuid}
+          data-ui-lang-uuid={`lang-${HOME.CURATED_OFFERS.SECTION_TITLE.uuid}`} className="text-xl font-bold" style={{ color: 'var(--gova-on-surface)' }}>
+            {t('home.curated-offers.sectionTitle')}
           </h3>
         </div>
-        <span data-ui-uuid={HOME.CURATED_OFFERS.PROMO_TAG.uuid} id="promo-tag-badge" className="px-2 py-1 rounded-lg text-xs font-semibold" style={{ background: 'var(--gova-warning)', color: 'var(--gova-on-warning)' }}>
-          {t(HOME.CURATED_OFFERS.PROMO_TAG)}
+        <span data-ui-uuid={HOME.CURATED_OFFERS.PROMO_TAG.uuid}
+          data-ui-lang-uuid={`lang-${HOME.CURATED_OFFERS.PROMO_TAG.uuid}`} id="promo-tag-badge" className="px-2 py-1 rounded-lg text-xs font-semibold" style={{ background: 'var(--gova-warning)', color: 'var(--gova-on-warning)' }}>
+          {t('home.curated-offers.promoTag')}
         </span>
       </div>
 
@@ -85,7 +87,8 @@ export function CuratedOffers() {
     }}>
             <div className="relative aspect-square">
               <Image src={p.img} alt={t(p.titleKey)} fill className="object-cover transition-transform active:scale-110" unoptimized={shouldUseUnoptimizedImage(p.img)} />
-              <button data-ui-uuid={HOME.CURATED_OFFERS.ADD_TO_FAVORITES.uuid} id={p.favId} className="absolute top-2 start-2 w-8 h-8 rounded-full bg-surface-container-lowest/90 backdrop-blur flex items-center justify-center shadow-sm transition-transform active:scale-90" aria-label={t(HOME.CURATED_OFFERS.ADD_TO_FAVORITES)} style={{ color: p.favFilled ? 'var(--gova-error)' : 'var(--gova-on-surface-variant)' }}>
+              <button data-ui-uuid={HOME.CURATED_OFFERS.ADD_TO_FAVORITES.uuid}
+          data-ui-lang-uuid={`lang-${HOME.CURATED_OFFERS.ADD_TO_FAVORITES.uuid}`} id={p.favId} className="absolute top-2 start-2 w-8 h-8 rounded-full bg-surface-container-lowest/90 backdrop-blur flex items-center justify-center shadow-sm transition-transform active:scale-90" aria-label={t('home.curated-offers.addToFavoritesButton')} style={{ color: p.favFilled ? 'var(--gova-error)' : 'var(--gova-on-surface-variant)' }}>
                 <Heart
                   size={18}
                   fill={p.favFilled ? 'currentColor' : 'none'}
@@ -104,7 +107,8 @@ export function CuratedOffers() {
                 <span className="text-base font-bold" style={{ color: 'var(--gova-primary)' }}>
                   {t(p.priceKey)}
                 </span>
-                <button data-ui-uuid={HOME.CURATED_OFFERS.ADD_TO_CART.uuid} id={p.addId} className="w-8 h-8 rounded-lg flex items-center justify-center transition-transform active:scale-90" style={{ background: 'var(--gova-primary)', color: 'var(--gova-on-primary)' }} aria-label={t(HOME.CURATED_OFFERS.ADD_TO_CART)}>
+                <button data-ui-uuid={HOME.CURATED_OFFERS.ADD_TO_CART.uuid}
+          data-ui-lang-uuid={`lang-${HOME.CURATED_OFFERS.ADD_TO_CART.uuid}`} id={p.addId} className="w-8 h-8 rounded-lg flex items-center justify-center transition-transform active:scale-90" style={{ background: 'var(--gova-primary)', color: 'var(--gova-on-primary)' }} aria-label={t('home.curated-offers.addToCartButton')}>
                   <ShoppingCart size={18} />
                 </button>
               </div>
@@ -115,12 +119,13 @@ export function CuratedOffers() {
 
       {/* Show More Button */}
       <div className="flex justify-center pt-2">
-        <button data-ui-uuid={HOME.CURATED_OFFERS.SHOW_MORE.uuid} id="curated-offers-show-more" className="px-6 py-2 rounded-full font-bold text-sm border transition-transform active:scale-95" style={{
+        <button data-ui-uuid={HOME.CURATED_OFFERS.SHOW_MORE.uuid}
+          data-ui-lang-uuid={`lang-${HOME.CURATED_OFFERS.SHOW_MORE.uuid}`} id="curated-offers-show-more" className="px-6 py-2 rounded-full font-bold text-sm border transition-transform active:scale-95" style={{
         background: 'var(--gova-surface-container-low)',
         borderColor: 'var(--gova-outline-variant)',
         color: 'var(--gova-primary)',
     }}>
-          {t(HOME.CURATED_OFFERS.SHOW_MORE)}
+          {t('home.curated-offers.showMoreButton')}
         </button>
       </div>
     </section>

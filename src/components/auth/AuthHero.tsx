@@ -23,8 +23,9 @@ export function AuthHero({ variant }: AuthHeroProps) {
           <div className="w-10 h-10 rounded-xl bg-on-primary/10 backdrop-blur flex items-center justify-center">
             <Sparkles className="h-5 w-5 text-on-primary" />
           </div>
-          <span data-ui-uuid={AUTH.REGISTRATION.BRAND_NAME.uuid} className="type-title-lg text-on-primary">
-            {t(AUTH.REGISTRATION.BRAND_NAME)}
+          <span data-ui-uuid={AUTH.REGISTRATION.BRAND_NAME.uuid}
+          data-ui-lang-uuid={`lang-${AUTH.REGISTRATION.BRAND_NAME.uuid}`} className="type-title-lg text-on-primary">
+            {t('auth.registration.brandName')}
           </span>
         </div>
       </div>
@@ -33,20 +34,24 @@ export function AuthHero({ variant }: AuthHeroProps) {
         <blockquote className="space-y-4">
           {variant === 'login' ? (
             <>
-              <p data-ui-uuid={AUTH.LOGIN.HERO_QUOTE.uuid} className="type-headline-md text-on-primary opacity-decorative leading-relaxed">
-                &ldquo;{t(AUTH.LOGIN.HERO_QUOTE)}&rdquo;
+              <p data-ui-uuid={AUTH.LOGIN.HERO_QUOTE.uuid}
+          data-ui-lang-uuid={`lang-${AUTH.LOGIN.HERO_QUOTE.uuid}`} className="type-headline-md text-on-primary opacity-decorative leading-relaxed">
+                &ldquo;{t('auth.login.heroQuote')}&rdquo;
               </p>
-              <footer data-ui-uuid={AUTH.LOGIN.HERO_FOOTER.uuid} className="type-body-sm text-on-primary opacity-muted">
-                {t(AUTH.LOGIN.HERO_FOOTER)}
+              <footer data-ui-uuid={AUTH.LOGIN.HERO_FOOTER.uuid}
+          data-ui-lang-uuid={`lang-${AUTH.LOGIN.HERO_FOOTER.uuid}`} className="type-body-sm text-on-primary opacity-muted">
+                {t('auth.login.heroFooter')}
               </footer>
             </>
           ) : (
             <>
-              <p data-ui-uuid={AUTH.REGISTRATION.HEADING.uuid} className="type-headline-md text-on-primary opacity-decorative leading-relaxed">
-                &ldquo;{t(AUTH.REGISTRATION.HEADING)}&rdquo;
+              <p data-ui-uuid={AUTH.REGISTRATION.HEADING.uuid}
+          data-ui-lang-uuid={`lang-${AUTH.REGISTRATION.HEADING.uuid}`} className="type-headline-md text-on-primary opacity-decorative leading-relaxed">
+                &ldquo;{t('auth.registration.heading')}&rdquo;
               </p>
-              <footer data-ui-uuid={AUTH.REGISTRATION.DESCRIPTION.uuid} className="type-body-sm text-on-primary opacity-muted">
-                {t(AUTH.REGISTRATION.DESCRIPTION)}
+              <footer data-ui-uuid={AUTH.REGISTRATION.DESCRIPTION.uuid}
+          data-ui-lang-uuid={`lang-${AUTH.REGISTRATION.DESCRIPTION.uuid}`} className="type-body-sm text-on-primary opacity-muted">
+                {t('auth.registration.description')}
               </footer>
             </>
           )}
@@ -57,15 +62,15 @@ export function AuthHero({ variant }: AuthHeroProps) {
         <div className="flex flex-wrap gap-6">
           <div className="flex items-center gap-2 text-on-primary opacity-muted type-body-sm">
             <Shield className="h-4 w-4" />
-            {t(AUTH.SHARED.HIGHLIGHT_SECURITY)}
+            {t('auth.shared.heroDecor')}
           </div>
           <div className="flex items-center gap-2 text-on-primary opacity-muted type-body-sm">
             <Smartphone className="h-4 w-4" />
-            {t(AUTH.SHARED.HIGHLIGHT_PHONE)}
+            {t('auth.shared.highlightSecurity')}
           </div>
           <div className="flex items-center gap-2 text-on-primary opacity-muted type-body-sm">
             <Lock className="h-4 w-4" />
-            {t(AUTH.SHARED.HIGHLIGHT_ENCRYPTED)}
+            {t('auth.shared.highlightPhone')}
           </div>
         </div>
       </div>

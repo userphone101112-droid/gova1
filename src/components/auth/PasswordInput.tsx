@@ -26,13 +26,14 @@ export function PasswordInput({ name }: PasswordInputProps) {
         render={({ field, fieldState }) => (
           <div className="space-y-2">
             <span className="type-label-lg">
-              {t(AUTH.REGISTRATION.PASSWORD_INPUT)}
+              {t('auth.registration.phoneVerifiedMessage')}
             </span>
             <div className="relative">
               <input
                 data-ui-uuid={AUTH.REGISTRATION.PASSWORD_INPUT.uuid}
+          data-ui-lang-uuid={`lang-${AUTH.REGISTRATION.PASSWORD_INPUT.uuid}`}
                 type={show ? 'text' : 'password'}
-                placeholder={t(AUTH.SHARED.PASSWORD_PLACEHOLDER)}
+                placeholder={t('auth.registration.passwordInput')}
                 className={cn(
                   'auth-input pe-10 motion-colors w-full',
                   fieldState.error && 'border-error focus-visible:ring-error'
@@ -42,11 +43,12 @@ export function PasswordInput({ name }: PasswordInputProps) {
               />
               <button
                 data-ui-uuid={AUTH.REGISTRATION.TOGGLE_PASSWORD.uuid}
+          data-ui-lang-uuid={`lang-${AUTH.REGISTRATION.TOGGLE_PASSWORD.uuid}`}
                 type="button"
                 className="absolute end-0 top-0 h-full px-3 text-on-surface-variant hover:text-on-surface"
                 onClick={() => setShow((s) => !s)}
                 tabIndex={-1}
-                aria-label={t(AUTH.REGISTRATION.TOGGLE_PASSWORD)}
+                aria-label={t('auth.registration.togglePasswordVisibility')}
               >
                 {show ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
               </button>
@@ -69,13 +71,14 @@ export function PasswordInput({ name }: PasswordInputProps) {
       render={({ field, fieldState }) => (
         <div className="space-y-2">
           <span className="type-label-lg">
-            {t(AUTH.REGISTRATION.CONFIRM_PASSWORD_INPUT)}
+            {t('auth.registration.passwordInputLabel')}
           </span>
           <div className="relative">
             <input
               data-ui-uuid={AUTH.REGISTRATION.CONFIRM_PASSWORD_INPUT.uuid}
+          data-ui-lang-uuid={`lang-${AUTH.REGISTRATION.CONFIRM_PASSWORD_INPUT.uuid}`}
               type={show ? 'text' : 'password'}
-              placeholder={t(AUTH.SHARED.PASSWORD_PLACEHOLDER)}
+              placeholder={t('auth.registration.confirmPasswordInput')}
               className={cn(
                 'auth-input pe-10 motion-colors w-full',
                 fieldState.error && 'border-error focus-visible:ring-error'
@@ -88,7 +91,7 @@ export function PasswordInput({ name }: PasswordInputProps) {
               className="absolute end-0 top-0 h-full px-3 text-on-surface-variant hover:text-on-surface"
               onClick={() => setShow((s) => !s)}
               tabIndex={-1}
-              aria-label={t(AUTH.REGISTRATION.TOGGLE_PASSWORD)}
+              aria-label={t('auth.registration.emailInputLabel')}
             >
               {show ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
             </button>

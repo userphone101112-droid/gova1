@@ -49,7 +49,8 @@ export function TrustCredibility({
           <div className="rounded-full bg-warning-container p-2">
             <Award className="h-5 w-5 text-warning" />
           </div>
-          <h2 data-ui-uuid={MERCHANT.MERCHANT_PROFILE.TRUST.TITLE.uuid} className="text-lg">{t(MERCHANT.MERCHANT_PROFILE.TRUST.TITLE)}</h2>
+          <h2 data-ui-uuid={MERCHANT.MERCHANT_PROFILE.TRUST.TITLE.uuid}
+          data-ui-lang-uuid={`lang-${MERCHANT.MERCHANT_PROFILE.TRUST.TITLE.uuid}`} className="text-lg">{t('merchant.trust.title')}</h2>
         </div>
 
         <div className="space-y-6">
@@ -71,7 +72,7 @@ export function TrustCredibility({
           </div>
 
           <div className="space-y-3">
-            <h4 className="font-medium text-sm text-muted-foreground">{t(MERCHANT.MERCHANT_PROFILE.TRUST.ACHIEVEMENTS)}</h4>
+            <h4 className="font-medium text-sm text-muted-foreground">{t('merchant.trust.achievements')}</h4>
             <div className="flex flex-wrap gap-2">
               {achievements.map((achievement) => {
                 const IconComponent = achievementIcons[achievement.icon] || Trophy;
@@ -86,7 +87,7 @@ export function TrustCredibility({
           </div>
 
           <div className="space-y-3">
-            <h4 className="font-medium text-sm text-muted-foreground">{t(MERCHANT.MERCHANT_PROFILE.TRUST.SELLER_BADGES)}</h4>
+            <h4 className="font-medium text-sm text-muted-foreground">{t('merchant.trust.sellerBadges')}</h4>
             <div className="flex flex-wrap gap-2">
               {badges.filter((b) => b.earned).map((badge) => {
                 const IconComponent = badgeIcons[badge.icon] || Crown;
@@ -98,7 +99,7 @@ export function TrustCredibility({
                 );
               })}
               {badges.filter((b) => b.earned).length === 0 && (
-                <span className="text-sm text-muted-foreground">{t(MERCHANT.MERCHANT_PROFILE.TRUST.NO_BADGES_EARNED)}</span>
+                <span className="text-sm text-muted-foreground">{t('merchant.trust.noBadgesEarned')}</span>
               )}
             </div>
           </div>

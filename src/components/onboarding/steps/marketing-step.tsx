@@ -22,8 +22,10 @@ export function MarketingStep() {
 
   return (
     <div className="w-full">
-      <h1 data-ui-uuid={ONBOARDING.MARKETING.TITLE.uuid} className="text-3xl font-bold tracking-tight mb-2">{t(ONBOARDING.MARKETING.TITLE)}</h1>
-      <p data-ui-uuid={ONBOARDING.MARKETING.DESCRIPTION.uuid} className="text-muted-foreground mb-8">{t(ONBOARDING.MARKETING.DESCRIPTION)}</p>
+      <h1 data-ui-uuid={ONBOARDING.MARKETING.TITLE.uuid}
+          data-ui-lang-uuid={`lang-${ONBOARDING.MARKETING.TITLE.uuid}`} className="text-3xl font-bold tracking-tight mb-2">{t('onboarding.marketing.title')}</h1>
+      <p data-ui-uuid={ONBOARDING.MARKETING.DESCRIPTION.uuid}
+          data-ui-lang-uuid={`lang-${ONBOARDING.MARKETING.DESCRIPTION.uuid}`} className="text-muted-foreground mb-8">{t('onboarding.marketing.description')}</p>
 
       <div className="space-y-4 max-w-4xl mx-auto">
         <div className="p-6 cursor-pointer" onClick={() => toggleOption('email-marketing')}>
@@ -32,8 +34,10 @@ export function MarketingStep() {
               <Users className="h-6 w-6 text-primary" />
             </div>
             <div className="flex-1">
-              <span data-ui-uuid={ONBOARDING.MARKETING.EMAIL_MARKETING_LABEL.uuid} className="font-medium">{t(ONBOARDING.MARKETING.EMAIL_MARKETING_LABEL)}</span>
-              <span data-ui-uuid={ONBOARDING.MARKETING.EMAIL_MARKETING_SUBTITLE.uuid} className="text-sm text-muted-foreground">{t(ONBOARDING.MARKETING.EMAIL_MARKETING_SUBTITLE)}</span>
+              <span data-ui-uuid={ONBOARDING.MARKETING.EMAIL_MARKETING_LABEL.uuid}
+          data-ui-lang-uuid={`lang-${ONBOARDING.MARKETING.EMAIL_MARKETING_LABEL.uuid}`} className="font-medium">{t('onboarding.marketing.emailMarketing')}</span>
+              <span data-ui-uuid={ONBOARDING.MARKETING.EMAIL_MARKETING_SUBTITLE.uuid}
+          data-ui-lang-uuid={`lang-${ONBOARDING.MARKETING.EMAIL_MARKETING_SUBTITLE.uuid}`} className="text-sm text-muted-foreground">{t('onboarding.marketing.emailMarketingSubtitle')}</span>
             </div>
             <input checked={(marketing.enabledFeatures || []).includes('email-marketing' as any)} />
           </div>
@@ -45,8 +49,10 @@ export function MarketingStep() {
               <Share className="h-6 w-6 text-primary" />
             </div>
             <div className="flex-1">
-              <span data-ui-uuid={ONBOARDING.MARKETING.SOCIAL_SHARING_LABEL.uuid} className="font-medium">{t(ONBOARDING.MARKETING.SOCIAL_SHARING_LABEL)}</span>
-              <span data-ui-uuid={ONBOARDING.MARKETING.SOCIAL_SHARING_SUBTITLE.uuid} className="text-sm text-muted-foreground">{t(ONBOARDING.MARKETING.SOCIAL_SHARING_SUBTITLE)}</span>
+              <span data-ui-uuid={ONBOARDING.MARKETING.SOCIAL_SHARING_LABEL.uuid}
+          data-ui-lang-uuid={`lang-${ONBOARDING.MARKETING.SOCIAL_SHARING_LABEL.uuid}`} className="font-medium">{t('onboarding.marketing.socialSharing')}</span>
+              <span data-ui-uuid={ONBOARDING.MARKETING.SOCIAL_SHARING_SUBTITLE.uuid}
+          data-ui-lang-uuid={`lang-${ONBOARDING.MARKETING.SOCIAL_SHARING_SUBTITLE.uuid}`} className="text-sm text-muted-foreground">{t('onboarding.marketing.socialSharingSubtitle')}</span>
             </div>
             <input checked={(marketing.enabledFeatures || []).includes('social-sharing' as any)} />
           </div>
@@ -58,8 +64,10 @@ export function MarketingStep() {
               <TrendingUp className="h-6 w-6 text-primary" />
             </div>
             <div className="flex-1">
-              <span data-ui-uuid={ONBOARDING.MARKETING.PRODUCT_REVIEWS_LABEL.uuid} className="font-medium">{t(ONBOARDING.MARKETING.PRODUCT_REVIEWS_LABEL)}</span>
-              <span data-ui-uuid={ONBOARDING.MARKETING.PRODUCT_REVIEWS_SUBTITLE.uuid} className="text-sm text-muted-foreground">{t(ONBOARDING.MARKETING.PRODUCT_REVIEWS_SUBTITLE)}</span>
+              <span data-ui-uuid={ONBOARDING.MARKETING.PRODUCT_REVIEWS_LABEL.uuid}
+          data-ui-lang-uuid={`lang-${ONBOARDING.MARKETING.PRODUCT_REVIEWS_LABEL.uuid}`} className="font-medium">{t('onboarding.marketing.productReviews')}</span>
+              <span data-ui-uuid={ONBOARDING.MARKETING.PRODUCT_REVIEWS_SUBTITLE.uuid}
+          data-ui-lang-uuid={`lang-${ONBOARDING.MARKETING.PRODUCT_REVIEWS_SUBTITLE.uuid}`} className="text-sm text-muted-foreground">{t('onboarding.marketing.productReviewsSubtitle')}</span>
             </div>
             <input checked={(marketing.enabledFeatures || []).includes('reviews' as any)} />
           </div>

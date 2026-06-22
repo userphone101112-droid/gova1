@@ -23,10 +23,11 @@ export function RecentOrders({ orders, className }: RecentOrdersProps) {
             <div className="rounded-full bg-muted p-2">
               <Clock className="h-5 w-5 text-muted-foreground" />
             </div>
-            <h2 data-ui-uuid={MERCHANT.MERCHANT_PROFILE.RECENT_ORDERS.TITLE.uuid} className="text-lg">{t(MERCHANT.MERCHANT_PROFILE.RECENT_ORDERS.TITLE)}</h2>
+            <h2 data-ui-uuid={MERCHANT.MERCHANT_PROFILE.RECENT_ORDERS.TITLE.uuid}
+          data-ui-lang-uuid={`lang-${MERCHANT.MERCHANT_PROFILE.RECENT_ORDERS.TITLE.uuid}`} className="text-lg">{t('merchant.recent-orders.title')}</h2>
           </div>
           <button className="gap-1 text-sm">
-            {t(MERCHANT.MERCHANT_PROFILE.RECENT_ORDERS.VIEW_ALL)} <ChevronRight className="h-4 w-4" />
+            {t('merchant.recent-orders.viewAll')} <ChevronRight className="h-4 w-4" />
           </button>
         </div>
       </div>
@@ -41,7 +42,7 @@ export function RecentOrders({ orders, className }: RecentOrdersProps) {
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2">
                 <span data-ui-instance-id={order.id} className="font-medium text-sm truncate">{order.customer.name}</span>
-                <span data-ui-instance-id={order.id} className="text-sm text-muted-foreground">{order.items} {order.items > 1 ? t(MERCHANT.MERCHANT_PROFILE.RECENT_ORDERS.ITEMS) : t(MERCHANT.MERCHANT_PROFILE.RECENT_ORDERS.ITEM)}</span>
+                <span data-ui-instance-id={order.id} className="text-sm text-muted-foreground">{order.items} {order.items > 1 ? t('merchant.recent-orders.items') : t('merchant.recent-orders.item')}</span>
               </div>
               <div className="flex items-center gap-2 mt-1">
                 <span data-ui-instance-id={order.id} className="text-xs text-muted-foreground font-mono">{order.id}</span>

@@ -21,9 +21,10 @@ export function FeaturedCollections({ collections, className }: FeaturedCollecti
   return (
     <section className={className}>
       <div className="flex items-center justify-between mb-4">
-        <h2 data-ui-uuid={MERCHANT.MERCHANT_PROFILE.COLLECTIONS.TITLE.uuid} className="text-xl font-semibold tracking-tight">{t(MERCHANT.MERCHANT_PROFILE.COLLECTIONS.TITLE)}</h2>
+        <h2 data-ui-uuid={MERCHANT.MERCHANT_PROFILE.COLLECTIONS.TITLE.uuid}
+          data-ui-lang-uuid={`lang-${MERCHANT.MERCHANT_PROFILE.COLLECTIONS.TITLE.uuid}`} className="text-xl font-semibold tracking-tight">{t('merchant.collections.title')}</h2>
         <button className="gap-1 text-sm">
-          {t(MERCHANT.MERCHANT_PROFILE.COLLECTIONS.VIEW_ALL)} <ChevronRight className="h-4 w-4" />
+          {t('merchant.collections.viewAll')} <ChevronRight className="h-4 w-4" />
         </button>
       </div>
 
@@ -40,7 +41,7 @@ export function FeaturedCollections({ collections, className }: FeaturedCollecti
                 <h3 data-ui-instance-id={collection.id} className="font-semibold text-lg text-foreground">{collection.name}</h3>
                 <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
                   <Package className="h-4 w-4" />
-                  <span data-ui-instance-id={collection.id}>{collection.itemCount} {t(MERCHANT.MERCHANT_PROFILE.COLLECTIONS.ITEMS)}</span>
+                  <span data-ui-instance-id={collection.id}>{collection.itemCount} {t('merchant.collections.items')}</span>
                 </div>
               </div>
             </div>

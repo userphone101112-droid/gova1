@@ -31,14 +31,16 @@ export function CategoriesGrid() {
       <div className="flex justify-between items-end mb-4">
         <div className="flex items-center gap-2 px-4 py-2 rounded-full border shadow-sm bg-primary-container/10 border-primary/30">
           <Store className="w-5 h-5 text-primary" />
-          <h3 data-ui-uuid={HOME.CATEGORIES_GRID.SECTION_TITLE.uuid} className="font-semibold text-primary text-xl font-semibold">
-            {t(HOME.CATEGORIES_GRID.SECTION_TITLE)}
+          <h3 data-ui-uuid={HOME.CATEGORIES_GRID.SECTION_TITLE.uuid}
+          data-ui-lang-uuid={`lang-${HOME.CATEGORIES_GRID.SECTION_TITLE.uuid}`} className="font-semibold text-primary text-xl font-semibold">
+            {t('home.categories-grid.sectionTitle')}
           </h3>
         </div>
-        <button data-ui-uuid={HOME.CATEGORIES_GRID.TOGGLE.uuid} id="view-all-categories" className="flex items-center gap-1 px-4 py-1.5 rounded-full text-xs font-semibold transition-colors active:bg-surface-container" onClick={() => {
+        <button data-ui-uuid={HOME.CATEGORIES_GRID.TOGGLE.uuid}
+          data-ui-lang-uuid={`lang-${HOME.CATEGORIES_GRID.TOGGLE.uuid}`} id="view-all-categories" className="flex items-center gap-1 px-4 py-1.5 rounded-full text-xs font-semibold transition-colors active:bg-surface-container" onClick={() => {
         window.location.href = '/categories';
     }}>
-          <span>{t(HOME.CATEGORIES_GRID.TOGGLE)}</span>
+          <span>{t('home.categories-grid.toggleButton')}</span>
           {locale === 'ar' ? <ChevronLeft className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}
         </button>
       </div>

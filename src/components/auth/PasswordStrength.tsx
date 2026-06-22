@@ -54,7 +54,8 @@ export function PasswordStrength({ password }: PasswordStrengthProps) {
   return (
     <div className="space-y-2 motion-opacity">
       <div className="flex items-center justify-between">
-        <span data-ui-uuid={AUTH.REGISTRATION.PASSWORD_STRENGTH.uuid} className="type-caption text-on-surface-variant">{t(AUTH.REGISTRATION.PASSWORD_STRENGTH)}</span>
+        <span data-ui-uuid={AUTH.REGISTRATION.PASSWORD_STRENGTH.uuid}
+          data-ui-lang-uuid={`lang-${AUTH.REGISTRATION.PASSWORD_STRENGTH.uuid}`} className="type-caption text-on-surface-variant">{t('auth.registration.passwordStrengthLabel')}</span>
         <span className={cn(
             'type-caption font-medium',
             strengthColor.split(' ')[1]
@@ -77,43 +78,47 @@ export function PasswordStrength({ password }: PasswordStrengthProps) {
       <ul className="space-y-1">
         <li
           data-ui-uuid={AUTH.REGISTRATION.REQ_MIN_LENGTH.uuid}
+          data-ui-lang-uuid={`lang-${AUTH.REGISTRATION.REQ_MIN_LENGTH.uuid}`}
           className={cn(
             'flex items-center gap-1.5 type-caption motion-colors',
             REQUIREMENTS[0].test(password) ? 'text-success' : 'text-on-surface-variant'
           )}
         >
           <Check className={cn('h-3.5 w-3.5', REQUIREMENTS[0].test(password) ? 'opacity-100' : 'opacity-subtle')} />
-          {t(AUTH.REGISTRATION.REQ_MIN_LENGTH)}
+          {t('auth.registration.reqMinLength')}
         </li>
         <li
           data-ui-uuid={AUTH.REGISTRATION.REQ_LOWERCASE.uuid}
+          data-ui-lang-uuid={`lang-${AUTH.REGISTRATION.REQ_LOWERCASE.uuid}`}
           className={cn(
             'flex items-center gap-1.5 type-caption motion-colors',
             REQUIREMENTS[1].test(password) ? 'text-success' : 'text-on-surface-variant'
           )}
         >
           <Check className={cn('h-3.5 w-3.5', REQUIREMENTS[1].test(password) ? 'opacity-100' : 'opacity-subtle')} />
-          {t(AUTH.REGISTRATION.REQ_LOWERCASE)}
+          {t('auth.registration.reqLowercase')}
         </li>
         <li
           data-ui-uuid={AUTH.REGISTRATION.REQ_NUMBER.uuid}
+          data-ui-lang-uuid={`lang-${AUTH.REGISTRATION.REQ_NUMBER.uuid}`}
           className={cn(
             'flex items-center gap-1.5 type-caption motion-colors',
             REQUIREMENTS[2].test(password) ? 'text-success' : 'text-on-surface-variant'
           )}
         >
           <Check className={cn('h-3.5 w-3.5', REQUIREMENTS[2].test(password) ? 'opacity-100' : 'opacity-subtle')} />
-          {t(AUTH.REGISTRATION.REQ_NUMBER)}
+          {t('auth.registration.reqNumber')}
         </li>
         <li
           data-ui-uuid={AUTH.REGISTRATION.REQ_SPECIAL.uuid}
+          data-ui-lang-uuid={`lang-${AUTH.REGISTRATION.REQ_SPECIAL.uuid}`}
           className={cn(
             'flex items-center gap-1.5 type-caption motion-colors',
             REQUIREMENTS[3].test(password) ? 'text-success' : 'text-on-surface-variant'
           )}
         >
           <Check className={cn('h-3.5 w-3.5', REQUIREMENTS[3].test(password) ? 'opacity-100' : 'opacity-subtle')} />
-          {t(AUTH.REGISTRATION.REQ_SPECIAL)}
+          {t('auth.registration.reqSpecial')}
         </li>
       </ul>
     </div>

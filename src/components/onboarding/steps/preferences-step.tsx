@@ -30,12 +30,15 @@ export function PreferencesStep() {
 
   return (
     <div className="w-full">
-      <h1 data-ui-uuid={ONBOARDING.PREFERENCES.TITLE.uuid} className="text-3xl font-bold tracking-tight mb-2">{t(ONBOARDING.PREFERENCES.TITLE)}</h1>
-      <p data-ui-uuid={ONBOARDING.PREFERENCES.DESCRIPTION.uuid} className="text-muted-foreground mb-8">{t(ONBOARDING.PREFERENCES.DESCRIPTION)}</p>
+      <h1 data-ui-uuid={ONBOARDING.PREFERENCES.TITLE.uuid}
+          data-ui-lang-uuid={`lang-${ONBOARDING.PREFERENCES.TITLE.uuid}`} className="text-3xl font-bold tracking-tight mb-2">{t('onboarding.preferences.title')}</h1>
+      <p data-ui-uuid={ONBOARDING.PREFERENCES.DESCRIPTION.uuid}
+          data-ui-lang-uuid={`lang-${ONBOARDING.PREFERENCES.DESCRIPTION.uuid}`} className="text-muted-foreground mb-8">{t('onboarding.preferences.description')}</p>
 
       <div className="space-y-6 max-w-4xl mx-auto">
         <div className="space-y-2">
-          <span data-ui-uuid={ONBOARDING.PREFERENCES.TIMEZONE_LABEL.uuid}>{t(ONBOARDING.PREFERENCES.TIMEZONE_LABEL)}</span>
+          <span data-ui-uuid={ONBOARDING.PREFERENCES.TIMEZONE_LABEL.uuid}
+          data-ui-lang-uuid={`lang-${ONBOARDING.PREFERENCES.TIMEZONE_LABEL.uuid}`}>{t('onboarding.preferences.timezone')}</span>
           <select value={preferences.timezone || 'America/New_York'} onChange={(e) => updatePreferences({ timezone: e.target.value })}>
             {timezoneOptions.map((opt) => (
               <option data-ui-instance-id={opt.id} key={opt.id}>{t(opt.label)}</option>
@@ -44,7 +47,8 @@ export function PreferencesStep() {
         </div>
 
         <div className="space-y-2">
-          <span data-ui-uuid={ONBOARDING.PREFERENCES.NOTIFICATIONS_LABEL.uuid}>{t(ONBOARDING.PREFERENCES.NOTIFICATIONS_LABEL)}</span>
+          <span data-ui-uuid={ONBOARDING.PREFERENCES.NOTIFICATIONS_LABEL.uuid}
+          data-ui-lang-uuid={`lang-${ONBOARDING.PREFERENCES.NOTIFICATIONS_LABEL.uuid}`}>{t('onboarding.preferences.notifications')}</span>
           <div className="space-y-3">
             {notificationOptions.map((option) => (
               <div key={option.id} className="flex items-center gap-2">

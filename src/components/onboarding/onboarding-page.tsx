@@ -80,14 +80,16 @@ export function OnboardingPage() {
             {!isLastStep && (
               <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 sm:p-6 md:p-10 border-t border-outline-variant bg-surface-container-low/50">
                 {!isFirstStep ? (
-                  <button data-ui-uuid={ONBOARDING.COMMON.PREVIOUS_BUTTON.uuid} onClick={goToPreviousStep}>
-                    {t(ONBOARDING.COMMON.PREVIOUS_BUTTON)}
+                  <button data-ui-uuid={ONBOARDING.COMMON.PREVIOUS_BUTTON.uuid}
+          data-ui-lang-uuid={`lang-${ONBOARDING.COMMON.PREVIOUS_BUTTON.uuid}`} onClick={goToPreviousStep}>
+                    {t('onboarding.common.previous')}
                   </button>
                 ) : (
                   <div />
                 )}
-                <button data-ui-uuid={ONBOARDING.COMMON.NEXT_BUTTON.uuid} onClick={goToNextStep} className="w-full sm:w-auto">
-                  {currentStepIndex === TOTAL_STEPS - 2 ? t(ONBOARDING.COMMON.FINISH_BUTTON) : t(ONBOARDING.COMMON.NEXT_BUTTON)}
+                <button data-ui-uuid={ONBOARDING.COMMON.NEXT_BUTTON.uuid}
+          data-ui-lang-uuid={`lang-${ONBOARDING.COMMON.NEXT_BUTTON.uuid}`} onClick={goToNextStep} className="w-full sm:w-auto">
+                  {currentStepIndex === TOTAL_STEPS - 2 ? t('onboarding.common.finish') : t('onboarding.common.next')}
                 </button>
               </div>
             )}

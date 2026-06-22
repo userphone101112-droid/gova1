@@ -31,11 +31,12 @@ export function BestSellingProducts({ products, className }: BestSellingProducts
 
       <div className="flex items-center justify-between mb-4">
 
-        <h2 data-ui-uuid={MERCHANT.MERCHANT_PROFILE.BEST_SELLERS.TITLE.uuid} className="text-xl font-semibold tracking-tight">{t(MERCHANT.MERCHANT_PROFILE.BEST_SELLERS.TITLE)}</h2>
+        <h2 data-ui-uuid={MERCHANT.MERCHANT_PROFILE.BEST_SELLERS.TITLE.uuid}
+          data-ui-lang-uuid={`lang-${MERCHANT.MERCHANT_PROFILE.BEST_SELLERS.TITLE.uuid}`} className="text-xl font-semibold tracking-tight">{t('merchant.best-sellers.title')}</h2>
 
         <button className="gap-1 text-sm">
 
-          {t(MERCHANT.MERCHANT_PROFILE.BEST_SELLERS.VIEW_ALL)} <ChevronRight className="h-4 w-4" />
+          {t('merchant.best-sellers.viewAll')} <ChevronRight className="h-4 w-4" />
 
         </button>
 
@@ -63,7 +64,7 @@ export function BestSellingProducts({ products, className }: BestSellingProducts
 
                   )}
 
-                  {t(MERCHANT.MERCHANT_PROFILE.BEST_SELLERS.PERCENT_OFF)}
+                  {t('merchant.best-sellers.percentOff')}
 
                 </span>
 
@@ -117,7 +118,7 @@ export function BestSellingProducts({ products, className }: BestSellingProducts
 
                 </div>
 
-                <span className="text-xs text-muted-foreground">{product.salesCount.toLocaleString()} {t(MERCHANT.MERCHANT_PROFILE.BEST_SELLERS.SOLD)}</span>
+                <span className="text-xs text-muted-foreground">{product.salesCount.toLocaleString()} {t('merchant.best-sellers.sold')}</span>
 
               </div>
 

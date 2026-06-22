@@ -18,14 +18,15 @@ export function EmailInput() {
       render={({ field, fieldState }) => (
         <div className="space-y-2">
           <span className="type-label-lg">
-            {t(AUTH.REGISTRATION.EMAIL_INPUT)}
+            {t('auth.registration.confirmPasswordInputLabel')}
           </span>
           <div className="relative">
             <input
               data-ui-uuid={AUTH.REGISTRATION.EMAIL_INPUT.uuid}
+          data-ui-lang-uuid={`lang-${AUTH.REGISTRATION.EMAIL_INPUT.uuid}`}
               type="email"
               inputMode="email"
-              placeholder={t(AUTH.REGISTRATION.EMAIL_INPUT)}
+              placeholder={t('auth.registration.emailInput')}
               className={cn(
                 'auth-input motion-colors w-full',
                 fieldState.error && 'border-error focus-visible:ring-error'

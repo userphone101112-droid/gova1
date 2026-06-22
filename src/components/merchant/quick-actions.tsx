@@ -25,7 +25,8 @@ export function QuickActions({ actions, className }: QuickActionsProps) {
   return (
     <section className={className}>
       <div className="flex items-center justify-between mb-4">
-        <h2 data-ui-uuid={MERCHANT.MERCHANT_PROFILE.QUICK_ACTIONS.TITLE.uuid} className="text-xl font-semibold tracking-tight">{t(MERCHANT.MERCHANT_PROFILE.QUICK_ACTIONS.TITLE)}</h2>
+        <h2 data-ui-uuid={MERCHANT.MERCHANT_PROFILE.QUICK_ACTIONS.TITLE.uuid}
+          data-ui-lang-uuid={`lang-${MERCHANT.MERCHANT_PROFILE.QUICK_ACTIONS.TITLE.uuid}`} className="text-xl font-semibold tracking-tight">{t('merchant.quick-actions.title')}</h2>
       </div>
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7">
         {actions.map((action) => {

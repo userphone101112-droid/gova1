@@ -23,6 +23,7 @@ export function BottomNavBar() {
     >
       <Link
         data-ui-uuid={SHARED_LAYOUT.BOTTOM_NAV.ITEMS.HOME_LINK.uuid}
+          data-ui-lang-uuid={`lang-${SHARED_LAYOUT.BOTTOM_NAV.ITEMS.HOME_LINK.uuid}`}
         id="nav-item-home"
         href="/home"
         className="flex flex-col items-center justify-center relative py-1 px-3 transition-transform active:scale-90"
@@ -35,7 +36,7 @@ export function BottomNavBar() {
       >
         <Home className="w-5 h-5 transition-transform duration-200" style={{ transform: active === 'home' ? 'scale(1.1)' : 'scale(1)' }} />
         <span className="text-xs leading-4 font-semibold mt-0.5">
-          {t(SHARED_LAYOUT.BOTTOM_NAV.ITEMS.HOME_LINK)}
+          {t('shared-layout.bottom-nav.homeLink')}
         </span>
         {active === 'home' && (
           <div className="absolute bottom-0 w-1.5 h-1.5 rounded-full bg-primary animate-pulse-gova" />
@@ -44,6 +45,7 @@ export function BottomNavBar() {
 
       <Link
         data-ui-uuid={SHARED_LAYOUT.BOTTOM_NAV.ITEMS.NOTIFICATIONS_LINK.uuid}
+          data-ui-lang-uuid={`lang-${SHARED_LAYOUT.BOTTOM_NAV.ITEMS.NOTIFICATIONS_LINK.uuid}`}
         id="nav-item-notifications"
         href="/notifications"
         className="flex flex-col items-center justify-center relative py-1 px-3 transition-transform active:scale-90"
@@ -61,7 +63,7 @@ export function BottomNavBar() {
           style={{ background: 'var(--gova-error)' }}
         />
         <span className="text-xs leading-4 font-semibold mt-0.5">
-          {t(SHARED_LAYOUT.BOTTOM_NAV.ITEMS.NOTIFICATIONS_LINK)}
+          {t('shared-layout.bottom-nav.notificationsLink')}
         </span>
         {active === 'notifications' && (
           <div className="absolute bottom-0 w-1.5 h-1.5 rounded-full bg-primary animate-pulse-gova" />
@@ -70,6 +72,7 @@ export function BottomNavBar() {
 
       <Link
         data-ui-uuid={SHARED_LAYOUT.BOTTOM_NAV.ITEMS.FAVORITES_LINK.uuid}
+          data-ui-lang-uuid={`lang-${SHARED_LAYOUT.BOTTOM_NAV.ITEMS.FAVORITES_LINK.uuid}`}
         id="nav-item-favorites"
         href="/favorites"
         className="flex flex-col items-center justify-center relative py-1 px-3 transition-transform active:scale-90"
@@ -82,7 +85,7 @@ export function BottomNavBar() {
       >
         <Heart className="w-5 h-5 transition-transform duration-200" style={{ transform: active === 'favorites' ? 'scale(1.1)' : 'scale(1)' }} />
         <span className="text-xs leading-4 font-semibold mt-0.5">
-          {t(SHARED_LAYOUT.BOTTOM_NAV.ITEMS.FAVORITES_LINK)}
+          {t('shared-layout.bottom-nav.favoritesLink')}
         </span>
         {active === 'favorites' && (
           <div className="absolute bottom-0 w-1.5 h-1.5 rounded-full bg-primary animate-pulse-gova" />
@@ -91,6 +94,7 @@ export function BottomNavBar() {
 
       <Link
         data-ui-uuid={SHARED_LAYOUT.BOTTOM_NAV.ITEMS.ORDERS_LINK.uuid}
+          data-ui-lang-uuid={`lang-${SHARED_LAYOUT.BOTTOM_NAV.ITEMS.ORDERS_LINK.uuid}`}
         id="nav-item-orders"
         href="/orders"
         className="flex flex-col items-center justify-center relative py-1 px-3 transition-transform active:scale-90"
@@ -103,7 +107,7 @@ export function BottomNavBar() {
       >
         <Receipt className="w-5 h-5 transition-transform duration-200" style={{ transform: active === 'orders' ? 'scale(1.1)' : 'scale(1)' }} />
         <span className="text-xs leading-4 font-semibold mt-0.5">
-          {t(SHARED_LAYOUT.BOTTOM_NAV.ITEMS.ORDERS_LINK)}
+          {t('shared-layout.bottom-nav.ordersLink')}
         </span>
         {active === 'orders' && (
           <div className="absolute bottom-0 w-1.5 h-1.5 rounded-full bg-primary animate-pulse-gova" />
@@ -112,6 +116,7 @@ export function BottomNavBar() {
 
       <Link
         data-ui-uuid={SHARED_LAYOUT.BOTTOM_NAV.ITEMS.PROFILE_LINK.uuid}
+          data-ui-lang-uuid={`lang-${SHARED_LAYOUT.BOTTOM_NAV.ITEMS.PROFILE_LINK.uuid}`}
         id="nav-item-profile"
         href="/profile"
         className="flex flex-col items-center justify-center relative py-1 px-3 transition-transform active:scale-90"
@@ -124,7 +129,7 @@ export function BottomNavBar() {
       >
         <User className="w-5 h-5 transition-transform duration-200" style={{ transform: active === 'profile' ? 'scale(1.1)' : 'scale(1)' }} />
         <span className="text-xs leading-4 font-semibold mt-0.5">
-          {t(SHARED_LAYOUT.BOTTOM_NAV.ITEMS.PROFILE_LINK)}
+          {t('shared-layout.bottom-nav.profileLink')}
         </span>
         {active === 'profile' && (
           <div className="absolute bottom-0 w-1.5 h-1.5 rounded-full bg-primary animate-pulse-gova" />

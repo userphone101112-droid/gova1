@@ -7,11 +7,13 @@ export default function ProfilePage() {
 
   return (
     <div className="mx-auto max-w-lg px-4 py-12 text-center space-y-3">
-      <h1 data-ui-uuid={SHARED_LAYOUT.PROFILE_PAGE.TITLE.uuid} className="text-2xl font-bold text-primary">
-        {t(SHARED_LAYOUT.PROFILE_PAGE.TITLE)}
+      <h1 data-ui-uuid={SHARED_LAYOUT.PROFILE_PAGE.TITLE.uuid}
+          data-ui-lang-uuid={`lang-${SHARED_LAYOUT.PROFILE_PAGE.TITLE.uuid}`} className="text-2xl font-bold text-primary">
+        {t('shared-layout.profile-page.title')}
       </h1>
-      <p data-ui-uuid={SHARED_LAYOUT.PROFILE_PAGE.MESSAGE.uuid} className="text-on-surface-variant">
-        {t(SHARED_LAYOUT.PROFILE_PAGE.MESSAGE)}
+      <p data-ui-uuid={SHARED_LAYOUT.PROFILE_PAGE.MESSAGE.uuid}
+          data-ui-lang-uuid={`lang-${SHARED_LAYOUT.PROFILE_PAGE.MESSAGE.uuid}`} className="text-on-surface-variant">
+        {t('shared-layout.profile-page.message')}
       </p>
     </div>
   );

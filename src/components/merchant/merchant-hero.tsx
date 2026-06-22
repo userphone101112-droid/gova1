@@ -22,7 +22,7 @@ export function MerchantHero({ merchant, className }: MerchantHeroProps) {
       {/* Banner Image */}
       <div className="relative h-64 sm:h-80 lg:h-96 w-full overflow-hidden rounded-b-2xl">
         <div className={`absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background/80 transition-opacity duration-500 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`} style={{ zIndex: 1 }} />
-        <Image src={merchant.banner} alt={`${merchant.name} ${t(MERCHANT.MERCHANT_PROFILE.HERO.BANNER_ALT_SUFFIX)}`} fill className={`object-cover transition-all duration-500 ${imageLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-105'}`} onLoad={() => setImageLoaded(true)} />
+        <Image src={merchant.banner} alt={`${merchant.name} ${t('merchant.hero.bannerAltSuffix')}`} fill className={`object-cover transition-all duration-500 ${imageLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-105'}`} onLoad={() => setImageLoaded(true)} />
         {!imageLoaded && (
           <div className="absolute inset-0 animate-pulse bg-muted" />
         )}
@@ -37,7 +37,7 @@ export function MerchantHero({ merchant, className }: MerchantHeroProps) {
               <Image src={merchant.logo} alt={merchant.name} fill className="object-cover" />
             </div>
             {/* Status Indicator */}
-            <div className={`absolute bottom-2 right-2 h-5 w-5 rounded-full border-2 border-background ${getMerchantStatusColor(merchant.status).replace('text-', 'bg-')}`} aria-label={`${t(MERCHANT.MERCHANT_PROFILE.HERO.STATUS_LABEL)} ${merchant.status}`} />
+            <div className={`absolute bottom-2 right-2 h-5 w-5 rounded-full border-2 border-background ${getMerchantStatusColor(merchant.status).replace('text-', 'bg-')}`} aria-label={`${t('merchant.hero.statusLabel')} ${merchant.status}`} />
           </div>
 
           {/* Merchant Details */}
@@ -47,9 +47,10 @@ export function MerchantHero({ merchant, className }: MerchantHeroProps) {
                 {merchant.name}
               </h1>
               {merchant.verified && (
-                <span data-ui-uuid={MERCHANT.MERCHANT_PROFILE.HERO.VERIFIED_BADGE.uuid} className="gap-1.5 bg-warning-container text-on-warning-container border-warning">
+                <span data-ui-uuid={MERCHANT.MERCHANT_PROFILE.HERO.VERIFIED_BADGE.uuid}
+          data-ui-lang-uuid={`lang-${MERCHANT.MERCHANT_PROFILE.HERO.VERIFIED_BADGE.uuid}`} className="gap-1.5 bg-warning-container text-on-warning-container border-warning">
                   <CheckCircle2 className="h-3.5 w-3.5" />
-                  {t(MERCHANT.MERCHANT_PROFILE.HERO.VERIFIED_BADGE)}
+                  {t('merchant.hero.verifiedBadge')}
                 </span>
               )}
             </div>
@@ -62,7 +63,7 @@ export function MerchantHero({ merchant, className }: MerchantHeroProps) {
               </div>
               <div className="flex items-center gap-1.5">
                 <Calendar className="h-4 w-4" />
-                <span>{t(MERCHANT.MERCHANT_PROFILE.HERO.JOINED)} {formatDate(merchant.joinedDate)}</span>
+                <span>{t('merchant.hero.joined')} {formatDate(merchant.joinedDate)}</span>
               </div>
             </div>
 
@@ -71,23 +72,25 @@ export function MerchantHero({ merchant, className }: MerchantHeroProps) {
               <div className="flex items-center gap-1.5">
                 <Users className="h-4 w-4 text-muted-foreground" />
                 <span className="font-semibold">{formatCompactNumber(merchant.social.followers)}</span>
-                <span className="text-sm text-muted-foreground">{t(MERCHANT.MERCHANT_PROFILE.HERO.FOLLOWERS)}</span>
+                <span className="text-sm text-muted-foreground">{t('merchant.hero.followers')}</span>
               </div>
               <div className="flex items-center gap-1.5">
                 <span className="font-semibold">{formatCompactNumber(merchant.social.following)}</span>
-                <span className="text-sm text-muted-foreground">{t(MERCHANT.MERCHANT_PROFILE.HERO.FOLLOWING)}</span>
+                <span className="text-sm text-muted-foreground">{t('merchant.hero.following')}</span>
               </div>
             </div>
           </div>
 
           {/* Action Buttons */}
           <div className="flex gap-3 pb-4">
-            <button data-ui-uuid={MERCHANT.MERCHANT_PROFILE.HERO.FOLLOW_BUTTON.uuid} className="gap-2">
+            <button data-ui-uuid={MERCHANT.MERCHANT_PROFILE.HERO.FOLLOW_BUTTON.uuid}
+          data-ui-lang-uuid={`lang-${MERCHANT.MERCHANT_PROFILE.HERO.FOLLOW_BUTTON.uuid}`} className="gap-2">
               <Users className="h-4 w-4" />
-              {t(MERCHANT.MERCHANT_PROFILE.HERO.FOLLOW_BUTTON)}
+              {t('merchant.hero.followButton')}
             </button>
-            <button data-ui-uuid={MERCHANT.MERCHANT_PROFILE.HERO.MESSAGE_BUTTON.uuid}>
-              {t(MERCHANT.MERCHANT_PROFILE.HERO.MESSAGE_BUTTON)}
+            <button data-ui-uuid={MERCHANT.MERCHANT_PROFILE.HERO.MESSAGE_BUTTON.uuid}
+          data-ui-lang-uuid={`lang-${MERCHANT.MERCHANT_PROFILE.HERO.MESSAGE_BUTTON.uuid}`}>
+              {t('merchant.hero.messageButton')}
             </button>
           </div>
         </div>

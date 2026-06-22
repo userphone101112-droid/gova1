@@ -61,9 +61,10 @@ export function OtpInput({
   return (
     <div className="flex gap-2 justify-center" onPaste={handlePaste}>
       {Array.from({ length }).map((_, index) => (
-        <input data-ui-uuid={AUTH.REGISTRATION.OTP_INPUT.uuid} data-ui-instance-id={String(index)} key={index} ref={(el) => {
+        <input data-ui-uuid={AUTH.REGISTRATION.OTP_INPUT.uuid}
+          data-ui-lang-uuid={`lang-${AUTH.REGISTRATION.OTP_INPUT.uuid}`} data-ui-instance-id={String(index)} key={index} ref={(el) => {
         inputsRef.current[index] = el;
-    }} type="text" inputMode="numeric" maxLength={1} disabled={disabled} value={digits[index]?.trim() ?? ''} aria-label={`${t(AUTH.REGISTRATION.OTP_INPUT)} ${index + 1}`} className={cn('auth-otp-cell type-title-lg motion-colors focus:outline-none focus:ring-2 focus:ring-focus-ring', hasError && 'border-error focus:ring-error')} onChange={(e) => handleChange(index, e.target.value)} onKeyDown={(e) => handleKeyDown(index, e)} />
+    }} type="text" inputMode="numeric" maxLength={1} disabled={disabled} value={digits[index]?.trim() ?? ''} aria-label={`${t('auth.registration.otpInput')} ${index + 1}`} className={cn('auth-otp-cell type-title-lg motion-colors focus:outline-none focus:ring-2 focus:ring-focus-ring', hasError && 'border-error focus:ring-error')} onChange={(e) => handleChange(index, e.target.value)} onKeyDown={(e) => handleKeyDown(index, e)} />
       ))}
     </div>
   );

@@ -56,16 +56,19 @@ export function LoginPageContent() {
             <Shield className="h-10 w-10 text-success" />
           </div>
           <div className="space-y-2">
-            <h2 data-ui-uuid={AUTH.LOGIN.SUCCESS_HEADING.uuid} className="type-headline-md">
-              {t(AUTH.LOGIN.SUCCESS_HEADING)}
+            <h2 data-ui-uuid={AUTH.LOGIN.SUCCESS_HEADING.uuid}
+          data-ui-lang-uuid={`lang-${AUTH.LOGIN.SUCCESS_HEADING.uuid}`} className="type-headline-md">
+              {t('auth.login.successHeading')}
             </h2>
-            <p data-ui-uuid={AUTH.LOGIN.SUCCESS_DESCRIPTION.uuid} className="type-body-md text-on-surface-variant">{t(AUTH.LOGIN.SUCCESS_DESCRIPTION)}</p>
+            <p data-ui-uuid={AUTH.LOGIN.SUCCESS_DESCRIPTION.uuid}
+          data-ui-lang-uuid={`lang-${AUTH.LOGIN.SUCCESS_DESCRIPTION.uuid}`} className="type-body-md text-on-surface-variant">{t('auth.login.successDescription')}</p>
           </div>
-          <button data-ui-uuid={AUTH.LOGIN.SIGNIN_AGAIN.uuid} onClick={() => {
+          <button data-ui-uuid={AUTH.LOGIN.SIGNIN_AGAIN.uuid}
+          data-ui-lang-uuid={`lang-${AUTH.LOGIN.SIGNIN_AGAIN.uuid}`} onClick={() => {
         setSubmitted(false);
         form.reset();
     }} className="w-full auth-cta">
-            {t(AUTH.LOGIN.SIGNIN_AGAIN)}
+            {t('auth.login.signinAgainButton')}
           </button>
         </div>
       </div>
@@ -82,10 +85,12 @@ export function LoginPageContent() {
             <AuthMobileBrand />
 
             <div className="space-y-2 text-center lg:text-start">
-              <h1 data-ui-uuid={AUTH.LOGIN.HEADING.uuid} className="type-display-sm text-on-surface">
-                {t(AUTH.LOGIN.HEADING)}
+              <h1 data-ui-uuid={AUTH.LOGIN.HEADING.uuid}
+          data-ui-lang-uuid={`lang-${AUTH.LOGIN.HEADING.uuid}`} className="type-display-sm text-on-surface">
+                {t('auth.login.heading')}
               </h1>
-              <p data-ui-uuid={AUTH.LOGIN.SUBHEADING.uuid} className="type-body-md text-on-surface-variant">{t(AUTH.LOGIN.SUBHEADING)}</p>
+              <p data-ui-uuid={AUTH.LOGIN.SUBHEADING.uuid}
+          data-ui-lang-uuid={`lang-${AUTH.LOGIN.SUBHEADING.uuid}`} className="type-body-md text-on-surface-variant">{t('auth.login.subheading')}</p>
             </div>
 
             <FormProvider {...form}>
@@ -97,13 +102,14 @@ export function LoginPageContent() {
                     <div className="space-y-2">
                       <span className="type-label-lg flex items-center gap-2">
                         <Smartphone className="h-4 w-4 text-primary" />
-                        {t(AUTH.LOGIN.PHONE_INPUT)}
+                        {t('auth.login.heroFooter')}
                       </span>
                       <div className="relative">
                         <span className="absolute start-3 top-1/2 -translate-y-1/2 type-body-sm text-on-surface-variant select-none">
                           +20
                         </span>
-                        <input data-ui-uuid={AUTH.LOGIN.PHONE_INPUT.uuid} type="tel" inputMode="tel" maxLength={11} placeholder={t(AUTH.SHARED.PHONE_PLACEHOLDER)} className={cn('auth-input ps-12 motion-colors w-full', fieldState.error && 'border-error focus-visible:ring-error')} value={field.value} onChange={(e) => field.onChange(e.target.value.replace(/\D/g, '').slice(0, 11))} />
+                        <input data-ui-uuid={AUTH.LOGIN.PHONE_INPUT.uuid}
+          data-ui-lang-uuid={`lang-${AUTH.LOGIN.PHONE_INPUT.uuid}`} type="tel" inputMode="tel" maxLength={11} placeholder={t('auth.login.phoneInput')} className={cn('auth-input ps-12 motion-colors w-full', fieldState.error && 'border-error focus-visible:ring-error')} value={field.value} onChange={(e) => field.onChange(e.target.value.replace(/\D/g, '').slice(0, 11))} />
                       </div>
                       {fieldState.error && (
                         <p className="type-caption text-error">{fieldState.error.message}</p>
@@ -120,17 +126,20 @@ export function LoginPageContent() {
                       <div className="flex items-center justify-between">
                         <span className="type-label-lg flex items-center gap-2">
                           <Lock className="h-4 w-4 text-primary" />
-                          {t(AUTH.LOGIN.PASSWORD_INPUT)}
+                          {t('auth.login.phoneInputLabel')}
                         </span>
-                        <button data-ui-uuid={AUTH.LOGIN.FORGOT_PASSWORD.uuid} type="button" className="h-auto p-0 type-caption" onClick={() => {
+                        <button data-ui-uuid={AUTH.LOGIN.FORGOT_PASSWORD.uuid}
+          data-ui-lang-uuid={`lang-${AUTH.LOGIN.FORGOT_PASSWORD.uuid}`} type="button" className="h-auto p-0 type-caption" onClick={() => {
         /* forgot password flow */
     }}>
-                          {t(AUTH.LOGIN.FORGOT_PASSWORD)}
+                          {t('auth.login.forgotPasswordLink')}
                         </button>
                       </div>
                       <div className="relative">
-                        <input data-ui-uuid={AUTH.LOGIN.PASSWORD_INPUT.uuid} type={showPassword ? 'text' : 'password'} placeholder={t(AUTH.SHARED.PASSWORD_PLACEHOLDER)} className={cn('auth-input pe-10 motion-colors w-full', fieldState.error && 'border-error focus-visible:ring-error')} value={field.value} onChange={field.onChange} />
-                        <button data-ui-uuid={AUTH.LOGIN.TOGGLE_PASSWORD.uuid} type="button" className="absolute end-0 top-0 h-full px-3 text-on-surface-variant" onClick={() => setShowPassword((s) => !s)} tabIndex={-1} aria-label={t(AUTH.LOGIN.TOGGLE_PASSWORD)}>
+                        <input data-ui-uuid={AUTH.LOGIN.PASSWORD_INPUT.uuid}
+          data-ui-lang-uuid={`lang-${AUTH.LOGIN.PASSWORD_INPUT.uuid}`} type={showPassword ? 'text' : 'password'} placeholder={t('auth.login.passwordInput')} className={cn('auth-input pe-10 motion-colors w-full', fieldState.error && 'border-error focus-visible:ring-error')} value={field.value} onChange={field.onChange} />
+                        <button data-ui-uuid={AUTH.LOGIN.TOGGLE_PASSWORD.uuid}
+          data-ui-lang-uuid={`lang-${AUTH.LOGIN.TOGGLE_PASSWORD.uuid}`} type="button" className="absolute end-0 top-0 h-full px-3 text-on-surface-variant" onClick={() => setShowPassword((s) => !s)} tabIndex={-1} aria-label={t('auth.login.togglePasswordVisibility')}>
                           {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                         </button>
                       </div>
@@ -141,26 +150,28 @@ export function LoginPageContent() {
                   )}
                 />
 
-                <button data-ui-uuid={AUTH.LOGIN.SUBMIT_BUTTON.uuid} type="submit" disabled={isSubmitting || !form.formState.isValid} className="w-full auth-cta h-12 type-label-lg">
+                <button data-ui-uuid={AUTH.LOGIN.SUBMIT_BUTTON.uuid}
+          data-ui-lang-uuid={`lang-${AUTH.LOGIN.SUBMIT_BUTTON.uuid}`} type="submit" disabled={isSubmitting || !form.formState.isValid} className="w-full auth-cta h-12 type-label-lg">
                   {isSubmitting ? (
                     <>
                       <Loader2 className="h-4 w-4 animate-spin me-2" />
-                      {t(AUTH.LOGIN.SUBMITTING_BUTTON)}
+                      {t('auth.login.submitButton')}
                     </>
                   ) : (
                     <>
                       <LogIn className="h-4 w-4 me-2" />
-                      {t(AUTH.LOGIN.SUBMIT_BUTTON)}
+                      {t('auth.login.togglePasswordVisibility')}
                     </>
                   )}
                 </button>
 
-                <button data-ui-uuid={AUTH.LOGIN.GUEST_LOGIN.uuid} type="button" className="w-full h-12 type-label-lg motion-colors" onClick={() => {
+                <button data-ui-uuid={AUTH.LOGIN.GUEST_LOGIN.uuid}
+          data-ui-lang-uuid={`lang-${AUTH.LOGIN.GUEST_LOGIN.uuid}`} type="button" className="w-full h-12 type-label-lg motion-colors" onClick={() => {
         startGuestSession();
         router.push('/home');
     }}>
                   <User className="h-4 w-4 me-2" />
-                  {t(AUTH.LOGIN.GUEST_LOGIN)}
+                  {t('auth.login.guestLoginButton')}
                 </button>
               </form>
             </FormProvider>
@@ -171,14 +182,16 @@ export function LoginPageContent() {
                   <span className="w-full border-t border-outline-variant" />
                 </div>
                 <div className="relative flex justify-center">
-                  <span data-ui-uuid={AUTH.LOGIN.SIGNUP_DIVIDER.uuid} className="bg-background px-2 type-caption text-on-surface-variant uppercase">
-                    {t(AUTH.LOGIN.SIGNUP_DIVIDER)}
+                  <span data-ui-uuid={AUTH.LOGIN.SIGNUP_DIVIDER.uuid}
+          data-ui-lang-uuid={`lang-${AUTH.LOGIN.SIGNUP_DIVIDER.uuid}`} className="bg-background px-2 type-caption text-on-surface-variant uppercase">
+                    {t('auth.login.signupDivider')}
                   </span>
                 </div>
               </div>
-              <Link data-ui-uuid={AUTH.LOGIN.SIGNUP_LINK.uuid} href="/registration" className="block">
+              <Link data-ui-uuid={AUTH.LOGIN.SIGNUP_LINK.uuid}
+          data-ui-lang-uuid={`lang-${AUTH.LOGIN.SIGNUP_LINK.uuid}`} href="/registration" className="block">
                 <button className="w-full h-12 type-label-lg group">
-                  {t(AUTH.LOGIN.SIGNUP_LINK)}
+                  {t('auth.login.signupLink')}
                   <ArrowRight className="h-4 w-4 ms-2 motion-transform group-hover:translate-x-1" />
                 </button>
               </Link>

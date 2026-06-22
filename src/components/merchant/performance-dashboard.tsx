@@ -34,35 +34,43 @@ function MetricCardContent({
   if (variant === 'revenue-today') {
     return (
       <>
-        <span data-ui-uuid={MERCHANT.MERCHANT_PROFILE.PERFORMANCE.REVENUE_TODAY.uuid} data-ui-instance-id={instanceId} className="text-sm font-medium text-muted-foreground">{title}</span>
+        <span data-ui-uuid={MERCHANT.MERCHANT_PROFILE.PERFORMANCE.REVENUE_TODAY.uuid}
+          data-ui-lang-uuid={`lang-${MERCHANT.MERCHANT_PROFILE.PERFORMANCE.REVENUE_TODAY.uuid}`} data-ui-instance-id={instanceId} className="text-sm font-medium text-muted-foreground">{title}</span>
         <p data-ui-instance-id={instanceId} className="text-2xl font-bold tracking-tight">{value}</p>
-        {subtitle && <span data-ui-uuid={MERCHANT.MERCHANT_PROFILE.PERFORMANCE.REVENUE_TODAY_SUBTITLE.uuid} data-ui-instance-id={instanceId} className="text-xs text-muted-foreground">{subtitle}</span>}
+        {subtitle && <span data-ui-uuid={MERCHANT.MERCHANT_PROFILE.PERFORMANCE.REVENUE_TODAY_SUBTITLE.uuid}
+          data-ui-lang-uuid={`lang-${MERCHANT.MERCHANT_PROFILE.PERFORMANCE.REVENUE_TODAY_SUBTITLE.uuid}`} data-ui-instance-id={instanceId} className="text-xs text-muted-foreground">{subtitle}</span>}
       </>
     );
   }
   if (variant === 'revenue-month') {
     return (
       <>
-        <span data-ui-uuid={MERCHANT.MERCHANT_PROFILE.PERFORMANCE.REVENUE_MONTH.uuid} data-ui-instance-id={instanceId} className="text-sm font-medium text-muted-foreground">{title}</span>
+        <span data-ui-uuid={MERCHANT.MERCHANT_PROFILE.PERFORMANCE.REVENUE_MONTH.uuid}
+          data-ui-lang-uuid={`lang-${MERCHANT.MERCHANT_PROFILE.PERFORMANCE.REVENUE_MONTH.uuid}`} data-ui-instance-id={instanceId} className="text-sm font-medium text-muted-foreground">{title}</span>
         <p data-ui-instance-id={instanceId} className="text-2xl font-bold tracking-tight">{value}</p>
-        {subtitle && <span data-ui-uuid={MERCHANT.MERCHANT_PROFILE.PERFORMANCE.REVENUE_MONTH_SUBTITLE.uuid} data-ui-instance-id={instanceId} className="text-xs text-muted-foreground">{subtitle}</span>}
+        {subtitle && <span data-ui-uuid={MERCHANT.MERCHANT_PROFILE.PERFORMANCE.REVENUE_MONTH_SUBTITLE.uuid}
+          data-ui-lang-uuid={`lang-${MERCHANT.MERCHANT_PROFILE.PERFORMANCE.REVENUE_MONTH_SUBTITLE.uuid}`} data-ui-instance-id={instanceId} className="text-xs text-muted-foreground">{subtitle}</span>}
       </>
     );
   }
   if (variant === 'orders-today') {
     return (
       <>
-        <span data-ui-uuid={MERCHANT.MERCHANT_PROFILE.PERFORMANCE.ORDERS_TODAY.uuid} data-ui-instance-id={instanceId} className="text-sm font-medium text-muted-foreground">{title}</span>
+        <span data-ui-uuid={MERCHANT.MERCHANT_PROFILE.PERFORMANCE.ORDERS_TODAY.uuid}
+          data-ui-lang-uuid={`lang-${MERCHANT.MERCHANT_PROFILE.PERFORMANCE.ORDERS_TODAY.uuid}`} data-ui-instance-id={instanceId} className="text-sm font-medium text-muted-foreground">{title}</span>
         <p data-ui-instance-id={instanceId} className="text-2xl font-bold tracking-tight">{value}</p>
-        {subtitle && <span data-ui-uuid={MERCHANT.MERCHANT_PROFILE.PERFORMANCE.ORDERS_TODAY_SUBTITLE.uuid} data-ui-instance-id={instanceId} className="text-xs text-muted-foreground">{subtitle}</span>}
+        {subtitle && <span data-ui-uuid={MERCHANT.MERCHANT_PROFILE.PERFORMANCE.ORDERS_TODAY_SUBTITLE.uuid}
+          data-ui-lang-uuid={`lang-${MERCHANT.MERCHANT_PROFILE.PERFORMANCE.ORDERS_TODAY_SUBTITLE.uuid}`} data-ui-instance-id={instanceId} className="text-xs text-muted-foreground">{subtitle}</span>}
       </>
     );
   }
   return (
     <>
-      <span data-ui-uuid={MERCHANT.MERCHANT_PROFILE.PERFORMANCE.ORDERS_MONTH.uuid} data-ui-instance-id={instanceId} className="text-sm font-medium text-muted-foreground">{title}</span>
+      <span data-ui-uuid={MERCHANT.MERCHANT_PROFILE.PERFORMANCE.ORDERS_MONTH.uuid}
+          data-ui-lang-uuid={`lang-${MERCHANT.MERCHANT_PROFILE.PERFORMANCE.ORDERS_MONTH.uuid}`} data-ui-instance-id={instanceId} className="text-sm font-medium text-muted-foreground">{title}</span>
       <p data-ui-instance-id={instanceId} className="text-2xl font-bold tracking-tight">{value}</p>
-      {subtitle && <span data-ui-uuid={MERCHANT.MERCHANT_PROFILE.PERFORMANCE.ORDERS_MONTH_SUBTITLE.uuid} data-ui-instance-id={instanceId} className="text-xs text-muted-foreground">{subtitle}</span>}
+      {subtitle && <span data-ui-uuid={MERCHANT.MERCHANT_PROFILE.PERFORMANCE.ORDERS_MONTH_SUBTITLE.uuid}
+          data-ui-lang-uuid={`lang-${MERCHANT.MERCHANT_PROFILE.PERFORMANCE.ORDERS_MONTH_SUBTITLE.uuid}`} data-ui-instance-id={instanceId} className="text-xs text-muted-foreground">{subtitle}</span>}
     </>
   );
 }
@@ -136,16 +144,17 @@ export function PerformanceDashboard({ performance, className }: PerformanceDash
   return (
     <section className={className}>
       <div className="flex items-center justify-between mb-4">
-        <h2 data-ui-uuid={MERCHANT.MERCHANT_PROFILE.PERFORMANCE.TITLE.uuid} className="text-xl font-semibold tracking-tight">{t(MERCHANT.MERCHANT_PROFILE.PERFORMANCE.TITLE)}</h2>
+        <h2 data-ui-uuid={MERCHANT.MERCHANT_PROFILE.PERFORMANCE.TITLE.uuid}
+          data-ui-lang-uuid={`lang-${MERCHANT.MERCHANT_PROFILE.PERFORMANCE.TITLE.uuid}`} className="text-xl font-semibold tracking-tight">{t('merchant.performance.title')}</h2>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <MetricCard
           variant="revenue-today"
           instanceId="revenue-today"
-          title={t(MERCHANT.MERCHANT_PROFILE.PERFORMANCE.REVENUE_TODAY)}
+          title={t('merchant.performance.revenueToday')}
           value={formatCurrency(performance.revenueToday)}
-          subtitle={t(MERCHANT.MERCHANT_PROFILE.PERFORMANCE.REVENUE_TODAY_SUBTITLE)}
+          subtitle={t('merchant.performance.revenueTodaySubtitle')}
           trend="up"
           trendValue="+12.5%"
           icon={DollarSign}
@@ -154,9 +163,9 @@ export function PerformanceDashboard({ performance, className }: PerformanceDash
         <MetricCard
           variant="revenue-month"
           instanceId="revenue-month"
-          title={t(MERCHANT.MERCHANT_PROFILE.PERFORMANCE.REVENUE_MONTH)}
+          title={t('merchant.performance.revenueMonth')}
           value={formatCurrency(performance.revenueThisMonth)}
-          subtitle={t(MERCHANT.MERCHANT_PROFILE.PERFORMANCE.REVENUE_MONTH_SUBTITLE)}
+          subtitle={t('merchant.performance.revenueMonthSubtitle')}
           trend="up"
           trendValue="+8.3% vs last month"
           icon={TrendingUp}
@@ -164,9 +173,9 @@ export function PerformanceDashboard({ performance, className }: PerformanceDash
         <MetricCard
           variant="orders-today"
           instanceId="orders-today"
-          title={t(MERCHANT.MERCHANT_PROFILE.PERFORMANCE.ORDERS_TODAY)}
+          title={t('merchant.performance.ordersToday')}
           value={performance.ordersToday}
-          subtitle={t(MERCHANT.MERCHANT_PROFILE.PERFORMANCE.ORDERS_TODAY_SUBTITLE)}
+          subtitle={t('merchant.performance.ordersTodaySubtitle')}
           trend="up"
           trendValue="+5"
           icon={ShoppingBag}
@@ -174,9 +183,9 @@ export function PerformanceDashboard({ performance, className }: PerformanceDash
         <MetricCard
           variant="orders-month"
           instanceId="orders-month"
-          title={t(MERCHANT.MERCHANT_PROFILE.PERFORMANCE.ORDERS_MONTH)}
+          title={t('merchant.performance.ordersMonth')}
           value={performance.ordersThisMonth}
-          subtitle={t(MERCHANT.MERCHANT_PROFILE.PERFORMANCE.ORDERS_MONTH_SUBTITLE)}
+          subtitle={t('merchant.performance.ordersMonthSubtitle')}
           trend="up"
           trendValue="+15.2%"
           icon={Package}
@@ -189,9 +198,11 @@ export function PerformanceDashboard({ performance, className }: PerformanceDash
           <div className="p-4 sm:p-6">
             <div className="flex items-start justify-between">
               <div className="space-y-2">
-                <span data-ui-uuid={MERCHANT.MERCHANT_PROFILE.PERFORMANCE.CONVERSION_RATE.uuid} data-ui-instance-id="conversion-rate" className="text-sm font-medium text-muted-foreground">{t(MERCHANT.MERCHANT_PROFILE.PERFORMANCE.CONVERSION_RATE)}</span>
+                <span data-ui-uuid={MERCHANT.MERCHANT_PROFILE.PERFORMANCE.CONVERSION_RATE.uuid}
+          data-ui-lang-uuid={`lang-${MERCHANT.MERCHANT_PROFILE.PERFORMANCE.CONVERSION_RATE.uuid}`} data-ui-instance-id="conversion-rate" className="text-sm font-medium text-muted-foreground">{t('merchant.performance.conversionRate')}</span>
                 <p data-ui-instance-id="conversion-rate" className="text-2xl font-bold tracking-tight">{performance.conversionRate}%</p>
-                <span data-ui-uuid={MERCHANT.MERCHANT_PROFILE.PERFORMANCE.CONVERSION_RATE_SUBTITLE.uuid} data-ui-instance-id="conversion-rate" className="text-xs text-muted-foreground">{t(MERCHANT.MERCHANT_PROFILE.PERFORMANCE.CONVERSION_RATE_SUBTITLE)}</span>
+                <span data-ui-uuid={MERCHANT.MERCHANT_PROFILE.PERFORMANCE.CONVERSION_RATE_SUBTITLE.uuid}
+          data-ui-lang-uuid={`lang-${MERCHANT.MERCHANT_PROFILE.PERFORMANCE.CONVERSION_RATE_SUBTITLE.uuid}`} data-ui-instance-id="conversion-rate" className="text-xs text-muted-foreground">{t('merchant.performance.conversionRateSubtitle')}</span>
               </div>
               <div className="rounded-full bg-info-container p-2.5">
                 <Target className="h-5 w-5 text-info" />
@@ -208,9 +219,11 @@ export function PerformanceDashboard({ performance, className }: PerformanceDash
           <div className="p-4 sm:p-6">
             <div className="flex items-start justify-between">
               <div className="space-y-2">
-                <span data-ui-uuid={MERCHANT.MERCHANT_PROFILE.PERFORMANCE.AVG_ORDER_VALUE.uuid} data-ui-instance-id="avg-order-value" className="text-sm font-medium text-muted-foreground">{t(MERCHANT.MERCHANT_PROFILE.PERFORMANCE.AVG_ORDER_VALUE)}</span>
+                <span data-ui-uuid={MERCHANT.MERCHANT_PROFILE.PERFORMANCE.AVG_ORDER_VALUE.uuid}
+          data-ui-lang-uuid={`lang-${MERCHANT.MERCHANT_PROFILE.PERFORMANCE.AVG_ORDER_VALUE.uuid}`} data-ui-instance-id="avg-order-value" className="text-sm font-medium text-muted-foreground">{t('merchant.performance.avgOrderValue')}</span>
                 <p data-ui-instance-id="avg-order-value" className="text-2xl font-bold tracking-tight">{formatCurrency(performance.averageOrderValue)}</p>
-                <span data-ui-uuid={MERCHANT.MERCHANT_PROFILE.PERFORMANCE.AVG_ORDER_VALUE_SUBTITLE.uuid} data-ui-instance-id="avg-order-value" className="text-xs text-muted-foreground">{t(MERCHANT.MERCHANT_PROFILE.PERFORMANCE.AVG_ORDER_VALUE_SUBTITLE)}</span>
+                <span data-ui-uuid={MERCHANT.MERCHANT_PROFILE.PERFORMANCE.AVG_ORDER_VALUE_SUBTITLE.uuid}
+          data-ui-lang-uuid={`lang-${MERCHANT.MERCHANT_PROFILE.PERFORMANCE.AVG_ORDER_VALUE_SUBTITLE.uuid}`} data-ui-instance-id="avg-order-value" className="text-xs text-muted-foreground">{t('merchant.performance.avgOrderValueSubtitle')}</span>
               </div>
               <div className="rounded-full bg-warning-container p-2.5">
                 <Award className="h-5 w-5 text-warning" />
@@ -224,9 +237,11 @@ export function PerformanceDashboard({ performance, className }: PerformanceDash
           <div className="p-4 sm:p-6">
             <div className="flex items-start justify-between">
               <div className="space-y-2">
-                <span data-ui-uuid={MERCHANT.MERCHANT_PROFILE.PERFORMANCE.BEST_SELLING_CATEGORY.uuid} data-ui-instance-id="best-selling-category" className="text-sm font-medium text-muted-foreground">{t(MERCHANT.MERCHANT_PROFILE.PERFORMANCE.BEST_SELLING_CATEGORY)}</span>
+                <span data-ui-uuid={MERCHANT.MERCHANT_PROFILE.PERFORMANCE.BEST_SELLING_CATEGORY.uuid}
+          data-ui-lang-uuid={`lang-${MERCHANT.MERCHANT_PROFILE.PERFORMANCE.BEST_SELLING_CATEGORY.uuid}`} data-ui-instance-id="best-selling-category" className="text-sm font-medium text-muted-foreground">{t('merchant.performance.bestSellingCategory')}</span>
                 <p data-ui-instance-id="best-selling-category" className="text-lg font-bold tracking-tight">{performance.bestSellingCategory}</p>
-                <span data-ui-uuid={MERCHANT.MERCHANT_PROFILE.PERFORMANCE.BEST_SELLING_CATEGORY_SUBTITLE.uuid} data-ui-instance-id="best-selling-category" className="text-xs text-muted-foreground">{t(MERCHANT.MERCHANT_PROFILE.PERFORMANCE.BEST_SELLING_CATEGORY_SUBTITLE)}</span>
+                <span data-ui-uuid={MERCHANT.MERCHANT_PROFILE.PERFORMANCE.BEST_SELLING_CATEGORY_SUBTITLE.uuid}
+          data-ui-lang-uuid={`lang-${MERCHANT.MERCHANT_PROFILE.PERFORMANCE.BEST_SELLING_CATEGORY_SUBTITLE.uuid}`} data-ui-instance-id="best-selling-category" className="text-xs text-muted-foreground">{t('merchant.performance.bestSellingCategorySubtitle')}</span>
               </div>
               <div className="rounded-full bg-muted p-2.5">
                 <Award className="h-5 w-5 text-muted-foreground" />
@@ -240,7 +255,8 @@ export function PerformanceDashboard({ performance, className }: PerformanceDash
           <div className="p-4 sm:p-6">
             <div className="flex items-start justify-between">
               <div className="space-y-2">
-                <span data-ui-uuid={MERCHANT.MERCHANT_PROFILE.PERFORMANCE.INVENTORY_HEALTH.uuid} data-ui-instance-id="inventory-health" className="text-sm font-medium text-muted-foreground">{t(MERCHANT.MERCHANT_PROFILE.PERFORMANCE.INVENTORY_HEALTH)}</span>
+                <span data-ui-uuid={MERCHANT.MERCHANT_PROFILE.PERFORMANCE.INVENTORY_HEALTH.uuid}
+          data-ui-lang-uuid={`lang-${MERCHANT.MERCHANT_PROFILE.PERFORMANCE.INVENTORY_HEALTH.uuid}`} data-ui-instance-id="inventory-health" className="text-sm font-medium text-muted-foreground">{t('merchant.performance.inventoryHealth')}</span>
                 <div className="flex items-center gap-2">
                   <p data-ui-instance-id="inventory-health" className="text-2xl font-bold tracking-tight capitalize">{performance.inventoryHealth.replace('_', ' ')}</p>
                   {performance.inventoryHealth !== 'healthy' && <AlertTriangle className="h-5 w-5 text-warning" />}

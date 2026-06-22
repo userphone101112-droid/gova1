@@ -12,14 +12,17 @@ export default function AppNotFound() {
 
   return (
     <div className="max-w-md mx-auto text-center py-12 px-4">
-      <h2 data-ui-uuid={ERROR_BOUNDARY.APP_NOT_FOUND.TITLE.uuid} className="mb-4 text-2xl font-bold text-on-surface">
-        {t(ERROR_BOUNDARY.APP_NOT_FOUND.TITLE)}
+      <h2 data-ui-uuid={ERROR_BOUNDARY.APP_NOT_FOUND.TITLE.uuid}
+          data-ui-lang-uuid={`lang-${ERROR_BOUNDARY.APP_NOT_FOUND.TITLE.uuid}`} className="mb-4 text-2xl font-bold text-on-surface">
+        {t('error-boundary.app-not-found.title')}
       </h2>
-      <div data-ui-uuid={ERROR_BOUNDARY.APP_NOT_FOUND.MESSAGE.uuid} className="mb-6 text-on-surface-variant">
-        {t(ERROR_BOUNDARY.APP_NOT_FOUND.MESSAGE)}
+      <div data-ui-uuid={ERROR_BOUNDARY.APP_NOT_FOUND.MESSAGE.uuid}
+          data-ui-lang-uuid={`lang-${ERROR_BOUNDARY.APP_NOT_FOUND.MESSAGE.uuid}`} className="mb-6 text-on-surface-variant">
+        {t('error-boundary.app-not-found.message')}
       </div>
-      <Link data-ui-uuid={ERROR_BOUNDARY.APP_NOT_FOUND.HOME_LINK.uuid} href="/home">
-        {t(ERROR_BOUNDARY.APP_NOT_FOUND.HOME_LINK)}
+      <Link data-ui-uuid={ERROR_BOUNDARY.APP_NOT_FOUND.HOME_LINK.uuid}
+          data-ui-lang-uuid={`lang-${ERROR_BOUNDARY.APP_NOT_FOUND.HOME_LINK.uuid}`} href="/home">
+        {t('error-boundary.app-not-found.homeLink')}
       </Link>
     </div>
   );
