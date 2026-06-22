@@ -8,7 +8,6 @@ import type { UiIdentity } from '../types';
 
 export const COMMON_TEMPLATE = {
   TEMPLATE: {
-uuid: '7d733c9c-e2ba-5d61-81d2-ad8ed16aced3',
     id: 'UI_COMMON_TEMPLATE_TEMPLATE',
     path: 'common.template.template',
     lifecycle: 'active',
@@ -20,7 +19,6 @@ uuid: '7d733c9c-e2ba-5d61-81d2-ad8ed16aced3',
     updatedAt: '2026-06-17',
 } as const,
   SLOT: {
-uuid: 'd73f3d1e-51b1-5d5f-9a70-f81822669659',
     id: 'UI_COMMON_TEMPLATE_SLOT',
     path: 'common.template.slot',
     lifecycle: 'active',

@@ -59,7 +59,7 @@ export function OtpInput({
   };
 
   return (
-    <div data-ui-uuid={AUTH.SHELL.OTP_INPUT_L63.uuid} className="flex gap-2 justify-center" onPaste={handlePaste}>
+    <div className="flex gap-2 justify-center" onPaste={handlePaste}>
       {Array.from({ length }).map((_, index) => (
         <input data-ui-uuid={AUTH.REGISTRATION.OTP_INPUT.uuid} data-ui-instance-id={String(index)} key={index} ref={(el) => {
         inputsRef.current[index] = el;

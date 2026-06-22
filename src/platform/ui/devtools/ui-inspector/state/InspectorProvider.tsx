@@ -58,6 +58,7 @@ type InspectorContextValue = {
   handleFramesModeToggle: () => void;
   handleResizeStart: () => void;
   sendHighlight: (scanKey: string) => void;
+  sendClearHighlight: () => void;
   sendScroll: (scanKey: string) => void;
   handleAutofill: () => void;
 };
@@ -468,6 +469,7 @@ export function InspectorProvider({ children }: { children: ReactNode }) {
       handleFramesModeToggle,
       handleResizeStart,
       sendHighlight,
+      sendClearHighlight,
       sendScroll,
       handleAutofill,
     }),
@@ -484,6 +486,7 @@ export function InspectorProvider({ children }: { children: ReactNode }) {
       handleFramesModeToggle,
       handleResizeStart,
       sendHighlight,
+      sendClearHighlight,
       sendScroll,
       handleAutofill,
     ]

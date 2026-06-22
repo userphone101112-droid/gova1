@@ -17,7 +17,7 @@ let bindingFrameCandidates: FrameCandidate[] = [];
 let pickModeEnabled = false;
 let onPickHandler: ((scanKey: string) => void) | null = null;
 
-const DECORATIVE_SPACER_UUID = DECORATIVE.SPACER.uuid;
+const DECORATIVE_SPACER_UUID = (DECORATIVE.SPACER as { uuid?: string }).uuid ?? '';
 
 export function scanInspectableElements(): InspectElementSnapshot[] {
   if (typeof document === 'undefined') return [];
@@ -98,7 +98,7 @@ export function scanInspectableElements(): InspectElementSnapshot[] {
 
       snapshot = {
         scanKey,
-        uuid: '',
+        uuid,
         hasUuid: false,
         tagName: el.tagName.toLowerCase(),
         id: el.id || '',

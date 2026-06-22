@@ -16,19 +16,19 @@ const ruleTester = new RuleTester({
 ruleTester.run('require-data-ui-uuid', requireDataUiUuid, {
   valid: [
     {
-      code: '<div data-ui-uuid={HOME.CURATED_OFFERS.CONTAINER.uuid} />',
+      code: '<div data-ui-uuid={HOME.CURATED_OFFERS.SECTION_TITLE.uuid} />',
       filename: 'src/app/page.tsx',
     },
     {
-      code: '<html data-ui-uuid={SHARED_LAYOUT.ROOT.HTML.uuid}><body data-ui-uuid={SHARED_LAYOUT.ROOT.BODY.uuid}><div data-ui-uuid={HOME.CURATED_OFFERS.CONTAINER.uuid} /></body></html>',
+      code: '<html><body><div data-ui-uuid={HOME.CURATED_OFFERS.SECTION_TITLE.uuid} /></body></html>',
       filename: 'src/app/layout.tsx',
     },
     {
-      code: '<option data-ui-uuid={SETTINGS.LANGUAGE_REGION.CAIRO_OPTION.uuid} />',
+      code: '<option data-ui-uuid={SETTINGS.LANGUAGE_REGION.CAIRO.uuid} />',
       filename: 'src/app/(app)/settings/page.tsx',
     },
     {
-      code: 'const Icon = () => (<svg data-ui-uuid={HOME.CURATED_OFFERS.CONTAINER.uuid}><path data-ui-uuid={HOME.CURATED_OFFERS.HEADER.uuid} d="M0 0" /></svg>);',
+      code: 'const Icon = () => (<svg data-ui-uuid={HOME.CURATED_OFFERS.SECTION_TITLE.uuid}><path d="M0 0" /></svg>);',
       filename: 'src/components/Icon.tsx',
     },
     // UUIDs are now optional - elements without UUID are valid
@@ -37,15 +37,15 @@ ruleTester.run('require-data-ui-uuid', requireDataUiUuid, {
       filename: 'src/app/page.tsx',
     },
     {
-      code: '<html><body><div data-ui-uuid={HOME.CURATED_OFFERS.CONTAINER.uuid} /></body></html>',
+      code: '<html><body><div /></body></html>',
       filename: 'src/app/layout.tsx',
     },
     {
-      code: '<div data-ui-uuid={HOME.CURATED_OFFERS.CONTAINER.uuid}><option>x</option></div>',
+      code: '<div data-ui-uuid={HOME.CURATED_OFFERS.SECTION_TITLE.uuid}><option>x</option></div>',
       filename: 'src/app/(app)/settings/page.tsx',
     },
     {
-      code: '<svg data-ui-uuid={HOME.CURATED_OFFERS.CONTAINER.uuid}><path d="M0 0" /></svg>',
+      code: '<svg data-ui-uuid={HOME.CURATED_OFFERS.SECTION_TITLE.uuid}><path d="M0 0" /></svg>',
       filename: 'src/components/Icon.tsx',
     },
   ],

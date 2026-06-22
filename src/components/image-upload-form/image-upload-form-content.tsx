@@ -36,7 +36,6 @@ export function ImageUploadFormContent() {
 
   return (
     <div
-      data-ui-uuid={IMAGE_UPLOAD_FORM.PAGE.CONTAINER.uuid}
       className="mx-auto min-h-48 max-w-2xl space-y-6 bg-background px-4 py-8"
     >
       <label
@@ -91,7 +90,6 @@ export function ImageUploadFormContent() {
       />
 
       <div
-        data-ui-uuid={IMAGE_UPLOAD_FORM.GALLERY.CONTAINER.uuid}
         className="grid grid-cols-2 gap-3 space-y-4 rounded-xl border border-outline-variant bg-surface-container p-4 sm:grid-cols-3"
       >
         <button

@@ -21,7 +21,7 @@ export default function AppError({
   }, [error]);
 
   return (
-    <div data-ui-uuid={ERROR_BOUNDARY.APP_ERROR.CONTAINER.uuid} className="max-w-md mx-auto text-center py-12 px-4">
+    <div className="max-w-md mx-auto text-center py-12 px-4">
       <h2 data-ui-uuid={ERROR_BOUNDARY.APP_ERROR.TITLE.uuid} className="mb-4 text-2xl font-bold text-on-surface">
         {t(ERROR_BOUNDARY.APP_ERROR.TITLE)}
       </h2>

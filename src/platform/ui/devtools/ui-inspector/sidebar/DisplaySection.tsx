@@ -43,7 +43,6 @@ export function DisplaySection() {
     <>
       {!selected ? (
         <code
-          data-ui-uuid={DEVTOOLS.UI_INSPECTOR.STATUS.CONTAINER.uuid}
           data-ui-instance-id="display-empty"
           className="block px-3 pb-3 text-sm text-on-surface-variant"
         >
@@ -51,14 +50,12 @@ export function DisplaySection() {
         </code>
       ) : (
         <section
-          data-ui-uuid={DEVTOOLS.UI_INSPECTOR.SELECTED.CONTAINER.uuid}
           className="flex flex-col gap-3 bg-surface-variant/40 px-3 py-3"
         >
           <ReadOnlyField
             label={INSPECTOR_LABELS.stableId}
             hint="Short stable identifier used in lists and selection."
             labelUuid={DEVTOOLS.UI_INSPECTOR.DETAILS.STABLE_ID_LABEL.uuid}
-            valueUuid={DEVTOOLS.UI_INSPECTOR.DETAILS.STABLE_ID_VALUE.uuid}
             instanceId="display-stable-id"
           >
             <code className="block break-all text-sm font-semibold">{selected.id || selected.uuid.slice(0, 8)}</code>
@@ -68,7 +65,6 @@ export function DisplaySection() {
             label={INSPECTOR_LABELS.identityPath}
             hint="Registry path for this UI identity."
             labelUuid={DEVTOOLS.UI_INSPECTOR.DETAILS.PATH_LABEL.uuid}
-            valueUuid={DEVTOOLS.UI_INSPECTOR.DETAILS.PATH_VALUE.uuid}
             instanceId="display-path"
           >
             <code className="block break-all text-xs text-on-surface-variant">
@@ -80,7 +76,6 @@ export function DisplaySection() {
             label={INSPECTOR_LABELS.tag}
             hint="HTML tag, feature module, and lifecycle stage."
             labelUuid={DEVTOOLS.UI_INSPECTOR.DETAILS.TAG_LABEL.uuid}
-            valueUuid={DEVTOOLS.UI_INSPECTOR.DETAILS.TAG_VALUE.uuid}
             instanceId="display-tag"
           >
             <code className="block text-xs">
@@ -92,7 +87,6 @@ export function DisplaySection() {
             label={INSPECTOR_LABELS.uuid}
             hint="Full registry UUID for this element."
             labelUuid={DEVTOOLS.UI_INSPECTOR.DETAILS.UUID_LABEL.uuid}
-            valueUuid={DEVTOOLS.UI_INSPECTOR.DETAILS.UUID_VALUE.uuid}
             instanceId="display-uuid"
           >
             <code className="block break-all text-[10px] text-on-surface-variant">{selected.uuid}</code>
@@ -100,14 +94,12 @@ export function DisplaySection() {
         </section>
       )}
       <section
-        data-ui-uuid={DEVTOOLS.UI_INSPECTOR.STATUS.CONTAINER.uuid}
         data-ui-instance-id="status-bar"
         className="flex flex-col gap-3 border-t border-outline-variant px-3 py-3 text-[11px]"
       >
         <ReadOnlyField
           label="Iframe status"
           hint="Whether the preview iframe has finished loading."
-          valueUuid={DEVTOOLS.UI_INSPECTOR.STATUS.IFRAME_VALUE.uuid}
           instanceId="status-iframe"
         >
           <code className="block break-all text-on-surface-variant">
@@ -118,7 +110,6 @@ export function DisplaySection() {
         <ReadOnlyField
           label="Last scan"
           hint="Timestamp of the most recent DOM scan."
-          valueUuid={DEVTOOLS.UI_INSPECTOR.STATUS.SCAN_VALUE.uuid}
           instanceId="status-scan"
         >
           <code className="block break-all text-on-surface-variant">{formatScanTime(state.lastScanTime)}</code>
@@ -127,7 +118,6 @@ export function DisplaySection() {
         <ReadOnlyField
           label="Element count"
           hint="Total elements found in the current scan."
-          valueUuid={DEVTOOLS.UI_INSPECTOR.STATUS.COUNT_VALUE.uuid}
           instanceId="status-count"
         >
           <code className="block break-all text-on-surface-variant">{state.elements.length}</code>
@@ -136,7 +126,6 @@ export function DisplaySection() {
         <ReadOnlyField
           label="Preview URL"
           hint="Current URL loaded in the preview iframe."
-          valueUuid={DEVTOOLS.UI_INSPECTOR.STATUS.URL_VALUE.uuid}
           instanceId="status-url"
         >
           <code className="block break-all text-on-surface-variant">{targetUrl}</code>

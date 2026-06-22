@@ -29,41 +29,41 @@ export function BusinessDetailsStep() {
   ];
 
   return (
-    <div data-ui-uuid={ONBOARDING.SHELL.BUSINESS_DETAILS_TITLE_CONTAINER_L32.uuid} className="w-full">
+    <div className="w-full">
       <h1 data-ui-uuid={ONBOARDING.BUSINESS_DETAILS.TITLE.uuid} className="text-3xl font-bold tracking-tight mb-2">{t(ONBOARDING.BUSINESS_DETAILS.TITLE)}</h1>
       <p data-ui-uuid={ONBOARDING.BUSINESS_DETAILS.DESCRIPTION.uuid} className="text-muted-foreground mb-8">{t(ONBOARDING.BUSINESS_DETAILS.DESCRIPTION)}</p>
 
-      <div data-ui-uuid={ONBOARDING.SHELL.BUSINESS_DETAILS_BUSINESS_NAME_LABEL_CONTAINER_L36.uuid} className="space-y-6 max-w-4xl mx-auto">
-        <div data-ui-uuid={ONBOARDING.SHELL.BUSINESS_DETAILS_BUSINESS_NAME_LABEL_CONTAINER_L37.uuid} className="space-y-2">
+      <div className="space-y-6 max-w-4xl mx-auto">
+        <div className="space-y-2">
           <span data-ui-uuid={ONBOARDING.BUSINESS_DETAILS.BUSINESS_NAME_LABEL.uuid}>{t(ONBOARDING.BUSINESS_DETAILS.BUSINESS_NAME_LABEL)}</span>
-          <input data-ui-uuid={ONBOARDING.BUSINESS_DETAILS.BUSINESS_NAME_INPUT.uuid} placeholder={t(ONBOARDING.BUSINESS_DETAILS.BUSINESS_NAME_PLACEHOLDER)} value={businessDetails.businessName || ''} onChange={(e) => updateBusinessDetails({ businessName: e.target.value })} />
+          <input placeholder={t(ONBOARDING.BUSINESS_DETAILS.BUSINESS_NAME_PLACEHOLDER)} value={businessDetails.businessName || ''} onChange={(e) => updateBusinessDetails({ businessName: e.target.value })} />
         </div>
 
-        <div data-ui-uuid={ONBOARDING.SHELL.BUSINESS_DETAILS_BUSINESS_TYPE_LABEL_CONTAINER_L42.uuid} className="space-y-2">
+        <div className="space-y-2">
           <span data-ui-uuid={ONBOARDING.BUSINESS_DETAILS.BUSINESS_TYPE_LABEL.uuid}>{t(ONBOARDING.BUSINESS_DETAILS.BUSINESS_TYPE_LABEL)}</span>
-          <select data-ui-uuid={ONBOARDING.BUSINESS_DETAILS.BUSINESS_TYPE_SELECT.uuid} value={businessDetails.businessType || ''} onChange={(e) => updateBusinessDetails({ businessType: e.target.value as any })}>
+          <select value={businessDetails.businessType || ''} onChange={(e) => updateBusinessDetails({ businessType: e.target.value as any })}>
             {businessTypes.map((t) => (
-              <option data-ui-uuid={ONBOARDING.BUSINESS_DETAILS.BUSINESS_TYPE_OPTION.uuid} data-ui-instance-id={t.id} key={t.id}>{t.label}</option>
+              <option data-ui-instance-id={t.id} key={t.id}>{t.label}</option>
             ))}
           </select>
         </div>
 
-        <div data-ui-uuid={ONBOARDING.SHELL.BUSINESS_DETAILS_REGISTRATION_NUMBER_LABEL_CONTAINER_L51.uuid} className="grid gap-6 sm:grid-cols-2">
-          <div data-ui-uuid={ONBOARDING.SHELL.BUSINESS_DETAILS_REGISTRATION_NUMBER_LABEL_CONTAINER_L52.uuid} className="space-y-2">
+        <div className="grid gap-6 sm:grid-cols-2">
+          <div className="space-y-2">
             <span data-ui-uuid={ONBOARDING.BUSINESS_DETAILS.REGISTRATION_NUMBER_LABEL.uuid}>{t(ONBOARDING.BUSINESS_DETAILS.REGISTRATION_NUMBER_LABEL)}</span>
-            <input data-ui-uuid={ONBOARDING.BUSINESS_DETAILS.REGISTRATION_NUMBER_INPUT.uuid} placeholder={t(ONBOARDING.BUSINESS_DETAILS.REGISTRATION_NUMBER_PLACEHOLDER)} value={businessDetails.businessRegistrationNumber || ''} onChange={(e) => updateBusinessDetails({ businessRegistrationNumber: e.target.value })} />
+            <input placeholder={t(ONBOARDING.BUSINESS_DETAILS.REGISTRATION_NUMBER_PLACEHOLDER)} value={businessDetails.businessRegistrationNumber || ''} onChange={(e) => updateBusinessDetails({ businessRegistrationNumber: e.target.value })} />
           </div>
-          <div data-ui-uuid={ONBOARDING.SHELL.BUSINESS_DETAILS_YEAR_FOUNDED_LABEL_CONTAINER_L56.uuid} className="space-y-2">
+          <div className="space-y-2">
             <span data-ui-uuid={ONBOARDING.BUSINESS_DETAILS.YEAR_FOUNDED_LABEL.uuid}>{t(ONBOARDING.BUSINESS_DETAILS.YEAR_FOUNDED_LABEL)}</span>
-            <input data-ui-uuid={ONBOARDING.BUSINESS_DETAILS.YEAR_FOUNDED_INPUT.uuid} placeholder={t(ONBOARDING.BUSINESS_DETAILS.YEAR_FOUNDED_PLACEHOLDER)} value={businessDetails.yearFounded || ''} onChange={(e) => updateBusinessDetails({ yearFounded: e.target.value })} />
+            <input placeholder={t(ONBOARDING.BUSINESS_DETAILS.YEAR_FOUNDED_PLACEHOLDER)} value={businessDetails.yearFounded || ''} onChange={(e) => updateBusinessDetails({ yearFounded: e.target.value })} />
           </div>
         </div>
 
-        <div data-ui-uuid={ONBOARDING.SHELL.BUSINESS_DETAILS_EMPLOYEE_COUNT_LABEL_CONTAINER_L62.uuid} className="space-y-2">
+        <div className="space-y-2">
           <span data-ui-uuid={ONBOARDING.BUSINESS_DETAILS.EMPLOYEE_COUNT_LABEL.uuid}>{t(ONBOARDING.BUSINESS_DETAILS.EMPLOYEE_COUNT_LABEL)}</span>
-          <select data-ui-uuid={ONBOARDING.BUSINESS_DETAILS.EMPLOYEE_COUNT_SELECT.uuid} value={businessDetails.employeeCount || ''} onChange={(e) => updateBusinessDetails({ employeeCount: e.target.value })}>
+          <select value={businessDetails.employeeCount || ''} onChange={(e) => updateBusinessDetails({ employeeCount: e.target.value })}>
             {employeeCountOptions.map((e) => (
-              <option data-ui-uuid={ONBOARDING.BUSINESS_DETAILS.EMPLOYEE_COUNT_OPTION.uuid} data-ui-instance-id={e.id} key={e.id}>{e.label}</option>
+              <option data-ui-instance-id={e.id} key={e.id}>{e.label}</option>
             ))}
           </select>
         </div>

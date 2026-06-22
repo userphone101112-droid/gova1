@@ -86,18 +86,18 @@ export function PhoneVerification() {
   };
 
   return (
-    <div data-ui-uuid={AUTH.REGISTRATION.PHONE_VERIFICATION_SECTION.uuid} className="space-y-4">
+    <div className="space-y-4">
       <Controller
         name="phone"
         control={control}
         render={({ field, fieldState }) => (
-          <div data-ui-uuid={AUTH.SHELL.REGISTRATION_PHONE_INPUT_WRAPPER_L88.uuid} className="space-y-2">
-            <span data-ui-uuid={AUTH.REGISTRATION.PHONE_INPUT_LABEL.uuid} className="type-label-lg flex items-center gap-2">
+          <div className="space-y-2">
+            <span className="type-label-lg flex items-center gap-2">
               {t(AUTH.REGISTRATION.PHONE_INPUT)}
             </span>
-            <div data-ui-uuid={AUTH.SHELL.REGISTRATION_PHONE_INPUT_WRAPPER_L92.uuid} className="flex gap-2">
-              <div data-ui-uuid={AUTH.SHELL.REGISTRATION_PHONE_INPUT_WRAPPER_L93.uuid} className="relative flex-1">
-                <span data-ui-uuid={AUTH.SHELL.REGISTRATION_PHONE_INPUT_SPAN_L94.uuid} className="absolute start-3 top-1/2 -translate-y-1/2 type-body-sm text-on-surface-variant select-none">
+            <div className="flex gap-2">
+              <div className="relative flex-1">
+                <span className="absolute start-3 top-1/2 -translate-y-1/2 type-body-sm text-on-surface-variant select-none">
                   +20
                 </span>
                 <input data-ui-uuid={AUTH.REGISTRATION.PHONE_INPUT.uuid} type="tel" inputMode="tel" maxLength={11} disabled={phoneVerified} placeholder={t(AUTH.SHARED.PHONE_PLACEHOLDER)} className={cn('auth-input ps-12 motion-colors w-full', phoneVerified && 'bg-surface-container pe-10', fieldState.error && 'border-error focus-visible:ring-error')} value={field.value} onChange={(e) => {
@@ -134,7 +134,7 @@ export function PhoneVerification() {
               </p>
             )}
             {fieldState.error && (
-              <p data-ui-uuid={AUTH.SHELL.PHONE_VERIFICATION_L131.uuid} className="type-caption text-error">{fieldState.error.message ? t(fieldState.error.message as any, fieldState.error.message) : ''}</p>
+              <p className="type-caption text-error">{fieldState.error.message ? t(fieldState.error.message as any, fieldState.error.message) : ''}</p>
             )}
           </div>
         )}
@@ -142,11 +142,11 @@ export function PhoneVerification() {
 
       {otpSent && !phoneVerified && (
         <div data-ui-uuid={AUTH.REGISTRATION.OTP_INPUT.uuid} data-ui-instance-id="verification-shell" className="motion-reveal space-y-4 rounded-xl border border-outline-variant bg-card p-4 elevation-2">
-          <div data-ui-uuid={AUTH.SHELL.REGISTRATION_OTP_LABEL_WRAPPER_L139.uuid} className="space-y-1">
+          <div className="space-y-1">
             <p data-ui-uuid={AUTH.REGISTRATION.OTP_LABEL.uuid} className="type-label-lg">{t(AUTH.REGISTRATION.OTP_LABEL)}</p>
             <p data-ui-uuid={AUTH.REGISTRATION.OTP_DESCRIPTION.uuid} className="type-caption text-on-surface-variant">
               {t(AUTH.REGISTRATION.OTP_DESCRIPTION)}{' '}
-              <span data-ui-uuid={AUTH.SHELL.REGISTRATION_OTP_LABEL_WRAPPER_L143.uuid} className="font-medium text-on-surface">{formatPhoneDisplay(phone)}</span>
+              <span className="font-medium text-on-surface">{formatPhoneDisplay(phone)}</span>
             </p>
           </div>
 
@@ -159,9 +159,9 @@ export function PhoneVerification() {
             hasError={!!otpError}
           />
 
-          {otpError && <p data-ui-uuid={AUTH.SHELL.PHONE_VERIFICATION_L156.uuid} className="type-caption text-error text-center">{otpError}</p>}
+          {otpError && <p className="type-caption text-error text-center">{otpError}</p>}
 
-          <div data-ui-uuid={AUTH.SHELL.REGISTRATION_OTP_LABEL_WRAPPER_L158.uuid} className="flex items-center gap-3 w-full">
+          <div className="flex items-center gap-3 w-full">
             <button data-ui-uuid={AUTH.REGISTRATION.VERIFY_OTP_BUTTON.uuid} type="button" onClick={() => void handleVerifyOtp()} disabled={otp.length !== 4 || isVerifying} className="flex-1 motion-colors">
               {isVerifying ? t(AUTH.REGISTRATION.VERIFYING_OTP) : t(AUTH.REGISTRATION.VERIFY_OTP_BUTTON)}
             </button>

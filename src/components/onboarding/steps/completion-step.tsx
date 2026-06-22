@@ -10,9 +10,9 @@ export function CompletionStep() {
   const { t } = useTranslation();
 
   return (
-    <div data-ui-uuid={ONBOARDING.SHELL.COMPLETION_TITLE_CONTAINER_L13.uuid} className="w-full max-w-4xl mx-auto text-center">
-      <div data-ui-uuid={ONBOARDING.SHELL.COMPLETION_TITLE_CONTAINER_L14.uuid} className="mb-8">
-        <div data-ui-uuid={ONBOARDING.SHELL.COMPLETION_TITLE_CONTAINER_L15.uuid} className="h-20 w-20 mx-auto rounded-full bg-success-container flex items-center justify-center mb-6">
+    <div className="w-full max-w-4xl mx-auto text-center">
+      <div className="mb-8">
+        <div className="h-20 w-20 mx-auto rounded-full bg-success-container flex items-center justify-center mb-6">
           <CheckCircle2 className="h-10 w-10 text-success" />
         </div>
         <h1 data-ui-uuid={ONBOARDING.COMPLETION.TITLE.uuid} className="text-3xl sm:text-4xl font-bold tracking-tight mb-4">

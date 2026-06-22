@@ -42,7 +42,6 @@ export function Test1Content() {
 
   return (
     <div
-      data-ui-uuid={TEST1.PAGE.CONTAINER.uuid}
       className="mx-auto min-h-48 max-w-5xl space-y-6 bg-background px-4 py-8"
     >
       <h1
@@ -53,7 +52,6 @@ export function Test1Content() {
       </h1>
 
       <div
-        data-ui-uuid={TEST1.FORM.CONTAINER.uuid}
         className="space-y-4"
       >
         <input
@@ -97,7 +95,6 @@ export function Test1Content() {
       </div>
 
       <div
-        data-ui-uuid={TEST1.IMAGE_UPLOAD.CONTAINER.uuid}
         className="grid grid-cols-2 gap-3 space-y-4 rounded-xl border border-outline-variant bg-surface-container p-4 sm:grid-cols-3"
       >
         <button

@@ -2,7 +2,6 @@
 export const TEST1 = {
   PAGE: {
     CONTAINER: {
-uuid: '7601d600-06cf-5dd9-837f-977ee579f247',
 id: 'UI_TEST1_PAGE_CONTAINER',
       path: 'test1.page.layout.container',
       lifecycle: 'active',
@@ -28,7 +27,6 @@ id: 'UI_TEST1_PAGE_TITLE',
   },
   FORM: {
     CONTAINER: {
-uuid: 'e8e664a1-5044-59ec-a819-03b7fef1e732',
 id: 'UI_TEST1_FORM_CONTAINER',
       path: 'test1.form.layout.container',
       description: 'Form container',
@@ -90,7 +88,6 @@ id: 'UI_TEST1_FORM_SAVE_BUTTON',
   },
   IMAGE_UPLOAD: {
     CONTAINER: {
-uuid: 'd30739c4-1e2d-51b9-aea7-5dbaa3a00ee7',
 id: 'UI_TEST1_IMAGE_UPLOAD_CONTAINER',
       path: 'test1.image-upload.layout.container',
       description: 'Image upload container',
@@ -114,7 +111,6 @@ id: 'UI_TEST1_IMAGE_UPLOAD_UPLOAD_BUTTON',
       updatedAt: '2026-06-20',
 } as const,
     PREVIEW_CONTAINER: {
-uuid: '543784c3-c363-5d16-b0fd-e1c1b4936f84',
 id: 'UI_TEST1_IMAGE_UPLOAD_PREVIEW_CONTAINER',
       path: 'test1.image-upload.layout.preview-container',
       description: 'Image preview container',

@@ -1,7 +1,5 @@
 'use client';
 
-import { DEVTOOLS } from '@/platform/ui/registry/features/devtools';
-
 import { useInspectorContext } from '../state/InspectorProvider';
 import { RESIZER_WIDTH } from '../utils/constants';
 
@@ -13,14 +11,12 @@ export function InspectorLayout() {
 
   return (
     <div
-      data-ui-uuid={DEVTOOLS.UI_INSPECTOR.WORKSPACE.CONTAINER.uuid}
       dir="ltr"
       className="flex min-h-0 flex-1 flex-col lg:flex-row"
     >
       <InspectorSidebar />
 
       <button
-        data-ui-uuid={DEVTOOLS.UI_INSPECTOR.LAYOUT.RESIZER.uuid}
         type="button"
         aria-label="Resize inspector sidebar"
         onMouseDown={handleResizeStart}

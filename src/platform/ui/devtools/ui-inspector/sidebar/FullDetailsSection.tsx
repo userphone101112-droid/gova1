@@ -2,8 +2,6 @@
 
 import { useMemo } from 'react';
 
-import { DEVTOOLS } from '@/platform/ui/registry/features/devtools';
-
 import { useInspectorContext } from '../state/InspectorProvider';
 import { copyText, emptyDisplayValue } from '../utils/format';
 import { INSPECTOR_LABELS } from '../utils/inspector-labels';
@@ -23,7 +21,6 @@ export function FullDetailsSection() {
   if (!selected) {
     return (
       <p
-        data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DETAILS.EMPTY_MESSAGE.uuid}
         className="overflow-y-auto px-3 pb-3 text-sm text-on-surface-variant"
       >
         Select an element from the preview or list to inspect its registry metadata.
@@ -33,56 +30,53 @@ export function FullDetailsSection() {
 
   return (
     <>
-      <span data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DETAILS.FEATURE_LABEL.uuid} className="px-3 text-xs font-medium">
+      <span className="px-3 text-xs font-medium">
         {INSPECTOR_LABELS.feature}
       </span>
-      <code data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DETAILS.FEATURE_VALUE.uuid} className="block break-all px-3 pb-2 text-xs">
+      <code className="block break-all px-3 pb-2 text-xs">
         {emptyDisplayValue(selected.feature)}
       </code>
-      <span data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DETAILS.LIFECYCLE_LABEL.uuid} className="px-3 text-xs font-medium">
+      <span className="px-3 text-xs font-medium">
         {INSPECTOR_LABELS.lifecycle}
       </span>
-      <code data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DETAILS.LIFECYCLE_VALUE.uuid} className="block break-all px-3 pb-2 text-xs">
+      <code className="block break-all px-3 pb-2 text-xs">
         {emptyDisplayValue(selected.lifecycle)}
       </code>
-      <span data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DETAILS.SOURCE_FILE_LABEL.uuid} className="px-3 text-xs font-medium">
+      <span className="px-3 text-xs font-medium">
         {INSPECTOR_LABELS.sourceFile}
       </span>
-      <code data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DETAILS.SOURCE_FILE_VALUE.uuid} className="block break-all px-3 pb-2 text-xs">
+      <code className="block break-all px-3 pb-2 text-xs">
         {emptyDisplayValue(selected.sourceFile)}
       </code>
-      <span data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DETAILS.SOURCE_COMPONENT_LABEL.uuid} className="px-3 text-xs font-medium">
+      <span className="px-3 text-xs font-medium">
         {INSPECTOR_LABELS.sourceComponent}
       </span>
       <code
-        data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DETAILS.SOURCE_COMPONENT_VALUE.uuid}
         className="block break-all px-3 pb-2 text-xs"
       >
         {emptyDisplayValue(selected.sourceComponent)}
       </code>
-      <span data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DETAILS.SOURCE_LINE_LABEL.uuid} className="px-3 text-xs font-medium">
+      <span className="px-3 text-xs font-medium">
         {INSPECTOR_LABELS.sourceLine}
       </span>
-      <code data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DETAILS.SOURCE_LINE_VALUE.uuid} className="block break-all px-3 pb-2 text-xs">
+      <code className="block break-all px-3 pb-2 text-xs">
         {selected.sourceLine ? String(selected.sourceLine) : '-'}
       </code>
-      <span data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DETAILS.INSTANCE_LABEL.uuid} className="px-3 text-xs font-medium">
+      <span className="px-3 text-xs font-medium">
         {INSPECTOR_LABELS.instanceId}
       </span>
-      <code data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DETAILS.INSTANCE_VALUE.uuid} className="block break-all px-3 pb-2 text-xs">
+      <code className="block break-all px-3 pb-2 text-xs">
         {emptyDisplayValue(selected.instanceId)}
       </code>
-      <span data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DETAILS.IDENTITY_KEY_LABEL.uuid} className="px-3 text-xs font-medium">
+      <span className="px-3 text-xs font-medium">
         {INSPECTOR_LABELS.identityKey}
       </span>
       <code
-        data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DETAILS.IDENTITY_KEY_VALUE.uuid}
         className="block break-all px-3 pb-2 text-xs"
       >
         {emptyDisplayValue(selected.identityKey)}
       </code>
       <button
-        data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DETAILS.COPY_UUID_BUTTON.uuid}
         type="button"
         onClick={() => copyText(selected.uuid)}
         className="mx-3 mb-1 w-[calc(100%-1.5rem)] rounded border border-outline-variant px-2 py-1 text-xs"
@@ -90,7 +84,6 @@ export function FullDetailsSection() {
         Copy UUID
       </button>
       <button
-        data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DETAILS.COPY_PATH_BUTTON.uuid}
         type="button"
         onClick={() => copyText(selected.path)}
         className="mx-3 mb-1 w-[calc(100%-1.5rem)] rounded border border-outline-variant px-2 py-1 text-xs"
@@ -98,7 +91,6 @@ export function FullDetailsSection() {
         Copy identity path
       </button>
       <button
-        data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DETAILS.COPY_SOURCE_BUTTON.uuid}
         type="button"
         onClick={() => copyText(sourceLocation)}
         className="mx-3 mb-1 w-[calc(100%-1.5rem)] rounded border border-outline-variant px-2 py-1 text-xs"
@@ -106,7 +98,6 @@ export function FullDetailsSection() {
         Copy source location
       </button>
       <button
-        data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DETAILS.HIGHLIGHT_BUTTON.uuid}
         type="button"
         onClick={() => sendHighlight(selected.scanKey)}
         className="mx-3 mb-1 w-[calc(100%-1.5rem)] rounded border border-outline-variant px-2 py-1 text-xs"
@@ -114,7 +105,6 @@ export function FullDetailsSection() {
         Highlight in preview
       </button>
       <button
-        data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DETAILS.SCROLL_BUTTON.uuid}
         type="button"
         onClick={() => sendScroll(selected.scanKey)}
         className="mx-3 mb-3 w-[calc(100%-1.5rem)] rounded border border-outline-variant px-2 py-1 text-xs"

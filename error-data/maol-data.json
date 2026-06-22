@@ -2976,6 +2976,14 @@
         "route": "/home",
         "timestamp": 1782076145223,
         "env": "dev"
+      },
+      {
+        "type": "error",
+        "message": "Uncaught TypeError: Cannot read properties of undefined (reading 'trim')",
+        "stack": "TypeError: Cannot read properties of undefined (reading 'trim')\n    at createTranslationIgnoreKey (http://localhost:3001/_next/static/chunks/src_platform_ui_devtools_1ve2bml._.js?id=%255Bproject%255D%252Fsrc%252Fplatform%252Fui%252Fdevtools%252Fui-inspector%252Fcomponents%252FTranslationPanel.tsx+%255Bapp-client%255D+%2528ecmascript%2529:478:19)\n    at TranslationPanel.useMemo[elementsWithoutTranslation] (http://localhost:3001/_next/static/chunks/src_platform_ui_devtools_1ve2bml._.js?id=%255Bproject%255D%252Fsrc%252Fplatform%252Fui%252Fdevtools%252Fui-inspector%252Fcomponents%252FTranslationPanel.tsx+%255Bapp-client%255D+%2528ecmascript%2529:59:41)\n    at Array.filter (<anonymous>)\n    at TranslationPanel.useMemo[elementsWithoutTranslation] (http://localhost:3001/_next/static/chunks/src_platform_ui_devtools_1ve2bml._.js?id=%255Bproject%255D%252Fsrc%252Fplatform%252Fui%252Fdevtools%252Fui-inspector%252Fcomponents%252FTranslationPanel.tsx+%255Bapp-client%255D+%2528ecmascript%2529:56:84)\n    at mountMemo (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:5393:25)\n    at Object.useMemo (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:15213:24)\n    at exports.useMemo (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_1amofcm._.js:1742:36)\n    at TranslationPanel (http://localhost:3001/_next/static/chunks/src_platform_ui_devtools_1ve2bml._.js?id=%255Bproject%255D%252Fsrc%252Fplatform%252Fui%252Fdevtools%252Fui-inspector%252Fcomponents%252FTranslationPanel.tsx+%255Bapp-client%255D+%2528ecmascript%2529:55:213)\n    at Object.react_stack_bottom_frame (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:15037:24)\n    at renderWithHooks (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:4620:24)\n    at updateFunctionComponent (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:6081:21)\n    at beginWork (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:6691:24)\n    at runWithFiberInDEV (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:965:74)\n    at performUnitOfWork (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:9555:97)\n    at workLoopSync (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:9449:40)\n    at renderRootSync (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:9433:13)\n    at performWorkOnRoot (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:9061:186)\n    at performSyncWorkOnRoot (http://localhost:3001/_next/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:10263:9)\n    at flushSyncWorkAcros",
+        "route": "/devtools/ui-inspector",
+        "timestamp": 1782090651724,
+        "env": "dev"
       }
     ],
     "warnings": [
@@ -3209,6 +3217,295 @@
         "route": "/home",
         "severity": "low",
         "timestamp": 1782085669891,
+        "env": "dev"
+      }
+    ]
+  },
+  "maol_2GtfFfPl2Q": {
+    "errors": [],
+    "warnings": [
+      {
+        "type": "warning",
+        "message": "Image with src \"/images/logos/logo-full.webp\" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: \"auto\"' or 'height: \"auto\"' to maintain the aspect ratio.",
+        "route": "/home",
+        "severity": "low",
+        "timestamp": 1782085972914,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "Image with src \"https://lh3.googleusercontent.com/aida-public/AB6AXuC8-m7Ccp-1Px2GILiQBkEVbicyFRjjkymFy8ZFtdhuYRL8pQON8o1CIXyU6BN7JVfZrAI0yvezebhNWRoGVMHvg0DN77QP6OfeYY8W2MCXLeJfVyaMNxSGJlX3P3iAMznOw9eICUGva3NKPLGLvI8cNctLItAwJr7ENeM_1D_78vtUOVOwDnSGcbsS5HOdrkOT1zMs8uhh-xaosMu8LdnGFafiAQEvo9WJamGcpA3K5rbhwKVtLkguHv9lD35rXTuja9bBvgTzrkIj\" was detected as the Largest Contentful Paint (LCP). Please add the `loading=\"eager\"` property if this image is above the fold.\nRead more: https://nextjs.org/doc",
+        "route": "/home",
+        "severity": "low",
+        "timestamp": 1782086172317,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "%s Feature dictionary not found for feature: signup, locale: ar",
+        "route": "/devtools/ui-inspector",
+        "severity": "low",
+        "timestamp": 1782086343460,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "%s Feature dictionary not found for feature: signup, locale: ar",
+        "route": "/home",
+        "severity": "low",
+        "timestamp": 1782086901303,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "Feature dictionary not found for feature: signup, locale: en",
+        "route": "/settings",
+        "severity": "low",
+        "timestamp": 1782088897535,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "Feature dictionary not found for feature: signup, locale: ar",
+        "route": "/registration",
+        "severity": "low",
+        "timestamp": 1782088907996,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "Feature dictionary not found for feature: signup, locale: ar",
+        "route": "/home",
+        "severity": "low",
+        "timestamp": 1782089235275,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "%s Feature dictionary not found for feature: signup, locale: en",
+        "route": "/home",
+        "severity": "low",
+        "timestamp": 1782089508769,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "Feature dictionary not found for feature: signup, locale: ar",
+        "route": "/devtools/ui-inspector",
+        "severity": "low",
+        "timestamp": 1782089533391,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "%s Feature dictionary not found for feature: signup, locale: en",
+        "route": "/devtools/ui-inspector",
+        "severity": "low",
+        "timestamp": 1782089541049,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "Feature dictionary not found for feature: signup, locale: ar",
+        "route": "/image-upload-form",
+        "severity": "low",
+        "timestamp": 1782089828828,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "[Fast Refresh] performing full reload because your application had an unrecoverable error",
+        "route": "/devtools/ui-inspector",
+        "severity": "low",
+        "timestamp": 1782090689788,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "Image with src \"https://lh3.googleusercontent.com/aida-public/AB6AXuB5BKAM75HnyHLdSANV4UMPvSgTfcM9isT6xav32tg3Gvhoo2VHZS2bjvuAmMZ-WMizUytLM-OSXNJGlwlpSSHUzeUCPhSlf-13GvVtmlFYRo8KBxJHUd6C7-TfCGGAm31WcQmrU3uAhVycmQoa7cbdByUtAph_Lnc9fP7QJRlCAh2IAm_pBfGGn-_wmPqP3YSDPVN7R81BJObut_pcxju-opt0cQMpN0kLCsQLQnttGb-QWeNyipOCwPx-GmOSicTzoq5QKsdZTA\" was detected as the Largest Contentful Paint (LCP). Please add the `loading=\"eager\"` property if this image is above the fold.\nRead more: https://nextjs.org/docs/",
+        "route": "/home",
+        "severity": "low",
+        "timestamp": 1782094327606,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "Feature dictionary not found for feature: signup, locale: ar",
+        "route": "/test2",
+        "severity": "low",
+        "timestamp": 1782095693308,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "%s Feature dictionary not found for feature: signup, locale: en",
+        "route": "/test2",
+        "severity": "low",
+        "timestamp": 1782095705094,
+        "env": "dev"
+      }
+    ]
+  },
+  "maol_5bIcME1YtH": {
+    "errors": [],
+    "warnings": [
+      {
+        "type": "warning",
+        "message": "Image with src \"/images/logos/logo-full.webp\" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: \"auto\"' or 'height: \"auto\"' to maintain the aspect ratio.",
+        "route": "/home",
+        "severity": "low",
+        "timestamp": 1782087268680,
+        "env": "dev"
+      }
+    ]
+  },
+  "maol_1GWCmTgTdd": {
+    "errors": [],
+    "warnings": [
+      {
+        "type": "warning",
+        "message": "Image with src \"/images/logos/logo-full.webp\" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: \"auto\"' or 'height: \"auto\"' to maintain the aspect ratio.",
+        "route": "/home",
+        "severity": "low",
+        "timestamp": 1782087274972,
+        "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "Image with src \"https://lh3.googleusercontent.com/aida-public/AB6AXuC8-m7Ccp-1Px2GILiQBkEVbicyFRjjkymFy8ZFtdhuYRL8pQON8o1CIXyU6BN7JVfZrAI0yvezebhNWRoGVMHvg0DN77QP6OfeYY8W2MCXLeJfVyaMNxSGJlX3P3iAMznOw9eICUGva3NKPLGLvI8cNctLItAwJr7ENeM_1D_78vtUOVOwDnSGcbsS5HOdrkOT1zMs8uhh-xaosMu8LdnGFafiAQEvo9WJamGcpA3K5rbhwKVtLkguHv9lD35rXTuja9bBvgTzrkIj\" was detected as the Largest Contentful Paint (LCP). Please add the `loading=\"eager\"` property if this image is above the fold.\nRead more: https://nextjs.org/doc",
+        "route": "/home",
+        "severity": "low",
+        "timestamp": 1782087275298,
+        "env": "dev"
+      }
+    ]
+  },
+  "maol_3PaeCt4XK1": {
+    "errors": [],
+    "warnings": [
+      {
+        "type": "warning",
+        "message": "Image with src \"/images/logos/logo-full.webp\" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: \"auto\"' or 'height: \"auto\"' to maintain the aspect ratio.",
+        "route": "/home",
+        "severity": "low",
+        "timestamp": 1782087320951,
+        "env": "dev"
+      }
+    ]
+  },
+  "maol_rpU4oiYQGd": {
+    "errors": [],
+    "warnings": [
+      {
+        "type": "warning",
+        "message": "Image with src \"/images/logos/logo-full.webp\" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: \"auto\"' or 'height: \"auto\"' to maintain the aspect ratio.",
+        "route": "/home",
+        "severity": "low",
+        "timestamp": 1782087329091,
+        "env": "dev"
+      }
+    ]
+  },
+  "maol_3c1gpCJUFC": {
+    "errors": [],
+    "warnings": [
+      {
+        "type": "warning",
+        "message": "Image with src \"/images/logos/logo-full.webp\" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: \"auto\"' or 'height: \"auto\"' to maintain the aspect ratio.",
+        "route": "/home",
+        "severity": "low",
+        "timestamp": 1782090065445,
+        "env": "dev"
+      }
+    ]
+  },
+  "maol_zET1LM7ZC5": {
+    "errors": [],
+    "warnings": [
+      {
+        "type": "warning",
+        "message": "Image with src \"/images/logos/logo-full.webp\" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: \"auto\"' or 'height: \"auto\"' to maintain the aspect ratio.",
+        "route": "/home",
+        "severity": "low",
+        "timestamp": 1782090067108,
+        "env": "dev"
+      }
+    ]
+  },
+  "maol_rgXpBXWx9v": {
+    "errors": [],
+    "warnings": [
+      {
+        "type": "warning",
+        "message": "Image with src \"/images/logos/logo-full.webp\" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: \"auto\"' or 'height: \"auto\"' to maintain the aspect ratio.",
+        "route": "/home",
+        "severity": "low",
+        "timestamp": 1782090087156,
+        "env": "dev"
+      }
+    ]
+  },
+  "maol_oLHZ9K48PQ": {
+    "errors": [],
+    "warnings": [
+      {
+        "type": "warning",
+        "message": "Image with src \"/images/logos/logo-full.webp\" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: \"auto\"' or 'height: \"auto\"' to maintain the aspect ratio.",
+        "route": "/home",
+        "severity": "low",
+        "timestamp": 1782090797986,
+        "env": "dev"
+      }
+    ]
+  },
+  "maol_xofPDAqPnR": {
+    "errors": [],
+    "warnings": [
+      {
+        "type": "warning",
+        "message": "Image with src \"/images/logos/logo-full.webp\" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: \"auto\"' or 'height: \"auto\"' to maintain the aspect ratio.",
+        "route": "/home",
+        "severity": "low",
+        "timestamp": 1782090816179,
+        "env": "dev"
+      }
+    ]
+  },
+  "maol_RuMuv9WysC": {
+    "errors": [],
+    "warnings": [
+      {
+        "type": "warning",
+        "message": "Image with src \"/images/logos/logo-full.webp\" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: \"auto\"' or 'height: \"auto\"' to maintain the aspect ratio.",
+        "route": "/home",
+        "severity": "low",
+        "timestamp": 1782095015890,
+        "env": "dev"
+      }
+    ]
+  },
+  "maol_QvolsPbnJq": {
+    "errors": [],
+    "warnings": [
+      {
+        "type": "warning",
+        "message": "Image with src \"/images/logos/logo-full.webp\" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: \"auto\"' or 'height: \"auto\"' to maintain the aspect ratio.",
+        "route": "/home",
+        "severity": "low",
+        "timestamp": 1782095289018,
+        "env": "dev"
+      }
+    ]
+  },
+  "maol_Zcud7qUl5E": {
+    "errors": [],
+    "warnings": [
+      {
+        "type": "warning",
+        "message": "Image with src \"/images/logos/logo-full.webp\" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: \"auto\"' or 'height: \"auto\"' to maintain the aspect ratio.",
+        "route": "/home",
+        "severity": "low",
+        "timestamp": 1782095294571,
         "env": "dev"
       }
     ]

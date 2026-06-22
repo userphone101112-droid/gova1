@@ -2,8 +2,6 @@
 
 import type { CSSProperties } from 'react';
 
-import { DEVTOOLS } from '@/platform/ui/registry/features/devtools';
-
 import { DatabaseCatalogSection } from '../sections/DatabaseCatalogSection';
 import { ElementBindingSection } from '../sections/ElementBindingSection';
 import { SimulationInsightsSection } from '../sections/SimulationInsightsSection';
@@ -39,17 +37,14 @@ export function InspectorSidebar() {
 
   return (
     <aside
-      data-ui-uuid={DEVTOOLS.UI_INSPECTOR.SIDEBAR.CONTAINER.uuid}
       style={{ '--sidebar-w': `${state.sidebarWidth}px` } as CSSProperties}
       className="h-auto max-h-[45vh] w-full min-w-0 shrink-0 overflow-auto border-b border-outline-variant bg-surface lg:h-full lg:max-h-none lg:w-[var(--sidebar-w)] lg:min-w-[var(--sidebar-w)] lg:border-b-0 lg:border-e [&>*]:min-w-0 lg:[&>*]:min-w-[240px]"
     >
       <section
-        data-ui-uuid={DEVTOOLS.UI_INSPECTOR.HEADER.CONTAINER.uuid}
         data-ui-instance-id="sidebar-header"
         className={`flex shrink-0 flex-wrap items-center justify-between gap-2 px-3 py-2 ${getSidebarSectionTone('header').shell}`}
       >
         <h1
-          data-ui-uuid={DEVTOOLS.UI_INSPECTOR.HEADER.TITLE.uuid}
           className="text-base font-semibold"
         >
           UI Inspector
@@ -64,7 +59,6 @@ export function InspectorSidebar() {
             Autofill
           </button>
           <button
-            data-ui-uuid={DEVTOOLS.UI_INSPECTOR.PICK.MODE_TOGGLE.uuid}
             data-ui-instance-id="pick-mode-toggle"
             type="button"
             onClick={handlePickModeToggle}
@@ -88,12 +82,10 @@ export function InspectorSidebar() {
       </section>
 
       <section
-        data-ui-uuid={DEVTOOLS.UI_INSPECTOR.SELECTED.CONTAINER.uuid}
         data-ui-instance-id="display-panel"
         className={getSidebarSectionTone('display').shell}
       >
         <span
-          data-ui-uuid={DEVTOOLS.UI_INSPECTOR.SIDEBAR.DISPLAY_LABEL.uuid}
           className={`${sidebarSectionLabelClass('display')} border-s-4 border-s-primary ps-2`}
         >
           Display
@@ -109,7 +101,6 @@ export function InspectorSidebar() {
           </div>
         ) : null}
         <div
-          data-ui-uuid={DEVTOOLS.UI_INSPECTOR.STATUS.CONTAINER.uuid}
           data-ui-instance-id="display-content"
           className={getSidebarSectionTone('display').content}
         >
@@ -123,7 +114,6 @@ export function InspectorSidebar() {
           open={state.expanded.elementBindings}
           toggleButton={
             <button
-              data-ui-uuid={DEVTOOLS.UI_INSPECTOR.SIDEBAR.DB_ATTRIBUTES_LABEL.uuid}
               type="button"
               onClick={() => toggleSection('elementBindings')}
               className={sidebarSectionToggleClass('elementBindings')}
@@ -222,7 +212,6 @@ export function InspectorSidebar() {
           open={state.expanded.databaseCatalog}
           toggleButton={
             <button
-              data-ui-uuid={DEVTOOLS.UI_INSPECTOR.SIDEBAR.DB_MANAGEMENT_LABEL.uuid}
               type="button"
               onClick={() => toggleSection('databaseCatalog')}
               className={sidebarSectionToggleClass('databaseCatalog')}
@@ -245,7 +234,6 @@ export function InspectorSidebar() {
           open={state.expanded.storageCatalog}
           toggleButton={
             <button
-              data-ui-uuid={DEVTOOLS.UI_INSPECTOR.SIDEBAR.SCHEMA_EDITOR_LABEL.uuid}
               type="button"
               onClick={() => toggleSection('storageCatalog')}
               className={sidebarSectionToggleClass('storageCatalog')}
@@ -289,7 +277,6 @@ export function InspectorSidebar() {
         open={state.expanded.filters}
         toggleButton={
           <button
-            data-ui-uuid={DEVTOOLS.UI_INSPECTOR.SIDEBAR.SEARCH_LABEL.uuid}
             type="button"
             onClick={() => toggleSection('filters')}
             className={sidebarSectionToggleClass('filters')}
@@ -307,7 +294,6 @@ export function InspectorSidebar() {
         open={state.expanded.list}
         toggleButton={
           <button
-            data-ui-uuid={DEVTOOLS.UI_INSPECTOR.SIDEBAR.COUNT.uuid}
             type="button"
             onClick={() => toggleSection('list')}
             className={sidebarSectionToggleClass('elements')}
@@ -327,7 +313,6 @@ export function InspectorSidebar() {
         open={state.expanded.details}
         toggleButton={
           <button
-            data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DETAILS.TITLE.uuid}
             type="button"
             onClick={() => toggleSection('details')}
             className={sidebarSectionToggleClass('details')}

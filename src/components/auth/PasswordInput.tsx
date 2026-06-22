@@ -24,11 +24,11 @@ export function PasswordInput({ name }: PasswordInputProps) {
         name="password"
         control={control}
         render={({ field, fieldState }) => (
-          <div data-ui-uuid={AUTH.SHELL.PASSWORD_FIELD_WRAPPER.uuid} className="space-y-2">
-            <span data-ui-uuid={AUTH.REGISTRATION.PASSWORD_INPUT_LABEL.uuid} className="type-label-lg">
+          <div className="space-y-2">
+            <span className="type-label-lg">
               {t(AUTH.REGISTRATION.PASSWORD_INPUT)}
             </span>
-            <div data-ui-uuid={AUTH.SHELL.PASSWORD_FIELD_INPUT_WRAPPER.uuid} className="relative">
+            <div className="relative">
               <input
                 data-ui-uuid={AUTH.REGISTRATION.PASSWORD_INPUT.uuid}
                 type={show ? 'text' : 'password'}
@@ -52,7 +52,7 @@ export function PasswordInput({ name }: PasswordInputProps) {
               </button>
             </div>
             {fieldState.error && (
-              <p data-ui-uuid={AUTH.SHELL.PASSWORD_INPUT_L48.uuid} className="type-caption text-error">
+              <p className="type-caption text-error">
                 {fieldState.error.message ? t(fieldState.error.message as any, fieldState.error.message) : ''}
               </p>
             )}
@@ -67,11 +67,11 @@ export function PasswordInput({ name }: PasswordInputProps) {
       name="confirmPassword"
       control={control}
       render={({ field, fieldState }) => (
-        <div data-ui-uuid={AUTH.SHELL.CONFIRM_PASSWORD_FIELD_WRAPPER.uuid} className="space-y-2">
-          <span data-ui-uuid={AUTH.REGISTRATION.CONFIRM_PASSWORD_INPUT_LABEL.uuid} className="type-label-lg">
+        <div className="space-y-2">
+          <span className="type-label-lg">
             {t(AUTH.REGISTRATION.CONFIRM_PASSWORD_INPUT)}
           </span>
-          <div data-ui-uuid={AUTH.SHELL.CONFIRM_PASSWORD_FIELD_INPUT_WRAPPER.uuid} className="relative">
+          <div className="relative">
             <input
               data-ui-uuid={AUTH.REGISTRATION.CONFIRM_PASSWORD_INPUT.uuid}
               type={show ? 'text' : 'password'}
@@ -84,7 +84,6 @@ export function PasswordInput({ name }: PasswordInputProps) {
               onChange={field.onChange}
             />
             <button
-                data-ui-uuid={AUTH.REGISTRATION.CONFIRM_TOGGLE_PASSWORD.uuid}
               type="button"
               className="absolute end-0 top-0 h-full px-3 text-on-surface-variant hover:text-on-surface"
               onClick={() => setShow((s) => !s)}
@@ -95,7 +94,7 @@ export function PasswordInput({ name }: PasswordInputProps) {
             </button>
           </div>
           {fieldState.error && (
-            <p data-ui-uuid={AUTH.SHELL.CONFIRM_PASSWORD_ERROR.uuid} className="type-caption text-error">
+            <p className="type-caption text-error">
               {fieldState.error.message ? t(fieldState.error.message as any, fieldState.error.message) : ''}
             </p>
           )}

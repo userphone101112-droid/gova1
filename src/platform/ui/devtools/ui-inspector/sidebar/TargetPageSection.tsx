@@ -2,8 +2,6 @@
 
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-import { DEVTOOLS } from '@/platform/ui/registry/features/devtools';
-
 import { buildAbsoluteInspectUrl } from '../../inspector-routes';
 import { usePageRegistry } from '../hooks/usePageRegistry';
 import { useInspectorContext } from '../state/InspectorProvider';
@@ -44,7 +42,6 @@ export function TargetPageSection() {
           <ChevronRight className="size-4" aria-hidden="true" />
         </button>
         <select
-          data-ui-uuid={DEVTOOLS.UI_INSPECTOR.HEADER.ROUTE_SELECT.uuid}
           value={state.routePath}
           onChange={(e) => handleRouteChange(e.target.value)}
           className="min-w-0 flex-1 rounded border border-outline-variant bg-surface px-2 py-1.5 text-sm"
@@ -52,7 +49,6 @@ export function TargetPageSection() {
           {pages.map((route) => (
             <option
               key={route.path}
-              data-ui-uuid={DEVTOOLS.UI_INSPECTOR.HEADER.ROUTE_OPTION.uuid}
               data-ui-instance-id={`route-${route.path}`}
               value={route.path}
             >
@@ -62,7 +58,6 @@ export function TargetPageSection() {
         </select>
       </div>
       <button
-        data-ui-uuid={DEVTOOLS.UI_INSPECTOR.HEADER.REFRESH_BUTTON.uuid}
         type="button"
         onClick={() => {
           void refreshPages();
@@ -73,7 +68,6 @@ export function TargetPageSection() {
         Refresh preview
       </button>
       <button
-        data-ui-uuid={DEVTOOLS.UI_INSPECTOR.HEADER.OPEN_TAB_BUTTON.uuid}
         type="button"
         onClick={openTargetInNewTab}
         className="mx-3 mb-3 w-[calc(100%-1.5rem)] rounded border border-outline-variant px-3 py-1.5 text-sm"

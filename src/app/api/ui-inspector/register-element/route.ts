@@ -66,10 +66,37 @@ export async function POST(request: NextRequest) {
 
     const existingRef = findExistingRegistryRef(sourceFile, body.sourceLine);
     if (existingRef) {
+      let translationKey: string | undefined;
+      if (body.requestedPurpose === 'translation' || body.requestedPurpose === 'both') {
+        const existingIdentity = findIdentityByRegistryRef(existingRef);
+        if (!existingIdentity) {
+          return NextResponse.json(
+            { error: `Could not resolve existing registry reference "${existingRef}"` },
+            { status: 400 }
+          );
+        }
+        translationKey = generateTranslationKeyFromUi(existingIdentity.path);
+        upsertLocaleValue(
+          existingIdentity.feature,
+          'en',
+          translationKey,
+          body.textSnippet || existingIdentity.path
+        );
+        upsertLocaleValue(
+          existingIdentity.feature,
+          'ar',
+          translationKey,
+          body.textSnippet || existingIdentity.path
+        );
+        replaceHardcodedTextWithTranslation(sourceFile, body.sourceLine, body.textSnippet || '', translationKey);
+        refreshGeneratedRegistryFiles();
+      }
+
       return NextResponse.json({
         success: true,
         alreadyExists: true,
         registryRef: existingRef,
+        translationKey,
         message: 'Element already has a UUID-backed registry reference.',
       });
     }
@@ -86,6 +113,10 @@ export async function POST(request: NextRequest) {
     }
 
     refreshGeneratedRegistryFiles();
+    const translationKey =
+      body.requestedPurpose === 'translation' || body.requestedPurpose === 'both'
+        ? generateTranslationKeyFromUi(identity.path)
+        : undefined;
 
     return NextResponse.json({
       success: true,
@@ -95,6 +126,7 @@ export async function POST(request: NextRequest) {
       feature: identity.feature,
       propertyKey: identity.propertyKey,
       registryRef: `${identity.registryConst}.${identity.propertyKey}.uuid`,
+      translationKey,
       message: 'UUID assigned successfully.',
     });
   } catch (error) {
@@ -107,6 +139,19 @@ export async function POST(request: NextRequest) {
       { status: 500 }
     );
   }
+}
+
+function findIdentityByRegistryRef(ref: string): { path: string; feature: string; uuid?: string } | null {
+  if (!existsSync(REGISTRY_MEMBER_PATHS_PATH)) return null;
+  const data = JSON.parse(readFileSync(REGISTRY_MEMBER_PATHS_PATH, 'utf-8')) as {
+    meta?: Record<string, { path?: string; feature?: string; uuid?: string }>;
+  };
+  const normalized = ref.replace(/\.uuid$/, '');
+  const entry = data.meta?.[normalized];
+  if (!entry?.path || !entry.feature) return null;
+  return entry.uuid
+    ? { path: entry.path, feature: entry.feature, uuid: entry.uuid }
+    : { path: entry.path, feature: entry.feature };
 }
 
 function resolveSourceFile(input: string): string | null {

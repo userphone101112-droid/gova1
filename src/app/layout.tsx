@@ -4,7 +4,6 @@ import { Inter, Noto_Sans_Arabic } from "next/font/google";
 import { SSOTGuard } from "@/components/shared/SSOTGuard";
 import { I18nProvider, LocaleProvider } from '@/platform/ui';
 import { InspectCollectorLoader } from "@/platform/ui/devtools/InspectCollectorLoader";
-import { SHARED_LAYOUT } from '@/platform/ui/registry/features/shared-layout';
 import "./globals.css";
 import { getAppDictionaryCached, getDirection, getEffectiveTheme, getLocale, getSSOTPreferences, getThemeMode } from "@/platform/ui/server";
 import { MaolProvider } from '@/providers/MaolProvider';
@@ -75,7 +74,6 @@ export default async function RootLayout({
 
   return (
     <html
-      data-ui-uuid={SHARED_LAYOUT.ROOT.HTML.uuid}
       lang={locale}
       dir={direction}
       data-theme={effectiveTheme}
@@ -83,7 +81,7 @@ export default async function RootLayout({
       className={htmlClassName}
       style={{ fontSize: `${ssotPreferences.fontSize}px` }}
     >
-      <body data-ui-uuid={SHARED_LAYOUT.ROOT.BODY.uuid} className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col">
         <SSOTProvider
           snapshot={{
             language: locale,

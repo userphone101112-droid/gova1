@@ -16,11 +16,11 @@ export function EmailInput() {
       name="email"
       control={control}
       render={({ field, fieldState }) => (
-        <div data-ui-uuid={AUTH.SHELL.EMAIL_FIELD_WRAPPER.uuid} className="space-y-2">
-          <span data-ui-uuid={AUTH.REGISTRATION.EMAIL_INPUT_LABEL.uuid} className="type-label-lg">
+        <div className="space-y-2">
+          <span className="type-label-lg">
             {t(AUTH.REGISTRATION.EMAIL_INPUT)}
           </span>
-          <div data-ui-uuid={AUTH.SHELL.EMAIL_FIELD_INPUT_WRAPPER.uuid} className="relative">
+          <div className="relative">
             <input
               data-ui-uuid={AUTH.REGISTRATION.EMAIL_INPUT.uuid}
               type="email"
@@ -35,7 +35,7 @@ export function EmailInput() {
             />
           </div>
           {fieldState.error && (
-            <p data-ui-uuid={AUTH.SHELL.EMAIL_ERROR.uuid} className="type-caption text-error">
+            <p className="type-caption text-error">
               {fieldState.error.message ? t(fieldState.error.message as any, fieldState.error.message) : ''}
             </p>
           )}

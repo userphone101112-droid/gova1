@@ -61,30 +61,30 @@ export function OnboardingPage() {
   const progress = ((currentStepIndex) / (TOTAL_STEPS - 1)) * 100;
 
   return (
-    <main data-ui-uuid={ONBOARDING.ONBOARDING_PAGE.MAIN.uuid}>
-      <div data-ui-uuid={ONBOARDING.SHELL.COMMON_PREVIOUS_BUTTON_CONTAINER_L65.uuid} className="min-h-screen bg-gradient-to-br from-background to-muted/30">
-        <div data-ui-uuid={ONBOARDING.SHELL.COMMON_PREVIOUS_BUTTON_CONTAINER_L66.uuid} className="w-full px-4 sm:px-6 py-6 sm:py-8">
-          <div data-ui-uuid={ONBOARDING.ONBOARDING_PAGE.CONTAINER.uuid} className="max-w-5xl w-full mx-auto shadow-xl overflow-hidden">
+    <main>
+      <div className="min-h-screen bg-gradient-to-br from-background to-muted/30">
+        <div className="w-full px-4 sm:px-6 py-6 sm:py-8">
+          <div className="max-w-5xl w-full mx-auto shadow-xl overflow-hidden">
             {/* Progress Bar */}
             {!isLastStep && (
-              <div data-ui-uuid={ONBOARDING.SHELL.ONBOARDING_PAGE_L70.uuid} className="h-2 bg-muted">
-                <div data-ui-uuid={ONBOARDING.SHELL.ONBOARDING_PAGE_L71.uuid} className="h-full bg-primary transition-all duration-300 ease-out" style={{ width: `${progress}%` }} />
+              <div className="h-2 bg-muted">
+                <div className="h-full bg-primary transition-all duration-300 ease-out" style={{ width: `${progress}%` }} />
               </div>
             )}
 
-            <div data-ui-uuid={ONBOARDING.SHELL.COMMON_PREVIOUS_BUTTON_CONTAINER_L75.uuid} className="p-4 sm:p-6 md:p-10">
+            <div className="p-4 sm:p-6 md:p-10">
               {CurrentStepComponent && <CurrentStepComponent />}
             </div>
 
             {/* Navigation Buttons */}
             {!isLastStep && (
-              <div data-ui-uuid={ONBOARDING.SHELL.COMMON_PREVIOUS_BUTTON_CONTAINER_L81.uuid} className="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 sm:p-6 md:p-10 border-t border-outline-variant bg-surface-container-low/50">
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 sm:p-6 md:p-10 border-t border-outline-variant bg-surface-container-low/50">
                 {!isFirstStep ? (
                   <button data-ui-uuid={ONBOARDING.COMMON.PREVIOUS_BUTTON.uuid} onClick={goToPreviousStep}>
                     {t(ONBOARDING.COMMON.PREVIOUS_BUTTON)}
                   </button>
                 ) : (
-                  <div data-ui-uuid={ONBOARDING.SHELL.ONBOARDING_PAGE_L87.uuid} />
+                  <div />
                 )}
                 <button data-ui-uuid={ONBOARDING.COMMON.NEXT_BUTTON.uuid} onClick={goToNextStep} className="w-full sm:w-auto">
                   {currentStepIndex === TOTAL_STEPS - 2 ? t(ONBOARDING.COMMON.FINISH_BUTTON) : t(ONBOARDING.COMMON.NEXT_BUTTON)}

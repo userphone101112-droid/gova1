@@ -2,8 +2,6 @@
 
 import { useEffect, useMemo, useState } from 'react';
 
-import { DEVTOOLS } from '@/platform/ui/registry/features/devtools';
-
 import {
   cloneDatabaseRefFile,
   emptyDatabaseRefFile,
@@ -164,19 +162,16 @@ export function DatabaseRefEditor({ data, onChange, onSave, saveStatus }: Databa
 
   return (
     <section
-      data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DBREF.CONTAINER.uuid}
       data-ui-instance-id="editor-root"
       className="flex shrink-0 flex-col gap-2 border-t border-outline-variant px-3 py-3"
     >
       <span
-        data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DATA.DATABASE_LABEL.uuid}
         className="text-xs font-semibold"
       >
         Database schema (database_ref.json)
       </span>
 
       <button
-        data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DBREF.ADD_DB.uuid}
         type="button"
         onClick={handleAddDatabase}
         className={actionClass}
@@ -184,7 +179,6 @@ export function DatabaseRefEditor({ data, onChange, onSave, saveStatus }: Databa
         + Database
       </button>
       <button
-        data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DBREF.ADD_TABLE.uuid}
         type="button"
         onClick={handleAddTable}
         disabled={!selectedDb}
@@ -193,7 +187,6 @@ export function DatabaseRefEditor({ data, onChange, onSave, saveStatus }: Databa
         + Table
       </button>
       <button
-        data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DBREF.ADD_COLUMN.uuid}
         type="button"
         onClick={handleAddColumn}
         disabled={!selectedTable}
@@ -204,7 +197,6 @@ export function DatabaseRefEditor({ data, onChange, onSave, saveStatus }: Databa
 
       <FieldGroup label="Database" hint="Select a database entry to edit." instanceId="ref-db-select">
         <select
-          data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DBREF.DB_SELECT.uuid}
           value={databases.length ? String(dbIndex) : ''}
           onChange={(e) => {
             setDbIndex(Number(e.target.value));
@@ -222,7 +214,6 @@ export function DatabaseRefEditor({ data, onChange, onSave, saveStatus }: Databa
           ].map((item) => (
             <option
               key={`refdb-${item.value || 'empty'}`}
-              data-ui-uuid={DEVTOOLS.UI_INSPECTOR.SIDEBAR.FILTER_FEATURE_OPTION.uuid}
               data-ui-instance-id={`refdb-${item.value || 'empty'}`}
               value={item.value}
             >
@@ -236,7 +227,6 @@ export function DatabaseRefEditor({ data, onChange, onSave, saveStatus }: Databa
         <>
           <FieldGroup label="Database name" hint="Canonical identifier for this database." instanceId="ref-db-name">
             <input
-              data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DBREF.DB_EN_INPUT.uuid}
               value={selectedDb.name}
               onChange={(e) => updateDatabase({ name: e.target.value })}
               className={inputClass}
@@ -244,7 +234,6 @@ export function DatabaseRefEditor({ data, onChange, onSave, saveStatus }: Databa
           </FieldGroup>
           <FieldGroup label="Database description" hint="Optional notes about this database." instanceId="ref-db-desc">
             <textarea
-              data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DBMGMT.DESC_TEXTAREA.uuid}
               value={selectedDb.description ?? ''}
               onChange={(e) => updateDatabase({ description: e.target.value })}
               rows={2}
@@ -252,7 +241,6 @@ export function DatabaseRefEditor({ data, onChange, onSave, saveStatus }: Databa
             />
           </FieldGroup>
           <button
-            data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DBREF.DELETE_DB.uuid}
             type="button"
             onClick={handleDeleteDatabase}
             className={`${actionClass} text-error`}
@@ -266,7 +254,6 @@ export function DatabaseRefEditor({ data, onChange, onSave, saveStatus }: Databa
         <>
           <FieldGroup label="Table" hint="Select a table within the database." instanceId="ref-table-select">
             <select
-              data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DBREF.TABLE_SELECT.uuid}
               value={tables.length ? String(tableIndex) : ''}
               onChange={(e) => {
                 setTableIndex(Number(e.target.value));
@@ -283,7 +270,6 @@ export function DatabaseRefEditor({ data, onChange, onSave, saveStatus }: Databa
               ].map((item) => (
                 <option
                   key={`reftb-${item.value || 'empty'}`}
-                  data-ui-uuid={DEVTOOLS.UI_INSPECTOR.SIDEBAR.FILTER_TAG_OPTION.uuid}
                   data-ui-instance-id={`reftb-${item.value || 'empty'}`}
                   value={item.value}
                 >
@@ -299,7 +285,6 @@ export function DatabaseRefEditor({ data, onChange, onSave, saveStatus }: Databa
         <>
           <FieldGroup label="Table name" hint="Canonical identifier for this table." instanceId="ref-table-name">
             <input
-              data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DBREF.TABLE_EN_INPUT.uuid}
               value={selectedTable.name}
               onChange={(e) => updateTable({ name: e.target.value })}
               className={inputClass}
@@ -307,7 +292,6 @@ export function DatabaseRefEditor({ data, onChange, onSave, saveStatus }: Databa
           </FieldGroup>
           <FieldGroup label="Table description" hint="Optional notes about this table." instanceId="ref-table-desc">
             <textarea
-              data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DBMGMT.DESC_TEXTAREA.uuid}
               value={selectedTable.description ?? ''}
               onChange={(e) => updateTable({ description: e.target.value })}
               rows={2}
@@ -315,7 +299,6 @@ export function DatabaseRefEditor({ data, onChange, onSave, saveStatus }: Databa
             />
           </FieldGroup>
           <button
-            data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DBREF.DELETE_TABLE.uuid}
             type="button"
             onClick={handleDeleteTable}
             className={`${actionClass} text-error`}
@@ -328,7 +311,6 @@ export function DatabaseRefEditor({ data, onChange, onSave, saveStatus }: Databa
       {selectedTable && (
         <FieldGroup label="Column" hint="Select a column within the table." instanceId="ref-column-select">
           <select
-            data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DBREF.COLUMN_SELECT.uuid}
             value={columns.length ? String(columnIndex) : ''}
             onChange={(e) => setColumnIndex(Number(e.target.value))}
             className={inputClass}
@@ -342,7 +324,6 @@ export function DatabaseRefEditor({ data, onChange, onSave, saveStatus }: Databa
             ].map((item) => (
               <option
                 key={`refcol-${item.value || 'empty'}`}
-                data-ui-uuid={DEVTOOLS.UI_INSPECTOR.SIDEBAR.FILTER_LIFECYCLE_OPTION.uuid}
                 data-ui-instance-id={`refcol-${item.value || 'empty'}`}
                 value={item.value}
               >
@@ -357,7 +338,6 @@ export function DatabaseRefEditor({ data, onChange, onSave, saveStatus }: Databa
         <>
           <FieldGroup label="Column name" hint="Canonical identifier for this column." instanceId="ref-column-name">
             <input
-              data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DBREF.COLUMN_EN_INPUT.uuid}
               value={selectedColumn.name}
               onChange={(e) => updateColumn({ name: e.target.value })}
               className={inputClass}
@@ -365,7 +345,6 @@ export function DatabaseRefEditor({ data, onChange, onSave, saveStatus }: Databa
           </FieldGroup>
           <FieldGroup label="Column description" hint="Optional notes about this column." instanceId="ref-column-desc">
             <textarea
-              data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DBMGMT.DESC_TEXTAREA.uuid}
               value={selectedColumn.description ?? ''}
               onChange={(e) => updateColumn({ description: e.target.value })}
               rows={2}
@@ -373,7 +352,6 @@ export function DatabaseRefEditor({ data, onChange, onSave, saveStatus }: Databa
             />
           </FieldGroup>
           <button
-            data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DBREF.DELETE_COLUMN.uuid}
             type="button"
             onClick={handleDeleteColumn}
             className={`${actionClass} text-error`}
@@ -384,7 +362,6 @@ export function DatabaseRefEditor({ data, onChange, onSave, saveStatus }: Databa
       )}
 
       <button
-        data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DBREF.SAVE_BUTTON.uuid}
         type="button"
         onClick={() => void onSave()}
         disabled={saveStatus === 'saving'}

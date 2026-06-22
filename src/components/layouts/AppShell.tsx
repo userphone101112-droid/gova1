@@ -1,7 +1,5 @@
 import { ReactNode } from 'react';
 
-import { SHARED_LAYOUT } from '@/platform/ui';
-
 import { AppHeader } from './AppHeader';
 import { BottomNavBar } from './BottomNavBar';
 
@@ -18,7 +16,7 @@ export function AppShell({ children }: AppShellProps) {
     <>
       <AppHeader />
       {/* pt-16 = header height, pb-24 = bottom nav height on mobile, pb-6 on desktop */}
-      <main data-ui-uuid={SHARED_LAYOUT.APP_SHELL.MAIN.uuid} className="pt-16 pb-24 md:pb-6 min-h-screen" style={{ background: 'var(--gova-background)' }}>
+      <main className="pt-16 pb-24 md:pb-6 min-h-screen" style={{ background: 'var(--gova-background)' }}>
         {children}
       </main>
       <BottomNavBar />

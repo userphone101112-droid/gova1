@@ -26,17 +26,17 @@ export function PaymentsStep() {
   ];
 
   return (
-    <div data-ui-uuid={ONBOARDING.SHELL.PAYMENTS_TITLE_CONTAINER_L29.uuid} className="w-full">
+    <div className="w-full">
       <h1 data-ui-uuid={ONBOARDING.PAYMENTS.TITLE.uuid} className="text-3xl font-bold tracking-tight mb-2">{t(ONBOARDING.PAYMENTS.TITLE)}</h1>
       <p data-ui-uuid={ONBOARDING.PAYMENTS.DESCRIPTION.uuid} className="text-muted-foreground mb-8">{t(ONBOARDING.PAYMENTS.DESCRIPTION)}</p>
 
-      <div data-ui-uuid={ONBOARDING.SHELL.PAYMENTS_PAYMENT_METHODS_LABEL_CONTAINER_L33.uuid} className="space-y-6 max-w-4xl mx-auto">
-        <div data-ui-uuid={ONBOARDING.SHELL.PAYMENTS_PAYMENT_METHODS_LABEL_CONTAINER_L34.uuid} className="space-y-2">
+      <div className="space-y-6 max-w-4xl mx-auto">
+        <div className="space-y-2">
           <span data-ui-uuid={ONBOARDING.PAYMENTS.PAYMENT_METHODS_LABEL.uuid}>{t(ONBOARDING.PAYMENTS.PAYMENT_METHODS_LABEL)}</span>
-          <div data-ui-uuid={ONBOARDING.SHELL.PAYMENTS_PAYMENT_METHODS_LABEL_CONTAINER_L36.uuid} className="space-y-3">
+          <div className="space-y-3">
             {paymentMethods.map((method) => (
-              <div data-ui-uuid={ONBOARDING.SHELL.PAYMENTS_PAYMENT_METHODS_LABEL_CONTAINER_L38.uuid} key={method.id} className="flex items-center gap-2">
-                <input type="checkbox" data-ui-uuid={ONBOARDING.PAYMENTS.METHOD_CHECKBOX.uuid} data-ui-instance-id={method.id} checked={(payments.paymentMethods || []).includes(method.id as any)} onChange={(e) => {
+              <div key={method.id} className="flex items-center gap-2">
+                <input type="checkbox" data-ui-instance-id={method.id} checked={(payments.paymentMethods || []).includes(method.id as any)} onChange={(e) => {
         const checked = e.target.checked;
         const currentMethods = payments.paymentMethods || [];
         if (checked) {
@@ -50,17 +50,17 @@ export function PaymentsStep() {
             });
         }
     }} />
-                <span data-ui-uuid={ONBOARDING.PAYMENTS.METHOD_LABEL.uuid} data-ui-instance-id={method.id}>{method.label}</span>
+                <span data-ui-instance-id={method.id}>{method.label}</span>
               </div>
             ))}
           </div>
         </div>
 
-        <div data-ui-uuid={ONBOARDING.SHELL.PAYMENTS_CURRENCY_LABEL_CONTAINER_L59.uuid} className="space-y-2">
+        <div className="space-y-2">
           <span data-ui-uuid={ONBOARDING.PAYMENTS.CURRENCY_LABEL.uuid}>{t(ONBOARDING.PAYMENTS.CURRENCY_LABEL)}</span>
-          <select data-ui-uuid={ONBOARDING.PAYMENTS.CURRENCY_SELECT.uuid} value={payments.currency || 'USD'} onChange={(e) => updatePayments({ currency: e.target.value })}>
+          <select value={payments.currency || 'USD'} onChange={(e) => updatePayments({ currency: e.target.value })}>
             {currencyOptions.map((opt) => (
-              <option data-ui-uuid={ONBOARDING.PAYMENTS.CURRENCY_OPTION.uuid} data-ui-instance-id={opt.id} key={opt.id}>{opt.label}</option>
+              <option data-ui-instance-id={opt.id} key={opt.id}>{opt.label}</option>
             ))}
           </select>
         </div>

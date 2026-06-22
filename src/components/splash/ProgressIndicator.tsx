@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 
-import { useTranslation, type TranslationKey, SPLASH } from '@/platform/ui';
+import { useTranslation, type TranslationKey } from '@/platform/ui';
 
 
 interface ProgressIndicatorProps {
@@ -29,20 +29,20 @@ export default function ProgressIndicator({ progress, status }: ProgressIndicato
   }, []);
 
   return (
-    <div data-ui-uuid={SPLASH.SHELL.PROGRESS_INDICATOR_L32.uuid} className="w-full max-w-xs flex flex-col items-center z-10 px-4">
-      <div data-ui-uuid={SPLASH.SHELL.PROGRESS_INDICATOR_L33.uuid} className="h-8 text-xs font-semibold text-secondary text-center px-4 transition-all duration-500 ease-in-out" style={{ color: 'var(--gova-secondary)' }}>
+    <div className="w-full max-w-xs flex flex-col items-center z-10 px-4">
+      <div className="h-8 text-xs font-semibold text-secondary text-center px-4 transition-all duration-500 ease-in-out" style={{ color: 'var(--gova-secondary)' }}>
         {status || t(PROGRESS_MESSAGE_KEYS[msgIndex]!)}
       </div>
 
-      <div data-ui-uuid={SPLASH.SHELL.PROGRESS_INDICATOR_L37.uuid} className="w-full mt-4 bg-surface-container-highest h-1 rounded-full overflow-hidden relative shadow-inner">
-        <div data-ui-uuid={SPLASH.SHELL.PROGRESS_INDICATOR_L38.uuid} className="h-full bg-primary transition-all duration-300 ease-out shadow-lg" style={{ width: `${progress}%` }} />
+      <div className="w-full mt-4 bg-surface-container-highest h-1 rounded-full overflow-hidden relative shadow-inner">
+        <div className="h-full bg-primary transition-all duration-300 ease-out shadow-lg" style={{ width: `${progress}%` }} />
       </div>
 
-      <div data-ui-uuid={SPLASH.SHELL.PROGRESS_INDICATOR_L41.uuid} className="flex items-center gap-1.5 mt-2">
-        <span data-ui-uuid={SPLASH.SHELL.PROGRESS_INDICATOR_L42.uuid} className="text-xs font-semibold text-on-surface-variant">
+      <div className="flex items-center gap-1.5 mt-2">
+        <span className="text-xs font-semibold text-on-surface-variant">
           {t('splash.loading')}
         </span>
-        <span data-ui-uuid={SPLASH.SHELL.PROGRESS_INDICATOR_L45.uuid} className="text-xs font-semibold text-primary">
+        <span className="text-xs font-semibold text-primary">
           {progress}%
         </span>
       </div>

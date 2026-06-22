@@ -2,7 +2,6 @@
 export const IMAGE_UPLOAD_FORM = {
   PAGE: {
         CONTAINER: {
-uuid: '0f9ef543-6486-538a-9480-fca1962dd810',
           id: 'UI_IMAGE_UPLOAD_FORM_PAGE_CONTAINER',
           path: 'image-upload-form.page.layout.container',
           lifecycle: 'active',
@@ -14,7 +13,6 @@ uuid: '0f9ef543-6486-538a-9480-fca1962dd810',
           updatedAt: '2026-06-20',
 } as const,
         TITLE: {
-uuid: 'a5e11cca-caba-5ea7-9897-e0447ca05f41',
           id: 'UI_IMAGE_UPLOAD_FORM_PAGE_TITLE',
           path: 'image-upload-form.page.display.title',
           lifecycle: 'active',
@@ -26,7 +24,6 @@ uuid: 'a5e11cca-caba-5ea7-9897-e0447ca05f41',
           updatedAt: '2026-06-20',
 } as const,
         DESCRIPTION: {
-uuid: 'e72b30a6-8870-52e3-b57b-9794149ed8a1',
           id: 'UI_IMAGE_UPLOAD_FORM_PAGE_DESCRIPTION',
           path: 'image-upload-form.page.display.description',
           lifecycle: 'active',
@@ -38,7 +35,6 @@ uuid: 'e72b30a6-8870-52e3-b57b-9794149ed8a1',
           updatedAt: '2026-06-20',
 } as const,
         CREATE_BUTTON: {
-uuid: '0b6cc731-753a-51b6-bf59-75c3efa5e2e0',
           id: 'UI_IMAGE_UPLOAD_FORM_ACTIONS_CREATE_BUTTON',
           path: 'image-upload-form.actions.create-button',
           lifecycle: 'active',
@@ -50,7 +46,6 @@ uuid: '0b6cc731-753a-51b6-bf59-75c3efa5e2e0',
           updatedAt: '2026-06-20',
 } as const,
         SAVE_BUTTON: {
-uuid: '89af3dca-6269-5911-83da-7e143fc8f0fb',
           id: 'UI_IMAGE_UPLOAD_FORM_ACTIONS_SAVE_BUTTON',
           path: 'image-upload-form.actions.save-button',
           lifecycle: 'active',
@@ -62,7 +57,6 @@ uuid: '89af3dca-6269-5911-83da-7e143fc8f0fb',
           updatedAt: '2026-06-20',
 } as const,
         ROW: {
-uuid: 'fd2ef148-0438-5aeb-8e64-369ef9aacf29',
           id: 'UI_IMAGE_UPLOAD_FORM_ACTIONS_ROW',
           path: 'image-upload-form.actions.layout.row',
           lifecycle: 'active',
@@ -150,7 +144,6 @@ id: 'UI_IMAGE_UPLOAD_FORM_FORM_FIELD3_INPUT',
   },
   GALLERY: {
     CONTAINER: {
-uuid: '2e800f0e-147a-5961-8d35-017c7e6786af',
 id: 'UI_IMAGE_UPLOAD_FORM_GALLERY_CONTAINER',
       path: 'image-upload-form.gallery.layout.container',
       lifecycle: 'active',

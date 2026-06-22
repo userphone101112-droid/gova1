@@ -27,9 +27,9 @@ export function CategoriesGrid() {
   const { t, locale } = useTranslation();
 
   return (
-    <section data-ui-uuid={HOME.CATEGORIES_GRID.SECTION.uuid} id="categories-section" className="reveal active">
-      <div data-ui-uuid={HOME.SHELL.CATEGORIES_GRID_SECTION_TITLE_WRAPPER_L29.uuid} className="flex justify-between items-end mb-4">
-        <div data-ui-uuid={HOME.SHELL.CATEGORIES_GRID_SECTION_TITLE_WRAPPER_L30.uuid} className="flex items-center gap-2 px-4 py-2 rounded-full border shadow-sm bg-primary-container/10 border-primary/30">
+    <section id="categories-section" className="reveal active">
+      <div className="flex justify-between items-end mb-4">
+        <div className="flex items-center gap-2 px-4 py-2 rounded-full border shadow-sm bg-primary-container/10 border-primary/30">
           <Store className="w-5 h-5 text-primary" />
           <h3 data-ui-uuid={HOME.CATEGORIES_GRID.SECTION_TITLE.uuid} className="font-semibold text-primary text-xl font-semibold">
             {t(HOME.CATEGORIES_GRID.SECTION_TITLE)}
@@ -38,18 +38,18 @@ export function CategoriesGrid() {
         <button data-ui-uuid={HOME.CATEGORIES_GRID.TOGGLE.uuid} id="view-all-categories" className="flex items-center gap-1 px-4 py-1.5 rounded-full text-xs font-semibold transition-colors active:bg-surface-container" onClick={() => {
         window.location.href = '/categories';
     }}>
-          <span data-ui-uuid={HOME.CATEGORIES_GRID.TOGGLE_LABEL.uuid}>{t(HOME.CATEGORIES_GRID.TOGGLE)}</span>
+          <span>{t(HOME.CATEGORIES_GRID.TOGGLE)}</span>
           {locale === 'ar' ? <ChevronLeft className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}
         </button>
       </div>
 
-      <div data-ui-uuid={HOME.SHELL.NAMEKEY_WRAPPER_L44.uuid} className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-4 sm:gap-6 pb-2">
+      <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-4 sm:gap-6 pb-2">
         {CATEGORIES.map((cat) => (
-          <button data-ui-uuid={HOME.CATEGORIES_GRID.ITEM.uuid} key={cat.id} id={`category-${cat.id}`} className="flex flex-col items-center gap-2 group" aria-label={t(cat.nameKey)}>
-            <div data-ui-uuid={HOME.SHELL.NAMEKEY_WRAPPER_L47.uuid} className="rounded-full overflow-hidden border-2 border-transparent group-active:border-primary transition-all w-full aspect-square relative bg-surface-container">
-              <Image data-ui-uuid={HOME.CATEGORIES_GRID.CATEGORY_IMAGE.uuid} src={cat.imgSrc} alt={t(cat.nameKey)} fill className="object-cover" unoptimized={shouldUseUnoptimizedImage(cat.imgSrc)} />
+          <button key={cat.id} id={`category-${cat.id}`} className="flex flex-col items-center gap-2 group" aria-label={t(cat.nameKey)}>
+            <div className="rounded-full overflow-hidden border-2 border-transparent group-active:border-primary transition-all w-full aspect-square relative bg-surface-container">
+              <Image src={cat.imgSrc} alt={t(cat.nameKey)} fill className="object-cover" unoptimized={shouldUseUnoptimizedImage(cat.imgSrc)} />
             </div>
-            <span data-ui-uuid={HOME.CATEGORIES_GRID.CATEGORY_NAME.uuid} className="text-center text-xs font-semibold leading-4 text-on-surface-variant">
+            <span className="text-center text-xs font-semibold leading-4 text-on-surface-variant">
               {t(cat.nameKey)}
             </span>
           </button>

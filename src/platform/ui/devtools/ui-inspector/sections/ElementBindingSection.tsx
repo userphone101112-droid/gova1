@@ -1,7 +1,5 @@
 'use client';
 
-import { DEVTOOLS } from '@/platform/ui/registry/features/devtools';
-
 import { BindingWorkspace } from '../bindings/BindingWorkspace';
 import { useSaveInspectorConfig } from '../hooks/useSaveInspectorConfig';
 import { useInspectorContext } from '../state/InspectorProvider';
@@ -21,7 +19,6 @@ export function ElementBindingSection() {
       <BindingWorkspace />
       <CustomAttributesEditor />
       <button
-        data-ui-uuid={DEVTOOLS.UI_INSPECTOR.DATA.SAVE_BUTTON.uuid}
         type="button"
         onClick={() => void saveElementConfig()}
         disabled={saveStatus === 'saving'}

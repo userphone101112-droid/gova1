@@ -25,7 +25,6 @@ uuid: '9c463ca8-f99d-50e1-8b0d-7a7e0478e717',
     updatedAt: '2026-06-17',
 } as const,
   MAIN: {
-uuid: 'f6c65fd2-7540-5559-83b7-c47cb35f1e5b',
     id: 'UI_ERROR_BOUNDARY_MAIN',
     path: 'error-boundary.main.layout.main',
     lifecycle: 'active',
@@ -50,7 +49,6 @@ uuid: '7427686a-2242-5091-989c-11f0b84f5b17',
 } as const,
   SHELL: {
     TITLE_CONTAINER_L32: {
-uuid: 'cdd7bb03-7ccb-5892-b0fe-5ae57e681784',
       id: 'UI_ERROR_BOUNDARY_STRUCTURE_TITLE_CONTAINER_L32',
       path: 'error-boundary.dom.page.title-container-l32',
       lifecycle: 'active',
@@ -62,7 +60,6 @@ uuid: 'cdd7bb03-7ccb-5892-b0fe-5ae57e681784',
       updatedAt: '2026-06-20',
 } as const,
     TITLE_CONTAINER_L36: {
-uuid: 'd1d7c14f-78cb-5246-acfe-54997a681138',
       id: 'UI_ERROR_BOUNDARY_STRUCTURE_TITLE_CONTAINER_L36',
       path: 'error-boundary.dom.page.title-container-l36',
       lifecycle: 'active',
@@ -76,7 +73,6 @@ uuid: 'd1d7c14f-78cb-5246-acfe-54997a681138',
   },
   APP_ERROR: {
     CONTAINER: {
-uuid: '52ddeb0b-f59b-58c6-91e5-879992cf13dc',
       id: 'UI_ERROR_BOUNDARY_APP_ERROR_CONTAINER',
       path: 'error-boundary.app-error.layout.container',
       lifecycle: 'active',
@@ -126,7 +122,6 @@ uuid: 'b86d26ce-0199-5d03-97d6-e53854b13e55',
   },
   APP_NOT_FOUND: {
     CONTAINER: {
-uuid: 'a75013fb-1803-5e86-8c22-947942ceee1c',
       id: 'UI_ERROR_BOUNDARY_APP_NOT_FOUND_CONTAINER',
       path: 'error-boundary.app-not-found.layout.container',
       lifecycle: 'active',

@@ -3,7 +3,7 @@ import { Sparkles } from 'lucide-react';
 import Image from 'next/image';
 
 import { shouldUseUnoptimizedImage } from '@/lib/images/external-image';
-import { useTranslation, type TranslationKey, HOME } from '@/platform/ui';
+import { useTranslation, type TranslationKey } from '@/platform/ui';
 
 
 const FEATURED: Array<{
@@ -50,10 +50,10 @@ export function FeaturedMarquee() {
   const items = [...FEATURED, ...FEATURED];
 
   return (
-    <section data-ui-uuid={HOME.FEATURED_MARQUEE.SECTION.uuid} id="featured-marquee-section" className="space-y-3 overflow-hidden reveal active">
+    <section id="featured-marquee-section" className="space-y-3 overflow-hidden reveal active">
       {/* Section Header */}
-      <div data-ui-uuid={HOME.SHELL.TITLEKEY_WRAPPER_L54.uuid} className="flex justify-between items-center">
-        <div data-ui-uuid={HOME.SHELL.TITLEKEY_WRAPPER_L55.uuid} className="flex items-center gap-2 px-4 py-2 rounded-full border shadow-sm" style={{
+      <div className="flex justify-between items-center">
+        <div className="flex items-center gap-2 px-4 py-2 rounded-full border shadow-sm" style={{
         background: 'var(--gova-warning-container)',
         borderColor: 'var(--gova-warning)',
     }}>
@@ -61,7 +61,7 @@ export function FeaturedMarquee() {
             className="animate-pulse-gova"
             style={{ color: 'var(--gova-warning)', width: '20px', height: '20px' }}
           />
-          <h3 data-ui-uuid={HOME.FEATURED_MARQUEE.HEADER.uuid} className="font-bold" style={{
+          <h3 className="font-bold" style={{
         color: 'var(--gova-on-surface)',
         fontSize: '20px',
         lineHeight: '28px',
@@ -73,21 +73,21 @@ export function FeaturedMarquee() {
       </div>
 
       {/* Marquee strip */}
-      <div data-ui-uuid={HOME.SHELL.TITLEKEY_WRAPPER_L75.uuid} className="relative flex overflow-hidden py-4 border-y" style={{
+      <div className="relative flex overflow-hidden py-4 border-y" style={{
         background: 'var(--gova-surface-container-low)',
         borderColor: 'var(--gova-outline-variant)',
     }}>
-        <div data-ui-uuid={HOME.SHELL.TITLEKEY_WRAPPER_L79.uuid} className="flex gap-4 animate-marquee-cards whitespace-nowrap pr-4">
+        <div className="flex gap-4 animate-marquee-cards whitespace-nowrap pr-4">
           {items.map((item, idx) => (
-            <div data-ui-uuid={HOME.SHELL.TITLEKEY_CONTAINER_L81.uuid} key={`${item.id}-${idx}`} className="flex-none w-40 rounded-xl p-2 shadow-sm border" style={{
+            <div key={`${item.id}-${idx}`} className="flex-none w-40 rounded-xl p-2 shadow-sm border" style={{
         background: 'var(--gova-surface-container-lowest)',
         borderColor: 'var(--gova-outline-variant)',
     }}>
-              <Image data-ui-uuid={HOME.SHELL.TITLEKEY_CONTAINER_L85.uuid} src={item.imgSrc} alt={t(item.titleKey)} width={160} height={160} className="w-full aspect-square object-cover rounded-lg mb-2" unoptimized={shouldUseUnoptimizedImage(item.imgSrc)} />
-              <p data-ui-uuid={HOME.SHELL.TITLEKEY_CONTAINER_L86.uuid} className="truncate font-bold" style={{ fontSize: '12px', fontWeight: '600', color: 'var(--gova-on-surface)' }}>
+              <Image src={item.imgSrc} alt={t(item.titleKey)} width={160} height={160} className="w-full aspect-square object-cover rounded-lg mb-2" unoptimized={shouldUseUnoptimizedImage(item.imgSrc)} />
+              <p className="truncate font-bold" style={{ fontSize: '12px', fontWeight: '600', color: 'var(--gova-on-surface)' }}>
                 {t(item.titleKey)}
               </p>
-              <p data-ui-uuid={HOME.SHELL.TITLEKEY_CONTAINER_L89.uuid} className="font-bold" style={{ fontSize: '12px', fontWeight: '700', color: 'var(--gova-primary)' }}>
+              <p className="font-bold" style={{ fontSize: '12px', fontWeight: '700', color: 'var(--gova-primary)' }}>
                 {item.price}
               </p>
             </div>

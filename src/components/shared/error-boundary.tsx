@@ -27,12 +27,12 @@ function ErrorFallback({
   const { t } = useTranslation();
 
   return (
-    <main data-ui-uuid={ERROR_BOUNDARY.MAIN.uuid} className="flex min-h-error items-center justify-center p-4">
-      <div data-ui-uuid={ERROR_BOUNDARY.SHELL.TITLE_CONTAINER_L32.uuid} className="max-w-md text-center">
+    <main className="flex min-h-error items-center justify-center p-4">
+      <div className="max-w-md text-center">
         <h2 data-ui-uuid={ERROR_BOUNDARY.TITLE.uuid} className="mb-4 text-2xl font-bold text-on-surface">
           {t(ERROR_BOUNDARY.TITLE)}
         </h2>
-        <div data-ui-uuid={ERROR_BOUNDARY.SHELL.TITLE_CONTAINER_L36.uuid} className="mb-6 text-on-surface-variant">
+        <div className="mb-6 text-on-surface-variant">
           {error?.message || t(ERROR_BOUNDARY.DEFAULT_MESSAGE)}
         </div>
         <button data-ui-uuid={ERROR_BOUNDARY.RELOAD_BUTTON.uuid} onClick={onReload}>

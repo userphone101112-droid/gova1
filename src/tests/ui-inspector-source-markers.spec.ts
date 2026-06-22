@@ -11,6 +11,81 @@ import { test, expect } from '@playwright/test';
  */
 
 test.describe('UI Inspector Source Markers', () => {
+  test('should persist check translation and ignore records', async ({ request }: any) => {
+    const payload = {
+      key: `test|translation|${Date.now()}`,
+      route: '/home',
+      scanKey: 'scan-test',
+      sourceFile: 'src/tests/fixtures/translation-ignore-fixture.tsx',
+      sourceLine: 7,
+      sourceColumn: 4,
+      tagName: 'span',
+      uuid: '',
+      domPath: 'main > span',
+      textSnippet: `Translation fixture ${Date.now()}`,
+      reason: 'hardcoded-text',
+    };
+
+    const saveResponse = await request.post('/api/ui-inspector/check-translation', {
+      data: { items: [payload] },
+    });
+    expect(saveResponse.ok()).toBeTruthy();
+    const saveJson = await saveResponse.json();
+    expect(saveJson.success).toBe(true);
+    expect(saveJson.count).toBe(1);
+
+    const checkResponse = await request.get('/api/ui-inspector/check-translation');
+    expect(checkResponse.ok()).toBeTruthy();
+    const checkJson = await checkResponse.json();
+    expect(checkJson.items[0].key).toBe(payload.key);
+
+    const createResponse = await request.post('/api/ui-inspector/translation-ignore', {
+      data: payload,
+    });
+    expect(createResponse.ok()).toBeTruthy();
+
+    const createJson = await createResponse.json();
+    expect(createJson.success).toBe(true);
+    expect(createJson.record.key).toContain(payload.textSnippet);
+
+    const listResponse = await request.get('/api/ui-inspector/translation-ignore');
+    expect(listResponse.ok()).toBeTruthy();
+    const listJson = await listResponse.json();
+    expect(listJson.records[createJson.record.key].textSnippet).toBe(payload.textSnippet);
+
+    const deleteResponse = await request.delete('/api/ui-inspector/translation-ignore', {
+      data: { key: createJson.record.key },
+    });
+    expect(deleteResponse.ok()).toBeTruthy();
+    const deleteJson = await deleteResponse.json();
+    expect(deleteJson.records[createJson.record.key]).toBeUndefined();
+  });
+
+  test('should show working back and forward controls next to route selector', async ({ page }: any) => {
+    await page.goto('/devtools/ui-inspector');
+
+    const routeSelector = page.locator('select').first();
+    const backButton = page.getByRole('button', { name: 'Back' }).first();
+    const forwardButton = page.getByRole('button', { name: 'Forward' }).first();
+
+    await expect(routeSelector).toBeVisible();
+    await expect(backButton).toBeVisible();
+    await expect(forwardButton).toBeVisible();
+    await expect(backButton).toBeDisabled();
+    await expect(forwardButton).toBeDisabled();
+
+    await routeSelector.selectOption('/settings');
+    await expect(backButton).toBeEnabled();
+    await expect(forwardButton).toBeDisabled();
+
+    await backButton.click();
+    await expect(routeSelector).toHaveValue('/home');
+    await expect(forwardButton).toBeEnabled();
+
+    await forwardButton.click();
+    await expect(routeSelector).toHaveValue('/settings');
+  });
+
   test('should have source markers on elements in development mode', async ({ page }: any) => {
     // Navigate to a page with the inspector enabled
     await page.goto('/devtools/ui-inspector');
@@ -69,23 +144,10 @@ test.describe('UI Inspector Source Markers', () => {
     expect(hasSourceMarker).toBeNull();
   });
 
-  test('should have source markers only in development mode', async ({ browser }: any) => {
-    // Create a new context with production environment
-    const productionContext = await browser.newContext({
-      // In a real test, you'd set NODE_ENV to production
-      // For now, this is a placeholder for the concept
-    });
-    
-    const page = await productionContext.newPage();
-    
-    // Navigate to a page
-    await page.goto('/');
-    
-    // In production, source markers should NOT be present
+  test('should expose source markers on normal dev pages after UUID pruning', async ({ page }: any) => {
+    await page.goto('/home?inspect=1');
+
     const elementWithSourceMarker = page.locator('[data-gova-source-file]').first();
-    await expect(elementWithSourceMarker).not.toBeVisible();
-    
-    await page.close();
-    await productionContext.close();
+    await expect(elementWithSourceMarker).toBeVisible();
   });
 });

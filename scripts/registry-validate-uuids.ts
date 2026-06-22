@@ -57,9 +57,7 @@ function readHeadManifest(): Manifest | null {
 }
 
 const missingUuid = ALL_UI_IDENTITIES.filter((identity) => !identity.uuid);
-if (missingUuid.length > 0) {
-  errors.push(`Missing uuid: ${missingUuid.map((identity) => identity.id).join(', ')}`);
-}
+const uuidBackedIdentities = ALL_UI_IDENTITIES.filter((identity) => identity.uuid);
 
 const invalidUuid = ALL_UI_IDENTITIES.filter((identity) => identity.uuid && !isValidUiUuid(identity.uuid));
 if (invalidUuid.length > 0) {
@@ -88,7 +86,7 @@ if (invalidLifecycle.length > 0) {
 }
 
 const missingManifest = ALL_UI_IDENTITIES.filter(
-  (identity) => !manifestIdentities[getUiIdentityUuid(identity)]
+  (identity) => identity.uuid && !manifestIdentities[getUiIdentityUuid(identity)]
 );
 if (missingManifest.length > 0) {
   errors.push(
@@ -97,7 +95,7 @@ if (missingManifest.length > 0) {
 }
 
 const reusedRemoved = ALL_UI_IDENTITIES.filter(
-  (identity) => removedManifestIdentities[getUiIdentityUuid(identity)]
+  (identity) => identity.uuid && removedManifestIdentities[getUiIdentityUuid(identity)]
 );
 if (reusedRemoved.length > 0) {
   errors.push(
@@ -106,6 +104,7 @@ if (reusedRemoved.length > 0) {
 }
 
 const mismatches = ALL_UI_IDENTITIES.flatMap((identity) => {
+  if (!identity.uuid) return [];
   const entry = manifestIdentities[getUiIdentityUuid(identity)];
   if (!entry) return [];
 
@@ -155,6 +154,8 @@ console.log(
     {
       status: 'ok',
       total: ALL_UI_IDENTITIES.length,
+      uuidBacked: uuidBackedIdentities.length,
+      nonUuidBacked: missingUuid.length,
       manifestEntries: Object.keys(manifestIdentities).length,
       removedManifestEntries: Object.keys(removedManifestIdentities).length,
     },

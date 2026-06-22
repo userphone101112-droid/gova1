@@ -29,26 +29,26 @@ export function PreferencesStep() {
   const currentNotifications = preferences.notifications || [];
 
   return (
-    <div data-ui-uuid={ONBOARDING.SHELL.PREFERENCES_TITLE_CONTAINER_L32.uuid} className="w-full">
+    <div className="w-full">
       <h1 data-ui-uuid={ONBOARDING.PREFERENCES.TITLE.uuid} className="text-3xl font-bold tracking-tight mb-2">{t(ONBOARDING.PREFERENCES.TITLE)}</h1>
       <p data-ui-uuid={ONBOARDING.PREFERENCES.DESCRIPTION.uuid} className="text-muted-foreground mb-8">{t(ONBOARDING.PREFERENCES.DESCRIPTION)}</p>
 
-      <div data-ui-uuid={ONBOARDING.SHELL.PREFERENCES_TIMEZONE_LABEL_CONTAINER_L36.uuid} className="space-y-6 max-w-4xl mx-auto">
-        <div data-ui-uuid={ONBOARDING.SHELL.PREFERENCES_TIMEZONE_LABEL_CONTAINER_L37.uuid} className="space-y-2">
+      <div className="space-y-6 max-w-4xl mx-auto">
+        <div className="space-y-2">
           <span data-ui-uuid={ONBOARDING.PREFERENCES.TIMEZONE_LABEL.uuid}>{t(ONBOARDING.PREFERENCES.TIMEZONE_LABEL)}</span>
-          <select data-ui-uuid={ONBOARDING.PREFERENCES.TIMEZONE_SELECT.uuid} value={preferences.timezone || 'America/New_York'} onChange={(e) => updatePreferences({ timezone: e.target.value })}>
+          <select value={preferences.timezone || 'America/New_York'} onChange={(e) => updatePreferences({ timezone: e.target.value })}>
             {timezoneOptions.map((opt) => (
-              <option data-ui-uuid={ONBOARDING.PREFERENCES.TIMEZONE_OPTION.uuid} data-ui-instance-id={opt.id} key={opt.id}>{t(opt.label)}</option>
+              <option data-ui-instance-id={opt.id} key={opt.id}>{t(opt.label)}</option>
             ))}
           </select>
         </div>
 
-        <div data-ui-uuid={ONBOARDING.SHELL.PREFERENCES_NOTIFICATIONS_LABEL_CONTAINER_L46.uuid} className="space-y-2">
+        <div className="space-y-2">
           <span data-ui-uuid={ONBOARDING.PREFERENCES.NOTIFICATIONS_LABEL.uuid}>{t(ONBOARDING.PREFERENCES.NOTIFICATIONS_LABEL)}</span>
-          <div data-ui-uuid={ONBOARDING.SHELL.LABEL_CONTAINER_L48.uuid} className="space-y-3">
+          <div className="space-y-3">
             {notificationOptions.map((option) => (
-              <div data-ui-uuid={ONBOARDING.SHELL.LABEL_CONTAINER_L50.uuid} key={option.id} className="flex items-center gap-2">
-                <input type="checkbox" data-ui-uuid={ONBOARDING.PREFERENCES.NOTIFICATION_CHECKBOX.uuid} data-ui-instance-id={option.id} checked={currentNotifications.includes(option.id as any)} onChange={(e) => {
+              <div key={option.id} className="flex items-center gap-2">
+                <input type="checkbox" data-ui-instance-id={option.id} checked={currentNotifications.includes(option.id as any)} onChange={(e) => {
         const checked = e.target.checked;
         if (checked) {
             updatePreferences({
@@ -61,7 +61,7 @@ export function PreferencesStep() {
             });
         }
     }} />
-                <span data-ui-uuid={ONBOARDING.PREFERENCES.NOTIFICATION_OPTION_LABEL.uuid} data-ui-instance-id={option.id}>{t(option.label)}</span>
+                <span data-ui-instance-id={option.id}>{t(option.label)}</span>
               </div>
             ))}
           </div>
