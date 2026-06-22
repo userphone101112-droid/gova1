@@ -61,9 +61,10 @@ export function TranslationPanel() {
     return state.elements
       .map((element) => {
         const textSnippet = element.textSnippet?.trim() ?? '';
-        const uuid = element.uuid?.trim() ?? '';
+        const rawLangUuid = element.langUuid?.trim() ?? '';
+        const translationUuid = rawLangUuid.startsWith('lang-') ? rawLangUuid : '';
         const hasHardcodedText = textSnippet.length > 0;
-        const hasIncompleteLangUuid = uuid.startsWith('lang-');
+        const hasIncompleteLangUuid = Boolean(translationUuid);
         if (!hasHardcodedText && !hasIncompleteLangUuid) return null;
 
         const item: CheckTranslationItem = {
@@ -79,7 +80,7 @@ export function TranslationPanel() {
           scanKey: element.scanKey,
           textSnippet,
           tagName: element.tagName,
-          uuid,
+          uuid: translationUuid,
           sourceFile: element.sourceFile ?? '',
           sourceLine: element.sourceLine ?? 0,
           sourceColumn: element.sourceColumn ?? 0,

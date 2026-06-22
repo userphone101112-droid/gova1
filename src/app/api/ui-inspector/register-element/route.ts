@@ -5,7 +5,6 @@ import path from 'path';
 
 import { NextRequest, NextResponse } from 'next/server';
 
-import { generateTranslationKeyFromUi } from '@/platform/ui/i18n/binding/registry-binding';
 import { createInspectorAssignedUiUuid } from '@/platform/ui/registry/identity-uuid';
 
 type RegistrationPurpose = 'translation' | 'inspector-binding' | 'both';
@@ -43,7 +42,6 @@ const REGISTRY_MEMBER_PATHS_PATH = path.join(
   'registry',
   'registry-member-paths.json'
 );
-const LOCALES_DIR = path.join(process.cwd(), 'src', 'platform', 'ui', 'i18n', 'locales');
 
 export async function POST(request: NextRequest) {
   if (process.env.NODE_ENV !== 'development') {
@@ -64,39 +62,19 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    if (body.requestedPurpose === 'translation' || body.requestedPurpose === 'both') {
+      return NextResponse.json(
+        { error: 'Translation UUIDs must use data-ui-lang-uuid="lang-..." via check-translation JSON.' },
+        { status: 400 }
+      );
+    }
+
     const existingRef = findExistingRegistryRef(sourceFile, body.sourceLine);
     if (existingRef) {
-      let translationKey: string | undefined;
-      if (body.requestedPurpose === 'translation' || body.requestedPurpose === 'both') {
-        const existingIdentity = findIdentityByRegistryRef(existingRef);
-        if (!existingIdentity) {
-          return NextResponse.json(
-            { error: `Could not resolve existing registry reference "${existingRef}"` },
-            { status: 400 }
-          );
-        }
-        translationKey = generateTranslationKeyFromUi(existingIdentity.path);
-        upsertLocaleValue(
-          existingIdentity.feature,
-          'en',
-          translationKey,
-          body.textSnippet || existingIdentity.path
-        );
-        upsertLocaleValue(
-          existingIdentity.feature,
-          'ar',
-          translationKey,
-          body.textSnippet || existingIdentity.path
-        );
-        replaceHardcodedTextWithTranslation(sourceFile, body.sourceLine, body.textSnippet || '', translationKey);
-        refreshGeneratedRegistryFiles();
-      }
-
       return NextResponse.json({
         success: true,
         alreadyExists: true,
         registryRef: existingRef,
-        translationKey,
         message: 'Element already has a UUID-backed registry reference.',
       });
     }
@@ -105,18 +83,7 @@ export async function POST(request: NextRequest) {
     addIdentityToRegistry(identity);
     addUuidToJsx(sourceFile, body.sourceLine, identity.registryConst, identity.propertyKey);
 
-    if (body.requestedPurpose === 'translation' || body.requestedPurpose === 'both') {
-      const translationKey = generateTranslationKeyFromUi(identity.path);
-      upsertLocaleValue(identity.feature, 'en', translationKey, body.textSnippet || identity.propertyKey);
-      upsertLocaleValue(identity.feature, 'ar', translationKey, body.textSnippet || identity.propertyKey);
-      replaceHardcodedTextWithTranslation(sourceFile, body.sourceLine, body.textSnippet || '', translationKey);
-    }
-
     refreshGeneratedRegistryFiles();
-    const translationKey =
-      body.requestedPurpose === 'translation' || body.requestedPurpose === 'both'
-        ? generateTranslationKeyFromUi(identity.path)
-        : undefined;
 
     return NextResponse.json({
       success: true,
@@ -126,7 +93,6 @@ export async function POST(request: NextRequest) {
       feature: identity.feature,
       propertyKey: identity.propertyKey,
       registryRef: `${identity.registryConst}.${identity.propertyKey}.uuid`,
-      translationKey,
       message: 'UUID assigned successfully.',
     });
   } catch (error) {
@@ -139,19 +105,6 @@ export async function POST(request: NextRequest) {
       { status: 500 }
     );
   }
-}
-
-function findIdentityByRegistryRef(ref: string): { path: string; feature: string; uuid?: string } | null {
-  if (!existsSync(REGISTRY_MEMBER_PATHS_PATH)) return null;
-  const data = JSON.parse(readFileSync(REGISTRY_MEMBER_PATHS_PATH, 'utf-8')) as {
-    meta?: Record<string, { path?: string; feature?: string; uuid?: string }>;
-  };
-  const normalized = ref.replace(/\.uuid$/, '');
-  const entry = data.meta?.[normalized];
-  if (!entry?.path || !entry.feature) return null;
-  return entry.uuid
-    ? { path: entry.path, feature: entry.feature, uuid: entry.uuid }
-    : { path: entry.path, feature: entry.feature };
 }
 
 function resolveSourceFile(input: string): string | null {
@@ -331,38 +284,6 @@ function ensureRegistryImport(content: string, registryConst: string): string {
     return content.replace(platformImport[0], `import { ${nextNames} } from '@/platform/ui';`);
   }
   return `import { ${registryConst} } from '@/platform/ui';\n${content}`;
-}
-
-function replaceHardcodedTextWithTranslation(sourceFile: string, line: number, text: string, key: string): void {
-  if (!text.trim()) return;
-  const content = readFileSync(sourceFile, 'utf-8');
-  const lines = content.split(/\r?\n/);
-  const index = line - 1;
-  const lineText = lines[index] ?? '';
-  if (!lineText.includes(text)) return;
-  lines[index] = lineText.replace(text, `{t('${key}')}`);
-  const withHook = ensureTranslationHook(lines.join('\n'));
-  writeFileSync(sourceFile, withHook, 'utf-8');
-}
-
-function ensureTranslationHook(content: string): string {
-  if (content.includes('useTranslation()')) return content;
-  const withImport = ensureRegistryImport(content, 'useTranslation');
-  return withImport.replace(/(export\s+default\s+function\s+\w+\([^)]*\)\s*\{\s*)/, `$1\n  const { t } = useTranslation();\n`);
-}
-
-function upsertLocaleValue(feature: string, locale: 'en' | 'ar', translationKey: string, value: string): void {
-  const filePath = path.join(LOCALES_DIR, feature, `${locale}.json`);
-  if (!existsSync(filePath)) return;
-  const data = JSON.parse(readFileSync(filePath, 'utf-8')) as Record<string, unknown>;
-  const parts = translationKey.split('.');
-  let target: Record<string, unknown> = data;
-  for (const part of parts.slice(0, -1)) {
-    if (!target[part] || typeof target[part] !== 'object') target[part] = {};
-    target = target[part] as Record<string, unknown>;
-  }
-  target[parts[parts.length - 1]] = value;
-  writeFileSync(filePath, `${JSON.stringify(data, null, 2)}\n`, 'utf-8');
 }
 
 function refreshGeneratedRegistryFiles(): void {

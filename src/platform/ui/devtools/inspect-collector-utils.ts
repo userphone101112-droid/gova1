@@ -48,6 +48,7 @@ export function scanInspectableElements(): InspectElementSnapshot[] {
     }
 
     const uuid = el.getAttribute('data-ui-uuid') || '';
+    const langUuid = el.getAttribute('data-ui-lang-uuid') || '';
     const hasUuid = Boolean(uuid && uuid in UI_UUID_MAP);
 
     const scanKey = `scan-${snapshots.length}`;
@@ -64,6 +65,7 @@ export function scanInspectableElements(): InspectElementSnapshot[] {
       snapshot = {
         scanKey,
         uuid,
+        langUuid,
         hasUuid: true,
         tagName: el.tagName.toLowerCase(),
         id: identity?.id ?? '',
@@ -99,6 +101,7 @@ export function scanInspectableElements(): InspectElementSnapshot[] {
       snapshot = {
         scanKey,
         uuid,
+        langUuid,
         hasUuid: false,
         tagName: el.tagName.toLowerCase(),
         id: el.id || '',

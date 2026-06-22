@@ -6,6 +6,7 @@ export interface InspectElementSnapshot {
   /** Stable key for this DOM occurrence within a scan (unique even when uuid repeats). */
   scanKey: string;
   uuid: string;
+  langUuid?: string;
   /** Whether this element has a UUID (is UUID-backed) */
   hasUuid: boolean;
   tagName: string;

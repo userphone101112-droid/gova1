@@ -3509,5 +3509,44 @@
         "env": "dev"
       }
     ]
+  },
+  "maol_9Vl3D2skwE": {
+    "errors": [],
+    "warnings": [
+      {
+        "type": "warning",
+        "message": "Image with src \"/images/logos/logo-full.webp\" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: \"auto\"' or 'height: \"auto\"' to maintain the aspect ratio.",
+        "route": "/home",
+        "severity": "low",
+        "timestamp": 1782096961627,
+        "env": "dev"
+      }
+    ]
+  },
+  "maol_0px7UiYDbC": {
+    "errors": [],
+    "warnings": [
+      {
+        "type": "warning",
+        "message": "Image with src \"/images/logos/logo-full.webp\" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: \"auto\"' or 'height: \"auto\"' to maintain the aspect ratio.",
+        "route": "/home",
+        "severity": "low",
+        "timestamp": 1782096961685,
+        "env": "dev"
+      }
+    ]
+  },
+  "maol_1uGhthqbzB": {
+    "errors": [],
+    "warnings": [
+      {
+        "type": "warning",
+        "message": "Image with src \"/images/logos/logo-full.webp\" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: \"auto\"' or 'height: \"auto\"' to maintain the aspect ratio.",
+        "route": "/home",
+        "severity": "low",
+        "timestamp": 1782096970946,
+        "env": "dev"
+      }
+    ]
   }
 }
