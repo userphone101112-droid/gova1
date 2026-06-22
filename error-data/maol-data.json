@@ -3343,6 +3343,14 @@
         "severity": "low",
         "timestamp": 1782095705094,
         "env": "dev"
+      },
+      {
+        "type": "warning",
+        "message": "%s Feature dictionary not found for feature: signup, locale: en",
+        "route": "/registration",
+        "severity": "low",
+        "timestamp": 1782098236803,
+        "env": "dev"
       }
     ]
   },

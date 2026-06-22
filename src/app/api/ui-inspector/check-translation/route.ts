@@ -4,6 +4,8 @@ import path from 'path';
 
 import { NextRequest, NextResponse } from 'next/server';
 
+import { generateTranslationItemKey } from '@/platform/ui/devtools/ui-inspector/utils/translation-key';
+
 type CheckTranslationItem = {
   key: string;
   route: string;
@@ -58,7 +60,7 @@ function normalizeItem(body: Partial<CheckTranslationItem>): CheckTranslationIte
   const domPath = String(body.domPath ?? '');
   const uuid = String(body.uuid ?? '');
   const reason = body.reason === 'lang-uuid-incomplete' ? 'lang-uuid-incomplete' : 'hardcoded-text';
-  const key = String(body.key ?? createItemKey({ route, sourceFile, sourceLine, sourceColumn, tagName, domPath, textSnippet }));
+  const key = String(body.key ?? generateTranslationItemKey({ route, sourceFile, sourceLine, sourceColumn, tagName, domPath, textSnippet }));
 
   if (!route || !tagName || (!textSnippet && !uuid)) return null;
 
@@ -78,25 +80,7 @@ function normalizeItem(body: Partial<CheckTranslationItem>): CheckTranslationIte
   };
 }
 
-function createItemKey(input: {
-  route: string;
-  sourceFile: string;
-  sourceLine: number;
-  sourceColumn: number;
-  tagName: string;
-  domPath: string;
-  textSnippet: string;
-}): string {
-  return [
-    input.route,
-    input.sourceFile.replace(/\\/g, '/'),
-    input.sourceLine,
-    input.sourceColumn,
-    input.tagName,
-    input.domPath,
-    input.textSnippet.trim(),
-  ].join('|');
-}
+
 
 function readCheckFile(): { savedAt: string | null; items: CheckTranslationItem[] } {
   if (!existsSync(CHECK_FILE)) return { savedAt: null, items: [] };

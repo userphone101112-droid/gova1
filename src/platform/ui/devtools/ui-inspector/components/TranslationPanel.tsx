@@ -4,6 +4,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { SidebarSection } from '../sidebar/SidebarSection';
 import { useInspectorContext } from '../state/InspectorProvider';
+import { generateTranslationItemKey } from '../utils/translation-key';
 
 interface CheckTranslationItem {
   key: string;
@@ -68,7 +69,8 @@ export function TranslationPanel() {
         if (!hasHardcodedText && !hasIncompleteLangUuid) return null;
 
         const item: CheckTranslationItem = {
-          key: createTranslationItemKey(state.routePath, {
+          key: generateTranslationItemKey({
+            route: state.routePath,
             sourceFile: element.sourceFile ?? '',
             sourceLine: element.sourceLine ?? 0,
             sourceColumn: element.sourceColumn ?? 0,
@@ -97,7 +99,8 @@ export function TranslationPanel() {
     const index = new Map<string, string>();
     for (const element of state.elements) {
       const textSnippet = element.textSnippet?.trim() ?? '';
-      const key = createTranslationItemKey(state.routePath, {
+      const key = generateTranslationItemKey({
+        route: state.routePath,
         sourceFile: element.sourceFile ?? '',
         sourceLine: element.sourceLine ?? 0,
         sourceColumn: element.sourceColumn ?? 0,
@@ -360,24 +363,4 @@ function formatItemMeta(item: CheckTranslationItem): string {
   return `${item.reason} - ${uuid} - ${source}`;
 }
 
-function createTranslationItemKey(
-  route: string,
-  item: {
-    sourceFile: string;
-    sourceLine: number;
-    sourceColumn: number;
-    tagName: string;
-    domPath: string;
-    textSnippet: string;
-  }
-): string {
-  return [
-    route,
-    item.sourceFile.replace(/\\/g, '/'),
-    item.sourceLine,
-    item.sourceColumn,
-    item.tagName,
-    item.domPath,
-    item.textSnippet.trim(),
-  ].join('|');
-}
+

@@ -4,6 +4,8 @@ import path from 'path';
 
 import { NextRequest, NextResponse } from 'next/server';
 
+import { generateTranslationItemKey } from '@/platform/ui/devtools/ui-inspector/utils/translation-key';
+
 type IgnoreRecord = {
   key: string;
   route: string;
@@ -74,7 +76,7 @@ function normalizeRecord(body: Partial<IgnoreRecord>): IgnoreRecord | null {
   if (!route || !tagName || (!hasSource && !hasDomFallback)) return null;
 
   return {
-    key: createIgnoreKey({ sourceFile, sourceLine, sourceColumn, textSnippet, route, tagName, domPath }),
+    key: generateTranslationItemKey({ sourceFile, sourceLine, sourceColumn, textSnippet, route, tagName, domPath }),
     route,
     sourceFile,
     sourceLine,
@@ -86,25 +88,7 @@ function normalizeRecord(body: Partial<IgnoreRecord>): IgnoreRecord | null {
   };
 }
 
-function createIgnoreKey(input: {
-  sourceFile: string;
-  sourceLine: number;
-  sourceColumn: number;
-  textSnippet: string;
-  route: string;
-  tagName: string;
-  domPath: string;
-}): string {
-  return [
-    input.route,
-    input.sourceFile.replace(/\\/g, '/'),
-    input.sourceLine,
-    input.sourceColumn,
-    input.tagName,
-    input.domPath,
-    input.textSnippet.trim(),
-  ].join('|');
-}
+
 
 function readIgnoreFile(): { records: Record<string, IgnoreRecord> } {
   if (!existsSync(IGNORE_FILE)) return { records: {} };
