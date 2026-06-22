@@ -14,11 +14,19 @@ export function LanguageSwitcher() {
   return (
     <div className="flex items-center gap-2">
       <Globe className="w-4 h-4" />
-      <button data-ui-uuid={HOME.LANGUAGE_SWITCHER.ENGLISH_BUTTON.uuid} onClick={() => handleLocaleChange('en')}>
-        {t(HOME.LANGUAGE_SWITCHER.ENGLISH_BUTTON)}
+      <button
+        data-ui-uuid={HOME.LANGUAGE_SWITCHER.ENGLISH_BUTTON.uuid}
+        data-ui-lang-uuid={`lang-${HOME.LANGUAGE_SWITCHER.ENGLISH_BUTTON.uuid}`}
+        onClick={() => handleLocaleChange('en')}
+      >
+        {t('home.language-switcher.englishButton')}
       </button>
-      <button data-ui-uuid={HOME.LANGUAGE_SWITCHER.ARABIC_BUTTON.uuid} onClick={() => handleLocaleChange('ar')}>
-        {t(HOME.LANGUAGE_SWITCHER.ARABIC_BUTTON)}
+      <button
+        data-ui-uuid={HOME.LANGUAGE_SWITCHER.ARABIC_BUTTON.uuid}
+        data-ui-lang-uuid={`lang-${HOME.LANGUAGE_SWITCHER.ARABIC_BUTTON.uuid}`}
+        onClick={() => handleLocaleChange('ar')}
+      >
+        {t('home.language-switcher.arabicButton')}
       </button>
     </div>
   );

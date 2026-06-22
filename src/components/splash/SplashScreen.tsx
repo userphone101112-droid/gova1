@@ -42,7 +42,7 @@ export default function SplashScreen() {
       setMaintenanceBypass(true);
       setErrorMsg('');
     } else {
-      setErrorMsg(t(SPLASH.MAINTENANCE.INVALID_CODE));
+      setErrorMsg(t('splash.maintenance.invalidCode'));
     }
   };
 
@@ -56,25 +56,43 @@ export default function SplashScreen() {
               <Store className="w-12 h-12 text-on-primary" />
             </div>
           </div>
-          <h2 data-ui-uuid={SPLASH.MAINTENANCE.TITLE.uuid} className="text-2xl font-bold text-primary text-center mt-2">
-            {t(SPLASH.MAINTENANCE.TITLE)}
+          <h2
+            data-ui-uuid={SPLASH.MAINTENANCE.TITLE.uuid}
+            data-ui-lang-uuid={`lang-${SPLASH.MAINTENANCE.TITLE.uuid}`}
+            className="text-2xl font-bold text-primary text-center mt-2"
+          >
+            {t('splash.maintenance.title')}
           </h2>
           <div className="text-center text-on-surface-variant text-sm leading-relaxed">
-            {settings.maintenance.message || t(SPLASH.MAINTENANCE.DEFAULT_MESSAGE)}
+            {settings.maintenance.message || t('splash.maintenance.defaultMessage')}
           </div>
           <div className="w-full flex flex-col gap-2 mt-2">
-            <input data-ui-uuid={SPLASH.MAINTENANCE.FORM.PIN_INPUT.uuid} type="password" placeholder={t(SPLASH.MAINTENANCE.FORM.PIN_INPUT)} value={accessCodeInput} onChange={(e) => setAccessCodeInput(e.target.value)} onKeyDown={(e) => {
-        if (e.key === 'Enter')
-            handleVerify();
-    }} className="w-full px-4 py-3 bg-surface-container-low border border-outline rounded-xl text-on-surface placeholder-on-surface-variant/50 text-center outline-none focus:border-primary transition-all" />
+            <input
+              data-ui-uuid={SPLASH.MAINTENANCE.FORM.PIN_INPUT.uuid}
+              data-ui-lang-uuid={`lang-${SPLASH.MAINTENANCE.FORM.PIN_INPUT.uuid}`}
+              type="password"
+              placeholder={t('splash.maintenance.pinInput')}
+              value={accessCodeInput}
+              onChange={(e) => setAccessCodeInput(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter')
+                  handleVerify();
+              }}
+              className="w-full px-4 py-3 bg-surface-container-low border border-outline rounded-xl text-on-surface placeholder-on-surface-variant/50 text-center outline-none focus:border-primary transition-all"
+            />
             {errorMsg && (
               <div className="text-error text-xs text-center font-medium mt-1">
                 {errorMsg}
               </div>
             )}
           </div>
-          <button data-ui-uuid={SPLASH.MAINTENANCE.FORM.SUBMIT_BUTTON.uuid} onClick={handleVerify} className="w-full py-3 bg-primary text-on-primary font-semibold rounded-xl active:scale-95 transition-transform shadow-lg cursor-pointer">
-            {t(SPLASH.MAINTENANCE.FORM.SUBMIT_BUTTON)}
+          <button
+            data-ui-uuid={SPLASH.MAINTENANCE.FORM.SUBMIT_BUTTON.uuid}
+            data-ui-lang-uuid={`lang-${SPLASH.MAINTENANCE.FORM.SUBMIT_BUTTON.uuid}`}
+            onClick={handleVerify}
+            className="w-full py-3 bg-primary text-on-primary font-semibold rounded-xl active:scale-95 transition-transform shadow-lg cursor-pointer"
+          >
+            {t('splash.maintenance.submitButton')}
           </button>
         </div>
       </div>
@@ -92,11 +110,18 @@ export default function SplashScreen() {
             <Store className="w-14 h-14 text-on-primary" />
           </div>
         </div>
-        <h1 data-ui-uuid={SPLASH.LOGO.HEADING.uuid} className="text-3xl font-bold text-primary mb-1 tracking-tight text-center">
-          {t(SPLASH.LOGO.HEADING)}
+        <h1
+          data-ui-uuid={SPLASH.LOGO.HEADING.uuid}
+          data-ui-lang-uuid={`lang-${SPLASH.LOGO.HEADING.uuid}`}
+          className="text-3xl font-bold text-primary mb-1 tracking-tight text-center"
+        >
+          {t('splash.logo.heading')}
         </h1>
-        <div className="text-base text-on-surface-variant font-medium tracking-wide">
-          {t(SPLASH.LOGO.TAGLINE)}
+        <div
+          data-ui-lang-uuid={`lang-${SPLASH.LOGO.TAGLINE.uuid}`}
+          className="text-base text-on-surface-variant font-medium tracking-wide"
+        >
+          {t('splash.logo.tagline')}
         </div>
 
         <div className="mt-8 w-full flex flex-col items-center">

@@ -46,9 +46,10 @@ export function Test1Content() {
     >
       <h1
         data-ui-uuid={TEST1.PAGE.TITLE.uuid}
+        data-ui-lang-uuid={`lang-${TEST1.PAGE.TITLE.uuid}`}
         className="text-2xl font-bold text-on-surface"
       >
-        {t(TEST1.PAGE.TITLE)}
+        {t('test1.page.title')}
       </h1>
 
       <div
@@ -57,40 +58,44 @@ export function Test1Content() {
         <input
           id="test1-input1"
           data-ui-uuid={TEST1.FORM.INPUT_1.uuid}
+          data-ui-lang-uuid={`lang-${TEST1.FORM.INPUT_1.uuid}`}
           type="text"
           value={input1}
           onChange={(event) => setInput1(event.target.value)}
-          placeholder={t(TEST1.FORM.INPUT_1)}
+          placeholder={t('test1.form.input1')}
           className="w-full rounded-lg border border-outline-variant bg-surface px-3 py-2 text-on-surface placeholder:text-on-surface-variant"
         />
 
         <input
           id="test1-input2"
           data-ui-uuid={TEST1.FORM.INPUT_2.uuid}
+          data-ui-lang-uuid={`lang-${TEST1.FORM.INPUT_2.uuid}`}
           type="text"
           value={input2}
           onChange={(event) => setInput2(event.target.value)}
-          placeholder={t(TEST1.FORM.INPUT_2)}
+          placeholder={t('test1.form.input2')}
           className="w-full rounded-lg border border-outline-variant bg-surface px-3 py-2 text-on-surface placeholder:text-on-surface-variant"
         />
 
         <input
           id="test1-input3"
           data-ui-uuid={TEST1.FORM.INPUT_3.uuid}
+          data-ui-lang-uuid={`lang-${TEST1.FORM.INPUT_3.uuid}`}
           type="text"
           value={input3}
           onChange={(event) => setInput3(event.target.value)}
-          placeholder={t(TEST1.FORM.INPUT_3)}
+          placeholder={t('test1.form.input3')}
           className="w-full rounded-lg border border-outline-variant bg-surface px-3 py-2 text-on-surface placeholder:text-on-surface-variant"
         />
 
         <button
           type="button"
           data-ui-uuid={TEST1.FORM.SAVE_BUTTON.uuid}
+          data-ui-lang-uuid={`lang-${TEST1.FORM.SAVE_BUTTON.uuid}`}
           onClick={() => alert('Saved!')}
           className="rounded-lg bg-primary px-4 py-2 text-sm font-medium text-on-primary transition-colors hover:bg-primary/90"
         >
-          {t(TEST1.FORM.SAVE_BUTTON)}
+          {t('test1.form.saveButton')}
         </button>
       </div>
 
@@ -100,10 +105,11 @@ export function Test1Content() {
         <button
           type="button"
           data-ui-uuid={TEST1.IMAGE_UPLOAD.UPLOAD_BUTTON.uuid}
+          data-ui-lang-uuid={`lang-${TEST1.IMAGE_UPLOAD.UPLOAD_BUTTON.uuid}`}
           onClick={handleSelectImages}
           className="rounded-lg bg-primary px-4 py-2 text-sm font-medium text-on-primary transition-colors hover:bg-primary/90"
         >
-          {t(TEST1.IMAGE_UPLOAD.UPLOAD_BUTTON)}
+          {t('test1.image-upload.uploadButton')}
         </button>
         <input
           ref={fileInputRef}
@@ -118,9 +124,10 @@ export function Test1Content() {
           <img
             key={image.id}
             data-ui-uuid={TEST1.IMAGE_UPLOAD.PREVIEW_IMAGE.uuid}
+            data-ui-lang-uuid={`lang-${TEST1.IMAGE_UPLOAD.PREVIEW_IMAGE.uuid}`}
             data-ui-instance-id={image.id}
             src={image.url}
-            alt={t(TEST1.IMAGE_UPLOAD.PREVIEW_IMAGE)}
+            alt={t('test1.image-upload.previewImage')}
             className="col-span-1 h-32 w-full rounded-lg border border-outline-variant object-cover"
           />
         ))}

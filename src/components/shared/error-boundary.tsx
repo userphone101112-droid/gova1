@@ -29,14 +29,22 @@ function ErrorFallback({
   return (
     <main className="flex min-h-error items-center justify-center p-4">
       <div className="max-w-md text-center">
-        <h2 data-ui-uuid={ERROR_BOUNDARY.TITLE.uuid} className="mb-4 text-2xl font-bold text-on-surface">
-          {t(ERROR_BOUNDARY.TITLE)}
+        <h2
+          data-ui-uuid={ERROR_BOUNDARY.TITLE.uuid}
+          data-ui-lang-uuid={`lang-${ERROR_BOUNDARY.TITLE.uuid}`}
+          className="mb-4 text-2xl font-bold text-on-surface"
+        >
+          {t('error-boundary.main.title')}
         </h2>
         <div className="mb-6 text-on-surface-variant">
-          {error?.message || t(ERROR_BOUNDARY.DEFAULT_MESSAGE)}
+          {error?.message || t('error-boundary.main.defaultMessage')}
         </div>
-        <button data-ui-uuid={ERROR_BOUNDARY.RELOAD_BUTTON.uuid} onClick={onReload}>
-          {t(ERROR_BOUNDARY.RELOAD_BUTTON)}
+        <button
+          data-ui-uuid={ERROR_BOUNDARY.RELOAD_BUTTON.uuid}
+          data-ui-lang-uuid={`lang-${ERROR_BOUNDARY.RELOAD_BUTTON.uuid}`}
+          onClick={onReload}
+        >
+          {t('error-boundary.main.reloadButton')}
         </button>
       </div>
     </main>
